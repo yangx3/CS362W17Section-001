@@ -1,2 +1,3 @@
-Kin-Ho Lam's Readme
+Kin-Ho Lam
+
 I got tremendous memes people. Believe me.
