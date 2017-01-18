@@ -18,29 +18,41 @@ public class Player{
 
   public Player(String pName){
     // Constructor for the Player class - sets their name
-    playerName = pName;
+    this.playerName = pName;
   }
 
   public int getActions(){
-    return remActions;
+    return this.remActions;
   }
 
   public int getBuys(){
-    return remBuys;
+    return this.remBuys;
   }
 
   public void seeHand(){
     // Display all cards in a player's hand
-    for(willmetl.Card c : hand){
+    for(willmetl.Card c : this.hand){
       System.out.println(c);
     }
   }
 
   public void newTurn(){
     // Start every turn with a new, full hand and 1 action, 1 buy
-    remActions = 1;
-    remBuys = 1;
-    hand.clear();
+    this.remActions = 1;
+    this.remBuys = 1;
+    this.hand.clear();
     // Add 7 new cards from the top of this player's deck
+  }
+  public boolean playCard(Card card){
+    return playCard(card, this);
+  }
+  public boolean playCard(Card card, Player target){
+    if(this.remActions<1 || !card.costsAction){
+      System.out.println("Playing "+card);
+      card.play(this);
+    } else {
+      System.out.println("You do not have an action to play "+card);
+    }
+    return true;
   }
 }
