@@ -7,16 +7,20 @@ package willmetl;
 
 public class Card{
   // The Card class represnts a single Dominion card
-
+  private final boolean DEBUGGING = true;
   // Attributes for this card can only be changed when the card is created
-  public final String cardName;
-  public final String cardDesc;
-  public final boolean costsAction;
-  public final int costsMoney;
-  public final int givesVictoryPoints;
-  public final int givesMoney;
-  public final int givesActions;
-  public final int givesCardDraws;
+  public String cardName;
+  public String cardDesc = "No desc";
+  public boolean costsAction = true;
+  public int costsMoney = 0;
+  public int givesVictoryPoints = 0;
+  public int givesMoney = 0;
+  public int givesActions = 0;
+  public int givesCardDraws = 0;
+
+  public Card(String cName){
+    this.cardName = cName;
+  }
 
   public Card(
       String cName, String cDesc,
@@ -35,20 +39,16 @@ public class Card{
   }
 
   public boolean play(){
-    System.out.println("Card->Play");
+    if(DEBUGGING) System.out.println("Card->Play");
     return true;
   }
 
   public boolean play(Player target){
-    System.out.println("Card->Play w/Target "+target);
+    if(DEBUGGING) System.out.println("Card->Play w/Target "+target);
     return true;
   }
 
   public String toString(){
     return this.cardName;
-  }
-
-  public String getDesc(){
-    return this.cardDesc;
   }
 }

@@ -8,13 +8,17 @@ import java.util.*;
 
 public class Player{
   // The Player class represents a single Dominion player
-
+  private final boolean DEBUGGING = true;
   // Attributes for this class are private
   private final String playerName;
   private final int drawCards = 7;  // inital hand size
   private int remActions;
   private int remBuys;
+
   private ArrayList<Card> hand = new ArrayList<Card>(7);
+  // private Deck hand = new Deck(0);
+  private Deck drawPile = new Deck(0);
+  private Deck discardPile = new Deck(0);
 
   public Player(String pName){
     // Constructor for the Player class - sets their name
@@ -48,7 +52,7 @@ public class Player{
   }
   public boolean playCard(Card card, Player target){
     if(this.remActions<1 || !card.costsAction){
-      System.out.println("Playing "+card);
+      if(DEBUGGING) System.out.println("Playing "+card);
       card.play(this);
     } else {
       System.out.println("You do not have an action to play "+card);
