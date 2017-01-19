@@ -11,6 +11,7 @@ public class Deck{
   private final boolean DEBUGGING = true;
   private final boolean sharedDeck;
 
+  private final int defaultDeckSize = 100;
   private final int pileSize = 8;     // How many cards per pile
   // Initial cards for each player's Deck
   private final int startingCopper = 7;
@@ -24,50 +25,50 @@ public class Deck{
   private final int bankDuchies = 12;
   private final int bankProvinces = 12;
 
-  private ArrayList<Card> cards;
+  private ArrayList<Card> cards = new ArrayList<Card>(defaultDeckSize);
 
   public Deck(){
     // The default constructor makes a new, normal deck for a player
-    sharedDeck = false;
+    this.sharedDeck = false;
     // Add default money and vp cards
   }
-  public Deck(int numCards){
+  public Deck(boolean shared){
     // Constructor for the Deck class
-    sharedDeck = true;
+    this.sharedDeck = shared;
+    if(shared == false){
+      // Make a new, default draw deck using preset values
+      for(int i=0; i<startingCopper; i++){
+        // Generate the deck
+        // Card c = new Card("Copper");
+        // c.cardDesc = "+1 money";
+        // c.costsAction = false;
+        // c.givesMoney = 1;
+        // cards.add(c);
+        cards.add(new Card(
+          "Copper",    // cardName
+          "+1 money",  // cardDesc
+          false,       // costsAction
+          0,           // costsMoney
+          0,           // givesVictoryPoints
+          1,           // givesMoney
+          0,           // givesActions
+          0            // givesCardDraws
+        ));
+      }
 
-    // Make a new shared deck using preset values
-    cards = new ArrayList<Card>(numCards * pileSize);
-    for(int i=0; i<startingCopper; i++){
-      // Generate the deck
-      // Card c = new Card("Copper");
-      // c.cardDesc = "+1 money";
-      // c.costsAction = false;
-      // c.givesMoney = 1;
-      // cards.add(c);
-      cards.add(new Card(
-        "Copper",    // cardName
-        "+1 money",  // cardDesc
-        false,       // costsAction
-        0,           // costsMoney
-        0,           // givesVictoryPoints
-        1,           // givesMoney
-        0,           // givesActions
-        0            // givesCardDraws
-      ));
-    }
-
-    // Starting victory cards
-    for(int i=0; i<startingVP; i++){
-      cards.add(new Card(
-        "Estate",
-        "+1 victory",
-        false,
-        2,
-        1,
-        0,
-        0,
-        0
-      ));
+      // Starting victory cards
+      for(int i=0; i<startingVP; i++){
+        cards.add(new Card(
+          "Estate",
+          "+1 victory",
+          false,
+          2,
+          1,
+          0,
+          0,
+          0
+        ));
+      }
     }
   }
 
@@ -94,7 +95,7 @@ public class Deck{
   }
 
   public static void main(String [ ] args){
-    Deck a = new Deck(8);
+    Deck a = new Deck(false);
     a.seeDeck();
   }
 }

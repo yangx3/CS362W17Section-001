@@ -2,5 +2,7 @@ all:
 	javac -cp ../ *.java
 clean:
 	rm -f *.class
-runDeck:
-	java ../willmetl.Deck
+runTests:
+	cd ../
+	java willmetl.Tests
+	cd willmetl

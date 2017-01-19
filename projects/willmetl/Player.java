@@ -17,12 +17,14 @@ public class Player{
 
   private ArrayList<Card> hand = new ArrayList<Card>(7);
   // private Deck hand = new Deck(0);
-  private Deck drawPile = new Deck(0);
-  private Deck discardPile = new Deck(0);
+  private Deck drawPile;
+  private Deck discardPile;
 
   public Player(String pName){
     // Constructor for the Player class - sets their name
     this.playerName = pName;
+    this.drawPile = new Deck(false);    // not shared, yes default
+    this.discardPile = new Deck();      // not shared, empty
   }
 
   public int getActions(){
@@ -40,6 +42,35 @@ public class Player{
     }
   }
 
+  public void seeDeck(){
+    if(DEBUGGING){
+      System.out.println("Player "+this.playerName+"'s drawPile:");
+      drawPile.seeDeck();
+      System.out.println("Player "+this.playerName+"'s discardPile:");
+      discardPile.seeDeck();
+    }
+  }
+
+  public boolean discardCard(){
+    // This player discards a random card from their hand
+    int handsize = this.hand.size();
+    // generate random number in range of hand size
+    Card c = hand.remove(1);
+    return discardCard(c);
+  }
+  public boolean discardCard(Card card, Player target){
+    // Target player discards a specific card
+    return target.discardCard(card);
+  }
+  public boolean discardCard(Card c){
+    // This player discards a specific card
+    if(hand.contains(c)){
+      hand.remove(c);
+      return discardPile.addCard(c);
+    }
+    return false;
+  }
+
   public void newTurn(){
     // Start every turn with a new, full hand and 1 action, 1 buy
     this.remActions = 1;
@@ -47,6 +78,7 @@ public class Player{
     this.hand.clear();
     // Add 7 new cards from the top of this player's deck
   }
+
   public boolean playCard(Card card){
     return playCard(card, this);
   }
