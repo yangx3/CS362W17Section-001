@@ -1,7 +1,8 @@
 package myDominion;
 
 public class kingdomCard extends Card {
-//Think of how to implement functionality
+//All cards have the functions and an index at to a table 
+	//That tells which function they will execute
 	
 	public kingdomCard(int cost, int treasure, int victory, String name) {
 		setType(2);
