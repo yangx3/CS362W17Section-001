@@ -15,16 +15,16 @@ public class Player{
   private int remActions;
   private int remBuys;
 
-  private ArrayList<Card> hand = new ArrayList<Card>(7);
-  // private Deck hand = new Deck(0);
+  private Deck hand;
   private Deck drawPile;
   private Deck discardPile;
 
   public Player(String pName){
     // Constructor for the Player class - sets their name
     this.playerName = pName;
-    this.drawPile = new Deck(false);    // not shared, yes default
+    this.drawPile = new Deck();         // not shared, empty
     this.discardPile = new Deck();      // not shared, empty
+    this.hand = new Deck();             // not shared, empty
   }
 
   public int getActions(){
@@ -37,9 +37,7 @@ public class Player{
 
   public void seeHand(){
     // Display all cards in a player's hand
-    for(willmetl.Card c : this.hand){
-      System.out.println(c);
-    }
+    this.hand.seeDeck();
   }
 
   public void seeDeck(){
@@ -53,29 +51,30 @@ public class Player{
 
   public boolean discardCard(){
     // This player discards a random card from their hand
-    int handsize = this.hand.size();
+    int handsize = this.hand.getSize();
     // generate random number in range of hand size
-    Card c = hand.remove(1);
+    Card c = hand.drawCard(1);
     return discardCard(c);
   }
-  public boolean discardCard(Card card, Player target){
-    // Target player discards a specific card
-    return target.discardCard(card);
-  }
   public boolean discardCard(Card c){
-    // This player discards a specific card
-    if(hand.contains(c)){
-      hand.remove(c);
-      return discardPile.addCard(c);
-    }
-    return false;
+    // Returns result of attempting to move a card from hand to discardPile
+    return discardPile.addCard(hand.drawCard(c));
+  }
+  public boolean discardCard(Card c, Player target){
+    // Target player discards a specific card
+    return target.discardCard(c);
+  }
+
+  public boolean draw(Deck d, Card c){
+    // Take a card from a deck and put it into your discardPile
+    return discardPile.addCard(d.drawCard());
   }
 
   public void newTurn(){
     // Start every turn with a new, full hand and 1 action, 1 buy
     this.remActions = 1;
     this.remBuys = 1;
-    this.hand.clear();
+    this.discardPile.addCard(this.hand.drawAll());
     // Add 7 new cards from the top of this player's deck
   }
 

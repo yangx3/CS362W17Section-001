@@ -9,69 +9,26 @@ import java.util.*;
 public class Deck{
   // The Deck class represents either a shared or Player deck of Cards
   private final boolean DEBUGGING = true;
-  private final boolean sharedDeck;
-
-  private final int defaultDeckSize = 100;
-  private final int pileSize = 8;     // How many cards per pile
-  // Initial cards for each player's Deck
-  private final int startingCopper = 7;
-  private final int startingVP = 3;
-  // Initial currency cards in the bank
-  private final int bankCopper = 60;
-  private final int bankSilver = 40;
-  private final int bankGold = 30;
-  // Initial victory point cards in the bank
-  private final int bankEstates = 24;
-  private final int bankDuchies = 12;
-  private final int bankProvinces = 12;
-
-  private ArrayList<Card> cards = new ArrayList<Card>(defaultDeckSize);
+  private ArrayList<Card> cards;
 
   public Deck(){
+    this(100);
+  }
+  public Deck(int size){
     // The default constructor makes a new, normal deck for a player
-    this.sharedDeck = false;
-    // Add default money and vp cards
-  }
-  public Deck(boolean shared){
-    // Constructor for the Deck class
-    this.sharedDeck = shared;
-    if(shared == false){
-      // Make a new, default draw deck using preset values
-      for(int i=0; i<startingCopper; i++){
-        // Generate the deck
-        // Card c = new Card("Copper");
-        // c.cardDesc = "+1 money";
-        // c.costsAction = false;
-        // c.givesMoney = 1;
-        // cards.add(c);
-        cards.add(new Card(
-          "Copper",    // cardName
-          "+1 money",  // cardDesc
-          false,       // costsAction
-          0,           // costsMoney
-          0,           // givesVictoryPoints
-          1,           // givesMoney
-          0,           // givesActions
-          0            // givesCardDraws
-        ));
-      }
-
-      // Starting victory cards
-      for(int i=0; i<startingVP; i++){
-        cards.add(new Card(
-          "Estate",
-          "+1 victory",
-          false,
-          2,
-          1,
-          0,
-          0,
-          0
-        ));
-      }
-    }
+    this.cards = new ArrayList<Card>(size);
   }
 
+  public Card drawCard(){
+    // Pops the top card from this deck
+    // This _should_ handle empty decks!
+    return drawCard(cards.size());
+  }
+  public Card drawCard(int i){
+    // Returns the card at a specific index
+    Card c = cards.get(i); // not sure if this removes or returns?
+    return c;
+  }
   public Card drawCard(Card c){
     // Removes a card from this deck and returns it
     // ArrayList.remove(c) returns boolean if c was removed
@@ -81,10 +38,18 @@ public class Deck{
       return null;
     }
   }
+  public ArrayList drawAll(){
+    // Returns every card in this deck as an ArrayList
+    return cards;
+  }
 
   public boolean addCard(Card c){
     // Adds a new card to this deck
     return cards.add(c);
+  }
+  public boolean addCard(ArrayList cards){
+    // Adds an ArrayList of cards to this deck
+    return cards.addAll(cards);
   }
 
   public void seeDeck(){
@@ -94,8 +59,8 @@ public class Deck{
     }
   }
 
-  public static void main(String [ ] args){
-    Deck a = new Deck(false);
-    a.seeDeck();
+  public int getSize(){
+    // Returns number of cards in this deck
+    return this.cards.size();
   }
 }

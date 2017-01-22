@@ -49,6 +49,6 @@ public class Card{
   }
 
   public String toString(){
-    return this.cardName;
+    return this.cardName+" - "+this.cardDesc;
   }
 }
