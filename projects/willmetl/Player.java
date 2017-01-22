@@ -35,6 +35,14 @@ public class Player{
     return this.remBuys;
   }
 
+  public int getDiscardSize(){
+    return this.discardPile.getSize();
+  }
+
+  public int getDrawSize(){
+    return this.discardPile.getSize();
+  }
+
   public void seeHand(){
     // Display all cards in a player's hand
     this.hand.seeDeck();
