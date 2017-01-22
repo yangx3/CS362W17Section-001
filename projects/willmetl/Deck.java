@@ -19,14 +19,31 @@ public class Deck{
     this.cards = new ArrayList<Card>(size);
   }
 
+  public boolean addCard(Card c){
+    // Adds a new card to this deck
+    return cards.add(c);
+  }
+  public boolean addCard(ArrayList c){
+    // Adds an ArrayList of cards to this deck
+    return cards.addAll(c);
+  }
+  public boolean addAll(Deck d){
+    return cards.addAll(d.drawAll());
+  }
+
+  public ArrayList drawAll(){
+    // Returns every card in this deck as an ArrayList
+    return cards;
+  }
+
   public Card drawCard(){
-    // Pops the top card from this deck
+    // Pops the top (index 0) card from this deck
     // This _should_ handle empty decks!
-    return drawCard(cards.size());
+    return drawCard(0);
   }
   public Card drawCard(int i){
     // Returns the card at a specific index
-    Card c = cards.get(i); // not sure if this removes or returns?
+    Card c = cards.remove(i); // not sure if this removes or returns?
     return c;
   }
   public Card drawCard(Card c){
@@ -38,29 +55,20 @@ public class Deck{
       return null;
     }
   }
-  public ArrayList drawAll(){
-    // Returns every card in this deck as an ArrayList
-    return cards;
-  }
 
-  public boolean addCard(Card c){
-    // Adds a new card to this deck
-    return cards.add(c);
-  }
-  public boolean addCard(ArrayList cards){
-    // Adds an ArrayList of cards to this deck
-    return cards.addAll(cards);
+  public int getSize(){
+    // Returns number of cards in this deck
+    return this.cards.size();
   }
 
   public void seeDeck(){
     // See the cards in your deck
     for(Card c:this.cards){
-      System.out.println(c);
+      System.out.println("\t"+c);
     }
   }
 
-  public int getSize(){
-    // Returns number of cards in this deck
-    return this.cards.size();
+  public void shuffle(){
+    Collections.shuffle(this.cards);
   }
 }

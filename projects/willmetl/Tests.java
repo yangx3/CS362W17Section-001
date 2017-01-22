@@ -42,19 +42,28 @@ public class Tests{
   private final int bankDuchies = 12;
   private final int bankProvinces = 12;
 
-  private boolean setupGame(){
+  private void setupGame(){
     // shared cards that players can buy
     Deck sharedcards = new Deck(defaultDeckSize);
     // Fill the shared deck with the starting cards
-    for(int i=0; i<startingCopper; i++){
-      sharedcards.add(COPPER);
+    for(int i=0; i<bankCopper; i++){
+      sharedcards.addCard(COPPER);
     }
+    for(int i=0; i<bankEstates; i++){
+      sharedcards.addCard(ESTATE);
+    }
+    System.out.println("Shared deck contains "+sharedcards.getSize()+" cards:");
+    // sharedcards.seeDeck();
 
     Player a = new Player("Amy");
     // I want a way to easily reference a static card here
     a.draw(sharedcards, COPPER);
     a.draw(sharedcards, ESTATE);
     a.seeDeck();
+
+    sharedcards.shuffle();
+    System.out.println("Shared deck contains "+sharedcards.getSize()+" cards:");
+    // sharedcards.seeDeck();
 
     Player b = new Player("Bill");
   }

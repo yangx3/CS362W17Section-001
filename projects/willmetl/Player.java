@@ -40,6 +40,13 @@ public class Player{
     this.hand.seeDeck();
   }
 
+  public boolean shuffle(){
+    // Shuffles discardPile and adds it _under_ the drawPile
+    if(drawPile.getSize() > 0) return false;
+    discardPile.shuffle();
+    return drawPile.addAll(discardPile);
+  }
+
   public void seeDeck(){
     if(DEBUGGING){
       System.out.println("Player "+this.playerName+"'s drawPile:");
@@ -67,7 +74,7 @@ public class Player{
 
   public boolean draw(Deck d, Card c){
     // Take a card from a deck and put it into your discardPile
-    return discardPile.addCard(d.drawCard());
+    return discardPile.addCard(d.drawCard(c));
   }
 
   public void newTurn(){
