@@ -79,6 +79,25 @@ public class Player {
 			System.out.println("That card didn't belong in the source!");
 	}
 	
+	public Card getCard(int destination, int index) //gets the given card from the proper location
+	{
+		switch (destination)
+		{
+		case 0://Deck
+			return deck.get(index);
+		case 1://Discard
+			return discard.get(index);
+		case 2://Hand
+			return hand.get(index);
+		case 3://Played
+			return played.get(index);
+		default://Invalid
+			System.out.println("Invalid destination");
+			return null;
+		
+		}
+	}
+	
 	public void addCard(int destination, Card card) //Adds the given card to the proper location
 	{
 		switch (destination)
@@ -128,5 +147,12 @@ public class Player {
 		this.victoryPoints = count;
 		
 	}
+	
+	
+	
+	
+	
+	
+	
 
 }

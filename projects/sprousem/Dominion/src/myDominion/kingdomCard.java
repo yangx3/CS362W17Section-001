@@ -5,6 +5,7 @@ public class kingdomCard extends Card {
 	//That tells which function they will execute
 	
 	private int functionIndex;	//Index of what function the kingdom card is going to execute
+							//There are 13 possible functions to perform.
 	
 	public kingdomCard(int cost, int treasure, int victory, int functionIndex, String name) {
 		setType(2);
@@ -24,4 +25,5 @@ public class kingdomCard extends Card {
 		this.functionIndex = functionIndex;
 	}
 
+	
 }
