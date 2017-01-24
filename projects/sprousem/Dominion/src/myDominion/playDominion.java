@@ -68,6 +68,7 @@ public class playDominion
 			
 			state = playCard(current.getCard(2, handIndex), state);
 			current.addCard(2, 3, handIndex);//Move card from hand to played
+
 		}
 		current.turnConclusion();
 		
