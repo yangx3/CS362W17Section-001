@@ -14,6 +14,7 @@ public class Player{
   private final int drawCards = 7;  // inital hand size
   private int remActions;
   private int remBuys;
+  private int remMoney;
 
   private Deck hand;
   private Deck drawPile;
@@ -25,6 +26,16 @@ public class Player{
     this.drawPile = new Deck();         // not shared, empty
     this.discardPile = new Deck();      // not shared, empty
     this.hand = new Deck();             // not shared, empty
+  }
+
+  public int addMoney(int m){
+    this.remMoney += m;
+    return remMoney;
+  }
+
+  public int addActions(int a){
+    this.remActions += a;
+    return remActions;
   }
 
   public int getActions(){
@@ -64,25 +75,30 @@ public class Player{
     }
   }
 
-  public boolean discardCard(){
+  public boolean discard(){
     // This player discards a random card from their hand
     int handsize = this.hand.getSize();
     // generate random number in range of hand size
     Card c = hand.drawCard(1);
-    return discardCard(c);
+    return discard(c);
   }
-  public boolean discardCard(Card c){
+  public boolean discard(Card c){
     // Returns result of attempting to move a card from hand to discardPile
     return discardPile.addCard(hand.drawCard(c));
   }
-  public boolean discardCard(Card c, Player target){
+  public boolean discard(Card c, Player target){
     // Target player discards a specific card
-    return target.discardCard(c);
+    return target.discard(c);
   }
 
-  public boolean draw(Deck d, Card c){
+  public Card draw(){
+    return draw(drawPile, drawPile.drawCard());
+  }
+  public Card draw(Deck d, Card c){
     // Take a card from a deck and put it into your discardPile
-    return discardPile.addCard(d.drawCard(c));
+    c = d.drawCard(c);
+    discardPile.addCard(c);
+    return c;
   }
 
   public void newTurn(){

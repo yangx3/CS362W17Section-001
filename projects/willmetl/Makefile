@@ -3,4 +3,5 @@ all:
 clean:
 	rm -f *.class
 tests:
+	javac -cp ../ *.java
 	java -cp ../ willmetl.Tests
