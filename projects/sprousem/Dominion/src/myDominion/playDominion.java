@@ -129,8 +129,10 @@ public class playDominion
 				witch(state);
 				break;
 			case 3:
+				gardens(state);
 				break;
 			case 4:
+				remodel(state);
 				break;
 			case 5:
 				break;

@@ -9,13 +9,10 @@ public class Card //Parent Card class
 	private String name;	//name of the card
 	
 	
-	
 	public void printInfo()//All fields should have a value
 	{
-		System.out.println("Name: " + name);
-		System.out.println("Cost: " + cost);
-		System.out.println("Treasure: " + treasure);
-		System.out.println("Victory Points: " + victory);
+		System.out.println("Name: " + name + "\tCost: " + cost + "\tTreasure: "
+									+ treasure + "\tVictory Points: " + victory);
 	}
 	
 	//Getters and Setters
