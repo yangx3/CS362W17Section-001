@@ -146,9 +146,15 @@ public class playDominion
 		otherPlayer.addCard(1, new victoryCard(0, -1, "Curse"));
 	}
 	
+	private void gardens()
+	{
+		
+	}
 	
-	
-	
+	private void remodel()
+	{
+		
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
