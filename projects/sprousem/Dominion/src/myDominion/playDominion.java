@@ -62,13 +62,16 @@ public class playDominion
 			displayHand(current);
 			//Get input for what card to play
 			playCard(current.getCard(2, handIndex));
+			current.addCard(2, 3, handIndex);
 		}
 		
 	}
 	
 	private void displayHand(Player player)
 	{
-		
+		for (int i = 0; i < player.getSize(2); i++) {
+			player.getCard(2, i).printInfo();
+		}
 	}
 	
 	private void playCard(Card card)//Figure out how to keep track of the game state

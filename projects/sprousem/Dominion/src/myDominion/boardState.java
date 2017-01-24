@@ -1,7 +1,5 @@
 package myDominion;
 
-import java.util.ArrayList;
-
 public class boardState {
 
 	

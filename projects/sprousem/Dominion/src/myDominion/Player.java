@@ -79,6 +79,24 @@ public class Player {
 			System.out.println("That card didn't belong in the source!");
 	}
 	
+	public int getSize(int destination)
+	{
+		switch (destination)
+		{
+		case 0://Deck
+			return deck.size();
+		case 1://Discard
+			return discard.size();
+		case 2://Hand
+			return hand.size();
+		case 3://Played
+			return played.size();
+		default://Invalid
+			System.out.println("Invalid destination");
+			return 0;
+		}
+	}
+	
 	public Card getCard(int destination, int index) //gets the given card from the proper location
 	{
 		switch (destination)
@@ -113,6 +131,52 @@ public class Player {
 			break;
 		case 3://Played
 			played.add(card);
+			break;
+		default://Invalid
+			System.out.println("Invalid destination");
+			break;
+		
+		}
+	}
+	
+	public void addCard(int source, int destination, int index) //Adds card at index from source to destination
+	{
+		switch (destination)
+		{
+		case 0://Deck
+			moveCard(source, deck, index);
+			break;
+		case 1://Discard
+			moveCard(source, discard, index);
+			break;
+		case 2://Hand
+			moveCard(source, hand, index);
+			break;
+		case 3://Played
+			moveCard(source, played, index);
+			break;
+		default://Invalid
+			System.out.println("Invalid destination");
+			break;
+		
+		}
+	}
+	
+	private void moveCard(int source, ArrayList<Card> destination, int index)
+	{
+		switch (source)
+		{
+		case 0://Deck
+			destination.add(deck.remove(index));
+			break;
+		case 1://Discard
+			destination.add(discard.remove(index));
+			break;
+		case 2://Hand
+			destination.add(hand.remove(index));
+			break;
+		case 3://Played
+			destination.add(played.remove(index));
 			break;
 		default://Invalid
 			System.out.println("Invalid destination");
