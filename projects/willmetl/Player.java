@@ -19,13 +19,15 @@ public class Player{
   private Deck hand;
   private Deck drawPile;
   private Deck discardPile;
+  private GameState gameState;
 
-  public Player(String pName){
+  public Player(String pName, GameState game){
     // Constructor for the Player class - sets their name
     this.playerName = pName;
     this.drawPile = new Deck();         // not shared, empty
     this.discardPile = new Deck();      // not shared, empty
     this.hand = new Deck();             // not shared, empty
+    this.gameState = game;
   }
 
   public int addMoney(int m){
@@ -36,6 +38,13 @@ public class Player{
   public int addActions(int a){
     this.remActions += a;
     return remActions;
+  }
+
+  public Card chooseHand(){
+    System.out.println("Please choose a card:");
+    seeHand();
+    // Should allow them to select a card
+    return hand.drawCard(1);
   }
 
   public int getActions(){
@@ -101,6 +110,13 @@ public class Player{
     return c;
   }
 
+  public void returnCardToShared(Card c){
+    putCardOnDeck(c, gameState.bankCards);
+  }
+  public void putCardOnDeck(Card c, Deck d){
+    d.addCard(c);
+  }
+
   public void newTurn(){
     // Start every turn with a new, full hand and 1 action, 1 buy
     this.remActions = 1;
@@ -113,7 +129,7 @@ public class Player{
     return playCard(card, this);
   }
   public boolean playCard(Card card, Player target){
-    if(this.remActions<1 || !card.costsAction){
+    if(card.costsAction==0 || this.remActions>1){
       if(DEBUGGING) System.out.println("Playing "+card);
       card.play(this);
     } else {
@@ -121,4 +137,5 @@ public class Player{
     }
     return true;
   }
+
 }
