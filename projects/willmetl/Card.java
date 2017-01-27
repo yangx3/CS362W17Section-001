@@ -27,11 +27,11 @@ public enum Card{
     public void play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Ambassador.jpg
       Card c = p.chooseHand();
-      p.returnCardToShared(c);
       GameState g = p.gameState;
+      g.bankCards.add(c);
       for(int i=0; i<g.numPlayers; i++){
         if(g.players[i] != p){
-          g.players[i].draw(g.bankCards, c);
+          g.players[i].takeFreeCard( g.takeCard(c) );
         }
       }
   }},
@@ -42,7 +42,7 @@ public enum Card{
       if(p.discard(Card.ESTATE)){
         p.addMoney(4);
       }else{
-        p.draw(p.gameState.bankCards, Card.ESTATE);
+        p.discard( p.gameState.takeCard(Card.ESTATE) );
       }
   }},
   COUNCILROOM("Council Room", 5){

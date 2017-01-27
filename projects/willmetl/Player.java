@@ -9,6 +9,9 @@ import java.util.*;
 public class Player{
   // The Player class represents a single Dominion player
   private final boolean DEBUGGING = true;
+  // Initial cards for each player's Deck
+  private final int startingCopper = 7;
+  private final int startingEstates = 3;
   // Attributes for this class are private
   private final String playerName;
   private final int drawCards = 7;  // inital hand size
@@ -16,18 +19,25 @@ public class Player{
   private int remBuys;
   private int remMoney;
 
-  private Deck hand;
-  private Deck drawPile;
-  private Deck discardPile;
+  private Stack<Card> cardPile;
+  private int shuffleCounter;
+  private ArrayList<Card> hand;
   public GameState gameState;
+
+  private Scanner scan = new Scanner(System.in);
 
   public Player(String pName, GameState game){
     // Constructor for the Player class - sets their name
     this.playerName = pName;
-    this.drawPile = new Deck();         // not shared, empty
-    this.discardPile = new Deck();      // not shared, empty
-    this.hand = new Deck();             // not shared, empty
     this.gameState = game;
+    this.cardPile = new Stack<Card>();
+    this.shuffleCounter = 0;
+    this.hand = new ArrayList<Card>(20);
+    for(int i=0; i<startingCopper; i++)
+      takeFreeCard(gameState.takeCard(Card.COPPER));
+    for(int i=0; i<startingEstates; i++)
+      takeFreeCard(gameState.takeCard(Card.ESTATE));
+    cleanupPhase();
   }
 
   public int addMoney(int m){
@@ -45,13 +55,6 @@ public class Player{
     return remBuys;
   }
 
-  public Card chooseHand(){
-    System.out.println("Please choose a card:");
-    seeHand();
-    // Should allow them to select a card
-    return hand.drawCard(1);
-  }
-
   public int getActions(){
     return this.remActions;
   }
@@ -60,65 +63,109 @@ public class Player{
     return this.remBuys;
   }
 
-  public int getDiscardSize(){
-    return this.discardPile.getSize();
-  }
-
-  public int getDrawSize(){
-    return this.discardPile.getSize();
-  }
-
   public void seeHand(){
     // Display all cards in a player's hand
-    this.hand.seeDeck();
+    for(Card c: hand){
+      System.out.println(c);
+    }
   }
 
-  public boolean shuffle(){
-    // Shuffles discardPile and adds it _under_ the drawPile
-    if(drawPile.getSize() > 0) return false;
-    discardPile.shuffle();
-    return drawPile.addAll(discardPile);
+  public Card chooseHand(){
+    for(int i=0; i<hand.size(); i++){
+      System.out.println(i+1+" - "+hand.get(i));
+    }
+    System.out.format("Please enter the card number (1-%d) you want to play,"+
+      " or 0 to cancel: ", hand.size());
+    int choice = scan.nextInt();
+    if( choice>0 && choice<hand.size() )
+      return hand.remove(choice);
+    return null;
+  }
+
+  public int shuffle(){
+    Collections.shuffle(cardPile);
+    shuffleCounter = cardPile.size();
+    return shuffleCounter;
   }
 
   public void seeDeck(){
     if(DEBUGGING){
-      System.out.println("Player "+this.playerName+"'s hand:");
-      hand.seeDeck();
-      System.out.println("Player "+this.playerName+"'s drawPile:");
-      drawPile.seeDeck();
-      System.out.println("Player "+this.playerName+"'s discardPile:");
-      discardPile.seeDeck();
+      System.out.println("Player "+playerName+"'s hand:");
+      seeHand();
+      System.out.println("Player "+playerName+"'s drawPile:");
+      for(int i=0; i<shuffleCounter-1; i++){
+        System.out.println(cardPile.elementAt(i));
+      }
+      System.out.println("Player "+playerName+"'s discardPile:");
+      for(int i=shuffleCounter; i<cardPile.size()-1; i++){
+        System.out.println(cardPile.elementAt(i));
+      }
     }
   }
 
-  public boolean discard(){
-    // This player discards a random card from their hand
-    int handsize = this.hand.getSize();
-    // generate random number in range of hand size
-    Card c = hand.drawCard(1);
+  public boolean takeFreeCard(Card c){
     return discard(c);
   }
-  public boolean discard(Card c){
-    // Returns result of attempting to move a card from hand to discardPile
-    return discardPile.addCard(hand.drawCard(c));
+
+  public boolean discardRandomFromHand(){
+    // This player discards a random card from their hand
+    int handsize = hand.size();
+    // generate random number in range of hand size instead of this
+    Card c = hand.remove(0);
+    return discard(c);
   }
-  public boolean discard(Card c, Player target){
-    // Target player discards a specific card
-    return target.discard(c);
+
+  public boolean discard(Card c){
+    // Add a card to the discard pile
+    cardPile.add(cardPile.size(), c);
+    return true;
   }
 
   public Card draw(){
-    return draw(drawPile, drawPile.drawCard());
-  }
-  public Card draw(Deck d, Card c){
-    // Take a card from a deck and put it into your discardPile
-    c = d.drawCard(c);
-    discardPile.addCard(c);
-    return c;
+    if(shuffleCounter-- > 1) return cardPile.pop();
+    shuffleCounter = shuffle();
+    return cardPile.pop();
   }
 
   public void returnCardToShared(Card c){
-    gameState.bankCards.addCard(c);
+    // gameState.bankCards.push(c);
+  }
+
+  private void actionPhase(){
+    // Action phase of a player's turn
+
+    while(remActions >= 1){
+      System.out.print(playerName+"'s hand contains: ");
+      for(int i=0; i<hand.size(); i++)
+        System.out.format("%s%s", hand.get(i), i+1<hand.size()?", ":".\n");
+
+      System.out.println("Please choose a card: "+
+        "(Treasure cards are played in your Buy phase)");
+      Card c = chooseHand();
+      if(c != null){
+        System.out.println(playerName+" chose to play the "+c+" card.\n");
+        playCard(c);
+      }else{
+        // end turn
+        return;
+      }
+    }
+  }
+
+  private void buyPhase(){
+    // Auto convert all Treasure cards and allow player to buy
+    for(Card c: hand){
+      if(c.givesMoney>0 && c.costsAction==0) playCard(c);
+    }
+    System.out.format("%s has %d money to spend.\n", playerName, remMoney);
+    // Show a list of cards from the bank
+  }
+
+  private void cleanupPhase(){
+    // Discard hand and draw 5 new cards
+    cardPile.addAll(hand);
+    // Add 5 new cards from the top of this player's drawPile deck
+    for(int i=0; i<5; i++) hand.add(draw());
   }
 
   public void newTurn(){
@@ -126,10 +173,9 @@ public class Player{
     if(DEBUGGING) System.out.println("It's "+playerName+"'s turn:");
     remActions = 1;
     remBuys = 1;
-    discardPile.addCard(hand.drawAll());
-    // Add 5 new cards from the top of this player's drawPile deck
-    for(int i=0; i<5; i++) hand.addCard(drawPile.drawCard());
-
+    actionPhase();
+    buyPhase();
+    cleanupPhase();
   }
 
   public boolean playCard(Card card){
