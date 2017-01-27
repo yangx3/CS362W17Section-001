@@ -55,8 +55,10 @@ public class GameState{
     playerTurn = (playerTurn+1)%numPlayers;
   }
 
-  public static void main(String [ ] args){
-    Tests game1 = new Tests();
-    game1.setupGame();
+  public void play(){
+    while(true){
+      System.out.println("...new turn...");
+      nextTurn();
+    }
   }
 }

@@ -11,7 +11,7 @@ public enum Card{
   GOLD("Gold", 6, 3, 0), ESTATE("Estate", 2, 0, 1),
   DUCHY("Duchy", 5, 0, 3), PROVINCE("Province", 8, 0, 6),
   ADVENTURER("Adventurer", 6){
-    public boolean play(Player p){
+    public void play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Adventurer.jpg
       int needTreasures = 2;
       while(needTreasures > 0){
@@ -22,14 +22,30 @@ public enum Card{
           p.discard(c);
         }
       }
-      return true;
   }},
   AMBASSADOR("Ambassador", 3){
-    public boolean play(Player p){
+    public void play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Ambassador.jpg
-      Card chosen = p.chooseHand();
-      return true;
+      Card c = p.chooseHand();
+      p.returnCardToShared(c);
+      GameState g = p.gameState;
+      for(int i=0; i<g.numPlayers; i++){
+        if(g.players[i] != p){
+          g.players[i].draw(g.bankCards, c);
+        }
+      }
+  }},
+  BARON("Baron", 4){
+    public void play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Baron.jpg
+      // If player discards an estate, +4, otherwise, draw an Estate
+      if(p.discard(Card.ESTATE)){
+        p.addMoney(4);
+      }else{
+        p.draw(p.gameState.bankCards, Card.ESTATE);
+      }
     }
+
   };
 
   private final boolean DEBUGGING = true;
@@ -67,14 +83,13 @@ public enum Card{
   }
 
   public String toString(){
-    return this.cardName+" - "+this.cardDesc;
+    return this.cardName;
   }
 
-  public boolean play(Player p){
+  public void play(Player p){
     if(DEBUGGING) System.out.println("Card->Play");
     if(givesMoney>0) p.addMoney(givesMoney);
     p.addActions(givesActions-1);
     for(int i=givesCardDraws; i>0; i--) p.draw();
-    return true;
   }
 }

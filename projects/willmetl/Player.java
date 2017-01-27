@@ -19,7 +19,7 @@ public class Player{
   private Deck hand;
   private Deck drawPile;
   private Deck discardPile;
-  private GameState gameState;
+  public GameState gameState;
 
   public Player(String pName, GameState game){
     // Constructor for the Player class - sets their name
@@ -77,6 +77,8 @@ public class Player{
 
   public void seeDeck(){
     if(DEBUGGING){
+      System.out.println("Player "+this.playerName+"'s hand:");
+      hand.seeDeck();
       System.out.println("Player "+this.playerName+"'s drawPile:");
       drawPile.seeDeck();
       System.out.println("Player "+this.playerName+"'s discardPile:");
@@ -111,10 +113,7 @@ public class Player{
   }
 
   public void returnCardToShared(Card c){
-    putCardOnDeck(c, gameState.bankCards);
-  }
-  public void putCardOnDeck(Card c, Deck d){
-    d.addCard(c);
+    gameState.bankCards.addCard(c);
   }
 
   public void newTurn(){

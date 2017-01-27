@@ -56,6 +56,9 @@ public class Tests{
   //
   public void setupGame(){
     GameState game = new GameState();
+    assert(game.bankCards.getSize() == 194);
+
+
     game.addPlayer("Amy", game);
     assert(game.numPlayers == 1);
     game.players[0].seeDeck();
@@ -63,6 +66,9 @@ public class Tests{
     game.addPlayer("Billy", game);
     assert(game.numPlayers == 2);
     game.players[1].seeDeck();
+
+    System.out.println("Shared draw pile has: "+
+      game.bankCards.getSize()+" cards.");
   }
 
   public static void main(String [ ] args){
