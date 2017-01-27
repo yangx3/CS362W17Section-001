@@ -44,8 +44,20 @@ public enum Card{
       }else{
         p.draw(p.gameState.bankCards, Card.ESTATE);
       }
+  }},
+  COUNCILROOM("Council Room", 5){
+    public void play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Council_Room.jpg
+      // +4 cards, +1 buy, each other player draws a card
+      for(int i=0; i<4; i++) p.draw();
+      p.addBuys(1);
+      GameState g = p.gameState;
+      for(int i=0; i<g.numPlayers; i++){
+        if(g.players[i] != p){
+          g.players[i].draw();
+        }
+      }
     }
-
   };
 
   private final boolean DEBUGGING = true;

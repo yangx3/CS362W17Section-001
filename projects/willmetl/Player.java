@@ -40,6 +40,11 @@ public class Player{
     return remActions;
   }
 
+  public int addBuys(int b){
+    this.remBuys += b;
+    return remBuys;
+  }
+
   public Card chooseHand(){
     System.out.println("Please choose a card:");
     seeHand();
@@ -118,10 +123,13 @@ public class Player{
 
   public void newTurn(){
     // Start every turn with a new, full hand and 1 action, 1 buy
-    this.remActions = 1;
-    this.remBuys = 1;
-    this.discardPile.addCard(this.hand.drawAll());
-    // Add 7 new cards from the top of this player's deck
+    if(DEBUGGING) System.out.println("It's "+playerName+"'s turn:");
+    remActions = 1;
+    remBuys = 1;
+    discardPile.addCard(hand.drawAll());
+    // Add 5 new cards from the top of this player's drawPile deck
+    for(int i=0; i<5; i++) hand.addCard(drawPile.drawCard());
+
   }
 
   public boolean playCard(Card card){

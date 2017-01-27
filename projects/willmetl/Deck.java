@@ -43,6 +43,9 @@ public class Deck{
   }
   public Card drawCard(int i){
     // Returns the card at a specific index
+    if(i >= cards.size()){
+      
+    }
     Card c = cards.remove(i); // not sure if this removes or returns?
     return c;
   }
