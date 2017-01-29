@@ -28,7 +28,7 @@ public enum Card{
       // See http://wiki.dominionstrategy.com/index.php/File:Ambassador.jpg
       Card c = p.chooseHand();
       GameState g = p.gameState;
-      g.bankCards.add(c);
+      g.addCard(c);
       for(int i=0; i<g.numPlayers; i++){
         if(g.players[i] != p){
           g.players[i].takeFreeCard( g.takeCard(c) );
@@ -69,6 +69,7 @@ public enum Card{
   public int givesMoney = 0;
   public int givesActions = 0;
   public int givesCardDraws = 0;
+  private Type type;
 
   /*
   adventurer
@@ -92,16 +93,31 @@ public enum Card{
     this.costsMoney = cost;
     this.givesMoney = money;
     this.givesVictoryPoints = victoryPoints;
+    if(money == 0 && victoryPoints == 0)
+      this.type = Type.ACTION;
+    else if(victoryPoints == 0)
+      this.type = Type.TREASURE;
+    else
+      this.type = Type.VICTORY;
   }
 
-  public String toString(){
+  @Override
+  public String toString() {
     return this.cardName;
   }
 
+  public Type getType(){
+    return type;
+  }
+
   public void play(Player p){
-    if(DEBUGGING) System.out.println("Card->Play");
+    if(DEBUGGING) System.out.println(p+" played a "+cardName);
     if(givesMoney>0) p.addMoney(givesMoney);
-    p.addActions(givesActions-1);
+    p.addActions(givesActions);
     for(int i=givesCardDraws; i>0; i--) p.draw();
   }
+
+  public static enum Type {
+		ACTION, TREASURE, VICTORY;
+	}
 }

@@ -9,7 +9,7 @@ public class Tests{
 
   public void setupGame(){
     GameState game = new GameState();
-    assert(game.bankCards.size() == 194);
+    // assert(game.bankCards.size() == 194);
 
 
     game.addPlayer("Amy", game);
@@ -18,12 +18,8 @@ public class Tests{
     game.addPlayer("Billy", game);
     assert(game.numPlayers == 2);
 
-    game.nextTurn();
-    // game.nextTurn();
-    // game.players[0].seeDeck();
-
-    System.out.println("Shared draw pile has: "+
-      game.bankCards.size()+" cards.");
+    while(true)
+      game.nextTurn();
   }
 
   public static void main(String [ ] args){
