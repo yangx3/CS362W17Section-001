@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
 public final class Card implements Comparable<Card>{
+
 	public enum Type {
 		ACTION, TREASURE, VICTORY;
 	}
@@ -89,49 +88,51 @@ public final class Card implements Comparable<Card>{
 	public void play(Player player, GameState state) {
 		
 		switch(this.cardName) {
-		case Adventurer:
-	    	  //Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
-	    	  System.out.println("TODO Adventurer Code******************************************");
-	    	  System.out.println("Reveal cards from the player deck until player reveal 2 Treasure cards. " +
-	    	  		"Put those Treasure cards into player hand and discard the other revealed cards.");
-		
-			return;
-		case Smithy:
-	         player.drawCard();
-	         player.drawCard();
-	         player.drawCard();
-			return;
+			case Adventurer:
+				//Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
+				System.out.println("TODO Adventurer Code******************************************");
+				System.out.println("Reveal cards from the player deck until player reveal 2 Treasure cards. " +
+						"Put those Treasure cards into player hand and discard the other revealed cards.");
+				return;
 			
-		case Village:
-	    	  System.out.println("TODO Village Code******************************************");
-	    	  System.out.println("The player draw +1 Card.");
-	    	  System.out.println("The player gets +2 play Actions.");
-			return;
-			
-			
-		default: return;
+			case Smithy:
+				player.drawCard();
+				player.drawCard();
+				player.drawCard();
+				return;
+				
+			case Village:
+				System.out.println("TODO Village Code******************************************");
+				System.out.println("The player draw +1 Card.");
+				System.out.println("The player gets +2 play Actions.");
+				return;
+				
+				
+			default:
+				return;
 		}
 	}
 
 	public static Card getCard(List<Card> cards,CardName cardName) {
 		for(int i=0; i<cards.size();i++){
-			if(cards.get(i).cardName.equals(cardName))
-					return 	cards.get(i);
+			if(cards.get(i).cardName.equals(cardName)) {
+				return 	cards.get(i);
+			}
 		}
 		
 		return null;
-		
-		
-		
 	}
 
-	   public static List<Card> filter(Iterable<Card> cards, Type target) {
-		      List<Card> out = new ArrayList<Card>();
-		      for (Card c : cards)
-		         if (c.getType() == target)
-		            out.add(c);
-		      return out;
-		   }
+	public static List<Card> filter(Iterable<Card> cards, Type target) {
+			List<Card> out = new ArrayList<Card>();
+			for (Card c : cards) {
+				if (c.getType() == target) {
+					out.add(c);
+				}
+			}
+			return out;
+		}
+
 	// this method will print out all the constant cards ENUM
 	@Override
 	public String toString() {
@@ -144,7 +145,6 @@ public final class Card implements Comparable<Card>{
 		sb.append("\tTreasure Value: " + this.treasureValue);
 
 		return sb.toString();
-
 	}
 
 	@Override
@@ -161,6 +161,5 @@ public final class Card implements Comparable<Card>{
 		// TODO Auto-generated method stub
 		return cardName.compareTo(o.cardName);
 	}
-
 
 }

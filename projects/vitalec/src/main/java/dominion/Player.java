@@ -1,17 +1,14 @@
 package dominion;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
 import dominion.Card.Type;
 
-
 public class Player {
+
 	List<Card> hand = new ArrayList<Card>();// int hand[MAX_PLAYERS][MAX_HAND];
 	LinkedList<Card> deck = new LinkedList<Card>();// int
 													// deck[MAX_PLAYERS][MAX_DECK];
@@ -154,7 +151,6 @@ public class Player {
        	 sb.append("\n");     
 
 		     return sb.toString();
-
 		}
-	   
+
 }
