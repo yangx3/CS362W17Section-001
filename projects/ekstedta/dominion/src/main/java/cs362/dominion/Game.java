@@ -85,9 +85,24 @@ public class Game {
     }
 
     // Shuffle a player's deck.
-    // Assumes all cards are now in deck array (or hand/played);
-    // aftewards, discard is empty
-    public void shuffle(int player) {}
+    // Doesn't touch the discard pile or cards in hand/played.
+    public void shuffle(int player) {
+        List<Card> deck = this.deck.get(player);
+        for (int i = 0; i < deck.size(); i++) {
+            int j = i + this.rng.nextInt(deck.size() - i);
+            swap(deck, i, j);
+        }
+    }
+
+    // Swap two elements in an array
+    public static <T> void swap(List<T> arr, int i, int j) {
+        if (i != j) {
+            T a = arr.get(i);
+            T b = arr.get(j);
+            arr.set(i, b);
+            arr.set(j, a);
+        }
+    }
 
     // Play card with index handPos from current player's hand
     public void playCard(int handPos, int choice1, int choice2, int choice3) {}
@@ -96,16 +111,34 @@ public class Game {
     public void buyCard(int supplyPos) {}
 
     // How many cards current player has in hand
-    public int numHandCards() { return 0; }
+    public int numHandCards() {
+        return this.hand.get(this.whoseTurn).size();
+    }
 
     // enum value of indexed card in player's hand
-    public Card handCard(int handNum) { return Card.Copper; }
+    public Card handCard(int handNum) {
+        List<Card> hand = this.hand.get(this.whoseTurn);
+        if (0 <= handNum && handNum < hand.size()) {
+            return hand.get(handNum);
+        } else {
+            return null;
+        }
+    }
 
     // How many of given card are left in supply
     public int supplyCount(Card card) { return supplyCount.get(card); }
 
     // Count how many cards of a certain type a player has, in total
-    public int fullDeckCount(int player, Card card) { return 0; }
+    public int fullDeckCount(int player, Card card) {
+        List<Card> hand = this.hand.get(player);
+        int count = 0;
+        for (Card x : hand) {
+            if (x == card) {
+                count++;
+            }
+        }
+        return count;
+    }
 
     // Get the current player
     public int whoseTurn() { return whoseTurn; }
