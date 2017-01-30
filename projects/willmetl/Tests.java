@@ -6,8 +6,24 @@
 package willmetl;
 
 public class Tests{
+
+  public void setupGame(){
+    GameState game = new GameState();
+    // assert(game.bankCards.size() == 194);
+
+
+    game.addPlayer("Amy", game);
+    assert(game.numPlayers == 1);
+
+    game.addPlayer("Billy", game);
+    assert(game.numPlayers == 2);
+
+    while(true)
+      game.nextTurn();
+  }
+
   public static void main(String [ ] args){
-    Player p = new Player("Timmy");
-    p.seeDeck();
+    Tests game1 = new Tests();
+    game1.setupGame();
   }
 }

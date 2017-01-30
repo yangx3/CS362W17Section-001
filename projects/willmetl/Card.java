@@ -5,50 +5,119 @@
 */
 package willmetl;
 
-public class Card{
+public enum Card{
   // The Card class represnts a single Dominion card
+  COPPER("Copper", 0, 1, 0), SILVER("Silver", 3, 2, 0),
+  GOLD("Gold", 6, 3, 0), ESTATE("Estate", 2, 0, 1),
+  DUCHY("Duchy", 5, 0, 3), PROVINCE("Province", 8, 0, 6),
+  ADVENTURER("Adventurer", 6){
+    public void play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Adventurer.jpg
+      int needTreasures = 2;
+      while(needTreasures > 0){
+        Card c = p.draw();
+        if(c.givesMoney > 0){
+          needTreasures--;
+        } else {
+          p.discard(c);
+        }
+      }
+  }},
+  AMBASSADOR("Ambassador", 3){
+    public void play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Ambassador.jpg
+      Card c = p.chooseHand();
+      GameState g = p.gameState;
+      g.addCard(c);
+      for(int i=0; i<g.numPlayers; i++){
+        if(g.players[i] != p){
+          g.players[i].takeFreeCard( g.takeCard(c) );
+        }
+      }
+  }},
+  BARON("Baron", 4){
+    public void play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Baron.jpg
+      // If player discards an estate, +4, otherwise, draw an Estate
+      if(p.discard(Card.ESTATE)){
+        p.addMoney(4);
+      }else{
+        p.discard( p.gameState.takeCard(Card.ESTATE) );
+      }
+  }},
+  COUNCILROOM("Council Room", 5){
+    public void play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Council_Room.jpg
+      // +4 cards, +1 buy, each other player draws a card
+      for(int i=0; i<4; i++) p.draw();
+      p.addBuys(1);
+      GameState g = p.gameState;
+      for(int i=0; i<g.numPlayers; i++){
+        if(g.players[i] != p){
+          g.players[i].draw();
+        }
+      }
+    }
+  };
+
   private final boolean DEBUGGING = true;
-  // Attributes for this card can only be changed when the card is created
-  public String cardName;
+  public final String cardName;
   public String cardDesc = "No desc";
-  public boolean costsAction = true;
-  public int costsMoney = 0;
+  public int costsAction;
+  public int costsMoney;
   public int givesVictoryPoints = 0;
   public int givesMoney = 0;
   public int givesActions = 0;
   public int givesCardDraws = 0;
+  private Type type;
 
-  public Card(String cName){
+  /*
+  adventurer
+  ambassador
+  baron
+  council_room
+  cutpurse
+  embargo
+  feast
+  gardens
+  great_hall
+  mine
+  */
+
+
+  private Card(String cName, int cost){
+    this(cName, cost, 0, 0);
+  }
+  private Card(String cName, int cost, int money, int victoryPoints){
     this.cardName = cName;
+    this.costsMoney = cost;
+    this.givesMoney = money;
+    this.givesVictoryPoints = victoryPoints;
+    if(money == 0 && victoryPoints == 0)
+      this.type = Type.ACTION;
+    else if(victoryPoints == 0)
+      this.type = Type.TREASURE;
+    else
+      this.type = Type.VICTORY;
   }
 
-  public Card(
-      String cName, String cDesc,
-      boolean cAction, int cMoney, int gVP,
-      int gMoney, int gActions, int gCDraws
-    ){
-    // Constructor, takes card attributes and stores them.
-    this.cardName = cName;
-    this.cardDesc = cDesc;
-    this.costsAction = cAction;
-    this.costsMoney = cMoney;
-    this.givesVictoryPoints = gVP;
-    this.givesMoney = gMoney;
-    this.givesActions = gActions;
-    this.givesCardDraws = gCDraws;
-  }
-
-  public boolean play(){
-    if(DEBUGGING) System.out.println("Card->Play");
-    return true;
-  }
-
-  public boolean play(Player target){
-    if(DEBUGGING) System.out.println("Card->Play w/Target "+target);
-    return true;
-  }
-
-  public String toString(){
+  @Override
+  public String toString() {
     return this.cardName;
   }
+
+  public Type getType(){
+    return type;
+  }
+
+  public void play(Player p){
+    if(DEBUGGING) System.out.println(p+" played a "+cardName);
+    if(givesMoney>0) p.addMoney(givesMoney);
+    p.addActions(givesActions);
+    for(int i=givesCardDraws; i>0; i--) p.draw();
+  }
+
+  public static enum Type {
+		ACTION, TREASURE, VICTORY;
+	}
 }
