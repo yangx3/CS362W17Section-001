@@ -1,12 +1,15 @@
-public enum Card {
-    Curse,
-    Estate,
-    Duchy,
-    Province,
+package cs362.dominion;
 
-    Copper,
-    Silver,
-    Gold,
+public enum Card {
+    // cost, score, coin value
+    Curse(0, -1, 0),
+    Estate(2, 1, 0),
+    Duchy(5, 3, 0),
+    Province(8, 6, 0),
+
+    Copper(0, 0, 0),
+    Silver(3, 2, 0),
+    Gold(6, 3, 0),
 
     Adventurer,
     /* If no/only 1 treasure found, stop when full deck seen */
@@ -32,6 +35,28 @@ public enum Card {
     Outpost,
     Salvager, /* choice1 = hand# to trash */
     SeaHag,
-    TreasureMap
-}
+    TreasureMap,
 
+    Cellar,
+    Market,
+    Militia,
+    Moat,
+    Woodcutter,
+    Workshop;
+
+
+    int cost;
+    int score;
+    int coins;
+
+    Card() {}
+    Card(int cost, int score, int coins) {
+        this.cost = cost;
+        this.score = score;
+        this.coins = coins;
+    }
+
+    public int cost() { return this.cost; }
+    public int score() { return this.score; }
+    public int coins() { return this.coins; }
+}

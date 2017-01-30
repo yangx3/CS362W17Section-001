@@ -1,10 +1,15 @@
+package cs362.dominion;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class Game {
     private Integer numPlayers; //number of players
-    private List<Integer> supplyCount;  //this is the amount of a specific type of card given a specific number.
-    private List<Integer> embargoTokens;
+    private Map<Card,Integer> supplyCount;  //this is the amount of a specific type of card given a specific number.
+    private Map<Card,Integer> embargoTokens;
     private Integer outpostPlayed;
     private Integer outpostTurn;
     private Integer whoseTurn;
@@ -16,13 +21,22 @@ public class Game {
     private List<List<Card>> deck; // player -> deck
     private List<List<Card>> discard; // player -> discard
     private List<Card> playedCards;
+    private List<Card> kingdomCards;
 
-    private final int treasure_count = 0; // ???
+    private Random rng = new Random();
 
-    public Game(Integer numPlayers, List<Integer> kingdomCards, Integer randomSeed) {
+    public Game(Integer numPlayers, List<Card> kingdomCards, Integer randomSeed) {
+        if (kingdomCards.size() != 10) {
+            throw new RuntimeException("must supply 10 kingdom cards");
+        }
+        if (!(2 <= numPlayers && numPlayers <= 4)) {
+            throw new RuntimeException("numPlayers must be between 2 and 4");
+        }
+
+        this.kingdomCards = new ArrayList<>(kingdomCards);
         this.numPlayers = numPlayers;
-        this.supplyCount = new ArrayList<Integer>(treasure_count+1);
-        this.embargoTokens = new ArrayList<Integer>(treasure_count+1);
+        this.supplyCount = new HashMap<Card,Integer>();
+        this.embargoTokens = new HashMap<Card,Integer>();
         this.outpostPlayed = 0;
         this.outpostTurn = 0;
         this.whoseTurn = 0;
@@ -35,9 +49,38 @@ public class Game {
         this.discard = new ArrayList<List<Card>>(numPlayers);
         this.playedCards = new ArrayList<Card>();
         for (Integer i = 0; i < numPlayers; i++) {
-            this.hand.set(i, new ArrayList<Card>());
-            this.deck.set(i, new ArrayList<Card>());
-            this.discard.set(i, new ArrayList<Card>());
+            this.hand.add(i, new ArrayList<Card>());
+            this.deck.add(i, new ArrayList<Card>());
+            this.discard.add(i, new ArrayList<Card>());
+        }
+
+        // Initialize RNG to a known seed
+        rng.setSeed(randomSeed);
+
+        // Initialize supply
+        this.supplyCount.put(Card.Curse, 30);
+        this.supplyCount.put(Card.Estate, 24);
+        this.supplyCount.put(Card.Duchy, 12);
+        this.supplyCount.put(Card.Province, 12);
+
+        this.supplyCount.put(Card.Copper, 60);
+        this.supplyCount.put(Card.Silver, 40);
+        this.supplyCount.put(Card.Gold, 30);
+
+        for (Card c : kingdomCards) {
+            this.supplyCount.put(c, 10);
+        }
+
+        // Initialize decks
+        for (int i = 0; i < numPlayers; i++) {
+            for (int j = 0; j < 7; j++) {
+                this.deck.get(i).add(Card.Copper);
+                this.supplyCount.put(Card.Copper, this.supplyCount.get(Card.Copper)-1);
+            }
+            for (int j = 0; j < 7; j++) {
+                this.deck.get(i).add(Card.Estate);
+                this.supplyCount.put(Card.Estate, this.supplyCount.get(Card.Estate)-1);
+            }
         }
     }
 
@@ -59,23 +102,51 @@ public class Game {
     public Card handCard(int handNum) { return Card.Copper; }
 
     // How many of given card are left in supply
-    public int supplyCount(Card card) { return 0; }
+    public int supplyCount(Card card) { return supplyCount.get(card); }
 
     // Count how many cards of a certain type a player has, in total
     public int fullDeckCount(int player, Card card) { return 0; }
 
     // Get the current player
-    public int whoseTurn() { return 0; }
+    public int whoseTurn() { return whoseTurn; }
 
     // End the current player's turn
     // Must do phase C and advance to next player;
     // do not advance whose turn if game is over
     public void endTurn() {}
 
-    public boolean isGameOver() { return false; }
+    public boolean isGameOver() {
+        // The game ends when either
+        //
+        // 1) The province stack is empty
+        if (this.supplyCount.get(Card.Province) == 0) {
+            return true;
+        }
+
+        // 2) Any three supply stacks are empty
+        int empty = 0;
+        for (Card c : this.kingdomCards) {
+            if (this.supplyCount.get(c) == 0) {
+                empty++;
+            }
+        }
+        return empty >= 3;
+    }
 
     // Scores may be negative
-    public int scoreFor(int player) { return 0; }
+    public int scoreFor(int player) {
+        int score = 0;
+        for (Card c : this.hand.get(player)) {
+            score += c.score();
+        }
+        for (Card c : this.discard.get(player)) {
+            score += c.score();
+        }
+        for (Card c : this.deck.get(player)) {
+            score += c.score();
+        }
+        return score;
+    }
 
     // Set array position of each player who won (remember ties!) to 1, others to 0
     public List<Integer> getWinners() { return new ArrayList<Integer>(); }
