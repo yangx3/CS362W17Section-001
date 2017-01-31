@@ -126,7 +126,26 @@ public class Game {
     }
 
     // Play card with index handPos from current player's hand
-    public void playCard(int handPos, int choice1, int choice2, int choice3) {}
+    public void playCard(int handPos, int choice1, int choice2, int choice3) {
+        List<Card> hand = this.hand.get(this.whoseTurn);
+        if (!(0 <= handPos && handPos < hand.size())) {
+            throw new RuntimeException("invalid handPos");
+        }
+
+        // check if card is an action
+        Card card = hand.get(handPos);
+        if (!card.isAction() && card.coins() == 0) {
+            throw new RuntimeException("not an action");
+        }
+
+        this.actions--;
+
+        // move card to the played cards pile
+        // XXX changes hand indices
+        // don't move to discard pile until turn is over
+        hand.remove(handPos);
+        this.playedCards.add(card);
+    }
 
     // Buy a card
     public void buyCard(Card card) {
@@ -190,6 +209,10 @@ public class Game {
         // discard hand
         this.discard.get(this.whoseTurn).addAll(this.hand.get(this.whoseTurn));
         this.hand.get(this.whoseTurn).clear();
+
+        // move played actions to discard pile
+        this.discard.get(this.whoseTurn).addAll(this.playedCards);
+        this.playedCards.clear();
 
         // draw five cards
         this.draw(handLimit);

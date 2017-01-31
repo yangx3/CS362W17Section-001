@@ -16,7 +16,8 @@ public class Play {
         kingdomCards.add(Card.Smithy);
         kingdomCards.add(Card.Village);
         kingdomCards.add(Card.Woodcutter);
-        kingdomCards.add(Card.Workshop);
+        //kingdomCards.add(Card.Workshop);
+        kingdomCards.add(Card.Adventurer);
 
         int seed = 1;
 
