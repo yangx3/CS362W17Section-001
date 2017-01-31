@@ -145,7 +145,7 @@ public class Game {
         this.phase = 1;
         // card goes in the discard pile
         this.discard.get(this.whoseTurn).add(card);
-        this.supply.put(card, this.supply.get(card));
+        this.supply.put(card, this.supply.get(card) - 1);
         this.coins -= card.cost();
         this.buys -= 1;
     }
@@ -238,14 +238,14 @@ public class Game {
         // The game ends when either
         //
         // 1) The province stack is empty
-        if (this.supply.get(Card.Province) == 0) {
+        if (this.supply.get(Card.Province) <= 0) {
             return true;
         }
 
         // 2) Any three supply stacks are empty
         int empty = 0;
         for (Card c : this.kingdomCards) {
-            if (this.supply.get(c) == 0) {
+            if (this.supply.get(c) <= 0) {
                 empty++;
             }
         }
