@@ -62,6 +62,104 @@ public class Card {
     }
 
 
+    public Card(String setName) {
+        setName = setName.toLowerCase();
+
+        switch (setName) {
+            case "gold":
+                name          =  "gold";
+                value         =  3;
+                cost          =  6;
+                break;
+
+            case "silver":
+                name          =  "silver";
+                value         =  3;
+                cost          =  6;
+                break;
+
+            case "copper":
+                name          =  "copper";
+                value         =  3;
+                cost          =  6;
+                break;
+
+            case "province":
+                name          =  "province";
+                cost          =  8;
+                victoryPoints =  6;
+                break;
+
+            case "dutchy":
+                name          =  "dutchy";
+                cost          =  5;
+                victoryPoints =  3;
+                break;
+
+            case "estate":
+                name          =  "estate";
+                cost          =  2;
+                victoryPoints =  1;
+                break;
+
+            case "village":
+                name          =  "village";
+                cost          =  3;
+                hasAction     =  true;
+                cards         =  1;
+                actions       =  2;
+                break;
+
+            case "smithy":
+                name          =  "smithy";
+                cost          =  4;
+                hasAction     =  true;
+                cards         =  3;
+                break;
+
+            case "adventurer":
+                name          =  "adventurer";
+                cost          =  6;
+                description   =  "Reveal cards from your deck until you recveal 2 treasure cards.\nPut those Treasure cards into your hand and discard the other realed cards.";
+                hasAction     =  true;
+                break;
+
+            case "witch":
+                name          =  "witch";
+                cost          =  5;
+                description   =  "Each other player gains a Curse card.";
+                hasAction     =  true;
+                cards         =  2;
+                break;
+
+            case "cellar":
+                name          =  "cellar";
+                cost          =  2;
+                description   =  "Discard any number of cards. +1 Card per card discarded.";
+                hasAction     =  true;
+                actions       =  1;
+                break;
+
+            case "market":
+                name          =  "market";
+                cost          =  5;
+                description   =  "No description available";
+                hasAction     =  true;
+                cards         =  1;
+                actions       =  1;
+                buys          =  1;
+                coins         =  1;
+                break;
+
+            case "curse":
+                name          =  "curse";
+                cost          =  0;
+                description   =  "No description available";
+                victoryPoints =  -1;
+                break;
+        }
+    }
+
     /******************** Automatic Card Constructors ********************/
 
     /*******Treasure Cards*******/
@@ -173,7 +271,7 @@ public class Card {
     }
 
     public void buildCurse() {
-        name          =  "market";
+        name          =  "curse";
         cost          =  0;
         description   =  "No description available";
         victoryPoints =  -1;
@@ -183,31 +281,91 @@ public class Card {
 
 
     /******************** Individual Settings ********************/
-    public void setName(String setName)                  {name = setName;}
-    public void setValue(int setValue)                   {value = setValue;}
-    public void setCost(int setCost)                     {cost = setCost;}
-    public void setVictoryPoints(int setVictoryPoints)   {victoryPoints = setVictoryPoints;}
-    public void setDescription(String setDescription)    {description = setDescription;}
-    public void setHasAction(boolean setHasAction)       {hasAction = setHasAction;}
 
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
+    public void setName(String setName)
+    {name = setName;}
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
+    public void setValue(int setValue)
+    {value = setValue;}
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
+    public void setCost(int setCost)
+    {cost = setCost;}
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
+    public void setVictoryPoints(int setVictoryPoints)
+    {victoryPoints = setVictoryPoints;}
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
+    public void setDescription(String setDescription)
+    {description = setDescription;}
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
+    public void setHasAction(boolean setHasAction)
+    {hasAction = setHasAction;}
+
+
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     public void setCards(int setCards) {
         cards = setCards;
         if (setCards > 0) {
             hasAction = true;
         }
     }
+
     public void setActions(int setActions) {
         actions = setActions;
         if (setActions > 0) {
             hasAction = true;
         }
     }
+
     public void setBuys(int setBuys) {
         buys = setBuys;
         if (setBuys > 0) {
             hasAction = true;
         }
     }
+
     public void setCoins(int setCoins) {
         coins = setCoins;
         if (setCoins > 0) {
@@ -216,6 +374,13 @@ public class Card {
     }
     /******************** End Individual Settings ********************/
 
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     //getter functions for the contents of the class
     public String getName()        {return name;}
     public int getValue()          {return value;}
@@ -228,6 +393,13 @@ public class Card {
     public int getBuys()           {return buys;}
     public int getCoins()          {return coins;}
 
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     //printing fuction for testing
     public void printCard() {
         System.out.println("Card Info:" +
