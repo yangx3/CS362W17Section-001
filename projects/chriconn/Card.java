@@ -11,27 +11,37 @@
 
 public class Card {
 
+    /* Basic card info */
     //the name of the card
-    String name;
+    private String name;
     //if the card is a coin, it will have a value
-    int value;
+    private int value;
     //all cards have a set cost
-    int cost;
+    private int cost;
     //if it is a victory card, it will have a victory point value
-    int victoryPoints;
+    private int victoryPoints;
     //some cards have some descriptions about specific rules
-    String description;
+    private String description;
 
+    /* Info about card type */
     //check to see if the card has actions (treasure and victory cards dont)
-    boolean hasAction;
+    private boolean hasAction;
+    //check to see if the card is a treasure card
+    private boolean treasureCard;
+    //check to see if the card is a victory card
+    private boolean victoryCard;
+
+    //Card action stats
+    //Each of these stats will only be added to the user if they play the card
+
     //how many extra cards you may draw
-    int cards;
+    private int cards;
     //how many extra actions you may use
-    int actions;
+    private int actions;
     //how many extra buys you may have
-    int buys;
-    //how many extra coins you will have that turn
-    int coins;
+    private int buys;
+    //how many extra coins you may have
+    private int coins;
 
     //The default constructor for the card
     public Card() {
@@ -41,65 +51,58 @@ public class Card {
         victoryPoints = 0;
         description = "null";
         hasAction = false;
+        treasureCard = false;
+        victoryCard = false;
         cards = 0;
         actions = 0;
         buys = 0;
         coins = 0;
     }
 
-    //The custom constructor. Only really meant for testing
-    public Card(String setName, int setValue, int setCost, int setVictoryPoints, String setDescription, boolean setHasAction, int setCards, int setActions, int setBuys, int setCoins) {
-        name          =  setName;
-        value         =  setValue;
-        cost          =  setCost;
-        victoryPoints =  setVictoryPoints;
-        description   =  setDescription;
-        hasAction     =  setHasAction;
-        cards         =  setCards;
-        actions       =  setActions;
-        buys          =  setBuys;
-        coins         =  setCoins;
-    }
-
-
     public Card(String setName) {
         setName = setName.toLowerCase();
 
         switch (setName) {
             case "gold":
-                name          =  "gold";
-                value         =  3;
-                cost          =  6;
+                name           =  "gold";
+                value          =  3;
+                cost           =  6;
+                treasureCard = true;
                 break;
 
             case "silver":
-                name          =  "silver";
-                value         =  3;
-                cost          =  6;
+                name           =  "silver";
+                value          =  3;
+                cost           =  6;
+                treasureCard = true;
                 break;
 
             case "copper":
-                name          =  "copper";
-                value         =  3;
-                cost          =  6;
+                name           =  "copper";
+                value          =  3;
+                cost           =  6;
+                treasureCard = true;
                 break;
 
             case "province":
                 name          =  "province";
                 cost          =  8;
                 victoryPoints =  6;
+                victoryCard = true;
                 break;
 
             case "dutchy":
                 name          =  "dutchy";
                 cost          =  5;
                 victoryPoints =  3;
+                victoryCard = true;
                 break;
 
             case "estate":
                 name          =  "estate";
                 cost          =  2;
                 victoryPoints =  1;
+                victoryCard = true;
                 break;
 
             case "village":
@@ -143,7 +146,6 @@ public class Card {
             case "market":
                 name          =  "market";
                 cost          =  5;
-                description   =  "No description available";
                 hasAction     =  true;
                 cards         =  1;
                 actions       =  1;
@@ -154,11 +156,98 @@ public class Card {
             case "curse":
                 name          =  "curse";
                 cost          =  0;
-                description   =  "No description available";
                 victoryPoints =  -1;
                 break;
         }
     }
+
+    /******************** Individual Settings ********************/
+
+    public void setName(String setName)
+    {name = setName;}
+    public void setValue(int setValue)
+    {value = setValue;}
+    public void setCost(int setCost)
+    {cost = setCost;}
+    public void setVictoryPoints(int setVictoryPoints)
+    {victoryPoints = setVictoryPoints;}
+    public void setDescription(String setDescription)
+    {description = setDescription;}
+    public void setHasAction(boolean setHasAction)
+    {hasAction = setHasAction;}
+
+
+    public void setCards(int setCards) {
+        cards = setCards;
+        if (setCards > 0) {
+            hasAction = true;
+        }
+    }
+
+    public void setActions(int setActions) {
+        actions = setActions;
+        if (setActions > 0) {
+            hasAction = true;
+        }
+    }
+
+    public void setBuys(int setBuys) {
+        buys = setBuys;
+        if (setBuys > 0) {
+            hasAction = true;
+        }
+    }
+
+    public void setCoins(int setCoins) {
+        coins = setCoins;
+        if (setCoins > 0) {
+            hasAction = true;
+        }
+    }
+    /******************** End Individual Settings ********************/
+
+    //getter functions for the contents of the class
+    public String getName()           {return name;}
+    public int getValue()             {return value;}
+    public int getCost()              {return cost;}
+    public int getVictoryPoints()     {return victoryPoints;}
+    public String getDescription()    {return description;}
+    public boolean getHasAction()     {return hasAction;}
+    public boolean isTreasureCard(){return treasureCard;}
+    public boolean isVictoryCard() {return victoryCard;}
+    public int getCards()             {return cards;}
+    public int getActions()           {return actions;}
+    public int getBuys()              {return buys;}
+    public int getCoins()             {return coins;}
+
+    //printing fuction for testing
+    public void printCard() {
+        System.out.println("Card Info:" +
+        "\nName: " + name +
+        "\nValue: " + value +
+        "\nCost: " + cost +
+        "\nVictory Points: " + victoryPoints +
+        "\nDescription: " + description +
+        "\nHas Action: " + hasAction +
+        "\nExtra Cards to Draw: " + cards +
+        "\nExtra Actions: " + actions +
+        "\nExtra buys: " + buys +
+        "\nExtra Coins: " + coins +
+        "\n");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /******************** Automatic Card Constructors ********************/
 
@@ -278,141 +367,4 @@ public class Card {
     }
 
     /******************** End Automatic Card Constructors ********************/
-
-
-    /******************** Individual Settings ********************/
-
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
-    public void setName(String setName)
-    {name = setName;}
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
-    public void setValue(int setValue)
-    {value = setValue;}
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
-    public void setCost(int setCost)
-    {cost = setCost;}
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
-    public void setVictoryPoints(int setVictoryPoints)
-    {victoryPoints = setVictoryPoints;}
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
-    public void setDescription(String setDescription)
-    {description = setDescription;}
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
-    public void setHasAction(boolean setHasAction)
-    {hasAction = setHasAction;}
-
-
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
-    public void setCards(int setCards) {
-        cards = setCards;
-        if (setCards > 0) {
-            hasAction = true;
-        }
-    }
-
-    public void setActions(int setActions) {
-        actions = setActions;
-        if (setActions > 0) {
-            hasAction = true;
-        }
-    }
-
-    public void setBuys(int setBuys) {
-        buys = setBuys;
-        if (setBuys > 0) {
-            hasAction = true;
-        }
-    }
-
-    public void setCoins(int setCoins) {
-        coins = setCoins;
-        if (setCoins > 0) {
-            hasAction = true;
-        }
-    }
-    /******************** End Individual Settings ********************/
-
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
-    //getter functions for the contents of the class
-    public String getName()        {return name;}
-    public int getValue()          {return value;}
-    public int getCost()           {return cost;}
-    public int getVictoryPoints()  {return victoryPoints;}
-    public String getDescription() {return description;}
-    public boolean getHasAction()  {return hasAction;}
-    public int getCards()          {return cards;}
-    public int getActions()        {return actions;}
-    public int getBuys()           {return buys;}
-    public int getCoins()          {return coins;}
-
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
-    //printing fuction for testing
-    public void printCard() {
-        System.out.println("Card Info:" +
-        "\nName: " + name +
-        "\nValue: " + value +
-        "\nCost: " + cost +
-        "\nVictory Points: " + victoryPoints +
-        "\nDescription: " + description +
-        "\nHas Action: " + hasAction +
-        "\nExtra Cards to Draw: " + cards +
-        "\nExtra Actions: " + actions +
-        "\nExtra buys: " + buys +
-        "\nExtra Coins: " + coins +
-        "\n");
-    }
 }
