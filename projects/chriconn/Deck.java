@@ -2,26 +2,12 @@ import java.util.*;
 
 public class Deck {
 
-    ArrayList<Card> deck;
+    private ArrayList<Card> deck;
 
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
     public Deck() {
         deck = new ArrayList<Card>();
     }
 
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
     public Deck(String type) {
         deck = new ArrayList<Card>();
         type = type.toLowerCase();
@@ -41,16 +27,14 @@ public class Deck {
         }
     }
 
-    /*
-        Description: -
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
     public void printDeck() {
         for (int x = 0; x < deck.size(); x++) {
-            System.out.println("Card #" + (x+1) + ": " + deck.get(x).getName());
+            if (x < 9) {
+                System.out.println("Card #0" + (x+1) + ": " + deck.get(x).getName());
+            }
+            else {
+                System.out.println("Card #" + (x+1) + ": " + deck.get(x).getName());
+            }
         }
     }
 
@@ -59,52 +43,29 @@ public class Deck {
         if (type == "action") {
             for (int x = 0; x < deck.size(); x++) {
                 if (deck.get(x).getHasAction()) {
-                    System.out.println("Card #" + (x+1) + ": " + deck.get(x).getName());
+                    if (x < 9) {
+                        System.out.println("Card #0" + (x+1) + ": " + deck.get(x).getName());
+                    }
+                    else {
+                        System.out.println("Card #" + (x+1) + ": " + deck.get(x).getName());
+                    }
                 }
             }
         }
     }
 
-    /*
-        Description: shuffle the deck
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
     public void shuffle() {
         Collections.shuffle(deck, new Random(System.nanoTime()));
     };
 
-    /*
-        Description: adds the card to the top of the deck
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
     public void addCard(Card card) {
         deck.add(0, card);
     };
 
-    /*
-        Description: adds a card to the bottom of the deck
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
     public void addBottomCard(Card card) {
         deck.add(card);
     };
 
-    /*
-        Description: draws the card from the top of the deck
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
     public Card drawCard() {
         if (deck.size() > 0) {
             return deck.remove(0);
@@ -112,13 +73,6 @@ public class Deck {
         return null;
     };
 
-    /*
-        Description: checks to see if the deck is empty
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
     public boolean empty() {
         if (deck.size() == 0) {
             return true;
@@ -126,14 +80,21 @@ public class Deck {
         return false;
     };
 
-    /*
-        Description: returns the number of cards
-        Input:  -
-        Output: -
-        Potential Errors:
-            -
-    */
     public int numCards() {
         return deck.size();
     };
+
+    //not done
+    public boolean containsActions() {
+        if (this.empty()) {
+            return false;
+        }
+        return true;
+    }
+
+    public void addNumberOfCardType(int number, Card card) {
+        for (int x = 0; x < number; x++) {
+            this.addCard(card);
+        }
+    }
 }
