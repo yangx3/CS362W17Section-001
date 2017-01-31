@@ -4,10 +4,24 @@ public class Deck {
 
     ArrayList<Card> deck;
 
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     public Deck() {
         deck = new ArrayList<Card>();
     }
 
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     public Deck(String type) {
         deck = new ArrayList<Card>();
         type = type.toLowerCase();
@@ -27,41 +41,98 @@ public class Deck {
         }
     }
 
+    /*
+        Description: -
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     public void printDeck() {
         for (int x = 0; x < deck.size(); x++) {
             System.out.println("Card #" + (x+1) + ": " + deck.get(x).getName());
         }
     }
 
-    //shuffle the deck
+    public void printType(String type) {
+        type = type.toLowerCase();
+        if (type == "action") {
+            for (int x = 0; x < deck.size(); x++) {
+                if (deck.get(x).getHasAction()) {
+                    System.out.println("Card #" + (x+1) + ": " + deck.get(x).getName());
+                }
+            }
+        }
+    }
+
+    /*
+        Description: shuffle the deck
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     public void shuffle() {
         Collections.shuffle(deck, new Random(System.nanoTime()));
     };
 
-    //adds the card to the top of the deck
+    /*
+        Description: adds the card to the top of the deck
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     public void addCard(Card card) {
         deck.add(0, card);
     };
 
-    //adds a card to the bottom of the deck
+    /*
+        Description: adds a card to the bottom of the deck
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     public void addBottomCard(Card card) {
         deck.add(card);
     };
 
-    //draws the card from the top of the deck
+    /*
+        Description: draws the card from the top of the deck
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     public Card drawCard() {
-        return deck.remove(0);
+        if (deck.size() > 0) {
+            return deck.remove(0);
+        }
+        return null;
     };
 
-    //checks to see if the deck is empty
-    public boolean isEmpty() {
+    /*
+        Description: checks to see if the deck is empty
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
+    public boolean empty() {
         if (deck.size() == 0) {
             return true;
         }
         return false;
     };
 
-    //returns the number of cards
+    /*
+        Description: returns the number of cards
+        Input:  -
+        Output: -
+        Potential Errors:
+            -
+    */
     public int numCards() {
         return deck.size();
     };
