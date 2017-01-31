@@ -11,7 +11,7 @@ public enum Card{
   GOLD("Gold", 6, 3, 0), ESTATE("Estate", 2, 0, 1),
   DUCHY("Duchy", 5, 0, 3), PROVINCE("Province", 8, 0, 6),
   ADVENTURER("Adventurer", 6){
-    public void play(Player p){
+    public Card play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Adventurer.jpg
       int needTreasures = 2;
       while(needTreasures > 0){
@@ -22,9 +22,10 @@ public enum Card{
           p.discard(c);
         }
       }
+      return this;
     }
   },AMBASSADOR("Ambassador", 3){
-    public void play(Player p){
+    public Card play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Ambassador.jpg
       Card c = p.chooseHand();
       if(c != null){  // maybe they cancelled
@@ -36,9 +37,10 @@ public enum Card{
           }
         }
       }
+      return this;
     }
   },BARON("Baron", 4){
-    public void play(Player p){
+    public Card play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Baron.jpg
       // If player discards an estate, +4, otherwise, draw an Estate
       if(p.discardFromHand(Card.ESTATE)){
@@ -46,10 +48,10 @@ public enum Card{
       }else{
         p.discard( p.gameState.takeCard(Card.ESTATE) );
       }
-      System.out.println("Baron has been played!");
+      return this;
     }
   },COUNCILROOM("Council Room", 5){
-    public void play(Player p){
+    public Card play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Council_Room.jpg
       // +4 cards, +1 buy, each other player draws a card
       for(int i=0; i<4; i++) p.draw();
@@ -60,9 +62,10 @@ public enum Card{
           g.players[i].draw();
         }
       }
+      return this;
     }
   },CUTPURSE("Cutpurse", 4){
-    public void play(Player p){
+    public Card play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Cutpurse.jpg
       // +2 money, other players forced to discard a copper or reveal hand
       p.addMoney(2);
@@ -74,9 +77,10 @@ public enum Card{
           if(!t.discardFromHand(Card.COPPER)) t.seeHand();
         }
       }
+      return this;
     }
   },EMBARGO("Embargo", 2){
-    public void play(Player p){
+    public Card play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Embargo.jpg
       // +2 money, trash this card, add embargo token to supply pile
       // When ANY player buys a card from that pile, they also gain a Curse
@@ -84,16 +88,33 @@ public enum Card{
       p.addMoney(2);
       GameState g = p.gameState;
       // add embargo token
+      return null;  // trash this card
     }
   },FEAST("Feast", 4){
-    public void play(Player p){
-      // See http://wiki.dominionstrategy.com/index.php/File:Embargo.jpg
+    public Card play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Feast.jpg
       // Trash this card, gain a card costing up to 5 money
-
-      // add embargo token
+      System.out.println(p+" may choose a card up to 5 money from the supply.");
+      int choice;
+      do{
+        int availCards = p.gameState.listCards();
+        System.out.format("Please enter the card number (1-%d) you want, "+
+          "or 0 to cancel: ", availCards);
+        choice = p.scan.nextInt();
+        if( choice>0 && choice<=availCards){
+          Card c = Card.values()[choice-1];
+          if(c.costsMoney <= 5){
+            if(p.takeFreeCard(c)) break;
+          }else{
+            System.out.format("The %s card costs %d, please choose a "+
+            "card that costs no more than 5 money.\n", c, c.costsMoney);
+          }
+        }
+      }while(choice != 0);
+      return null;
     }
   };
-http://wiki.dominionstrategy.com/index.php/File:Feast.jpg
+
   private final boolean DEBUGGING = true;
   public final String cardName;
   public String cardDesc = "No desc";
@@ -144,11 +165,11 @@ http://wiki.dominionstrategy.com/index.php/File:Feast.jpg
     return type;
   }
 
-  public void play(Player p){
+  public Card play(Player p){
     if(DEBUGGING) System.out.println(p+" played a "+cardName);
     if(givesMoney>0) p.addMoney(givesMoney);
-    p.addActions(givesActions);
-    for(int i=givesCardDraws; i>0; i--) p.draw();
+    if(givesActions>0) p.addActions(givesActions);
+    return this;
   }
 
   public static enum Type {
