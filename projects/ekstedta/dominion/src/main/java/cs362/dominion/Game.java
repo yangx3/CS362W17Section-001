@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Game {
     private Integer numPlayers; //number of players
-    private Map<Card,Integer> supplyCount;  //this is the amount of a specific type of card given a specific number.
+    private Map<Card,Integer> supply;  //this is the amount of a specific type of card given a specific number.
     private List<Card> kingdomCards;
 
     // card-specific state
@@ -48,7 +48,7 @@ public class Game {
 
         this.kingdomCards = new ArrayList<>(kingdomCards);
         this.numPlayers = numPlayers;
-        this.supplyCount = new HashMap<Card,Integer>();
+        this.supply = new HashMap<Card,Integer>();
         this.embargoTokens = new HashMap<Card,Integer>();
         this.outpostPlayed = 0;
         this.outpostTurn = 0;
@@ -72,28 +72,28 @@ public class Game {
         rng.setSeed(randomSeed);
 
         // Initialize supply
-        this.supplyCount.put(Card.Curse, 30);
-        this.supplyCount.put(Card.Estate, 24);
-        this.supplyCount.put(Card.Duchy, 12);
-        this.supplyCount.put(Card.Province, 12);
+        this.supply.put(Card.Curse, 30);
+        this.supply.put(Card.Estate, 24);
+        this.supply.put(Card.Duchy, 12);
+        this.supply.put(Card.Province, 12);
 
-        this.supplyCount.put(Card.Copper, 60);
-        this.supplyCount.put(Card.Silver, 40);
-        this.supplyCount.put(Card.Gold, 30);
+        this.supply.put(Card.Copper, 60);
+        this.supply.put(Card.Silver, 40);
+        this.supply.put(Card.Gold, 30);
 
         for (Card c : kingdomCards) {
-            this.supplyCount.put(c, 10);
+            this.supply.put(c, 10);
         }
 
         // Initialize decks
         for (int i = 0; i < numPlayers; i++) {
             for (int j = 0; j < 7; j++) {
                 this.deck.get(i).add(Card.Copper);
-                this.supplyCount.put(Card.Copper, this.supplyCount.get(Card.Copper)-1);
+                this.supply.put(Card.Copper, this.supply.get(Card.Copper)-1);
             }
             for (int j = 0; j < 7; j++) {
                 this.deck.get(i).add(Card.Estate);
-                this.supplyCount.put(Card.Estate, this.supplyCount.get(Card.Estate)-1);
+                this.supply.put(Card.Estate, this.supply.get(Card.Estate)-1);
             }
         }
 
@@ -131,7 +131,7 @@ public class Game {
         if (this.buys < 1) {
             throw new RuntimeException("you have no buys left");
         }
-        if (this.supplyCount.get(card) < 1) {
+        if (this.supply.get(card) < 1) {
             throw new RuntimeException("there are no more of that card left");
         }
         if (this.coins < card.cost()) {
@@ -143,7 +143,7 @@ public class Game {
         this.phase = 1;
         // card goes in the discard pile
         this.discard.get(this.whoseTurn).add(card);
-        this.supplyCount.put(card, this.supplyCount.get(card));
+        this.supply.put(card, this.supply.get(card));
         this.coins -= card.cost();
         this.buys -= 1;
     }
@@ -164,7 +164,7 @@ public class Game {
     }
 
     // How many of given card are left in supply
-    public int supplyCount(Card card) { return supplyCount.get(card); }
+    public int supply(Card card) { return supply.get(card); }
 
     // Count how many cards of a certain type a player has, in total
     public int fullDeckCount(int player, Card card) {
@@ -231,14 +231,14 @@ public class Game {
         // The game ends when either
         //
         // 1) The province stack is empty
-        if (this.supplyCount.get(Card.Province) == 0) {
+        if (this.supply.get(Card.Province) == 0) {
             return true;
         }
 
         // 2) Any three supply stacks are empty
         int empty = 0;
         for (Card c : this.kingdomCards) {
-            if (this.supplyCount.get(c) == 0) {
+            if (this.supply.get(c) == 0) {
                 empty++;
             }
         }
