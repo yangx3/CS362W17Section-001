@@ -39,11 +39,12 @@ public enum Card{
     public void play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Baron.jpg
       // If player discards an estate, +4, otherwise, draw an Estate
-      if(p.discard(Card.ESTATE)){
+      if(p.discardFromHand(Card.ESTATE)){
         p.addMoney(4);
       }else{
         p.discard( p.gameState.takeCard(Card.ESTATE) );
       }
+      System.out.println("Baron has been played!");
   }},
   COUNCILROOM("Council Room", 5){
     public void play(Player p){

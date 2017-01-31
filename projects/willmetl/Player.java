@@ -80,6 +80,7 @@ public class Player{
         if(c != null){
           System.out.println(playerName+" chose to play the "+c+" card.");
           playCard(c);
+          System.out.println("Back from playing the "+c+" card.");
         }else{  // this is ugly
           return;
         }
@@ -90,13 +91,21 @@ public class Player{
   }
 
   private boolean buyCard(Card c){
-    // System.out.println("Attempting to buy "+c);
-    if( gameState.countCard(c)>0 && remMoney>=c.costsMoney && remBuys>=1){
-      if(discard(gameState.takeCard(c))){
+    System.out.println("Attempting to buy "+c);
+    if(gameState.countCard(c)<=0){
+      System.out.println("There are not enough "+c+" available.");
+      return false;
+    }
+    if(remMoney<c.costsMoney){
+      System.out.format("A %s costs %d but you only have %d money. ur broke.\n",
+        c, c.costsMoney, remMoney
+      );
+      return false;
+    }
+    if(discard(gameState.takeCard(c))){
         remMoney -= c.costsMoney;
         remBuys--;
         return true;
-      }
     }
     return false;
   }
@@ -133,6 +142,7 @@ public class Player{
       hand.add(draw());
     }
     // Reset actions and buys for next turn
+    remMoney = 0;
     remActions = 1;
     remBuys = 1;
   }
@@ -152,14 +162,15 @@ public class Player{
   public Card chooseActionCard(){
     for(int i=0; i<hand.size(); i++){
       if(hand.get(i).getType() == Card.Type.ACTION)
-        System.out.println(i+" - "+hand.get(i));
+        System.out.println(i+1+" - "+hand.get(i));
     }
     System.out.format("Please enter the card number (1-%d) you want to play,"+
       " or 0 to cancel: ", hand.size());
-    int choice = scan.nextInt();
-    if( choice>0 && choice<hand.size() )
+    int choice = scan.nextInt()-1;
+    if( choice>-1 && choice<hand.size() ){
+      System.out.println("u chose "+hand.get(choice));
       return hand.remove(choice);
-    else if( choice==0 )
+    }else if( choice==0 )
       remActions = 0;
     return null;
   }
@@ -170,6 +181,14 @@ public class Player{
     // generate random number in range of hand size instead of this
     Card c = hand.remove(0);
     return discard(c);
+  }
+
+  public boolean discardFromHand(Card c){
+    int i = hand.indexOf(c);
+    System.out.println("i="+i);
+    if(i>=0)
+      return cardPile.add(hand.remove(i));
+    return false;
   }
 
   public boolean discard(Card c){
@@ -192,6 +211,7 @@ public class Player{
     // Start every turn with a new, full hand and 1 action, 1 buy
     if(DEBUGGING) System.out.println("It's "+playerName+"'s turn:");
     // seeDeck();
+    hand.add(Card.AMBASSADOR);
     actionPhase();
     buyPhase();
     cleanupPhase();
@@ -207,16 +227,16 @@ public class Player{
       remActions -= c.costsAction;
       // if(DEBUGGING) System.out.println("Playing "+c);
       c.play(this);
-      hand.remove(hand.indexOf(c));
-      discard(c);
     } else {
       System.out.println("You do not have an action to play "+c);
+      return false;
     }
     return true;
   }
 
-  public void returnCardToShared(Card c){
-    // gameState.bankCards.push(c);
+  public boolean returnCardToShared(Card c){
+    // pull from hand?  assume already pulled?
+    gameState.replaceCard(c);
   }
 
   public void seeDeck(){

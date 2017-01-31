@@ -61,6 +61,10 @@ public class GameState{
     return null;
   }
 
+  public boolean replaceCard(Card c){
+    return supply.add(c);
+  }
+
   public void nextTurn(){
     if(countCard(Card.PROVINCE)>0){
       players[playerTurn].newTurn();
