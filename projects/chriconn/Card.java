@@ -6,18 +6,6 @@
 
     Custom cards
     Witch, Cellar, Market
-
-    Number of cards:
-    Gold:   30
-    Silver: 40
-    Copper: 60
-
-    Actions: 10
-
-    Curse:
-    2 players: 10
-    3 players: 20
-    4 players: 30
 */
 
 
