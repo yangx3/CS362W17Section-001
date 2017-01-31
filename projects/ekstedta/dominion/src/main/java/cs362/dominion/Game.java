@@ -9,21 +9,34 @@ import java.util.Random;
 public class Game {
     private Integer numPlayers; //number of players
     private Map<Card,Integer> supplyCount;  //this is the amount of a specific type of card given a specific number.
+    private List<Card> kingdomCards;
+
+    // card-specific state
     private Map<Card,Integer> embargoTokens;
     private Integer outpostPlayed;
     private Integer outpostTurn;
+
     private Integer whoseTurn;
+
+    // phases
+    // 0 - actions
+    // 1 - buys
     private Integer phase;
-    private Integer numActions; // Starts at 1 each turn
+
+    // state for current turn
+    private Integer actions; // Starts at 1 each turn
     private Integer coins; // Use as you see fit!
-    private Integer numBuys; // Starts at 1 each turn
+    private Integer buys; // Starts at 1 each turn
+    private List<Card> playedCards;
+
+    // players' cards
     private List<List<Card>> hand; // player -> hand
     private List<List<Card>> deck; // player -> deck
     private List<List<Card>> discard; // player -> discard
-    private List<Card> playedCards;
-    private List<Card> kingdomCards;
 
     private Random rng = new Random();
+
+    private final int handLimit = 5;
 
     public Game(Integer numPlayers, List<Card> kingdomCards, Integer randomSeed) {
         if (kingdomCards.size() != 10) {
@@ -41,13 +54,14 @@ public class Game {
         this.outpostTurn = 0;
         this.whoseTurn = 0;
         this.phase = 0;
-        this.numActions = 0;
+        this.actions = 0;
         this.coins = 0;
-        this.numBuys = 0;
+        this.buys = 0;
+        this.playedCards = new ArrayList<Card>();
+
         this.hand = new ArrayList<List<Card>>(numPlayers);
         this.deck = new ArrayList<List<Card>>(numPlayers);
         this.discard = new ArrayList<List<Card>>(numPlayers);
-        this.playedCards = new ArrayList<Card>();
         for (Integer i = 0; i < numPlayers; i++) {
             this.hand.add(i, new ArrayList<Card>());
             this.deck.add(i, new ArrayList<Card>());
@@ -82,6 +96,11 @@ public class Game {
                 this.supplyCount.put(Card.Estate, this.supplyCount.get(Card.Estate)-1);
             }
         }
+
+        // shuffle decks
+        for (int i = 0; i < numPlayers; i++) {
+            this.shuffle(i);
+        }
     }
 
     // Shuffle a player's deck.
@@ -107,8 +126,27 @@ public class Game {
     // Play card with index handPos from current player's hand
     public void playCard(int handPos, int choice1, int choice2, int choice3) {}
 
-    // Buy card with supply index supplyPos
-    public void buyCard(int supplyPos) {}
+    // Buy a card
+    public void buyCard(Card card) {
+        if (this.buys < 1) {
+            throw new RuntimeException("you have no buys left");
+        }
+        if (this.supplyCount.get(card) < 1) {
+            throw new RuntimeException("there are no more of that card left");
+        }
+        if (this.coins < card.cost()) {
+            throw new RuntimeException("not enough coins");
+        }
+        if (this.phase != 0 && this.phase != 1) {
+            throw new RuntimeException("you aren't in the buy phase");
+        }
+        this.phase = 1;
+        // card goes in the discard pile
+        this.discard.get(this.whoseTurn).add(card);
+        this.supplyCount.put(card, this.supplyCount.get(card));
+        this.coins -= card.cost();
+        this.buys -= 1;
+    }
 
     // How many cards current player has in hand
     public int numHandCards() {
@@ -146,7 +184,48 @@ public class Game {
     // End the current player's turn
     // Must do phase C and advance to next player;
     // do not advance whose turn if game is over
-    public void endTurn() {}
+    public void endTurn() {
+        // discard hand
+        this.discard.get(this.whoseTurn).addAll(this.hand.get(this.whoseTurn));
+        this.hand.get(this.whoseTurn).clear();
+
+        // draw five cards
+        this.draw(handLimit);
+
+        // advance player
+        this.whoseTurn++;
+        if (this.whoseTurn >= this.numPlayers) {
+            this.whoseTurn = 0;
+        }
+        this.phase = 0;
+
+        this.actions = 1;
+        this.buys = 1;
+        this.coins = 0;
+        for (Card c : this.hand.get(whoseTurn)) {
+            this.coins += c.coins();
+        }
+    }
+
+    private void draw(int n) {
+        List<Card> deck = this.deck.get(this.whoseTurn);
+        List<Card> hand = this.hand.get(this.whoseTurn);
+        List<Card> discard = this.discard.get(this.whoseTurn);
+
+        for (int i = 0; i < n; i++) {
+            if (deck.size() < 1) {
+                deck.addAll(discard);
+                discard.clear();
+                this.shuffle(this.whoseTurn);
+            }
+            if (deck.size() < 1) {
+                break;
+            }
+            Card card = deck.get(deck.size()-1);
+            deck.remove(deck.size()-1);
+            hand.add(card);
+        }
+    }
 
     public boolean isGameOver() {
         // The game ends when either
