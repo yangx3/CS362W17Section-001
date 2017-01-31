@@ -51,6 +51,7 @@ public class Play {
             }
 
             if (game.whoseTurn() == 0) {
+                // Player 0: likes to buy smithies
                 if (smithyPos != -1) {
                     System.out.printf("0: smithy played from position %d\n", smithyPos);
                     game.playCard(smithyPos, -1, -1, -1);
@@ -73,20 +74,19 @@ public class Play {
                     }
                 }
 
+                System.out.printf("0: money = %d\n", money);
+
                 if (money >= 8) {
                     System.out.printf("0: bought province\n");
                     game.buyCard(Card.Province);
-                }
-                else if (money >= 6) {
+                } else if (money >= 6) {
                     System.out.printf("0: bought gold\n");
                     game.buyCard(Card.Gold);
-                }
-                else if ((money >= 4) && (numSmithies < 2)) {
+                } else if ((money >= 4) && (numSmithies < 2)) {
                     System.out.printf("0: bought smithy\n");
                     game.buyCard(Card.Smithy);
                     numSmithies++;
-                }
-                else if (money >= 3) {
+                } else if (money >= 3) {
                     System.out.printf("0: bought silver\n");
                     game.buyCard(Card.Silver);
                 }
@@ -94,6 +94,7 @@ public class Play {
                 System.out.printf("0: end turn\n");
                 game.endTurn();
             } else {
+                // Player 1: likes to buy adventurers
                 if (adventurerPos != -1) {
                     System.out.printf("1: adventurer played from position %d\n", adventurerPos);
                     game.playCard(adventurerPos, -1, -1, -1);
@@ -116,6 +117,8 @@ public class Play {
                     }
                 }
 
+                System.out.printf("1: money = %d\n", money);
+
                 if (money >= 8) {
                     System.out.printf("1: bought province\n");
                     game.buyCard(Card.Province);
@@ -125,21 +128,23 @@ public class Play {
                     numAdventurers++;
                 } else if (money >= 6) {
                     System.out.printf("1: bought gold\n");
-                        game.buyCard(Card.Gold);
+                    game.buyCard(Card.Gold);
                 } else if (money >= 3) {
                     System.out.printf("1: bought silver\n");
-                        game.buyCard(Card.Silver);
+                    game.buyCard(Card.Silver);
                 }
-                System.out.printf("1: endTurn\n");
 
+                System.out.printf("1: endTurn\n");
                 game.endTurn();
             }
 
-            System.out.printf ("Player 0: %d\nPlayer 1: %d\n", game.scoreFor(0), game.scoreFor(1));
+            System.out.printf("Player 0: %d\n", game.scoreFor(0));
+            System.out.printf("Player 1: %d\n", game.scoreFor(1));
         }
 
-        System.out.printf ("Finished game.\n");
-        System.out.printf ("Player 0: %d\nPlayer 1: %d\n", game.scoreFor(0), game.scoreFor(1));
+        System.out.printf("Finished game.\n");
+        System.out.printf("Player 0: %d\n", game.scoreFor(0));
+        System.out.printf("Player 1: %d\n", game.scoreFor(1));
 
     }
 }

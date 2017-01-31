@@ -101,6 +101,8 @@ public class Game {
         for (int i = 0; i < numPlayers; i++) {
             this.shuffle(i);
         }
+
+        this.startTurn();
     }
 
     // Shuffle a player's deck.
@@ -131,7 +133,7 @@ public class Game {
         if (this.buys < 1) {
             throw new RuntimeException("you have no buys left");
         }
-        if (this.supply.get(card) < 1) {
+        if (this.supply.get(card) == null || this.supply.get(card) < 1) {
             throw new RuntimeException("there are no more of that card left");
         }
         if (this.coins < card.cost()) {
@@ -197,14 +199,19 @@ public class Game {
         if (this.whoseTurn >= this.numPlayers) {
             this.whoseTurn = 0;
         }
-        this.phase = 0;
 
+        this.startTurn();
+    }
+
+    private void startTurn() {
+        this.phase = 0;
         this.actions = 1;
         this.buys = 1;
         this.coins = 0;
-        for (Card c : this.hand.get(whoseTurn)) {
+        for (Card c : this.hand.get(this.whoseTurn)) {
             this.coins += c.coins();
         }
+        System.out.printf("coins=%d\n", this.coins);
     }
 
     private void draw(int n) {
@@ -219,7 +226,7 @@ public class Game {
                 this.shuffle(this.whoseTurn);
             }
             if (deck.size() < 1) {
-                break;
+                break; // uh oh
             }
             Card card = deck.get(deck.size()-1);
             deck.remove(deck.size()-1);

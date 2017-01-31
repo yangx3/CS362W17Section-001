@@ -7,9 +7,9 @@ public enum Card {
     Duchy(5, 3, 0),
     Province(8, 6, 0),
 
-    Copper(0, 0, 0),
-    Silver(3, 2, 0),
-    Gold(6, 3, 0),
+    Copper(0, 0, 1),
+    Silver(3, 0, 2),
+    Gold(6, 0, 3),
 
     Adventurer,
     /* If no/only 1 treasure found, stop when full deck seen */
