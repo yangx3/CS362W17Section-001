@@ -27,6 +27,13 @@ public class Deck {
         }
     }
 
+    public Deck(int number, Card card) {
+        deck = new ArrayList<Card>();
+        for (int x = 0; x < number; x++) {
+            this.addCard(card);
+        }
+    }
+
     public void printDeck() {
         for (int x = 0; x < deck.size(); x++) {
             if (x < 9) {
@@ -96,5 +103,9 @@ public class Deck {
         for (int x = 0; x < number; x++) {
             this.addCard(card);
         }
+    }
+
+    public Card cardInfo(int index) {
+        return deck.get(index);
     }
 }
