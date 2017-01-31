@@ -105,6 +105,7 @@ public class Player{
     if(discard(gameState.takeCard(c))){
         remMoney -= c.costsMoney;
         remBuys--;
+        if(DEBUGGING) System.out.format("%s bought a %s.\n", playerName, c);
         return true;
     }
     return false;
@@ -154,8 +155,11 @@ public class Player{
     System.out.format("Please enter the card number (1-%d) you want to play,"+
       " or 0 to cancel: ", hand.size());
     int choice = scan.nextInt();
-    if( choice>0 && choice<hand.size() )
-      return hand.remove(choice);
+    if( choice>0 && choice<hand.size() ){
+      Card c = hand.remove(choice);
+      if(DEBUGGING) System.out.format("%s chose %s.\n", playerName, c);
+      return c;
+    }
     return null;
   }
 
@@ -168,8 +172,9 @@ public class Player{
       " or 0 to cancel: ", hand.size());
     int choice = scan.nextInt()-1;
     if( choice>-1 && choice<hand.size() ){
-      System.out.println("u chose "+hand.get(choice));
-      return hand.remove(choice);
+      Card c = hand.remove(choice);
+      if(DEBUGGING) System.out.format("%s chose %s.", playerName, c);
+      return c;
     }else if( choice==0 )
       remActions = 0;
     return null;
@@ -185,7 +190,7 @@ public class Player{
 
   public boolean discardFromHand(Card c){
     int i = hand.indexOf(c);
-    System.out.println("i="+i);
+    if(DEBUGGING) System.out.format("%s has index %d", c, i);
     if(i>=0)
       return cardPile.add(hand.remove(i));
     return false;
@@ -209,13 +214,14 @@ public class Player{
 
   public void newTurn(){
     // Start every turn with a new, full hand and 1 action, 1 buy
-    if(DEBUGGING) System.out.println("It's "+playerName+"'s turn:");
-    // seeDeck();
-    hand.add(Card.AMBASSADOR);
+    System.out.println("It's "+playerName+"'s turn:");
+    if(DEBUGGING) seeDeck();
+    if(DEBUGGING) System.out.println("Giving hand a free CUTPURSE!");
+    hand.add(Card.CUTPURSE);
     actionPhase();
     buyPhase();
     cleanupPhase();
-    // seeDeck();
+    if(DEBUGGING) seeDeck();
     if(DEBUGGING) System.out.println(playerName+"'s turn is OVER.\n\n");
   }
 
@@ -236,7 +242,7 @@ public class Player{
 
   public boolean returnCardToShared(Card c){
     // pull from hand?  assume already pulled?
-    gameState.replaceCard(c);
+    return gameState.addCard(c);
   }
 
   public void seeDeck(){
@@ -269,6 +275,7 @@ public class Player{
   }
 
   public boolean takeFreeCard(Card c){
+    System.out.format("%s gained a free %s.\n", playerName, c);
     return discard(c);
   }
 

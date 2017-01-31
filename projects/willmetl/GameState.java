@@ -47,8 +47,8 @@ public class GameState{
     players[this.numPlayers++] = a;
   }
 
-  public void addCard(Card c){
-    supply.add(c);
+  public boolean addCard(Card c){
+    return supply.add(c);
   }
 
   public int countCard(Card c){
@@ -59,10 +59,6 @@ public class GameState{
     int i = supply.indexOf(c);
     if(i >= 0) return supply.remove(i);
     return null;
-  }
-
-  public boolean replaceCard(Card c){
-    return supply.add(c);
   }
 
   public void nextTurn(){

@@ -22,20 +22,22 @@ public enum Card{
           p.discard(c);
         }
       }
-  }},
-  AMBASSADOR("Ambassador", 3){
+    }
+  },AMBASSADOR("Ambassador", 3){
     public void play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Ambassador.jpg
       Card c = p.chooseHand();
-      GameState g = p.gameState;
-      g.addCard(c);
-      for(int i=0; i<g.numPlayers; i++){
-        if(g.players[i] != p){
-          g.players[i].takeFreeCard( g.takeCard(c) );
+      if(c != null){  // maybe they cancelled
+        GameState g = p.gameState;
+        g.addCard(c);
+        for(int i=0; i<g.numPlayers; i++){
+          if(g.players[i] != p){
+            g.players[i].takeFreeCard( g.takeCard(c) );
+          }
         }
       }
-  }},
-  BARON("Baron", 4){
+    }
+  },BARON("Baron", 4){
     public void play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Baron.jpg
       // If player discards an estate, +4, otherwise, draw an Estate
@@ -45,8 +47,8 @@ public enum Card{
         p.discard( p.gameState.takeCard(Card.ESTATE) );
       }
       System.out.println("Baron has been played!");
-  }},
-  COUNCILROOM("Council Room", 5){
+    }
+  },COUNCILROOM("Council Room", 5){
     public void play(Player p){
       // See http://wiki.dominionstrategy.com/index.php/File:Council_Room.jpg
       // +4 cards, +1 buy, each other player draws a card
@@ -59,8 +61,39 @@ public enum Card{
         }
       }
     }
-  };
+  },CUTPURSE("Cutpurse", 4){
+    public void play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Cutpurse.jpg
+      // +2 money, other players forced to discard a copper or reveal hand
+      p.addMoney(2);
+      GameState g = p.gameState;
+      for(int i=0; i<g.numPlayers; i++){
+        Player t = g.players[i];
+        if(t != p){
+          // If a copper wasn't discarded, reveal their hand
+          if(!t.discardFromHand(Card.COPPER)) t.seeHand();
+        }
+      }
+    }
+  },EMBARGO("Embargo", 2){
+    public void play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Embargo.jpg
+      // +2 money, trash this card, add embargo token to supply pile
+      // When ANY player buys a card from that pile, they also gain a Curse
+      // for EACH embargo token on that pile
+      p.addMoney(2);
+      GameState g = p.gameState;
+      // add embargo token
+    }
+  },FEAST("Feast", 4){
+    public void play(Player p){
+      // See http://wiki.dominionstrategy.com/index.php/File:Embargo.jpg
+      // Trash this card, gain a card costing up to 5 money
 
+      // add embargo token
+    }
+  };
+http://wiki.dominionstrategy.com/index.php/File:Feast.jpg
   private final boolean DEBUGGING = true;
   public final String cardName;
   public String cardDesc = "No desc";
