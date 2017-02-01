@@ -1,28 +1,78 @@
 import java.io.*;
 import java.util.*;
 
+/*
+Class Game
+    Variables:
+        Private:
+
+        Public:
+            ArrayList   <Deck>bank;
+            int         numPlayers;
+            ArrayList   <Player>players;
+
+    Functions:
+        Private:
+
+        Public:
+            Game()
+            Game()
+            Game(String ... names)
+            printBank       ()
+            playerTurn      (int playerNumber):
+
+
+        Game()
+            Game(String ... names)
+            void        printBank();
+            void        playerTurn(int playerNumber);
+
+
+        Game()
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        Game(String ... names):
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        printBank:
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        playerTurn:
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+*/
+
 public class Game {
     public static void main(String[] args) {
         //clear the screen
         System.out.print("\033[2J\033[K\033[H");
 
-        Player connor = new Player("Connor");
-
-        /*
-        Example of getting the user for inut
-        Reading from System.in
-        Scanner reader = new Scanner(System.in);
-        Scans the next token of the input as an int.
-        int n = reader.nextInt();
-        */
-
-        connor.draw(5);
-        System.out.println("Player "+connor.getName());
-        connor.showHand();
-
+        //creates three players
         Game dominion = new Game("Connor", "Billy", "Lily");
+        //prints an empty line
         System.out.println();
+        //prints the whole bank for testing
         dominion.printBank();
+
+        //player 0 (connor) gets to go
+        dominion.playerTurn(0);
+
 
     }
 
@@ -90,6 +140,46 @@ public class Game {
         }
     }
 
+    public void playerTurn(int num) {
+        //players name
+        String name = getPlayer(num).getName();
+        String cardToPlay;
+
+        getPlayer(num).draw(5);
+        System.out.println("\n" +  name + "'s hand:");
+        getPlayer(num).showHand();
+
+
+
+
+
+
+
+
+
+        // if (getPlayer(num).hasActions()) {
+        //     System.out.println("Has Actions");
+        // }
+        //     System.out.printf(name + ", play an action card in your hand: ");
+        //     //card they want to play
+        //     cardToPlay = scanner.nextLine();
+        //     cardToPlay = cardToPlay.toLowerCase();
+        //     players.get(playerNumber).playCard(cardToPlay);
+        // }
+        // else {
+        //     System.out.println(name + ", you do not have any action cards in your hand.");
+        // }
+        // System.out.println(name + ", please buy something.");
+        // players.get(playerNumber).printMoves();
+        // players.get(playerNumber).playCard(cardToPlay);
+    }
+
+    public Player getPlayer(int number) {
+        return players.get(number);
+    }
+
+    //building a scanner class that will be used for keyboard input
+    private static Scanner scanner = new Scanner(System.in);
 
 }
 
