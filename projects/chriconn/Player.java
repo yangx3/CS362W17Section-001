@@ -145,7 +145,7 @@ public class Player {
     }
 
     public String getMoves() {
-        return "You have " + actions + " action(s), " + buys + " pruchase(s) you can make, and you have " + value + " coin(s) to spend";
+        return "You have:\n\t" + actions + " action(s)\n\t" + buys + " pruchase(s)\n\t" + value + " coin(s)";
     }
 
     public void buy(Deck type) {
@@ -227,5 +227,10 @@ public class Player {
 
     public boolean handContainsActions() {
         return hand.hasActions();
+    }
+
+    public void skipTurn() {
+        buys = 0;
+        actions = 0;
     }
 }
