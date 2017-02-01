@@ -6,10 +6,10 @@ Class Player
             Deck hand
             Deck discard
 
-            String name
-            int actions
-            int value
-            int buys
+            String  name
+            int     actions
+            int     value
+            int     buys
 
     Functions:
         Private:
@@ -79,7 +79,7 @@ Class Player
 public class Player {
 
     private Deck drawDeck;
-    private Deck hand;
+    public Deck hand;
     private Deck discard;
 
     //the name of the player
@@ -124,7 +124,29 @@ public class Player {
     }
 
     public void playCard(String cardName) {
+        if (hand.indexOf(cardName) >= 0) {
+            Card temp = new Card(cardName);
+            if (temp.isVictoryCard()) {
+                System.out.println("Error. You cannot play a victory card");
+                System.exit(1);
+            }
+            else if (temp.isTreasureCard()) {
+                System.out.println("Error. You cannot play a treasure card");
+                System.exit(1);
+            }
+            else {
+                applyCardActions(temp);
+                printMoves();
+            }
+        }
+        else {
+            System.out.println("Error. That card does not exist");
+            System.exit(1);
+        }
+    }
 
+    public void printMoves() {
+        System.out.println("You have " + actions + " actions, " + buys + " pruchases you can make, and " + value + " coins to spend");
     }
 
     public void buy() {
@@ -161,7 +183,7 @@ public class Player {
     public int getBuys()    {return buys;}
 
     public boolean hasActions() {
-        if (actions > 0) {
+        if (actions > 0 && hand.hasActions()) {
             return true;
         }
         return false;
@@ -172,5 +194,11 @@ public class Player {
             return true;
         }
         return false;
+    }
+
+    public void applyCardActions(Card card) {
+        actions += card.getActions();
+        value += card.getValue();
+        buys += card.getBuys();
     }
 }
