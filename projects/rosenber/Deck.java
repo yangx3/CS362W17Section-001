@@ -11,11 +11,27 @@ import java.util.Random;
 
 public class Deck{
 	
+	private String name;
 	private ArrayList<Card> deck;
 	
 	//constructor
 	public Deck(){
+		name = "";
 		deck = new ArrayList<Card>();
+	}
+	public Deck(String str){
+		name = str;
+		deck = new ArrayList<Card>();
+	}
+	
+	//returns the name
+	public String getName(){
+		return name;
+	}
+	
+	//sets the name
+	public void setName(String str){
+		name = str;
 	}
 	
 	//returns the number of cards in the deck
