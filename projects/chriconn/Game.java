@@ -133,48 +133,89 @@ public class Game {
         System.out.println("Number of decks left: " + bank.size());
         System.out.println("Number of decks empty: " + (13-bank.size()));
         for (int x = 0; x < bank.size(); x++) {
-            System.out.printf("Deck Type: %-20s# in deck: %d\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards());
+            System.out.printf("Deck Type: %-20s# in deck: %d\tCost: %d\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost());
+        }
+    }
+
+    public void printBank(int coinLimit) {
+        System.out.println("Bank:");
+        System.out.println("Number of decks left: " + bank.size());
+        System.out.println("Number of decks empty: " + (13-bank.size()));
+        for (int x = 0; x < bank.size(); x++) {
+            if (bank.get(x).cardInfo(0).getCost() <= coinLimit) {
+                System.out.printf("Deck Type: %-20s# in deck: %d\tCost: %d\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost());
+            }
         }
     }
 
     public void playerTurn(int num) {
         //players name
         String name = getPlayer(num).getName();
+        //card the user will want to play
         String cardToPlay;
-        int pauseTime = 400;
+        //the delay time on the end of string printing
+        int pauseTime = 500;
 
-        printLine("Drawing 5 cards...", 50, 800);
-        for (int x = 0; x < 5; x++) {
-            getPlayer(num).draw();
-            clearAndShowHand(num, pauseTime);
-        }
+        //award the player one action and one buy to start the turn
+        getPlayer(num).starterPoints();
 
-        getPlayer(num).buy(getDeck("smithy"));
-        clearAndShowHand(num, pauseTime);
-        printLine("Discarding all cards...", 50, 800);
-        getPlayer(num).discardAll();
-        clearAndShowHand(num, pauseTime);
-        printLine("Drawing 5 cards...", 50, 800);
+        clearScreen();
+        //alert the player that the game will draw them 5 cards
+        printLine(name + ", the game is drawing 5 cards...", 40, pauseTime);
+        //draw the 5 cards
         getPlayer(num).draw(5);
+        //clear the screen and print the cards in their hand
         clearAndShowHand(num, pauseTime);
-        printLine("Printing all decks...", 50, 800);
-        printAllDecks(num);
 
-        // if (getPlayer(num).hasActions()) {
-        //     System.out.println("Has Actions");
-        // }
-        //     System.out.printf(name + ", play an action card in your hand: ");
-        //     //card they want to play
-        //     cardToPlay = scanner.nextLine();
-        //     cardToPlay = cardToPlay.toLowerCase();
-        //     players.get(playerNumber).playCard(cardToPlay);
-        // }
-        // else {
-        //     System.out.println(name + ", you do not have any action cards in your hand.");
-        // }
-        // System.out.println(name + ", please buy something.");
-        // players.get(playerNumber).printMoves();
-        // players.get(playerNumber).playCard(cardToPlay);
+        //if the player has action points and they have action cards in their hand
+        if (getPlayer(num).hasActions()) {
+            printLine("Please play an action card: ", 50, 0);
+            //print the number of actions, buys and coins the player has
+            System.out.println(getPlayer(num).getMoves());
+        }
+        else {
+            //if player did not have an action card
+            if (!hand.hasActions()) {
+                printLine("You do not have an action card...", 50, pauseTime);
+            }
+            else {
+                pritnLine("You do not have any more action points..." 50, pauseTime);
+            }
+            printLine("\nMoving on to buying phase...\n", 50, pauseTime);
+        }
+        //tally up the total treasure value
+        getPlayer(num).sumTreasure();
+
+        //set the loop to exit by default
+        boolean done = true;
+        do {
+            clearScreen();
+            //print the moves
+            printLine(getPlayer(num).getMoves(), 30, pauseTime);
+            System.out.println("\nHere is all the available cards: ");
+            //print only items in the bank that the player can afford
+            printBank(getPlayer(num).getValues());
+            printLine("\nPlease enter a card you want to buy: ", 40, 0);
+            String purchaseCard = scanner.nextLine();
+            purchaseCard = purchaseCard.toLowerCase();
+
+            //if the getDeck function couldn't find the deck, it will return null
+            //if it didn't return null, it means it found the deck.
+
+            /*******#### HERE IS _BUG_ ####*******/
+            /*******####
+                The buy function does not check the value of the card before buying
+            ####*******/
+            
+            if (getDeck(purchaseCard) != null) {
+                getPlayer(num).buy(getDeck(purchaseCard));
+                System.out.println("Purchase sucessfull");
+            }
+            else {
+                System.out.println("Sorry, that is not a valid card. Try again.");
+                done = false;
+            }
+        } while (!done);
     }
 
     public Player getPlayer(int number) {
