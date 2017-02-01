@@ -224,15 +224,15 @@ public class Card {
 
             case "silver":
                 name           =  "silver";
-                value          =  3;
-                cost           =  6;
+                value          =  2;
+                cost           =  3;
                 treasureCard = true;
                 break;
 
             case "copper":
                 name           =  "copper";
-                value          =  3;
-                cost           =  6;
+                value          =  1;
+                cost           =  0;
                 treasureCard = true;
                 break;
 
@@ -381,6 +381,8 @@ public class Card {
         "\nVictory Points: " + victoryPoints +
         "\nDescription: " + description +
         "\nHas Action: " + hasAction +
+        "\nTreasure Card: " + treasureCard +
+        "\nVictory Card: " + victoryCard +
         "\nExtra Cards to Draw: " + cards +
         "\nExtra Actions: " + actions +
         "\nExtra buys: " + buys +
