@@ -78,9 +78,9 @@ Class Player
 
 public class Player {
 
-    private Deck drawDeck;
+    public Deck drawDeck;
     public Deck hand;
-    private Deck discard;
+    public Deck discard;
 
     //the name of the player
     private String name;
@@ -149,20 +149,28 @@ public class Player {
         System.out.println("You have " + actions + " actions, " + buys + " pruchases you can make, and " + value + " coins to spend");
     }
 
-    public void buy() {
-
+    public void buy(Deck type) {
+        discard.addCard(type.drawCard());
     }
 
     public void draw() {
-        if (!drawDeck.empty()) {
-            //the hand is drawing a card from the drawCard deck
-            hand.addCard(drawDeck.drawCard());
+        if (drawDeck.empty()) {
+            recycle();
         }
+        //the hand is drawing a card from the drawCard deck
+        hand.addBottomCard(drawDeck.drawCard());
+
     }
 
     public void discard() {
         if (!hand.empty()) {
             //the discard deck is drawing from the hand
+            discard.addCard(hand.drawCard());
+        }
+    }
+
+    public void discardAll() {
+        while (!hand.empty()) {
             discard.addCard(hand.drawCard());
         }
     }
@@ -174,7 +182,10 @@ public class Player {
     }
 
     public void recycle() {
-
+        while (!discard.empty()) {
+            drawDeck.addCard(discard.drawCard());
+        }
+        drawDeck.shuffle();
     }
 
     public String getName() {return name;}
