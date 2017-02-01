@@ -136,7 +136,6 @@ public class Player {
             }
             else {
                 applyCardActions(temp);
-                printMoves();
             }
         }
         else {
@@ -145,8 +144,8 @@ public class Player {
         }
     }
 
-    public void printMoves() {
-        System.out.println("You have " + actions + " actions, " + buys + " pruchases you can make, and " + value + " coins to spend");
+    public String getMoves() {
+        return "You have " + actions + " action(s), " + buys + " pruchase(s) you can make, and you have " + value + " coin(s) to spend";
     }
 
     public void buy(Deck type) {
@@ -211,5 +210,18 @@ public class Player {
         actions += card.getActions();
         value += card.getValue();
         buys += card.getBuys();
+    }
+
+    public void starterPoints() {
+        actions = 1;
+        buys = 1;
+    }
+
+    public void sumTreasure() {
+        for (int x = 0; x < hand.numCards(); x++) {
+            if (hand.cardInfo(x).isTreasureCard()) {
+                value += hand.cardInfo(x).getValue();
+            }
+        }
     }
 }
