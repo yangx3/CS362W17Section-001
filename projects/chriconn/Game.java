@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /*
 Class Game
@@ -60,19 +61,15 @@ Class Game
 
 public class Game {
     public static void main(String[] args) {
-        //clear the screen
-        System.out.print("\033[2J\033[K\033[H");
-
         //creates three players
         Game dominion = new Game("Connor", "Billy", "Lily");
         //prints an empty line
         System.out.println();
         //prints the whole bank for testing
-        dominion.printBank();
+        // dominion.printBank();
 
         //player 0 (connor) gets to go
         dominion.playerTurn(0);
-
 
     }
 
@@ -144,18 +141,24 @@ public class Game {
         //players name
         String name = getPlayer(num).getName();
         String cardToPlay;
+        int pauseTime = 400;
 
+        printLine("Drawing 5 cards...", 50, 800);
+        for (int x = 0; x < 5; x++) {
+            getPlayer(num).draw();
+            clearAndShowHand(num, pauseTime);
+        }
+
+        getPlayer(num).buy(getDeck("smithy"));
+        clearAndShowHand(num, pauseTime);
+        printLine("Discarding all cards...", 50, 800);
+        getPlayer(num).discardAll();
+        clearAndShowHand(num, pauseTime);
+        printLine("Drawing 5 cards...", 50, 800);
         getPlayer(num).draw(5);
-        System.out.println("\n" +  name + "'s hand:");
-        getPlayer(num).showHand();
-
-
-
-
-
-
-
-
+        clearAndShowHand(num, pauseTime);
+        printLine("Printing all decks...", 50, 800);
+        printAllDecks(num);
 
         // if (getPlayer(num).hasActions()) {
         //     System.out.println("Has Actions");
@@ -178,9 +181,63 @@ public class Game {
         return players.get(number);
     }
 
+    public Deck getDeck(String name) {
+        for(int x = 0; x < bank.size(); x++) {
+            String deckName = bank.get(x).cardInfo(0).getName();
+            if (deckName.equals(name)) {
+                return bank.get(x);
+            }
+        }
+        return null;
+    }
+
+    public void printAllDecks(int num) {
+        String name = getPlayer(num).getName();
+        System.out.println("\n" + name + "'s draw deck: ");
+        getPlayer(num).drawDeck.printDeck();
+        System.out.println("\n" +  name + "'s hand:");
+        getPlayer(num).showHand();
+        System.out.println("\n" + name + "'s discarded deck: ");
+        getPlayer(num).discard.printDeck();
+    }
+
     //building a scanner class that will be used for keyboard input
     private static Scanner scanner = new Scanner(System.in);
 
+    public void clearScreen() {
+        System.out.print("\033[2J\033[K\033[H");
+    }
+
+    public void pause(int sleepTime) {
+        try {
+            Thread.sleep(sleepTime);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clearAndShowHand(int playerNumber, int sleepTime) {
+        clearScreen();
+        System.out.println(getPlayer(playerNumber).getName() + "'s hand: ");
+        getPlayer(playerNumber).showHand();
+        pause(500);
+    }
+
+    public void printLine(String text, int sleepTime, int endDelay) {
+        char[] charArr = text.toCharArray();
+        for(int i=0; i<=charArr.length-1;i++)
+        {
+            System.out.print(charArr[i]);
+            try
+            {
+                Thread.sleep(sleepTime);
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        pause(endDelay);
+    }
 }
 
 
