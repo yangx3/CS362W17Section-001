@@ -82,13 +82,12 @@ public class Player{
         System.out.println("Please choose an Action card from your hand.");
         Card c = chooseActionCard();
         if(c != null){
-          System.out.println(playerName+" chose to play the "+c+" card.");
           playCard(c);
-          System.out.println("Back from playing the "+c+" card.");
         }else{  // this is ugly
           return;
         }
       }else{
+        System.out.println(playerName+" has no Action cards to play.");
         return;
       }
     }
@@ -178,7 +177,7 @@ public class Player{
     int choice = scan.nextInt()-1;
     if( choice>-1 && choice<hand.size() ){
       Card c = hand.remove(choice);
-      if(DEBUGGING) System.out.format("%s chose %s.", playerName, c);
+      if(DEBUGGING) System.out.format("%s chose %s.\n", playerName, c);
       return c;
     }else if( choice==0 )
       remActions = 0;
@@ -253,13 +252,13 @@ public class Player{
   public void newTurn(){
     // Start every turn with a new, full hand and 1 action, 1 buy
     System.out.println("It's "+playerName+"'s turn:");
-    if(DEBUGGING) seeDeck();
-    if(DEBUGGING) System.out.println("Giving hand a free FEAST!");
-    hand.add(Card.FEAST);
+    // if(DEBUGGING) seeDeck();
+    // if(DEBUGGING) System.out.println("Giving hand a free FEAST!");
+    // hand.add(Card.FEAST);
     actionPhase();
     buyPhase();
     cleanupPhase();
-    if(DEBUGGING) seeDeck();
+    // if(DEBUGGING) seeDeck();
     if(DEBUGGING) System.out.println(playerName+"'s turn is OVER.\n\n");
   }
 
@@ -317,7 +316,7 @@ public class Player{
       System.out.println("There are not enough "+c+" available in the supply.");
       return false;
     }
-    System.out.format("%s gained a free %s.\n", playerName, c);
+    // System.out.format("%s gained a free %s.\n", playerName, c);
     return discard(c);
   }
 

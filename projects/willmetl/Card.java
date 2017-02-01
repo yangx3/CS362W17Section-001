@@ -7,11 +7,16 @@ package willmetl;
 
 public enum Card{
   // The Card class represnts a single Dominion card
-  COPPER("Copper", 0, 1, 0), SILVER("Silver", 3, 2, 0),
-  GOLD("Gold", 6, 3, 0), ESTATE("Estate", 2, 0, 1),
-  DUCHY("Duchy", 5, 0, 3), PROVINCE("Province", 8, 0, 6),
-  CURSE("Curse", 0, 0, -1),
-  ADVENTURER("Adventurer", 6){
+  COPPER("Copper", 0, 1, 0, "worth 1 money"),
+  SILVER("Silver", 3, 2, 0, "worth 2 money"),
+  GOLD("Gold", 6, 3, 0, "worth 3 money"),
+  ESTATE("Estate", 2, 0, 1, "worth 1 victory point"),
+  DUCHY("Duchy", 5, 0, 3, "worth 3 victory points"),
+  PROVINCE("Province", 8, 0, 6, "worth 6 victory points"),
+  CURSE("Curse", 0, 0, -1, "worth -1 victory points"),
+  ADVENTURER("Adventurer", 6, "Reveal cards from your deck until you find "+
+  "2 Treasure cards. Put them into your hand and discard the other revealed "+
+  "cards."){
     // See http://wiki.dominionstrategy.com/index.php/File:Adventurer.jpg
     public Card play(Player p){
       int needTreasures = 2;
@@ -25,7 +30,9 @@ public enum Card{
       }
       return this;
     }
-  },AMBASSADOR("Ambassador", 3){
+  },AMBASSADOR("Ambassador", 3, "Reveal a card from your hand.  Return up to "+
+  "2 copies of it from your hand to the supply.  Each other player gains a "+
+  "copy."){
     // See http://wiki.dominionstrategy.com/index.php/File:Ambassador.jpg
     public Card play(Player p){
       Card c = p.chooseHand();
@@ -40,7 +47,8 @@ public enum Card{
       }
       return this;
     }
-  },BARON("Baron", 4){
+  },BARON("Baron", 4, "+1 Buy.  Discard an Estate for +4 money.  Otherwise, "+
+  "gain an Estate."){
     // See http://wiki.dominionstrategy.com/index.php/File:Baron.jpg
     public Card play(Player p){
       // If player discards an estate, +4, otherwise, draw an Estate
@@ -51,7 +59,8 @@ public enum Card{
       }
       return this;
     }
-  },COUNCILROOM("Council Room", 5){
+  },COUNCILROOM("Council Room", 5, "+4 Cards, +1 Buy.  Each other player "+
+  "draws a card."){
     // See http://wiki.dominionstrategy.com/index.php/File:Council_Room.jpg
     public Card play(Player p){
       // +4 cards, +1 buy, each other player draws a card
@@ -65,7 +74,8 @@ public enum Card{
       }
       return this;
     }
-  },CUTPURSE("Cutpurse", 4){
+  },CUTPURSE("Cutpurse", 4, "+2 money.  Each other player discards a Copper "+
+  "card or reveals a hand with no Copper."){
     // See http://wiki.dominionstrategy.com/index.php/File:Cutpurse.jpg
     public Card play(Player p){
       // +2 money, other players forced to discard a copper or reveal hand
@@ -80,7 +90,9 @@ public enum Card{
       }
       return this;
     }
-  },EMBARGO("Embargo", 2){
+  },EMBARGO("Embargo", 2, "+2 money.  Trash this card.  Put an Embargo token "+
+  "on top of a supply pile.  When any player buys that card, he gains a Curse "+
+  "card per Embargo token"){
     // See http://wiki.dominionstrategy.com/index.php/File:Embargo.jpg
     public Card play(Player p){
       // +2 money, trash this card, add embargo token to supply pile
@@ -91,7 +103,7 @@ public enum Card{
       // add embargo token
       return null;  // trash this card
     }
-  },FEAST("Feast", 4){
+  },FEAST("Feast", 4, "Trash this card.  Gain a card costing up to 5 money."){
     // See http://wiki.dominionstrategy.com/index.php/File:Feast.jpg
     public Card play(Player p){
       // Trash this card, gain a card costing up to 5 money
@@ -114,13 +126,13 @@ public enum Card{
       }while(choice != 0);
       return null;
     }
-  },GARDENS("Gardens", 4){
+  },GARDENS("Gardens", 4, "Worth 1 Victory Point per 10 cards, rounded down."){
     // See http://wiki.dominionstrategy.com/index.php/File:Gardens.jpg
     public int getVictoryPoints(Player p){
       // Worth 1 vp per 10 cards you have, rounded down
       return p.countAllCards() / 10;
     }
-  },GREAT_HALL("Great Hall", 3){
+  },GREAT_HALL("Great Hall", 3, "+1 Action, +1 Card.  Worth 1 Victory Point."){
     // See http://wiki.dominionstrategy.com/index.php/File:Great_Hall.jpg
     public Card play(Player p){
       // +1 card, +1 action, worth 1 vp
@@ -132,7 +144,8 @@ public enum Card{
       // worth 1 vp
       return 1;
     }
-  },MINE("Mine", 5){
+  },MINE("Mine", 5, "Trash a Treasure card from your hand.  Gain a Treasure "+
+  "card to your hand costing up to 3 more."){
     // See http://wiki.dominionstrategy.com/index.php/File:Mine.jpg
     public Card play(Player p){
       // Trash a treasure card from your hand to gain 3 money more than it
@@ -148,7 +161,8 @@ public enum Card{
         }else return this;
       }
     }
-  },SALVAGER("Salvager", 4){
+  },SALVAGER("Salvager", 4, "+1 buy.  Trash a card from your hand.  Gain "+
+  "money equal to it's cost."){
     // See http://wiki.dominionstrategy.com/index.php/File:Salvager.jpg
     public Card play(Player p){
       // +1 buy, trash a card and gain money equal to it's cost
@@ -157,14 +171,18 @@ public enum Card{
       if(c != null) p.addMoney(c.costsMoney);
       return this;
     }
-  },SMITHY("Smithy", 4){
+  },SMITHY("Smithy", 4, "+3 Cards."){
     // See http://wiki.dominionstrategy.com/index.php/File:Smithy.jpg
     public Card play(Player p){
       // +3 cards
-      for(int i=0; i<3; i++) p.draw();
+      for(int i=0; i<3; i++){
+        Card c = p.draw();
+        System.out.println("You drew a "+c);
+        p.discard(c);
+      }
       return this;
     }
-  },VILLAGE("Village", 3){
+  },VILLAGE("Village", 3, "+1 Card, +2 Actions"){
     // See http://wiki.dominionstrategy.com/index.php/File:Village.jpg
     public Card play(Player p){
       // +1 card, +2 actions
@@ -177,7 +195,7 @@ public enum Card{
 
   private final boolean DEBUGGING = true;
   public final String cardName;
-  public String cardDesc = "No desc";
+  public String desc = "No desc";
   public int costsAction;
   public int costsMoney;
   public int givesVictoryPoints = 0;
@@ -186,31 +204,18 @@ public enum Card{
   public int givesCardDraws = 0;
   private Type type;
 
-  /*
-  adventurer
-  ambassador
-  baron
-  council_room
-  cutpurse
-  embargo
-  feast
-  gardens
-  great_hall
-  mine
-  */
-
-
-  private Card(String cName, int cost){
-    this(cName, cost, 0, 0);
+  private Card(String cName, int cost, String desc){
+    this(cName, cost, 0, 0, desc);
   }
-  private Card(String cName, int cost, int money, int victoryPoints){
+  private Card(String cName, int cost, int money, int vp, String desc){
     this.cardName = cName;
     this.costsMoney = cost;
     this.givesMoney = money;
-    this.givesVictoryPoints = victoryPoints;
-    if(money == 0 && victoryPoints == 0)
+    this.givesVictoryPoints = vp;
+    this.desc = desc;
+    if(money == 0 && vp == 0)
       this.type = Type.ACTION;
-    else if(victoryPoints == 0)
+    else if(vp == 0)
       this.type = Type.TREASURE;
     else
       this.type = Type.VICTORY;
@@ -234,6 +239,10 @@ public enum Card{
 
   public int getVictoryPoints(){
     return this.givesVictoryPoints;
+  }
+
+  public String getDesc(){
+    return this.desc;
   }
 
   public static enum Type {
