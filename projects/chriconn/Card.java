@@ -6,6 +6,158 @@
 
     Custom cards
     Witch, Cellar, Market
+
+Class Card
+    Variables:
+        Private:
+            String  name;
+            int     value;
+            int     cost;
+            int     victoryPoints;
+            String  description;
+            boolean hasAction;
+            boolean treasureCard;
+            boolean victoryCard;
+            int     cards;
+            int     actions;
+            int     buys;
+            int     coins;
+
+
+    Functions:
+        Private:
+
+        Public:
+            Card()
+            Card(String setName)
+            void      setName(String setName)
+            void      setValue(int setValue)
+            void      setCost(int setCost)
+            void      setVictoryPoints(int setVictoryPoints)
+            void      setDescription(String setDescription)
+            void      setHasAction(boolean setHasAction)
+            void      setCards(int setCards)
+            void      setActions(int setActions)
+            void      setBuys(int setBuys)
+            void      setCoins(int setCoins)
+            String    getName()
+            int       getValue()
+            int       getCost()
+            int       getVictoryPoints()
+            String    getDescription()
+            boolean   getHasAction()
+            boolean   isTreasureCard()
+            boolean   isVictoryCard()
+            int       getCards()
+            int       getActions()
+            int       getBuys()
+            int       getCoins()
+            void      printCard()
+
+
+
+            Card():
+                Description:
+                Input:
+                Output:
+                Potential Errors:
+                    -
+
+            Card(String setName):
+                Description:
+                Input:
+                Output:
+                Potential Errors:
+                    -
+
+-- Descriptions for setters are removed, as they are fairly self explanitory --
+
+            setName:
+                Description: Sets the name of the card
+                Input: A string name
+                Output: None
+                Potential Errors:
+                    -
+
+            setValue:
+                Description: Sets the value that the card is worth when buying
+                Input: An integer value
+                Output: None
+                Potential Errors:
+                    - Negative numbers
+
+            setCost:
+                Description: Sets the value of the cost
+                Input: An integer value
+                Output: None
+                Potential Errors:
+                    - Negative numbers
+
+            setVictoryPoints:
+                Description: Sets the number of victory points the card has
+                Input: An integer value
+                Output: None
+                Potential Errors:
+                    - Negative numbers over 1
+
+            setDescription:
+                Input:
+                Output:
+                Potential Errors:
+                    -
+
+            setHasAction:
+                Description: Sets the boolean value about whether the card
+                             has an action or not
+                Input:
+                Output:
+                Potential Errors:
+                    -
+
+            setCards:
+                Input:
+                Output:
+                Potential Errors:
+                    -
+
+            setActions:
+                Input:
+                Output:
+                Potential Errors:
+                    -
+
+            setBuys:
+                Input:
+                Output:
+                Potential Errors:
+                    -
+
+            setCoins:
+                Input:
+                Output:
+                Potential Errors:
+                    -
+
+            getName:
+            getValue:
+            getCost:
+            getVictoryPoints:
+            getDescription:
+            getHasAction:
+            isTreasureCard:
+            isVictoryCard:
+            getCards:
+            getActions:
+            getBuys:
+            getCoins:
+
+
+            printCard:
+                Description:
+                Input:
+                Output:
+                Potential Errors:
+                    -
 */
 
 
@@ -213,8 +365,8 @@ public class Card {
     public int getVictoryPoints()     {return victoryPoints;}
     public String getDescription()    {return description;}
     public boolean getHasAction()     {return hasAction;}
-    public boolean isTreasureCard(){return treasureCard;}
-    public boolean isVictoryCard() {return victoryCard;}
+    public boolean isTreasureCard()   {return treasureCard;}
+    public boolean isVictoryCard()    {return victoryCard;}
     public int getCards()             {return cards;}
     public int getActions()           {return actions;}
     public int getBuys()              {return buys;}
