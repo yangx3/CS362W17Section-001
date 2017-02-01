@@ -124,8 +124,9 @@ public class Game {
         }
     }
 
-    // Play card with index handPos from current player's hand
-    public void playCard(int handPos, Object... choices) {
+    // Play an action card with index handPos from current player's hand
+    // Can only call this method during the action phase.
+    public void playAction(int handPos, Object... choices) {
         List<Card> hand = this.hand.get(this.whoseTurn);
         if (!(0 <= handPos && handPos < hand.size())) {
             throw new RuntimeException("invalid handPos");
@@ -134,11 +135,12 @@ public class Game {
         // check if card is an action
         Card card = hand.get(handPos);
         if (!card.isAction()) {
-            if (card.coins() != 0) {
-                // ignore played treasure cards
-                return;
-            }
             throw new RuntimeException("not an action");
+        }
+
+        // check if right phase
+        if (this.phase != 0) {
+            throw new RuntimeException("can only play actions during the action phase");
         }
 
         // move card to the played cards pile
@@ -148,23 +150,54 @@ public class Game {
         this.playedCards.add(card);
 
         // do the action
-        this.doCard(card, choices);
+        this.doEffect(card, choices);
 
         // Reeduce number of actions left
         this.actions--;
     }
 
-    private void doCard(Card playedCard, Object... choices) {
+    // Play the treasure card at position handPos in the current player's hand.
+    // Calling this method ends the action phase.
+    public void playTreasure(int handPos) {
+        List<Card> hand = this.hand.get(this.whoseTurn);
+        if (!(0 <= handPos && handPos < hand.size())) {
+            throw new RuntimeException("invalid handPos");
+        }
+
+        // check if card is a treasure
+        Card card = hand.get(handPos);
+        if (!card.isTreasure()) {
+            throw new RuntimeException("not a treasure card");
+        }
+
+        // if not in buy phase, advance the phase
+        if (this.phase < 1) {
+            this.phase = 1;
+        }
+
+        // move card to the played cards pile
+        // XXX changes hand indices
+        // don't move to discard pile until turn is over
+        hand.remove(handPos);
+        this.playedCards.add(card);
+
+        this.doEffect(card);
+    }
+
+    private void doEffect(Card playedCard, Object... choices) {
+        List<Card> deck = this.deck.get(this.whoseTurn);
+        List<Card> hand = this.hand.get(this.whoseTurn);
+        List<Card> discard = this.discard.get(this.whoseTurn);
+
+        this.coins += playedCard.coins();
+
         if (playedCard == Card.Adventurer) {
             // Reveal cards from your deck until you reveal 2 Treasure cards.
             // Put those Treasure cards into your hand and discard the other revealed cards
-            List<Card> deck = this.deck.get(this.whoseTurn);
-            List<Card> hand = this.hand.get(this.whoseTurn);
-            List<Card> discard = this.discard.get(this.whoseTurn);
             int treasureCards = 0;
             while (treasureCards < 2 && deck.size() >= 1) {
                 Card card = deck.get(deck.size()-1);
-                if (card.coins() != 0) {
+                if (card.isTreasure()) {
                     deck.remove(deck.size()-1);
                     hand.add(card);
                     this.coins += card.coins();
@@ -174,8 +207,10 @@ public class Game {
                     discard.add(card);
                 }
             }
+        } else if (playedCard == Card.Gold || playedCard == Card.Silver || playedCard == Card.Copper) {
+            // already added coins above, nothing else to do
         } else {
-            System.out.printf("unknown card %s", playedCard);
+            System.out.printf("unknown card %s\n", playedCard);
         }
     }
 
@@ -263,9 +298,6 @@ public class Game {
         this.actions = 1;
         this.buys = 1;
         this.coins = 0;
-        for (Card c : this.hand.get(this.whoseTurn)) {
-            this.coins += c.coins();
-        }
         System.out.printf("coins=%d\n", this.coins);
     }
 

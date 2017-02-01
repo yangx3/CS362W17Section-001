@@ -41,11 +41,13 @@ public class Play {
                 }
             }
 
+            printCards(game);
+
             if (game.whoseTurn() == 0) {
                 // Player 0: likes to buy smithies
                 if (smithyPos != -1) {
                     System.out.printf("0: smithy played from position %d\n", smithyPos);
-                    game.playCard(smithyPos);
+                    game.playAction(smithyPos);
                     System.out.printf("smithy played.\n");
                 }
 
@@ -73,7 +75,8 @@ public class Play {
                 // Player 1: likes to buy adventurers
                 if (adventurerPos != -1) {
                     System.out.printf("1: adventurer played from position %d\n", adventurerPos);
-                    game.playCard(adventurerPos);
+                    game.playAction(adventurerPos);
+                    printCards(game);
                 }
 
                 int money = playTreasures(game);
@@ -112,21 +115,27 @@ public class Play {
         int money = 0;
         for (int i = 0; i < game.numHandCards(); i++) {
             if (game.handCard(i) == Card.Copper){
-                game.playCard(i);
+                game.playTreasure(i);
                 money++;
                 i--;
             }
             else if (game.handCard(i) == Card.Silver){
-                game.playCard(i);
+                game.playTreasure(i);
                 money += 2;
                 i--;
             }
             else if (game.handCard(i) == Card.Gold){
-                game.playCard(i);
+                game.playTreasure(i);
                 money += 3;
                 i--;
             }
         }
         return money;
+    }
+
+    public static void printCards(Game game) {
+        for (int i = 0; i < game.numHandCards(); i++) {
+            System.out.printf("Player %d card %d: %s\n", game.whoseTurn(), i, game.handCard(i));
+        }
     }
 }

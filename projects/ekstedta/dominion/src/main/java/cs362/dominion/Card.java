@@ -66,4 +66,5 @@ public enum Card {
     public int score() { return this.score; }
     public int coins() { return this.coins; }
     public boolean isAction() { return this.isAction; }
+    public boolean isTreasure() { return this.coins != 0; }
 }
