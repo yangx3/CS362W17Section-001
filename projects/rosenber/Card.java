@@ -14,7 +14,7 @@
  */
 import java.util.ArrayList;
 
-public class Card implements Cloneable {
+public class Card {
 	
 	private String name;
 	private int cost;
