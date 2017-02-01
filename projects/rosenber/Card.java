@@ -32,6 +32,15 @@ public class Card {
 		for(int j=0; j<types.size(); j++)
 			this.types.add(types.get(j));
 	}
+	public Card(Card other){
+		name = new String(other.name);
+		cost = other.cost;
+		victoryPoints = other.victoryPoints;
+		treasure = other.treasure;
+		this.types = new ArrayList<CardType>();
+		for(int j=0; j<types.size(); j++)
+			this.types.add(other.types.get(j));
+	}
 	
 	//getters
 	public String getName(){
