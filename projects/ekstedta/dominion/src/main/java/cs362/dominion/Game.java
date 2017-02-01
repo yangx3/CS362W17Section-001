@@ -126,7 +126,7 @@ public class Game {
     }
 
     // Play card with index handPos from current player's hand
-    public void playCard(int handPos, int choice1, int choice2, int choice3) {
+    public void playCard(int handPos, Object... choices) {
         List<Card> hand = this.hand.get(this.whoseTurn);
         if (!(0 <= handPos && handPos < hand.size())) {
             throw new RuntimeException("invalid handPos");
@@ -134,17 +134,50 @@ public class Game {
 
         // check if card is an action
         Card card = hand.get(handPos);
-        if (!card.isAction() && card.coins() == 0) {
+        if (!card.isAction()) {
+            if (card.coins() != 0) {
+                // ignore played treasure cards
+                return;
+            }
             throw new RuntimeException("not an action");
         }
-
-        this.actions--;
 
         // move card to the played cards pile
         // XXX changes hand indices
         // don't move to discard pile until turn is over
         hand.remove(handPos);
         this.playedCards.add(card);
+
+        // do the action
+        this.doCard(card, choices);
+
+        // Reeduce number of actions left
+        this.actions--;
+    }
+
+    private void doCard(Card playedCard, Object... choices) {
+        if (playedCard == Card.Adventurer) {
+            // Reveal cards from your deck until you reveal 2 Treasure cards.
+            // Put those Treasure cards into your hand and discard the other revealed cards
+            List<Card> deck = this.deck.get(this.whoseTurn);
+            List<Card> hand = this.hand.get(this.whoseTurn);
+            List<Card> discard = this.discard.get(this.whoseTurn);
+            int treasureCards = 0;
+            while (treasureCards < 2 && deck.size() >= 1) {
+                Card card = deck.get(deck.size()-1);
+                if (card.coins() != 0) {
+                    deck.remove(deck.size()-1);
+                    hand.add(card);
+                    this.coins += card.coins();
+                    treasureCards++;
+                } else {
+                    deck.remove(deck.size()-1);
+                    discard.add(card);
+                }
+            }
+        } else {
+            System.out.printf("unknown card %s", playedCard);
+        }
     }
 
     // Buy a card
