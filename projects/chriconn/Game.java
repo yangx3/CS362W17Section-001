@@ -132,18 +132,16 @@ public class Game {
     }
 
     public void printBank() {
-        System.out.println("Bank:");
-        System.out.println("Number of decks left: " + bank.size());
-        System.out.println("Number of decks empty: " + (13-bank.size()));
+        System.out.print("Number of decks left: " + bank.size());
+        System.out.println("\tNumber of decks empty: " + (13-bank.size()));
         for (int x = 0; x < bank.size(); x++) {
             System.out.printf("%-15s# remaining: %d\tCost: %d\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost());
         }
     }
 
     public void printBank(int coinLimit) {
-        System.out.println("Bank:");
-        System.out.println("Number of decks left: " + bank.size());
-        System.out.println("Number of decks empty: " + (13-bank.size()));
+        System.out.print("Number of decks left: " + bank.size());
+        System.out.println("\tNumber of decks empty: " + (13-bank.size()));
         for (int x = 0; x < bank.size(); x++) {
             if (bank.get(x).cardInfo(0).getCost() <= coinLimit) {
                 System.out.printf("%-15s# remaining: %d\tCost: %d\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost());
@@ -201,10 +199,11 @@ public class Game {
         //set the loop to exit by default
         boolean done = true;
         do {
-            clearScreen();
+            clearAndShowHand(num, 500);
+            System.out.println("");
             //print the moves
             printLineDelay(getPlayer(num).getMoves());
-            System.out.println("\nHere is all the available cards: ");
+            System.out.println("\n\nHere are all the available cards in the bank: ");
             //print only items in the bank that the player can afford
             printBank(getPlayer(num).getValues());
             printLineDelay("\nPlease enter a card you want to buy (or you may skip): ");
