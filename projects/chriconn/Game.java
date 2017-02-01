@@ -70,6 +70,9 @@ public class Game {
 
         //player 0 (connor) gets to go
         dominion.playerTurn(0);
+        dominion.playerTurn(1);
+        dominion.playerTurn(2);
+
 
     }
 
@@ -133,7 +136,7 @@ public class Game {
         System.out.println("Number of decks left: " + bank.size());
         System.out.println("Number of decks empty: " + (13-bank.size()));
         for (int x = 0; x < bank.size(); x++) {
-            System.out.printf("Deck Type: %-20s# in deck: %d\tCost: %d\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost());
+            System.out.printf("%-15s# remaining: %d\tCost: %d\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost());
         }
     }
 
@@ -143,46 +146,55 @@ public class Game {
         System.out.println("Number of decks empty: " + (13-bank.size()));
         for (int x = 0; x < bank.size(); x++) {
             if (bank.get(x).cardInfo(0).getCost() <= coinLimit) {
-                System.out.printf("Deck Type: %-20s# in deck: %d\tCost: %d\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost());
+                System.out.printf("%-15s# remaining: %d\tCost: %d\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost());
             }
         }
     }
 
     public void playerTurn(int num) {
+        /***** Variable initialization *****/
+
         //players name
         String name = getPlayer(num).getName();
         //card the user will want to play
         String cardToPlay;
-        //the delay time on the end of string printing
-        int pauseTime = 500;
 
         //award the player one action and one buy to start the turn
         getPlayer(num).starterPoints();
 
+        /***** Begin actions *****/
+
         clearScreen();
         //alert the player that the game will draw them 5 cards
-        printLine(name + ", the game is drawing 5 cards...", 40, pauseTime);
+        printLineDelay(name + ", the game is drawing 5 cards...");
         //draw the 5 cards
         getPlayer(num).draw(5);
         //clear the screen and print the cards in their hand
-        clearAndShowHand(num, pauseTime);
+        clearAndShowHand(num, 500);
+
+        /***** Action phase *****/
 
         //if the player has action points and they have action cards in their hand
         if (getPlayer(num).hasActions()) {
-            printLine("Please play an action card: ", 50, 0);
+            printLineDelay("Please play an action card: ");
             //print the number of actions, buys and coins the player has
             System.out.println(getPlayer(num).getMoves());
         }
         else {
             //if player did not have an action card
             if (!getPlayer(num).handContainsActions()) {
-                printLine("You do not have an action card...", 50, pauseTime);
+                printLineDelay("You do not have an action card...");
             }
             else {
-                printLine("You do not have any more action points...", 50, pauseTime);
+                printLineDelay("You do not have any more action points...");
             }
-            printLine("\nMoving on to buying phase...\n", 50, pauseTime);
+            printLineDelay("\nMoving on to buying phase...\n");
+            printLineDelay("Press enter to continue: ");
+            scanner.nextLine();
         }
+
+        /***** Buying Phase *****/
+
         //tally up the total treasure value
         getPlayer(num).sumTreasure();
 
@@ -191,11 +203,11 @@ public class Game {
         do {
             clearScreen();
             //print the moves
-            printLine(getPlayer(num).getMoves(), 30, pauseTime);
+            printLineDelay(getPlayer(num).getMoves());
             System.out.println("\nHere is all the available cards: ");
             //print only items in the bank that the player can afford
             printBank(getPlayer(num).getValues());
-            printLine("\nPlease enter a card you want to buy: ", 40, 0);
+            printLineDelay("\nPlease enter a card you want to buy (or you may skip): ");
             String purchaseCard = scanner.nextLine();
             purchaseCard = purchaseCard.toLowerCase();
 
@@ -210,12 +222,32 @@ public class Game {
             if (getDeck(purchaseCard) != null) {
                 getPlayer(num).buy(getDeck(purchaseCard));
                 System.out.println("Purchase sucessfull");
+                pause(800);
+                done = true;
+            }
+            else if (purchaseCard.equals("skip")) {
+                printLineDelay("Skipped. ");
+                printLineDelay("Your turn will now end...\n");
+                getPlayer(num).skipTurn();
+                done = true;
             }
             else {
-                System.out.println("Sorry, that is not a valid card. Try again.");
+                printLineDelay("Sorry, that is not a valid card. Try again.\n");
+                printLineDelay("....");
                 done = false;
             }
-        } while (!done);
+        } while (!done && (getPlayer(num).getValues() > 0));
+
+        getPlayer(num).discardAll();
+        printLineDelay("You may see the deck, or just press enter to end your turn: ");
+
+        String request = scanner.nextLine();
+        request = request.toLowerCase();
+        if (request.equals("deck")) {
+            printBank();
+            printLineDelay("Press enter to end your turn: ");
+            scanner.nextLine();
+        }
     }
 
     public Player getPlayer(int number) {
@@ -264,20 +296,38 @@ public class Game {
         pause(500);
     }
 
-    public void printLine(String text, int sleepTime, int endDelay) {
+    public void printLineDelay(String text) {
+        //the delay time on the end of string printing
+        int sleepTime = 700;
+        int printTime = 40;
+
         char[] charArr = text.toCharArray();
-        for(int i=0; i<=charArr.length-1;i++)
-        {
+        for(int i = 0; i <= charArr.length-1; i++) {
             System.out.print(charArr[i]);
-            try
-            {
-                Thread.sleep(sleepTime);
-            } catch (Exception e)
-            {
+            try {
+                Thread.sleep(printTime);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        pause(endDelay);
+        pause(sleepTime);
+    }
+
+    public void printLineDelay(String text, int printTime) {
+        //the delay time on the end of string printing
+        int sleepTime = 700;
+
+        char[] charArr = text.toCharArray();
+        printTime = printTime/(charArr.length-1);
+        for(int i = 0; i <= charArr.length-1; i++) {
+            System.out.print(charArr[i]);
+            try {
+                Thread.sleep(printTime);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        pause(sleepTime);
     }
 }
 
