@@ -224,4 +224,8 @@ public class Player {
             }
         }
     }
+
+    public boolean handContainsActions() {
+        return hand.hasActions();
+    }
 }

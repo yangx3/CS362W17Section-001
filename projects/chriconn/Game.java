@@ -175,11 +175,11 @@ public class Game {
         }
         else {
             //if player did not have an action card
-            if (!hand.hasActions()) {
+            if (!getPlayer(num).handContainsActions()) {
                 printLine("You do not have an action card...", 50, pauseTime);
             }
             else {
-                pritnLine("You do not have any more action points..." 50, pauseTime);
+                printLine("You do not have any more action points...", 50, pauseTime);
             }
             printLine("\nMoving on to buying phase...\n", 50, pauseTime);
         }
@@ -206,7 +206,7 @@ public class Game {
             /*******####
                 The buy function does not check the value of the card before buying
             ####*******/
-            
+
             if (getDeck(purchaseCard) != null) {
                 getPlayer(num).buy(getDeck(purchaseCard));
                 System.out.println("Purchase sucessfull");
