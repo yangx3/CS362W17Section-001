@@ -10,11 +10,7 @@ public class Game {
     private Integer numPlayers; //number of players
     private Map<Card,Integer> supply;  //this is the amount of a specific type of card given a specific number.
     private List<Card> kingdomCards;
-
-    // card-specific state
-    private Map<Card,Integer> embargoTokens;
-    private Integer outpostPlayed;
-    private Integer outpostTurn;
+    private Random rng = new Random();
 
     private Integer whoseTurn;
 
@@ -23,18 +19,21 @@ public class Game {
     // 1 - buys
     private Integer phase;
 
+    // players' cards
+    private List<List<Card>> hand; // player -> hand
+    private List<List<Card>> deck; // player -> deck
+    private List<List<Card>> discard; // player -> discard
+
     // state for current turn
     private Integer actions; // Starts at 1 each turn
     private Integer coins; // Use as you see fit!
     private Integer buys; // Starts at 1 each turn
     private List<Card> playedCards;
 
-    // players' cards
-    private List<List<Card>> hand; // player -> hand
-    private List<List<Card>> deck; // player -> deck
-    private List<List<Card>> discard; // player -> discard
-
-    private Random rng = new Random();
+    // card-specific state
+    private Map<Card,Integer> embargoTokens;
+    private Integer outpostPlayed;
+    private Integer outpostTurn;
 
     private final int handLimit = 5;
 
