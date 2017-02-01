@@ -1,5 +1,133 @@
 import java.util.*;
 
+/*
+Class Deck
+    Variables:
+        Private:
+            Deck deck
+
+    Functions:
+        Private:
+
+        Public:
+            Deck()
+            Deck(String)
+            Deck(int, Card)
+            void      printDeck()
+            void      printType(String type)
+            void      shuffle()
+            void      addBottomCard(Card card)
+            Card      drawCard()
+            boolean   empty()
+            int       numCards()
+            boolean   hasActions()
+            void      addNumberOfCardType(int number, Card card)
+            Card      cardInfo(int index)
+            int       indexOf(String cardName)
+
+        Deck:
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        Deck(String):
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        Deck(int, Card):
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        printDeck:
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        printType(String type):
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        shuffle:
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        addBottomCard(Card card):
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        drawCard:
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        empty:
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        numCards:
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        hasActions:
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        addNumberOfCardType(int number, Card card):
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        cardInfo(int index):
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+        indexOf(String cardName):
+            Description:
+            Input:
+            Output:
+            Potential Errors:
+                -
+
+*/
+
+
+
+
 public class Deck {
 
     private ArrayList<Card> deck;
@@ -91,10 +219,14 @@ public class Deck {
         return deck.size();
     };
 
-    //not done
-    public boolean containsActions() {
+    public boolean hasActions() {
         if (this.empty()) {
             return false;
+        }
+        for (int x = 0; x < deck.size(); x++) {
+            if (cardInfo(x).getHasAction()) {
+                return true;
+            }
         }
         return true;
     }
@@ -107,5 +239,14 @@ public class Deck {
 
     public Card cardInfo(int index) {
         return deck.get(index);
+    }
+
+    public int indexOf(String cardName) {
+        for (int x = 0; x < deck.size(); x++) {
+            if (cardInfo(x).getName().equals(cardName)) {
+                return x;
+            }
+        }
+        return -1;
     }
 }
