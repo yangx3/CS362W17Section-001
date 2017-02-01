@@ -141,16 +141,12 @@ public class Deck {
         type = type.toLowerCase();
 
         if (type == "starter") {
-            Card copperCard = new Card();
-            copperCard.buildCopper();
             for (int x = 0; x < 7; x++) {
-                deck.add(copperCard);
+                deck.add(new Card("copper"));
             }
 
-            Card estateCard = new Card();
-            estateCard.buildEstate();
             for (int x = 0; x < 3; x++) {
-                deck.add(estateCard);
+                deck.add(new Card("estate"));
             }
         }
     }
@@ -228,7 +224,7 @@ public class Deck {
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
     public void addNumberOfCardType(int number, Card card) {
