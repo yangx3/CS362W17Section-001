@@ -10,6 +10,7 @@ public enum Card{
   COPPER("Copper", 0, 1, 0), SILVER("Silver", 3, 2, 0),
   GOLD("Gold", 6, 3, 0), ESTATE("Estate", 2, 0, 1),
   DUCHY("Duchy", 5, 0, 3), PROVINCE("Province", 8, 0, 6),
+  CURSE("Curse", 0, 0, -1),
   ADVENTURER("Adventurer", 6){
     // See http://wiki.dominionstrategy.com/index.php/File:Adventurer.jpg
     public Card play(Player p){
@@ -146,6 +147,30 @@ public enum Card{
           return null;
         }else return this;
       }
+    }
+  },SALVAGER("Salvager", 4){
+    // See http://wiki.dominionstrategy.com/index.php/File:Salvager.jpg
+    public Card play(Player p){
+      // +1 buy, trash a card and gain money equal to it's cost
+      p.addBuys(1);
+      Card c = p.chooseHand();
+      if(c != null) p.addMoney(c.costsMoney);
+      return this;
+    }
+  },SMITHY("Smithy", 4){
+    // See http://wiki.dominionstrategy.com/index.php/File:Smithy.jpg
+    public Card play(Player p){
+      // +3 cards
+      for(int i=0; i<3; i++) p.draw();
+      return this;
+    }
+  },VILLAGE("Village", 3){
+    // See http://wiki.dominionstrategy.com/index.php/File:Village.jpg
+    public Card play(Player p){
+      // +1 card, +2 actions
+      p.draw();
+      p.addActions(2);
+      return this;
     }
   };
 
