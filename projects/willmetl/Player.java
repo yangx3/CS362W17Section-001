@@ -64,6 +64,10 @@ public class Player{
     return this.remBuys;
   }
 
+  public String getName(){
+    return this.playerName;
+  }
+
   private void actionPhase(){
     // Action phase of a player's turn
     while(remActions >= 1){
@@ -91,7 +95,7 @@ public class Player{
   }
 
   private boolean buyCard(Card c){
-    System.out.println("Attempting to buy "+c);
+    // System.out.println("Attempting to buy "+c);
     if(gameState.countCard(c)<=0){
       System.out.println("There are not enough "+c+" available.");
       return false;
@@ -179,6 +183,28 @@ public class Player{
     }else if( choice==0 )
       remActions = 0;
     return null;
+  }
+
+  public Card chooseTypeOfCard(Card.Type type){
+    while(true){
+      for(int i=0; i<hand.size(); i++){
+        if(hand.get(i).getType() == type)
+          System.out.println(i+1+" - "+hand.get(i));
+      }
+      System.out.format("Please enter the a number (1-%d) or 0 to cancel: ",
+        hand.size()
+      );
+      int choice = scan.nextInt()-1;
+      if( choice>-1 && choice<hand.size() ){
+        Card c = hand.remove(choice);
+        if(DEBUGGING) System.out.format("%s chose %s.", playerName, c);
+        return c;
+      }else if( choice==0 ) return null;
+    }
+  }
+
+  public int countAllCards(){
+    return hand.size() + cardPile.size();
   }
 
   public boolean discardRandomFromHand(){
