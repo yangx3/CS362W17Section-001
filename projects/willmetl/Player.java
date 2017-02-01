@@ -207,6 +207,17 @@ public class Player{
     return hand.size() + cardPile.size();
   }
 
+  public int countVictoryPoints(){
+    int total = 0;
+    for(Card c: hand){
+      total += c.getVictoryPoints();
+    }
+    for(Card c: cardPile){
+      total += c.getVictoryPoints();
+    }
+    return total;
+  }
+
   public boolean discardRandomFromHand(){
     // This player discards a random card from their hand
     int handsize = hand.size();

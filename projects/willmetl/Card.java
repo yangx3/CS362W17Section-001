@@ -232,7 +232,7 @@ public enum Card{
     return this;
   }
 
-  public int getVictoryPoints(Player p){
+  public int getVictoryPoints(){
     return this.givesVictoryPoints;
   }
 

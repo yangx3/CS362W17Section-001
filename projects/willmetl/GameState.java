@@ -55,6 +55,14 @@ public class GameState{
     return Collections.frequency(supply, c);
   }
 
+  public void checkEndConditions(){
+    int missingCards = 0;
+    for(Card c: Card.values()){
+      if(supply.contains(c) == false) missingCards++;
+    }
+    if(supply.contains(Card.PROVINCE)==false || missingCards>=3) endGame();
+  }
+
   public Card takeCard(Card c){
     int i = supply.indexOf(c);
     if(i >= 0) return supply.remove(i);
@@ -62,12 +70,9 @@ public class GameState{
   }
 
   public void nextTurn(){
-    if(countCard(Card.PROVINCE)>0){
-      players[playerTurn].newTurn();
-      playerTurn = (playerTurn+1)%numPlayers;
-    }else{
-      endGame("The bank is out of Province cards, so the game is over!");
-    }
+    players[playerTurn].newTurn();
+    playerTurn = (playerTurn+1)%numPlayers;
+    checkEndConditions();
   }
 
   public int listCards(){
@@ -81,15 +86,14 @@ public class GameState{
     return i;
   }
 
-  public void play(){
-    while(true){
-      System.out.println("...new turn...");
-      nextTurn();
+  private void endGame(){
+    System.out.println("Game over!");
+    for(Player p: players){
+      System.out.format("%s amassed %d victory points.\n",
+        p, p.countVictoryPoints()
+      );
     }
-  }
-
-  private void endGame(String s){
-    System.out.println(s);
     System.out.println("Thanks for playing!");
+    System.exit(0);
   }
 }
