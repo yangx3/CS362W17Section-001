@@ -47,8 +47,8 @@ public class GameState{
     players[this.numPlayers++] = a;
   }
 
-  public void addCard(Card c){
-    supply.add(c);
+  public boolean addCard(Card c){
+    return supply.add(c);
   }
 
   public int countCard(Card c){

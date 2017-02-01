@@ -24,7 +24,7 @@ public class Player{
   private ArrayList<Card> hand;
   public GameState gameState;
 
-  private Scanner scan = new Scanner(System.in);
+  public Scanner scan = new Scanner(System.in);
 
   public Player(String pName, GameState game){
     // Constructor for the Player class - sets their name
@@ -64,6 +64,10 @@ public class Player{
     return this.remBuys;
   }
 
+  public String getName(){
+    return this.playerName;
+  }
+
   private void actionPhase(){
     // Action phase of a player's turn
     while(remActions >= 1){
@@ -80,6 +84,7 @@ public class Player{
         if(c != null){
           System.out.println(playerName+" chose to play the "+c+" card.");
           playCard(c);
+          System.out.println("Back from playing the "+c+" card.");
         }else{  // this is ugly
           return;
         }
@@ -91,24 +96,34 @@ public class Player{
 
   private boolean buyCard(Card c){
     // System.out.println("Attempting to buy "+c);
-    if( gameState.countCard(c)>0 && remMoney>=c.costsMoney && remBuys>=1){
-      if(discard(gameState.takeCard(c))){
+    if(gameState.countCard(c)<=0){
+      System.out.println("There are not enough "+c+" available.");
+      return false;
+    }
+    if(remMoney<c.costsMoney){
+      System.out.format("A %s costs %d but you only have %d money. ur broke.\n",
+        c, c.costsMoney, remMoney
+      );
+      return false;
+    }
+    if(discard(gameState.takeCard(c))){
         remMoney -= c.costsMoney;
         remBuys--;
+        if(DEBUGGING) System.out.format("%s bought a %s.\n", playerName, c);
         return true;
-      }
     }
     return false;
   }
 
   private void buyPhase(){
     // Auto convert all Treasure cards and allow player to buy
-    ArrayList<Card> tempHand = new ArrayList<Card>(hand);
-    for(Card c: tempHand){
-      if(c.getType() == Card.Type.TREASURE){
-        playCard(c);
-      }
-    }
+    // Iterating over an ArrayList while removing elements gets messy
+    ArrayList<Card> tcards = new ArrayList<Card>();
+    for(Card c: hand)
+      if(c.getType() == Card.Type.TREASURE) tcards.add(c);
+    for(Card c: tcards)
+      if(hand.remove(c)) playCard(c);
+    // seeHand();
     while(remBuys >= 1){
       System.out.format("%s has %d buys and %d money to spend.\n",
         playerName, remBuys, remMoney);
@@ -133,6 +148,7 @@ public class Player{
       hand.add(draw());
     }
     // Reset actions and buys for next turn
+    remMoney = 0;
     remActions = 1;
     remBuys = 1;
   }
@@ -144,24 +160,51 @@ public class Player{
     System.out.format("Please enter the card number (1-%d) you want to play,"+
       " or 0 to cancel: ", hand.size());
     int choice = scan.nextInt();
-    if( choice>0 && choice<hand.size() )
-      return hand.remove(choice);
+    if( choice>0 && choice<hand.size() ){
+      Card c = hand.remove(choice);
+      if(DEBUGGING) System.out.format("%s chose %s.\n", playerName, c);
+      return c;
+    }
     return null;
   }
 
   public Card chooseActionCard(){
     for(int i=0; i<hand.size(); i++){
       if(hand.get(i).getType() == Card.Type.ACTION)
-        System.out.println(i+" - "+hand.get(i));
+        System.out.println(i+1+" - "+hand.get(i));
     }
     System.out.format("Please enter the card number (1-%d) you want to play,"+
       " or 0 to cancel: ", hand.size());
-    int choice = scan.nextInt();
-    if( choice>0 && choice<hand.size() )
-      return hand.remove(choice);
-    else if( choice==0 )
+    int choice = scan.nextInt()-1;
+    if( choice>-1 && choice<hand.size() ){
+      Card c = hand.remove(choice);
+      if(DEBUGGING) System.out.format("%s chose %s.", playerName, c);
+      return c;
+    }else if( choice==0 )
       remActions = 0;
     return null;
+  }
+
+  public Card chooseTypeOfCard(Card.Type type){
+    while(true){
+      for(int i=0; i<hand.size(); i++){
+        if(hand.get(i).getType() == type)
+          System.out.println(i+1+" - "+hand.get(i));
+      }
+      System.out.format("Please enter the a number (1-%d) or 0 to cancel: ",
+        hand.size()
+      );
+      int choice = scan.nextInt()-1;
+      if( choice>-1 && choice<hand.size() ){
+        Card c = hand.remove(choice);
+        if(DEBUGGING) System.out.format("%s chose %s.", playerName, c);
+        return c;
+      }else if( choice==0 ) return null;
+    }
+  }
+
+  public int countAllCards(){
+    return hand.size() + cardPile.size();
   }
 
   public boolean discardRandomFromHand(){
@@ -170,6 +213,14 @@ public class Player{
     // generate random number in range of hand size instead of this
     Card c = hand.remove(0);
     return discard(c);
+  }
+
+  public boolean discardFromHand(Card c){
+    int i = hand.indexOf(c);
+    // if(DEBUGGING) System.out.format("%s has index %d", c, i);
+    if(i>=0)
+      return cardPile.add(hand.remove(i));
+    return false;
   }
 
   public boolean discard(Card c){
@@ -190,12 +241,14 @@ public class Player{
 
   public void newTurn(){
     // Start every turn with a new, full hand and 1 action, 1 buy
-    if(DEBUGGING) System.out.println("It's "+playerName+"'s turn:");
-    // seeDeck();
+    System.out.println("It's "+playerName+"'s turn:");
+    if(DEBUGGING) seeDeck();
+    if(DEBUGGING) System.out.println("Giving hand a free FEAST!");
+    hand.add(Card.FEAST);
     actionPhase();
     buyPhase();
     cleanupPhase();
-    // seeDeck();
+    if(DEBUGGING) seeDeck();
     if(DEBUGGING) System.out.println(playerName+"'s turn is OVER.\n\n");
   }
 
@@ -206,17 +259,17 @@ public class Player{
     if(c.costsAction==0 || remActions>1){
       remActions -= c.costsAction;
       // if(DEBUGGING) System.out.println("Playing "+c);
-      c.play(this);
-      hand.remove(hand.indexOf(c));
-      discard(c);
+      if(c.play(this) != null) discard(c);
     } else {
       System.out.println("You do not have an action to play "+c);
+      return false;
     }
     return true;
   }
 
-  public void returnCardToShared(Card c){
-    // gameState.bankCards.push(c);
+  public boolean returnCardToShared(Card c){
+    // pull from hand?  assume already pulled?
+    return gameState.addCard(c);
   }
 
   public void seeDeck(){
@@ -249,6 +302,11 @@ public class Player{
   }
 
   public boolean takeFreeCard(Card c){
+    if(gameState.countCard(c)<=0){
+      System.out.println("There are not enough "+c+" available in the supply.");
+      return false;
+    }
+    System.out.format("%s gained a free %s.\n", playerName, c);
     return discard(c);
   }
 
