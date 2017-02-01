@@ -13,4 +13,39 @@
 
 public class Player{
 	
+	private String name;
+	private Hand hand;
+	private Deck deck;
+	private Deck discard;
+	private int buys;
+	private int actions;
+	private int money;
+	
+	//constructor
+	
+	//getters
+	
+	//setters
+	
+	//draws a card from the deck to the hand
+	
+	//discards a card from the hand to the discard
+	
+	//puts a card from the hand back on top of the deck
+	
+	//puts a card from the hand back to the bottom of the deck
+	
+	//shuffles deck
+	
+	//puts discard into deck and shuffles deck
+	
+	//prints the hand
+	
+	//places a card on the discard and returns it
+	playCard
+	
+	//returns total number of victory points the player has
+	
+	
+	
 }
