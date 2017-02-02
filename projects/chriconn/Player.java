@@ -126,14 +126,14 @@ public class Player {
     public boolean playCard(String cardName) {
         if (hand.indexOf(cardName) >= 0) {
             Card temp = new Card(cardName);
-            if (!temp.getHasAction()) {
+            if (!temp.isType("action")) {
                 System.out.println("Error. " + cardName + " is not an action card.");
                 return false;
             }
             else {
                 applyCardActions(temp);
                 discard(cardName);
-                decrementActions();
+                actions = actions - 1;
                 return true;
             }
         }
@@ -197,7 +197,7 @@ public class Player {
     public int getBuys()    {return buys;}
 
     public boolean hasActions() {
-        if (actions > 0 && hand.hasActions()) {
+        if (actions > 0 && hand.hasType("action")) {
             return true;
         }
         return false;
@@ -217,53 +217,55 @@ public class Player {
         if (card.getCards() > 0) {
             draw(card.getCards());
         }
-        if (card.getSpecialAction()) {
-            if (card.getName().equals("adventurer")) {
-                int numTreasures = 0;
-                if (drawDeck.indexOf("tresure") >= 0) {
-                    System.out.println(drawDeck.indexOf("tresure"));
-                    printAllDecks();
-                }
-            }
-        }
+
+
+        //Section to apply special actions from cards
+        
+        // if (card.isType("special action")) {
+        //     if (card.getName().equals("adventurer")) {
+        //     }
+        // }
     }
 
+    //sets one action and one buy that the player gets every turn
     public void starterPoints() {
         actions = 1;
         buys = 1;
         value = 0;
     }
 
+    //adds up the total value of the treasure cards in the hand
     public void sumTreasure() {
         for (int x = 0; x < hand.numCards(); x++) {
-            if (hand.cardInfo(x).isTreasureCard()) {
+            if (hand.cardInfo(x).isType("treasure")) {
                 value += hand.cardInfo(x).getValue();
             }
         }
     }
 
-    public boolean handContainsActions() {
-        return hand.hasActions();
+    //returns boolean depending on what type exists in the deck
+    public boolean handContainsType(String type) {
+        return hand.hasType(type);
     }
 
+    //sets actions, buys and value to 0
     public void endTurn() {
         buys = 0;
         actions = 0;
         value = 0;
     }
 
+    //prints only the cards in the hand that match a type
     public void printHandType(String type) {
         hand.printType(type);
     }
 
+    //sets actions to 0 to skip action phase
     public void skipActionsPhase() {
         actions = 0;
     }
 
-    public void decrementActions() {
-        actions = actions - 1;
-    }
-
+    //prints all decks, draw, hand and discard
     public void printAllDecks() {
         String name = getName();
         System.out.println("\n" + name + "'s draw deck: ");

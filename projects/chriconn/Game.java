@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 /*
 Class Game
@@ -236,7 +235,7 @@ public class Game {
             }
         }
         //if player did not have an action card
-        if (!getPlayer(num).handContainsActions()) {
+        if (!getPlayer(num).handContainsType("action")) {
             printLineDelay("You do not have an action card...");
         }
         else {
@@ -353,6 +352,8 @@ public class Game {
 
     //building a scanner class that will be used for keyboard input
     private static Scanner scanner = new Scanner(System.in);
+
+    /******* Text formatting *******/
 
     public void clearScreen() {
         System.out.print("\033[2J\033[K\033[H");
