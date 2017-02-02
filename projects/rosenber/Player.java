@@ -10,7 +10,7 @@
  * Robert Rosenberger
  * Last modified: 1/31/2017
  */
-
+package org.cs362.dominion;
 public class Player{
 	
 	private String name;
