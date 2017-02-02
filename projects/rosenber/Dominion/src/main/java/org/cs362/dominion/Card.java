@@ -57,20 +57,6 @@ public class Card {
 		return treasure;
 	}
 	
-	//setters
-	public void setName(String name){
-		this.name = name;
-	}
-	public void setCost(int cost){
-		this.cost = cost;
-	}
-	public void setVictoryPoints(int points){
-		victoryPoints = points;
-	}
-	public void setTreasureAmount(int amount){
-		treasure = amount;
-	}
-	
 	//checks to see if the card if of the passed in type
 	// - returns true if it is, false otherwise
 	public boolean isCardType(CardType type){
