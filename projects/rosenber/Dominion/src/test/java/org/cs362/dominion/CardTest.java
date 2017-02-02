@@ -9,7 +9,7 @@ public class CardTest {
 	Card testCard;
 	
 	@Test
-	public void testConstructors() {
+	public void test() {
 		ArrayList<CardType> type = new ArrayList<CardType>();
 		type.add(CardType.Action);
 		type.add(CardType.Attack);
@@ -43,6 +43,65 @@ public class CardTest {
 		
 		assertFalse("The test card is reaction type",
 				testCard.isCardType(CardType.Reaction));
+		
+		assertEquals("Card name isn't James",
+				testCard.getName(), "James");
+		
+		assertEquals("Cost isn't 1",
+				testCard.getCost(), 1);
+		
+		assertEquals("VictoryPoints isn't 2",
+				testCard.getVictoryPoints(), 2);
+		
+		assertEquals("Treasure ammount isn't 3",
+				testCard.getTreasure(), 3);
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
