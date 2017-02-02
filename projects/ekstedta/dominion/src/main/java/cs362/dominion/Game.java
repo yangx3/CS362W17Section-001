@@ -406,7 +406,6 @@ public class Game {
         this.actions = 1;
         this.buys = 1;
         this.coins = 0;
-        System.out.printf("coins=%d\n", this.coins);
     }
 
     private void draw(int player, int n) {
@@ -478,8 +477,4 @@ public class Game {
         score += garden * gardenScore;
         return score;
     }
-
-    // Set array position of each player who won (remember ties!) to 1, others to 0
-    public List<Integer> getWinners() { return new ArrayList<Integer>(); }
-
 }
