@@ -34,7 +34,7 @@ public enum Card {
     Cellar(2),
     CouncilRoom(5),
     Feast(4), /* choice1 is supply # of card gained) */
-    Gardens(4),
+    Gardens(4, 0, 0, false),
     Market(5),
     Militia(4),
     Mine(5), /* choice1 is hand# of money to trash, choice2 is supply# of money to put in hand */
