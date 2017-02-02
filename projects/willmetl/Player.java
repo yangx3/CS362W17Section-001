@@ -82,6 +82,7 @@ public class Player{
         System.out.println("Please choose an Action card from your hand.");
         Card c = chooseActionCard();
         if(c != null){
+          remActions--;
           playCard(c);
         }else{  // this is ugly
           return;
@@ -168,20 +169,26 @@ public class Player{
   }
 
   public Card chooseActionCard(){
-    for(int i=0; i<hand.size(); i++){
-      if(hand.get(i).getType() == Card.Type.ACTION)
-        System.out.println(i+1+" - "+hand.get(i));
+    while(true){
+      for(int i=0; i<hand.size(); i++){
+        if(hand.get(i).getType() == Card.Type.ACTION)
+          System.out.println(i+1+" - "+hand.get(i));
+      }
+      System.out.format("Please enter the card number (1-%d) you want to play,"+
+        " or 0 to cancel: ", hand.size());
+      int choice = scan.nextInt()-1;
+      if( choice>-1 &&
+          choice<hand.size() &&
+          hand.get(choice).getType() == Card.Type.ACTION
+      ){
+        Card c = hand.remove(choice);
+        if(DEBUGGING) System.out.format("%s chose %s.\n", playerName, c);
+        return c;
+      }else if( choice==0 ){
+        remActions = 0;
+        return null;
+      }else System.out.println("Invalid choice, please try again.");
     }
-    System.out.format("Please enter the card number (1-%d) you want to play,"+
-      " or 0 to cancel: ", hand.size());
-    int choice = scan.nextInt()-1;
-    if( choice>-1 && choice<hand.size() ){
-      Card c = hand.remove(choice);
-      if(DEBUGGING) System.out.format("%s chose %s.\n", playerName, c);
-      return c;
-    }else if( choice==0 )
-      remActions = 0;
-    return null;
   }
 
   public Card chooseTypeOfCard(Card.Type type){
@@ -275,6 +282,10 @@ public class Player{
       return false;
     }
     return true;
+  }
+
+  public boolean putInHand(Card c){
+    return hand.add(c);
   }
 
   public boolean returnCardToShared(Card c){

@@ -23,6 +23,7 @@ public enum Card{
       while(needTreasures > 0){
         Card c = p.draw();
         if(c.givesMoney > 0){
+          p.putInHand(c);
           needTreasures--;
         } else {
           p.discard(c);
@@ -51,7 +52,7 @@ public enum Card{
   "gain an Estate."){
     // See http://wiki.dominionstrategy.com/index.php/File:Baron.jpg
     public Card play(Player p){
-      // If player discards an estate, +4, otherwise, draw an Estate
+      // +4 money if player discards an estate, otherwise, draw an Estate
       if(p.discardFromHand(Card.ESTATE)){
         p.addMoney(4);
       }else{
@@ -64,12 +65,17 @@ public enum Card{
     // See http://wiki.dominionstrategy.com/index.php/File:Council_Room.jpg
     public Card play(Player p){
       // +4 cards, +1 buy, each other player draws a card
-      for(int i=0; i<4; i++) p.draw();
+      for(int i=0; i<4; i++){
+        Card c = p.draw();
+        System.out.println("You drew a "+c);
+        p.putInHand(c);
+      }
       p.addBuys(1);
       GameState g = p.gameState;
       for(int i=0; i<g.numPlayers; i++){
         if(g.players[i] != p){
-          g.players[i].draw();
+          g.players[i].putInHand(g.players[i].draw());
+          System.out.println(g.players[i]+" drew a card.");
         }
       }
       return this;
@@ -136,8 +142,10 @@ public enum Card{
     // See http://wiki.dominionstrategy.com/index.php/File:Great_Hall.jpg
     public Card play(Player p){
       // +1 card, +1 action, worth 1 vp
+      Card c = p.draw();
+      System.out.println("You drew a "+c);
+      p.putInHand(c);
       p.addActions(1);
-      p.draw();
       return this;
     };
     public int getVictoryPoints(Player p){
@@ -148,16 +156,19 @@ public enum Card{
   "card to your hand costing up to 3 more."){
     // See http://wiki.dominionstrategy.com/index.php/File:Mine.jpg
     public Card play(Player p){
-      // Trash a treasure card from your hand to gain 3 money more than it
+      // Trash a treasure card from your hand to gain the next better Treasure
       // Put this new card in your HAND
       boolean unresolved = true;
       while(true){
         System.out.println("Trash a treasure card from your hand to gain "+
-          "3 more money than it normally gives.");
+          "a Treasure card worth up to 3 more than your original Treasure.");
         Card c = p.chooseTypeOfCard(Type.TREASURE);
         if(c != null){
-          p.addMoney(c.givesMoney+3);
-          return null;
+          GameState supply = p.gameState;
+          if(c == COPPER) p.putInHand(supply.takeCard(SILVER));
+          if(c == SILVER) p.putInHand(supply.takeCard(GOLD));
+          if(c == GOLD)   p.putInHand(supply.takeCard(GOLD));
+          return null;    // not returning the played card trashes it
         }else return this;
       }
     }
@@ -178,7 +189,7 @@ public enum Card{
       for(int i=0; i<3; i++){
         Card c = p.draw();
         System.out.println("You drew a "+c);
-        p.discard(c);
+        p.putInHand(c);
       }
       return this;
     }
@@ -186,7 +197,9 @@ public enum Card{
     // See http://wiki.dominionstrategy.com/index.php/File:Village.jpg
     public Card play(Player p){
       // +1 card, +2 actions
-      p.draw();
+      Card c = p.draw();
+      System.out.println("You drew a "+c);
+      p.putInHand(c);
       p.addActions(2);
       return this;
     }
