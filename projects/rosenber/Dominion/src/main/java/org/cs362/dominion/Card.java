@@ -39,7 +39,7 @@ public class Card {
 		victoryPoints = other.victoryPoints;
 		treasure = other.treasure;
 		this.types = new ArrayList<CardType>();
-		for(int j=0; j<types.size(); j++)
+		for(int j=0; j<other.types.size(); j++)
 			this.types.add(other.types.get(j));
 	}
 	
