@@ -128,10 +128,12 @@ Class Deck
 public class Deck {
     private ArrayList<Card> deck;
 
+    //default constructor assigns empty space to deck
     public Deck() {
         deck = new ArrayList<Card>();
     }
 
+    //Non-default constructor creates specific decks depending on name
     public Deck(String type) {
         deck = new ArrayList<Card>();
         type = type.toLowerCase();
@@ -145,8 +147,31 @@ public class Deck {
                 deck.add(new Card("estate"));
             }
         }
+        else if (type == "oneofeach") {
+            deck.add(new Card("adventurer"));
+            deck.add(new Card("ambassador"));
+            deck.add(new Card("baron"));
+            deck.add(new Card("council room"));
+            deck.add(new Card("cutpurse"));
+            deck.add(new Card("embargo"));
+            deck.add(new Card("feast"));
+            deck.add(new Card("gardens"));
+            deck.add(new Card("great hall"));
+            deck.add(new Card("mine"));
+            deck.add(new Card("gold"));
+            deck.add(new Card("silver"));
+            deck.add(new Card("copper"));
+            deck.add(new Card("province"));
+            deck.add(new Card("dutchy"));
+            deck.add(new Card("estate"));
+            deck.add(new Card("village"));
+            deck.add(new Card("smithy"));
+            deck.add(new Card("adventurer"));
+            deck.add(new Card("curse"));
+        }
     }
 
+    //Non-default constructor creates a specific deck x number of one type of card
     public Deck(int number, Card card) {
         deck = new ArrayList<Card>();
         for (int x = 0; x < number; x++) {
@@ -156,27 +181,16 @@ public class Deck {
 
     public void printDeck() {
         for (int x = 0; x < deck.size(); x++) {
-            if (x < 9) {
-                System.out.println("Card #0" + (x+1) + ": " + deck.get(x).getName());
-            }
-            else {
-                System.out.println("Card #" + (x+1) + ": " + deck.get(x).getName());
-            }
+            System.out.printf("Card %2d: %s\n", (x+1), deck.get(x).getName());
         }
     }
 
+    //prints all of one kind of card in the deck
     public void printType(String type) {
         type = type.toLowerCase();
-        if (type == "action") {
-            for (int x = 0; x < deck.size(); x++) {
-                if (deck.get(x).getHasAction()) {
-                    if (x < 9) {
-                        System.out.printf("Card #0%d: %-15sDescription: %s\n",(x+1), deck.get(x).getName(), deck.get(x).getDescription());
-                    }
-                    else {
-                        System.out.printf("Card #%d:%-15s\tDescription: %s\n",(x+1), deck.get(x).getName(), deck.get(x).getDescription());
-                    }
-                }
+        for (int x = 0; x < deck.size(); x++) {
+            if (deck.get(x).isType(type)) {
+                System.out.printf("Card #2%d: %-15sDescription: %s\n",(x+1), deck.get(x).getName(), deck.get(x).getDescription());
             }
         }
     }
@@ -185,47 +199,50 @@ public class Deck {
         Collections.shuffle(deck, new Random(System.nanoTime()));
     };
 
-    public void addCard(Card card) {
-        deck.add(0, card);
-    };
+    //adds card to the top of the deck
+    public void addCard(Card card)          {deck.add(0, card);};
+    public void addBottomCard(Card card)    {deck.add(card);};
 
-    public void addBottomCard(Card card) {
-        deck.add(card);
-    };
 
+    //draws a card from the top of the deck
     public Card drawCard() {
-        if (deck.size() > 0) {
-            return deck.remove(0);
-        }
-        return null;
+        //if deck is larger than 0 remove and return, else return null
+        return (deck.size() > 0) ? deck.remove(0) : null;
     };
 
+    //draws the first card that matches that name or returns null
     public Card drawCard(String name) {
         for (int x = 0; x < deck.size(); x++) {
-            if (this.cardInfo(x).getName().equals(name)) {
+            if (this.cardNameEquals(x, name)) {
                 return deck.remove(x);
             }
         }
         return null;
     }
 
-    public boolean empty() {
-        if (deck.size() == 0) {
-            return true;
-        }
-        return false;
-    };
+    //if the deck size is 0, return true, else return false
+    public boolean empty()  {return (deck.size() == 0) ? true : false;};
+    public int numCards()   {return deck.size();};
 
-    public int numCards() {
-        return deck.size();
-    };
+    //checks to see if the deck has an action card
+    // public boolean hasActions() {
+    //     if (this.empty()) {
+    //         return false;
+    //     }
+    //     for (int x = 0; x < deck.size(); x++) {
+    //         if (cardInfo(x).isType("action")) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 
-    public boolean hasActions() {
+    public boolean hasType(String type) {
         if (this.empty()) {
             return false;
         }
         for (int x = 0; x < deck.size(); x++) {
-            if (cardInfo(x).getHasAction()) {
+            if (cardInfo(x).isType(type)) {
                 return true;
             }
         }
@@ -242,15 +259,12 @@ public class Deck {
         return deck.get(index);
     }
 
+    public boolean cardNameEquals(int index, String name) {
+        return deck.get(index).getName().equals(name);
+    }
+
+    //get the index of a card with a certain name
     public int indexOf(String cardName) {
-        if (cardName.equals("treasure")) {
-            for (int x = 0; x < deck.size(); x++) {
-                if (cardInfo(x).isTreasureCard()) {
-                    return x;
-                }
-            }
-            return -1;
-        }
         for (int x = 0; x < deck.size(); x++) {
             if (cardInfo(x).getName().equals(cardName)) {
                 return x;
