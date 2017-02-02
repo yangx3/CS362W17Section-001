@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-
+//Cards are people. Don't eat them...
 
 public final class Card implements Comparable<Card>, Cloneable{
 	public static enum Type {
@@ -19,11 +19,11 @@ public final class Card implements Comparable<Card>, Cloneable{
 		Adventurer, Smithy, Village;
 	}
 	/**
-	 * @param enum CardName the name of the card (GOLD, SILVER, COPPER, 
-	 * @param enum Type the type of the card (Victory, Treasure, or Kingdom
-	 * @param int cost the cost of the card
-	 * @param int score the score of the card, when the game is finished
-	 * @param treasureValue  the treasure value of the treasure cards (cooper, silver, and gold cards)
+	// * @param enum CardName the name of the card (GOLD, SILVER, COPPER,
+	// * @param enum Type the type of the card (Victory, Treasure, or Kingdom
+	// * @param int cost the cost of the card
+	// * @param int score the score of the card, when the game is finished
+	// * @param treasureValue  the treasure value of the treasure cards (cooper, silver, and gold cards)
 	 */
 	private final Type realType;
 	private final CardName cardName;
