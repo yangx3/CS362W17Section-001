@@ -12,6 +12,7 @@ public class CardTest {
 	public void testConstructors() {
 		ArrayList<CardType> type = new ArrayList<CardType>();
 		type.add(CardType.Action);
+		type.add(CardType.Attack);
 		
 		testCard = new Card("James", 1, 2, 3, type);
 		Card other = new Card(testCard);
@@ -31,11 +32,17 @@ public class CardTest {
 		assertEquals("The treasure amount isn't the same",
 				testCard.getTreasure(), other.getTreasure());
 		
-		assertTrue("The test card is the wrong type", 
+		assertTrue("The test card isn't action type", 
 				testCard.isCardType(CardType.Action));
+		
+		assertTrue("The test card isn't attack type", 
+				testCard.isCardType(CardType.Attack));
 		
 		assertTrue("The other card is the wrong type",
 				other.isCardType(CardType.Action));
+		
+		assertFalse("The test card is reaction type",
+				testCard.isCardType(CardType.Reaction));
 	}
 
 }
