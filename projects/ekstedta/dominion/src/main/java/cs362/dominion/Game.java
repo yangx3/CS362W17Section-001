@@ -7,12 +7,12 @@ import java.util.Map;
 import java.util.Random;
 
 public class Game {
-    private Integer numPlayers; //number of players
-    private Map<Card,Integer> supply;  //this is the amount of a specific type of card given a specific number.
-    private List<Card> kingdomCards;
     private Random rng = new Random();
+    private Integer numPlayers;
+    private List<Card> kingdomCards; // set of cards in the supply
+    private Map<Card,Integer> supply;  // number of cards left in each supply pile
 
-    private Integer whoseTurn;
+    private Integer currentPlayer;
 
     // phases
     // 0 - actions
@@ -26,13 +26,14 @@ public class Game {
 
     // state for current turn
     private Integer actions; // Starts at 1 each turn
-    private Integer coins; // Use as you see fit!
+    private Integer coins; // Starts at 0 each turn
     private Integer buys; // Starts at 1 each turn
     private List<Card> playedCards;
 
     // card-specific state
     private Map<Card,Integer> embargoTokens;
 
+    // constants
     private final int handLimit = 5;
 
     public Game(Integer numPlayers, List<Card> kingdomCards, Integer randomSeed) {
@@ -47,7 +48,7 @@ public class Game {
         this.numPlayers = numPlayers;
         this.supply = new HashMap<Card,Integer>();
         this.embargoTokens = new HashMap<Card,Integer>();
-        this.whoseTurn = 0;
+        this.currentPlayer = 0;
         this.phase = 0;
         this.actions = 0;
         this.coins = 0;
@@ -131,7 +132,7 @@ public class Game {
     // Play an action card with index handPos from current player's hand
     // Can only call this method during the action phase.
     public void playAction(int handPos, Object... choices) {
-        List<Card> hand = this.hand.get(this.whoseTurn);
+        List<Card> hand = this.hand.get(this.currentPlayer);
         if (!(0 <= handPos && handPos < hand.size())) {
             throw new GameError("invalid handPos");
         }
@@ -170,7 +171,7 @@ public class Game {
     // Play the treasure card at position handPos in the current player's hand.
     // Calling this method ends the action phase.
     public void playTreasure(int handPos) {
-        List<Card> hand = this.hand.get(this.whoseTurn);
+        List<Card> hand = this.hand.get(this.currentPlayer);
         if (!(0 <= handPos && handPos < hand.size())) {
             throw new GameError("invalid handPos");
         }
@@ -196,14 +197,14 @@ public class Game {
     }
 
     private void take(int player, Card card) {
-        this.supply.put(card, this.supply.get(card) - 1);
+        decrement(this.supply, card);
         this.hand.get(player).add(card);
     }
 
     private int doEffect(Card playedCard, Object... choices) {
-        List<Card> deck = this.deck.get(this.whoseTurn);
-        List<Card> hand = this.hand.get(this.whoseTurn);
-        List<Card> discard = this.discard.get(this.whoseTurn);
+        List<Card> deck = this.deck.get(this.currentPlayer);
+        List<Card> hand = this.hand.get(this.currentPlayer);
+        List<Card> discard = this.discard.get(this.currentPlayer);
 
         this.coins += playedCard.coins();
 
@@ -237,10 +238,10 @@ public class Game {
             // Otherwise, gain an Estate card.
         } else if (playedCard == Card.CouncilRoom) {
             // +4 Cards; +1 Buy. Each other player draws a card.
-            this.draw(this.whoseTurn, 4);
+            this.draw(this.currentPlayer, 4);
             this.buys += 1;
             for (int i = 0; i < this.numPlayers; i++) {
-                if (i != this.whoseTurn) {
+                if (i != this.currentPlayer) {
                     this.draw(i, 1);
                 }
             }
@@ -249,7 +250,7 @@ public class Game {
             // Each other player discards a Copper card (or reveals a hand with no Copper).
             this.coins += 2;
             for (int i = 0; i < this.numPlayers; i++) {
-                if (i != this.whoseTurn) {
+                if (i != this.currentPlayer) {
                     this.hand.get(i).remove(Card.Copper);
                 }
             }
@@ -274,11 +275,11 @@ public class Game {
             if (card.cost() >= 5) {
                 throw new GameError("feast: gained card must cost 5 or less");
             }
-            this.take(this.whoseTurn, card);
+            this.take(this.currentPlayer, card);
             return TRASH;
         } else if (playedCard == Card.GreatHall) {
             // +1 Card; +1 Action. Worth 1 Victory
-            this.draw(this.whoseTurn, 1);
+            this.draw(this.currentPlayer, 1);
             this.actions += 1;
         } else if (playedCard == Card.Mine) {
             // Trash a Treasure card from your hand.
@@ -309,17 +310,17 @@ public class Game {
             if (this.supply.get(newCard) < 1) {
                 throw new GameError("mine: there is none of that card left");
             }
-            this.supply.put(newCard, this.supply.get(newCard) - 1);
+            decrement(this.supply, newCard);
             hand.set(treasurePos, newCard);
         } else if (playedCard == Card.Market) {
             this.coins += 1;
             this.actions += 1;
             this.buys += 1;
-            this.draw(this.whoseTurn, 1);
+            this.draw(this.currentPlayer, 1);
         } else if (playedCard == Card.Smithy) {
-            this.draw(this.whoseTurn, 3);
+            this.draw(this.currentPlayer, 3);
         } else if (playedCard == Card.Village) {
-            this.draw(this.whoseTurn, 1);
+            this.draw(this.currentPlayer, 1);
             this.actions += 2;
         } else if (playedCard == Card.Gold || playedCard == Card.Silver || playedCard == Card.Copper) {
             // already added coins above, nothing else to do
@@ -327,6 +328,14 @@ public class Game {
             System.out.printf("unknown card %s\n", playedCard);
         }
         return DISCARD;
+    }
+
+    private static void increment(Map<Card,Integer> map, Card key) {
+        map.put(key, map.get(key) + 1);
+    }
+
+    private static void decrement(Map<Card,Integer> map, Card key) {
+        map.put(key, map.get(key) - 1);
     }
 
     // Buy a card
@@ -345,20 +354,20 @@ public class Game {
         }
         this.phase = 1;
         // card goes in the discard pile
-        this.discard.get(this.whoseTurn).add(card);
-        this.supply.put(card, this.supply.get(card) - 1);
+        this.discard.get(this.currentPlayer).add(card);
+        decrement(this.supply, card);
         this.coins -= card.cost();
         this.buys -= 1;
     }
 
     // How many cards current player has in hand
     public int numHandCards() {
-        return this.hand.get(this.whoseTurn).size();
+        return this.hand.get(this.currentPlayer).size();
     }
 
     // enum value of indexed card in player's hand
     public Card handCard(int handNum) {
-        List<Card> hand = this.hand.get(this.whoseTurn);
+        List<Card> hand = this.hand.get(this.currentPlayer);
         if (0 <= handNum && handNum < hand.size()) {
             return hand.get(handNum);
         } else {
@@ -381,28 +390,25 @@ public class Game {
         return count;
     }
 
-    // Get the current player
-    public int whoseTurn() { return whoseTurn; }
-
     // End the current player's turn
     // Must do phase C and advance to next player;
     // do not advance whose turn if game is over
     public void endTurn() {
         // discard hand
-        this.discard.get(this.whoseTurn).addAll(this.hand.get(this.whoseTurn));
-        this.hand.get(this.whoseTurn).clear();
+        this.discard.get(this.currentPlayer).addAll(this.hand.get(this.currentPlayer));
+        this.hand.get(this.currentPlayer).clear();
 
         // move played actions to discard pile
-        this.discard.get(this.whoseTurn).addAll(this.playedCards);
+        this.discard.get(this.currentPlayer).addAll(this.playedCards);
         this.playedCards.clear();
 
         // draw five cards
-        this.draw(this.whoseTurn, handLimit);
+        this.draw(this.currentPlayer, handLimit);
 
         // advance player
-        this.whoseTurn++;
-        if (this.whoseTurn >= this.numPlayers) {
-            this.whoseTurn = 0;
+        this.currentPlayer++;
+        if (this.currentPlayer >= this.numPlayers) {
+            this.currentPlayer = 0;
         }
 
         this.startTurn();
@@ -484,4 +490,13 @@ public class Game {
         score += garden * gardenScore;
         return score;
     }
+
+    /* Accessors */
+
+    public int getCoins() { return this.coins; }
+    public int getActions() { return this.actions; }
+    public int getBuys() { return this.buys; }
+    public int getNumPlayers() { return this.numPlayers; }
+    public int getCurrentPlayer() { return this.currentPlayer; }
+    public int getPhase() { return this.phase; }
 }

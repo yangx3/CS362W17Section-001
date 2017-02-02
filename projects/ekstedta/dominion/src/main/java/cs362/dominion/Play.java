@@ -45,7 +45,7 @@ public class Play {
 
             printCards(game);
 
-            if (game.whoseTurn() == 0) {
+            if (game.getCurrentPlayer() == 0) {
                 // Player 0: likes to buy smithies
                 if (smithyPos != -1) {
                     System.out.printf("0: smithy played from position %d\n", smithyPos);
@@ -144,7 +144,7 @@ public class Play {
 
     public static void printCards(Game game) {
         for (int i = 0; i < game.numHandCards(); i++) {
-            System.out.printf("Player %d card %d: %s\n", game.whoseTurn(), i, game.handCard(i));
+            System.out.printf("Player %d card %d: %s\n", game.getCurrentPlayer(), i, game.handCard(i));
         }
     }
 }
