@@ -15,7 +15,7 @@ import java.util.*;
     Embargo
     Feast
     Gardens
-    Great_hall
+    Great hall
     Mine
 
     Custom cards
@@ -313,7 +313,7 @@ public class Card {
                 cost           =  4;
                 hasAction      =  true;
                 cards          =  3;
-                description    = "The village card allows for three new cards";
+                description    = "The smithy card allows for three new cards";
                 type.add("action");
                 break;
 
@@ -323,6 +323,7 @@ public class Card {
                 description    =  "Reveal cards from your deck until you recveal 2 treasure cards. Put those Treasure cards into your hand and discard the other realed cards.";
                 hasAction      =  true;
                 type.add("action");
+                type.add("special action");
                 break;
 
             case "witch":
@@ -333,6 +334,7 @@ public class Card {
                 cards          =  2;
                 type.add("action");
                 type.add("attack");
+                type.add("special action");
                 break;
 
             case "cellar":
@@ -342,6 +344,7 @@ public class Card {
                 hasAction      =  true;
                 actions        =  1;
                 type.add("action");
+                type.add("special action");
                 break;
 
             case "market":
@@ -370,6 +373,7 @@ public class Card {
                 description    = "Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply. Then each other player gains a copy of it.";
                 type.add("action");
                 type.add("attack");
+                type.add("special action");
                 break;
 
             case "baron":
@@ -378,6 +382,7 @@ public class Card {
                 value          = 4;
                 description    = "You may discard an Estate card. If you do, +4 Coins. Otherwise, gain an Estate card.";
                 type.add("action");
+                type.add("special action");
                 break;
 
             case "council room":
@@ -387,6 +392,7 @@ public class Card {
                 buys           = 1;
                 description    = "Each other player draws a card";
                 type.add("action");
+                type.add("special action");
                 break;
 
             case "cutpurse":
@@ -396,13 +402,15 @@ public class Card {
                 description    = "Each other player discards a copper card (or reveals a hand with no copper)";
                 type.add("action");
                 type.add("attack");
+                type.add("special action");
                 break;
 
             case "embargo":
                 name           = "embargo";
                 cost           = 2;
-                description    = "+2 coins if you trash this card. Put an Embargo token on top of a Supply pile. - When a player buys a card, he gains a Curse card per Embargo token on that pile.";
+                description    = "Trash for +2 coins. Put an Embargo token on top of a Supply pile. - A player gains a Curse card per Embargo token on that pile when a card is bought.";
                 type.add("action");
+                type.add("special action");
                 break;
 
             case "feast":
@@ -410,6 +418,7 @@ public class Card {
                 cost           = 4;
                 description    = "Trash this card. Gain a card costing up to 5 coins";
                 type.add("action");
+                type.add("special action");
                 break;
 
             case "gardens":
@@ -427,6 +436,7 @@ public class Card {
                 description    = "Lets the player draw an extra card and have an extra action";
                 type.add("action");
                 type.add("victory");
+                type.add("special action");
                 break;
 
             case "mine":
@@ -434,6 +444,7 @@ public class Card {
                 cost           = 5;
                 description    = "Trash a treasure card from your hand. Gain a treasure card costing up to 3 coins more and put that card in your hand";
                 type.add("action");
+                type.add("special action");
                 break;
 
         }
@@ -500,6 +511,14 @@ public class Card {
     public boolean getHasAction() {
         for (int x = 0; x < type.size(); x++) {
             if (type.get(x).equals("action")) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean getSpecialAction() {
+        for (int x = 0; x < type.size(); x++) {
+            if (type.get(x).equals("special action")) {
                 return true;
             }
         }
