@@ -248,6 +248,7 @@ public class Card {
                 name           = "gold";
                 value          = 3;
                 cost           = 6;
+                description    = "The silver card is a treasure card worth 3 coins";
                 treasureCard   = true;
                 type.add("treasure");
                 break;
@@ -256,6 +257,7 @@ public class Card {
                 name           = "silver";
                 value          = 2;
                 cost           = 3;
+                description    = "The silver card is a treasure card worth 2 coins";
                 treasureCard   = true;
                 type.add("treasure");
                 break;
@@ -264,6 +266,7 @@ public class Card {
                 name           = "copper";
                 value          = 1;
                 cost           = 0;
+                description    = "The silver card is a treasure card worth 1 coin";
                 treasureCard   = true;
                 type.add("treasure");
                 break;
@@ -272,6 +275,7 @@ public class Card {
                 name           =  "province";
                 cost           =  8;
                 victoryPoints  =  6;
+                description    = "The province is 8 victory points";
                 victoryCard    = true;
                 type.add("victory");
                 break;
@@ -280,6 +284,7 @@ public class Card {
                 name           =  "dutchy";
                 cost           =  5;
                 victoryPoints  =  3;
+                description    = "The dutchy is 3 victory points";
                 victoryCard    = true;
                 type.add("victory");
                 break;
@@ -288,6 +293,7 @@ public class Card {
                 name           =  "estate";
                 cost           =  2;
                 victoryPoints  =  1;
+                description    = "The estate is 1 victory points";
                 victoryCard    = true;
                 type.add("victory");
                 break;
@@ -298,6 +304,7 @@ public class Card {
                 hasAction      =  true;
                 cards          =  1;
                 actions        =  2;
+                description    = "The village card allows for two extra actions";
                 type.add("action");
                 break;
 
@@ -306,13 +313,14 @@ public class Card {
                 cost           =  4;
                 hasAction      =  true;
                 cards          =  3;
+                description    = "The village card allows for three new cards";
                 type.add("action");
                 break;
 
             case "adventurer":
                 name           =  "adventurer";
                 cost           =  6;
-                description    =  "Reveal cards from your deck until you recveal 2 treasure cards.\nPut those Treasure cards into your hand and discard the other realed cards.";
+                description    =  "Reveal cards from your deck until you recveal 2 treasure cards. Put those Treasure cards into your hand and discard the other realed cards.";
                 hasAction      =  true;
                 type.add("action");
                 break;
@@ -344,6 +352,7 @@ public class Card {
                 actions        =  1;
                 buys           =  1;
                 coins          =  1;
+                description    = "Gives the player an extra card, coin, buy and action";
                 type.add("action");
                 break;
 
@@ -351,6 +360,7 @@ public class Card {
                 name           =  "curse";
                 cost           =  0;
                 victoryPoints  =  -1;
+                description    = "Counts as a negative victory point";
                 type.add("curse");
                 break;
 
@@ -414,6 +424,7 @@ public class Card {
                 cost           = 3;
                 cards          = 1;
                 actions        = 1;
+                description    = "Lets the player draw an extra card and have an extra action";
                 type.add("action");
                 type.add("victory");
                 break;
@@ -479,13 +490,21 @@ public class Card {
     public int getCost()              {return cost;}
     public int getVictoryPoints()     {return victoryPoints;}
     public String getDescription()    {return description;}
-    public boolean getHasAction()     {return hasAction;}
     public boolean isTreasureCard()   {return treasureCard;}
     public boolean isVictoryCard()    {return victoryCard;}
+    public ArrayList<String> getType(){return type;}
     public int getCards()             {return cards;}
     public int getActions()           {return actions;}
     public int getBuys()              {return buys;}
     public int getCoins()             {return coins;}
+    public boolean getHasAction() {
+        for (int x = 0; x < type.size(); x++) {
+            if (type.get(x).equals("action")) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     //printing fuction for testing
     public void printCard() {
