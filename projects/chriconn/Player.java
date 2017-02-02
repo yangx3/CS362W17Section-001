@@ -123,24 +123,23 @@ public class Player {
         hand.printDeck();
     }
 
-    public void playCard(String cardName) {
+    public boolean playCard(String cardName) {
         if (hand.indexOf(cardName) >= 0) {
             Card temp = new Card(cardName);
-            if (temp.isVictoryCard()) {
-                System.out.println("Error. You cannot play a victory card");
-                System.exit(1);
-            }
-            else if (temp.isTreasureCard()) {
-                System.out.println("Error. You cannot play a treasure card");
-                System.exit(1);
+            if (!temp.getHasAction()) {
+                System.out.println("Error. " + cardName + " is not an action card.");
+                return false;
             }
             else {
                 applyCardActions(temp);
+                discard(cardName);
+                decrementActions();
+                return true;
             }
         }
         else {
             System.out.println("Error. That card does not exist");
-            System.exit(1);
+            return false;
         }
     }
 
@@ -152,13 +151,14 @@ public class Player {
         discard.addCard(type.drawCard());
     }
 
-    public void draw() {
+    public Card draw() {
         if (drawDeck.empty()) {
             recycle();
         }
         //the hand is drawing a card from the drawCard deck
-        hand.addBottomCard(drawDeck.drawCard());
-
+        Card temp = drawDeck.drawCard();
+        hand.addBottomCard(temp);
+        return temp;
     }
 
     public void discard() {
@@ -166,6 +166,10 @@ public class Player {
             //the discard deck is drawing from the hand
             discard.addCard(hand.drawCard());
         }
+    }
+
+    public void discard(String cardName) {
+        discard.addCard(hand.drawCard(cardName));
     }
 
     public void discardAll() {
@@ -210,11 +214,24 @@ public class Player {
         actions += card.getActions();
         value += card.getValue();
         buys += card.getBuys();
+        if (card.getCards() > 0) {
+            draw(card.getCards());
+        }
+        if (card.getSpecialAction()) {
+            if (card.getName().equals("adventurer")) {
+                int numTreasures = 0;
+                if (drawDeck.indexOf("tresure") >= 0) {
+                    System.out.println(drawDeck.indexOf("tresure"));
+                    printAllDecks();
+                }
+            }
+        }
     }
 
     public void starterPoints() {
         actions = 1;
         buys = 1;
+        value = 0;
     }
 
     public void sumTreasure() {
@@ -229,8 +246,31 @@ public class Player {
         return hand.hasActions();
     }
 
-    public void skipTurn() {
+    public void endTurn() {
         buys = 0;
         actions = 0;
+        value = 0;
+    }
+
+    public void printHandType(String type) {
+        hand.printType(type);
+    }
+
+    public void skipActionsPhase() {
+        actions = 0;
+    }
+
+    public void decrementActions() {
+        actions = actions - 1;
+    }
+
+    public void printAllDecks() {
+        String name = getName();
+        System.out.println("\n" + name + "'s draw deck: ");
+        drawDeck.printDeck();
+        System.out.println("\n" +  name + "'s hand:");
+        showHand();
+        System.out.println("\n" + name + "'s discarded deck: ");
+        discard.printDeck();
     }
 }
