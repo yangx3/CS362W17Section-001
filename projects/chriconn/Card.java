@@ -24,192 +24,44 @@ import java.util.*;
 Class Card
     Variables:
         Private:
-            String  name;
-            int     value;
-            int     cost;
-            int     victoryPoints;
-            String  description;
-            boolean hasAction;
-            boolean treasureCard;
-            boolean victoryCard;
-            int     cards;
-            int     actions;
-            int     buys;
-            int     coins;
+            String            name;
+            int               value;
+            int               cost;
+            int               victoryPoints;
+            String            description;
+            ArrayList<String> type;
+            int               cards;
+            int               actions;
+            int               buys;
+            int               coins;
 
 
     Functions:
         Private:
 
         Public:
-            Card()
-            Card(String setName)
-            void      setName(String setName)
-            void      setValue(int setValue)
-            void      setCost(int setCost)
-            void      setVictoryPoints(int setVictoryPoints)
-            void      setDescription(String setDescription)
-            void      setHasAction(boolean setHasAction)
-            void      setCards(int setCards)
-            void      setActions(int setActions)
-            void      setBuys(int setBuys)
-            void      setCoins(int setCoins)
-            String    getName()
-            int       getValue()
-            int       getCost()
-            int       getVictoryPoints()
-            String    getDescription()
-            boolean   getHasAction()
-            boolean   isTreasureCard()
-            boolean   isVictoryCard()
-            int       getCards()
-            int       getActions()
-            int       getBuys()
-            int       getCoins()
-            void      printCard()
-
-
-
-            Card():
-                Description:
-                Input:
-                Output:
-                Potential Errors:
-                    -
-
-            Card(String setName):
-                Description:
-                Input:
-                Output:
-                Potential Errors:
-                    -
-
--- Descriptions for setters are removed, as they are fairly self explanitory --
-
-            setName:
-                Description: Sets the name of the card
-                Input: A string name
-                Output: None
-                Potential Errors:
-                    -
-
-            setValue:
-                Description: Sets the value that the card is worth when buying
-                Input: An integer value
-                Output: None
-                Potential Errors:
-                    - Negative numbers
-
-            setCost:
-                Description: Sets the value of the cost
-                Input: An integer value
-                Output: None
-                Potential Errors:
-                    - Negative numbers
-
-            setVictoryPoints:
-                Description: Sets the number of victory points the card has
-                Input: An integer value
-                Output: None
-                Potential Errors:
-                    - Negative numbers over 1
-
-            setDescription:
-                Input:
-                Output:
-                Potential Errors:
-                    -
-
-            setHasAction:
-                Description: Sets the boolean value about whether the card
-                             has an action or not
-                Input:
-                Output:
-                Potential Errors:
-                    -
-
-            setCards:
-                Input:
-                Output:
-                Potential Errors:
-                    -
-
-            setActions:
-                Input:
-                Output:
-                Potential Errors:
-                    -
-
-            setBuys:
-                Input:
-                Output:
-                Potential Errors:
-                    -
-
-            setCoins:
-                Input:
-                Output:
-                Potential Errors:
-                    -
-
-            getName:
-            getValue:
-            getCost:
-            getVictoryPoints:
-            getDescription:
-            getHasAction:
-            isTreasureCard:
-            isVictoryCard:
-            getCards:
-            getActions:
-            getBuys:
-            getCoins:
-
-
-            printCard:
-                Description:
-                Input:
-                Output:
-                Potential Errors:
-                    -
 */
 
 
 public class Card {
 
     /* Basic card info */
-    //the name of the card
-    private String name;
-    //if the card is a coin, it will have a value
-    private int value;
-    //all cards have a set cost
-    private int cost;
-    //if it is a victory card, it will have a victory point value
-    private int victoryPoints;
-    //some cards have some descriptions about specific rules
-    private String description;
-
-    /* Info about card type */
-    //check to see if the card has actions (treasure and victory cards dont)
-    private boolean hasAction;
-    //check to see if the card is a treasure card
-    private boolean treasureCard;
-    //check to see if the card is a victory card
-    private boolean victoryCard;
-
+    private String name;           //the name of the card
+    private int value;             //if the card is a coin, it will have a value
+    private int cost;              //all cards have a set cost
+    private int victoryPoints;     //if it is a victory card, it will have a victory point value
+    private String description;    //some cards have some descriptions about specific rules
     private ArrayList<String> type;
 
-    //Card action stats
-    //Each of these stats will only be added to the user if they play the card
+    /*
+    Card action stats
+    Each of these stats will only be added to the user if they play the card
+    */
 
-    //how many extra cards you may draw
-    private int cards;
-    //how many extra actions you may use
-    private int actions;
-    //how many extra buys you may have
-    private int buys;
-    //how many extra coins you may have
-    private int coins;
+    private int cards;    //how many extra cards you may draw
+    private int actions;  //how many extra actions you may use
+    private int buys;     //how many extra buys you may have
+    private int coins;    //how many extra coins you may have
 
     //The default constructor for the card
     public Card() {
@@ -218,9 +70,6 @@ public class Card {
         cost = 0;
         victoryPoints = 0;
         description = "null";
-        hasAction = false;
-        treasureCard = false;
-        victoryCard = false;
         type = new ArrayList<String>();
         cards = 0;
         actions = 0;
@@ -228,14 +77,12 @@ public class Card {
         coins = 0;
     }
 
+    //Non-default constructor that gives card values for each type
     public Card(String setName) {
         value = 0;
         cost = 0;
         victoryPoints = 0;
         description = "null";
-        hasAction = false;
-        treasureCard = false;
-        victoryCard = false;
         type = new ArrayList<String>();
         cards = 0;
         actions = 0;
@@ -249,7 +96,6 @@ public class Card {
                 value          = 3;
                 cost           = 6;
                 description    = "The silver card is a treasure card worth 3 coins";
-                treasureCard   = true;
                 type.add("treasure");
                 break;
 
@@ -258,7 +104,6 @@ public class Card {
                 value          = 2;
                 cost           = 3;
                 description    = "The silver card is a treasure card worth 2 coins";
-                treasureCard   = true;
                 type.add("treasure");
                 break;
 
@@ -267,7 +112,6 @@ public class Card {
                 value          = 1;
                 cost           = 0;
                 description    = "The silver card is a treasure card worth 1 coin";
-                treasureCard   = true;
                 type.add("treasure");
                 break;
 
@@ -276,7 +120,6 @@ public class Card {
                 cost           =  8;
                 victoryPoints  =  6;
                 description    = "The province is 8 victory points";
-                victoryCard    = true;
                 type.add("victory");
                 break;
 
@@ -285,7 +128,6 @@ public class Card {
                 cost           =  5;
                 victoryPoints  =  3;
                 description    = "The dutchy is 3 victory points";
-                victoryCard    = true;
                 type.add("victory");
                 break;
 
@@ -294,14 +136,12 @@ public class Card {
                 cost           =  2;
                 victoryPoints  =  1;
                 description    = "The estate is 1 victory points";
-                victoryCard    = true;
                 type.add("victory");
                 break;
 
             case "village":
                 name           =  "village";
                 cost           =  3;
-                hasAction      =  true;
                 cards          =  1;
                 actions        =  2;
                 description    = "The village card allows for two extra actions";
@@ -311,7 +151,6 @@ public class Card {
             case "smithy":
                 name           =  "smithy";
                 cost           =  4;
-                hasAction      =  true;
                 cards          =  3;
                 description    = "The smithy card allows for three new cards";
                 type.add("action");
@@ -321,7 +160,6 @@ public class Card {
                 name           =  "adventurer";
                 cost           =  6;
                 description    =  "Reveal cards from your deck until you recveal 2 treasure cards. Put those Treasure cards into your hand and discard the other realed cards.";
-                hasAction      =  true;
                 type.add("action");
                 type.add("special action");
                 break;
@@ -330,7 +168,6 @@ public class Card {
                 name           =  "witch";
                 cost           =  5;
                 description    =  "Each other player gains a Curse card.";
-                hasAction      =  true;
                 cards          =  2;
                 type.add("action");
                 type.add("attack");
@@ -341,7 +178,6 @@ public class Card {
                 name           =  "cellar";
                 cost           =  2;
                 description    =  "Discard any number of cards. +1 Card per card discarded.";
-                hasAction      =  true;
                 actions        =  1;
                 type.add("action");
                 type.add("special action");
@@ -350,7 +186,6 @@ public class Card {
             case "market":
                 name           =  "market";
                 cost           =  5;
-                hasAction      =  true;
                 cards          =  1;
                 actions        =  1;
                 buys           =  1;
@@ -452,47 +287,36 @@ public class Card {
 
     /******************** Individual Settings ********************/
 
-    public void setName(String setName)
-    {name = setName;}
-    public void setValue(int setValue)
-    {value = setValue;}
-    public void setCost(int setCost)
-    {cost = setCost;}
+    public void setName(String setName)     {name = setName;}
+    public void setValue(int setValue) {
+        if (setValue > -1 && setValue < 11) {
+            value = setValue;
+        } else {
+            System.out.println("Error: Card value must be more than -1 and less than 11");
+            System.exit(1);
+        }
+    }
+    public void setCost(int setCost) {
+        if (setCost > -1 && setCost < 11) {
+            cost = setCost;
+        } else {
+            System.out.println("Error: Card cost must be more than -1 and less than 11");
+            System.exit(1);
+        }
+    }
+
     public void setVictoryPoints(int setVictoryPoints)
     {victoryPoints = setVictoryPoints;}
     public void setDescription(String setDescription)
     {description = setDescription;}
-    public void setHasAction(boolean setHasAction)
-    {hasAction = setHasAction;}
 
 
-    public void setCards(int setCards) {
-        cards = setCards;
-        if (setCards > 0) {
-            hasAction = true;
-        }
-    }
+    public void setCards(int setCards)      { cards = setCards; }
+    public void setActions(int setActions)  { actions = setActions; }
+    public void setBuys(int setBuys)        { buys = setBuys; }
+    public void setCoins(int setCoins)      { coins = setCoins; }
 
-    public void setActions(int setActions) {
-        actions = setActions;
-        if (setActions > 0) {
-            hasAction = true;
-        }
-    }
 
-    public void setBuys(int setBuys) {
-        buys = setBuys;
-        if (setBuys > 0) {
-            hasAction = true;
-        }
-    }
-
-    public void setCoins(int setCoins) {
-        coins = setCoins;
-        if (setCoins > 0) {
-            hasAction = true;
-        }
-    }
     /******************** End Individual Settings ********************/
 
     //getter functions for the contents of the class
@@ -501,24 +325,15 @@ public class Card {
     public int getCost()              {return cost;}
     public int getVictoryPoints()     {return victoryPoints;}
     public String getDescription()    {return description;}
-    public boolean isTreasureCard()   {return treasureCard;}
-    public boolean isVictoryCard()    {return victoryCard;}
     public ArrayList<String> getType(){return type;}
     public int getCards()             {return cards;}
     public int getActions()           {return actions;}
     public int getBuys()              {return buys;}
     public int getCoins()             {return coins;}
-    public boolean getHasAction() {
+
+    public boolean isType(String typeName) {
         for (int x = 0; x < type.size(); x++) {
-            if (type.get(x).equals("action")) {
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean getSpecialAction() {
-        for (int x = 0; x < type.size(); x++) {
-            if (type.get(x).equals("special action")) {
+            if (type.get(x).equals(typeName)) {
                 return true;
             }
         }
@@ -533,9 +348,6 @@ public class Card {
         "\nCost: " + cost +
         "\nVictory Points: " + victoryPoints +
         "\nDescription: " + description +
-        "\nHas Action: " + hasAction +
-        "\nTreasure Card: " + treasureCard +
-        "\nVictory Card: " + victoryCard +
         "\nExtra Cards to Draw: " + cards +
         "\nExtra Actions: " + actions +
         "\nExtra buys: " + buys +
