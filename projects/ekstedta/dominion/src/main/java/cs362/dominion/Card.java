@@ -31,18 +31,17 @@ public enum Card {
 
     // Base set
     Adventurer(6), /* If no/only 1 treasure found, stop when full deck seen */
+    Cellar(2),
     CouncilRoom(5),
     Feast(4), /* choice1 is supply # of card gained) */
     Gardens(4),
+    Market(5),
+    Militia(4),
     Mine(5), /* choice1 is hand# of money to trash, choice2 is supply# of money to put in hand */
+    Moat(2),
     Remodel(4), /* choice1 is hand# of card to remodel, choice2 is supply# */
     Smithy(4),
     Village(3),
-
-    Cellar(2),
-    Market(5),
-    Militia(4),
-    Moat(2),
     Woodcutter(3),
     Workshop(3),
 
