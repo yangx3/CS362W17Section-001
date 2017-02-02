@@ -61,25 +61,46 @@ Class Game
 
 public class Game {
     public static void main(String[] args) {
+        System.out.print("Do you want to run this program with pretty printing? (yes/no): ");
+        String pretty = scanner.nextLine();
+        pretty = pretty.toLowerCase();
+
+        if (pretty.equals("yes")) {
+            setSleepTime(500);
+            setPrintTime(40);
+        }
+        else {
+            setSleepTime(0);
+            setPrintTime(0);
+        }
+
         //creates three players
         Game dominion = new Game("Connor", "Billy", "Lily");
+
         //prints an empty line
         System.out.println();
         //prints the whole bank for testing
-        // dominion.printBank();
+        dominion.printBank();
 
-        //player 0 (connor) gets to go
-        dominion.playerTurn(0);
-        dominion.playerTurn(1);
-        dominion.playerTurn(2);
-
-
+        for (int x = 0; x < 3; x++) {
+            dominion.playerTurn(x);
+        }
     }
 
     //array of all decks the game owns
     ArrayList<Deck> bank;
     int numPlayers;
     ArrayList<Player> players;
+    static int printTime;
+    static int sleepTime;
+
+    public static void setPrintTime(int number) {
+        printTime = number;
+    }
+
+    public static void setSleepTime(int number) {
+        sleepTime = number;
+    }
 
     public Game() {
         bank = new ArrayList<Deck>();
@@ -129,6 +150,7 @@ public class Game {
         for (String s: names) {
             players.add(new Player(s));
         }
+        numPlayers = names.length;
     }
 
     public void printBank() {
@@ -168,7 +190,7 @@ public class Game {
         //draw the 5 cards
         getPlayer(num).draw(5);
         //clear the screen and print the cards in their hand
-        clearAndShowHand(num, 500);
+        clearAndShowHand(num, sleepTime);
 
         /***** Action phase *****/
 
@@ -198,15 +220,21 @@ public class Game {
 
         //set the loop to exit by default
         boolean done = true;
+        boolean previousInputError = false;
         do {
-            clearAndShowHand(num, 500);
+            clearAndShowHand(num, sleepTime);
             System.out.println("");
             //print the moves
             printLineDelay(getPlayer(num).getMoves());
-            System.out.println("\n\nHere are all the available cards in the bank: ");
+            System.out.println("\n\nHere are all the cards you can afford in the bank: ");
             //print only items in the bank that the player can afford
             printBank(getPlayer(num).getValues());
-            printLineDelay("\nPlease enter a card you want to buy (or you may skip): ");
+
+            if (!previousInputError) {
+                printLineDelay("\nPlease enter a card you want to buy (or you may skip): ");
+            } else {
+                printLineDelay("\nThat is not a valid card. Please enter a card you want to buy (or you may skip): ");
+            }
             String purchaseCard = scanner.nextLine();
             purchaseCard = purchaseCard.toLowerCase();
 
@@ -221,7 +249,7 @@ public class Game {
             if (getDeck(purchaseCard) != null) {
                 getPlayer(num).buy(getDeck(purchaseCard));
                 System.out.println("Purchase sucessfull");
-                pause(800);
+                pause(sleepTime);
                 done = true;
             }
             else if (purchaseCard.equals("skip")) {
@@ -234,6 +262,7 @@ public class Game {
                 printLineDelay("Sorry, that is not a valid card. Try again.\n");
                 printLineDelay("....");
                 done = false;
+                previousInputError = true;
             }
         } while (!done && (getPlayer(num).getValues() > 0));
 
@@ -283,8 +312,8 @@ public class Game {
     public void pause(int sleepTime) {
         try {
             Thread.sleep(sleepTime);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (InterruptedException e) {
+            // e.printStackTrace();
         }
     }
 
@@ -292,39 +321,24 @@ public class Game {
         clearScreen();
         System.out.println(getPlayer(playerNumber).getName() + "'s hand: ");
         getPlayer(playerNumber).showHand();
-        pause(500);
+        pause(sleepTime);
     }
 
     public void printLineDelay(String text) {
-        //the delay time on the end of string printing
-        int sleepTime = 700;
-        int printTime = 40;
-
         char[] charArr = text.toCharArray();
         for(int i = 0; i <= charArr.length-1; i++) {
             System.out.print(charArr[i]);
-            try {
-                Thread.sleep(printTime);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            pause(printTime);
         }
         pause(sleepTime);
     }
 
     public void printLineDelay(String text, int printTime) {
-        //the delay time on the end of string printing
-        int sleepTime = 700;
-
         char[] charArr = text.toCharArray();
         printTime = printTime/(charArr.length-1);
         for(int i = 0; i <= charArr.length-1; i++) {
             System.out.print(charArr[i]);
-            try {
-                Thread.sleep(printTime);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            pause(printTime);
         }
         pause(sleepTime);
     }
