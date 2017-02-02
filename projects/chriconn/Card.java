@@ -1,8 +1,22 @@
+import java.util.*;
+
 /*
-    Required cards
+    What I thought was required cards
     Money   - Gold, Silver, Copper
     Victory - Province, Dutchy, Estate
     Action  - Village, Smithy, Adventurer, Curse
+
+    Required Cards:
+    Adventurer
+    Ambassador
+    Baron
+    Council room
+    Cutpurse
+    Embargo
+    Feast
+    Gardens
+    Great_hall
+    Mine
 
     Custom cards
     Witch, Cellar, Market
@@ -183,6 +197,8 @@ public class Card {
     //check to see if the card is a victory card
     private boolean victoryCard;
 
+    private ArrayList<String> type;
+
     //Card action stats
     //Each of these stats will only be added to the user if they play the card
 
@@ -205,6 +221,7 @@ public class Card {
         hasAction = false;
         treasureCard = false;
         victoryCard = false;
+        type = new ArrayList<String>();
         cards = 0;
         actions = 0;
         buys = 0;
@@ -212,104 +229,202 @@ public class Card {
     }
 
     public Card(String setName) {
+        value = 0;
+        cost = 0;
+        victoryPoints = 0;
+        description = "null";
+        hasAction = false;
+        treasureCard = false;
+        victoryCard = false;
+        type = new ArrayList<String>();
+        cards = 0;
+        actions = 0;
+        buys = 0;
+        coins = 0;
         setName = setName.toLowerCase();
 
         switch (setName) {
             case "gold":
-                name           =  "gold";
-                value          =  3;
-                cost           =  6;
-                treasureCard = true;
+                name           = "gold";
+                value          = 3;
+                cost           = 6;
+                treasureCard   = true;
+                type.add("treasure");
                 break;
 
             case "silver":
-                name           =  "silver";
-                value          =  2;
-                cost           =  3;
-                treasureCard = true;
+                name           = "silver";
+                value          = 2;
+                cost           = 3;
+                treasureCard   = true;
+                type.add("treasure");
                 break;
 
             case "copper":
-                name           =  "copper";
-                value          =  1;
-                cost           =  0;
-                treasureCard = true;
+                name           = "copper";
+                value          = 1;
+                cost           = 0;
+                treasureCard   = true;
+                type.add("treasure");
                 break;
 
             case "province":
-                name          =  "province";
-                cost          =  8;
-                victoryPoints =  6;
-                victoryCard = true;
+                name           =  "province";
+                cost           =  8;
+                victoryPoints  =  6;
+                victoryCard    = true;
+                type.add("victory");
                 break;
 
             case "dutchy":
-                name          =  "dutchy";
-                cost          =  5;
-                victoryPoints =  3;
-                victoryCard = true;
+                name           =  "dutchy";
+                cost           =  5;
+                victoryPoints  =  3;
+                victoryCard    = true;
+                type.add("victory");
                 break;
 
             case "estate":
-                name          =  "estate";
-                cost          =  2;
-                victoryPoints =  1;
-                victoryCard = true;
+                name           =  "estate";
+                cost           =  2;
+                victoryPoints  =  1;
+                victoryCard    = true;
+                type.add("victory");
                 break;
 
             case "village":
-                name          =  "village";
-                cost          =  3;
-                hasAction     =  true;
-                cards         =  1;
-                actions       =  2;
+                name           =  "village";
+                cost           =  3;
+                hasAction      =  true;
+                cards          =  1;
+                actions        =  2;
+                type.add("action");
                 break;
 
             case "smithy":
-                name          =  "smithy";
-                cost          =  4;
-                hasAction     =  true;
-                cards         =  3;
+                name           =  "smithy";
+                cost           =  4;
+                hasAction      =  true;
+                cards          =  3;
+                type.add("action");
                 break;
 
             case "adventurer":
-                name          =  "adventurer";
-                cost          =  6;
-                description   =  "Reveal cards from your deck until you recveal 2 treasure cards.\nPut those Treasure cards into your hand and discard the other realed cards.";
-                hasAction     =  true;
+                name           =  "adventurer";
+                cost           =  6;
+                description    =  "Reveal cards from your deck until you recveal 2 treasure cards.\nPut those Treasure cards into your hand and discard the other realed cards.";
+                hasAction      =  true;
+                type.add("action");
                 break;
 
             case "witch":
-                name          =  "witch";
-                cost          =  5;
-                description   =  "Each other player gains a Curse card.";
-                hasAction     =  true;
-                cards         =  2;
+                name           =  "witch";
+                cost           =  5;
+                description    =  "Each other player gains a Curse card.";
+                hasAction      =  true;
+                cards          =  2;
+                type.add("action");
+                type.add("attack");
                 break;
 
             case "cellar":
-                name          =  "cellar";
-                cost          =  2;
-                description   =  "Discard any number of cards. +1 Card per card discarded.";
-                hasAction     =  true;
-                actions       =  1;
+                name           =  "cellar";
+                cost           =  2;
+                description    =  "Discard any number of cards. +1 Card per card discarded.";
+                hasAction      =  true;
+                actions        =  1;
+                type.add("action");
                 break;
 
             case "market":
-                name          =  "market";
-                cost          =  5;
-                hasAction     =  true;
-                cards         =  1;
-                actions       =  1;
-                buys          =  1;
-                coins         =  1;
+                name           =  "market";
+                cost           =  5;
+                hasAction      =  true;
+                cards          =  1;
+                actions        =  1;
+                buys           =  1;
+                coins          =  1;
+                type.add("action");
                 break;
 
             case "curse":
-                name          =  "curse";
-                cost          =  0;
-                victoryPoints =  -1;
+                name           =  "curse";
+                cost           =  0;
+                victoryPoints  =  -1;
+                type.add("curse");
                 break;
+
+            case "ambassador":
+                name           = "ambassador";
+                cost           = 3;
+                description    = "Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply. Then each other player gains a copy of it.";
+                type.add("action");
+                type.add("attack");
+                break;
+
+            case "baron":
+                name           = "baron";
+                cost           = 4;
+                value          = 4;
+                description    = "You may discard an Estate card. If you do, +4 Coins. Otherwise, gain an Estate card.";
+                type.add("action");
+                break;
+
+            case "council room":
+                name           = "council room";
+                cost           = 5;
+                cards          = 4;
+                buys           = 1;
+                description    = "Each other player draws a card";
+                type.add("action");
+                break;
+
+            case "cutpurse":
+                name           = "cutpurse";
+                cost           = 4;
+                coins          = 2;
+                description    = "Each other player discards a copper card (or reveals a hand with no copper)";
+                type.add("action");
+                type.add("attack");
+                break;
+
+            case "embargo":
+                name           = "embargo";
+                cost           = 2;
+                description    = "+2 coins if you trash this card. Put an Embargo token on top of a Supply pile. - When a player buys a card, he gains a Curse card per Embargo token on that pile.";
+                type.add("action");
+                break;
+
+            case "feast":
+                name           = "feast";
+                cost           = 4;
+                description    = "Trash this card. Gain a card costing up to 5 coins";
+                type.add("action");
+                break;
+
+            case "gardens":
+                name           = "gardens";
+                cost           = 4;
+                description    = "Worth 1 victory for every 10 cards in your deck(rounded down)";
+                type.add("victory");
+                break;
+
+            case "great hall":
+                name           = "great hall";
+                cost           = 3;
+                cards          = 1;
+                actions        = 1;
+                type.add("action");
+                type.add("victory");
+                break;
+
+            case "mine":
+                name           = "mine";
+                cost           = 5;
+                description    = "Trash a treasure card from your hand. Gain a treasure card costing up to 3 coins more and put that card in your hand";
+                type.add("action");
+                break;
+
         }
     }
 
@@ -389,136 +504,4 @@ public class Card {
         "\nExtra Coins: " + coins +
         "\n");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /******************** Automatic Card Constructors ********************/
-
-    /*******Treasure Cards*******/
-    //gold
-    public void buildGold() {
-        name          =  "gold";
-        value         =  3;
-        cost          =  6;
-        description   =  "No description available";
-    }
-
-    //silver
-    public void buildSilver() {
-        name          =  "silver";
-        value         =  3;
-        cost          =  6;
-        description   =  "No description available";
-    }
-
-    //copper
-    public void buildCopper() {
-        name          =  "copper";
-        value         =  3;
-        cost          =  6;
-        description   =  "No description available";
-    }
-
-    /*******Victory Cards*******/
-    //province
-    public void buildProvince() {
-        name          =  "province";
-        cost          =  8;
-        victoryPoints =  6;
-        description   =  "No description available";
-    }
-
-    //dutchy
-    public void buildDutchy() {
-        name          =  "dutchy";
-        cost          =  5;
-        victoryPoints =  3;
-        description   =  "No description available";
-    }
-
-    //estate
-    public void buildEstate() {
-        name          =  "estate";
-        cost          =  2;
-        victoryPoints =  1;
-        description   =  "No description available";
-    }
-
-    /*******Action Cards*******/
-    //village
-    public void buildVillage() {
-        name          =  "village";
-        cost          =  3;
-        description   =  "No description available";
-        hasAction     =  true;
-        cards         =  1;
-        actions       =  2;
-    }
-
-    //smithy
-    public void buildSmithy() {
-        name          =  "smithy";
-        cost          =  4;
-        description   =  "No description available";
-        hasAction     =  true;
-        cards         =  3;
-    }
-
-    //adventurer
-    public void buildAdventurer() {
-        name          =  "adventurer";
-        cost          =  6;
-        description   =  "Reveal cards from your deck until you recveal 2 treasure cards.\nPut those Treasure cards into your hand and discard the other realed cards.";
-        hasAction     =  true;
-    }
-
-    //cellar
-    public void buildWitch() {
-        name          =  "witch";
-        cost          =  5;
-        description   =  "Each other player gains a Curse card.";
-        hasAction     =  true;
-        cards         =  2;
-    }
-
-    //witch
-    public void buildCellar() {
-        name          =  "cellar";
-        cost          =  2;
-        description   =  "Discard any number of cards. +1 Card per card discarded.";
-        hasAction     =  true;
-        actions       =  1;
-    }
-
-    //market
-    public void buildMarket() {
-        name          =  "market";
-        cost          =  5;
-        description   =  "No description available";
-        hasAction     =  true;
-        cards         =  1;
-        actions       =  1;
-        buys          =  1;
-        coins         =  1;
-    }
-
-    public void buildCurse() {
-        name          =  "curse";
-        cost          =  0;
-        description   =  "No description available";
-        victoryPoints =  -1;
-    }
-
-    /******************** End Automatic Card Constructors ********************/
 }
