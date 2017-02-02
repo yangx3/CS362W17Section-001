@@ -39,10 +39,10 @@ public class Game {
 
     public Game(Integer numPlayers, List<Card> kingdomCards, Integer randomSeed) {
         if (kingdomCards.size() != 10) {
-            throw new RuntimeException("must supply 10 kingdom cards");
+            throw new GameError("must supply 10 kingdom cards");
         }
         if (!(2 <= numPlayers && numPlayers <= 4)) {
-            throw new RuntimeException("numPlayers must be between 2 and 4");
+            throw new GameError("numPlayers must be between 2 and 4");
         }
 
         this.kingdomCards = new ArrayList<>(kingdomCards);
@@ -137,18 +137,18 @@ public class Game {
     public void playAction(int handPos, Object... choices) {
         List<Card> hand = this.hand.get(this.whoseTurn);
         if (!(0 <= handPos && handPos < hand.size())) {
-            throw new RuntimeException("invalid handPos");
+            throw new GameError("invalid handPos");
         }
 
         // check if card is an action
         Card card = hand.get(handPos);
         if (!card.isAction()) {
-            throw new RuntimeException("not an action");
+            throw new GameError("not an action");
         }
 
         // check if right phase
         if (this.phase != 0) {
-            throw new RuntimeException("can only play actions during the action phase");
+            throw new GameError("can only play actions during the action phase");
         }
 
         // move the played card out of the hand
@@ -176,13 +176,13 @@ public class Game {
     public void playTreasure(int handPos) {
         List<Card> hand = this.hand.get(this.whoseTurn);
         if (!(0 <= handPos && handPos < hand.size())) {
-            throw new RuntimeException("invalid handPos");
+            throw new GameError("invalid handPos");
         }
 
         // check if card is a treasure
         Card card = hand.get(handPos);
         if (!card.isTreasure()) {
-            throw new RuntimeException("not a treasure card");
+            throw new GameError("not a treasure card");
         }
 
         // if not in buy phase, advance the phase
@@ -325,16 +325,16 @@ public class Game {
     // Buy a card
     public void buyCard(Card card) {
         if (this.buys < 1) {
-            throw new RuntimeException("you have no buys left");
+            throw new GameError("you have no buys left");
         }
         if (this.supply.get(card) == null || this.supply.get(card) < 1) {
-            throw new RuntimeException("there are no more of that card left");
+            throw new GameError("there are no more of that card left");
         }
         if (this.coins < card.cost()) {
-            throw new RuntimeException("not enough coins");
+            throw new GameError("not enough coins");
         }
         if (this.phase != 0 && this.phase != 1) {
-            throw new RuntimeException("you aren't in the buy phase");
+            throw new GameError("you aren't in the buy phase");
         }
         this.phase = 1;
         // card goes in the discard pile
