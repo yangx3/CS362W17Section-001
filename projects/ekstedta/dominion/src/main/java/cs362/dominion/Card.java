@@ -11,6 +11,19 @@ public enum Card {
     Silver(3, 0, 2, false),
     Gold(6, 0, 3, false),
 
+    // Required to implement:
+    //
+    // Adventurer
+    // Ambassador
+    // Baron
+    // CouncilRoom
+    // Cutpurse
+    // Embargo
+    // Feast
+    // Gardens
+    // GreatHall
+    // Mine
+
     // Base set
     Adventurer(6), /* If no/only 1 treasure found, stop when full deck seen */
     CouncilRoom(5),
@@ -30,7 +43,7 @@ public enum Card {
 
     // Intrigue expansion
     Baron(4), /* choice1: boolean for discard of estate. Discard is always of first (lowest index) estate */
-    GreatHall(3),
+    GreatHall(3, 1, 0, true),
     Minion(5), /* choice1:  1 = +2 coin, 2 = redraw */
     Steward(3), /* choice1: 1 = +2 card, 2 = +2 coin, 3 = trash 2 (choice2,3) */
     Tribute(5),

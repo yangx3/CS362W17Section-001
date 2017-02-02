@@ -28,16 +28,20 @@ public class Play {
 
         int numSmithies = 0;
         int numAdventurers = 0;
+        int numMarkets = 0;
 
         while (!game.isGameOver()) {
             int smithyPos = -1;
             int adventurerPos = -1;
+            int marketPos = -1;
 
             for (int i = 0; i < game.numHandCards(); i++) {
                 if (game.handCard(i) == Card.Smithy) {
                     smithyPos = i;
                 } else if (game.handCard(i) == Card.Adventurer) {
                     adventurerPos = i;
+                } else if (game.handCard(i) == Card.Market) {
+                    marketPos = i;
                 }
             }
 
@@ -77,6 +81,10 @@ public class Play {
                     System.out.printf("1: adventurer played from position %d\n", adventurerPos);
                     game.playAction(adventurerPos);
                     printCards(game);
+                } else if (marketPos != -1) {
+                    System.out.printf("1: market played");
+                    game.playAction(marketPos);
+                    printCards(game);
                 }
 
                 int money = playTreasures(game);
@@ -89,6 +97,9 @@ public class Play {
                     System.out.printf("1: bought adventurer\n");
                     game.buyCard(Card.Adventurer);
                     numAdventurers++;
+                } else if (money >= Card.Market.cost() && numMarkets < 2) {
+                    game.buyCard(Card.Market);
+                    numMarkets++;
                 } else if (money >= 6) {
                     System.out.printf("1: bought gold\n");
                     game.buyCard(Card.Gold);
