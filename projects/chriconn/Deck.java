@@ -125,11 +125,7 @@ Class Deck
 
 */
 
-
-
-
 public class Deck {
-
     private ArrayList<Card> deck;
 
     public Deck() {
@@ -175,10 +171,10 @@ public class Deck {
             for (int x = 0; x < deck.size(); x++) {
                 if (deck.get(x).getHasAction()) {
                     if (x < 9) {
-                        System.out.println("Card #0" + (x+1) + ": " + deck.get(x).getName());
+                        System.out.printf("Card #0%d: %-15sDescription: %s\n",(x+1), deck.get(x).getName(), deck.get(x).getDescription());
                     }
                     else {
-                        System.out.println("Card #" + (x+1) + ": " + deck.get(x).getName());
+                        System.out.printf("Card #%d:%-15s\tDescription: %s\n",(x+1), deck.get(x).getName(), deck.get(x).getDescription());
                     }
                 }
             }
@@ -203,6 +199,15 @@ public class Deck {
         }
         return null;
     };
+
+    public Card drawCard(String name) {
+        for (int x = 0; x < deck.size(); x++) {
+            if (this.cardInfo(x).getName().equals(name)) {
+                return deck.remove(x);
+            }
+        }
+        return null;
+    }
 
     public boolean empty() {
         if (deck.size() == 0) {
@@ -238,6 +243,14 @@ public class Deck {
     }
 
     public int indexOf(String cardName) {
+        if (cardName.equals("treasure")) {
+            for (int x = 0; x < deck.size(); x++) {
+                if (cardInfo(x).isTreasureCard()) {
+                    return x;
+                }
+            }
+            return -1;
+        }
         for (int x = 0; x < deck.size(); x++) {
             if (cardInfo(x).getName().equals(cardName)) {
                 return x;
