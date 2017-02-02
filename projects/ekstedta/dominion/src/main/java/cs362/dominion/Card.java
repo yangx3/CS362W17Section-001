@@ -24,6 +24,11 @@ public enum Card {
     // GreatHall
     // Mine
 
+    // My optional cards
+    // Market
+    // Smithy
+    // Village
+
     // Base set
     Adventurer(6), /* If no/only 1 treasure found, stop when full deck seen */
     CouncilRoom(5),
@@ -68,6 +73,7 @@ public enum Card {
         this.coins = 0;
         this.isAction = true;
     }
+
     Card(int cost, int score, int coins, boolean isAction) {
         this.cost = cost;
         this.score = score;

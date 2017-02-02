@@ -214,6 +214,7 @@ public class Game {
         if (playedCard == Card.Adventurer) {
             // Reveal cards from your deck until you reveal 2 Treasure cards.
             // Put those Treasure cards into your hand and discard the other revealed cards
+            // XXX revealed cards should not be discarded until after the action is complete
             int treasureCards = 0;
             while (treasureCards < 2 && deck.size() >= 1) {
                 Card card = deck.get(deck.size()-1);
@@ -314,6 +315,11 @@ public class Game {
             this.actions += 1;
             this.buys += 1;
             this.draw(this.whoseTurn, 1);
+        } else if (playedCard == Card.Smithy) {
+            this.draw(this.whoseTurn, 3);
+        } else if (playedCard == Card.Village) {
+            this.draw(this.whoseTurn, 1);
+            this.actions += 2;
         } else if (playedCard == Card.Gold || playedCard == Card.Silver || playedCard == Card.Copper) {
             // already added coins above, nothing else to do
         } else {
