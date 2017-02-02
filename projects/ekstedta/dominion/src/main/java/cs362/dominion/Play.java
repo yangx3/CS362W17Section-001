@@ -4,20 +4,18 @@ import java.util.ArrayList;
 
 public class Play {
     public static void main(String[] arguments) {
-        // Standard starting set of kingdom cards.
         // I can't believe java doesn't have array literals??
         ArrayList<Card> kingdomCards = new ArrayList<>();
-        kingdomCards.add(Card.Cellar);
+        kingdomCards.add(Card.Adventurer);
+        kingdomCards.add(Card.Ambassador);
+        kingdomCards.add(Card.Baron);
+        kingdomCards.add(Card.Cutpurse);
+        kingdomCards.add(Card.Gardens);
+        kingdomCards.add(Card.GreatHall);
         kingdomCards.add(Card.Market);
-        kingdomCards.add(Card.Militia);
         kingdomCards.add(Card.Mine);
-        kingdomCards.add(Card.Moat);
-        kingdomCards.add(Card.Remodel);
         kingdomCards.add(Card.Smithy);
         kingdomCards.add(Card.Village);
-        kingdomCards.add(Card.Woodcutter);
-        //kingdomCards.add(Card.Workshop);
-        kingdomCards.add(Card.Adventurer);
 
         int seed = 1;
         Game game = new Game(2, kingdomCards, seed);

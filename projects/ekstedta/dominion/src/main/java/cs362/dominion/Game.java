@@ -32,8 +32,6 @@ public class Game {
 
     // card-specific state
     private Map<Card,Integer> embargoTokens;
-    private Integer outpostPlayed;
-    private Integer outpostTurn;
 
     private final int handLimit = 5;
 
@@ -49,8 +47,6 @@ public class Game {
         this.numPlayers = numPlayers;
         this.supply = new HashMap<Card,Integer>();
         this.embargoTokens = new HashMap<Card,Integer>();
-        this.outpostPlayed = 0;
-        this.outpostTurn = 0;
         this.whoseTurn = 0;
         this.phase = 0;
         this.actions = 0;
@@ -260,8 +256,13 @@ public class Game {
         } else if (playedCard == Card.Embargo) {
             // +2 Coins. Trash this card. Put an Embargo token on top of a Supply pile.
             // When a player buys a card, he gains a Curse card per Embargo token on that pile.
+            // Choice 0: card to embargo
+            Card card = (Card)choices[0];
             this.coins += 2;
-            // TODO
+            if (!this.supply.containsKey(card)) {
+                throw new GameError("embargo: chosen card is not in the supply");
+            }
+            increment(this.embargoTokens, card);
             return TRASH;
         } else if (playedCard == Card.Feast) {
             // Trash this card. Gain a card costing up to 5.
