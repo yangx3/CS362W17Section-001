@@ -64,8 +64,13 @@ public class HandTest {
 		catch(Exception e){
 			fail("Print function crashed");
 		}
+		try{
+			test.removeCard(createCard("fake"));
+		}
+		catch(Exception e){
+			fail("removeCard crashed when trying to remove card not in hand");
+		}
 	}
-
 }
 
 
