@@ -18,7 +18,8 @@ public class GameState{
   private final int bankDuchies = 12;
   private final int bankProvinces = 12;
   // Initial kingdom cards in the bank
-  private final int bankKingdomCards = 8;
+  private final int bankKingdomCards = 10;
+  private final int bankCurses = 10;  // scales with players, 10, 20, 30, etc
 
   private ArrayList<Card> supply;
   public Player[] players;
@@ -30,16 +31,26 @@ public class GameState{
     this.supply = new ArrayList<Card>(200);
     this.players = new Player[2];
     // Fill the shared deck with the starting cards
-    for(int i=0; i<bankCopper; i++)   supply.add(Card.COPPER);
-    for(int i=0; i<bankSilver; i++)   supply.add(Card.SILVER);
-    for(int i=0; i<bankGold; i++)     supply.add(Card.GOLD);
-    for(int i=0; i<bankEstates; i++)  supply.add(Card.ESTATE);
-    for(int i=0; i<bankDuchies; i++)  supply.add(Card.DUCHY);
-    for(int i=0; i<bankProvinces; i++)supply.add(Card.PROVINCE);
-    for(int i=0; i<bankKingdomCards; i++)supply.add(Card.ADVENTURER);
-    for(int i=0; i<bankKingdomCards; i++)supply.add(Card.AMBASSADOR);
-    for(int i=0; i<bankKingdomCards; i++)supply.add(Card.BARON);
-    for(int i=0; i<bankKingdomCards; i++)supply.add(Card.COUNCILROOM);
+    for(int i=0; i<bankCopper; i++)       supply.add(Card.COPPER);
+    for(int i=0; i<bankSilver; i++)       supply.add(Card.SILVER);
+    for(int i=0; i<bankGold; i++)         supply.add(Card.GOLD);
+    for(int i=0; i<bankEstates; i++)      supply.add(Card.ESTATE);
+    for(int i=0; i<bankDuchies; i++)      supply.add(Card.DUCHY);
+    for(int i=0; i<bankProvinces; i++)    supply.add(Card.PROVINCE);
+    for(int i=0; i<bankCurses; i++)       supply.add(Card.CURSE);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.ADVENTURER);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.AMBASSADOR);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.BARON);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.COUNCILROOM);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.CUTPURSE);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.EMBARGO);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.FEAST);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.GARDENS);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.GREAT_HALL);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.MINE);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.SALVAGER);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.SMITHY);
+    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.VILLAGE);
   }
 
   public void addPlayer(String name, GameState game){
@@ -47,12 +58,20 @@ public class GameState{
     players[this.numPlayers++] = a;
   }
 
-  public void addCard(Card c){
-    supply.add(c);
+  public boolean addCard(Card c){
+    return supply.add(c);
   }
 
   public int countCard(Card c){
     return Collections.frequency(supply, c);
+  }
+
+  public void checkEndConditions(){
+    int missingCards = 0;
+    for(Card c: Card.values()){
+      if(supply.contains(c) == false) missingCards++;
+    }
+    if(supply.contains(Card.PROVINCE)==false || missingCards>=3) endGame();
   }
 
   public Card takeCard(Card c){
@@ -62,34 +81,34 @@ public class GameState{
   }
 
   public void nextTurn(){
-    if(countCard(Card.PROVINCE)>0){
-      players[playerTurn].newTurn();
-      playerTurn = (playerTurn+1)%numPlayers;
-    }else{
-      endGame("The bank is out of Province cards, so the game is over!");
-    }
+    players[playerTurn].newTurn();
+    playerTurn = (playerTurn+1)%numPlayers;
+    checkEndConditions();
   }
 
   public int listCards(){
     int i = 0;
-    System.out.format(" # - %-15s %s  %s\n", "Card Name", "Cost", "Qty");
+    System.out.format(
+      " # - %-15s %s  %s  %s\n", "Card Name", "Cost", "Qty", "Description"
+    );
     for(Card c: Card.values()){
-      System.out.format("%2d - %-15s %-5d %2d\n",
-        ++i, c, c.costsMoney, Collections.frequency(supply, c)
+      String desc = c.getDesc();
+      desc = desc.substring(0, Math.min(desc.length(), 50));
+      System.out.format("%2d - %-15s %-5d %2d    %s\n",
+        ++i, c, c.costsMoney, Collections.frequency(supply, c), desc
       );
     }
     return i;
   }
 
-  public void play(){
-    while(true){
-      System.out.println("...new turn...");
-      nextTurn();
+  private void endGame(){
+    System.out.println("Game over!");
+    for(Player p: players){
+      System.out.format("%s amassed %d victory points.\n",
+        p, p.countVictoryPoints()
+      );
     }
-  }
-
-  private void endGame(String s){
-    System.out.println(s);
     System.out.println("Thanks for playing!");
+    System.exit(0);
   }
 }
