@@ -98,9 +98,9 @@ public class Deck{
 		Random rand = new Random();
 		int one, two;
 		for(int j=0; j<timesToSwap; j++){
-			one = rand.nextInt();
+			one = rand.nextInt(deck.size());
 			do{
-				two = rand.nextInt();
+				two = rand.nextInt(deck.size());
 			}while(one == two);
 			swap(one,  two);
 		}
