@@ -104,7 +104,30 @@ public class DeckTest {
 				test.size(), 0);
 		assertEquals("Top drawn card doesn't equal added card",
 				drawn, c);
-		
+	}
+	
+	@Test
+	public void testShuffle(){
+		for(int i=0; i<100; i++){
+			test = new Deck("Shuffle Test");
+			int numCards = 100;
+			ArrayList<Card> cards = new ArrayList<Card>();
+			for(int j=0; j < numCards; j++)
+				cards.add(createCard(String.valueOf(j)));
+			for(int j=0; j < numCards; j++)
+				test.addTop(cards.get(j));
+			
+			//true if a the decks are the same
+			Boolean flag = true;
+			
+			test.shuffle();
+			for(int j=0; j < numCards; j++){
+				if(cards.get(j) != test.drawBottom())
+					flag = false;
+			}
+			assertFalse("Deck didn't change after being shuffled",
+					flag);
+		}
 	}
 }
 
