@@ -55,6 +55,31 @@ public class CardTest {
 		
 		assertEquals("Treasure ammount isn't 3",
 				testCard.getTreasure(), 3);
+		
+		try{
+			testCard.Action();
+		}
+		catch(Exception e){
+			fail("Action function crashed");
+		}
+		try{
+			testCard.Attack();
+		}
+		catch(Exception e){
+			fail("Attack function crashed");
+		}
+		try{
+			testCard.Reaction();
+		}
+		catch(Exception e){
+			fail("Reaction function crashed");
+		}
+		try{
+			testCard.print(0);
+		}
+		catch(Exception e){
+			fail("Print function crashed");
+		}
 	}
 }
 
