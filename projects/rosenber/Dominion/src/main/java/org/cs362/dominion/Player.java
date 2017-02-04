@@ -22,6 +22,24 @@ public class Player{
 	private int money;
 	
 	//constructor
+	public Player(){
+		name = "";
+		hand = new Hand();
+		deck = new Deck("Deck");
+		discard = new Deck("Discard");
+		buys = 0;
+		actions = 0;
+		money = 0;
+	}
+	public Player(String name){
+		this.name = name;
+		hand = new Hand();
+		deck = new Deck("Deck");
+		discard = new Deck("Discard");
+		buys = 0;
+		actions = 0;
+		money = 0;
+	}
 	
 	//getters
 	
