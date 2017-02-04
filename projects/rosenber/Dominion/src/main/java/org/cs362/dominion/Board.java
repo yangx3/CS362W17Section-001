@@ -33,6 +33,12 @@ public class Board {
 		decks.add(temp);
 	}
 	
+	//gets the name of the deck
+	// - takes in idx of deck
+	public String getName(int idx){
+		return decks.get(idx).getName();
+	}
+	
 	//add to deck
 	// - takes in card to add to the deck
 	// - takes in idx of deck
