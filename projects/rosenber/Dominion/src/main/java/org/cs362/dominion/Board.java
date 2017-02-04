@@ -60,7 +60,7 @@ public class Board {
 	
 	//get number of cards in deck
 	// - takes in idx of deck
-	public int numCards(int idx){
+	public int numCardsInDeck(int idx){
 		return decks.get(idx).size();
 	}
 	
