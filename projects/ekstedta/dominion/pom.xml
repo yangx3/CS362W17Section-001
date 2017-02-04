@@ -34,6 +34,15 @@
                         </manifest>
                     </archive>
                 </configuration>
+
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <mainClass>cs362.dominion.Play</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
