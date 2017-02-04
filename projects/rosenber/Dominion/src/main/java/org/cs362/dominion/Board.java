@@ -12,29 +12,62 @@ import java.util.ArrayList;
 
 public class Board {
 	
-	ArrayList<Deck> decks;
+	private ArrayList<Deck> decks;
 	
 	//constructor
+	public Board(){
+		decks = new ArrayList<Deck>();
+		Deck temp = new Deck("Trash");
+		decks.add(temp);
+	}
 	
 	//create deck
 	// - takes in card to make deck out of
 	// - number cards that should be in the deck
+	public void createDeck(Card c, int num){
+		Deck temp = new Deck(c.getName());
+		for(int j=0; j<num; j++){
+			Card tmp = new Card(c);
+			temp.addBottom(tmp);
+		}
+		decks.add(temp);
+	}
 	
 	//add to deck
 	// - takes in card to add to the deck
+	// - takes in idx of deck
+	public void addToDeck(Card c, int idx){
+		decks.get(idx).addBottom(c);
+	}
 	
 	//add to trash
 	// - takes in card to add to trash deck
+	public void addToTrash(Card c){
+		addToDeck(c, 0);
+	}
 	
 	//draw from deck, removes one card from the deck
 	// - takes idx of deck to draw from
 	// - returns card drawn
+	public Card draw(int idx){
+		return decks.get(idx).drawTop();
+	}
 	
 	//returns number of decks
+	public int numDecks(){
+		return decks.size();
+	}
 	
 	//get number of cards in deck
+	// - takes in idx of deck
+	public int numCards(int idx){
+		return decks.get(idx).size();
+	}
 	
 	//prints board
-	
+	public void print(){
+		//TODO
+		//PRINT THE DECKS
+	}
 	
 }
