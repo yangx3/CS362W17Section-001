@@ -3,7 +3,7 @@
   Written for OSU CS362 - Software Engineering II
   Assignment 1 - Dominion
 */
-package willmetl;
+package dominion;
 import java.util.*;
 
 public class Player{
