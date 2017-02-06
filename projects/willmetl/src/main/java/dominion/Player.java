@@ -191,9 +191,9 @@ public class Player{
   public Card chooseTypeOfCard(Card.Type type){
     if(ISBOT){
       // Bots play the first card of the correct type
-      for(Card c: hand){
-        if(c.getType() == type) return c;
-      }
+      for(int i=0; i<hand.size(); i++)
+        if(hand.get(i).getType() == type)
+          return hand.remove(i);
       return null;
     }
     while(true){
@@ -224,10 +224,10 @@ public class Player{
   public int countVictoryPoints(){
     int total = 0;
     for(Card c: hand){
-      total += c.getVictoryPoints();
+      total += c.getVictoryPoints(this);
     }
     for(Card c: cardPile){
-      total += c.getVictoryPoints();
+      total += c.getVictoryPoints(this);
     }
     return total;
   }

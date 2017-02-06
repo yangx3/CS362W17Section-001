@@ -115,10 +115,8 @@ public enum Card{
         int availCards = p.gameState.listCards();
         System.out.format("Please enter the card number (1-%d) you want, "+
           "or 0 to cancel: ", availCards);
-        if(p.ISBOT)
-          choice = 2; // bots always choose silver?
-        else
-          choice = p.scan.nextInt();
+        if(p.ISBOT) choice = 2; // bots always choose silver?
+        else choice = p.scan.nextInt();
         if( choice>0 && choice<=availCards){
           Card c = Card.values()[choice-1];
           if(c.costsMoney <= 5){
@@ -157,19 +155,17 @@ public enum Card{
     public Card play(Player p){
       // Trash a treasure card from your hand to gain the next better Treasure
       // Put this new card in your HAND
-      boolean unresolved = true;
-      while(true){
-        System.out.println("Trash a treasure card from your hand to gain "+
-          "a Treasure card worth up to 3 more than your original Treasure.");
-        Card c = p.chooseTypeOfCard(Type.TREASURE);
-        if(c != null){
-          GameState supply = p.gameState;
-          if(c == COPPER) p.putInHand(supply.takeCard(SILVER));
-          if(c == SILVER) p.putInHand(supply.takeCard(GOLD));
-          if(c == GOLD)   p.putInHand(supply.takeCard(GOLD));
-          return null;    // not returning the played card trashes it
-        }else return this;
+      System.out.println("Trash a treasure card from your hand to gain "+
+        "a Treasure card worth up to 3 more than your original Treasure.");
+      // not returning the chosen Treasure card, trashes it
+      Card c = p.chooseTypeOfCard(Type.TREASURE);
+      if(c != null){
+        GameState supply = p.gameState;
+        if(c == COPPER) p.putInHand(supply.takeCard(SILVER));
+        if(c == SILVER) p.putInHand(supply.takeCard(GOLD));
+        if(c == GOLD)   p.putInHand(supply.takeCard(GOLD));
       }
+      return this; // return the Mine
     }
   },SALVAGER("Salvager", 4, "+1 buy.  Trash a card from your hand.  Gain "+
   "money equal to it's cost."){
@@ -249,7 +245,7 @@ public enum Card{
     return this;
   }
 
-  public int getVictoryPoints(){
+  public int getVictoryPoints(Player p){
     return this.givesVictoryPoints;
   }
 

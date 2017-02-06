@@ -125,17 +125,77 @@ public class CardTest{
 
   @Test
   public void testPlayFeast(){
+    assertFalse(a.playCard(Card.FEAST));
     a.putInHand(Card.FEAST);
     assertEquals(a.getHandSize(), 6);
     int totalCards = a.countAllCards();
     a.playCard(Card.FEAST);
     assertEquals(a.getHandSize(), 5);
     assertEquals(a.countAllCards(), totalCards);
+    assertEquals(Card.FEAST.costsMoney, 4);
   }
 
   @Test
   public void testPlayGardens(){
+    assertEquals(a.countVictoryPoints(), 3);
     assertFalse(a.playCard(Card.GARDENS));
     a.putInHand(Card.GARDENS);
+    assertEquals(a.countAllCards(), 11);
+    assertEquals(a.countVictoryPoints(), 4);
+  }
+
+  @Test
+  public void testPlayGreatHall(){
+    assertEquals(a.countVictoryPoints(), 3);
+    assertEquals(a.getActions(), 1);
+    assertEquals(a.getHandSize(), 5);
+    a.discard(Card.GREAT_HALL.play(a));
+    assertEquals(a.getActions(), 2);
+    assertEquals(a.getHandSize(), 6);
+    assertEquals(a.countVictoryPoints(), 4);
+  }
+
+  @Test
+  public void testPlayMine(){
+    while(a.isCardInHand(Card.COPPER)) a.discardFromHand(Card.COPPER);
+    a.putInHand(Card.COPPER);
+    assertTrue(a.isCardInHand(Card.COPPER));
+    Card.MINE.play(a);
+    assertFalse(a.isCardInHand(Card.COPPER));
+    assertTrue(a.isCardInHand(Card.SILVER));
+    Card.MINE.play(a);
+    assertFalse(a.isCardInHand(Card.SILVER));
+    assertTrue(a.isCardInHand(Card.GOLD));
+  }
+
+  @Test
+  public void testPlaySalvager(){
+    while(a.isCardInHand(Card.COPPER)) a.discardFromHand(Card.COPPER);
+    while(a.isCardInHand(Card.ESTATE)) a.discardFromHand(Card.ESTATE);
+    assertEquals(a.getHandSize(), 0);
+    a.putInHand(Card.ESTATE);
+    assertEquals(a.getBuys(), 1);
+    assertEquals(a.getMoney(), 0);
+    a.discard(Card.SALVAGER.play(a));
+    a.seeDeck();
+    assertEquals(a.getBuys(), 2);
+    assertEquals(a.getMoney(), 2);
+    assertFalse(a.isCardInHand(Card.ESTATE));
+  }
+
+  @Test
+  public void testPlaySmithy(){
+    assertEquals(a.getHandSize(), 5);
+    Card.SMITHY.play(a);
+    assertEquals(a.getHandSize(), 8);
+  }
+
+  @Test
+  public void testPlayVillage(){
+    assertEquals(a.getActions(), 1);
+    assertEquals(a.getHandSize(), 5);
+    Card.VILLAGE.play(a);
+    assertEquals(a.getActions(), 3);
+    assertEquals(a.getHandSize(), 6);
   }
 }
