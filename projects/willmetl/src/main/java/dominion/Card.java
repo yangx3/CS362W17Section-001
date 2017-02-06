@@ -3,7 +3,7 @@
   Written for OSU CS362 - Software Engineering II
   Assignment 1 - Dominion
 */
-package willmetl;
+package dominion;
 
 public enum Card{
   // The Card class represnts a single Dominion card
@@ -71,11 +71,10 @@ public enum Card{
         p.putInHand(c);
       }
       p.addBuys(1);
-      GameState g = p.gameState;
-      for(int i=0; i<g.numPlayers; i++){
-        if(g.players[i] != p){
-          g.players[i].putInHand(g.players[i].draw());
-          System.out.println(g.players[i]+" drew a card.");
+      for(Player other: p.gameState.players){
+        if(other != p){
+          other.putInHand(other.draw());
+          System.out.println(other+" drew a card.");
         }
       }
       return this;
@@ -86,12 +85,9 @@ public enum Card{
     public Card play(Player p){
       // +2 money, other players forced to discard a copper or reveal hand
       p.addMoney(2);
-      GameState g = p.gameState;
-      for(int i=0; i<g.numPlayers; i++){
-        Player t = g.players[i];
-        if(t != p){
-          // If a copper wasn't discarded, reveal their hand
-          if(!t.discardFromHand(Card.COPPER)) t.seeHand();
+      for(Player other: p.gameState.players){
+        if(other != p){
+          if(!other.discardFromHand(Card.COPPER)) other.seeHand();
         }
       }
       return this;
@@ -119,7 +115,8 @@ public enum Card{
         int availCards = p.gameState.listCards();
         System.out.format("Please enter the card number (1-%d) you want, "+
           "or 0 to cancel: ", availCards);
-        choice = p.scan.nextInt();
+        if(p.ISBOT) choice = 2; // bots always choose silver?
+        else choice = p.scan.nextInt();
         if( choice>0 && choice<=availCards){
           Card c = Card.values()[choice-1];
           if(c.costsMoney <= 5){
@@ -158,19 +155,17 @@ public enum Card{
     public Card play(Player p){
       // Trash a treasure card from your hand to gain the next better Treasure
       // Put this new card in your HAND
-      boolean unresolved = true;
-      while(true){
-        System.out.println("Trash a treasure card from your hand to gain "+
-          "a Treasure card worth up to 3 more than your original Treasure.");
-        Card c = p.chooseTypeOfCard(Type.TREASURE);
-        if(c != null){
-          GameState supply = p.gameState;
-          if(c == COPPER) p.putInHand(supply.takeCard(SILVER));
-          if(c == SILVER) p.putInHand(supply.takeCard(GOLD));
-          if(c == GOLD)   p.putInHand(supply.takeCard(GOLD));
-          return null;    // not returning the played card trashes it
-        }else return this;
+      System.out.println("Trash a treasure card from your hand to gain "+
+        "a Treasure card worth up to 3 more than your original Treasure.");
+      // not returning the chosen Treasure card, trashes it
+      Card c = p.chooseTypeOfCard(Type.TREASURE);
+      if(c != null){
+        GameState supply = p.gameState;
+        if(c == COPPER) p.putInHand(supply.takeCard(SILVER));
+        if(c == SILVER) p.putInHand(supply.takeCard(GOLD));
+        if(c == GOLD)   p.putInHand(supply.takeCard(GOLD));
       }
+      return this; // return the Mine
     }
   },SALVAGER("Salvager", 4, "+1 buy.  Trash a card from your hand.  Gain "+
   "money equal to it's cost."){
@@ -211,10 +206,10 @@ public enum Card{
   public String desc = "No desc";
   public int costsAction;
   public int costsMoney;
-  public int givesVictoryPoints = 0;
-  public int givesMoney = 0;
   public int givesActions = 0;
   public int givesCardDraws = 0;
+  public int givesMoney = 0;
+  public int givesVictoryPoints = 0;
   private Type type;
 
   private Card(String cName, int cost, String desc){
@@ -250,7 +245,7 @@ public enum Card{
     return this;
   }
 
-  public int getVictoryPoints(){
+  public int getVictoryPoints(Player p){
     return this.givesVictoryPoints;
   }
 

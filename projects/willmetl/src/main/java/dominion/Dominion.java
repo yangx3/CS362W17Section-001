@@ -3,19 +3,19 @@
   Written for OSU CS362 - Software Engineering II
   Assignment 1 - Dominion
 */
-package willmetl;
+package dominion;
 
-public class Tests{
+public class Dominion{
 
   public void setupGame(){
     GameState game = new GameState();
     // assert(game.bankCards.size() == 194);
 
 
-    game.addPlayer("Amy", game);
+    game.addPlayer("Amy");
     assert(game.numPlayers == 1);
 
-    game.addPlayer("Billy", game);
+    game.addPlayer("Billy");
     assert(game.numPlayers == 2);
 
     while(true)
@@ -23,7 +23,7 @@ public class Tests{
   }
 
   public static void main(String [ ] args){
-    Tests game1 = new Tests();
+    Dominion game1 = new Dominion();
     game1.setupGame();
   }
 }

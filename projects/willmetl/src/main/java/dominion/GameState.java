@@ -3,7 +3,7 @@
   Written for OSU CS362 - Software Engineering II
   Assignment 1 - Dominion
 */
-package willmetl;
+package dominion;
 import java.util.*;
 
 public class GameState{
@@ -25,6 +25,7 @@ public class GameState{
   public Player[] players;
   public int numPlayers = 0;
   public int playerTurn = 0;
+  private final int maxPlayers = 2;
 
   public GameState(){
     // shared cards that players can buy
@@ -53,9 +54,17 @@ public class GameState{
     for(int i=0; i<bankKingdomCards; i++) supply.add(Card.VILLAGE);
   }
 
-  public void addPlayer(String name, GameState game){
-    Player a = new Player(name, game);
-    players[this.numPlayers++] = a;
+  public boolean addPlayer(String name){
+    return addPlayer(name, false);
+  }
+  public boolean addPlayer(String name, boolean isBot){
+    return addPlayer(new Player(name, this, isBot));
+  }
+  public boolean addPlayer(Player p){
+    if(numPlayers < maxPlayers){
+      players[this.numPlayers++] = p;
+      return true;
+    }else return false;
   }
 
   public boolean addCard(Card c){
@@ -66,12 +75,13 @@ public class GameState{
     return Collections.frequency(supply, c);
   }
 
-  public void checkEndConditions(){
+  public boolean checkEndConditions(){
     int missingCards = 0;
     for(Card c: Card.values()){
       if(supply.contains(c) == false) missingCards++;
     }
     if(supply.contains(Card.PROVINCE)==false || missingCards>=3) endGame();
+    return false;
   }
 
   public Card takeCard(Card c){
