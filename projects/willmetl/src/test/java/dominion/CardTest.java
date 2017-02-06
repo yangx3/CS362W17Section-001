@@ -10,17 +10,15 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-
 public class CardTest{
   private GameState g;
   private Player a;
   private Player b;
 
-
   @Before
   public void initPlayer(){
     g = new GameState();
-    a = new Player("Armand", g, true);
+    a = new Player("Amy", g, true);
     g.addPlayer(a);
     b = new Player("Barney", g, true);
     g.addPlayer(b);
@@ -28,7 +26,6 @@ public class CardTest{
 
   @Test
   public void testValuesCopper(){
-    // System.out.println("In testValuesCopper.");
     assertEquals(Card.COPPER.toString(), "Copper");
     assertEquals(Card.COPPER.desc, "worth 1 money");
     assertEquals(Card.COPPER.costsAction, 0);

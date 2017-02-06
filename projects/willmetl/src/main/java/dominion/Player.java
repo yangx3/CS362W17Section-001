@@ -145,7 +145,11 @@ public class Player{
       int availCards = gameState.listCards();
       System.out.format("Please enter the card number (1-%d) you want to buy,"+
         " or 0 to cancel: ", availCards);
-      int choice = scan.nextInt();
+      int choice = 0;
+      if(ISBOT){
+        // Bots play the first card of the correct type
+        choice = 0;
+      }else choice = scan.nextInt();
       if( choice>0 && choice<=availCards )
         buyCard(Card.values()[choice-1]);
       else if( choice==0 )

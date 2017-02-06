@@ -1,38 +1,27 @@
 package dominion;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-/**
- * Unit test for simple App.
- */
-public class DominionTest
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public DominionTest( String testName )
-    {
-        super( testName );
-    }
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( DominionTest.class );
-    }
+public class DominionTest{
+  private GameState g;
+  private Player a;
+  private Player b;
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+  @Before
+  public void initPlayer(){
+    g = new GameState();
+    a = new Player("Armand", g, true);
+    g.addPlayer(a);
+    b = new Player("Barney", g, true);
+    g.addPlayer(b);
+  }
+
 }

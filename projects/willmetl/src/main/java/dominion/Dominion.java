@@ -12,10 +12,10 @@ public class Dominion{
     // assert(game.bankCards.size() == 194);
 
 
-    game.addPlayer("Amy", game);
+    game.addPlayer("Amy");
     assert(game.numPlayers == 1);
 
-    game.addPlayer("Billy", game);
+    game.addPlayer("Billy");
     assert(game.numPlayers == 2);
 
     while(true)
