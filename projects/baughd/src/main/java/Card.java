@@ -11,7 +11,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 	public static enum CardName {
 		/** The Treasure cards */
-		Gold, Silver, Cooper, 
+		Gold, Silver, Copper,
 		/** The Victory cards */
 		Province,Duchy,Estate,Curse,
 		/** The Kingdom cards */
@@ -69,7 +69,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Silver, Type.TREASURE, 3, 0, 2);
 		ret.add(o);
-		o = new Card(CardName.Cooper, Type.TREASURE, 0, 0, 1);
+		o = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);
 		ret.add(o);
 
         // The Victory cards
@@ -89,25 +89,25 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);	
 		o = new Card(CardName.Village,Type.ACTION,3,0,0);
 		ret.add(o);
-        o = new Card(CardName.Ambassador,Type.ACTION,6,0,0);
+        o = new Card(CardName.Ambassador,Type.ACTION,3,0,0);
         ret.add(o);
         o = new Card(CardName.Baron,Type.ACTION,4,0,0);
         ret.add(o);
-        o = new Card(CardName.Council_Room,Type.ACTION,3,0,0);
+        o = new Card(CardName.Council_Room,Type.ACTION,5,0,0);
         ret.add(o);
-        o = new Card(CardName.Cutpurse,Type.ACTION,6,0,0);
+        o = new Card(CardName.Cutpurse,Type.ACTION,4,0,2);
         ret.add(o);
-        o = new Card(CardName.Embargo,Type.ACTION,4,0,0);
+        o = new Card(CardName.Embargo,Type.ACTION,2,0,2);
         ret.add(o);
-        o = new Card(CardName.Feast,Type.ACTION,3,0,0);
+        o = new Card(CardName.Feast,Type.ACTION,4,0,0);
         ret.add(o);
-        o = new Card(CardName.Gardens,Type.ACTION,6,0,0);
+        o = new Card(CardName.Gardens,Type.ACTION,4,0,0);
         ret.add(o);
-        o = new Card(CardName.Great_Hall,Type.ACTION,4,0,0);
+        o = new Card(CardName.Great_Hall,Type.ACTION,3,1,0);//
         ret.add(o);
-        o = new Card(CardName.Mine,Type.ACTION,3,0,0);
+        o = new Card(CardName.Mine,Type.ACTION,5,0,0);
         ret.add(o);
-        o = new Card(CardName.Remodel,Type.ACTION,3,0,0);
+        o = new Card(CardName.Remodel,Type.ACTION,4,0,0);
         ret.add(o);
 
         return ret;
@@ -128,22 +128,27 @@ public final class Card implements Comparable<Card>, Cloneable{
 	         player.drawCard();
 	         player.drawCard();
 			return;
-			
+
 		case Village:
-	    	  System.out.println("TODO Village Code******************************************");
-	    	  System.out.println("The player draw +1 Card.");
-	    	  System.out.println("The player gets +2 play Actions.");
-			return;
+	    	 player.drawCard();
+	    	 player.numActions = player.numActions + 2;
+            return;
+
 		case Ambassador:
             System.out.println("TODO Village Code******************************************");
             System.out.println("The player draw +1 Card.");
             System.out.println("The player gets +2 play Actions.");
             return;
+
         case Baron:
-            System.out.println("TODO Village Code******************************************");
+            if(getCard(player.hand, CardName.Estate) != null) {
+                player.discard(getCard(player.hand, CardName.Estate));
+                player.coins = player.coins + 4;
+            }else player.gain(Card.getCard(player.cards,Card.CardName.Estate));
             System.out.println("The player draw +1 Card.");
             System.out.println("The player gets +2 play Actions.");
             return;
+
         case Council_Room:
             System.out.println("TODO Village Code******************************************");
             System.out.println("The player draw +1 Card.");
@@ -210,7 +215,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(" \n\t" + this.getCardName());
+		sb.append("\t" + this.getCardName());
 //		sb.append("-" + this.getType() + " ");
 //		sb.append("\t\t Cost: " + this.cost + " ");
 //		sb.append("\t\t Score: " + this.score + " ");

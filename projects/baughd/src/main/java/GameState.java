@@ -56,19 +56,20 @@ public class GameState implements Cloneable{
 	//set number of Treasure cards
 		gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Cooper), 46);
+		gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
 
+//INITIALIZE PLAYER'S CARDS
 		for (Player player : players) {
+		    System.out.println("\n" + player.player_username + "'s Initial Card Draw: ");
 		    for (int i = 0; i < 7; i++)
-			    player.gain(Card.getCard(cards, Card.CardName.Cooper));
+			    player.gain(Card.getCard(cards, Card.CardName.Copper));
             for (int i = 0; i < 3; i++)
 			    player.gain(Card.getCard(cards,Card.CardName.Estate));
 			         
             player.numActions = 1;
 			player.coins = 0;
 			player.numBuys = 1;
-		//Shuffle your starting 10 cards (7 Coppers & 3 Estates) and place them face-down as your Deck. Draw the top
-		//5 cards as your starting hand
+	//Shuffle your starting 10 cards and draw 5 cards
 			for (int i = 0; i < 5; i++) {
 			    player.drawCard();
 			}
@@ -81,7 +82,7 @@ public class GameState implements Cloneable{
 		      while (!isGameOver()) {
 		    	  turn++;
 		         for (Player player : players) {
-		        	 	System.out.println("Player: "+ player.player_username + " is playing");
+		        	 	System.out.println("\n\nPlayer: "+ player.player_username + " is playing\n\n");
 		   				//player p plays action card
 		        	 	player.playKingdomCard();
 		        	 	//player plays treasure card
@@ -91,7 +92,7 @@ public class GameState implements Cloneable{
 		        	  //player ends turn
 		        	    player.endTurn();
 		         }
-		         if(turn==2)
+		         if(turn == 2)
 		        	 break;
 		      }
 		      return this.getWinners();
