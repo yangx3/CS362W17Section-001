@@ -211,10 +211,10 @@ public enum Card{
   public String desc = "No desc";
   public int costsAction;
   public int costsMoney;
-  public int givesVictoryPoints = 0;
-  public int givesMoney = 0;
   public int givesActions = 0;
   public int givesCardDraws = 0;
+  public int givesMoney = 0;
+  public int givesVictoryPoints = 0;
   private Type type;
 
   private Card(String cName, int cost, String desc){

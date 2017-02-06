@@ -64,6 +64,14 @@ public class Player{
     return this.remBuys;
   }
 
+  public int getHandSize(){
+    return hand.size();
+  }
+
+  public int getMoney(){
+    return this.remMoney;
+  }
+
   public String getName(){
     return this.playerName;
   }
@@ -254,6 +262,10 @@ public class Player{
     Card c = cardPile.remove(0);
     // System.out.println(drawsRemaining+"("+c+")");
     return c;
+  }
+
+  public boolean isCardInHand(Card c){
+    return hand.contains(c);
   }
 
   public void newTurn(){
