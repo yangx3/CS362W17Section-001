@@ -54,8 +54,13 @@ public class GameState{
   }
 
   public void addPlayer(String name, GameState game){
-    Player a = new Player(name, game);
-    players[this.numPlayers++] = a;
+    addPlayer(name, game, false);
+  }
+  public void addPlayer(String name, GameState game, boolean isBot){
+    addPlayer(new Player(name, game, isBot));
+  }
+  public void addPlayer(Player p){
+    players[this.numPlayers++] = p;
   }
 
   public boolean addCard(Card c){

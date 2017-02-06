@@ -20,7 +20,10 @@ public class CardTest{
   @Before
   public void initPlayer(){
     g = new GameState();
-    a = new Player("Armand", g);
+    a = new Player("Armand", g, true);
+    g.addPlayer(a);
+    b = new Player("Barney", g, true);
+    g.addPlayer(b);
   }
 
   @Test
@@ -63,6 +66,7 @@ public class CardTest{
   @Test
   public void testPlayAmbassador(){
     // Needs random choices enabled
+    assertEquals(Card.AMBASSADOR.play(a), Card.AMBASSADOR);
   }
 
   @Test
@@ -72,7 +76,6 @@ public class CardTest{
     assertFalse(a.isCardInHand(Card.ESTATE));
     assertEquals(Card.BARON.play(a), Card.BARON);
     assertEquals(a.countAllCards(), 11);
-
     // Case: yes Estate in hand, gain 4 money
     assertEquals(a.getMoney(), 0);
     a.putInHand(Card.ESTATE);
@@ -82,5 +85,57 @@ public class CardTest{
     assertEquals(a.getMoney(), 4);
   }
 
+  @Test
+  public void testPlayCouncilRoom(){
+    assertEquals(a.getBuys(), 1);
+    assertEquals(a.getHandSize(), 5);
+    assertEquals(b.getHandSize(), 5);
+    assertEquals(Card.COUNCILROOM.play(a), Card.COUNCILROOM);
+    assertEquals(a.getBuys(), 2);
+    assertEquals(a.getHandSize(), 9);
+    assertEquals(b.getHandSize(), 6);
+  }
 
+  @Test
+  public void testPlayCutpurse(){
+    // case: opponent has at least one copper
+    assertEquals(a.getMoney(), 0);
+    b.putInHand(Card.ESTATE);
+    assertEquals(b.getHandSize(), 6);
+    assertEquals(Card.CUTPURSE.play(a), Card.CUTPURSE);
+    assertEquals(a.getMoney(), 2);
+    assertEquals(b.getHandSize(), 5);
+    // case: opponent has no coppers
+    while(b.isCardInHand(Card.COPPER)) b.discardFromHand(Card.COPPER);
+    int i = b.getHandSize();
+    a.putInHand(Card.CUTPURSE);
+    a.playCard(Card.CUTPURSE);
+    assertEquals(b.getHandSize(), i);
+  }
+
+  @Test
+  public void testPlayEmbargo(){
+    a.putInHand(Card.EMBARGO);
+    assertEquals(a.getMoney(), 0);
+    assertEquals(a.getHandSize(), 6);
+    assertTrue(a.playCard(Card.EMBARGO));
+    assertEquals(a.getMoney(), 2);
+    assertEquals(a.getHandSize(), 5);
+  }
+
+  @Test
+  public void testPlayFeast(){
+    a.putInHand(Card.FEAST);
+    assertEquals(a.getHandSize(), 6);
+    int totalCards = a.countAllCards();
+    a.playCard(Card.FEAST);
+    assertEquals(a.getHandSize(), 5);
+    assertEquals(a.countAllCards(), totalCards);
+  }
+
+  @Test
+  public void testPlayGardens(){
+    assertFalse(a.playCard(Card.GARDENS));
+    a.putInHand(Card.GARDENS);
+  }
 }
