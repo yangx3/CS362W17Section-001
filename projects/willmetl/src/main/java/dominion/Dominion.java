@@ -3,9 +3,9 @@
   Written for OSU CS362 - Software Engineering II
   Assignment 1 - Dominion
 */
-package willmetl;
+package dominion;
 
-public class Tests{
+public class Dominion{
 
   public void setupGame(){
     GameState game = new GameState();
@@ -23,7 +23,7 @@ public class Tests{
   }
 
   public static void main(String [ ] args){
-    Tests game1 = new Tests();
+    Dominion game1 = new Dominion();
     game1.setupGame();
   }
 }

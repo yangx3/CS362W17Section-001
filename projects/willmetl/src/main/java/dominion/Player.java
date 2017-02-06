@@ -3,12 +3,13 @@
   Written for OSU CS362 - Software Engineering II
   Assignment 1 - Dominion
 */
-package willmetl;
+package dominion;
 import java.util.*;
 
 public class Player{
   // The Player class represents a single Dominion player
   private final boolean DEBUGGING = true;
+  public final boolean ISBOT;
   // Initial cards for each player's Deck
   private final int startingCopper = 7;
   private final int startingEstates = 3;
@@ -27,8 +28,12 @@ public class Player{
   public Scanner scan = new Scanner(System.in);
 
   public Player(String pName, GameState game){
+    this(pName, game, false);
+  }
+  public Player(String pName, GameState game, boolean isBot){
     // Constructor for the Player class - sets their name
     this.playerName = pName;
+    this.ISBOT = isBot;
     this.gameState = game;
     this.cardPile = new Stack<Card>();
     this.drawsRemaining = 0;
@@ -64,6 +69,14 @@ public class Player{
     return this.remBuys;
   }
 
+  public int getHandSize(){
+    return hand.size();
+  }
+
+  public int getMoney(){
+    return this.remMoney;
+  }
+
   public String getName(){
     return this.playerName;
   }
@@ -80,7 +93,8 @@ public class Player{
       }
       if(needsChoice){
         System.out.println("Please choose an Action card from your hand.");
-        Card c = chooseActionCard();
+        // Card c = chooseActionCard();
+        Card c = chooseTypeOfCard(Card.Type.ACTION);
         if(c != null){
           remActions--;
           playCard(c);
@@ -154,6 +168,12 @@ public class Player{
   }
 
   public Card chooseHand(){
+    if(ISBOT){
+      // Bots select a random card
+      Collections.shuffle(hand);
+      if(hand.size() > 0) return hand.remove(0);
+      return null;
+    }
     for(int i=0; i<hand.size(); i++){
       System.out.println(i+1+" - "+hand.get(i));
     }
@@ -168,30 +188,14 @@ public class Player{
     return null;
   }
 
-  public Card chooseActionCard(){
-    while(true){
-      for(int i=0; i<hand.size(); i++){
-        if(hand.get(i).getType() == Card.Type.ACTION)
-          System.out.println(i+1+" - "+hand.get(i));
-      }
-      System.out.format("Please enter the card number (1-%d) you want to play,"+
-        " or 0 to cancel: ", hand.size());
-      int choice = scan.nextInt()-1;
-      if( choice>-1 &&
-          choice<hand.size() &&
-          hand.get(choice).getType() == Card.Type.ACTION
-      ){
-        Card c = hand.remove(choice);
-        if(DEBUGGING) System.out.format("%s chose %s.\n", playerName, c);
-        return c;
-      }else if( choice==0 ){
-        remActions = 0;
-        return null;
-      }else System.out.println("Invalid choice, please try again.");
-    }
-  }
-
   public Card chooseTypeOfCard(Card.Type type){
+    if(ISBOT){
+      // Bots play the first card of the correct type
+      for(Card c: hand){
+        if(c.getType() == type) return c;
+      }
+      return null;
+    }
     while(true){
       for(int i=0; i<hand.size(); i++){
         if(hand.get(i).getType() == type)
@@ -201,11 +205,15 @@ public class Player{
         hand.size()
       );
       int choice = scan.nextInt()-1;
-      if( choice>-1 && choice<hand.size() ){
+      if( choice>-1 &&
+        choice<hand.size() &&
+        hand.get(choice).getType() == type
+      ){
         Card c = hand.remove(choice);
         if(DEBUGGING) System.out.format("%s chose %s.", playerName, c);
         return c;
       }else if( choice==0 ) return null;
+      // Bug, cancelling may not be optional
     }
   }
 
@@ -256,12 +264,14 @@ public class Player{
     return c;
   }
 
+  public boolean isCardInHand(Card c){
+    return hand.contains(c);
+  }
+
   public void newTurn(){
     // Start every turn with a new, full hand and 1 action, 1 buy
     System.out.println("It's "+playerName+"'s turn:");
     // if(DEBUGGING) seeDeck();
-    // if(DEBUGGING) System.out.println("Giving hand a free FEAST!");
-    // hand.add(Card.FEAST);
     actionPhase();
     buyPhase();
     cleanupPhase();
@@ -273,10 +283,17 @@ public class Player{
     return playCard(card, this);
   }
   public boolean playCard(Card c, Player target){
+    if(hand.contains(c) == false){
+      System.out.format("%s does not have a %s to play.\n", playerName, c);
+      return false;
+    }
     if(c.costsAction==0 || remActions>1){
       remActions -= c.costsAction;
       // if(DEBUGGING) System.out.println("Playing "+c);
-      if(c.play(this) != null) discard(c);
+      if(c.play(this) == null)
+        hand.remove(c); // trash the card from your hand
+      else
+        discard(c);
     } else {
       System.out.println("You do not have an action to play "+c);
       return false;
