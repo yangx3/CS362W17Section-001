@@ -230,12 +230,23 @@ public class Game {
             // Return up to 2 copies of it from your hand to the Supply.
             // Then each other player gains a copy of it.
             //
-            // Choice 0 - index of card to reveal & return
-            // Choice 1 - optional index of second copy to return
+            // Choice 0 - Integer - index of card to reveal
+            // Choice 1 - Integer - how many copies to return to supply (0-2)
         } else if (playedCard == Card.Baron) {
             // +1 Buy.
             // You may discard an Estate card. If you do, +4 Coins.
             // Otherwise, gain an Estate card.
+            //
+            // Choice 0 - Boolean - discard estate?
+            this.buys++;
+            int estatePos = hand.indexOf(Card.Estate);
+            if (estatePos >= 0 && (Boolean)choices[0]) {
+                this.coins += 4;
+                hand.remove(estatePos);
+            } else if (this.supply.get(Card.Estate) >= 1) {
+                decrement(this.supply, Card.Estate);
+                hand.add(Card.Estate);
+            }
         } else if (playedCard == Card.CouncilRoom) {
             // +4 Cards; +1 Buy. Each other player draws a card.
             this.draw(this.currentPlayer, 4);
@@ -313,13 +324,16 @@ public class Game {
             decrement(this.supply, newCard);
             hand.set(treasurePos, newCard);
         } else if (playedCard == Card.Market) {
+            // +1 Card; +1 Action; +1 Buy; +1 Coin.
             this.coins += 1;
             this.actions += 1;
             this.buys += 1;
             this.draw(this.currentPlayer, 1);
         } else if (playedCard == Card.Smithy) {
+            // +3 Cards
             this.draw(this.currentPlayer, 3);
         } else if (playedCard == Card.Village) {
+            // +1 Card; +2 Actions.
             this.draw(this.currentPlayer, 1);
             this.actions += 2;
         } else if (playedCard == Card.Gold || playedCard == Card.Silver || playedCard == Card.Copper) {
