@@ -79,7 +79,7 @@ public class GameState implements Cloneable{
 		    	  turn++;
 		         for (Player player : players) {
 		        	 	System.out.println("\n\nPlayer: "+ player.player_username + " is playing\n\n");
-		   				//player p plays action card
+		   				//player plays action card
 		        	 	player.playKingdomCard();
 		        	 	//player plays treasure card
 		   			    player.playTreasureCard();

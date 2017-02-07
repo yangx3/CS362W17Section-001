@@ -104,21 +104,28 @@ public class Player implements Cloneable{
 	}
 	   
 	public void playTreasureCard() {
-		System.out.println(" --- --------------------------- --- ");
-		System.out.println("TO-DO playTreasureCard ");
-		System.out.println(" --- --------------------------- --- ");
+		List<Card> treasureCards = Card.filter(hand, Card.Type.TREASURE);
+
+		if(treasureCards.size() == 0) return;
+
+		System.out.println("Treasure Cards Played:");
+		for(Card c: treasureCards)
+		{
+			coins += c.getTreasureValue();
+			System.out.println(c.toString());
+		}
+		System.out.println(player_username + "'s COINS: " + coins + "\n");
 	}
 
 	public void buyCard() {
-		System.out.println(" --- --------------------------- --- ");
-		System.out.println("TO-DO buyCard ");
-		System.out.println(" --- --------------------------- --- ");
+		if(coins == 0) break;
+		if(coins == 1) gain(Card.getCard(GameState.gameBoard.Copper));
 	}
 
 	final void endTurn() {
-		System.out.println(" --- --------------------------- --- ");
-		System.out.println("TO-DO endTurn ");
-		System.out.println(" --- --------------------------- --- ");
+		coins = 0;
+		numActions = 1;
+		numBuys = 1;
 	}
 
 	public void printStateGame() {
