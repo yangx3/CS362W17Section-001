@@ -9,20 +9,16 @@ public class GameState implements Cloneable{
     public List<Player> players = new ArrayList<Player>();
     public List<Card> cards ;
 	public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
+	public List<Card> embargoTokens;
 
 	   
 	public GameState(List<Card> cards) {
-		   this.cards=cards;
-		   
+		   this.cards = cards;
 	   }
 
 	public void addPlayer(Player player) {
 		      players.add(player);
-	   }   
-
-	   /*Initializing all supplies, and shuffling deck and
-	   drawing starting hands for all players.  Check that 10 cards selected
-	   are in fact (different) kingdom cards, and that numPlayers is valid.*/
+	   }
 	   
 	public void initializeGame(){
 
@@ -114,7 +110,7 @@ public class GameState implements Cloneable{
 		      }
 		         return false;
 		   }
-	   
+
     /* Set HashMap  of each player and the score (remember ties!) */
 	public HashMap<Player, Integer>  getWinners() {
 		   HashMap<Player, Integer> playerScore = new HashMap<Player, Integer>();
@@ -127,7 +123,12 @@ public class GameState implements Cloneable{
 
 		      return playerScore;
 		   }
-	   
+
+	public static void addEmbargo()
+    {
+        System.out.println("Token Added.");
+    }
+
 	@Override
 	public String toString() {
 
@@ -139,10 +140,10 @@ public class GameState implements Cloneable{
 				sb.append(" --- " + player.toString() + "\n");
 			sb.append(" --- gameBoard --- \n");
 			sb.append("Cards on the table: \n");
-			sb.append("Card Name \t\t NumberCards: \n");
+			sb.append("Card Name: \t\t NumberCards: \n");
 			Map<Card, Integer> treeMap = new TreeMap<Card, Integer>(gameBoard);
 			for (Card card : treeMap.keySet())
-				sb.append("\t " + card.getCardName() + "\t\t "
+				sb.append("\t" + card.getCardName() + "\t\t\t"
 						+ treeMap.get(card) + "\n");
 		}
 		return sb.toString();
@@ -152,7 +153,6 @@ public class GameState implements Cloneable{
 		   this.cards=cards;
 		   this.players=players;
 		   this.gameBoard=gameBoard;
-		   
 	   }
 
 	public GameState clone() throws CloneNotSupportedException {

@@ -19,7 +19,7 @@ public class Player implements Cloneable{
 	
 	public Player(GameState gameState,String player_username) {
 		this.player_username = player_username;
-		this.gameState=gameState;
+		this.gameState = gameState;
 	}
 
 	final Card drawCard() {
@@ -105,7 +105,7 @@ public class Player implements Cloneable{
 	   
 	public void playTreasureCard() {
 		System.out.println(" --- --------------------------- --- ");
-		System.out.println("TO-DO playTtreasureCard ");
+		System.out.println("TO-DO playTreasureCard ");
 		System.out.println(" --- --------------------------- --- ");
 	}
 

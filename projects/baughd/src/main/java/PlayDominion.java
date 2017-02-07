@@ -19,13 +19,9 @@ public class PlayDominion {
 
 //INITIALIZE PLAYERS
             Player player = new Player(state, "PLAYER1");
-//		    player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
-//		    player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
 		    state.addPlayer(player);
 
 		    player = new Player(state, "PLAYER2");
-//		        player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
-//		        player.hand.add(Card.getCard(cards,Card.CardName.Village));
 		    state.addPlayer(player);
 
 //Get 10 cards, draw 5, set actions and buys

@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-//Cards are people. Don't eat them...
-
 public final class Card implements Comparable<Card>, Cloneable{
 	public static enum Type {
 		ACTION, TREASURE, VICTORY;
@@ -144,50 +142,83 @@ public final class Card implements Comparable<Card>, Cloneable{
             if(getCard(player.hand, CardName.Estate) != null) {
                 player.discard(getCard(player.hand, CardName.Estate));
                 player.coins = player.coins + 4;
-            }else player.gain(Card.getCard(player.cards,Card.CardName.Estate));
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+            }else //player.gain(getCard(GameState.cards, CardName.Estate)); // the GameState is initialized after the Cards...
+            System.out.println("The player draws +1 Card.");
+            System.out.println("The player gets +2 Actions.");
+            System.out.println("If player has an Estate in hand, they get +4 coins or they gain an Estate.");
             return;
 
         case Council_Room:
-            System.out.println("TODO Village Code******************************************");
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+        	player.drawCard();
+            player.drawCard();
+            player.drawCard();
+            player.drawCard();
+            player.numBuys++;
+            //for (Player players : GameState.players)
+            {
+                //players.drawCard();
+            }
+            System.out.println("The player draws +4 Card.");
+            System.out.println("The player gets +1 Buys.");
+            System.out.println("Every other player draws +1 Card.");
             return;
+
         case Cutpurse:
-            System.out.println("TODO Village Code******************************************");
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+            //for (Player players : GameState.players)
+            {
+               //players.discard(getCard(players.hand, CardName.Estate));
+            }
+            System.out.println("The player gets +2 Coins.");
+            System.out.println("Every other player discards a Copper Card.");
             return;
+
         case Embargo:
-            System.out.println("TODO Village Code******************************************");
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+            player.coins = player.coins + 2;
+            player.hand.remove(getCard(player.hand, CardName.Embargo));//trashes the Embargo card
+            GameState.addEmbargo();//does nothing yet
+            System.out.println("The player gets +2 Coins.");
+            System.out.println("The player trashes this Card.");
+            System.out.println("The player puts a Embargo token on top of a Supply Pile.");
+            System.out.println("When a player buys a card, he gains a Curse card per Embargo token on that pile");
             return;
+
         case Feast:
-            System.out.println("TODO Village Code******************************************");
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+            //buy card up to 5 coins.
+            System.out.println("The player trashes this Card.");
+            System.out.println("The player gains a card costing up to 5 coins.");
             return;
+
         case Gardens:
-            System.out.println("TODO Village Code******************************************");
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+            System.out.println("Worth 1 VICTORY for every 10 cards the player has.");
             return;
+
         case  Great_Hall:
-            System.out.println("TODO Village Code******************************************");
+            player.drawCard();
+            player.numActions++;
+            System.out.println("Worth 1 VICTORY point.");
             System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+            System.out.println("The player gets +1 Action.");
             return;
+
         case Mine:
-            System.out.println("TODO Village Code******************************************");
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+            if(getCard(player.hand, CardName.Silver) != null) {
+                player.hand.remove(getCard(player.hand, CardName.Silver));
+                //player.gain(getCard(GameState.gameBoard.card, CardName.Gold));
+            } else if(getCard(player.hand, CardName.Copper) != null)
+            {
+                player.hand.remove(getCard(player.hand, CardName.Copper));
+                //player.gain(getCard(GameState.gameBoard.card, CardName.Silver));
+            }
+            System.out.println("The player trashes a Treasure card.");
+            System.out.println("The player gets a Treasure card one level higher than the trashed Card.");
             return;
+
         case Remodel:
-            System.out.println("TODO Village Code******************************************");
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+            int cost = this.cost;
+            player.hand.remove(this);
+            //player buys card (cost + 2);
+            System.out.println("The player trashes the Card.");
+            System.out.println("The player gains a card costing up to more than trashed Card.");
             return;
 
 		default: return;
@@ -210,7 +241,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 	      return out;
 	}
 
-	// this method will print out all the constant cards ENUM
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -242,13 +272,13 @@ public final class Card implements Comparable<Card>, Cloneable{
     } 
 
 }
-/*Ambassador		 10
+/*      Ambassador   10
         Baron		 10
-        Cutpurse		 10
+        Cutpurse	 10
         Embargo		 10
         Feast		 10
         Gardens		 10
-        Great_Hall		 10
+        Great_Hall	 10
         Mine		 10
         Smithy		 10
         Remodel*/
