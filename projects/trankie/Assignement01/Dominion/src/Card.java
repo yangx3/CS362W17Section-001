@@ -1,5 +1,8 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-public class Card {
+public class Card{
 	public static enum Type{
 		ACTION, TREASURE, VICTORY;
 	}
@@ -29,5 +32,29 @@ public class Card {
 	public int getTreasureValue(){
 		return treasureValue;
 	}
-	
+	public int getScore(){
+		return score;
+	}
+	public static List<Card> createCards(){
+		List<Card> ret = new LinkedList<Card>();
+		Card o = new Card(CardName.Gold, Type.TREASURE, 6, 0, 3);
+		ret.add(o);
+		o = new Card(CardName.Silver, Type.TREASURE, 3, 0, 2);
+		ret.add(o);
+		o = new Card(CardName.Cooper, Type.TREASURE, 0, 0, 1);
+		ret.add(o);
+		
+		return ret;
+	}
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(" \n\t" + this.getCardName());
+		sb.append("-" + this.getType() + " ");
+		sb.append("\t\t Cost: " + this.cost + " ");
+		sb.append("\t\t Score: " + this.score + " ");
+		sb.append("\tTreasure Value: " + this.treasureValue);
+		
+		return sb.toString();
+	}
 }
