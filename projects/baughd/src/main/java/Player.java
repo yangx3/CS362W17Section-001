@@ -118,8 +118,14 @@ public class Player implements Cloneable{
 	}
 
 	public void buyCard() {
-		if(coins == 0) break;
-		if(coins == 1) gain(Card.getCard(GameState.gameBoard.Copper));
+		if(coins == 0) return;
+		//else if(coins == 1) gain(Card.getCard(GameState.cards, Card.CardName.Copper));
+		//else if(coins == 2) gain(Card.getCard(gameState.gameBoard, Card.CardName.Embargo));
+		else if(coins == 3)
+        {
+           // gain(Card.getCard(gameState.gameBoard, Card.CardName.Ambassador));
+        }
+
 	}
 
 	final void endTurn() {

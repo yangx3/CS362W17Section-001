@@ -3,13 +3,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.Random;
 
 
 public class GameState implements Cloneable{
     public List<Player> players = new ArrayList<Player>();
-    public List<Card> cards ;
+    public List<Card> cards;
 	public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
 	public List<Card> embargoTokens;
+	Random gen = new Random();
 
 	   
 	public GameState(List<Card> cards) {
@@ -22,19 +24,17 @@ public class GameState implements Cloneable{
 	   
 	public void initializeGame(){
 
-//INITIALIZE SUPPLY
-
-    //check number of players
+//CHECK NUMBER OF PLAYERS
         if (players.size() > 4 || players.size() < 2) {
 		    System.err.println("the number of players must be between 2 and 4 ");
 			return ;
         }
-    //initialize supply for only two players
+//INITIALIZE SUPPLY
 		int selectedKingdom = 0;
 		int Kingdom_Cards_Selected = 10;
 
         while (selectedKingdom < Kingdom_Cards_Selected) {
-		    int random = (int)Randomness.random.nextInt(cards.size());//
+		    int random = gen.nextInt(cards.size());//
 			Card tmp = cards.get(random);
 			if(tmp.getType() != Card.Type.ACTION) continue;
 			if(gameBoard.containsKey(tmp)) continue;
@@ -111,18 +111,18 @@ public class GameState implements Cloneable{
 		         return false;
 		   }
 
-    /* Set HashMap  of each player and the score (remember ties!) */
 	public HashMap<Player, Integer>  getWinners() {
-		   HashMap<Player, Integer> playerScore = new HashMap<Player, Integer>();
+    //Set HashMap  of each player and the score (remember ties!)
+	    HashMap<Player, Integer> playerScore = new HashMap<Player, Integer>();
 
-		    //get score for each player
-		      for (Player p : players) {
-		         int score = p.scoreFor();
-		         playerScore.put(p, score);
-		      }
+		//get score for each player
+		for (Player p : players) {
+		    int score = p.scoreFor();
+		    playerScore.put(p, score);
+        }
 
-		      return playerScore;
-		   }
+        return playerScore;
+    }
 
 	public static void addEmbargo()
     {
@@ -171,23 +171,31 @@ public class GameState implements Cloneable{
 	        return  cloneState;
 	    }
 }
-//struct gameState {
-//	  int numPlayers; //number of players
-//	  int supplyCount[treasure_map+1];  //this is the amount of a specific type of card given a specific number.
-//	  int embargoTokens[treasure_map+1];
-//	  int outpostPlayed;
-//	  int outpostTurn;
-//	  int whoseTurn;
-//	  int phase;
-//	  int numActions; /* Starts at 1 each turn */
-//	  int coins; /* Use as you see fit! */
-//	  int numBuys; /* Starts at 1 each turn */
-//	  int hand[MAX_PLAYERS][MAX_HAND];
-//	  int handCount[MAX_PLAYERS];
-//	  int deck[MAX_PLAYERS][MAX_DECK];
-//	  int deckCount[MAX_PLAYERS];
-//	  int discard[MAX_PLAYERS][MAX_DECK];
-//	  int discardCount[MAX_PLAYERS];
-//	  int playedCards[MAX_DECK];
-//	  int playedCardCount;
-//	};
+
+
+
+
+
+
+/*
+struct gameState {
+    int numPlayers; //number of players
+	int supplyCount[treasure_map+1];  //this is the amount of a specific type of card given a specific number.
+	int embargoTokens[treasure_map+1];
+	int outpostPlayed;
+	int outpostTurn;
+	int whoseTurn;
+	int phase;
+	int numActions;  Starts at 1 each turn
+    int coins; /* Use as you see fit!
+    int numBuys; /* Starts at 1 each turn
+    int hand[MAX_PLAYERS][MAX_HAND];
+    int handCount[MAX_PLAYERS];
+    int deck[MAX_PLAYERS][MAX_DECK];
+    int deckCount[MAX_PLAYERS];
+    int discard[MAX_PLAYERS][MAX_DECK];
+    int discardCount[MAX_PLAYERS];
+    int playedCards[MAX_DECK];
+    int playedCardCount;
+};
+*/

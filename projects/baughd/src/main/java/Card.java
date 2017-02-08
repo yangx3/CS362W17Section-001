@@ -35,22 +35,18 @@ public final class Card implements Comparable<Card>, Cloneable{
 		this.cardName = cardName;
 	}
 
-	// * Returns the type
 	public Type getType() {
 		return realType;
 	}
 
-	// * Returns the cardName
 	public CardName getCardName() {
 		return cardName;
 	}
 
-	// * Returns the cost
 	public int getCost() {
 		return cost;
 	}
 
-	// * Returns the treasureValue
 	public int getTreasureValue() {
 		return treasureValue; 
 	}
@@ -73,9 +69,9 @@ public final class Card implements Comparable<Card>, Cloneable{
         // The Victory cards
 		o = new Card(CardName.Province,Type.VICTORY, 	8, 6, 0);
 		ret.add(o);
-		o = new Card(CardName.Duchy,Type.VICTORY,		5, 1, 0);
+		o = new Card(CardName.Duchy,Type.VICTORY,		5, 3, 0);
 		ret.add(o);		
-		o = new Card(CardName.Estate,Type.VICTORY,		2, 3, 0);
+		o = new Card(CardName.Estate,Type.VICTORY,		2, 1, 0);
 		ret.add(o);		
 		o = new Card(CardName.Curse,Type.VICTORY,		0, -1, 0);
 		ret.add(o);
@@ -84,7 +80,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		o = new Card(CardName.Adventurer,Type.ACTION,6,0,0);
 		ret.add(o);
 		o = new Card(CardName.Smithy,Type.ACTION,4,0,0);
-		ret.add(o);	
+		ret.add(o);
 		o = new Card(CardName.Village,Type.ACTION,3,0,0);
 		ret.add(o);
         o = new Card(CardName.Ambassador,Type.ACTION,3,0,0);
@@ -272,13 +268,3 @@ public final class Card implements Comparable<Card>, Cloneable{
     } 
 
 }
-/*      Ambassador   10
-        Baron		 10
-        Cutpurse	 10
-        Embargo		 10
-        Feast		 10
-        Gardens		 10
-        Great_Hall	 10
-        Mine		 10
-        Smithy		 10
-        Remodel*/

@@ -11,7 +11,7 @@ public class PlayDominion {
 		    GameState state;
 			Randomness.reset(10);	   
 
-//INITIALIZE GAME
+//INITIALIZE CARDS AND STATE
 			//the cards are achieved by each element/constant in the enum class
 			cards = new ArrayList<Card>(Card.createCards());
 			state = new GameState(cards);
@@ -24,18 +24,19 @@ public class PlayDominion {
 		    player = new Player(state, "PLAYER2");
 		    state.addPlayer(player);
 
-//Get 10 cards, draw 5, set actions and buys
+//INITIALIZE GAME
            state.initializeGame();
 
-//Prints out players initial decks
+//PRINT PLAYER DECKS
            System.out.println("\nInitialization of Dominion Board:\n\n" + state.toString());
 
 //ACTUALLY PLAY THE GAME HERE!!!
            HashMap<Player, Integer> winners = state.play();
 		   System.out.println ("Finished game.\n");
-		    
+
+//PRINT WINNERS
            for(Player p: winners.keySet()){
-               System.out.println ("Player name: " + winners.get(p) + " , Score: " + winners.get(p) );
+               System.out.println ("Player name: " + p.player_username + " , Score: " + winners.get(p) );
            }
 		      
 	//	    player.printStateGame();
