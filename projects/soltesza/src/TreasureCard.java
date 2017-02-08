@@ -29,6 +29,12 @@ public class TreasureCard extends Card {
 		}
 	}
 	
+	@Override
+	public TreasureCard clone() {
+		final TreasureCard clone = (TreasureCard)super.clone();
+		return clone;
+	}
+	
 	public int GetValue() {
 		switch(type) {
 			case GOLD:
