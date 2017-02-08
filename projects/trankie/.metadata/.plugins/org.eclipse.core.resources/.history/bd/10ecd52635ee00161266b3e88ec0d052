@@ -51,8 +51,8 @@ public class Card{
 		
 		sb.append(" \n\t" + this.getCardName());
 		sb.append("-" + this.getType() + " ");
-		sb.append("\tCost: " + this.cost + " ");
-		sb.append("\tScore: " + this.score + " ");
+		sb.append("\t\t Cost: " + this.cost + " ");
+		sb.append("\t\t Score: " + this.score + " ");
 		sb.append("\tTreasure Value: " + this.treasureValue);
 		
 		return sb.toString();
