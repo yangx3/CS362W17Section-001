@@ -9,13 +9,11 @@ public class Dominion{
 
   public void setupGame(){
     GameState game = new GameState();
-    // assert(game.bankCards.size() == 194);
-
 
     game.addPlayer("Amy");
     assert(game.numPlayers == 1);
 
-    game.addPlayer("Billy");
+    game.addPlayer("Billy", true);
     assert(game.numPlayers == 2);
 
     while(true)
@@ -23,6 +21,7 @@ public class Dominion{
   }
 
   public static void main(String [ ] args){
+    System.out.println("Making a new Dominion game.");
     Dominion game1 = new Dominion();
     game1.setupGame();
   }

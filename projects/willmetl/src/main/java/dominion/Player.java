@@ -26,6 +26,7 @@ public class Player{
   public GameState gameState;
 
   public Scanner scan = new Scanner(System.in);
+  public Random rand = new Random();
 
   public Player(String pName, GameState game){
     this(pName, game, false);
@@ -148,7 +149,7 @@ public class Player{
       int choice = 0;
       if(ISBOT){
         // Bots play the first card of the correct type
-        choice = 0;
+        choice = rand.nextInt(20);
       }else choice = scan.nextInt();
       if( choice>0 && choice<=availCards )
         buyCard(Card.values()[choice-1]);
@@ -175,8 +176,9 @@ public class Player{
     if(ISBOT){
       // Bots select a random card
       Collections.shuffle(hand);
-      if(hand.size() > 0) return hand.remove(0);
-      return null;
+      if(hand.size() > 0)
+        return hand.remove(rand.nextInt(hand.size()));
+      else return null;
     }
     for(int i=0; i<hand.size(); i++){
       System.out.println(i+1+" - "+hand.get(i));
@@ -287,10 +289,10 @@ public class Player{
     return playCard(card, this);
   }
   public boolean playCard(Card c, Player target){
-    if(hand.contains(c) == false){
-      System.out.format("%s does not have a %s to play.\n", playerName, c);
-      return false;
-    }
+    // if(hand.contains(c) == false){
+      // System.out.format("%s does not have a %s to play.\n", playerName, c);
+      // return false;
+    // }
     if(c.costsAction==0 || remActions>1){
       remActions -= c.costsAction;
       // if(DEBUGGING) System.out.println("Playing "+c);

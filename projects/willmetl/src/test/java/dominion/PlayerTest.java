@@ -1,9 +1,6 @@
 package dominion;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -18,6 +15,15 @@ public class PlayerTest{
   @Before
   public void initPlayer(){
     g = new GameState();
+  }
+
+  @Test
+  public void testChooseHand(){
+    Player a = new Player("Amy", g, true);
+    for(int i=0; i<5; i++){
+      assertNotNull(a.chooseHand());
+    }
+    assertNull(a.chooseHand());
   }
 
   @Test
