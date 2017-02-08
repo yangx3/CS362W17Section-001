@@ -95,9 +95,9 @@ public class Game {
                 this.deck.get(i).add(Card.Copper);
                 this.supply.put(Card.Copper, this.supply.get(Card.Copper)-1);
             }
-            for (int j = 0; j < 7; j++) {
+            for (int j = 0; j < 3; j++) {
                 this.deck.get(i).add(Card.Estate);
-                this.supply.put(Card.Estate, this.supply.get(Card.Estate)-1);
+                decrement(this.supply, Card.Estate);
             }
         }
 
@@ -513,4 +513,25 @@ public class Game {
     public int getNumPlayers() { return this.numPlayers; }
     public int getCurrentPlayer() { return this.currentPlayer; }
     public int getPhase() { return this.phase; }
+
+    /* convenience functions */    
+    static ArrayList<Card> standardCards() {
+        ArrayList<Card> k = new ArrayList<>();
+        k.add(Card.Adventurer);
+        k.add(Card.Baron);
+        k.add(Card.CouncilRoom);
+        k.add(Card.Feast);
+        k.add(Card.Gardens);
+        k.add(Card.GreatHall);
+        k.add(Card.Market);
+        k.add(Card.Mine);
+        k.add(Card.Smithy);
+        k.add(Card.Village);
+        return k;
+    }
+
+    /* methods to support testing */
+    void setHandCard(int player, int i, Card card) {
+        this.hand.get(player).set(i, card);
+    }
 }
