@@ -210,7 +210,7 @@ public class Player implements Cloneable{
 					gain(Card.getCard(state.cards, Card.CardName.Gold));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Gold), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) - 1);
 					coins = coins - 6;
-				} else if (rand == 1 &&state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Adventurer)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Adventurer)) > 0) {
+				} else if (rand == 1 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Adventurer)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Adventurer)) > 0) {
                     gain(Card.getCard(state.cards, Card.CardName.Adventurer));
                     state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Adventurer), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Adventurer)) - 1);
                     coins = coins - 6;

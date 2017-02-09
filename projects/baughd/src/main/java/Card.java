@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public final class Card implements Comparable<Card>, Cloneable{
 	public enum Type {
@@ -26,6 +27,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 	private final Type realType;
 	private final CardName cardName;
 	private final int cost, score, treasureValue;
+	private Random gen = new Random();
 
 	private Card(CardName cardName, Type type, int cost, int score, int treasureValue) {
 		this.cost = cost;
@@ -128,6 +130,16 @@ public final class Card implements Comparable<Card>, Cloneable{
 
             case Ambassador:
                 System.out.println("TODO Ambassador Code******************************************");
+                /*Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply. Then each other player gains a copy of it.*/
+                int rand = gen.nextInt(5);
+                int num = 0;
+                for(Card cards : player.hand)
+                {
+                    if(num == rand){
+                        System.out.println("This is Ambassador Code to do shiny things");
+                    }
+                    num++;
+                }
                 return;
 
             case Baron:
