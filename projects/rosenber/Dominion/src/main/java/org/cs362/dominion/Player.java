@@ -45,23 +45,49 @@ public class Player{
 	
 	//setters
 	
+	//Draw Card
 	//draws a card from the deck to the hand
+	public void drawCard(){
+		
+	}
 	
-	//discards a card from the hand to the discard
+	//Discard Card
+	//moves card from hand to discard
+	public void discardCard(Card c){
+		
+	}
 	
-	//puts a card from the hand back on top of the deck
+	//Reshuffle deck
+	//moves all cards from discard to deck and shuffles
+	public void reshuffleDeck(){
+		
+	}
 	
-	//puts a card from the hand back to the bottom of the deck
+	//See hand
+	//prints the hands
+	public void seeHand(){
+		
+	}
 	
-	//shuffles deck
+	//Play card
+	//asks the user what card they want to play and returns it
+	public Card playCard(){
+		
+	}
 	
-	//puts discard into deck and shuffles deck
+	//Buy Card
+	//asks the user what card they want to buy and adds it to the discard
+	public void buyCard(){
+		
+	}
 	
-	//prints the hand
+	//Get Victory Points
+	//returns the total number of victory points the player has
+	public int getVictoryPoints(){
+		
+	}
 	
-	//places a card on the discard and returns it
 	
-	//returns total number of victory points the player has
 	
 	
 	
