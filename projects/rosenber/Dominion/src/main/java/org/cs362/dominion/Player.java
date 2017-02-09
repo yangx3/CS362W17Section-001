@@ -42,8 +42,44 @@ public class Player{
 	}
 	
 	//getters
+	public String getName(){
+		return name;
+	}
+	public int getBuys(){
+		return buys;
+	}
+	public int getActions(){
+		return actions;
+	}
+	public int getMoney(){
+		return money;
+	}
 	
 	//setters
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setBuys(int buys){
+		this.buys = buys;
+	}
+	public void setActions(int actions){
+		this.actions = actions;
+	}
+	public void setMoney(int monies){
+		this.money = monies;
+	}
+	
+	//Adders
+	//adds taken in value to variable
+	public void addBuys(int num){
+		buys += num;
+	}
+	public void addActions(int num){
+		actions += num;
+	}
+	public void addMoney(int num){
+		money += num;
+	}
 	
 	//Draw Card
 	//draws a card from the deck to the hand
@@ -72,7 +108,13 @@ public class Player{
 	//Play card
 	//asks the user what card they want to play and returns it
 	public Card playCard(){
-		
+		return new Card();
+	}
+	
+	//Compute Money
+	//gets the amount of money available from cards in hand
+	private int computeMoney(){
+		return 1;
 	}
 	
 	//Buy Card
@@ -84,7 +126,7 @@ public class Player{
 	//Get Victory Points
 	//returns the total number of victory points the player has
 	public int getVictoryPoints(){
-		
+		return 1;
 	}
 	
 	
