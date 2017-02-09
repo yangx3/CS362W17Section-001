@@ -3,7 +3,7 @@
  * can be added, removed, played, etc.
  * 
  * Robert Rosenberger
- * Last modified: 2/2/2017
+ * Last modified: 2/8/2017
  */
 package org.cs362.dominion;
 import java.util.ArrayList;

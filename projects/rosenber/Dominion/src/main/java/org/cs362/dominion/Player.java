@@ -8,7 +8,7 @@
  * for accessing the places in their hand and decks.
  * 
  * Robert Rosenberger
- * Last modified: 1/31/2017
+ * Last modified: 2/8/2017
  */
 package org.cs362.dominion;
 public class Player{

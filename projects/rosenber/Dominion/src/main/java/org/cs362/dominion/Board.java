@@ -5,7 +5,7 @@
  *  - The trash deck is always at idx 0
  * 
  * Robert Rosenberger
- * Last Modified: 2/3/2017
+ * Last Modified: 2/8/2017
  */
 package org.cs362.dominion;
 import java.util.ArrayList;
