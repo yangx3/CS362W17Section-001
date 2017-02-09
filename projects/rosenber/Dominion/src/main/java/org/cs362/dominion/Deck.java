@@ -13,7 +13,7 @@ import java.util.Random;
 public class Deck{
 	
 	private String name;
-	private ArrayList<Card> deck;
+	public ArrayList<Card> deck;
 	
 	//constructor
 	public Deck(){
@@ -115,26 +115,20 @@ public class Deck{
 	}
 	
 	//returns a specific card from the deck
-	// - returns null if it isn't in deck
+	// - throws indexOutOfRange exception if not in deck
 	public Card findSpecific(Card c){
-		if(this.isCard(c))
-			return deck.get(deck.indexOf(c));
-		return null;
+		return deck.get(deck.indexOf(c));
 	}
 	
 	//removes a specific card from the deck
-	//does nothing if it's not there
+	// - throws out of range exception if not in deck
 	public void removeSpecific(Card c){
-		if(!this.isCard(c))
-			return;
 		deck.remove(c);
 	}
 	
 	//returns and removes a specific card from the deck
-	// - returns null if it isn't in deck
+	// - throws out of range exception if not in deck
 	public Card getSpecific(Card c){
-		if(!this.isCard(c))
-			return null;
 		Card temp = deck.get(deck.indexOf(c));
 		deck.remove(temp);
 		return temp;

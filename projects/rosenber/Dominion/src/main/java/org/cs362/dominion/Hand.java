@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Hand{
 	
-	private ArrayList<Card> hand;
+	public ArrayList<Card> hand;
 	
 	//constructor
 	public Hand(){
@@ -36,37 +36,37 @@ public class Hand{
 	}
 	
 	//removes card from the hand
-	// - c not in hand, does nothing
-	// - idx has to be good
+	// - c not in hand, throws out of bounds exception
+	// - idx not valid, throws out of bounds exception
 	public void removeCard(Card c){
-		if(!inHand(c))
-			return;
-		hand.remove(hand.indexOf(c));
+			hand.remove(hand.indexOf(c));
 	}
 	public void removeCard(int idx){
-		hand.remove(idx);
+			hand.remove(idx);
 	}
 	
 	//returns card from the hand
+	// - c not in hand, throws out of bounds exception
+	// - idx not valid, throws out of bounds exception
 	public Card getCard(Card c){
-		return hand.get(hand.indexOf(c));
+			return hand.get(hand.indexOf(c));
 	}
 	public Card getCard(int idx){
-		return hand.get(idx);
+			return hand.get(idx);
 	}
 	
 	//returns card and removes card from hand
 	// - card must be in hand
 	// - idx must be good
 	public Card playCard(Card c){
-		Card temp = getCard(c);
-		removeCard(c);
-		return temp;
+			Card temp = getCard(c);
+			removeCard(c);
+			return temp;
 	}
 	public Card playCard(int idx){
-		Card temp = getCard(idx);
-		removeCard(idx);
-		return temp;
+			Card temp = getCard(idx);
+			removeCard(idx);
+			return temp;
 	}
 	
 	//prints the cards in the hand
