@@ -4,7 +4,7 @@
  * cost to 5.
  * 
  * Robert Rosenberger
- * 2/8/2017
+ * 2/9/2017
  */
 
 package org.cs362.dominion;
