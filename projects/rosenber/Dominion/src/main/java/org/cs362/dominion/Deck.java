@@ -119,6 +119,9 @@ public class Deck{
 	public Card findSpecific(Card c){
 		return deck.get(deck.indexOf(c));
 	}
+	public Card findSpecific(int idx){
+		return deck.get(idx);
+	}
 	
 	//removes a specific card from the deck
 	// - throws out of range exception if not in deck
