@@ -6,7 +6,7 @@
  *   - garden has both Action and Victory type
  *   
  *   Robert Rosenberger
- *   Last modified: 1/31/2017
+ *   Last modified: 2/9/2017
  */
 package org.cs362.dominion;
 public enum CardType{
