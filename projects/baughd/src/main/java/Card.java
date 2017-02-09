@@ -123,22 +123,22 @@ public final class Card implements Comparable<Card>, Cloneable{
 	         player.drawCard();
 			return;
 
-		case Village:
+		case Village: //
 	    	 player.drawCard();
 	    	 player.numActions = player.numActions + 2;
+	    	 System.out.println("The player draws +1 Card.");
+			System.out.println("The player gets +2 Actions.");
             return;
 
 		case Ambassador:
-            System.out.println("TODO Village Code******************************************");
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +2 play Actions.");
+            System.out.println("TODO Ambassador Code******************************************");
             return;
 
         case Baron:
             if(getCard(player.hand, CardName.Estate) != null) {
                 player.discard(getCard(player.hand, CardName.Estate));
                 player.coins = player.coins + 4;
-            }else //player.gain(getCard(GameState.cards, CardName.Estate)); // the GameState is initialized after the Cards...
+            } else player.gain(getCard(state.cards, CardName.Estate)); // the GameState is initialized after the Cards...
             System.out.println("The player draws +1 Card.");
             System.out.println("The player gets +2 Actions.");
             System.out.println("If player has an Estate in hand, they get +4 coins or they gain an Estate.");
@@ -150,9 +150,9 @@ public final class Card implements Comparable<Card>, Cloneable{
             player.drawCard();
             player.drawCard();
             player.numBuys++;
-            //for (Player players : GameState.players)
+            for (Player players : state.players)
             {
-                //players.drawCard();
+                players.drawCard();
             }
             System.out.println("The player draws +4 Card.");
             System.out.println("The player gets +1 Buys.");
@@ -160,9 +160,9 @@ public final class Card implements Comparable<Card>, Cloneable{
             return;
 
         case Cutpurse:
-            //for (Player players : GameState.players)
+            for (Player players : state.players)
             {
-               //players.discard(getCard(players.hand, CardName.Estate));
+               players.discard(getCard(players.hand, CardName.Copper));
             }
             System.out.println("The player gets +2 Coins.");
             System.out.println("Every other player discards a Copper Card.");
@@ -203,7 +203,7 @@ public final class Card implements Comparable<Card>, Cloneable{
             } else if(getCard(player.hand, CardName.Copper) != null)
             {
                 player.hand.remove(getCard(player.hand, CardName.Copper));
-                //player.gain(getCard(GameState.gameBoard.card, CardName.Silver));
+                player.gain(getCard(state.cards, CardName.Silver));
             }
             System.out.println("The player trashes a Treasure card.");
             System.out.println("The player gets a Treasure card one level higher than the trashed Card.");

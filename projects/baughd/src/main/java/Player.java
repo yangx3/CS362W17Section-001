@@ -2,13 +2,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Player implements Cloneable{
 	List<Card> hand = new ArrayList<Card>();// int hand[MAX_PLAYERS][MAX_HAND];
 	LinkedList<Card> deck = new LinkedList<Card>();// int deck[MAX_PLAYERS][MAX_DECK];
-
 	List<Card> discard = new ArrayList<Card>(); // int discard[MAX_PLAYERS][MAX_DECK];
 	List<Card> playedCards = new ArrayList<Card>();
+	Random gen = new Random();
 
 	String player_username;
 	int numActions;
@@ -28,12 +29,12 @@ public class Player implements Cloneable{
 			System.out.println("\nReshuffle the deck of the player "
 					+ player_username + " to draw FIVE cards");
 			while (discard.size() > 0) {
-				int ndx = (int) Randomness.nextRandomInt(discard.size());
+				int ndx = gen.nextInt(discard.size());
 				// Move discard to deck
 				deck.add(discard.remove(ndx));
 			}
 		}
-		Card toDraw = deck.poll();
+		Card toDraw = deck.poll();//card at top of deck
 		// Add card to hand and hand count automatically will be incremented since we use List
 		hand.add(toDraw);
 		System.out.println(player_username + " draws" + toDraw);
@@ -42,9 +43,6 @@ public class Player implements Cloneable{
 	}
 	
 	final void initializePlayerTurn() {
-		//initialize first player's turn
-//		   state->numnumActions = 1;
-//		   state->numnumBuys = 1;
 		numActions = 1;
 		coins = 0;
 		numBuys = 1;
@@ -113,18 +111,36 @@ public class Player implements Cloneable{
 		{
 			coins += c.getTreasureValue();
 			System.out.println(c.toString());
+			playedCards.add(c);
+			hand.remove(c);
 		}
 		System.out.println(player_username + "'s COINS: " + coins + "\n");
 	}
 
-	public void buyCard() {
+	public void buyCard(GameState state) {
 		if(coins == 0) return;
-		//else if(coins == 1) gain(Card.getCard(GameState.cards, Card.CardName.Copper));
-		//else if(coins == 2) gain(Card.getCard(gameState.gameBoard, Card.CardName.Embargo));
+		else if(coins == 1) gain(Card.getCard(state.cards, Card.CardName.Copper));
+		else if(coins == 2) gain(Card.getCard(state.cards, Card.CardName.Embargo));
 		else if(coins == 3)
-        {
-           // gain(Card.getCard(gameState.gameBoard, Card.CardName.Ambassador));
+        {//randomly choose 3 cost cards?
+           gain(Card.getCard(state.cards, Card.CardName.Village));
+           //gain(Card.getCard(state.cards, Card.CardName.Ambassador));
+           //gain(Card.getCard(state.cards, Card.CardName.Great_Hall));
         }
+        else if(coins == 4)
+        {//randomly choose one of these
+            gain(Card.getCard(state.cards, Card.CardName.Smithy));
+            //gain(Card.getCard(state.cards, Card.CardName.Baron));
+            //gain(Card.getCard(state.cards, Card.CardName.Cutpurse));
+            //gain(Card.getCard(state.cards, Card.CardName.Feast));
+            //gain(Card.getCard(state.cards, Card.CardName.Remodel));
+        }
+        else if(coins == 5)
+        {//randomly choose one of these
+            //gain(Card.getCard(state.cards, Card.CardName.Embargo));
+            gain(Card.getCard(state.cards, Card.CardName.Mine));
+        }
+        else if(coins == 6) gain(Card.getCard(state.cards, Card.CardName.Adventurer));
 
 	}
 
@@ -132,6 +148,12 @@ public class Player implements Cloneable{
 		coins = 0;
 		numActions = 1;
 		numBuys = 1;
+		for(Card c: playedCards)
+		{
+			discard.add(c);
+		}
+		playedCards.clear();
+		hand.clear();
 	}
 
 	public void printStateGame() {

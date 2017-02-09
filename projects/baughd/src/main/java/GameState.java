@@ -13,7 +13,6 @@ public class GameState implements Cloneable{
 	public List<Card> embargoTokens;
 	Random gen = new Random();
 
-	   
 	public GameState(List<Card> cards) {
 		   this.cards = cards;
 	   }
@@ -33,6 +32,7 @@ public class GameState implements Cloneable{
 		int selectedKingdom = 0;
 		int Kingdom_Cards_Selected = 10;
 
+//INITIALIZE ACTION CARDS
         while (selectedKingdom < Kingdom_Cards_Selected) {
 		    int random = gen.nextInt(cards.size());//
 			Card tmp = cards.get(random);
@@ -45,11 +45,12 @@ public class GameState implements Cloneable{
     //set number of Curse cards the default number of players is 2
 		gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
 		      
-	//set number of Victory cards
+//INITIALIZE VICTORY CARDS
 		gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
-	//set number of Treasure cards
+
+//INITIALIZE TREASURE CARDS
 		gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
@@ -61,14 +62,6 @@ public class GameState implements Cloneable{
 			    player.gain(Card.getCard(cards, Card.CardName.Copper));
             for (int i = 0; i < 3; i++)
 			    player.gain(Card.getCard(cards,Card.CardName.Estate));
-			         
-            player.numActions = 1;
-			player.coins = 0;
-			player.numBuys = 1;
-	//Shuffle your starting 10 cards and draw 5 cards
-			for (int i = 0; i < 5; i++) {
-			    player.drawCard();
-			}
         }
     }
 	   
@@ -78,17 +71,18 @@ public class GameState implements Cloneable{
 		      while (!isGameOver()) {
 		    	  turn++;
 		         for (Player player : players) {
-		        	 	System.out.println("\n\nPlayer: "+ player.player_username + " is playing\n\n");
+		        	 	System.out.println("\n--- " + player.player_username + " IS PLAYING ---");
+		        	 	player.initializePlayerTurn();
 		   				//player plays action card
 		        	 	player.playKingdomCard();
 		        	 	//player plays treasure card
 		   			    player.playTreasureCard();
 		   			    //player buy cards
-		        	    player.buyCard();
+		        	    player.buyCard(this);
 		        	  //player ends turn
 		        	    player.endTurn();
 		         }
-		         if(turn == 2)
+		         if(turn == 3)
 		        	 break;
 		      }
 		      return this.getWinners();
