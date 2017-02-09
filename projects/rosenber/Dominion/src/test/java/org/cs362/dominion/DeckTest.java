@@ -1,9 +1,9 @@
 package org.cs362.dominion;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class DeckTest {
 
@@ -31,79 +31,130 @@ public class DeckTest {
 	}
 
 	@Test 
-	public void testAddingCards(){
-		
-		test = new Deck("Test Deck");
-		assertEquals("The deck isn't empty",
-				test.size(), 0);
-		
-		test.addTop(createCard("One"));
-		assertEquals("There should be one card in the deck",
-				test.size(), 1);
-		assertEquals("One card in deck, top doesn't match bottom",
-				test.getBottom(), test.getTop());
-		
-		Card c = createCard("Two");
-		test.addBottom(c);
-		assertEquals("Bottom card doesn't equal card added",
-				test.getBottom(), c);
-		assertFalse("Top card is the same as the bottom",
-				test.getBottom() == test.getTop());
-		
-		test.removeBottom();
-		assertFalse("The bottom card wasn't removed correctly",
-				test.getBottom() == c);
-		assertEquals("There should be 1 card", 
-				test.size(), 1);
-		
-		assertTrue("The top card isn't in the deck",
-				test.isCard(test.getTop()));
-		assertEquals("Couldn't find the top card",
-				test.getTop(), test.findSpecific(test.getTop()));
-		
-		test.removeTop();
-		assertEquals("No cards should be in deck",
-				test.size(), 0);
-		
-		c = createCard("Three");
-		test.addTop(c);
-		test.removeSpecific(c);
-		assertFalse("Card shouldn't be found in the deck",
-				test.isCard(c));
-
-		assertNull("Found a card not in the deck", 
-				test.findSpecific(c));
-		assertNull("Returned a card not in the deck",
-				test.getSpecific(c));
-		
-		test.addBottom(c);
-		assertEquals("Couldn't find a specific card",
-				c, test.getSpecific(c));
-		
-		test.removeSpecific(c);
-		assertFalse("Found card in deck that isn't in the deck",
-				test.isCard(c));
-		try{
-		test.removeSpecific(c);
+	public void randomTesting(){
+		Random rand = new Random();
+		ArrayList<Card> cards = new ArrayList<Card>();
+		for(int j=0; j<10; j++){
+			cards.add(createCard(Integer.toString(j)));
 		}
-		catch(Exception e){
-			fail("remove specific card crashed when removing card not in deck");
+		for(int j=0; j<100; j++){
+			test = new Deck();
+			Card c;
+			Card other;
+			int num;
+			int size;
+			for(int k=0; k<10000; k++){
+				num = rand.nextInt(11);
+				switch(num){
+				case 0:
+					num = rand.nextInt(10);
+					size = test.size();
+					test.addTop(cards.get(num));
+					assertEquals("Size didn't change when card added to top",
+							size+1, test.size());
+					break;
+				case 1:
+					num = rand.nextInt(10);
+					size = test.size();
+					test.addBottom(cards.get(num));
+					assertEquals("Size didn't change when card added to bottom",
+							size+1, test.size());
+					break;
+				case 2:
+					try{
+						c = test.deck.get(test.deck.size()-1);
+						assertEquals("Top card doesn't match known top card",
+							c, test.getTop());
+					}
+					catch(Exception e){};
+					break;
+				case 3:
+					c = test.deck.get(0);
+					try{
+						assertEquals("Bottom card doesn't match known top card",
+							c, test.getBottom());
+					}
+					catch(Exception e){};
+					break;
+				case 4:
+					size = test.size();
+					try{
+						test.removeTop();
+						assertEquals("Size didn't change when card removed from top",
+							size-1, test.size());
+					}
+					catch(Exception e){};
+					break;
+				case 5:
+					size = test.size();
+					try{
+						test.removeBottom();
+						assertEquals("Size didn't change when card removed from bottom",
+							size-1, test.size());
+					}
+					catch(Exception e){};
+					break;
+				case 6:
+					size = test.size();
+					try{
+						c = test.deck.get(test.size()-1);
+						other = test.drawTop();
+						assertEquals("Size didn't decrease when card drawn from top",
+							size-1, test.size());
+						assertEquals("Top drawn card didn't match known top card",
+							c, other);
+					}
+					catch(Exception e){};
+					break;
+				case 7:
+					size = test.size();
+					try{
+						c = test.deck.get(test.size()-1);
+						other = test.drawBottom();
+						assertEquals("Size didn't decrease when card drawn from bottom",
+							size-1, test.size());
+						assertEquals("Bottom drawn card didn't match known top card",
+							c, other);
+					}
+					catch(Exception e){};
+					break;
+				case 8:
+					num = rand.nextInt(10);
+					c = cards.get(num);
+					if(test.deck.indexOf(c) == -1){
+						assertFalse("Found card in deck that doesn't exist",
+								test.isCard(c));
+					}
+					else{
+						assertTrue("Didn't find card in deck that exists",
+								test.isCard(c));
+					}
+					break;
+				case 9:
+					num = rand.nextInt(10);
+					c = cards.get(num);
+					try{
+						other = test.findSpecific(c);
+						assertEquals("Card found wasn't card asked for",
+								c, other);
+					}
+					catch(Exception e){};
+					break;
+				case 10:
+					num = rand.nextInt(10);
+					c = cards.get(num);
+					size = test.size();
+					try{
+						other = test.getSpecific(c);
+						assertEquals("Deck size didn't decrease when removing specific card",
+								size-1, test.size());
+						assertEquals("Specific card removed doesn't match card asked",
+								c, other);
+					}
+					catch(Exception e){};
+				}
+			}
 		}
-		
-		test.addBottom(c);
-		Card drawn = test.drawBottom();
-		assertEquals("Card not removed after drawn from bottom",
-				test.size(), 0);
-		assertEquals("Bottom drawn card doesn't equal added card",
-				drawn, c);
-		
-		c = createCard("asdf");
-		test.addTop(c);
-		drawn = test.drawTop();
-		assertEquals("Card not removed after drawn from top",
-				test.size(), 0);
-		assertEquals("Top drawn card doesn't equal added card",
-				drawn, c);
 	}
 	
 	@Test
