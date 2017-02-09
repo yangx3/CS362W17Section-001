@@ -93,7 +93,7 @@ public class Player{
 	//asks the user what card they want to discard from hand and
 	//  moves it to discard
 	public void discardCard(Card c){
-		
+		//TODO
 	}
 	
 	//Re-shuffle deck
@@ -114,6 +114,7 @@ public class Player{
 	//Play card
 	//asks the user what card they want to play and returns it
 	public Card playCard(){
+		//TODO
 		return new Card();
 	}
 	
@@ -129,7 +130,7 @@ public class Player{
 	//Buy Card
 	//asks the user what card they want to buy and adds it to the discard
 	public void buyCard(){
-		
+		//TODO
 	}
 	
 	//Get Victory Points
@@ -144,9 +145,4 @@ public class Player{
 			sum += discard.findSpecific(j).getVictoryPoints();
 		return sum;
 	}
-	
-	
-	
-	
-	
 }
