@@ -136,8 +136,10 @@ public class Player{
     ArrayList<Card> tcards = new ArrayList<Card>();
     for(Card c: hand)
       if(c.getType() == Card.Type.TREASURE) tcards.add(c);
-    for(Card c: tcards)
-      if(hand.remove(c)) playCard(c);
+    for(Card c: tcards){
+      hand.remove(c);
+      playCard(c);
+    }
     // seeHand();
     while(remBuys >= 1){
       System.out.format("%s has %d buys and %d money to spend.\n",
@@ -238,17 +240,14 @@ public class Player{
     return total;
   }
 
-  public boolean discardRandomFromHand(){
+  public boolean discardFromHand(){
     // This player discards a random card from their hand
-    int handsize = hand.size();
-    // generate random number in range of hand size instead of this
-    Card c = hand.remove(0);
-    return discard(c);
+    // int handsize = hand.size();
+    Card c = hand.get(rand.nextInt(hand.size()));
+    return discardFromHand(c);
   }
-
   public boolean discardFromHand(Card c){
     int i = hand.indexOf(c);
-    // if(DEBUGGING) System.out.format("%s has index %d", c, i);
     if(i>=0)
       return cardPile.add(hand.remove(i));
     return false;
@@ -261,12 +260,10 @@ public class Player{
   }
 
   public Card draw(){
-    // System.out.print("Drawing.. "+drawsRemaining+" ->");
     if(drawsRemaining == 0)
       drawsRemaining = shuffle();
     drawsRemaining--;
     Card c = cardPile.remove(0);
-    // System.out.println(drawsRemaining+"("+c+")");
     return c;
   }
 
@@ -293,7 +290,7 @@ public class Player{
       // System.out.format("%s does not have a %s to play.\n", playerName, c);
       // return false;
     // }
-    if(c.costsAction==0 || remActions>1){
+    if(c.getType() != Card.Type.ACTION || remActions>=1){
       remActions -= c.costsAction;
       // if(DEBUGGING) System.out.println("Playing "+c);
       if(c.play(this) == null)
