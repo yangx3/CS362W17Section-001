@@ -32,7 +32,7 @@ public class PlayDominion {
 
 //ACTUALLY PLAY THE GAME HERE!!!
            HashMap<Player, Integer> winners = state.play();
-		   System.out.println ("Finished game.\n");
+		   System.out.println ("Finished game.\n\n");
 
 //PRINT WINNERS
            for(Player p: winners.keySet()){

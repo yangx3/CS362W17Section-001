@@ -67,7 +67,7 @@ public class Player implements Cloneable{
 		System.out.println(player_username + " discards " + card);
 	}
 
-	public void playKingdomCard() {
+	public void playKingdomCard() {//doesn't play any cards like Village even if it is owned
 		while (numActions > 0) {
 			List<Card> actionCards = Card.filter(hand, Card.Type.ACTION);
 
@@ -80,6 +80,7 @@ public class Player implements Cloneable{
 			System.out.println("Player.actionPhase Card:" + c.toString());
 
 			playedCards.add(c);
+
 			numActions -= 1;
 
 			c.play(this, gameState);
@@ -118,30 +119,26 @@ public class Player implements Cloneable{
 	}
 
 	public void buyCard(GameState state) {
-		if(coins == 0) return;
-		else if(coins == 1) gain(Card.getCard(state.cards, Card.CardName.Copper));
-		else if(coins == 2) gain(Card.getCard(state.cards, Card.CardName.Embargo));
-		else if(coins == 3)
-        {//randomly choose 3 cost cards?
-           gain(Card.getCard(state.cards, Card.CardName.Village));
-           //gain(Card.getCard(state.cards, Card.CardName.Ambassador));
-           //gain(Card.getCard(state.cards, Card.CardName.Great_Hall));
-        }
-        else if(coins == 4)
-        {//randomly choose one of these
-            gain(Card.getCard(state.cards, Card.CardName.Smithy));
-            //gain(Card.getCard(state.cards, Card.CardName.Baron));
-            //gain(Card.getCard(state.cards, Card.CardName.Cutpurse));
-            //gain(Card.getCard(state.cards, Card.CardName.Feast));
-            //gain(Card.getCard(state.cards, Card.CardName.Remodel));
-        }
-        else if(coins == 5)
-        {//randomly choose one of these
-            //gain(Card.getCard(state.cards, Card.CardName.Embargo));
-            gain(Card.getCard(state.cards, Card.CardName.Mine));
-        }
-        else if(coins == 6) gain(Card.getCard(state.cards, Card.CardName.Adventurer));
-
+		while(numBuys > 0) {
+			if (coins == 0) gain(Card.getCard(state.cards, Card.CardName.Copper));
+			else if (coins == 1) gain(Card.getCard(state.cards, Card.CardName.Copper));
+			else if (coins == 2) gain(Card.getCard(state.cards, Card.CardName.Embargo));
+			else if (coins == 3) {//randomly choose 3 cost cards?
+				gain(Card.getCard(state.cards, Card.CardName.Village));
+				//gain(Card.getCard(state.cards, Card.CardName.Ambassador));
+				//gain(Card.getCard(state.cards, Card.CardName.Great_Hall));
+			} else if (coins == 4) {//randomly choose one of these
+				gain(Card.getCard(state.cards, Card.CardName.Smithy));
+				//gain(Card.getCard(state.cards, Card.CardName.Baron));
+				//gain(Card.getCard(state.cards, Card.CardName.Cutpurse));
+				//gain(Card.getCard(state.cards, Card.CardName.Feast));
+				//gain(Card.getCard(state.cards, Card.CardName.Remodel));
+			} else if (coins == 5) {//randomly choose one of these
+				//gain(Card.getCard(state.cards, Card.CardName.Embargo));
+				gain(Card.getCard(state.cards, Card.CardName.Mine));
+			} else if (coins == 6) gain(Card.getCard(state.cards, Card.CardName.Adventurer));
+			numBuys--;
+		}
 	}
 
 	final void endTurn() {
@@ -149,6 +146,10 @@ public class Player implements Cloneable{
 		numActions = 1;
 		numBuys = 1;
 		for(Card c: playedCards)
+		{
+			discard.add(c);
+		}
+		for(Card c: hand)
 		{
 			discard.add(c);
 		}
@@ -167,7 +168,7 @@ public class Player implements Cloneable{
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("------- " + this.player_username + " -------");
+		sb.append("\n------- " + this.player_username + " -------");
 		sb.append("\nnumActions: " + this.numActions);
 		sb.append(", coins: " + this.coins);
 		sb.append(", numBuys: " + this.numBuys);
