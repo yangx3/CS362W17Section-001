@@ -35,6 +35,7 @@ public class Board {
 	
 	//gets the name of the deck
 	// - takes in idx of deck
+	// - throws out of range exception if not valid idx
 	public String getName(int idx){
 		return decks.get(idx).getName();
 	}
@@ -42,6 +43,7 @@ public class Board {
 	//add to deck
 	// - takes in card to add to the deck
 	// - takes in idx of deck
+	// - throws out of range exception if not valid idx
 	public void addToDeck(Card c, int idx){
 		decks.get(idx).addBottom(c);
 	}
@@ -55,6 +57,7 @@ public class Board {
 	//draw from deck, removes one card from the deck
 	// - takes idx of deck to draw from
 	// - returns card drawn
+	// - throws out of range exception if not valid idx
 	public Card draw(int idx){
 		return decks.get(idx).drawTop();
 	}
@@ -66,6 +69,7 @@ public class Board {
 	
 	//get number of cards in deck
 	// - takes in idx of deck
+	// - throws out of range exception if not valid idx
 	public int numCardsInDeck(int idx){
 		return decks.get(idx).size();
 	}
