@@ -135,7 +135,14 @@ public class Player{
 	//Get Victory Points
 	//returns the total number of victory points the player has
 	public int getVictoryPoints(){
-		return 1;
+		int sum = 0;
+		for(int j=0; j<hand.size(); j++)
+			sum += hand.getCard(j).getVictoryPoints();
+		for(int j=0; j<deck.size(); j++)
+			sum += deck.findSpecific(j).getVictoryPoints();
+		for(int j=0; j<discard.size(); j++)
+			sum += discard.findSpecific(j).getVictoryPoints();
+		return sum;
 	}
 	
 	
