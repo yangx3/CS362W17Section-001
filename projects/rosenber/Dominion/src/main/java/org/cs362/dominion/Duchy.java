@@ -9,8 +9,12 @@
 
 package org.cs362.dominion;
 
-public class Duchy extends Card {
+import java.util.ArrayList;
 
+public class Duchy extends Card {
 	
+	public Duchy(){
+		
+	}
 	
 }

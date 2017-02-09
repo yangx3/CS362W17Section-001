@@ -1,9 +1,6 @@
 package org.cs362.dominion;
 
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 public class BoardTest {
@@ -11,9 +8,7 @@ public class BoardTest {
 	private Board test;
 	
 	private Card createCard(String name){
-		ArrayList<CardType> type = new ArrayList<CardType>();
-		type.add(CardType.Action);
-		return new Card(name, 1, 2, 3, type);
+		return new Card(name, 1, 2, 3, new CardType[] {CardType.Action});
 	}
 	
 	@Test

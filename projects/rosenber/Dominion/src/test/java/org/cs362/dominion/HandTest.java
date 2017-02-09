@@ -10,9 +10,7 @@ public class HandTest {
 	private Hand test;
 	
 	private Card createCard(String name){
-		ArrayList<CardType> type = new ArrayList<CardType>();
-		type.add(CardType.Action);
-		return new Card(name, 1, 2, 3, type);
+		return new Card(name, 1, 2, 3, new CardType[] {CardType.Action});
 	}
 	
 	@Test

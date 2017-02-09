@@ -21,7 +21,7 @@ public class CardTest {
 			fail("Default card constructor crashes");
 		}
 		
-		testCard = new Card("James", 1, 2, 3, type);
+		testCard = new Card("James", 1, 2, 3, new CardType[] {CardType.Action});
 		Card other = new Card(testCard);
 		
 		assertFalse("The card constructor doesn't create a new object",
