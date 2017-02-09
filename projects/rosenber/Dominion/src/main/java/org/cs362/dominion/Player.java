@@ -84,7 +84,9 @@ public class Player{
 	//Draw Card
 	//draws a card from the deck to the hand
 	public void drawCard(){
-		
+		if(deck.size() == 0)
+			reshuffleDeck();
+		hand.addCard(deck.drawTop());
 	}
 	
 	//Discard Card
@@ -93,7 +95,7 @@ public class Player{
 		
 	}
 	
-	//Reshuffle deck
+	//Re-shuffle deck
 	//moves all cards from discard to deck and shuffles
 	public void reshuffleDeck(){
 		
