@@ -82,8 +82,8 @@ public class GameState implements Cloneable{
 		        	  //player ends turn
 		        	    player.endTurn();
 		         }
-		         if(turn == 3)
-		        	 break;
+		         //if(turn == 100)
+		        	// break;
 		      }
 		      return this.getWinners();
 		   }
