@@ -127,6 +127,7 @@ Class Deck
 
 public class Deck {
     private ArrayList<Card> deck;
+    int tokens;
 
     //default constructor assigns empty space to deck
     public Deck() {
@@ -203,6 +204,9 @@ public class Deck {
     public void addCard(Card card)          {deck.add(0, card);};
     public void addBottomCard(Card card)    {deck.add(card);};
 
+    public int getTokens() {return tokens;}
+    public void setTokens(int number) {tokens = number;}
+    public void modifyTokens (int number) {tokens += number;}
 
     //draws a card from the top of the deck
     public Card drawCard() {

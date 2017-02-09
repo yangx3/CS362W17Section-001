@@ -295,7 +295,7 @@ public class Game {
                 done = false;
                 previousInputError = true;
             }
-        } while (!done && (getPlayer(num).getValues() > 0));
+        } while (!done && (getPlayer(num).getBuys() > 0));
 
         getPlayer(num).discardAll();
         printLineDelay("You may see the deck, or just press enter to end your turn: ");
@@ -377,13 +377,6 @@ public class Game {
 
             /*Custom Cards:
                 DONE
-                Ambassador -
-                    Reveal a card from your hand.
-                    Return up to 2 copies of it from your hand to the Supply.
-                    Then each other player gains a copy of it.
-                Embargo -
-                    Trash for +2 coins. Put an Embargo token on top of a Supply pile.
-                    A player gains a Curse card per Embargo token on that pile when a card is bought.
                 Gardens -
                     Worth 1 victory for every 10 cards in your deck(rounded down)
             */
@@ -500,24 +493,53 @@ public class Game {
             }
             else if (card.getName().equals("ambassador")) {
                 String supply;
-                System.out.print("Card you would like to discard: ");
+                int numberBack;
+                System.out.print("Card you would like to return to the supply: ");
                 supply = scanner.nextLine();
                 supply.toLowerCase();
-                
+                System.out.print("Number of cards you want to return: ");
+                /*
+                BUG
+                WILL RETURN MORE THAN 2 OF THE CARD
+                */
+                numberBack = scanner.nextInt();
+                for (int y = 0; y < numberBack; y++) {
+                    if (player.hand.hasCard(supply)) {
+                        getDeck(supply).addCard(player.hand.drawCard(supply));
+                        for (int x = 0; x < players.size(); x++) {
+                            if (x != num) {
+                                getPlayer(x).buy(getDeck(supply));
+                            }
+                        }
+                    }
+                    else {
+                        System.out.println("You don't have that card in your hand");
+                    }
+                }
+            }
+            else if (card.getName().equals("embargo")) {
+                trash.addCard(player.hand.drawCard("embargo"));
+                player.modifyValues(2);
+                String tokenPlace;
+                printBank();
+                System.out.print("Deck you would like to add a token to: ");
+                tokenPlace = scanner.nextLine();
+                tokenPlace.toLowerCase();
+                getDeck(tokenPlace).modifyTokens(1);
             }
         }
     }
 
     public void printBank() {
         for (int x = 0; x < bank.size(); x++) {
-            System.out.printf("%-15s# remaining: %d\tCost: %d\tDescription: %s\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost(), bank.get(x).cardInfo(0).getDescription());
+            System.out.printf("%-15s# remaining: %d\tCost: %d\tTokens: %d\tDescription: %s\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost(), bank.get(x).getTokens(), bank.get(x).cardInfo(0).getDescription());
         }
     }
 
     public void printBank(int coinLimit) {
         for (int x = 0; x < bank.size(); x++) {
             if (bank.get(x).cardInfo(0).getCost() <= coinLimit) {
-                System.out.printf("%-15s# remaining: %d\tCost: %d\tDescription: %s\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost(), bank.get(x).cardInfo(0).getDescription());
+                System.out.printf("%-15s# remaining: %d\tCost: %d\tTokens: %d\tDescription: %s\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost(), bank.get(x).getTokens(), bank.get(x).cardInfo(0).getDescription());
             }
         }
     }
