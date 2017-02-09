@@ -9,7 +9,7 @@
 
 package org.cs362.dominion;
 
-public class Dutchy extends Card {
+public class Duchy extends Card {
 
 	
 	
