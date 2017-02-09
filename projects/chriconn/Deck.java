@@ -220,6 +220,10 @@ public class Deck {
         return null;
     }
 
+    public Card drawCardAtIndex(int index) {
+        return deck.remove(index);
+    }
+
     //if the deck size is 0, return true, else return false
     public boolean empty()  {return (deck.size() == 0) ? true : false;};
     public int numCards()   {return deck.size();};
@@ -249,6 +253,18 @@ public class Deck {
         return false;
     }
 
+    public boolean hasCard(String name) {
+        if (this.empty()) {
+            return false;
+        }
+        for (int x = 0; x < deck.size(); x++) {
+            if (cardInfo(x).getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addNumberOfCardType(int number, Card card) {
         for (int x = 0; x < number; x++) {
             this.addCard(card);
@@ -267,6 +283,15 @@ public class Deck {
     public int indexOf(String cardName) {
         for (int x = 0; x < deck.size(); x++) {
             if (cardInfo(x).getName().equals(cardName)) {
+                return x;
+            }
+        }
+        return -1;
+    }
+
+    public int indexOfType(String type) {
+        for (int x = 0; x < deck.size(); x++) {
+            if (cardInfo(x).isType(type)) {
                 return x;
             }
         }
