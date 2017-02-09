@@ -95,7 +95,11 @@ public class Game {
         //prints an empty line
         System.out.println();
         //prints the whole bank for testing
-        dominion.printBank();
+        // dominion.printBank();
+
+        for (int x = 0; x < dominion.numPlayers(); x++) {
+            dominion.getPlayer(x).draw(5);
+        }
 
         for (int x = 0; x < 20; x++) {
             dominion.playerTurn(0);
@@ -109,7 +113,7 @@ public class Game {
 
     //array of all decks the game owns
     ArrayList<Deck> bank;
-    ArrayList<Deck> trash;
+    public Deck trash;
     int numPlayers;
     ArrayList<Player> players;
     static int printTime;
@@ -126,6 +130,7 @@ public class Game {
     public Game() {
         bank = new ArrayList<Deck>();
         players = new ArrayList<Player>();
+        trash = new Deck();
         //treasure
         bank.add(new Deck(30, new Card("gold")));
         bank.add(new Deck(40, new Card("silver")));
@@ -137,13 +142,7 @@ public class Game {
         bank.add(new Deck(24, new Card("estate")));
 
         //action
-        // bank.add(new Deck(10, new Card("village")));
-        // bank.add(new Deck(10, new Card("smithy")));
-        // bank.add(new Deck(10, new Card("adventurer")));
-        // bank.add(new Deck(10, new Card("curse")));
-        // bank.add(new Deck(10, new Card("witch")));
-        // bank.add(new Deck(10, new Card("cellar")));
-        // bank.add(new Deck(10, new Card("market")));
+        //String[] decksToImplement = {"village", "smithy", "adventurer", "curse", "witch", "cellar", "market"};
 
         String[] decksToImplement = {"adventurer", "ambassador", "baron", "council room", "cutpurse", "embargo", "feast", "gardens", "great hall", "mine", "curse"};
 
@@ -154,6 +153,7 @@ public class Game {
 
     public Game(String ... names) {
         bank = new ArrayList<Deck>();
+        trash = new Deck();
         //treasure
         bank.add(new Deck(30, new Card("gold")));
         bank.add(new Deck(40, new Card("silver")));
@@ -164,17 +164,9 @@ public class Game {
         bank.add(new Deck(12, new Card("dutchy")));
         bank.add(new Deck(24, new Card("estate")));
 
-        //action
-        // bank.add(new Deck(10, new Card("village")));
-        // bank.add(new Deck(10, new Card("smithy")));
-        // bank.add(new Deck(10, new Card("adventurer")));
-        // bank.add(new Deck(10, new Card("curse")));
-        // bank.add(new Deck(10, new Card("witch")));
-        // bank.add(new Deck(10, new Card("cellar")));
-        // bank.add(new Deck(10, new Card("market")));
-
         //build the action decks
-        String[] decksToImplement = {"adventurer", "ambassador", "baron", "council room", "cutpurse", "embargo", "feast", "gardens", "great hall", "mine", "curse", "smithy", "village"};
+        String[] decksToImplement = {"adventurer", "ambassador", "baron", "council room", "cutpurse", "embargo", "feast", "gardens", "great hall", "mine", "curse", "smithy", "village", "witch", "cellar"};
+
         for (String deckName: decksToImplement) {
             bank.add(new Deck(10, new Card(deckName)));
         }
@@ -206,7 +198,7 @@ public class Game {
 
         clearScreen();
         printLineDelay(name + ", the game is drawing 5 cards...");
-        getPlayer(num).draw(5);
+        // getPlayer(num).draw(5);
         clearAndShowHand(num, sleepTime);
 
         /*******************************************************/
@@ -227,11 +219,17 @@ public class Game {
 
             cardToPlay = scanner.nextLine();
 
-            getPlayer(num).playCard(cardToPlay);
+            // getPlayer(num).playCard(cardToPlay);
+
+            playCard(num, cardToPlay);
 
 
             if (cardToPlay.equals("skip")) {
                 getPlayer(num).skipActionsPhase();
+            }
+            else {
+                System.out.println("");
+                getPlayer(num).showHand();
             }
         }
         //if player did not have an action card
@@ -309,7 +307,205 @@ public class Game {
             printLineDelay("Press enter to end your turn: ");
             scanner.nextLine();
         }
+        getPlayer(num).draw(5);
+    }
 
+    public boolean playCard(int num, String cardName) {
+        if (getPlayer(num).hand.indexOf(cardName) >= 0) {
+            Card temp = new Card(cardName);
+            if (!temp.isType("action")) {
+                System.out.println("Error. " + cardName + " is not an action card.");
+                return false;
+            }
+            else {
+                applyCardActions(getPlayer(num), num, temp);
+                if (! (cardName.equals("feast")) ) {
+                    getPlayer(num).discard(cardName);
+                }
+                getPlayer(num).modifyActions(-1);
+                return true;
+            }
+        }
+        else {
+            System.out.println("Error. That card does not exist");
+            return false;
+        }
+    }
+
+    public void applyCardActions(Player player, int num, Card card) {
+        player.modifyActions(card.getActions());
+        player.modifyValues(card.getValue());
+        player.modifyBuys(card.getBuys());
+
+        if (card.getCards() > 0) {
+            player.draw(card.getCards());
+        }
+
+
+        //Section to apply special actions from cards
+
+        if (card.isType("special action")) {
+
+            /*Custom Cards:
+                Adventurer -
+                    Reveal cards from your deck until you reveal 2 treasure cards.
+                    Put those Treasure cards into your hand and discard the other reveal cards.
+                Ambassador -
+                    Reveal a card from your hand.
+                    Return up to 2 copies of it from your hand to the Supply.
+                    Then each other player gains a copy of it.
+                Baron -
+                    You may discard an Estate card.
+                    If you do, +4 Coins. Otherwise, gain an Estate card.
+                Council room -
+                    +4 Cards, +1 Buy, Each other player draws a card
+                Cutpurse -
+                    Each other player discards a copper card (or reveals a hand with no copper)
+                Embargo -
+                    Trash for +2 coins. Put an Embargo token on top of a Supply pile.
+                    A player gains a Curse card per Embargo token on that pile when a card is bought.
+                Feast -
+                    Trash this card. Gain a card costing up to 5 coins
+                Gardens -
+                    Worth 1 victory for every 10 cards in your deck(rounded down)
+                Great hall -
+                    Lets the player draw an extra card and have an extra action
+                Mine -
+                    Trash a treasure card from your hand.
+                    Gain a treasure card costing up to 3 coins more and put that card in your hand
+            */
+
+            /*Custom Cards:
+                DONE
+                Ambassador -
+                    Reveal a card from your hand.
+                    Return up to 2 copies of it from your hand to the Supply.
+                    Then each other player gains a copy of it.
+                Embargo -
+                    Trash for +2 coins. Put an Embargo token on top of a Supply pile.
+                    A player gains a Curse card per Embargo token on that pile when a card is bought.
+                Gardens -
+                    Worth 1 victory for every 10 cards in your deck(rounded down)
+            */
+            //if the card is an adventurer
+            if (card.getName().equals("adventurer")) {
+                //number of treasures drawn so far is 0
+                int numTreasures = 0;
+                //the loop stops when we draw two treasure cards
+                while (numTreasures < 2) {
+                    //if we draw a treasure, increment the treasure counter
+                    if (player.draw().isType("treasure")) {
+                        numTreasures++;
+                    }
+                    //otherwise, discard that card we just drew
+                    else {
+                        player.discardAtIndex(player.hand.numCards() - 1);
+                    }
+                }
+            }
+            else if (card.getName().equals("baron")) {
+                String discard;
+                System.out.print("Do you want to discard an estate card? ");
+                discard = scanner.nextLine();
+                if (discard.toLowerCase().equals("yes")) {
+                    player.discard("estate");
+                    player.modifyValues(4);
+                }
+                else if (discard.toLowerCase().equals("no")) {
+                    //draw from the estate deck
+                    player.buy(getDeck("estate"));
+                    System.out.println("You gained an estate card");
+                }
+            }
+            else if (card.getName().equals("witch")) {
+                for (int x = 0; x < players.size(); x++) {
+                    if (x != num) {
+                        getPlayer(x).buy(getDeck("curse"));
+                    }
+                }
+            }
+            else if (card.getName().equals("cellar")) {
+                String discard;
+                int numDraw = 0;
+                do {
+                    System.out.print("Select a card to discard or type \"done\": ");
+                    discard = scanner.nextLine();
+                    discard = discard.toLowerCase();
+                    if (player.hand.hasCard(discard)) {
+                        player.discard(discard);
+                        numDraw++;
+                        player.showHand();
+                    }
+                    else {
+                        System.out.println("You don't have that card in your hand");
+                    }
+                    System.out.printf("You have discarded %d cards\n", numDraw);
+                } while (!discard.equals("done"));
+                player.draw(numDraw);
+            }
+            else if (card.getName().equals("council room")) {
+                for (int x = 0; x < players.size(); x++) {
+                    if (x != num) {
+                        getPlayer(x).draw();
+                    }
+                }
+                System.out.println("Each other player drew a card");
+            }
+            else if (card.getName().equals("cutpurse")) {
+                for (int x = 0; x < players.size(); x++) {
+                    if (x != num) {
+                        if (getPlayer(x).hand.indexOf("copper") >= 0) {
+                            System.out.printf("\n%s has discarded a copper", getPlayer(x).getName());
+                            getPlayer(x).discardAtIndex(getPlayer(x).hand.indexOf("copper"));
+                        }
+                    }
+                }
+            }
+            else if (card.getName().equals("feast")) {
+                trash.addCard(player.hand.drawCard("feast"));
+                System.out.println("Trashed the feast card");
+                printBank(5);
+                System.out.print("Select your card: ");
+                String cardToBuy;
+                cardToBuy = scanner.nextLine();
+                cardToBuy.toLowerCase();
+                player.buy(getDeck(cardToBuy));
+            }
+            else if (card.getName().equals("mine")) {
+                String treasureName;
+                boolean again = false;
+                do {
+                    System.out.print("Kind of treasure card: ");
+                    treasureName = scanner.nextLine();
+                    treasureName.toLowerCase();
+                    if (treasureName.equals("copper")) {
+                        trash.addCard(player.hand.drawCard("copper"));
+                        player.hand.addCard(getDeck("silver").drawCard());
+                        again = false;
+                    }
+                    else if (treasureName.equals("silver")) {
+                        trash.addCard(player.hand.drawCard("silver"));
+                        player.hand.addCard(getDeck("gold").drawCard());
+                        again = false;
+                    }
+                    else if (treasureName.equals("gold")) {
+                        System.out.println("Gold cards are the highest value cards. You can not trade them up to a higher value. Try again: ");
+                        again = true;
+                    }
+                    else {
+                        System.out.println("That is not a valid card. Try again: ");
+                        again = true;
+                    }
+                } while (again);
+            }
+            else if (card.getName().equals("ambassador")) {
+                String supply;
+                System.out.print("Card you would like to discard: ");
+                supply = scanner.nextLine();
+                supply.toLowerCase();
+                
+            }
+        }
     }
 
     public void printBank() {
@@ -348,6 +544,10 @@ public class Game {
         getPlayer(num).showHand();
         System.out.println("\n" + name + "'s discarded deck: ");
         getPlayer(num).discard.printDeck();
+    }
+
+    public int numPlayers() {
+        return numPlayers;
     }
 
     //building a scanner class that will be used for keyboard input
