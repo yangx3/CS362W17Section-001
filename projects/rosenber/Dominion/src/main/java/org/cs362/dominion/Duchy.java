@@ -9,12 +9,11 @@
 
 package org.cs362.dominion;
 
-import java.util.ArrayList;
 
 public class Duchy extends Card {
 	
 	public Duchy(){
-		
+		super("Duchy", 5, 3, 0, new CardType[] {CardType.Victory});
 	}
 	
 }
