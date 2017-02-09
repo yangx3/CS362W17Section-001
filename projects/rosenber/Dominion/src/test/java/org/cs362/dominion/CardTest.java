@@ -14,6 +14,13 @@ public class CardTest {
 		type.add(CardType.Action);
 		type.add(CardType.Attack);
 		
+		try{
+			testCard = new Card();
+		}
+		catch(Exception e){
+			fail("Default card constructor crashes");
+		}
+		
 		testCard = new Card("James", 1, 2, 3, type);
 		Card other = new Card(testCard);
 		

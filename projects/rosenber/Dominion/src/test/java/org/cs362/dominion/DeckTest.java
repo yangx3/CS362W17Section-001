@@ -44,7 +44,7 @@ public class DeckTest {
 			int num;
 			int size;
 			for(int k=0; k<10000; k++){
-				num = rand.nextInt(12);
+				num = rand.nextInt(13);
 				switch(num){
 				case 0:
 					num = rand.nextInt(10);
@@ -165,6 +165,17 @@ public class DeckTest {
 						}
 					}
 					catch(Exception e){};
+					break;
+				case 12:
+					num = rand.nextInt(test.size()+2);
+					try{
+						c = test.deck.get(num);
+						other = test.findSpecific(num);
+						assertEquals("Found card didn't match desired card from index",
+								c, other);
+					}
+					catch(Exception e){};
+					
 				}
 			}
 		}
