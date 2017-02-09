@@ -1,7 +1,7 @@
 /*
  * Implements the Dutchy card for a game of Dominion. It
- * extends the card class. Sets victory points to 3, and
- * cost to 5.
+ * extends the card class. Sets victory points to 3,
+ * cost to 5, and type to victory.
  * 
  * Robert Rosenberger
  * 2/9/2017
