@@ -44,7 +44,7 @@ public class DeckTest {
 			int num;
 			int size;
 			for(int k=0; k<10000; k++){
-				num = rand.nextInt(11);
+				num = rand.nextInt(12);
 				switch(num){
 				case 0:
 					num = rand.nextInt(10);
@@ -69,8 +69,8 @@ public class DeckTest {
 					catch(Exception e){};
 					break;
 				case 3:
-					c = test.deck.get(0);
 					try{
+						c = test.deck.get(0);
 						assertEquals("Bottom card doesn't match known top card",
 							c, test.getBottom());
 					}
@@ -109,11 +109,11 @@ public class DeckTest {
 				case 7:
 					size = test.size();
 					try{
-						c = test.deck.get(test.size()-1);
+						c = test.deck.get(0);
 						other = test.drawBottom();
 						assertEquals("Size didn't decrease when card drawn from bottom",
 							size-1, test.size());
-						assertEquals("Bottom drawn card didn't match known top card",
+						assertEquals("Bottom drawn card didn't match known bottom card",
 							c, other);
 					}
 					catch(Exception e){};
@@ -150,6 +150,19 @@ public class DeckTest {
 								size-1, test.size());
 						assertEquals("Specific card removed doesn't match card asked",
 								c, other);
+					}
+					catch(Exception e){};
+					break;
+				case 11:
+					num = rand.nextInt(10);
+					try{
+						c = cards.get(num);
+						if(test.deck.indexOf(c) != -1){
+							size = test.size();
+							test.removeSpecific(c);
+							assertEquals("Size didn't decrement when specific card is removed",
+									size-1, test.size());
+						}
 					}
 					catch(Exception e){};
 				}
