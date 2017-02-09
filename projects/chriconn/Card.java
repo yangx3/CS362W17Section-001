@@ -95,7 +95,7 @@ public class Card {
                 name           = "gold";
                 value          = 3;
                 cost           = 6;
-                description    = "The silver card is a treasure card worth 3 coins";
+                description    = "The gold card is a treasure card worth 3 coins";
                 type.add("treasure");
                 break;
 
@@ -111,7 +111,7 @@ public class Card {
                 name           = "copper";
                 value          = 1;
                 cost           = 0;
-                description    = "The silver card is a treasure card worth 1 coin";
+                description    = "The copper card is a treasure card worth 1 coin";
                 type.add("treasure");
                 break;
 
@@ -159,7 +159,7 @@ public class Card {
             case "adventurer":
                 name           =  "adventurer";
                 cost           =  6;
-                description    =  "Reveal cards from your deck until you recveal 2 treasure cards. Put those Treasure cards into your hand and discard the other realed cards.";
+                description    =  "Reveal cards from your deck until you reveal 2 treasure cards. Put those Treasure cards into your hand and discard the other reveal cards.";
                 type.add("action");
                 type.add("special action");
                 break;
@@ -214,7 +214,6 @@ public class Card {
             case "baron":
                 name           = "baron";
                 cost           = 4;
-                value          = 4;
                 description    = "You may discard an Estate card. If you do, +4 Coins. Otherwise, gain an Estate card.";
                 type.add("action");
                 type.add("special action");
@@ -225,7 +224,7 @@ public class Card {
                 cost           = 5;
                 cards          = 4;
                 buys           = 1;
-                description    = "Each other player draws a card";
+                description    = "+4 Cards, +1 Buy, Each other player draws a card";
                 type.add("action");
                 type.add("special action");
                 break;
