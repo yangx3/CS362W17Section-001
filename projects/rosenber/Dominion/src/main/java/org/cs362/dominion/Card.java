@@ -24,6 +24,10 @@ public class Card {
 	private ArrayList<CardType> types;
 	
 	//constructor
+	public Card(){
+		name = new String();
+		types = new ArrayList<CardType>();
+	}
 	public Card(String name, int cost, int victoryPoints, int treasure, ArrayList<CardType> types){
 		this.name = new String(name);
 		this.cost = cost;
