@@ -28,14 +28,14 @@ public class Card {
 		name = new String();
 		types = new ArrayList<CardType>();
 	}
-	public Card(String name, int cost, int victoryPoints, int treasure, ArrayList<CardType> types){
+	public Card(String name, int cost, int victoryPoints, int treasure, CardType[] types){
 		this.name = new String(name);
 		this.cost = cost;
 		this.victoryPoints = victoryPoints;
 		this.treasure = treasure;
 		this.types = new ArrayList<CardType>();
-		for(int j=0; j<types.size(); j++)
-			this.types.add(types.get(j));
+		for(int j=0; j<types.length; j++)
+			this.types.add(types[j]);
 	}
 	public Card(Card other){
 		name = new String(other.name);
