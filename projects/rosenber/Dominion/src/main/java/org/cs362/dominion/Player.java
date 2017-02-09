@@ -120,7 +120,10 @@ public class Player{
 	//Compute Money
 	//gets the amount of money available from cards in hand
 	private int computeMoney(){
-		return 1;
+		int sum = 0;
+		for(int j=0; j<hand.size(); j++)
+			sum += hand.getCard(j).getTreasure();
+		return sum;
 	}
 	
 	//Buy Card
