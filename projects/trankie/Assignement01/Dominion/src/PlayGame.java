@@ -9,10 +9,14 @@ public class PlayGame {
 		// TODO Auto-generated method stub
 		System.out.print("Welcome to Dominion!\nThis will be a 2-player game.");
 		
-		List<Card> testCards = new LinkedList<Card>();
-		testCards = new ArrayList<Card>(Card.createCards());
-		for (Card card:testCards)
-			System.out.print(card.toString());
+		Player player = new Player("Kien", 1 , 1 , 0);
+		System.out.print("\nHello " + player.player_name + " here is your info:");
+		player.buildDeck();
+		for(int i = 0; i < 5; i++){
+			player.drawCard();
+		}
+		player.printInfo();
+		player.printHand();
 		
 		System.exit(0);
 	}
