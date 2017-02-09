@@ -1,10 +1,9 @@
 package org.cs362.dominion;
 
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-
 import org.junit.Test;
+import java.util.Random;
 
 public class HandTest {
 
@@ -17,58 +16,115 @@ public class HandTest {
 	}
 	
 	@Test
-	public void testHand() {
-		
-		test = new Hand();
-		assertEquals("New hand isn't size 0",
-				test.size(), 0);
-		
-		Card c = createCard("one");
-		test.addCard(c);
-		assertEquals("Hand didn't update size with one card added",
-				test.size(), 1);
-		assertTrue("Card not found in hand", test.inHand(c));
-		
-		test.removeCard(c);
-		assertFalse("Card found in hand after being removed",
-				test.inHand(c));
-		
-		test.addCard(c);
-		test.removeCard(0);
-		assertFalse("Card found in hand after being removed by idx",
-				test.inHand(c));
-		
-		test.addCard(c);
-		assertEquals("Didn't get card from hand",
-				c, test.getCard(c));
-		assertEquals("Didn't get card from hand by idx",
-				c, test.getCard(0));
-		
-		Card drawn = test.playCard(c);
-		assertEquals("Card not removed after played",
-				0, test.size());
-		assertEquals("Card played doesn't match card chosen",
-				drawn, c);
-		
-		c = createCard("two");
-		test.addCard(c);
-		drawn = test.playCard(0);
-		assertEquals("Card not removed after played",
-				0, test.size());
-		assertEquals("Card played doesn't match card chosen",
-				drawn, c);
-		
-		try{
-			test.print();
+	public void randomTesting(){
+		Random rand = new Random();
+		ArrayList<Card> cards = new ArrayList<Card>();
+		for(int j=0; j<10; j++){
+			cards.add(createCard(Integer.toString(j)));
 		}
-		catch(Exception e){
-			fail("Print function crashed");
-		}
-		try{
-			test.removeCard(createCard("fake"));
-		}
-		catch(Exception e){
-			fail("removeCard crashed when trying to remove card not in hand");
+		for(int j=0; j<100; j++){
+			int num;
+			int size;
+			Card c;
+			test = new Hand();
+			for(int k=0; k<10000; k++){
+				num = rand.nextInt(9);
+				switch(num){
+				case 0:
+					num = rand.nextInt(10);
+					size = test.size();
+					test.addCard(cards.get(num));
+					assertEquals("Hand size didn't increase when card added",
+							size+1, test.size());
+					break;
+				case 1:
+					size = test.size();
+					try{
+						num = rand.nextInt(10);
+						test.removeCard(cards.get(num));
+						assertEquals("Hand size didn't decrease when card removed",
+								size-1, test.size());
+					}
+					catch(Exception e){}; //fine
+				case 2:
+					size = test.size();
+					try{
+						num = rand.nextInt(test.size()+2);
+						test.removeCard(num);
+						assertEquals("Hand size didn't decrease when card removed",
+								size-1, test.size());
+					}
+					catch(Exception e){}; //fine
+					break;
+				case 3:
+					try{
+						num = rand.nextInt(10);
+						c = test.getCard(cards.get(num));
+						assertEquals("Returned card doesn't match desired card",
+								c, cards.get(num));
+					}
+					catch(Exception e){}; //fine
+					break;
+				case 4:
+					try{
+						num = rand.nextInt(test.size()+1);
+						c = test.getCard(num);
+						assertEquals("Returned card doesn't match desired card",
+								c, test.hand.get(num));
+					}
+					catch(Exception e){}; //fine
+					break;
+				case 5:
+					size = test.size();
+					try{
+						num = rand.nextInt(test.size()+1);
+						c = test.playCard(cards.get(num));
+						assertEquals("Hand size didn't decrease after played",
+								size-1, test.size());
+						assertEquals("Card played doesn't match card asked (Card)",
+								c, cards.get(num));
+					}
+					catch(Exception e){}; //fine
+					break;
+				case 6:
+					size = test.size();
+					try{
+						num = rand.nextInt(test.size()+2);
+						Card other = test.hand.get(num);
+						c = test.playCard(num);
+						assertEquals("Hand size didn't decrease after played",
+								size-1, test.size());
+						assertEquals("Card played doesn't match card asked (idx)",
+								c, other);
+					}
+					catch(Exception e){}; //fine
+					break;
+				case 7:
+					try{
+						test.print();
+					}
+					catch(Exception e){
+						fail("Print function crashed");
+					};
+					break;
+				case 8:
+					try{
+						num = rand.nextInt(10);
+						c = cards.get(num);
+						if(test.hand.indexOf(c) == -1){
+							assertFalse("Known card not in hand found in hand",
+									test.inHand(c));
+						}
+						else{
+							assertTrue("Known card in hand not found in hand",
+								test.inHand(c));
+						}
+					}
+					catch(Exception e){
+						fail("inHand function crashed");
+					}
+				}
+			}
 		}
 	}
 }
