@@ -39,7 +39,7 @@ public class PlayDominion {
                System.out.println ("Player name: " + p.player_username + " , Score: " + winners.get(p) );
            }
 
-           //player.printStateGame();
+           player.printStateGame();
 		      
 		      
 			System.exit(0);  

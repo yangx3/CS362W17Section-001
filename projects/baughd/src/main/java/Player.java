@@ -5,23 +5,28 @@ import java.util.List;
 import java.util.Random;
 
 public class Player implements Cloneable{
-	List<Card> hand = new ArrayList<Card>();// int hand[MAX_PLAYERS][MAX_HAND];
-	LinkedList<Card> deck = new LinkedList<Card>();// int deck[MAX_PLAYERS][MAX_DECK];
-	List<Card> discard = new ArrayList<Card>(); // int discard[MAX_PLAYERS][MAX_DECK];
-	List<Card> playedCards = new ArrayList<Card>();
-	Random gen = new Random();
+	ArrayList<Card> hand;// int hand[MAX_PLAYERS][MAX_HAND];
+	LinkedList<Card> deck;// int deck[MAX_PLAYERS][MAX_DECK];
+	private List<Card> discard; // int discard[MAX_PLAYERS][MAX_DECK];
+	private ArrayList<Card> playedCards;
+	private Random gen;
 
 	String player_username;
 	int numActions;
 	int numBuys;
 	int coins;
-	final GameState gameState;
+	private final GameState gameState;
 
 	
-	public Player(GameState gameState,String player_username) {
+	Player(GameState gameState,String player_username) {
 		this.player_username = player_username;
 		this.gameState = gameState;
-	}
+        discard = new ArrayList<Card>();
+        playedCards = new ArrayList<Card>();
+        deck = new LinkedList<Card>();
+        hand = new ArrayList<Card>();
+        gen = new Random();
+    }
 
 	final Card drawCard() {
 		if (deck.isEmpty()) {// Deck is empty
@@ -61,21 +66,21 @@ public class Player implements Cloneable{
 	}
 
 	//Discard hand
-	public void discard(Card card) {
+	void discard(Card card) {
 		hand.remove(card);
 		discard.add(card);
 		System.out.println(player_username + " discards " + card);
 	}
 
-	public void playKingdomCard() {
+	void playKingdomCard() {
 		while (numActions > 0) {
 			List<Card> actionCards = Card.filter(hand, Card.Type.ACTION);
 
 			if (actionCards.size() == 0)
 				return;
 
-			Card c = (Card) actionCards.get(0);
-			if (c == null)
+			Card c = actionCards.get(0);
+            if (c == null)
 				return;
 			System.out.println("Player.actionPhase Card:" + c.toString());
 
@@ -103,7 +108,7 @@ public class Player implements Cloneable{
 		return score;
 	}
 	   
-	public void playTreasureCard() {
+	void playTreasureCard() {
 		List<Card> treasureCards = Card.filter(hand, Card.Type.TREASURE);
 
 		if(treasureCards.size() == 0) return;
@@ -119,7 +124,7 @@ public class Player implements Cloneable{
 		System.out.println(player_username + "'s COINS: " + coins + "\n");
 	}
 
-	public void buyCard(GameState state) {
+    void buyCard(GameState state) {
 		while(numBuys > 0 && coins > 0) {
 			if (coins == 0){
 				gain(Card.getCard(state.cards, Card.CardName.Copper));
@@ -130,14 +135,19 @@ public class Player implements Cloneable{
 				state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Copper), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Copper)) - 1 );
 			}
 			else if (coins == 2) {
-				if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Embargo)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Embargo)) > 0) {
+			    int rand = gen.nextInt(2);
+				if (rand == 0 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Embargo)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Embargo)) > 0) {
 					gain(Card.getCard(state.cards, Card.CardName.Embargo));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Embargo), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Embargo)) - 1);
 					coins = coins - 2;
-				}
+				} else if (rand == 1 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Estate)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Estate)) > 0) {
+                    gain(Card.getCard(state.cards, Card.CardName.Estate));
+                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Estate), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Estate)) - 1);
+                    coins = coins - 2;
+                }
 			}
 			else if (coins == 3) {//randomly choose 3 cost cards?
-				int rand = gen.nextInt(3);
+				int rand = gen.nextInt(4);
 				if (rand == 0 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Village)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Village)) > 0) {
 					gain(Card.getCard(state.cards, Card.CardName.Village));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Village), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Village)) - 1);
@@ -150,52 +160,74 @@ public class Player implements Cloneable{
 					gain(Card.getCard(state.cards, Card.CardName.Great_Hall));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Great_Hall), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Great_Hall)) - 1);
 					coins = coins - 3;
-				}
+				} else if (rand == 3 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Silver)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Silver)) > 0) {
+                    gain(Card.getCard(state.cards, Card.CardName.Silver));
+                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Silver), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Silver)) - 1);
+                    coins = coins - 3;
+                }
 
 			} else if (coins == 4) {//randomly choose one of these
-				if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Smithy)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) > 0) {
+                int rand = gen.nextInt(5);
+				if (rand == 0 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Smithy)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) > 0) {
 					gain(Card.getCard(state.cards, Card.CardName.Smithy));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Smithy), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) - 1);
 					coins = coins - 4;
-				} else if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Baron)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Baron)) > 0) {
+				} else if (rand == 1 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Baron)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Baron)) > 0) {
 					gain(Card.getCard(state.cards, Card.CardName.Baron));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Baron), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Baron)) - 1);
 					coins = coins - 4;
-				} else if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Cutpurse)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) > 0) {
-					gain(Card.getCard(state.cards, Card.CardName.Smithy));
-					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Smithy), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) - 1);
+				} else if (rand == 2 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Cutpurse)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Cutpurse)) > 0) {
+					gain(Card.getCard(state.cards, Card.CardName.Cutpurse));
+					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Cutpurse), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Cutpurse)) - 1);
 					coins = coins - 4;
-				}
-				//gain(Card.getCard(state.cards, Card.CardName.Baron));
-				//gain(Card.getCard(state.cards, Card.CardName.Cutpurse));
-				//gain(Card.getCard(state.cards, Card.CardName.Feast));
-				//gain(Card.getCard(state.cards, Card.CardName.Remodel));
-
+				} else if (rand == 3 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Feast)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Feast)) > 0) {
+					gain(Card.getCard(state.cards, Card.CardName.Feast));
+					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Feast), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Feast)) - 1);
+					coins = coins - 4;
+				} else if (rand == 4 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Remodel)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Remodel)) > 0) {
+                    gain(Card.getCard(state.cards, Card.CardName.Remodel));
+                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Remodel), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Remodel)) - 1);
+                    coins = coins - 4;
+                }
 			} else if (coins == 5) {//randomly choose one of these
-				if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Mine)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Mine)) > 0) {
+                int rand = gen.nextInt(3);
+				if (rand == 0 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Mine)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Mine)) > 0) {
 					gain(Card.getCard(state.cards, Card.CardName.Mine));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Mine), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Mine)) - 1);
 					coins = coins - 5;
-				}
+				} else if (rand == 1 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Council_Room)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Council_Room)) > 0) {
+                    gain(Card.getCard(state.cards, Card.CardName.Council_Room));
+                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Council_Room), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Council_Room)) - 1);
+                    coins = coins - 5;
+                } else if (rand == 2 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Duchy)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Duchy)) > 0) {
+                    gain(Card.getCard(state.cards, Card.CardName.Duchy));
+                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Duchy), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Duchy)) - 1);
+                    coins = coins - 5;
+                }
 			} else if (coins == 6) {
-				if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Gold)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) > 0) {
+			    int rand = gen.nextInt(2);
+				if (rand == 0 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Gold)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) > 0) {
 					gain(Card.getCard(state.cards, Card.CardName.Gold));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Gold), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) - 1);
 					coins = coins - 6;
-				}
-			} else if (coins == 7){
-				if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Adventurer)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Adventurer)) > 0) {
-					gain(Card.getCard(state.cards, Card.CardName.Adventurer));
-					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Adventurer), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Adventurer)) - 1);
-					coins = coins - 7;
-				}
+				} else if (rand == 1 &&state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Adventurer)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Adventurer)) > 0) {
+                    gain(Card.getCard(state.cards, Card.CardName.Adventurer));
+                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Adventurer), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Adventurer)) - 1);
+                    coins = coins - 6;
+                }
+			} else if (coins == 7) {
+                if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Gold)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) > 0) {
+                    gain(Card.getCard(state.cards, Card.CardName.Gold));
+                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Gold), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) - 1);
+                    coins = coins - 6;
+                }
 			} else if (coins >= 8){
 				if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Province)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Province)) > 0) {
 					gain(Card.getCard(state.cards, Card.CardName.Province));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Province), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Province)) - 1);
 					coins = coins - 8;
 				}
-		}
+		    }
 			numBuys--;
 		}
 	}
@@ -216,7 +248,7 @@ public class Player implements Cloneable{
 		hand.clear();
 	}
 
-	public void printStateGame() {
+	void printStateGame() {
 		System.out.println(" --- " + this.player_username + " --- ");
 		System.out.println(" --- --------------------------- --- ");
 		System.out.println(this.gameState.toString());
@@ -225,20 +257,17 @@ public class Player implements Cloneable{
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+        String sb = ("\n------- " + this.player_username + " -------") +
+                "\nnumActions: " + this.numActions +
+                ", coins: " + this.coins +
+                ", numBuys: " + this.numBuys +
+                "\nHand: " + this.hand +
+                "\nDiscard: " + this.discard +
+                "\nDeck: " + this.deck +
+                "\nPlayed Cards: " + this.playedCards +
+                "\n";
 
-		sb.append("\n------- " + this.player_username + " -------");
-		sb.append("\nnumActions: " + this.numActions);
-		sb.append(", coins: " + this.coins);
-		sb.append(", numBuys: " + this.numBuys);
-		sb.append("\nHand: " + this.hand);
-		sb.append("\nDiscard: " + this.discard);
-		sb.append("\nDeck: " + this.deck);
-		sb.append("\nPlayed Cards: " + this.playedCards);
-
-		sb.append("\n");
-
-		return sb.toString();
+        return sb;
 	}
 	   
 	protected Player clone() throws CloneNotSupportedException {
