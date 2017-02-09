@@ -108,7 +108,7 @@ public class Player{
 	//See hand
 	//prints the hands
 	public void seeHand(){
-		
+		hand.print();
 	}
 	
 	//Play card
