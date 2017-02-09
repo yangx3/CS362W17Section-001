@@ -352,5 +352,6 @@ public final class Card implements Comparable<Card>{
 		return cardName.compareTo(o.cardName);
 	}
 
+	protected Object clone() throws CloneNotSupportedException {         return super.clone();     }
 
 }

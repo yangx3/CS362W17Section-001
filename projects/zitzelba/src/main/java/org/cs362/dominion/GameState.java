@@ -32,7 +32,7 @@ import java.util.TreeMap;
 //	};
 
 public class GameState {
-	   public final List<Player> players = new ArrayList<Player>(); ;
+	   public List<Player> players = new ArrayList<Player>(); ;
 	   public final List<Card> cards ;
 	   public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();	
 	   public HashMap<Card, Integer> embargoes = new HashMap<Card, Integer>();
@@ -201,5 +201,17 @@ public class GameState {
 		}
 		return sb.toString();
 	}   
+	   
+	   private GameState(List<Card> cards, List<Player> players, HashMap<Card,
+			   Integer> gameBoard) {
+			      this.cards=cards;    this.players=players;    this.gameBoard=gameBoard;   
+			      }
+	   
+	   public GameState clone() throws CloneNotSupportedException {    List<Player> clonePlayers = new ArrayList<Player>();    List<Card> cloneCards = new ArrayList<Card>();    HashMap<Card, Integer> cloneGmeBoard = new HashMap<Card,
+			   Integer>();   
+			       for (Player player : players)     clonePlayers.add((Player) player.clone());     for (Card card : cards)     cloneCards.add((Card) card.clone());     for (Card card : gameBoard.keySet())     cloneGmeBoard.put((Card) card.clone(),gameBoard.get(card));
+			      final GameState cloneState= new
+			   GameState(cloneCards,clonePlayers,cloneGmeBoard);
+			           return  cloneState;     }
 	   
 }
