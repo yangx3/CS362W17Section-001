@@ -90,7 +90,8 @@ public class Player{
 	}
 	
 	//Discard Card
-	//moves card from hand to discard
+	//asks the user what card they want to discard from hand and
+	//  moves it to discard
 	public void discardCard(Card c){
 		
 	}
@@ -98,7 +99,10 @@ public class Player{
 	//Re-shuffle deck
 	//moves all cards from discard to deck and shuffles
 	public void reshuffleDeck(){
-		
+		while(discard.size() > 0){
+			deck.addTop(discard.drawTop());
+		}
+		deck.shuffle();
 	}
 	
 	//See hand
