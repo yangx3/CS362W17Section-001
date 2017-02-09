@@ -175,7 +175,6 @@ public class DeckTest {
 								c, other);
 					}
 					catch(Exception e){};
-					
 				}
 			}
 		}
