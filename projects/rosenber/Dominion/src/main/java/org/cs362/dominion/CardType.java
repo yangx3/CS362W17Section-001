@@ -10,5 +10,5 @@
  */
 package org.cs362.dominion;
 public enum CardType{
-	Action, Treasure, Victory, Attack, Reaction;
+	Action, Treasure, Victory, Attack, Reaction, Curse;
 }
