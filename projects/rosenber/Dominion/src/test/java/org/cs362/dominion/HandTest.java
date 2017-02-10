@@ -26,7 +26,7 @@ public class HandTest {
 			Card c;
 			test = new Hand();
 			for(int k=0; k<10000; k++){
-				num = rand.nextInt(9);
+				num = rand.nextInt(11);
 				switch(num){
 				case 0:
 					num = rand.nextInt(10);
@@ -121,6 +121,28 @@ public class HandTest {
 					catch(Exception e){
 						fail("inHand function crashed");
 					}
+					break;
+				case 9:
+					try{
+						num = rand.nextInt(10);
+						c = cards.get(num);
+						size = test.size();
+						Card other = test.playCard(c.getName());
+						assertEquals("Size didn't decrease after string play card called"
+								,size-1, test.size());
+						assertEquals("Card returned from string play card doesn't match one asked for",
+								c.getName(), other.getName());
+					}
+					catch(Exception e){};
+					break;
+				case 10:
+					num = rand.nextInt(10);
+					c = cards.get(num);
+					test.addCard(c);
+					assertTrue("Card in hand not found in hand",
+							test.inHand(c.getName()));
+					assertFalse("Card found in hand that isn't in hand",
+							test.inHand("Blard"));
 				}
 			}
 		}
