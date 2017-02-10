@@ -12,4 +12,8 @@ public class PlayDominion {
 
 	Game game;
 	
+	public static void main(String args[]){
+		
+	}
+	
 }
