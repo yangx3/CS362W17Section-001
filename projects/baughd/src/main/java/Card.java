@@ -49,6 +49,10 @@ public final class Card implements Comparable<Card>, Cloneable{
 		return treasureValue; 
 	}
 
+	int getCost() {
+	    return cost;
+	}
+
 	int score() {
 			return score; 
 		}
@@ -179,43 +183,46 @@ public final class Card implements Comparable<Card>, Cloneable{
                 System.out.println("+2 Coins. Trash this Card. Place Embargo Token on Supply Pile");
                 System.out.println("When a player buys a card, he gains a Curse card per Embargo token on that pile");
                 player.coins = player.coins + 2;
-                player.hand.remove(getCard(player.hand, CardName.Embargo));//trashes the Embargo card
+                player.playedCards.remove(getCard(player.playedCards, CardName.Embargo));//trashes the Embargo card
                 GameState.addEmbargo();//does nothing yet
                 return;
 
-            case Feast: //-------------------------
+            case Feast: //DONE - doesn't buy card just adds 5 coins
                 System.out.println("Trash this Card. Gain a card costing up to 5 coins.");
+                player.playedCards.remove(getCard(player.playedCards, CardName.Feast));
+                player.coins = player.coins + 5;
                 //buy card up to 5 coins.
                 //Player.buyCard(state);
                 return;
 
-            case Gardens: //-----------------------
+            case Gardens: //DONE - within player.scoreFor()
                 System.out.println("Worth 1 VICTORY for every 10 cards.");
                 return;
 
-            case  Great_Hall: //
+            case  Great_Hall: //DONE
                 System.out.println("+1 Card. +1 Action. Worth 1 VICTORY point.");
                 player.drawCard();
                 player.numActions++;
                 return;
 
-            case Mine:
+            case Mine: //DONE
                 System.out.println("Trash a Treasure Card. Gain Next Level of Treasure Card ");
                 if(getCard(player.hand, CardName.Silver) != null) {
                     player.hand.remove(getCard(player.hand, CardName.Silver));
                     player.gain(getCard(state.cards, CardName.Gold));
-                } else if(getCard(player.hand, CardName.Copper) != null)
-                {
+                } else if(getCard(player.hand, CardName.Copper) != null) {
                     player.hand.remove(getCard(player.hand, CardName.Copper));
                     player.gain(getCard(state.cards, CardName.Silver));
                 }
                 return;
 
-            case Remodel:
-                System.out.println("Trash the Card. Gain Card costing up to 2 more than Trashed Card");
-                int cost = this.cost;
-                player.hand.remove(this);
-                //player buys card (cost + 2);]
+            case Remodel: //DONE --- only adds coins, doesn't buy a card right away (will probably need to make another buyCard(coin)
+                System.out.println("Trash a Card. Gain Card costing up to 2 more than Trashed Card");
+                int cost = player.hand.get(0).getCost();
+                System.out.println("Player trashes: " + player.hand.get(0));
+                player.hand.remove(0);
+                player.coins = player.coins + 2;
+                //player buys card (cost + 2);
                 return;
 
             default:
