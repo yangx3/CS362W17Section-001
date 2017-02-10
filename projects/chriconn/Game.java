@@ -1,6 +1,6 @@
 import java.io.*;
+// package org.cs362.dominion;
 import java.util.*;
-
 /*
 Class Game
     Variables:
