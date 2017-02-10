@@ -126,23 +126,58 @@ public class Player{
 	//Play card
 	//asks the user what card they want to play and returns it
 	public Card playCard(){
-		//TODO
-		return new Card();
+		boolean repeat;
+		Card choice = null;
+		seeHand();
+		do{
+			repeat = false;
+			System.out.println("What card would you like to play?\n (type name of card) > ");
+			String ans = input.nextLine();
+			try{
+				choice = hand.playCard(ans);
+			}
+			catch(Exception e){
+				System.out.println("That name is not valid. Try again!");
+				repeat = true;
+			}
+		}while(repeat);
+		discard.addTop(choice);
+		return choice;
 	}
 	
 	//Compute Money
 	//gets the amount of money available from cards in hand
-	private int computeMoney(){
-		int sum = 0;
+	public void computeMoney(){
 		for(int j=0; j<hand.size(); j++)
-			sum += hand.getCard(j).getTreasure();
-		return sum;
+			money += hand.getCard(j).getTreasure();
 	}
 	
 	//Buy Card
-	//asks the user what card they want to buy and adds it to the discard
-	public void buyCard(){
-		//TODO
+	//asks the user what card they want to buy
+	public void buyCard(Board board){
+		boolean repeat;
+		board.print();
+		do{
+			repeat = false;
+			System.out.println("You have " + money + " coins!");
+			System.out.println("What card would you like to buy?");
+			String ans = input.nextLine();
+			if(board.isDeck(ans)){
+				int idx = board.getDeckIdx(ans);
+				Card choice = board.lookAtDeck(idx);
+				if(choice.getCost() >= money){
+					discard.addTop(board.draw(idx));
+				}
+				else{
+					System.out.println("You don't have enough money for that! Try again!");
+					repeat = true;
+				}
+			}
+			else{
+				System.out.println("That name is not valid. Try again!");
+				repeat = true;
+			}	
+		}while(repeat);
 	}
 	
 	//Get Victory Points
