@@ -18,9 +18,9 @@ public class Player{
 	
 	private Scanner input;
 	private String name;
-	private Hand hand;
-	private Deck deck;
-	private Deck discard;
+	public Hand hand;
+	public Deck deck;
+	public Deck discard;
 	private int buys;
 	private int actions;
 	private int money;
@@ -104,7 +104,7 @@ public class Player{
 	//Discard Card
 	//asks the user what card they want to discard from hand and
 	//  moves it to discard
-	public void discardCard(Card c){
+	public void discardCard(){
 		boolean repeat;
 		hand.print();
 		do{
@@ -120,6 +120,10 @@ public class Player{
 				repeat = true;
 			}
 		}while(repeat);
+	}
+	//discards card with matching name from hand
+	public void discardCard(Card c){
+		discard.addTop(hand.playCard(c.getName()));
 	}
 	
 	//Re-shuffle deck
