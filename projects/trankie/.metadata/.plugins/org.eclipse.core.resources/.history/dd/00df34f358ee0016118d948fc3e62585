@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+public class PlayGame {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print("Welcome to Dominion!\nThis will be a 2-player game.");
+		
+		Player player = new Player("Kien");
+		player.buildDeck();
+		player.printHand();
+		
+		System.exit(0);
+	}
+
+}
