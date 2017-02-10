@@ -203,8 +203,8 @@ public class Player {
     public int getBuys()    {return buys;}
 
     public void modifyActions(int number) {actions = actions + number;}
-    public void modifyValues(int number) {actions = actions + number;}
-    public void modifyBuys(int number) {actions = actions + number;}
+    public void modifyValues(int number) {value = value + number;}
+    public void modifyBuys(int number) {buys = buys + number;}
 
     public boolean hasActions() {
         if (actions > 0 && hand.hasType("action")) {
