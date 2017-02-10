@@ -1,6 +1,9 @@
 package org.cs362.dominion;
 import java.util.ArrayList;
 import java.util.Random;
+
+import com.sun.tools.javac.code.Type;
+
 import java.util.Collections;
 
 public class Deck {
@@ -73,14 +76,21 @@ public class Deck {
 		return cards;
 	}
 	
-	public Deck filterBy(Card.Type type)
+	public Deck filterBy(Card.Type... types)
 	{
 		Deck temp = new Deck();
 		for(Card card: cards)
 		{
-			if(card.getType() == type)
+//			System.out.println("Type for this card is: " + card.getType());
+			if(card.getType() != null)
 			{
-				temp.addCardToBottom(card);
+				for(Card.Type type: types)
+				{
+					if(card.getType() == type)
+					{
+						temp.addCardToBottom(card);
+					}
+				}
 			}
 		}
 		
@@ -113,6 +123,7 @@ public class Deck {
 		}
 		return null;
 	}
+	
 	
 	// Adders
 	public void addCardToBottom(Card card) // adds card to the bottom (end of list)

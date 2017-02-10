@@ -73,7 +73,7 @@ public class GameState {
 				{
 					attackPlayers(actionsPlayed, player);
 				}
-				
+				System.out.printf("My hand at the beginning of actions: %s\n", player.getHand());
 
 				int coins = player.getCoins();
 				System.out.printf("Hi %s, welcome to the buying phase, you have %2d coins. Here are the available cards: \n\n", player.username, coins);
@@ -121,7 +121,7 @@ public class GameState {
 		{
 			if(attacks.get(itr).compareTo("Adventurer") == 0){ adventurer(player); }
 			else if(attacks.get(itr).compareTo("Ambassador") == 0){ /* run Ambassador code*/}
-			else if(attacks.get(itr).compareTo("Baron") == 0){ /* run Baron code*/}
+			else if(attacks.get(itr).compareTo("Baron") == 0){ baron(player); }
 			else if(attacks.get(itr).compareTo("Council_Room") == 0){ /* run Council_Room code*/}
 			else if(attacks.get(itr).compareTo("Cutpurse") == 0){ /* run Cutpurse code*/}
 			else if(attacks.get(itr).compareTo("Embargo") == 0){ /* run Embargo code*/}
@@ -133,7 +133,8 @@ public class GameState {
 		}
 	}
 	
-	public void adventurer(Player player){
+	public void adventurer(Player player)
+	{
 		int finished = 0;
 		System.out.printf("\nAdventurer about to be played, old hand: %s\n", player.getHand());
 		while(finished < 2){
@@ -149,5 +150,43 @@ public class GameState {
 		}
 		System.out.printf("\nAdventurer played, new hand: %s\n", player.getHand());
 	}
-	
+	public void ambassador(Player player)
+	{
+		
+	}
+	public void baron(Player player)
+	{
+		System.out.printf("Hand before baron: %s\n", player.getHand());
+		System.out.printf("Discard before baron: %s\n\n", player.getDiscard());
+		
+		Deck hand = player.getHand();
+		System.out.printf("Discard an estate card to gain 4 coins: %s\n", hand);
+		System.out.printf("If you would like to discard an estate card, type yes: ");
+		
+		Scanner in = new Scanner(System.in);
+		String response = in.nextLine().toLowerCase();
+		if(response.compareTo("yes") == 0)
+		{
+			for(int itr = 0; itr < hand.size(); itr++)
+			{
+				if(hand.cardAt(itr).getName() == Card.Name.Estate)
+				{
+					player.discard(hand.removeCard(hand.cardAt(itr)));
+					player.addCoins(4);
+					break;
+				}
+			}
+		}else{
+			for(Deck deck: game)
+			{
+				if(deck.getTopCard().getName() == Card.Name.Estate)
+				{
+					hand.addCardToTop(deck.draw());
+				}
+			}
+		}
+		
+		System.out.printf("Hand after baron: %s\n", player.getHand());
+		System.out.printf("Discard after baron: %s\n\n", player.getDiscard());	
+	}
 }

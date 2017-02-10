@@ -50,8 +50,11 @@ public final class Builder {
 		decks.add(new Card(Card.Name.Province, Card.Type.Victory, 8, 0, 8, 0, 0, 0));
 		
 		// kindom cards
-		decks.add(new Card(Card.Name.Adventurer, Card.Type.Action, 6, 0, 0, 0, 0, 1));
-		//fix ambassador
+		
+		//Done
+		decks.add(new Card(Card.Name.Adventurer, Card.Type.Action, 6, 0, 0, 0, 0, 0));
+		
+		//TODO: Ambassador
 		decks.add(new Card(Card.Name.Ambassador, Card.Type.Action, 6, 0, 0, 0, 0, 1));
 		
 		//Baron custom code may give +4 coins

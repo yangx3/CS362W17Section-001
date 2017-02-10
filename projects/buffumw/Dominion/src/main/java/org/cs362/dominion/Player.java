@@ -82,6 +82,11 @@ public class Player {
 		discard.addCardToTop(hand.draw());
 	}
 	
+	public void discard(Card card)
+	{
+		discard.addCardToTop(card);
+	}
+	
 	private void reShuffle()
 	{
 		while(!discard.isEmpty())
@@ -106,10 +111,10 @@ public class Player {
 	// Play
 	public ArrayList<String> playActions()
 	{
-		
+		System.out.printf("My hand at the beginning of actions: %s\n", hand);
 		Deck temp = new Deck();
 		ArrayList<String> names = new ArrayList<String>();
-		temp = hand.filterBy(Card.Type.Action);
+		temp = hand.filterBy(Card.Type.Action, Card.Type.ActionAttack, Card.Type.ActionVictory);
 		actions = 1;
 		buys = 0;
 		cards = 0;
@@ -138,7 +143,6 @@ public class Player {
 				buys+=playCard.getBuys();
 				cards+=playCard.getCards();
 				coins+=playCard.getCoinsWorth();
-				// implement special action phase stuff
 				names.add(playCard.getName().toString());
 				
 				discard.addCardToTop(hand.removeCard(playCard));
@@ -148,10 +152,11 @@ public class Player {
 			{
 				hand.addCardToTop(draw.draw());
 			}
-			temp = hand.filterBy(Card.Type.Action);
+			temp = hand.filterBy(Card.Type.Action, Card.Type.ActionAttack, Card.Type.ActionVictory);
+			
+			cards = 0;
 			actions--;
 		}
-		System.out.println("Moving on to buying phase");
 		for(int itr = 0; itr < hand.size(); itr++)
 		{
 			if(hand.getCardAt(itr).getType() == Card.Type.Treasure)
