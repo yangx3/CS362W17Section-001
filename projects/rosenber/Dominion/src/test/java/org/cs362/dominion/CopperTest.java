@@ -7,7 +7,7 @@ import org.junit.Test;
 public class CopperTest {
 
 	@Test
-	public void test() {
+	public void testValues() {
 		
 		Card test = new Copper();
 		assertEquals("Copper name doesn't match",

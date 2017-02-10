@@ -7,7 +7,7 @@ import org.junit.Test;
 public class CurseTest {
 
 	@Test
-	public void testCurse() {
+	public void testValues() {
 		
 		Card test = new Curse();
 		assertEquals("Curse name doesn't match",
