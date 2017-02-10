@@ -94,16 +94,33 @@ public class Player implements Cloneable{
 	}
 
 	final int scoreFor() {
+		int numGardens = 0;
+		int numCards = 0;
 		int score = 0;
 		//score from hand
 		for (Card c : hand)
 			score += c.score();
+			numCards++;
 		//score from discard
-		for (Card c : discard)
+		for (Card c : discard){
+			if(Card.getCard(discard, Card.CardName.Gardens) != null) {
+				if(c == Card.getCard(discard ,Card.CardName.Gardens)) numGardens++;
+			}
 			score += c.score();
+			numCards++;
+		}
 		//score from deck
-		for (Card c : deck)
+		for (Card c : deck){
+			if(Card.getCard(deck, Card.CardName.Gardens) != null){
+				if(c == Card.getCard(discard ,Card.CardName.Gardens)) numGardens++;
+			}
 			score += c.score();
+			numCards++;
+		}
+		System.out.println("numGardens: " + numGardens);
+		if(numGardens > 0){
+			score += numGardens*(numCards/10);
+		}
 
 		return score;
 	}
@@ -167,7 +184,7 @@ public class Player implements Cloneable{
                 }
 
 			} else if (coins == 4) {//randomly choose one of these
-                int rand = gen.nextInt(5);
+                int rand = gen.nextInt(6);
 				if (rand == 0 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Smithy)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) > 0) {
 					gain(Card.getCard(state.cards, Card.CardName.Smithy));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Smithy), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) - 1);
@@ -188,7 +205,11 @@ public class Player implements Cloneable{
                     gain(Card.getCard(state.cards, Card.CardName.Remodel));
                     state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Remodel), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Remodel)) - 1);
                     coins = coins - 4;
-                }
+                } else if (rand == 4 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Gardens)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gardens)) > 0) {
+					gain(Card.getCard(state.cards, Card.CardName.Gardens));
+					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Gardens), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gardens)) - 1);
+					coins = coins - 4;
+				}
 			} else if (coins == 5) {//randomly choose one of these
                 int rand = gen.nextInt(3);
 				if (rand == 0 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Mine)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Mine)) > 0) {

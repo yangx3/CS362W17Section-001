@@ -108,32 +108,35 @@ public final class Card implements Comparable<Card>, Cloneable{
 	void play(Player player, GameState state) {
 		
 		switch(this.cardName) {
-		    case Adventurer:
+		    case Adventurer: //--------------------
 	    	  //Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
 	    	  System.out.println("TODO Adventurer Code******************************************");
 	    	  System.out.println("Reveal cards from the player deck until player reveal 2 Treasure cards. " +
 	    	  		"Put those Treasure cards into player hand and discard the other revealed cards.");
 			return;
 
-            case Smithy:
+            case Smithy: //DONE
                 System.out.println("+3 Cards.");
                 player.drawCard();
                 player.drawCard();
                 player.drawCard();
                 return;
 
-            case Village:
-                System.out.println("The player draws +1 Card. The player gets +2 Actions.");
+            case Village: //DONE
+                System.out.println("+1 Card. +2 Actions.");
                 player.drawCard();
                 player.numActions = player.numActions + 2;
                 return;
 
-            case Ambassador:
+            case Ambassador: //----------------
                 System.out.println("TODO Ambassador Code******************************************");
-                /*Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply. Then each other player gains a copy of it.*/
+                /*Reveal a card from your hand.
+                Return up to 2 copies of it from your hand to the Supply.
+                Then each other player gains a copy of it.*/
                 int rand = gen.nextInt(5);
                 int num = 0;
-                for(Card cards : player.hand)
+                List<Card> actionCards = filter(player.hand, Type.ACTION);
+                for(Card c : actionCards)
                 {
                     if(num == rand){
                         System.out.println("This is Ambassador Code to do shiny things");
@@ -142,7 +145,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 }
                 return;
 
-            case Baron:
+            case Baron://DONE
                 System.out.println("+1 Card. +2 Actions.");
                 System.out.println("+4 coins or gains Estate.");
                 if(getCard(player.hand, CardName.Estate) != null) {
@@ -151,7 +154,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 } else player.gain(getCard(state.cards, CardName.Estate));
                 return;
 
-            case Council_Room:
+            case Council_Room://DONE
                 System.out.println("+4 Card. +1 Buys. Every other player +1 Card.");
                 player.drawCard();
                 player.drawCard();
@@ -163,7 +166,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 }
                 return;
 
-            case Cutpurse:
+            case Cutpurse://DONE
                 System.out.println("+2 Coins. Every other player discards Copper.");
                 player.coins = player.coins + 2;
                 for (Player players : state.players)
@@ -172,7 +175,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 }
                 return;
 
-            case Embargo:
+            case Embargo: //----------------------
                 System.out.println("+2 Coins. Trash this Card. Place Embargo Token on Supply Pile");
                 System.out.println("When a player buys a card, he gains a Curse card per Embargo token on that pile");
                 player.coins = player.coins + 2;
@@ -180,17 +183,17 @@ public final class Card implements Comparable<Card>, Cloneable{
                 GameState.addEmbargo();//does nothing yet
                 return;
 
-            case Feast:
+            case Feast: //-------------------------
                 System.out.println("Trash this Card. Gain a card costing up to 5 coins.");
                 //buy card up to 5 coins.
                 //Player.buyCard(state);
                 return;
 
-            case Gardens:
+            case Gardens: //-----------------------
                 System.out.println("Worth 1 VICTORY for every 10 cards.");
                 return;
 
-            case  Great_Hall:
+            case  Great_Hall: //
                 System.out.println("+1 Card. +1 Action. Worth 1 VICTORY point.");
                 player.drawCard();
                 player.numActions++;
