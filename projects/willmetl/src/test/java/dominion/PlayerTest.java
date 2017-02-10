@@ -69,11 +69,6 @@ public class PlayerTest{
     assertTrue(a.playCard(Card.EMBARGO));
     a.addActions(-1);
     assertFalse(a.playCard(Card.EMBARGO));
-  }
-
-  @Test
-  public void testPlayCard(){
-    Player a = new Player("Amy", g, true);
     a.putInHand(Card.VILLAGE);
   }
 }

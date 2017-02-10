@@ -97,7 +97,6 @@ public class Player{
         // Card c = chooseActionCard();
         Card c = chooseTypeOfCard(Card.Type.ACTION);
         if(c != null){
-          remActions--;
           playCard(c);
         }else{  // this is ugly
           return;
@@ -286,13 +285,8 @@ public class Player{
     return playCard(card, this);
   }
   public boolean playCard(Card c, Player target){
-    // if(hand.contains(c) == false){
-      // System.out.format("%s does not have a %s to play.\n", playerName, c);
-      // return false;
-    // }
     if(c.getType() != Card.Type.ACTION || remActions>=1){
       remActions -= c.costsAction;
-      // if(DEBUGGING) System.out.println("Playing "+c);
       if(c.play(this) == null)
         hand.remove(c); // trash the card from your hand
       else

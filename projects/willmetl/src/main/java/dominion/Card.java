@@ -204,7 +204,7 @@ public enum Card{
   private final boolean DEBUGGING = true;
   public final String cardName;
   public String desc = "No desc";
-  public int costsAction;
+  public int costsAction = 0;
   public int costsMoney;
   public int givesActions = 0;
   public int givesCardDraws = 0;
@@ -221,9 +221,10 @@ public enum Card{
     this.givesMoney = money;
     this.givesVictoryPoints = vp;
     this.desc = desc;
-    if(money == 0 && vp == 0)
+    if(money == 0 && vp == 0){
       this.type = Type.ACTION;
-    else if(vp == 0)
+      this.costsAction = 1;
+    }else if(vp == 0)
       this.type = Type.TREASURE;
     else
       this.type = Type.VICTORY;
