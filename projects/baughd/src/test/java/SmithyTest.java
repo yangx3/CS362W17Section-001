@@ -1,4 +1,4 @@
-/*import org.junit.Test;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,4 +66,4 @@ public class SmithyTest {
 	   }
 	
 	
-}*/
+}

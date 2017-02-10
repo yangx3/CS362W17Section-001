@@ -83,8 +83,7 @@ public class GameState{
     for(Card c: Card.values()){
       if(supply.contains(c) == false) missingCards++;
     }
-    if(supply.contains(Card.PROVINCE)==false || missingCards>=3) endGame();
-    return false;
+    return supply.contains(Card.PROVINCE)==false || missingCards>=3;
   }
 
   public Card takeCard(Card c){
@@ -96,7 +95,8 @@ public class GameState{
   public void nextTurn(){
     players[playerTurn].newTurn();
     playerTurn = (playerTurn+1)%numPlayers;
-    checkEndConditions();
+    if(checkEndConditions())
+      endGame();
   }
 
   public int listCards(){

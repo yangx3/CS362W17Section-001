@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public final class Card implements Comparable<Card>, Cloneable{
-	public static enum Type {
-		ACTION, TREASURE, VICTORY;
+	public enum Type {
+		ACTION, TREASURE, VICTORY
 	}
 
-	public static enum CardName {
+	public enum CardName {
 		/** The Treasure cards */
 		Gold, Silver, Copper,
 		/** The Victory cards */
@@ -26,6 +27,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 	private final Type realType;
 	private final CardName cardName;
 	private final int cost, score, treasureValue;
+	private Random gen = new Random();
 
 	private Card(CardName cardName, Type type, int cost, int score, int treasureValue) {
 		this.cost = cost;
@@ -35,27 +37,23 @@ public final class Card implements Comparable<Card>, Cloneable{
 		this.cardName = cardName;
 	}
 
-	public Type getType() {
+	Type getType() {
 		return realType;
 	}
 
-	public CardName getCardName() {
+	CardName getCardName() {
 		return cardName;
 	}
 
-	public int getCost() {
-		return cost;
-	}
-
-	public int getTreasureValue() {
+    int getTreasureValue() {
 		return treasureValue; 
 	}
 
-	public int score() { 
+	int score() {
 			return score; 
 		}
 	
-	public static List<Card> createCards() {
+	static List<Card> createCards() {
 		List<Card> ret = new LinkedList<Card>();
 
         // The Treasure cards
@@ -107,129 +105,132 @@ public final class Card implements Comparable<Card>, Cloneable{
         return ret;
 	}
 	
-	public void play(Player player, GameState state) {
+	void play(Player player, GameState state) {
 		
 		switch(this.cardName) {
-		case Adventurer:
+		    case Adventurer: //--------------------
 	    	  //Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
 	    	  System.out.println("TODO Adventurer Code******************************************");
 	    	  System.out.println("Reveal cards from the player deck until player reveal 2 Treasure cards. " +
 	    	  		"Put those Treasure cards into player hand and discard the other revealed cards.");
 			return;
 
-		case Smithy:
-	         player.drawCard();
-	         player.drawCard();
-	         player.drawCard();
-			return;
+            case Smithy: //DONE
+                System.out.println("+3 Cards.");
+                player.drawCard();
+                player.drawCard();
+                player.drawCard();
+                return;
 
-		case Village: //
-	    	 player.drawCard();
-	    	 player.numActions = player.numActions + 2;
-	    	 System.out.println("The player draws +1 Card.");
-			System.out.println("The player gets +2 Actions.");
-            return;
+            case Village: //DONE
+                System.out.println("+1 Card. +2 Actions.");
+                player.drawCard();
+                player.numActions = player.numActions + 2;
+                return;
 
-		case Ambassador:
-            System.out.println("TODO Ambassador Code******************************************");
-            return;
+            case Ambassador: //----------------
+                System.out.println("TODO Ambassador Code******************************************");
+                /*Reveal a card from your hand.
+                Return up to 2 copies of it from your hand to the Supply.
+                Then each other player gains a copy of it.*/
+                int rand = gen.nextInt(5);
+                int num = 0;
+                List<Card> actionCards = filter(player.hand, Type.ACTION);
+                for(Card c : actionCards)
+                {
+                    if(num == rand){
+                        System.out.println("This is Ambassador Code to do shiny things");
+                    }
+                    num++;
+                }
+                return;
 
-        case Baron:
-            if(getCard(player.hand, CardName.Estate) != null) {
-                player.discard(getCard(player.hand, CardName.Estate));
-                player.coins = player.coins + 4;
-            } else player.gain(getCard(state.cards, CardName.Estate)); // the GameState is initialized after the Cards...
-            System.out.println("The player draws +1 Card.");
-            System.out.println("The player gets +2 Actions.");
-            System.out.println("If player has an Estate in hand, they get +4 coins or they gain an Estate.");
-            return;
+            case Baron://DONE
+                System.out.println("+1 Card. +2 Actions.");
+                System.out.println("+4 coins or gains Estate.");
+                if(getCard(player.hand, CardName.Estate) != null) {
+                    player.discard(getCard(player.hand, CardName.Estate));
+                    player.coins = player.coins + 4;
+                } else player.gain(getCard(state.cards, CardName.Estate));
+                return;
 
-        case Council_Room:
-        	player.drawCard();
-            player.drawCard();
-            player.drawCard();
-            player.drawCard();
-            player.numBuys++;
-            for (Player players : state.players)
-            {
-                players.drawCard();
-            }
-            System.out.println("The player draws +4 Card.");
-            System.out.println("The player gets +1 Buys.");
-            System.out.println("Every other player draws +1 Card.");
-            return;
+            case Council_Room://DONE
+                System.out.println("+4 Card. +1 Buys. Every other player +1 Card.");
+                player.drawCard();
+                player.drawCard();
+                player.drawCard();
+                player.numBuys++;
+                for (Player players : state.players)
+                {
+                    players.drawCard();
+                }
+                return;
 
-        case Cutpurse:
-            for (Player players : state.players)
-            {
-               players.discard(getCard(players.hand, CardName.Copper));
-            }
-            System.out.println("The player gets +2 Coins.");
-            System.out.println("Every other player discards a Copper Card.");
-            return;
+            case Cutpurse://DONE
+                System.out.println("+2 Coins. Every other player discards Copper.");
+                player.coins = player.coins + 2;
+                for (Player players : state.players)
+                {
+                    if(players != player && getCard(players.hand, CardName.Copper) != null) players.discard(getCard(player.hand, CardName.Copper));
+                }
+                return;
 
-        case Embargo:
-            player.coins = player.coins + 2;
-            player.hand.remove(getCard(player.hand, CardName.Embargo));//trashes the Embargo card
-            GameState.addEmbargo();//does nothing yet
-            System.out.println("The player gets +2 Coins.");
-            System.out.println("The player trashes this Card.");
-            System.out.println("The player puts a Embargo token on top of a Supply Pile.");
-            System.out.println("When a player buys a card, he gains a Curse card per Embargo token on that pile");
-            return;
+            case Embargo: //----------------------
+                System.out.println("+2 Coins. Trash this Card. Place Embargo Token on Supply Pile");
+                System.out.println("When a player buys a card, he gains a Curse card per Embargo token on that pile");
+                player.coins = player.coins + 2;
+                player.hand.remove(getCard(player.hand, CardName.Embargo));//trashes the Embargo card
+                GameState.addEmbargo();//does nothing yet
+                return;
 
-        case Feast:
-            //buy card up to 5 coins.
-            System.out.println("The player trashes this Card.");
-            System.out.println("The player gains a card costing up to 5 coins.");
-            return;
+            case Feast: //-------------------------
+                System.out.println("Trash this Card. Gain a card costing up to 5 coins.");
+                //buy card up to 5 coins.
+                //Player.buyCard(state);
+                return;
 
-        case Gardens:
-            System.out.println("Worth 1 VICTORY for every 10 cards the player has.");
-            return;
+            case Gardens: //-----------------------
+                System.out.println("Worth 1 VICTORY for every 10 cards.");
+                return;
 
-        case  Great_Hall:
-            player.drawCard();
-            player.numActions++;
-            System.out.println("Worth 1 VICTORY point.");
-            System.out.println("The player draw +1 Card.");
-            System.out.println("The player gets +1 Action.");
-            return;
+            case  Great_Hall: //
+                System.out.println("+1 Card. +1 Action. Worth 1 VICTORY point.");
+                player.drawCard();
+                player.numActions++;
+                return;
 
-        case Mine:
-            if(getCard(player.hand, CardName.Silver) != null) {
-                player.hand.remove(getCard(player.hand, CardName.Silver));
-                //player.gain(getCard(GameState.gameBoard.card, CardName.Gold));
-            } else if(getCard(player.hand, CardName.Copper) != null)
-            {
-                player.hand.remove(getCard(player.hand, CardName.Copper));
-                player.gain(getCard(state.cards, CardName.Silver));
-            }
-            System.out.println("The player trashes a Treasure card.");
-            System.out.println("The player gets a Treasure card one level higher than the trashed Card.");
-            return;
+            case Mine:
+                System.out.println("Trash a Treasure Card. Gain Next Level of Treasure Card ");
+                if(getCard(player.hand, CardName.Silver) != null) {
+                    player.hand.remove(getCard(player.hand, CardName.Silver));
+                    player.gain(getCard(state.cards, CardName.Gold));
+                } else if(getCard(player.hand, CardName.Copper) != null)
+                {
+                    player.hand.remove(getCard(player.hand, CardName.Copper));
+                    player.gain(getCard(state.cards, CardName.Silver));
+                }
+                return;
 
-        case Remodel:
-            int cost = this.cost;
-            player.hand.remove(this);
-            //player buys card (cost + 2);
-            System.out.println("The player trashes the Card.");
-            System.out.println("The player gains a card costing up to more than trashed Card.");
-            return;
+            case Remodel:
+                System.out.println("Trash the Card. Gain Card costing up to 2 more than Trashed Card");
+                int cost = this.cost;
+                player.hand.remove(this);
+                //player buys card (cost + 2);]
+                return;
 
-		default: return;
-		}
+            default:
+        }
 	}
 
-	public static Card getCard(List<Card> cards,CardName cardName) {
-		for(int i=0; i<cards.size();i++) {
-			if (cards.get(i).cardName.equals(cardName))
-				return cards.get(i);
-		}
+	static Card getCard(List<Card> cards,CardName cardName) {
+        for (Card card : cards) {
+            if (card.cardName.equals(cardName))
+                return card;
+        }
 		return null;
 	}
 
-	public static List<Card> filter(Iterable<Card> cards, Type target) {
+	static List<Card> filter(Iterable<Card> cards, Type target) {
 	      List<Card> out = new ArrayList<Card>();
 	      for (Card c : cards)
 	         if (c.getType() == target)
@@ -239,25 +240,16 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-
-		sb.append("\t" + this.getCardName());
-//		sb.append("-" + this.getType() + " ");
-//		sb.append("\t\t Cost: " + this.cost + " ");
-//		sb.append("\t\t Score: " + this.score + " ");
-//		sb.append("\tTreasure Value: " + this.treasureValue);
-
-		return sb.toString();
+        return ("\t" + this.getCardName());
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if(this == obj) return true;
-		if(!super.equals(obj)) return false;
-		if(!(obj instanceof Card)) return false;
-
-		return cardName.equals(((Card) obj).cardName);
-	}
+        if (this == obj) return true;
+        if (!super.equals(obj)) return false;
+        if (obj instanceof Card) if (cardName.equals(((Card) obj).cardName)) return true;
+        return false;
+    }
 
 	public int compareTo(Card o) {
 		return cardName.compareTo(o.cardName);

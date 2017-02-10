@@ -36,8 +36,16 @@ public class GameStateTest{
   public void testCheckEndConditions(){
     g.addPlayer("Amy");
     assertFalse(g.checkEndConditions());
-    for(int i=0; i<12; i++) g.takeCard(Card.DUCHY);
+    for(int i=0; i<12; i++){
+      g.takeCard(Card.DUCHY);
+      g.takeCard(Card.MINE);
+      g.takeCard(Card.BARON);
+    }
+    assertTrue(g.checkEndConditions());
+    g.addCard(Card.MINE);
     assertFalse(g.checkEndConditions());
+    for(int i=0; i<12; i++) g.takeCard(Card.PROVINCE);
+    assertTrue(g.checkEndConditions());
   }
 
   @Test

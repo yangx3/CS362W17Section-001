@@ -28,7 +28,7 @@ public class PlayDominion {
            state.initializeGame();
 
 //PRINT PLAYER DECKS
-           //System.out.println("\nInitialization of Dominion Board:\n\n" + state.toString());
+           System.out.println("\nInitialization of Dominion Board:\n\n" + state.toString());
 
 //ACTUALLY PLAY THE GAME HERE!!!
            HashMap<Player, Integer> winners = state.play();
