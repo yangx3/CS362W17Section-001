@@ -13,7 +13,7 @@ public class BaronTest {
 		assertEquals("Baron name doesn't match",
 				"Baron", test.getName());
 		assertEquals("Baron cost doesn't match",
-				5, test.getCost());
+				4, test.getCost());
 		assertEquals("Baron victory points doesn't match",
 				0, test.getVictoryPoints());
 		assertEquals("Baron value doesn't match",
