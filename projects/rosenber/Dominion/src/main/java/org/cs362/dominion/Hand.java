@@ -75,6 +75,16 @@ public class Hand{
 			removeCard(idx);
 			return temp;
 	}
+	public Card playCard(String name){
+		int idx = -1;
+		for(int j=0; j<hand.size(); j++){
+			if(hand.get(j).getName() == name){
+				idx = j;
+				break;
+			}
+		}
+		return playCard(idx);
+	}
 	
 	//prints the cards in the hand
 	public void print(){
