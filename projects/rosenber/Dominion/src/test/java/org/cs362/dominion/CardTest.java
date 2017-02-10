@@ -10,10 +10,6 @@ public class CardTest {
 	
 	@Test
 	public void test() {
-		ArrayList<CardType> type = new ArrayList<CardType>();
-		type.add(CardType.Action);
-		type.add(CardType.Attack);
-		
 		try{
 			testCard = new Card();
 		}
@@ -21,7 +17,7 @@ public class CardTest {
 			fail("Default card constructor crashes");
 		}
 		
-		testCard = new Card("James", 1, 2, 3, new CardType[] {CardType.Action});
+		testCard = new Card("James", 1, 2, 3, new CardType[] {CardType.Attack, CardType.Action});
 		Card other = new Card(testCard);
 		
 		assertFalse("The card constructor doesn't create a new object",
