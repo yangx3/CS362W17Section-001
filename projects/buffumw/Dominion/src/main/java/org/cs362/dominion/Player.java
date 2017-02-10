@@ -2,7 +2,7 @@ package org.cs362.dominion;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Player implements Cloneable {
+public class Player {
 	public String username;
 	private Deck hand;
 	private Deck draw;
@@ -68,6 +68,20 @@ public class Player implements Cloneable {
 		return hand;
 	}
 	
+	public Card draw(){
+		if(draw.isEmpty())
+		{
+			reShuffle();
+		}
+		hand.addCardToTop(draw.draw());
+		return hand.getTopCard();
+	}
+	
+	public void discardTopHandCard()
+	{
+		discard.addCardToTop(hand.draw());
+	}
+	
 	private void reShuffle()
 	{
 		while(!discard.isEmpty())
@@ -84,11 +98,17 @@ public class Player implements Cloneable {
 		this.draw.shuffle();
 	}
 	
+	public void addCoins(int numCoins)
+	{
+		coins += numCoins;
+	}
+	
 	// Play
-	public void playActions()
+	public ArrayList<String> playActions()
 	{
 		
 		Deck temp = new Deck();
+		ArrayList<String> names = new ArrayList<String>();
 		temp = hand.filterBy(Card.Type.Action);
 		actions = 1;
 		buys = 0;
@@ -101,6 +121,7 @@ public class Player implements Cloneable {
 			if(temp.size() == 0)
 			{
 				System.out.println("You have no action cards in your hand.");
+				actions = 0;
 				break;
 			}else{
 				System.out.println("Here are your choices: " + temp);
@@ -118,6 +139,7 @@ public class Player implements Cloneable {
 				cards+=playCard.getCards();
 				coins+=playCard.getCoinsWorth();
 				// implement special action phase stuff
+				names.add(playCard.getName().toString());
 				
 				discard.addCardToTop(hand.removeCard(playCard));
 				
@@ -137,6 +159,7 @@ public class Player implements Cloneable {
 				coins += hand.getCardAt(itr).getCoinsWorth();
 			}
 		}
+		return names;
 	}
 	
 	public boolean playPurchasing(Deck drawPile)
@@ -153,9 +176,9 @@ public class Player implements Cloneable {
 			discard.addCardToBottom(hand.draw());
 		}
 		
-		System.out.printf("\n\nDraw: %s\n\n", draw);
-		System.out.printf("\n\nHand: %s\n\n", hand);
-		System.out.printf("\n\nDiscard: %s\n\n", discard);
+//		System.out.printf("\n\nDraw: %s\n\n", draw);
+//		System.out.printf("\n\nHand: %s\n\n", hand);
+//		System.out.printf("\n\nDiscard: %s\n\n", discard);
 		
 		return true;
 	}
