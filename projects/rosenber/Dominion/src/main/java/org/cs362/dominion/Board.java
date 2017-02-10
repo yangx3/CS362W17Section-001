@@ -74,6 +74,12 @@ public class Board {
 		return decks.get(idx).size();
 	}
 	
+	//look at a card in the deck
+	// - returns a card from the deck, doesn't remove it
+	public Card lookAtDeck(int idx){
+		return decks.get(idx).getTop();
+	}
+	
 	//prints board
 	public void print(){
 		//TODO
