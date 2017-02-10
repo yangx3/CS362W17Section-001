@@ -19,7 +19,7 @@ public class DuchyTest {
 		assertEquals("Duchy value doesn't match",
 				0, test.getTreasure());
 		assertTrue("Duchy type doesn't match",
-				test.isCardType(CardType.Curse));
+				test.isCardType(CardType.Victory));
 		
 	}
 
