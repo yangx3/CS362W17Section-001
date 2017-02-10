@@ -1,33 +1,35 @@
-import java.util.Vector;
+package org.cs362.dominion;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Ability {
 	private String terms;
-	private Vector<Reward> rewards;
+	private ArrayList<Reward> rewards;
 	private Iterator<Reward> iterator;
+	private int currentIndex;
 	
 	// Constructors
 	Ability(){
 		rewards = null;
 		terms = null;
 		this.iterator = null;
+		currentIndex = 0;
 	}
 	
-	Ability(String terms, Vector<Reward> rewards){
+	Ability(String terms, ArrayList<Reward> rewards){
 		this.terms = terms;
-		this.rewards = new Vector<Reward>(rewards.size());
+		this.rewards = new ArrayList<Reward>(rewards.size());
 		this.rewards.addAll(rewards);
 		this.iterator = this.rewards.iterator();
+		currentIndex = 0;
 	}
-	
-	
 	
 	// Getters
 	public String getTerms(){
 		return this.terms;
 	}
 	
-	public Vector<Reward> getRewards(){
+	public ArrayList<Reward> getRewards(){
 		return this.rewards;
 	}
 	
@@ -35,12 +37,14 @@ public class Ability {
 		return this.rewards.size();
 	}
 	
-	public Iterator<Reward> rewardsIterator(){
-		return this.iterator;
-	}
-	
 	public Reward nextReward(){
-		return this.iterator.hasNext()? this.iterator.next(): null;
+		Reward reward = null;
+		if(currentIndex < this.rewards.size()){
+			reward = this.rewards.get(currentIndex);
+			currentIndex++;
+			System.out.println("Here");
+		}
+		return reward;
 	}
 	
 	// Setters - return true on error, false on success
@@ -55,9 +59,14 @@ public class Ability {
 		return !this.rewards.add(reward);
 	}
 	
-	public boolean addAll(Vector<Reward> rewards){
+	public boolean addAll(ArrayList<Reward> rewards){
 		// returns true if it failed to add all rewards, false on success
 		return !this.rewards.addAll(rewards);
+	}
+	
+	public void resetIndex()
+	{
+		currentIndex = 0;
 	}
 	
 }
