@@ -17,8 +17,20 @@ public class Game {
 	ArrayList<Player> players;
 	Board board;
 	
-	public static void main(String[] args){
-		
-	}
+	//constructor
+	
+	//turn
+	
+	//action phase
+	
+	//buy phase
+	
+	//clean phase
+	
+	//check for game over
+	
+	//declare winner
+	
+	//play a game
 	
 }
