@@ -34,6 +34,13 @@ public class Hand{
 			return false;
 		return true;
 	}
+	public boolean inHand(String name){
+		for(int j=0; j<hand.size(); j++){
+			if(hand.get(j).getName() == name)
+				return true;
+		}
+		return false;
+	}
 	
 	//removes card from the hand
 	// - c not in hand, throws out of bounds exception
