@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class Game {
 	
+	int currentPlayer;
 	ArrayList<Player> players;
 	Board board;
 	
