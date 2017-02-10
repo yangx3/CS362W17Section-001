@@ -93,6 +93,12 @@ public class Player{
 		money += num;
 	}
 	
+	//Give Card
+	//adds a card to the player's discard
+	public void giveCard(Card c){
+		discard.addTop(c);
+	}
+	
 	//Draw Card
 	//draws a card from the deck to the hand
 	public void drawCard(){
@@ -184,7 +190,7 @@ public class Player{
 				int idx = board.getDeckIdx(ans);
 				Card choice = board.lookAtDeck(idx);
 				if(choice.getCost() >= money){
-					discard.addTop(board.draw(idx));
+					giveCard(board.draw(idx));
 				}
 				else{
 					System.out.println("You don't have enough money for that! Try again!");
