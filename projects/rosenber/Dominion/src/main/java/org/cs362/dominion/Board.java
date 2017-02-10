@@ -80,6 +80,14 @@ public class Board {
 		return decks.get(idx).getTop();
 	}
 	
+	public int getDeckIdx(String name){
+		for(int j=0; j<decks.size(); j++){
+			if(decks.get(j).getName() == name)
+				return j;
+		}
+		return -1;
+	}
+	
 	//checks to see if that is a name of the deck
 	// - returns true if it is, false otherwise
 	public Boolean isDeck(String name){
