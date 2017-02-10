@@ -176,7 +176,7 @@ public class Player{
 			System.out.println("You have " + money + " coins!");
 			System.out.println("What card would you like to buy?");
 			String ans = input.nextLine();
-			if(board.isDeck(ans)){
+			try{
 				int idx = board.getDeckIdx(ans);
 				Card choice = board.lookAtDeck(idx);
 				if(choice.getCost() >= money){
@@ -187,7 +187,7 @@ public class Player{
 					repeat = true;
 				}
 			}
-			else{
+			catch(Exception e){
 				System.out.println("That name is not valid. Try again!");
 				repeat = true;
 			}	
