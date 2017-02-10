@@ -117,15 +117,15 @@ public final class Card implements Comparable<Card>, Cloneable{
 
             case Smithy:
                 System.out.println("+3 Cards.");
-                 player.drawCard();
-                 player.drawCard();
-                 player.drawCard();
+                player.drawCard();
+                player.drawCard();
+                player.drawCard();
                 return;
 
-            case Village: //
+            case Village:
                 System.out.println("The player draws +1 Card. The player gets +2 Actions.");
-                 player.drawCard();
-                 player.numActions = player.numActions + 2;
+                player.drawCard();
+                player.numActions = player.numActions + 2;
                 return;
 
             case Ambassador:
@@ -156,7 +156,6 @@ public final class Card implements Comparable<Card>, Cloneable{
                 player.drawCard();
                 player.drawCard();
                 player.drawCard();
-                player.drawCard();
                 player.numBuys++;
                 for (Player players : state.players)
                 {
@@ -169,7 +168,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 player.coins = player.coins + 2;
                 for (Player players : state.players)
                 {
-                    if(players != player) players.discard(getCard(players.hand, CardName.Copper));
+                    if(players != player && getCard(players.hand, CardName.Copper) != null) players.discard(getCard(player.hand, CardName.Copper));
                 }
                 return;
 
