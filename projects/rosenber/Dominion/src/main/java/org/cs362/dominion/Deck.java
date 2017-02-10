@@ -94,6 +94,8 @@ public class Deck{
 	
 	//shuffles the deck
 	public void shuffle(){
+		if(deck.size() < 2)
+			return;
 		int timesToSwap = 100;
 		Random rand = new Random();
 		int one, two;
