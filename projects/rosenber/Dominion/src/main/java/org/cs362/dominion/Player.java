@@ -11,8 +11,12 @@
  * Last modified: 2/8/2017
  */
 package org.cs362.dominion;
+
+import java.util.Scanner;
+
 public class Player{
 	
+	private Scanner input;
 	private String name;
 	private Hand hand;
 	private Deck deck;
@@ -22,8 +26,18 @@ public class Player{
 	private int money;
 	
 	//constructor
-	public Player(){
-		name = "";
+	public Player(int num){
+		//asks player what they want their name to be
+		// - takes in which player they are
+		input = new Scanner(System.in);
+		String ans = "";
+		do{
+			System.out.println("\nPlayer " + num + ", what would you like your username to be?");
+			name = input.nextLine();
+			System.out.println("Are you sure you want your username to be: " + name + "?\n"
+					+ "(y/n) > ");
+			ans = input.nextLine();
+		}while(ans == "y");
 		hand = new Hand();
 		deck = new Deck("Deck");
 		discard = new Deck("Discard");
@@ -32,6 +46,7 @@ public class Player{
 		money = 0;
 	}
 	public Player(String name){
+		input = new Scanner(System.in);
 		this.name = name;
 		hand = new Hand();
 		deck = new Deck("Deck");
@@ -56,9 +71,6 @@ public class Player{
 	}
 	
 	//setters
-	public void setName(String name){
-		this.name = name;
-	}
 	public void setBuys(int buys){
 		this.buys = buys;
 	}
