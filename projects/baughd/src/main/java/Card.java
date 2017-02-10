@@ -140,10 +140,10 @@ public final class Card implements Comparable<Card>, Cloneable{
                 return;
 
             case Ambassador: //----------------
-                System.out.println("TODO Ambassador Code******************************************");
-                /*Reveal a card from your hand.
-                Return up to 2 copies of it from your hand to the Supply.
-                Then each other player gains a copy of it.*/
+ /*               System.out.println("TODO Ambassador Code******************************************");
+                //Reveal a card from your hand.
+                //Return up to 2 copies of it from your hand to the Supply.
+                //Then each other player gains a copy of it.
 
                 if(getCard(player.hand, CardName.Curse) != null){
                     player.hand.remove(getCard(player.hand, CardName.Curse));
@@ -160,18 +160,13 @@ public final class Card implements Comparable<Card>, Cloneable{
                             }
                         }
                     }
-                } else {
-                    Card chosen = player.hand.get(0);
-                    Card chosen2;
-                    for(Card c : player.hand)
-                    {
-                        if(c == chosen){
-                            chosen2 = c;
-                        }
-                    }
+                }// else {
+                  //  Card chosen = player.hand.get(0);
+
                     player.hand.remove(chosen);
                     if(chosen2 != null) player.hand.remove(chosen2);
                 }
+*/
 
 
 
