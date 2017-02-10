@@ -109,4 +109,46 @@ public class PlayerTest {
 				test.deck.size(), 0);
 		
 	}
+	
+	@Test
+	public void testSeeHand(){
+		
+		test = new Player("asdf");
+		try{
+			test.seeHand();
+		}
+		catch(Exception e){
+			fail("issue when printing hand");
+		}
+		
+	}
+	
+	@Test
+	public void testMoneyVictoryComputations(){
+		
+		test = new Player("asdf");
+		Card c = createCard("foo", 0, 2, 4);
+		test.giveCard(c);
+		
+		
+		test.computeMoney();
+		assertEquals("Player has money even though hand is empty after computing it",
+				test.getMoney(), 0);
+		
+		assertEquals("Player has 0 victory points even though 2 are in discard",
+				2, test.getVictoryPoints());
+		
+		test.reshuffleDeck();
+		assertEquals("Player has 0 victory points even though 2 are in deck",
+				2, test.getVictoryPoints());
+		
+		test.drawCard();
+		assertEquals("Player has 0 victory points even though 2 are in hand",
+				2, test.getVictoryPoints());
+		
+		test.computeMoney();
+		assertEquals("Player has doesn't have 4 coins even though 4 are in hand",
+				4, test.getMoney());
+				
+	}
 }
