@@ -76,9 +76,30 @@ Class Game
 
 public class Game {
     public static void main(String[] args) {
-        System.out.print("Do you want to run this program with pretty printing? (yes/no): ");
-        String pretty = scanner.nextLine();
-        pretty = pretty.toLowerCase();
+        boolean automate = false;
+        boolean slow = false;
+
+
+        if (!automate) {
+            System.out.print("Do you want to run this program with pretty printing? (yes/no): ");
+        }
+
+        String pretty;
+
+
+        if (automate) {
+            if (slow) {
+                pretty = "yes";
+            }
+            else {
+                pretty = "no";
+            }
+        }
+        else {
+            pretty = scanner.nextLine();
+            pretty = pretty.toLowerCase();
+        }
+
 
         if (pretty.equals("yes")) {
             setSleepTime(500);
@@ -89,26 +110,33 @@ public class Game {
             setPrintTime(0);
         }
 
+
         //creates three players
         Game dominion = new Game("Connor", "Billy", "Lily");
 
+
+        dominion.setAutomate(automate);
+        dominion.setSlow(slow);
+
+
         //prints an empty line
         System.out.println();
-        //prints the whole bank for testing
-        // dominion.printBank();
+
 
         for (int x = 0; x < dominion.numPlayers(); x++) {
             dominion.getPlayer(x).draw(5);
         }
 
-        for (int x = 0; x < 20; x++) {
-            dominion.playerTurn(0);
+        while (!dominion.win()) {
+            for (int x = 0; x < dominion.numPlayers(); x++) {
+                dominion.playerTurn(x);
+            }
         }
 
-
-        // for (int x = 0; x < 3; x++) {
-        //     dominion.playerTurn(x);
-        // }
+        for (int y = 0; y < dominion.numPlayers(); y++) {
+            dominion.getPlayer(y).discardAll();
+            dominion.getPlayer(y).recycle();
+        }
     }
 
     //array of all decks the game owns
@@ -118,6 +146,13 @@ public class Game {
     ArrayList<Player> players;
     static int printTime;
     static int sleepTime;
+    public boolean automate;
+    public boolean slow;
+
+    public boolean getAutomate() {return automate;}
+    public boolean getSlow() {return slow;}
+    public void setAutomate(boolean setting) {automate = setting;}
+    public void setSlow(boolean setting) {slow = setting;}
 
     public static void setPrintTime(int number) {
         printTime = number;
@@ -125,6 +160,17 @@ public class Game {
 
     public static void setSleepTime(int number) {
         sleepTime = number;
+    }
+
+    public int calculateVictoryPoints(Player player) {
+        int victoryPoints = 0;
+        int numCards = player.drawDeck.numCards();
+        for (int x = 0; x < numCards; x++) {
+            if (player.drawDeck.cardInfo(x).isType("victory")) {
+                victoryPoints +=  player.drawDeck.cardInfo(x).getVictoryPoints();
+            }
+        }
+        return victoryPoints;
     }
 
     public Game() {
@@ -151,6 +197,22 @@ public class Game {
         }
     }
 
+    public boolean win() {
+        if (getDeck("province").empty()) {
+            return true;
+        }
+        int emptyDecks = 0;
+        for (int x = 0; x < bank.size(); x++) {
+            if (bank.get(x).empty()) {
+                emptyDecks++;
+                if (emptyDecks == 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public Game(String ... names) {
         bank = new ArrayList<Deck>();
         trash = new Deck();
@@ -165,7 +227,7 @@ public class Game {
         bank.add(new Deck(24, new Card("estate")));
 
         //build the action decks
-        String[] decksToImplement = {"adventurer", "ambassador", "baron", "council room", "cutpurse", "embargo", "feast", "gardens", "great hall", "mine", "curse", "smithy", "village", "witch", "cellar"};
+        String[] decksToImplement = {"adventurer", "ambassador", "baron", "council room", "cutpurse", "embargo", "feast", "gardens", "great hall", "mine", "curse", "smithy", "village", "witch", "cellar", "salvager"};
 
         for (String deckName: decksToImplement) {
             bank.add(new Deck(10, new Card(deckName)));
@@ -217,10 +279,14 @@ public class Game {
             getPlayer(num).printHandType("action");
             System.out.print("Select your card: ");
 
-            cardToPlay = scanner.nextLine();
-
-            // getPlayer(num).playCard(cardToPlay);
-
+            // if (getAutomate()) {
+                cardToPlay = scanner.nextLine();
+            // }
+            // else {
+                // Random rand = new Random();
+                // int  n = rand.nextInt(50) + 1;
+                // System.out.print("THIS");
+            // }
             playCard(num, cardToPlay);
 
 
@@ -280,8 +346,10 @@ public class Game {
             if (getDeck(purchaseCard) != null) {
                 getPlayer(num).buy(getDeck(purchaseCard));
                 System.out.println("Purchase sucessfull");
+                getPlayer(num).modifyBuys(-1);
+                getPlayer(num).modifyValues(-1 * getDeck(purchaseCard).cardInfo(0).getCost());
                 pause(sleepTime);
-                done = true;
+                done = false;
             }
             else if (purchaseCard.equals("skip")) {
                 printLineDelay("Skipped. ");
@@ -429,6 +497,9 @@ public class Game {
                         numDraw++;
                         player.showHand();
                     }
+                    else if (discard.equals("done")) {
+                        System.out.println("Ending discard phase...");
+                    }
                     else {
                         System.out.println("You don't have that card in your hand");
                     }
@@ -440,9 +511,10 @@ public class Game {
                 for (int x = 0; x < players.size(); x++) {
                     if (x != num) {
                         getPlayer(x).draw();
+                        System.out.printf("\n%s drew a card", getPlayer(x).getName());
                     }
                 }
-                System.out.println("Each other player drew a card");
+                System.out.println("");
             }
             else if (card.getName().equals("cutpurse")) {
                 for (int x = 0; x < players.size(); x++) {
