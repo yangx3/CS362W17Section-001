@@ -4,10 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import cs362.dominion.Exceptions.ConfiguationException;
@@ -15,22 +12,10 @@ import cs362.dominion.Exceptions.InvalidSelectionException;
 import cs362.dominion.Resources.Game;
 import cs362.dominion.Resources.Player;
 
-public class BaronTest {
-	
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+public class AdventurerTest {
 
 	@Before
 	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
 	}
 
 	private Game newGame(){
@@ -64,8 +49,8 @@ public class BaronTest {
 	 */
 	@Test
 	public void testBuys() {
-		int expectedBuys=1;
-		Class<? extends Card> cardType=Baron.class;
+		int expectedBuys=0;
+		Class<? extends Card> cardType=Adventurer.class;
 		// Create a new game and get the current player
 		Game game = newGame();
 		Player player = game.getCurrentPlayer();
@@ -84,10 +69,6 @@ public class BaronTest {
 		// Make sure the value meets expectations
 		assertTrue(afterPlay-beforePlay==expectedBuys);
 	}
-	
-	@Test
-	public void test2() {
-		assertTrue(true);
-	}
+
 
 }

@@ -75,6 +75,10 @@ public class Game {
 		return this.currentPlayer;
 	}
 	
+	public ArrayList<Player> getPlayers(){
+		return this.players;
+	}
+	
 	/**
 	 * Allows player to "end turn". Will hand setting the next game phase, discarding hands,
 	 * setting the next player, etc.
