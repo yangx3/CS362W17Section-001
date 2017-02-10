@@ -70,4 +70,35 @@ public class BoardTest {
 		
 	}
 	
+	@Test
+	public void foo(){
+		
+		Card c = createCard("foo");
+		test = new Board();
+		test.createDeck(c, 10);
+		
+		try{
+			test.lookAtDeck(-1);
+			fail("There shouldn't be a deck at idx -1");
+		}catch(Exception e){};
+		
+		assertEquals("Looked at deck card name didn't match card it was made from"
+				, c.getName(), test.lookAtDeck(1).getName());
+		
+		assertEquals("Index of deck doesn't match what it should be"
+				, 1, test.getDeckIdx(c.getName()));
+		
+		try{
+			test.getDeckIdx("Blarg");
+			fail("This should have crashed");
+		}catch(Exception e){};
+		
+		assertTrue("Doesn't recognize the deck name that should be there",
+				test.isDeck(c.getName()));
+		
+		assertFalse("Recognizes a deck name that doesn't exist",
+				test.isDeck("Blarg"));
+		
+	}
+	
 }
