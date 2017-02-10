@@ -76,7 +76,7 @@ public class Feast extends Card {
 			for(int i : this.cardOptions.keySet()){
 				try {
 					options.add(i, this.cardOptions.get(i).newInstance().getName());
-				} catch (InstantiationException | IllegalAccessException e) {}
+				} catch (InstantiationException e) {} catch (IllegalAccessException e) {}
 			}
 			return options;
 		}
@@ -98,7 +98,7 @@ public class Feast extends Card {
 				if(game.supply.cardsInPile(cardType)<1){continue;}
 				// dont use cards that cost more than 5 coins
 				try { if(cardType.newInstance().getCost()>=6){ continue;} } 
-				catch (InstantiationException | IllegalAccessException e) {}
+				catch (InstantiationException e) {} catch (IllegalAccessException e) {}
 				this.cardOptions.put(optionNum, cardType);
 				optionNum++;
 			}
@@ -125,7 +125,7 @@ public class Feast extends Card {
 			for(int i : this.cardOptions.keySet()){
 				try {
 					options.add(i, this.cardOptions.get(i).newInstance().getName());
-				} catch (InstantiationException | IllegalAccessException e) {}
+				} catch (InstantiationException e) {} catch (IllegalAccessException e) {}
 			}
 			return options;
 		}

@@ -129,16 +129,19 @@ public class Hand {
 	 */
 	public Boolean canPlay(Class<? extends Card> cardType, Game.gamePhase gamePhase) {
 		// If the user does not have the card in there hand, they can't play it
-		try {
+
 			if(!this.handContainsCard(cardType)){ return false; }
 			if(gamePhase == Game.gamePhase.ACTION){
 				// If user has no actions, no action cards can be played, return false
 				if(this.getActions()<1){ return false;}
 				// If the card is not a kingdom card, it can not be played in the action phase
-				if(cardType.newInstance().getType()!=cardTypes.KINGDOM){ return false; }
+				try {
+					if(cardType.newInstance().getType()!=cardTypes.KINGDOM){ return false; }
+				}catch (InstantiationException e) {} 
+				 catch (IllegalAccessException e) {}
 				return true;
 			}
-		} catch (InstantiationException | IllegalAccessException e) {}		
+		
 		return false;
 	}
 	
@@ -161,7 +164,7 @@ public class Hand {
 			if(cardType.newInstance().getCost()>this.getCoins()){ return false; }
 			if(supply.emptyPiles().contains(cardType)){ return false; }
 			return true;
-		} catch (InstantiationException | IllegalAccessException e) {}
+		} catch (InstantiationException e) {} catch (IllegalAccessException e) {}
 		return false;
 	}
 	

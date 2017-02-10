@@ -83,7 +83,7 @@ public class Ambassador extends Card {
 				for(Class<? extends Card> cardType : this.cardOptions){
 					try{
 						options.add(cardType.newInstance().getName());
-					} catch (InstantiationException | IllegalAccessException e) {}
+					} catch (InstantiationException e) {} catch (IllegalAccessException e) {}
 				}
 				return options;
 			}

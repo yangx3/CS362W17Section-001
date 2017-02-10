@@ -133,7 +133,7 @@ public class Game {
 				throw new InvalidSelectionException("Can not play selected card.");
 			}
 			cardOption = this.handInPlay.playCard(this, this.players, this.supply, cardType);
-		} catch (InstantiationException | IllegalAccessException e) {}
+		} catch (InstantiationException e) {} catch (IllegalAccessException e) {}
 		return cardOption;
 	}
 	
@@ -234,7 +234,7 @@ public class Game {
 		for(Class<? extends Card> pile : emptyPiles){
 			try {
 				System.out.println("- " + pile.newInstance().getName());
-			} catch (InstantiationException | IllegalAccessException e) {}
+			} catch (InstantiationException e) {} catch (IllegalAccessException e) {}
 		}
 	}
 	
@@ -266,7 +266,7 @@ public class Game {
 		for(Class<? extends Card> card : playableCards){
 			try {
 				System.out.println("- " + card.newInstance().getName());
-			} catch (InstantiationException | IllegalAccessException e) {}	
+			} catch (InstantiationException e) {} catch (IllegalAccessException e) {}	
 		}
 		System.out.println("--------------------------");	
 	}

@@ -28,7 +28,7 @@ public class Supply {
 		// Validate kingdom cards and build populate supply piles
 		try {
 			this.initializeSupplyCards();
-		} catch (InstantiationException | IllegalAccessException e) {}
+		} catch (InstantiationException e) {} catch (IllegalAccessException e) {}
 	}
 	
 	public void addCard(Card card){
