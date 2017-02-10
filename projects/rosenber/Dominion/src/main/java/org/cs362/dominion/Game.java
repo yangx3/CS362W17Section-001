@@ -9,6 +9,15 @@
 
 package org.cs362.dominion;
 
-public class Game {
+import java.util.ArrayList;
 
+public class Game {
+	
+	ArrayList<Player> players;
+	Board board;
+	
+	public static void main(String[] args){
+		
+	}
+	
 }
