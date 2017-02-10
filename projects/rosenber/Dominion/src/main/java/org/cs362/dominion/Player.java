@@ -105,7 +105,21 @@ public class Player{
 	//asks the user what card they want to discard from hand and
 	//  moves it to discard
 	public void discardCard(Card c){
-		//TODO
+		boolean repeat;
+		hand.print();
+		do{
+			repeat = false;
+			System.out.println("What card do you choose to discard?\n > ");
+			String ans = input.nextLine();
+			try{
+				Card choice = hand.playCard(ans);
+				discard.addTop(choice);
+			}
+			catch(Exception e){
+				System.out.println("That name isn't valid. Try again!");
+				repeat = true;
+			}
+		}while(repeat);
 	}
 	
 	//Re-shuffle deck
