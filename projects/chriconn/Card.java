@@ -21,6 +21,10 @@ import java.util.*;
     Custom cards
     Witch, Cellar, Market
 
+    Reqired custom cards:
+    Village, Smithy, Salvager
+
+
 Class Card
     Variables:
         Private:
@@ -280,7 +284,11 @@ public class Card {
                 type.add("action");
                 type.add("special action");
                 break;
-
+            case "salvager":
+                name            = "salvager";
+                cost            = 4;
+                buys            = 1;
+                description     = "Trash a card from your hand, gain value that the card is worth in purchasing power";
         }
     }
 
