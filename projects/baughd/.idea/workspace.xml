@@ -19,32 +19,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Card.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Card.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1877">
-              <caret line="223" column="47" lean-forward="false" selection-start-line="223" selection-start-column="47" selection-end-line="223" selection-end-column="47" />
+            <state relative-caret-position="528">
+              <caret line="172" column="40" lean-forward="false" selection-start-line="172" selection-start-column="40" selection-end-line="172" selection-end-column="40" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="class#Type#0;class#Card#0" expanded="false" />
                 <element signature="class#CardName#0;class#Card#0" expanded="false" />
                 <element signature="docComment;field#realType#0;class#Card#0" expanded="false" />
                 <element signature="method#Card#0;class#Card#0" expanded="false" />
                 <element signature="method#createCards#0;class#Card#0" expanded="false" />
                 <element signature="method#getCard#0;class#Card#0" expanded="false" />
-                <element signature="method#filter#0;class#Card#0" expanded="false" />
+                <element signature="method#equals#0;class#Card#0" expanded="false" />
                 <element signature="method#clone#0;class#Card#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -52,17 +41,17 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="77" column="32" lean-forward="false" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+            <state relative-caret-position="519">
+              <caret line="154" column="160" lean-forward="false" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="160" />
               <folding>
                 <element signature="method#Player#0;class#Player#0" expanded="false" />
                 <element signature="method#drawCard#0;class#Player#0" expanded="false" />
                 <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
                 <element signature="method#gain#0;class#Player#0" expanded="false" />
                 <element signature="method#discard#0;class#Player#0" expanded="false" />
+                <element signature="method#playKingdomCard#0;class#Player#0" expanded="false" />
                 <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
                 <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
-                <element signature="method#buyCard#0;class#Player#0" expanded="false" />
                 <element signature="method#endTurn#0;class#Player#0" expanded="false" />
                 <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
                 <element signature="method#toString#0;class#Player#0" expanded="false" />
@@ -115,10 +104,10 @@
         <option value="$PROJECT_DIR$/src/main/java/Randomness.java" />
         <option value="$PROJECT_DIR$/src/test/java/SmithyTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameState.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Card.java" />
         <option value="$PROJECT_DIR$/src/main/java/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/PlayDominion.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/Card.java" />
       </list>
     </option>
   </component>
@@ -627,19 +616,19 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07073509" sideWeight="0.49614397" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07073509" sideWeight="0.49614397" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.055478502" sideWeight="0.50385606" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17352185" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3643959" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4151671" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.236404" sideWeight="0.4974293" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16366158" sideWeight="0.4974293" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17673522" sideWeight="0.4789644" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17673522" sideWeight="0.4789644" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -694,7 +683,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="23" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -716,14 +705,13 @@
         <state relative-caret-position="714">
           <caret line="125" column="24" lean-forward="false" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#Type#0;class#Card#0" expanded="false" />
             <element signature="class#CardName#0;class#Card#0" expanded="false" />
             <element signature="docComment;field#realType#0;class#Card#0" expanded="false" />
             <element signature="method#Card#0;class#Card#0" expanded="false" />
             <element signature="method#createCards#0;class#Card#0" expanded="false" />
             <element signature="method#getCard#0;class#Card#0" expanded="false" />
-            <element signature="method#filter#0;class#Card#0" expanded="false" />
+            <element signature="method#equals#0;class#Card#0" expanded="false" />
             <element signature="method#clone#0;class#Card#0" expanded="false" />
           </folding>
         </state>
@@ -739,9 +727,9 @@
             <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
             <element signature="method#gain#0;class#Player#0" expanded="false" />
             <element signature="method#discard#0;class#Player#0" expanded="false" />
+            <element signature="method#playKingdomCard#0;class#Player#0" expanded="false" />
             <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
             <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
-            <element signature="method#buyCard#0;class#Player#0" expanded="false" />
             <element signature="method#endTurn#0;class#Player#0" expanded="false" />
             <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
             <element signature="method#toString#0;class#Player#0" expanded="false" />
@@ -778,14 +766,13 @@
         <state relative-caret-position="680">
           <caret line="73" column="60" lean-forward="false" selection-start-line="73" selection-start-column="60" selection-end-line="73" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#Type#0;class#Card#0" expanded="false" />
             <element signature="class#CardName#0;class#Card#0" expanded="false" />
             <element signature="docComment;field#realType#0;class#Card#0" expanded="false" />
             <element signature="method#Card#0;class#Card#0" expanded="false" />
             <element signature="method#createCards#0;class#Card#0" expanded="false" />
             <element signature="method#getCard#0;class#Card#0" expanded="false" />
-            <element signature="method#filter#0;class#Card#0" expanded="false" />
+            <element signature="method#equals#0;class#Card#0" expanded="false" />
             <element signature="method#clone#0;class#Card#0" expanded="false" />
           </folding>
         </state>
@@ -801,9 +788,9 @@
             <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
             <element signature="method#gain#0;class#Player#0" expanded="false" />
             <element signature="method#discard#0;class#Player#0" expanded="false" />
+            <element signature="method#playKingdomCard#0;class#Player#0" expanded="false" />
             <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
             <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
-            <element signature="method#buyCard#0;class#Player#0" expanded="false" />
             <element signature="method#endTurn#0;class#Player#0" expanded="false" />
             <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
             <element signature="method#toString#0;class#Player#0" expanded="false" />
@@ -840,14 +827,13 @@
         <state relative-caret-position="1173">
           <caret line="69" column="60" lean-forward="false" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#Type#0;class#Card#0" expanded="false" />
             <element signature="class#CardName#0;class#Card#0" expanded="false" />
             <element signature="docComment;field#realType#0;class#Card#0" expanded="false" />
             <element signature="method#Card#0;class#Card#0" expanded="false" />
             <element signature="method#createCards#0;class#Card#0" expanded="false" />
             <element signature="method#getCard#0;class#Card#0" expanded="false" />
-            <element signature="method#filter#0;class#Card#0" expanded="false" />
+            <element signature="method#equals#0;class#Card#0" expanded="false" />
             <element signature="method#clone#0;class#Card#0" expanded="false" />
           </folding>
         </state>
@@ -863,9 +849,9 @@
             <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
             <element signature="method#gain#0;class#Player#0" expanded="false" />
             <element signature="method#discard#0;class#Player#0" expanded="false" />
+            <element signature="method#playKingdomCard#0;class#Player#0" expanded="false" />
             <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
             <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
-            <element signature="method#buyCard#0;class#Player#0" expanded="false" />
             <element signature="method#endTurn#0;class#Player#0" expanded="false" />
             <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
             <element signature="method#toString#0;class#Player#0" expanded="false" />
@@ -910,14 +896,13 @@
         <state relative-caret-position="1173">
           <caret line="69" column="60" lean-forward="false" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#Type#0;class#Card#0" expanded="false" />
             <element signature="class#CardName#0;class#Card#0" expanded="false" />
             <element signature="docComment;field#realType#0;class#Card#0" expanded="false" />
             <element signature="method#Card#0;class#Card#0" expanded="false" />
             <element signature="method#createCards#0;class#Card#0" expanded="false" />
             <element signature="method#getCard#0;class#Card#0" expanded="false" />
-            <element signature="method#filter#0;class#Card#0" expanded="false" />
+            <element signature="method#equals#0;class#Card#0" expanded="false" />
             <element signature="method#clone#0;class#Card#0" expanded="false" />
           </folding>
         </state>
@@ -933,9 +918,9 @@
             <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
             <element signature="method#gain#0;class#Player#0" expanded="false" />
             <element signature="method#discard#0;class#Player#0" expanded="false" />
+            <element signature="method#playKingdomCard#0;class#Player#0" expanded="false" />
             <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
             <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
-            <element signature="method#buyCard#0;class#Player#0" expanded="false" />
             <element signature="method#endTurn#0;class#Player#0" expanded="false" />
             <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
             <element signature="method#toString#0;class#Player#0" expanded="false" />
@@ -980,14 +965,13 @@
         <state relative-caret-position="4760">
           <caret line="280" column="20" lean-forward="false" selection-start-line="280" selection-start-column="20" selection-end-line="280" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#Type#0;class#Card#0" expanded="false" />
             <element signature="class#CardName#0;class#Card#0" expanded="false" />
             <element signature="docComment;field#realType#0;class#Card#0" expanded="false" />
             <element signature="method#Card#0;class#Card#0" expanded="false" />
             <element signature="method#createCards#0;class#Card#0" expanded="false" />
             <element signature="method#getCard#0;class#Card#0" expanded="false" />
-            <element signature="method#filter#0;class#Card#0" expanded="false" />
+            <element signature="method#equals#0;class#Card#0" expanded="false" />
             <element signature="method#clone#0;class#Card#0" expanded="false" />
           </folding>
         </state>
@@ -1003,9 +987,9 @@
             <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
             <element signature="method#gain#0;class#Player#0" expanded="false" />
             <element signature="method#discard#0;class#Player#0" expanded="false" />
+            <element signature="method#playKingdomCard#0;class#Player#0" expanded="false" />
             <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
             <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
-            <element signature="method#buyCard#0;class#Player#0" expanded="false" />
             <element signature="method#endTurn#0;class#Player#0" expanded="false" />
             <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
             <element signature="method#toString#0;class#Player#0" expanded="false" />
@@ -1050,14 +1034,13 @@
         <state relative-caret-position="1190">
           <caret line="146" column="55" lean-forward="false" selection-start-line="146" selection-start-column="55" selection-end-line="146" selection-end-column="55" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#Type#0;class#Card#0" expanded="false" />
             <element signature="class#CardName#0;class#Card#0" expanded="false" />
             <element signature="docComment;field#realType#0;class#Card#0" expanded="false" />
             <element signature="method#Card#0;class#Card#0" expanded="false" />
             <element signature="method#createCards#0;class#Card#0" expanded="false" />
             <element signature="method#getCard#0;class#Card#0" expanded="false" />
-            <element signature="method#filter#0;class#Card#0" expanded="false" />
+            <element signature="method#equals#0;class#Card#0" expanded="false" />
             <element signature="method#clone#0;class#Card#0" expanded="false" />
           </folding>
         </state>
@@ -1073,9 +1056,9 @@
             <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
             <element signature="method#gain#0;class#Player#0" expanded="false" />
             <element signature="method#discard#0;class#Player#0" expanded="false" />
+            <element signature="method#playKingdomCard#0;class#Player#0" expanded="false" />
             <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
             <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
-            <element signature="method#buyCard#0;class#Player#0" expanded="false" />
             <element signature="method#endTurn#0;class#Player#0" expanded="false" />
             <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
             <element signature="method#toString#0;class#Player#0" expanded="false" />
@@ -1166,14 +1149,13 @@
         <state relative-caret-position="680">
           <caret line="73" column="60" lean-forward="false" selection-start-line="73" selection-start-column="60" selection-end-line="73" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#Type#0;class#Card#0" expanded="false" />
             <element signature="class#CardName#0;class#Card#0" expanded="false" />
             <element signature="docComment;field#realType#0;class#Card#0" expanded="false" />
             <element signature="method#Card#0;class#Card#0" expanded="false" />
             <element signature="method#createCards#0;class#Card#0" expanded="false" />
             <element signature="method#getCard#0;class#Card#0" expanded="false" />
-            <element signature="method#filter#0;class#Card#0" expanded="false" />
+            <element signature="method#equals#0;class#Card#0" expanded="false" />
             <element signature="method#clone#0;class#Card#0" expanded="false" />
           </folding>
         </state>
@@ -1212,9 +1194,9 @@
             <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
             <element signature="method#gain#0;class#Player#0" expanded="false" />
             <element signature="method#discard#0;class#Player#0" expanded="false" />
+            <element signature="method#playKingdomCard#0;class#Player#0" expanded="false" />
             <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
             <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
-            <element signature="method#buyCard#0;class#Player#0" expanded="false" />
             <element signature="method#endTurn#0;class#Player#0" expanded="false" />
             <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
             <element signature="method#toString#0;class#Player#0" expanded="false" />
@@ -1287,27 +1269,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="77" column="32" lean-forward="false" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
-          <folding>
-            <element signature="method#Player#0;class#Player#0" expanded="false" />
-            <element signature="method#drawCard#0;class#Player#0" expanded="false" />
-            <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
-            <element signature="method#gain#0;class#Player#0" expanded="false" />
-            <element signature="method#discard#0;class#Player#0" expanded="false" />
-            <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
-            <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
-            <element signature="method#buyCard#0;class#Player#0" expanded="false" />
-            <element signature="method#endTurn#0;class#Player#0" expanded="false" />
-            <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
-            <element signature="method#toString#0;class#Player#0" expanded="false" />
-            <element signature="method#clone#0;class#Player#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/PlayDominion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="548">
@@ -1316,29 +1277,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="154" column="160" lean-forward="false" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="160" />
+          <folding>
+            <element signature="method#Player#0;class#Player#0" expanded="false" />
+            <element signature="method#drawCard#0;class#Player#0" expanded="false" />
+            <element signature="method#initializePlayerTurn#0;class#Player#0" expanded="false" />
+            <element signature="method#gain#0;class#Player#0" expanded="false" />
+            <element signature="method#discard#0;class#Player#0" expanded="false" />
+            <element signature="method#playKingdomCard#0;class#Player#0" expanded="false" />
+            <element signature="method#scoreFor#0;class#Player#0" expanded="false" />
+            <element signature="method#playTreasureCard#0;class#Player#0" expanded="false" />
+            <element signature="method#endTurn#0;class#Player#0" expanded="false" />
+            <element signature="method#printStateGame#0;class#Player#0" expanded="false" />
+            <element signature="method#toString#0;class#Player#0" expanded="false" />
+            <element signature="method#clone#0;class#Player#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1877">
-          <caret line="223" column="47" lean-forward="false" selection-start-line="223" selection-start-column="47" selection-end-line="223" selection-end-column="47" />
+        <state relative-caret-position="528">
+          <caret line="172" column="40" lean-forward="false" selection-start-line="172" selection-start-column="40" selection-end-line="172" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#Type#0;class#Card#0" expanded="false" />
             <element signature="class#CardName#0;class#Card#0" expanded="false" />
             <element signature="docComment;field#realType#0;class#Card#0" expanded="false" />
             <element signature="method#Card#0;class#Card#0" expanded="false" />
             <element signature="method#createCards#0;class#Card#0" expanded="false" />
             <element signature="method#getCard#0;class#Card#0" expanded="false" />
-            <element signature="method#filter#0;class#Card#0" expanded="false" />
+            <element signature="method#equals#0;class#Card#0" expanded="false" />
             <element signature="method#clone#0;class#Card#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public final class Card implements Comparable<Card>, Cloneable{
 	public enum Type {
@@ -112,11 +109,21 @@ public final class Card implements Comparable<Card>, Cloneable{
 	void play(Player player, GameState state) {
 		
 		switch(this.cardName) {
-		    case Adventurer: //--------------------
-	    	  //Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
-	    	  System.out.println("TODO Adventurer Code******************************************");
-	    	  System.out.println("Reveal cards from the player deck until player reveal 2 Treasure cards. " +
-	    	  		"Put those Treasure cards into player hand and discard the other revealed cards.");
+		    case Adventurer: //DONE
+	    	    System.out.println("+2 TREASURE Cards.");
+	    	    int cardCount = 0;
+
+                Iterator<Card> it = player.deck.iterator();
+                while(it.hasNext()){
+                    Card c = it.next();
+                    if(c == getCard(state.cards, CardName.Copper) || c == getCard(state.cards, CardName.Silver) || c == getCard(state.cards, CardName.Gold))
+                    {
+                        cardCount++;
+                        player.hand.add(c);
+                        it.remove();
+                        if(cardCount == 2) break;
+                    } else player.discard(c);
+                }
 			return;
 
             case Smithy: //DONE
@@ -137,6 +144,38 @@ public final class Card implements Comparable<Card>, Cloneable{
                 /*Reveal a card from your hand.
                 Return up to 2 copies of it from your hand to the Supply.
                 Then each other player gains a copy of it.*/
+
+                if(getCard(player.hand, CardName.Curse) != null){
+                    player.hand.remove(getCard(player.hand, CardName.Curse));
+                    if(getCard(player.hand, CardName.Curse) != null){
+                        player.hand.remove(getCard(player.hand, CardName.Curse));
+                        state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Curse), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Curse)) + 1 );
+                    }
+                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Curse), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Curse)) + 1 );
+                    for(Player p : state.players){
+                        if(state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Curse)) > 0) {
+                            state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Curse), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Curse)) - 1 );
+                            if(p != player) {
+                                p.gain(getCard(player.hand, CardName.Curse));
+                            }
+                        }
+                    }
+                } else {
+                    Card chosen = player.hand.get(0);
+                    Card chosen2;
+                    for(Card c : player.hand)
+                    {
+                        if(c == chosen){
+                            chosen2 = c;
+                        }
+                    }
+                    player.hand.remove(chosen);
+                    if(chosen2 != null) player.hand.remove(chosen2);
+                }
+
+
+
+
                 int rand = gen.nextInt(5);
                 int num = 0;
                 List<Card> actionCards = filter(player.hand, Type.ACTION);
@@ -149,7 +188,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 }
                 return;
 
-            case Baron://DONE
+            case Baron: //DONE
                 System.out.println("+1 Card. +2 Actions.");
                 System.out.println("+4 coins or gains Estate.");
                 if(getCard(player.hand, CardName.Estate) != null) {
@@ -158,7 +197,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 } else player.gain(getCard(state.cards, CardName.Estate));
                 return;
 
-            case Council_Room://DONE
+            case Council_Room: //DONE
                 System.out.println("+4 Card. +1 Buys. Every other player +1 Card.");
                 player.drawCard();
                 player.drawCard();
@@ -170,7 +209,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 }
                 return;
 
-            case Cutpurse://DONE
+            case Cutpurse: //DONE
                 System.out.println("+2 Coins. Every other player discards Copper.");
                 player.coins = player.coins + 2;
                 for (Player players : state.players)
@@ -221,7 +260,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 int cost = player.hand.get(0).getCost();
                 System.out.println("Player trashes: " + player.hand.get(0));
                 player.hand.remove(0);
-                player.coins = player.coins + 2;
+                player.coins = player.coins + 2 + cost;
                 //player buys card (cost + 2);
                 return;
 
