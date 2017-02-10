@@ -85,7 +85,8 @@ public class Board {
 			if(decks.get(j).getName() == name)
 				return j;
 		}
-		return -1;
+		//to get an out of bounds exception thrown
+		return decks.get(-1).size();
 	}
 	
 	//checks to see if that is a name of the deck
