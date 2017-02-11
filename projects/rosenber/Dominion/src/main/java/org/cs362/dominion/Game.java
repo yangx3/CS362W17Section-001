@@ -46,17 +46,38 @@ public class Game {
 	}
 	
 	//turn
+	public void turn(){
+		
+	}
 	
 	//action phase
+	public void actionPhase(){
+		
+	}
 	
 	//buy phase
+	public void buyPhase(){
+		
+	}
 	
 	//clean phase
+	public void cleanPhase(){
+		
+	}
 	
 	//check for game over
+	public boolean isGameOver(){
+		
+	}
 	
 	//declare winner
+	public void declareWinner(){
+		
+	}
 	
 	//play a game
+	public void play(){
+		
+	}
 	
 }
