@@ -232,19 +232,6 @@ public class Deck {
     public boolean empty()  {return (deck.size() == 0) ? true : false;};
     public int numCards()   {return deck.size();};
 
-    //checks to see if the deck has an action card
-    // public boolean hasActions() {
-    //     if (this.empty()) {
-    //         return false;
-    //     }
-    //     for (int x = 0; x < deck.size(); x++) {
-    //         if (cardInfo(x).isType("action")) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-
     public boolean hasType(String type) {
         if (this.empty()) {
             return false;
