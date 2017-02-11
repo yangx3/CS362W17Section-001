@@ -71,7 +71,7 @@ public class Mine extends Card {
 		do{
 			choice = rand.nextInt(currentPlayer.numCardsHand());
 			c = currentPlayer.lookAtCard(choice);
-		}while(c.isCardType(CardType.Treasure));
+		}while(!c.isCardType(CardType.Treasure));
 		c = currentPlayer.playCard(choice);
 		board.addToTrash(c);
 		Card otherC = null;

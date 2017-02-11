@@ -50,7 +50,7 @@ public class Feast extends Card {
 			choice = -1;
 			while(choice < 1)
 				choice = rand.nextInt(board.numDecks());
-		}while(board.lookAtDeck(choice).getCost() <= 5);
+		}while(board.lookAtDeck(choice).getCost() > 5);
 		currentPlayer.giveCard(board.draw(choice));
 	}
 }
