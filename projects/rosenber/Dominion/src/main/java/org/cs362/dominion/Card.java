@@ -81,9 +81,8 @@ public class Card {
 	//performs the cards reaction
 	public void Reaction(){};
 	
-	//prints the card line specified
-	//range: [0-9]
-	public void print(int line){}
+	//prints the card
+	public void print(){}
 }
 
 
