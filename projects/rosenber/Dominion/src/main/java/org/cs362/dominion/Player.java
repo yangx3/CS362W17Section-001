@@ -139,6 +139,16 @@ public class Player{
 		return hand.size();
 	}
 	
+	//number of cards in discard
+	public int numCardsDiscard(){
+		return discard.size();
+	}
+	
+	//number of cards in deck
+	public int numCardsDeck(){
+		return deck.size();
+	}
+	
 	//Discard Card
 	//asks the user what card they want to discard from hand and
 	//  moves it to discard
