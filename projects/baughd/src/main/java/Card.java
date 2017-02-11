@@ -224,10 +224,10 @@ public final class Card implements Comparable<Card>, Cloneable{
                 return;
 
             case Gardens: //DONE - within player.scoreFor()
-                System.out.println("Worth 1 VICTORY for every 10 cards.");
+                System.out.println("Doesn't Run! Worth 1 VICTORY for every 10 cards.");
                 return;
 
-            case  Great_Hall: //DONE
+            case Great_Hall: //DONE
                 System.out.println("+1 Card. +1 Action. Worth 1 VICTORY point.");
                 player.drawCard();
                 player.numActions++;
