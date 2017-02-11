@@ -2,6 +2,7 @@ package org.cs362.dominion;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Salvager extends Card{
 
@@ -12,6 +13,11 @@ public class Salvager extends Card{
 	//performs the cards action
 	public void Action(ArrayList<Player> players,
 			Player currentPlayer, Board board){
+		if(currentPlayer.checkAi()){
+			AIAction(players, currentPlayer, board);
+			return;
+		}
+			
 		currentPlayer.addBuys(1);
 		Card choice = null;
 		boolean repeat;
@@ -32,5 +38,14 @@ public class Salvager extends Card{
 			}
 		}while(repeat);
 		input.close();
+	}
+	
+	private void AIAction(ArrayList<Player> players,
+			Player currentPlayer, Board board){
+		Random rand = new Random();
+		int choice = rand.nextInt(currentPlayer.numCardsHand());
+		Card c = currentPlayer.playCard(choice);
+		board.addToTrash(c);
+		currentPlayer.addMoney(c.getCost());
 	}
 }
