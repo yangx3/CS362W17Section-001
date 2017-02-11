@@ -61,6 +61,8 @@ public class Game {
 	//action phase
 	public void actionPhase(){
 		Card played = null;
+		for(int j=0; j<5; j++)
+			currentPlayer.drawCard();
 		do{
 			played = currentPlayer.playCard();
 			played.Action();
