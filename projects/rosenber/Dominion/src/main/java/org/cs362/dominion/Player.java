@@ -172,7 +172,6 @@ public class Player{
 				repeat = true;
 			}
 		}while(repeat);
-		discard.addTop(choice);
 		return choice;
 	}
 	
