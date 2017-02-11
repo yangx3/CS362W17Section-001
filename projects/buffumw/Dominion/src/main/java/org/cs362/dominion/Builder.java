@@ -48,6 +48,7 @@ public final class Builder {
 		decks.add(new Card(Card.Name.Estate, Card.Type.Victory, 2, 0, 1, 0, 0, 0));
 		decks.add(new Card(Card.Name.Duchy, Card.Type.Victory, 5, 0, 3, 0, 0, 0));
 		decks.add(new Card(Card.Name.Province, Card.Type.Victory, 8, 0, 8, 0, 0, 0));
+		decks.add(new Card(Card.Name.Curse, Card.Type.Victory, 0, 0, -1, 0, 0, 0));
 		
 		// kindom cards
 		

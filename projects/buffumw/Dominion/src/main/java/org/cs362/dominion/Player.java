@@ -121,7 +121,6 @@ public class Player {
 	// Play
 	public ArrayList<String> playActions()
 	{
-		System.out.printf("My hand at the beginning of actions: %s\n", hand);
 		Deck temp = new Deck();
 		ArrayList<String> names = new ArrayList<String>();
 		temp = hand.filterBy(Card.Type.Action, Card.Type.ActionAttack, Card.Type.ActionVictory);
@@ -132,14 +131,14 @@ public class Player {
 		
 		while(actions > 0)
 		{
-			System.out.println("You have " + actions + " actions left");
+			System.out.print("You have " + actions + " actions left, ");
 			if(temp.size() == 0)
 			{
-				System.out.println("You have no action cards in your hand.");
+				System.out.println("but you have no action cards in your hand. Time for the buying phase.\n\n");
 				actions = 0;
 				break;
 			}else{
-				System.out.println("Here are your choices: " + temp);
+				System.out.printf("here are your choices: %s\n\n", temp);
 			}
 			Scanner in = new Scanner(System.in);
 			
@@ -186,14 +185,11 @@ public class Player {
 		}
 		
 		discard.addCardToTop(drawPile.draw());
+		
 		while(!hand.isEmpty())
 		{
 			discard.addCardToBottom(hand.draw());
 		}
-		
-//		System.out.printf("\n\nDraw: %s\n\n", draw);
-//		System.out.printf("\n\nHand: %s\n\n", hand);
-//		System.out.printf("\n\nDiscard: %s\n\n", discard);
 		
 		return true;
 	}

@@ -47,8 +47,11 @@ public class GameState {
 			Scanner in = new Scanner(System.in);
 			System.out.println("What is your username? ");
 			player.username = in.nextLine();
+			System.out.printf("Welcome to the game %s, setting up your deck now!\n", player.username);
 			player.setDeck(Builder.buildPlayerStartDeck());
 		}
+//		System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		System.out.print("\033[2J\033[K\033[H");
 	}
 	
 	public boolean aWinner()
@@ -59,6 +62,7 @@ public class GameState {
 	public Player play()
 	{
 		int turn = 0;
+		boolean embargoed = false;
 		do
 		{
 			for(Player player: players)
@@ -70,6 +74,9 @@ public class GameState {
 					player.draw(5);
 				}
 				
+				
+				System.out.printf("Your hand includes: %s\n", player.getHand());
+				
 				actionsPlayed = player.playActions();
 				
 				//Attacks against other players
@@ -77,26 +84,19 @@ public class GameState {
 				{
 					attackPlayers(actionsPlayed, player);
 				}
-				System.out.printf("My hand at the beginning of actions: %s\n", player.getHand());
+//				System.out.printf("My hand at the beginning of actions: %s\n", player.getHand());
 
 				int coins = player.getCoins();
-				System.out.printf("Hi %s, welcome to the buying phase, you have %2d coins. Here are the available cards: \n\n", player.username, coins);
+				System.out.printf("Welcome to the buying phase %s, you have %d coins. Here are the available cards: \n\n", player.username, coins);
 				boolean purchase = true;
 				do{
 					if(purchase == false)
 					{
+						System.out.print("\033[2J\033[K\033[H");
 						System.out.println("You did not have enough coins to purchase that card. Please select another card.");
 					}
 				
-					for(Deck deck: game)
-					{
-						if(deck.size() > 0)
-						{
-							Card card = deck.getBottomCard();
-							int cost = card.getCost();
-							System.out.printf("%-15s: Costs: %2d: %2d Left\n", card.getName(), cost, deck.size());
-						}
-					}
+					printBoard();
 					
 					System.out.print("What card would you like to purchase?: ");
 					Scanner in = new Scanner(System.in);
@@ -106,11 +106,27 @@ public class GameState {
 						if(deck.compare(temp) != null)
 						{
 							purchase = player.playPurchasing(deck);
+							embargoed = deck.embargoed;
+							
 							System.out.println("Did a good purchase happen? : " + purchase);
 						}
 					}
-					System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+//					System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+//					System.out.print("\033[2J\033[K\033[H");
 				}while(purchase == false);
+				if(embargoed == true)
+				{
+					for(Deck deck: game)
+					{
+						if(deck.compare("Curse") != null)
+						{
+							System.out.println("This card was embargoed, you gain a curse card.");
+							player.getDiscard().addCardToTop(deck.draw());
+							break;
+						}
+					}
+				}
+				System.out.print("\033[2J\033[K\033[H");
 				for(int itr = 0; itr < player.getHand().size(); itr++)
 				{
 					player.discardTopHandCard();
@@ -128,11 +144,11 @@ public class GameState {
 	
 	public void attackPlayers(ArrayList<String> attacks, Player player)
 	{
-		System.out.printf("These actions were played by %s: %s\n", player.username, attacks);
+//		System.out.printf("These actions were played by %s: %s\n", player.username, attacks);
 		for(int itr = 0; itr < attacks.size(); itr++)
 		{
 			if(attacks.get(itr).compareTo("Adventurer") == 0){ adventurer(player); }
-			else if(attacks.get(itr).compareTo("Ambassador") == 0){ /* run Ambassador code*/}
+			else if(attacks.get(itr).compareTo("Ambassador") == 0){ ambassador(player); }
 			else if(attacks.get(itr).compareTo("Baron") == 0){ baron(player); }
 			else if(attacks.get(itr).compareTo("Council_Room") == 0){ councilRoom(player); }
 			else if(attacks.get(itr).compareTo("Cutpurse") == 0){ cutpurse(player); }
@@ -141,10 +157,10 @@ public class GameState {
 			else if(attacks.get(itr).compareTo("Gardens") == 0){ gardens(player); }
 			else if(attacks.get(itr).compareTo("Mine") == 0){ mine(player); }
 			else if(attacks.get(itr).compareTo("Salvager") == 0){ salvager(player); }
-			else { /* nothing special to do */ }
 		}
+		
 	}
-	
+
 	public void adventurer(Player player)
 	{
 		int finished = 0;
@@ -164,7 +180,39 @@ public class GameState {
 	}
 	public void ambassador(Player player)
 	{
+		System.out.println("You played the ambassador card. With this card you may reveal "
+				+ "a card from your hand and return up to two copies of it to the Supply from "
+				+ "your hand; then, each other player gains a copy.");
 		
+		Deck hand = player.getHand();
+		System.out.printf("Here is your hand: %s\n", hand);
+		System.out.print("Which card would you like to return to the supply?: ");
+		Scanner in = new Scanner(System.in);
+		
+		String choice = in.nextLine();
+		for(int itr = 0; itr < hand.size(); itr++)
+		{
+			if(hand.cardAt(itr).getName().toString().compareTo(choice) == 0)
+			{
+				Card card = hand.removeCard(hand.cardAt(itr));
+				for(Deck decks: game)
+				{
+					if(decks.getTopCard().getName().toString().compareTo(choice) == 0)
+					{
+						decks.addCardToBottom(card);
+						for(Player thisPlayer: players)
+						{
+							if(thisPlayer != player)
+							{
+								thisPlayer.getDiscard().addCardToTop(decks.draw());
+							}
+						}
+						break;
+					}
+				}
+				break;
+			}
+		}
 	}
 	public void baron(Player player)
 	{
@@ -374,11 +422,18 @@ public class GameState {
 		{
 			if(deck.size() > 0)
 			{
+				
+				String embargo = " ";
+				if(deck.embargoed == true)
+				{
+					embargo = "*";
+				}
 				Card card = deck.getBottomCard();
 				int cost = card.getCost();
-				System.out.printf("%-15s: Costs: %2d: %2d Left\n", card.getName(), cost, deck.size());
+				System.out.printf("%s%-15s: Costs: %2d: %2d Left: \"%s\"\n", embargo, card.getName(), cost, deck.size(), card.getDescription());
 			}
 		}
+		System.out.println("");
 	}
 	
 }
