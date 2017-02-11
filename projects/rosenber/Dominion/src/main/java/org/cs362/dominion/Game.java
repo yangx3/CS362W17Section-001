@@ -14,12 +14,14 @@ import java.util.ArrayList;
 public class Game {
 	
 	Player currentPlayer;
+	int curPlayerIdx;
 	ArrayList<Player> players;
 	Board board;
 	
 	//constructor
 	public Game(int numPlayers, boolean AIonly){
 		currentPlayer = null;
+		curPlayerIdx = 0;
 		players = new ArrayList<Player>();
 		board = new Board();
 		
@@ -108,7 +110,14 @@ public class Game {
 	
 	//play a game
 	public void play(){
-		
+		do{
+			currentPlayer = players.get(curPlayerIdx);
+			turn();
+			curPlayerIdx++;
+			if(curPlayerIdx >= players.size())
+				curPlayerIdx = 0;
+		}while(!isGameOver());
+		declareWinner();
 	}
 	
 }
