@@ -47,6 +47,7 @@ public class Game {
 		board.createDeck(new Smithy(), 30);
 		board.createDeck(new Village(), 30);
 		
+		//TODO: make players
 		//TODO: make players draw initial cards
 	}
 	
