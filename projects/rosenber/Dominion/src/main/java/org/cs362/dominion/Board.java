@@ -73,6 +73,9 @@ public class Board {
 	public int numCardsInDeck(int idx){
 		return decks.get(idx).size();
 	}
+	public int numCardsInDeck(String name){
+		return numCardsInDeck(getDeckIdx(name));
+	}
 	
 	//look at a card in the deck
 	// - returns a card from the deck, doesn't remove it
