@@ -65,7 +65,7 @@ public class Game {
 			currentPlayer.drawCard();
 		do{
 			played.add(0, currentPlayer.playCard());
-			played.get(0).Action();
+			played.get(0).Action(players, currentPlayer, board);
 			currentPlayer.addActions(-1);
 		}while(currentPlayer.getActions() > 0);
 		for(int j=0; j<played.size(); j++){
