@@ -140,6 +140,9 @@ public class Player{
 	public void discardCard(Card c){
 		discard.addTop(hand.playCard(c.getName()));
 	}
+	public void discardCard(String name){
+		discard.addTop(hand.playCard(name));
+	}
 	
 	//discards entire hand
 	public void discardHand(){
