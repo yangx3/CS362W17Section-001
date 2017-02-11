@@ -31,5 +31,6 @@ public class Salvager extends Card{
 				repeat = true;
 			}
 		}while(repeat);
+		input.close();
 	}
 }
