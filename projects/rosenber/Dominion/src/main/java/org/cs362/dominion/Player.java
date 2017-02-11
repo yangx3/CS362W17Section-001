@@ -107,6 +107,15 @@ public class Player{
 		hand.addCard(deck.drawTop());
 	}
 	
+	//number of total cards
+	// returns the total number of cards the player has
+	public int numTotalCards(){
+		int sum=hand.size();
+		sum += deck.size();
+		sum += discard.size();
+		return sum;
+	}
+	
 	//Discard Card
 	//asks the user what card they want to discard from hand and
 	//  moves it to discard
