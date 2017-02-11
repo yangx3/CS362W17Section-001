@@ -2,6 +2,8 @@ package org.cs362.dominion;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class CutpurseTest {
@@ -25,4 +27,38 @@ public class CutpurseTest {
 		
 	}
 
+	@Test
+	public void testAction(){
+		ArrayList<Player> players = new ArrayList<Player>();
+		Player currentPlayer = new AIPlayer(1);
+		Board board = new Board();
+		players.add(currentPlayer);
+		Player other = new AIPlayer(2);
+		players.add(other);
+		other.giveCard(new Copper());
+		other.drawCard();
+		other = new AIPlayer(3);
+		players.add(other);
+		
+		Card c = new Cutpurse();
+		c.Action(players, currentPlayer, board);
+		
+		assertEquals("Player didn't gain coins",
+				2, currentPlayer.getMoney());
+		assertEquals("Player 2 didn't discard its copper",
+				0, players.get(1).numCardsHand());
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
