@@ -1,7 +1,7 @@
 package org.cs362.dominion;
 
 import static org.junit.Assert.*;
-
+import java.util.ArrayList;
 import org.junit.Test;
 
 public class GreatHallTest {
@@ -25,4 +25,38 @@ public class GreatHallTest {
 		
 	}
 
+	@Test
+	public void testAction(){
+		ArrayList<Player> players = new ArrayList<Player>();
+		Player currentPlayer = new AIPlayer(1);
+		Board board = new Board();
+		
+		currentPlayer.giveCard(new Copper());
+		Card c = new GreatHall();
+		c.Action(players, currentPlayer, board);
+		assertEquals("Player didn't draw a card",
+				1, currentPlayer.numCardsHand());
+		assertEquals("Player didn't receive an action",
+				1, currentPlayer.getActions());
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
