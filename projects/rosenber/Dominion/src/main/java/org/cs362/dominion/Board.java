@@ -33,6 +33,11 @@ public class Board {
 		decks.add(temp);
 	}
 	
+	//gets the deck of choice at idx
+	public Deck getDeck(int idx){
+		return decks.get(idx);
+	}
+	
 	//gets the name of the deck
 	// - takes in idx of deck
 	// - throws out of range exception if not valid idx
