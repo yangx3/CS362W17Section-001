@@ -183,6 +183,7 @@ public class Player{
 		board.print();
 		do{
 			repeat = false;
+			System.out.println("You have " + buys + " buys!");
 			System.out.println("You have " + money + " coins!");
 			System.out.println("What card would you like to buy?");
 			String ans = input.nextLine();
