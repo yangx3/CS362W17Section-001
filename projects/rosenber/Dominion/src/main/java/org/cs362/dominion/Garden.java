@@ -9,4 +9,8 @@ public class Garden extends Card{
 		
 	}
 
+	public int getVictoryPoints(Player player){
+		return player.numTotalCards()/10;
+	}
+	
 }
