@@ -81,7 +81,17 @@ public class Game {
 	
 	//check for game over
 	public boolean isGameOver(){
-		
+		if(board.numCardsInDeck("Province") == 0)
+			return true;
+		else{
+			int numWithZero = 0;
+			for(int j=0; j<board.numDecks(); j++)
+				if(board.numCardsInDeck(j) == 0)
+					numWithZero++;
+			if(numWithZero >= 3)
+				return true;
+		}
+		return false;
 	}
 	
 	//declare winner
