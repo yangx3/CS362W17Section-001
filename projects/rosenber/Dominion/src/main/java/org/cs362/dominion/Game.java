@@ -47,7 +47,9 @@ public class Game {
 	
 	//turn
 	public void turn(){
-		
+		actionPhase();
+		buyPhase();
+		cleanPhase();
 	}
 	
 	//action phase
