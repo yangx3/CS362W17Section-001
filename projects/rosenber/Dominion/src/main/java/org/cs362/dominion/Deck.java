@@ -28,6 +28,16 @@ public class Deck{
 		embargoCounter = 0;
 	}
 	
+	//returns the number of embargo counters
+	public int getEmbargos(){
+		return embargoCounter;
+	}
+	
+	//add value to the embargoConter value
+	public void addEmbargos(int val){
+		embargoCounter += val;
+	}
+	
 	//returns the name
 	public String getName(){
 		return name;
