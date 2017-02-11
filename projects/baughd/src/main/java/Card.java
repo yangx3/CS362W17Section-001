@@ -140,7 +140,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 return;
 
             case Ambassador: //DONE
-                System.out.println("TODO Ambassador Code******************************************");
+                System.out.println("Give every other player a copy of a Card");
                 //Reveal a card from your hand.
                 //Return up to 2 copies of it from your hand to the Supply.
                 //Then each other player gains a copy of it.
@@ -201,14 +201,14 @@ public final class Card implements Comparable<Card>, Cloneable{
                 }
                 return;
 
-            case Embargo: //----------------------
+            case Embargo: //DONE - GameState.addEmbargo not working
                 System.out.println("+2 Coins. Trash this Card. Place Embargo Token on Supply Pile");
                 System.out.println("When a player buys a card, he gains a Curse card per Embargo token on that pile");
                 player.coins = player.coins + 2;
                 player.playedCards.remove(getCard(player.playedCards, CardName.Embargo));//trashes the Embargo card
                 int rand = gen.nextInt(10);
                 int card = 0;
-                for(Card c : filter((Iterable<Card>) state.gameBoard, Type.ACTION)){
+                for(Card c : filter(state.cards, Type.ACTION)){
                     if(card == rand) {
                         GameState.addEmbargo(c);
                     }
