@@ -54,7 +54,12 @@ public class Game {
 	
 	//action phase
 	public void actionPhase(){
-		
+		Card played = null;
+		do{
+			played = players.get(currentPlayer).playCard();
+			played.Action();
+			players.get(currentPlayer).addActions(-1);
+		}while(players.get(currentPlayer).getActions() > 0);
 	}
 	
 	//buy phase
