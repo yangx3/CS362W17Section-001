@@ -60,14 +60,18 @@ public class Game {
 	
 	//action phase
 	public void actionPhase(){
-		Card played = null;
+		ArrayList<Card> played = new ArrayList<Card>();
 		for(int j=0; j<5; j++)
 			currentPlayer.drawCard();
 		do{
-			played = currentPlayer.playCard();
-			played.Action();
+			played.add(0, currentPlayer.playCard());
+			played.get(0).Action();
 			currentPlayer.addActions(-1);
 		}while(currentPlayer.getActions() > 0);
+		for(int j=0; j<played.size(); j++){
+			currentPlayer.giveCard(played.get(0));
+			played.remove(0);
+		}
 	}
 	
 	//buy phase
