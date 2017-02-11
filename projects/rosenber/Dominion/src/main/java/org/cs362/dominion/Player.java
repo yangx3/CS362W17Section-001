@@ -132,6 +132,13 @@ public class Player{
 		discard.addTop(hand.playCard(c.getName()));
 	}
 	
+	//discards entire hand
+	public void discardHand(){
+		while(hand.size() > 0){
+			discard.addTop(hand.playCard(0));
+		}
+	}
+	
 	//Re-shuffle deck
 	//moves all cards from discard to deck and shuffles
 	public void reshuffleDeck(){
