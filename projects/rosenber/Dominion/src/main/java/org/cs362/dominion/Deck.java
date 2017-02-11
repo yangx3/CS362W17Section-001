@@ -14,15 +14,18 @@ public class Deck{
 	
 	private String name;
 	public ArrayList<Card> deck;
+	int embargoCounter;
 	
 	//constructor
 	public Deck(){
 		name = "";
 		deck = new ArrayList<Card>();
+		embargoCounter = 0;
 	}
 	public Deck(String str){
 		name = str;
 		deck = new ArrayList<Card>();
+		embargoCounter = 0;
 	}
 	
 	//returns the name
