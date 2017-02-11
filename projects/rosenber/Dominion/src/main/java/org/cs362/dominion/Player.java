@@ -174,6 +174,9 @@ public class Player{
 		}while(repeat);
 		return choice;
 	}
+	public Card playCard(String name){
+		return hand.playCard(name);
+	}
 	
 	//Compute Money
 	//gets the amount of money available from cards in hand
