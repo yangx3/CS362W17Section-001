@@ -16,16 +16,42 @@ public class CardTest {
 
     @Test
     public void CreateNamedCards() {
-        // gold
-        // silver
-        // copper
-        // estate
-        // dutchy
-        // province
+        //gold
+        //silver
+        //copper
+        //estate
+        //dutchy
+        //province
+        //adventurer
+        //ambassador
+        //baron
+        //council room
+        //cutpurse
+        //embargo
+        //feast
+        //gardens
+        //great hall
+        //mine
+        //witch
+        //cellar
+        //market
+        //village
+        //smithy
+        //salvager
 
 
         Card test = new Card("gold");
         assertEquals("The new card does not have the name gold", test.getName(), "gold");
+        assertEquals("The gold card does not have the value of 3", test.getValue(), 3);
+        assertEquals("The gold card does not have the cost of 6", test.getCost(), 6);
+        assertNotEquals("The gold card description is null when it should not be", test.getDescription(), "null");
+        assertTrue("The gold card is not a treasure type", test.isType("treasure"));
+        assertEquals("The gold card does not have 0 victory points", test.getVictoryPoints(), 0);
+        assertEquals("The gold card does not have 0 bonus purchases", test.getBuys(), 0);
+        assertEquals("The gold card does not have 0 bonus actions", test.getActions(), 0);
+        assertEquals("The gold card does not have 0 cards to draw", test.getCards(), 0);
+
+
         test = new Card("silver");
         assertEquals("The new card does not have the name silver", test.getName(), "silver");
         test = new Card("curse");
@@ -72,22 +98,5 @@ public class CardTest {
         assertEquals("The new card does not have the proper name", test.getName(), "salvager");
 
 
-
-        //Adventurer
-        //Ambassador
-        //Baron
-        //Council room
-        //Cutpurse
-        //Embargo
-        //Feast
-        //Gardens
-        //Great hall
-        //Mine
-        //Witch
-        //Cellar
-        //Market
-        //Village
-        //Smithy
-        //Salvager
     }
 }
