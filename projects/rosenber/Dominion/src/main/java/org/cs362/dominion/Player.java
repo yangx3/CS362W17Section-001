@@ -215,6 +215,12 @@ public class Player{
 	public Card playCard(int idx){
 		return hand.playCard(idx);
 	}
+	
+	//look at a card in the hand
+	public Card lookAtCard(int idx){
+		return hand.getCard(idx);
+	}
+	
 	//Compute Money
 	//gets the amount of money available from cards in hand
 	public void computeMoney(){
