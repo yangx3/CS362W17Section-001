@@ -1,8 +1,8 @@
 package org.cs362.dominion;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
+import java.util.ArrayList;
 
 public class SmithyTest {
 
@@ -21,5 +21,21 @@ public class SmithyTest {
 		assertTrue("smithy type doesn't match",
 				test.isCardType(CardType.Action));
 		
+	}
+	
+	@Test
+	public void testAction(){
+		ArrayList<Player> players = new ArrayList<Player>();
+		Player currentPlayer = new AIPlayer(1);
+		Board board = new Board();
+		for(int j=0; j<3; j++)
+			currentPlayer.giveCard(new Copper());
+		
+		Card c = new Smithy();
+		
+		int size = currentPlayer.numCardsHand();
+		c.Action(players, currentPlayer, board);
+		assertEquals("Player didn't draw three cards",
+				size+3, currentPlayer.numCardsHand());
 	}
 }
