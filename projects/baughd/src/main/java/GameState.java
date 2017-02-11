@@ -118,7 +118,7 @@ public class GameState implements Cloneable{
         return playerScore;
     }
 
-	static void addEmbargo()
+	static void addEmbargo(Card card)
     {
         System.out.println("Token Added.");
     }

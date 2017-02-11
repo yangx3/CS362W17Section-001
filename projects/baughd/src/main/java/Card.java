@@ -139,8 +139,8 @@ public final class Card implements Comparable<Card>, Cloneable{
                 player.numActions = player.numActions + 2;
                 return;
 
-            case Ambassador: //----------------
- /*               System.out.println("TODO Ambassador Code******************************************");
+            case Ambassador: //DONE
+                System.out.println("TODO Ambassador Code******************************************");
                 //Reveal a card from your hand.
                 //Return up to 2 copies of it from your hand to the Supply.
                 //Then each other player gains a copy of it.
@@ -160,28 +160,16 @@ public final class Card implements Comparable<Card>, Cloneable{
                             }
                         }
                     }
-                }// else {
-                  //  Card chosen = player.hand.get(0);
-
-                    player.hand.remove(chosen);
-                    if(chosen2 != null) player.hand.remove(chosen2);
-                }
-*/
-
-
-
-
-                int rand = gen.nextInt(5);
-                int num = 0;
-                List<Card> actionCards = filter(player.hand, Type.ACTION);
-                for(Card c : actionCards)
-                {
-                    if(num == rand){
-                        System.out.println("This is Ambassador Code to do shiny things");
+                } else {
+                    Card chosen = player.hand.get(0);
+                    state.gameBoard.put(chosen, state.gameBoard.get(chosen) + 1);
+                    for(Player p : state.players)
+                    {
+                        p.gain(chosen);
+                        state.gameBoard.put(chosen, state.gameBoard.get(chosen) - 1);
                     }
-                    num++;
+                    player.hand.remove(chosen);
                 }
-                return;
 
             case Baron: //DONE
                 System.out.println("+1 Card. +2 Actions.");
@@ -218,7 +206,13 @@ public final class Card implements Comparable<Card>, Cloneable{
                 System.out.println("When a player buys a card, he gains a Curse card per Embargo token on that pile");
                 player.coins = player.coins + 2;
                 player.playedCards.remove(getCard(player.playedCards, CardName.Embargo));//trashes the Embargo card
-                GameState.addEmbargo();//does nothing yet
+                int rand = gen.nextInt(10);
+                int card = 0;
+                for(Card c : filter((Iterable<Card>) state.gameBoard, Type.ACTION)){
+                    if(card == rand) {
+                        GameState.addEmbargo(c);
+                    }
+                }
                 return;
 
             case Feast: //DONE - doesn't buy card just adds 5 coins
