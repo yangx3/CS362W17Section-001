@@ -107,6 +107,17 @@ public class Player{
 		hand.addCard(deck.drawTop());
 	}
 	
+	//returns the top card of players deck
+	// - removes card from deck
+	public Card getTopCard(){
+		return deck.drawTop();
+	}
+	
+	//adds a card to the players hand directly
+	public void addToHand(Card c){
+		hand.addCard(c);
+	}
+	
 	//number of total cards
 	// returns the total number of cards the player has
 	public int numTotalCards(){
