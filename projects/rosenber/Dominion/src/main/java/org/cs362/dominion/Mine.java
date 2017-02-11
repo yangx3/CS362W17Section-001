@@ -54,5 +54,6 @@ public class Mine extends Card {
 				repeat = true;
 			}
 		}while(repeat);
+		input.close();
 	};
 }
