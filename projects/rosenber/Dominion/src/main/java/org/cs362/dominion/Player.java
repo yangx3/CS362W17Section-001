@@ -229,11 +229,26 @@ public class Player{
 	public int getVictoryPoints(){
 		int sum = 0;
 		for(int j=0; j<hand.size(); j++)
-			sum += hand.getCard(j).getVictoryPoints();
+			if(hand.getCard(j).getName() == "Garden"){
+				Garden g = (Garden)hand.getCard(j);
+				sum += g.getVictoryPoints(this);
+			}
+			else
+				sum += hand.getCard(j).getVictoryPoints();
 		for(int j=0; j<deck.size(); j++)
-			sum += deck.findSpecific(j).getVictoryPoints();
+			if(deck.findSpecific(j).getName() == "Garden"){
+				Garden g = (Garden)deck.findSpecific(j);
+				sum += g.getVictoryPoints(this);
+			}
+			else
+				sum += deck.findSpecific(j).getVictoryPoints();
 		for(int j=0; j<discard.size(); j++)
-			sum += discard.findSpecific(j).getVictoryPoints();
+			if(discard.findSpecific(j).getName() == "Garden"){
+				Garden g = (Garden)discard.findSpecific(j);
+				sum += g.getVictoryPoints(this);
+			}
+			else
+				sum += discard.findSpecific(j).getVictoryPoints();
 		return sum;
 	}
 }
