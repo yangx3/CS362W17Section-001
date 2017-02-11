@@ -38,4 +38,24 @@ public class AIPlayer extends Player{
 		}while(repeat);
 		return hand.playCard(choice);
 	}
+	
+	public void buyCard(Board board){
+		boolean repeat;
+		int choice = -1;
+		do{
+			repeat = false;
+			while(choice < 1)
+				choice = rand.nextInt(board.numDecks());
+			Card c = board.lookAtDeck(choice);
+			if(c.getCost() <= super.getMoney()){
+				giveCard(board.draw(choice));
+				super.setMoney(c.getCost() * -1);
+				int numCurses = board.getDeck(choice).getEmbargos();
+				for(int j=0; j<numCurses; j++)
+					giveCard(board.draw(board.getDeckIdx("Curse")));
+			}
+			else
+				repeat = true;
+		}while(repeat);
+	}
 }
