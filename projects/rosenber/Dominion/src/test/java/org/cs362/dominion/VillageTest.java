@@ -22,5 +22,4 @@ public class VillageTest {
 				test.isCardType(CardType.Action));
 		
 	}
-
 }
