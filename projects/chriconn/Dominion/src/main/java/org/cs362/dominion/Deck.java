@@ -123,10 +123,10 @@ Class Deck
             Potential Errors:
                 -
 
-*/
+    */
 
 public class Deck {
-    private ArrayList<Card> deck;
+    public ArrayList<Card> deck;
     int tokens;
 
     //default constructor assigns empty space to deck
@@ -231,19 +231,6 @@ public class Deck {
     //if the deck size is 0, return true, else return false
     public boolean empty()  {return (deck.size() == 0) ? true : false;};
     public int numCards()   {return deck.size();};
-
-    //checks to see if the deck has an action card
-    // public boolean hasActions() {
-    //     if (this.empty()) {
-    //         return false;
-    //     }
-    //     for (int x = 0; x < deck.size(); x++) {
-    //         if (cardInfo(x).isType("action")) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
 
     public boolean hasType(String type) {
         if (this.empty()) {
