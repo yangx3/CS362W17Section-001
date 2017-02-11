@@ -75,7 +75,8 @@ public class Card {
 			Player currentPlayer, Board board){};
 	
 	//performs the cards attack
-	public void Attack(){};
+	public void Attack(ArrayList<Player> players,
+			Player currentPlayer, Board board){};
 	
 	//performs the cards reaction
 	public void Reaction(){};
