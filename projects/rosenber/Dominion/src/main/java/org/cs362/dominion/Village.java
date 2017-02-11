@@ -1,5 +1,7 @@
 package org.cs362.dominion;
 
+import java.util.ArrayList;
+
 public class Village extends Card {
 	
 	public Village(){
@@ -7,4 +9,10 @@ public class Village extends Card {
 				new CardType[] {CardType.Action});
 	}
 
+	public void Action(ArrayList<Player> players,
+			Player currentPlayer, Board board){
+		currentPlayer.drawCard();
+		currentPlayer.addActions(2);
+	};
+	
 }
