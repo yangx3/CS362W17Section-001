@@ -71,7 +71,8 @@ public class Card {
 	}
 	
 	//performs the cards action
-	public void Action(){};
+	public void Action(ArrayList<Player> players,
+			Player currentPlayer, Board board){};
 	
 	//performs the cards attack
 	public void Attack(){};
