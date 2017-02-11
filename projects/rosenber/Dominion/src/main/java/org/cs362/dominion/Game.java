@@ -18,6 +18,32 @@ public class Game {
 	Board board;
 	
 	//constructor
+	public Game(int numPlayers, boolean AIonly){
+		players = new ArrayList<Player>();
+		board = new Board();
+		
+		//initialize board with decks of cards
+		board.createDeck(new Adventurer(), 30);
+		board.createDeck(new Ambassador(), 30);
+		board.createDeck(new Baron(), 30);
+		board.createDeck(new Copper(), 30);
+		board.createDeck(new CouncilRoom(), 30);
+		board.createDeck(new Curse(), 30);
+		board.createDeck(new Cutpurse(), 30);
+		board.createDeck(new Duchy(), 30);
+		board.createDeck(new Embargo(), 30);
+		board.createDeck(new Estate(), 30);
+		board.createDeck(new Feast(), 30);
+		board.createDeck(new Garden(), 30);
+		board.createDeck(new Gold(), 30);
+		board.createDeck(new GreatHall(), 30);
+		board.createDeck(new Mine(), 30);
+		board.createDeck(new Province(), 30);
+		board.createDeck(new Salvager(), 30);
+		board.createDeck(new Silver(), 30);
+		board.createDeck(new Smithy(), 30);
+		board.createDeck(new Village(), 30);
+	}
 	
 	//turn
 	
