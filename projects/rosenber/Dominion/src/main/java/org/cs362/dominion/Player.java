@@ -228,7 +228,7 @@ public class Player{
 			try{
 				int idx = board.getDeckIdx(ans);
 				Card choice = board.lookAtDeck(idx);
-				if(choice.getCost() >= money){
+				if(choice.getCost() <= money){
 					giveCard(board.draw(idx));
 					money -= choice.getCost();
 					if(choice.getName() == "Embargo"){
