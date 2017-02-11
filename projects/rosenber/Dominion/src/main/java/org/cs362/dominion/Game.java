@@ -96,7 +96,14 @@ public class Game {
 	
 	//declare winner
 	public void declareWinner(){
-		
+		int maxVP = -1;
+		Player winner = null;
+		for(int j=0; j<players.size(); j++)
+			if(players.get(j).getVictoryPoints() > maxVP)
+				winner = players.get(j);
+		System.out.println("The game is over!\n"
+				+ winner.getName() + " is the winner with "
+				+ maxVP + " victory points!!");
 	}
 	
 	//play a game
