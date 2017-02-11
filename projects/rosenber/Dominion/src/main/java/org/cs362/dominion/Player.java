@@ -133,6 +133,12 @@ public class Player{
 		return sum;
 	}
 	
+	//number of cards in hand
+	// returns the number of cards in the player's hand
+	public int numCardsHand(){
+		return hand.size();
+	}
+	
 	//Discard Card
 	//asks the user what card they want to discard from hand and
 	//  moves it to discard
@@ -206,7 +212,9 @@ public class Player{
 	public Card playCard(String name){
 		return hand.playCard(name);
 	}
-	
+	public Card playCard(int idx){
+		return hand.playCard(idx);
+	}
 	//Compute Money
 	//gets the amount of money available from cards in hand
 	public void computeMoney(){
