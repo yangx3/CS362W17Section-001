@@ -16,6 +16,7 @@ import java.util.Scanner;
 
 public class Player{
 	
+	private boolean isAi;
 	private Scanner input;
 	private String name;
 	public Hand hand;
@@ -44,8 +45,9 @@ public class Player{
 		buys = 0;
 		actions = 0;
 		money = 0;
+		isAi = false;
 	}
-	public Player(String name){
+	public Player(String name, boolean ai){
 		input = new Scanner(System.in);
 		this.name = name;
 		hand = new Hand();
@@ -54,6 +56,7 @@ public class Player{
 		buys = 0;
 		actions = 0;
 		money = 0;
+		isAi = ai;
 	}
 	
 	//getters
