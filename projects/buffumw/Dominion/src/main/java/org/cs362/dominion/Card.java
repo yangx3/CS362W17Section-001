@@ -10,7 +10,6 @@ public final class Card {
 	private int actions;
 	private int buys;
 	private int cards;
-	//private Ability ability;
 	
 	public enum Name {
 		// kingdoms
@@ -52,7 +51,7 @@ public final class Card {
 	
 	// Gets
 	public Name getName(){ return name; }
-	public Type getType(){ return type; }
+	public Type getType(){ return type!=null?type:null; }
 	public Integer getCost(){ return cost; }
 	public Integer getCoinsWorth(){ return coinsWorth; }
 	public Integer getPoints(){ return points; }
@@ -60,26 +59,6 @@ public final class Card {
 	public Integer getBuys(){ return buys; }
 	public Integer getCards(){ return cards; }
 	
-	
-	
-
-//	// Setters
-//	public void setName(Name name){
-//		this.name = name;
-//	}
-//	
-//	public void setCost(double cost){
-//		this.cost = cost;
-//	}
-//	
-//	public void setType(Type type){
-//		this.type = type;
-//	}
-//	
-//	public void setAbility(Ability ability){
-//		this.ability = ability;
-//	}
-//	
 	// toString()
 	public String toString(){
 		return ""+this.name;

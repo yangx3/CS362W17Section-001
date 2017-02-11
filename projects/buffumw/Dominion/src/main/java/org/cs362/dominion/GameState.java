@@ -10,8 +10,8 @@ import java.util.Enumeration;
 public class GameState {
 	public final ArrayList<Player> players = new ArrayList<Player>();
 	public final ArrayList<Card> availableCards = new ArrayList<Card>();
-	public HashMap<Card, Integer> board = new HashMap<Card, Integer>();
 	public ArrayList<Deck> game = new ArrayList<Deck>();
+	public Deck trash = new Deck();
 	
 	// initialize the cards to select from
 	public GameState(ArrayList<Card> availableCards)
@@ -65,7 +65,11 @@ public class GameState {
 			{
 				ArrayList<String> actionsPlayed = new ArrayList<String>();
 				System.out.printf("Hi %s, it's your turn!\n\n", player.username);
-				player.draw(5);
+				if(player.getHand().size() == 0)
+				{
+					player.draw(5);
+				}
+				
 				actionsPlayed = player.playActions();
 				
 				//Attacks against other players
@@ -107,6 +111,14 @@ public class GameState {
 					}
 					System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				}while(purchase == false);
+				for(int itr = 0; itr < player.getHand().size(); itr++)
+				{
+					player.discardTopHandCard();
+				}
+				if(player.getHand().size() == 0)
+				{
+					player.draw(5);
+				}
 			}
 			turn++;
 		}while(aWinner() == false);
@@ -122,13 +134,13 @@ public class GameState {
 			if(attacks.get(itr).compareTo("Adventurer") == 0){ adventurer(player); }
 			else if(attacks.get(itr).compareTo("Ambassador") == 0){ /* run Ambassador code*/}
 			else if(attacks.get(itr).compareTo("Baron") == 0){ baron(player); }
-			else if(attacks.get(itr).compareTo("Council_Room") == 0){ /* run Council_Room code*/}
-			else if(attacks.get(itr).compareTo("Cutpurse") == 0){ /* run Cutpurse code*/}
-			else if(attacks.get(itr).compareTo("Embargo") == 0){ /* run Embargo code*/}
-			else if(attacks.get(itr).compareTo("Feast") == 0){ /* run Feast code*/}
-			else if(attacks.get(itr).compareTo("Gardens") == 0){ /* run Gardens code*/}
-			else if(attacks.get(itr).compareTo("Mine") == 0){ /* run Mine code*/}
-			else if(attacks.get(itr).compareTo("Salvager") == 0){ /* run Salvager code*/}
+			else if(attacks.get(itr).compareTo("Council_Room") == 0){ councilRoom(player); }
+			else if(attacks.get(itr).compareTo("Cutpurse") == 0){ cutpurse(player); }
+			else if(attacks.get(itr).compareTo("Embargo") == 0){ embargo(player); }
+			else if(attacks.get(itr).compareTo("Feast") == 0){ feast(player); }
+			else if(attacks.get(itr).compareTo("Gardens") == 0){ gardens(player); }
+			else if(attacks.get(itr).compareTo("Mine") == 0){ mine(player); }
+			else if(attacks.get(itr).compareTo("Salvager") == 0){ salvager(player); }
 			else { /* nothing special to do */ }
 		}
 	}
@@ -189,4 +201,184 @@ public class GameState {
 		System.out.printf("Hand after baron: %s\n", player.getHand());
 		System.out.printf("Discard after baron: %s\n\n", player.getDiscard());	
 	}
+	public void councilRoom(Player player)
+	{
+		for(Player otherPlayers: players)
+		{
+			if(otherPlayers != player)
+			{
+				otherPlayers.draw();
+			}
+		}
+	}
+	public void cutpurse(Player player)
+	{
+		for(Player otherPlayer: players)
+		{
+			if(otherPlayer != player)
+			{
+				Deck hand = otherPlayer.getHand();
+				for(int itr = 0; itr < hand.size(); itr++)
+				{
+					if(hand.cardAt(itr).getName().toString().compareTo("Copper") == 0)
+					{
+						otherPlayer.discard(hand.removeCard(hand.cardAt(itr)));
+						break;
+					}
+				}
+			}
+			System.out.printf("%s's hand includes: %s\n", otherPlayer.username, otherPlayer.getHand());
+		}
+	}
+	public void embargo(Player player)
+	{
+		System.out.printf("You played embargo, here are the decks you may embargo: \n");
+		printBoard();
+		
+		System.out.print("Which deck would you like to embargo?: ");
+		Scanner in = new Scanner(System.in);
+		String choice = in.nextLine();
+		
+		for(Deck deck: game)
+		{
+			if(deck.getTopCard().getName().toString().compareTo(choice) == 0)
+			{
+				Deck discarded = player.getDiscard();
+				deck.toggleEmbargo();
+				for(int itr = 0; itr < discarded.size(); itr++)
+				{
+					if(discarded.cardAt(itr).getName() == Card.Name.Embargo)
+					{
+						trash.addCardToTop(discarded.removeCard(discarded.cardAt(itr)));
+						break;
+					}
+				}
+				break;
+			}
+		}
+	}
+	public void feast(Player player)
+	{
+		for(int itr = 0; itr < player.getDiscard().size(); itr++)
+		{
+			Card card = player.getDiscard().getCardAt(itr);
+			if(card.getName().toString().compareTo("Feast") == 0)
+			{
+				int tempCoins = player.getCoins();
+				player.setCoins(5);
+				trash.addCardToTop(player.getDiscard().removeCard(card));
+				
+				System.out.printf("Since you trashed your Feast, you may get a card that costs 5 or less\n");
+				Scanner in = new Scanner(System.in);
+				
+				boolean purchase = false;
+				do{
+					printBoard();
+					
+					System.out.printf("What card you you like?: \n");
+					String temp = in.nextLine();
+				
+					for(Deck deck: game)
+					{
+						if(deck.compare(temp) != null)
+						{
+							purchase = player.playPurchasing(deck);
+							System.out.println("Did a good purchase happen? : " + purchase);
+							break;
+						}
+					}
+					if(!purchase)
+					{
+						System.out.println("You can only get a card costing a max of 5 coins");
+					}
+				}while(!purchase);
+				player.setCoins(tempCoins);
+			}
+		}
+	}
+	public void gardens(Player player)
+	{
+		int numCards = player.getDraw().size();
+		numCards += player.getDiscard().size();
+		numCards += player.getHand().size();
+		
+		player.addPoints(numCards/10);
+	}
+	public void mine(Player player)
+	{
+		Deck temp = player.getHand().filterBy(Card.Type.Treasure);
+		if(temp.size() > 0)
+		{
+			System.out.printf("You may trash one of your treasure cards to gain another treasure card of +3 cost. "
+					+ "These are the treasures you have: %s\n", temp);
+			System.out.printf("If any, besides gold, which treasure card would you like to trash?: ");
+			Scanner in = new Scanner(System.in);
+			String choice = in.nextLine();
+			for(int itr = 0; itr < temp.size(); itr++)
+			{
+				Card card = temp.getCardAt(itr);
+				if(card.toString().compareTo(choice) == 0)
+				{
+					if(card.getName() == Card.Name.Gold)
+					{
+						System.out.printf("Sorry you can't trash a gold card\n");
+						break;
+					}else{
+						int value = card.getCost() + 3;
+						trash.addCardToTop(temp.removeCard(card));
+						for(int iter = 0; iter < game.size(); iter++)
+						{
+							if(value > 3 && game.get(iter).getTopCard().getName() == Card.Name.Silver)
+							{
+								player.getHand().addCardToTop(game.get(iter).draw());
+								break;
+							}else if(value  < 3 && game.get(iter).getTopCard().getName() == Card.Name.Copper)
+							{
+								player.getHand().addCardToTop(game.get(iter).draw());
+								break;
+							}else{
+								continue;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	public void salvager(Player player)
+	{
+		Deck hand = player.getHand();
+		
+		System.out.printf("You may trash a card from your hand and add it's "
+				+ "cost to your buy potential, here are your cards %s\n", hand);
+		
+		System.out.print("Which card would you like to trash?: ");
+		Scanner in = new Scanner(System.in);
+		
+		String choice = in.nextLine();
+		for(int itr = 0; itr < hand.size(); itr++)
+		{
+			if(hand.cardAt(itr).getName().toString().compareTo(choice) == 0)
+			{
+				player.addCoins(hand.cardAt(itr).getCost());
+				trash.addCardToTop(hand.removeCard(hand.cardAt(itr)));
+				break;
+			}
+		}
+	}
+	
+	
+	public void printBoard()
+	{
+		for(Deck deck: game)
+		{
+			if(deck.size() > 0)
+			{
+				Card card = deck.getBottomCard();
+				int cost = card.getCost();
+				System.out.printf("%-15s: Costs: %2d: %2d Left\n", card.getName(), cost, deck.size());
+			}
+		}
+	}
+	
 }

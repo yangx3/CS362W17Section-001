@@ -57,37 +57,37 @@ public final class Builder {
 		//TODO: Ambassador
 		decks.add(new Card(Card.Name.Ambassador, Card.Type.Action, 6, 0, 0, 0, 0, 1));
 		
-		//Baron custom code may give +4 coins
+		//Done
 		decks.add(new Card(Card.Name.Baron, Card.Type.Action, 4, 0, 0, 0, 1, 0));
 		
-		//Each other player draws a card
+		//Done
 		decks.add(new Card(Card.Name.Council_Room, Card.Type.Action, 5, 0, 0, 0, 1, 4));
 		
-		//Each other player discards a Copper card or reveals they don't have one
+		//Done
 		decks.add(new Card(Card.Name.Cutpurse, Card.Type.ActionAttack, 4, 2, 0, 0, 0, 0));
 		
 		//Place embargo token on top of a supply pile, gain curse card per embargo token on a supply deck
 		decks.add(new Card(Card.Name.Embargo, Card.Type.Action, 2, 2, 0, 0, 0, 0));
 		
-		//Trash this card, gain card of value up to 5
+		//Done
 		decks.add(new Card(Card.Name.Feast, Card.Type.Action, 4, 0, 0, 0, 0, 0));
 		
-		//Gain 1 victory point for every 10 cards in your deck
+		//Done
 		decks.add(new Card(Card.Name.Gardens, Card.Type.Victory, 4, 0, 0, 0, 0, 0));
 		
-		//No special functionality
+		//Done
 		decks.add(new Card(Card.Name.Great_Hall, Card.Type.ActionVictory, 3, 0, 1, 1, 0, 1));
 		
-		//Trash a treasure card from your hand and gain another treasure worth up to +3 coins more
+		//Done
 		decks.add(new Card(Card.Name.Mine, Card.Type.Action, 5, 0, 0, 0, 0, 0));
 		
-		//
+		//Done
 		decks.add(new Card(Card.Name.Village, Card.Type.Action, 3, 0, 0, 2, 0, 1));
 		
-		//Nothing special
+		//Done
 		decks.add(new Card(Card.Name.Smithy, Card.Type.Action, 4, 0, 0, 0, 0, 3));
 		
-		//Trash card from your hand, +_ the cost of that card to your buy
+		//Done
 		decks.add(new Card(Card.Name.Salvager, Card.Type.Action, 4, 0, 0, 0, 1, 0));
 		
 		

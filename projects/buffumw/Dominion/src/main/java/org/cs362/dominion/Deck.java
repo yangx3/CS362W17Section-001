@@ -9,6 +9,7 @@ import java.util.Collections;
 public class Deck {
 	private ArrayList<Card> cards;
 	private int currentIndex;
+	boolean embargoed = false;
 	
 	Deck()
 	{
@@ -27,6 +28,11 @@ public class Deck {
 	public int size() // returns size of the deck
 	{
 		return this.cards.size();
+	}
+	
+	public boolean getEmbargoStatus()
+	{
+		return embargoed;
 	}
 	
 	public Card cardAt(int index)
@@ -81,7 +87,6 @@ public class Deck {
 		Deck temp = new Deck();
 		for(Card card: cards)
 		{
-//			System.out.println("Type for this card is: " + card.getType());
 			if(card.getType() != null)
 			{
 				for(Card.Type type: types)
@@ -115,8 +120,7 @@ public class Deck {
 		{
 			if(this.cards.get(itr) == card)
 			{
-				Card newCard = new Card();
-				newCard = this.cards.get(itr);
+				Card newCard = this.cards.get(itr);
 				this.cards.remove(itr);
 				return newCard;
 			}
@@ -140,6 +144,12 @@ public class Deck {
 	public void resetCurrentIndex() // resets the currentIndex "iterator"
 	{
 		currentIndex = 0;
+	}
+	
+	public boolean toggleEmbargo()
+	{
+		embargoed = !embargoed;
+		return embargoed;
 	}
 	
 	public void shuffle() // shuffles the list

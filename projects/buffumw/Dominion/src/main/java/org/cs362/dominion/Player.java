@@ -108,6 +108,16 @@ public class Player {
 		coins += numCoins;
 	}
 	
+	public void setCoins(int numCoins)
+	{
+		coins = numCoins;
+	}
+	
+	public void addPoints(int numPoints)
+	{
+		points += numPoints;
+	}
+	
 	// Play
 	public ArrayList<String> playActions()
 	{
