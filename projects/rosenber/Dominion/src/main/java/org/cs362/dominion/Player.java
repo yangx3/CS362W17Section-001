@@ -72,6 +72,9 @@ public class Player{
 	public int getMoney(){
 		return money;
 	}
+	public boolean checkAi(){
+		return isAi;
+	}
 	
 	//setters
 	public void setBuys(int buys){
