@@ -13,12 +13,13 @@ import java.util.ArrayList;
 
 public class Game {
 	
-	int currentPlayer;
+	Player currentPlayer;
 	ArrayList<Player> players;
 	Board board;
 	
 	//constructor
 	public Game(int numPlayers, boolean AIonly){
+		currentPlayer = null;
 		players = new ArrayList<Player>();
 		board = new Board();
 		
@@ -56,20 +57,26 @@ public class Game {
 	public void actionPhase(){
 		Card played = null;
 		do{
-			played = players.get(currentPlayer).playCard();
+			played = currentPlayer.playCard();
 			played.Action();
-			players.get(currentPlayer).addActions(-1);
-		}while(players.get(currentPlayer).getActions() > 0);
+			currentPlayer.addActions(-1);
+		}while(currentPlayer.getActions() > 0);
 	}
 	
 	//buy phase
 	public void buyPhase(){
-		
+		currentPlayer.computeMoney();
+		do{
+			currentPlayer.buyCard(board);
+		}while(currentPlayer.getBuys() > 0);
 	}
 	
 	//clean phase
 	public void cleanPhase(){
-		
+		currentPlayer.discardHand();
+		currentPlayer.setBuys(1);
+		currentPlayer.setMoney(0);
+		currentPlayer.setActions(1);
 	}
 	
 	//check for game over
