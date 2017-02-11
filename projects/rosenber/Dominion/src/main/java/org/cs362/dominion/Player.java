@@ -231,11 +231,10 @@ public class Player{
 				if(choice.getCost() <= money){
 					giveCard(board.draw(idx));
 					money -= choice.getCost();
-					if(choice.getName() == "Embargo"){
-						int numCurses = board.getDeck(board.getDeckIdx(choice.getName())).getEmbargos();
-						for(int j=0; j<numCurses; j++)
-							giveCard(board.draw(board.getDeckIdx("Curse")));
-					}
+					int numCurses = board.getDeck(board.getDeckIdx(choice.getName())).getEmbargos();
+					for(int j=0; j<numCurses; j++)
+						giveCard(board.draw(board.getDeckIdx("Curse")));
+				
 				}
 				else{
 					System.out.println("You don't have enough money for that! Try again!");
