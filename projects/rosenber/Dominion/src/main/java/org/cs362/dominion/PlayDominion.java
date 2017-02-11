@@ -12,7 +12,10 @@ public class PlayDominion {
 
 	Game game;
 	
-	public static void main(String args[]){
+	public void main(String args[]){
+		
+		game = new Game(2, true);
+		game.play();
 		
 	}
 	
