@@ -199,6 +199,7 @@ public class Player{
 				Card choice = board.lookAtDeck(idx);
 				if(choice.getCost() >= money){
 					giveCard(board.draw(idx));
+					money -= choice.getCost();
 				}
 				else{
 					System.out.println("You don't have enough money for that! Try again!");
