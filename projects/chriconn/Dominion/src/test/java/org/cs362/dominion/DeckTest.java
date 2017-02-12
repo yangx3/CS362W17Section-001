@@ -45,15 +45,18 @@ public class DeckTest {
         int n;
 
         for (int x = 0; x < 1000; x++) {
-            n = rand.nextInt(3);
+            n = rand.nextInt(4);
             if (n == 0) {
                 test.addCard(new Card("copper"));
             }
             else if (n == 1) {
                 test.addBottomCard(new Card("copper"));
             }
-            else {
+            else if (n == 3) {
                 test.drawCard();
+            }
+            else {
+                test.drawCard("copper");
             }
         }
     }
@@ -72,15 +75,51 @@ public class DeckTest {
     public void addRandomCards() {
         Deck test = new Deck();
 
-        for (int x = 0; x < 50; x++) {
+        //fill the deck with 100 random cards
+        for (int x = 0; x < 100; x++) {
             test.addCard(randomCard());
         }
 
+        test.shuffle();
+        test.shuffle();
+        test.shuffle();
+
+        //print out each type of cards
+        System.out.println("\n\nTreasure deck");
+        test.printType("treasure");
+        System.out.println("\n\nAction deck");
+        test.printType("action");
+        System.out.println("\n\nSpecial Action deck");
+        test.printType("special action");
+        System.out.println("\n\nVictory deck");
+        test.printType("victory");
+
+        //print the whole deck
+        test.printDeck();
+
+        //overwrite the deck 100 times with random numbers of random cards
         Random rand = new Random();
         for (int x = 0; x < 100; x++) {
-            int n = rand.nextInt(4) + 1;
+            int n = rand.nextInt(10) + 1;
             test = new Deck(n, randomCard());
         }
+    }
+
+    @Test
+    public void checkFindingFunctions() {
+        Deck test = new Deck();
+        for (int x = 0; x < 100; x++) {
+            test.addCard(new Card("copper"));
+        }
+
+        assertEquals("IndexofType could not find treasure in a deck of coppers", test.indexOfType("treasure"), 0);
+        assertEquals("IndexofType found an action in a deck of only coppers", test.indexOfType("action"), -1);
+
+
+        assertEquals("IndexOf could not find a copper in a deck of only coppers", test.indexOf("copper"), 0);
+        assertTrue("hasCard could not find a copper in a deck of only coppers", test.hasCard("copper"));
+        assertEquals("IndexOf could find a smithy in a deck of only coppers", test.indexOf("smithy"), -1);
+        assertFalse("hasCard could find a smithy in a deck of only coppers", test.hasCard("smithy"));
 
     }
 
@@ -90,5 +129,13 @@ public class DeckTest {
         Random rand = new Random();
         int n = rand.nextInt(22);
         return new Card(cardList[n]);
+    }
+
+    public String randomType() {
+        String[] type = {"treasure", "action", "special action", "victory"};
+
+        Random rand = new Random();
+        int n = rand.nextInt(4);
+        return type[n];
     }
 }
