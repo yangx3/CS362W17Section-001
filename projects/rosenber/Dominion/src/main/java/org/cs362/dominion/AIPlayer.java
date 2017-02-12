@@ -53,13 +53,14 @@ public class AIPlayer extends Player{
 			if(rand.nextBoolean()) //chose not to buy
 				return;
 			repeat = false;
-			while(choice < 1)
+			while(choice < 1){
 				choice = rand.nextInt(board.numDecks());
+			}
 			try{
 				Card c = board.lookAtDeck(choice);
 				if(c.getCost() <= super.getMoney()){
 					giveCard(board.draw(choice));
-					super.setMoney(c.getCost() * -1);
+					super.addMoney(c.getCost() * -1);
 					int numCurses = board.getDeck(choice).getEmbargos();
 					for(int j=0; j<numCurses; j++)
 						giveCard(board.draw(board.getDeckIdx("Curse")));
