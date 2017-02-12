@@ -29,6 +29,7 @@ public class TestGame {
 
         // player 1 starts
         assertEquals(0, game.getCurrentPlayer());
+        assertEquals(0, game.getPhase());
 
         // Each player starts with 3 estates
         assertEquals(3, game.scoreFor(0));
@@ -82,17 +83,17 @@ public class TestGame {
     public void testBaron() {
         Game game = newGame(Card.Baron);
 
-        game.setHandCardForTesting(0, 0, Card.Baron);
-        game.playAction(0, false);
-        // discarded Baron, gained Estate
-        assertEquals(5, game.numHandCards());
+        int pos = game.takeForTesting(0, Card.Baron);
+        game.playAction(pos, false);
+        // gained Baron, discarded Baron, gained Estate
+        assertEquals(6, game.numHandCards());
         assertEquals(0, game.getCoins());
 
-        game.setHandCardForTesting(0, 0, Card.Baron);
-        game.setHandCardForTesting(0, 1, Card.Estate);
-        game.playAction(0, true);
-        // discarded Baron, discarded Estate
-        assertEquals(3, game.numHandCards());
+        game.takeForTesting(0, Card.Estate);
+        pos = game.takeForTesting(0, Card.Baron);
+        game.playAction(pos, true);
+        // gained Baron, gained Estate, discarded Baron, discarded Estate
+        assertEquals(6, game.numHandCards());
         assertEquals(4, game.getCoins());
     }
 
@@ -100,9 +101,9 @@ public class TestGame {
     public void testCouncilRoom() {
         Game game = newGame(Card.CouncilRoom);
 
-        game.setHandCardForTesting(0, 0, Card.CouncilRoom);
-        game.playAction(0);
-        assertEquals(8, game.numHandCards()); // +4 cards
+        int pos = game.takeForTesting(0, Card.CouncilRoom);
+        game.playAction(pos);
+        assertEquals(9, game.numHandCards()); // +4 cards
         assertEquals(2, game.getBuys()); // +1 buy
         // and each other player draws a card
     }
@@ -110,13 +111,25 @@ public class TestGame {
     @Test
     public void testCutpurse() {
         Game game = newGame(Card.Cutpurse);
-        game.setHandCardForTesting(0, 0, Card.Cutpurse);
+        int pos = game.takeForTesting(0, Card.Cutpurse);
         int copper = game.handCount(1, Card.Copper);
-        game.playAction(0);
+        game.playAction(pos);
         if (copper > 0) {
             copper--;
         }
         assertEquals(copper, game.handCount(1, Card.Copper));
         assertEquals(2, game.getCoins());
+    }
+
+    @Test
+    public void testEmbargo() {
+        Game game = newGame(Card.Embargo);
+        int pos = game.takeForTesting(0, Card.Embargo);
+        game.playAction(pos, Card.Copper);
+        assertEquals(2, game.getCoins()); // +2 coins
+        assertEquals(0, game.fullDeckCount(0, Card.Embargo)); // trashed
+        game.buyCard(Card.Copper);
+        assertEquals(1, game.fullDeckCount(0, Card.Curse));
+        game.endTurn();
     }
 }

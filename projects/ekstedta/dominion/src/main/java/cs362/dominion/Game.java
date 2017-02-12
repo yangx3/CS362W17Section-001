@@ -398,11 +398,11 @@ public class Game {
         return this.hand.get(this.currentPlayer).size();
     }
 
-    // enum value of indexed card in player's hand
-    public Card handCard(int handNum) {
+    // Get the card at the given position in the current player's hand
+    public Card handCard(int pos) {
         List<Card> hand = this.hand.get(this.currentPlayer);
-        if (0 <= handNum && handNum < hand.size()) {
-            return hand.get(handNum);
+        if (0 <= pos && pos < hand.size()) {
+            return hand.get(pos);
         } else {
             return null;
         }
@@ -421,6 +421,31 @@ public class Game {
         List<Card> hand = this.hand.get(player);
         int count = 0;
         for (Card x : hand) {
+            if (x == card) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // Count how many cards of a certain type a player has in their hand,
+    // deck, and discard pile.
+    public int fullDeckCount(int player, Card card) {
+        List<Card> hand = this.hand.get(player);
+        List<Card> deck = this.deck.get(player);
+        List<Card> discard = this.discard.get(player);
+        int count = 0;
+        for (Card x : hand) {
+            if (x == card) {
+                count++;
+            }
+        }
+        for (Card x : deck) {
+            if (x == card) {
+                count++;
+            }
+        }
+        for (Card x : discard) {
             if (x == card) {
                 count++;
             }
@@ -558,7 +583,9 @@ public class Game {
     void setHandCardForTesting(int player, int i, Card card) {
         this.hand.get(player).set(i, card);
     }
-    void takeForTesting(int player, Card card) {
+    // Add a card to the player's hand, and return the index of the card
+    int takeForTesting(int player, Card card) {
         this.take(player, card);
+        return this.hand.get(player).lastIndexOf(card);
     }
 }
