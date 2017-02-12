@@ -30,23 +30,23 @@ public enum Card {
     // Village
 
     // Base set
-    Adventurer(6), /* If no/only 1 treasure found, stop when full deck seen */
+    Adventurer(6),
     CouncilRoom(5),
-    Feast(4), /* choice1 is supply # of card gained) */
+    Feast(4),
     Gardens(4, 0, 0, false),
     Market(5),
-    Mine(5), /* choice1 is hand# of money to trash, choice2 is supply# of money to put in hand */
+    Mine(5),
     Smithy(4),
     Village(3),
 
     // Intrigue expansion
-    Baron(4), /* choice1: boolean for discard of estate. Discard is always of first (lowest index) estate */
+    Baron(4),
     GreatHall(3, 1, 0, true),
 
     // Seaside expansion
-    Ambassador(3), /* choice1 = hand#, choice2 = number to return to supply */
+    Ambassador(3),
     Cutpurse(4),
-    Embargo(2); /* choice1 = supply# */
+    Embargo(2);
 
     int cost;
     int score;

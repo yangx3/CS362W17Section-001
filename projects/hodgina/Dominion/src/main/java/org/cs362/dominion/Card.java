@@ -16,7 +16,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		/** The Victory cards */
 		Province,Duchy,Estate,Curse,
 		/** The Kingdom cards */
-		Adventurer, Ambassador, Baron, Council_room, Cutpurse, Embargo, Feast, Gardends, Great_hall, Mine, Smithy, Village;
+		Adventurer, Ambassador, Baron, Council_room, Cutpurse, Embargo, Feast, Gardends, Great_hall, Laboratory, Mine, Smithy, Village;
 	}
 	/**
 	 * @param enum CardName the name of the card (GOLD, SILVER, COPPER,
@@ -110,6 +110,8 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Great_hall,Type.ACTION,3,0,0);
 		ret.add(o);
+		o = new Card(CardName.Laboratory,Type.ACTION,5,0,0);
+		ret.add(o);
 		o = new Card(CardName.Mine,Type.ACTION,5,0,0);
 		ret.add(o);
 		o = new Card(CardName.Smithy,Type.ACTION,4,0,0);
@@ -122,32 +124,42 @@ public final class Card implements Comparable<Card>, Cloneable{
 	public void play(Player player, GameState state) {
 
 		switch(this.cardName) {
-		case Adventurer:
+			case Gold:
+				break;
+			case Silver:
+				break;
+			case Copper:
+				break;
+			case Province:
+				break;
+			case Duchy:
+				break;
+			case Estate:
+				break;
+			case Curse:
+				break;
+			case Adventurer: //done
 	    	  //Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
-	    	  System.out.println("TODO Adventurer Code******************************************");
+	    	 // System.out.println("TODO Adventurer Code******************************************");
 	    	  System.out.println("Reveal cards from the player deck until player reveal 2 Treasure cards. " +
 	    	  		"Put those Treasure cards into player hand and discard the other revealed cards.");
 
-							int num_treasures = 0;
+			int num_treasures = 0;
 
-							for(int i = 0; i < player.deck.size(); i++){
-								if(num_treasures == 2){
-									break;
-								}else{
-									System.out.println(player.deck.get(i));
-									if(player.deck.get(i).getTreasureValue() > 0){
-										num_treasures++;
-										player.hand.add(player.deck.get(i));
-										player.deck.remove(player.deck.get(i));
-									}else{
-										player.discard(player.deck.get(i));
-									}
-
-								}
-							}
-
-
-
+			for(int i = 0; i < player.deck.size(); i++){
+				if(num_treasures == 2){
+					break;
+				}else{
+					System.out.println(player.deck.get(i));
+					if(player.deck.get(i).getTreasureValue() > 0){
+						num_treasures++;
+						player.hand.add(player.deck.get(i));
+						player.deck.remove(player.deck.get(i));
+					}else{
+						player.discard(player.deck.get(i));
+					}
+				}
+			}
 
 			return;
 		case Ambassador:
@@ -157,27 +169,33 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 			return;
 
-		case Baron:
+		case Baron: //done
 		//You may discard an Estate card. If you do, +$4. Otherwise, gain an Estate card.
-			for(int i = 0; i < player.hand.size(); i++){
-				if(player.hand.get(i) == getCard(cards,Card.CardName.Estate){
+			System.out.println("+1 Card, +2 Actions");
+			System.out.println("+4 Coins or An Estate");
 
-					player.hand.get(i).
-
-				}
+			if(getCard(player.hand, CardName.Estate) != null){ //if player has an estate in their hand +4 coins and discard it
+				player.discard(getCard(player.hand, CardName.Estate));
+				player.coins = player.coins +4;
+			}else{ //else gain an estate
+				player.gain(getCard(state.cards, CardName.Estate));
 			}
-
 
 			return;
 
-		case Council_room:
+		case Council_room: //done
 		//+4 Cards; +1 Buy
 		//Each other player draws a card.
+			System.out.println("+4 Cards, +1 Buy, All other Players +1 Cards");
 			player.drawCard();
 			player.drawCard();
 			player.drawCard();
 			player.drawCard();
 			player.numBuys = player.numBuys + 1;
+
+			for(Player players : state.players){ //All other players +1 card to their hands
+				players.drawCard();
+			}
 
 			return;
 
@@ -185,8 +203,13 @@ public final class Card implements Comparable<Card>, Cloneable{
 		case Cutpurse:
 		//+$2
 		//Each other player discards a Copper card (or reveals a hand with no Copper).
-
-
+			System.out.println("+2 Coins, Every other player discard a copper card");
+			player.coins = player.coins + 2;
+			for(Player players : state.players){ //for all players but the player who plaed it look for a copper and discard it
+				if(players != player && getCard(players.hand, cardName.Copper) != null){
+					players.discard(getCard(players.hand, CardName.Copper));
+				}
+			}
 			return;
 
 		case Embargo:
@@ -195,16 +218,19 @@ public final class Card implements Comparable<Card>, Cloneable{
 		//When a player buys a card, he gains a Curse card per Embargo token on that pile.
 
 
+
+
 			return;
 
-		case Feast:
+		case Feast: //This will just add 5 coins
 		//Trash this card. Gain a card costing up to $5.
-
-
+			System.out.println("Trash this card, Gain a Card Costing up to 5 coins");
+			player.coins = player.coins + 5;
 			return;
 
-		case Gardends:
+		case Gardends: //This is taken care of in the player.score method
 		//Worth 1 Victory for every 10 cards in your deck (rounded down).
+			System.out.println("This does nothing until the end of the game. \n At the end of the game, It is worth 1 victory point for every 10 cards in your deck");
 
 
 			return;
@@ -213,17 +239,30 @@ public final class Card implements Comparable<Card>, Cloneable{
 		//1 Victory Point
 		//+1 Card; +1 Action.
 
-
+			System.out.println("+1 Card, +1 Action, +1 Victory Point");
+			player.drawCard();
+			player.numActions++;
 			return;
-
+			case Laboratory:
+				//+2 Cards; +1 Action
+				player.drawCard();
+				player.drawCard();
+				player.numActions++;
 		case Mine:
 		//Trash a Treasure card from your hand. Gain a Treasure card costing up to $3 more; put it into your hand.
-
+			System.out.println("Trashes a treasure card from your hand and gain a treasure card costing +3 more and put it into your hand");
+			if(getCard(player.hand, cardName.Silver) != null){ //if silver is in the hand upgrade to gold
+				player.hand.remove(getCard(player.hand, cardName.Silver));
+				player.gain(getCard(state.cards, cardName.Gold));
+			}else if(getCard(player.hand, cardName.Copper) != null){ //else if copper is in the hand upgrade to silver
+				player.hand.remove(getCard(player.hand, cardName.Copper));
+				player.gain(getCard(state.cards, cardName.Silver));
+			}
 			return;
 		case Smithy:
-	         player.drawCard();
-	         player.drawCard();
-	         player.drawCard();
+			player.drawCard();
+			player.drawCard();
+			player.drawCard();
 			return;
 
 		case Village:

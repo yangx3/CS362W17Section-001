@@ -1,3 +1,4 @@
+package org.cs362.dominion;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class SmithyTest {
 	  public void test0()  throws Throwable  {	   
 		    List<Card> cards;
 		    GameState state,testState;
-			//Randomness.reset(10);
+			Randomness.reset(10);	   
 
 		    int newCards = 3;  
 //		 // initialize a game state and player cards
@@ -43,22 +44,22 @@ public class SmithyTest {
 		      testState=(GameState) state.clone();
 
   		     //	play the game 
-		      HashMap<Player, Integer> winners = state.play();
+		      HashMap<Player, Integer> winners=state.play();
 		      
-		      System.out.println("\n\n  *****    Player-1 Status    ***** " );
+		      System.out.println("  *****    Player-1 Status ***** " );
 		      System.out.println("hand count = " + state.players.get(0).hand.size() + ", expected = "+ ( testState.players.get(0).hand.size() + newCards ) );
 		      System.out.println("deck count = " + state.players.get(0).deck.size() + ", expected = "+ ( testState.players.get(0).deck.size() - newCards ) );
 		      System.out.println("numActions = " + state.players.get(0).numActions + ", expected = "+ ( testState.players.get(0).numActions - 1 ) );
 		      
-		      System.out.println("\n  *****    Player-2 Status    *****" );
+		      System.out.println("  *****    Player-2 Status *****" );
 		      System.out.println("hand count = " + state.players.get(1).hand.size() + ", expected = "+ ( testState.players.get(1).hand.size()  ) );
 		      System.out.println("deck count = " + state.players.get(1).deck.size() + ", expected = "+ ( testState.players.get(1).deck.size()  ) );
 		      System.out.println("numActions = " + state.players.get(1).numActions + ", expected = "+ ( testState.players.get(1).numActions  ) );
 		      assertEquals(state.players.get(0).hand.size(),( testState.players.get(0).hand.size() + newCards ))      ;
 		      assertEquals(state.players.get(0).deck.size(),( testState.players.get(0).deck.size() - newCards ))      ;
 	      
-		      assertEquals(state.players.get(1).hand.size(),( testState.players.get(1).hand.size()));
-		      assertEquals(state.players.get(1).deck.size(),( testState.players.get(1).deck.size() ));
+		      assertEquals(state.players.get(1).hand.size(),( testState.players.get(1).hand.size()))      ;
+		      assertEquals(state.players.get(1).deck.size(),( testState.players.get(1).deck.size() ))      ;
 
 		      
 		      

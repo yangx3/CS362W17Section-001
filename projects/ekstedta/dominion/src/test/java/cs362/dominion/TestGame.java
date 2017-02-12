@@ -22,11 +22,19 @@ public class TestGame {
         assertEquals(game.scoreFor(0), 3);
         assertEquals(game.scoreFor(1), 3);
 
+        // Each player should start with 5 cards in their hand
+        assertEquals(game.numHandCards(), 5);
+
+        // ending the turn should advance the player
+        game.endTurn();
+        assertEquals(game.getCurrentPlayer(), 1);
+        assertEquals(game.numHandCards(), 5);
+
+        //
         // check supply
         // assertEquals(game.supplyCount(Card.Estate), 60-6);
     }
 
-    /*
     @Test
     public void testMarket() {
         ArrayList<Card> k = Game.standardCards();
@@ -35,5 +43,4 @@ public class TestGame {
         game.playAction(0, false);
         assertEquals(game.numHandCards(), 5);
     }
-    */
 }
