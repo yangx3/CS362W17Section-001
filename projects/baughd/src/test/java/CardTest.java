@@ -192,7 +192,7 @@ public class CardTest {
     @Test
     public void testPlayBaron() {
         player1.initializePlayerTurn();
-        assertEquals(player1.numActions, 1);
+        assertEquals(player1.numBuys, 1);
         assertEquals(player1.hand.size(), 5);
         assertEquals(player1.deck.size(), 5);
         assertEquals(player1.discard.size(), 0);
@@ -202,15 +202,15 @@ public class CardTest {
         System.out.println(player1);
         if(Card.getCard(player1.hand, Card.CardName.Estate) != null){
             player1.playKingdomCard();
-            assertEquals(player1.hand.size(), 5);
-            assertEquals(player1.deck.size(), 4);
+            assertEquals(player1.hand.size(), 4);
+            assertEquals(player1.deck.size(), 5);
             assertEquals(player1.discard.size(), 1);
             assertEquals(player1.playedCards.size(), 1);
-            assertEquals(player1.numActions, 2);
+            assertEquals(player1.numBuys, 2);
             assertEquals(player1.coins, 4);
         } else {
             player1.playKingdomCard();
-            assertEquals(player1.hand.size(), 6);
+            assertEquals(player1.hand.size(), 5);
             assertEquals(player1.deck.size(), 4);
             assertEquals(player1.discard.size(), 0);
             assertEquals(player1.playedCards.size(), 1);
