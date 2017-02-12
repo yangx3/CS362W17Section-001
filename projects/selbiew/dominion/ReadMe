@@ -1,1 +1,9 @@
-This will be instructions on how to run my code
+Create a Maven Project for Dominion, using the instructions from 9th Powerpoint (on Java Unit Testing Tools).
+
+Copy all of the files from the src folder in the dominion folder on my github, NOT including the files inside the junit folder,
+and put them in the default package of the Maven Project, such as src\main\java\org\cs362\dominion.
+
+Copy all of the files from the junit folder inside the src folder on my github, and put them inside test folder inside the src folder
+of the Maven Project, such as \src\test\java.
+
+The Project can then be compiled by typing "mvn compile" when in the project directory in command prompt

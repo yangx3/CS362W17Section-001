@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import cs362.dominion.Exceptions.ConfiguationException;
 import cs362.dominion.Resources.Game;
+import cs362.dominion.Helpers.*;
 
 public class MineTest {
 
@@ -53,7 +54,7 @@ public class MineTest {
 		// -1 : plays action cards
 		// -1 : discards copper
 		// +1 : gains treasure
-		Helpers.Cards.testCards(game, cardType, 0);
+		Cards.testCards(game, cardType, 0);
 	}
 
 	/**
@@ -61,12 +62,12 @@ public class MineTest {
 	 */
 	@Test
 	public void testCoins() {
-		Helpers.Cards.testCoinsGT(game, cardType);
+		Cards.testCoinsGT(game, cardType);
 	}
 	
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(game, cardType);
+		Cards.testDescription(game, cardType);
 	}
 
 }

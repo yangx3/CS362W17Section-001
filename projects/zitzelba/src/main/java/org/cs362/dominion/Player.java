@@ -194,9 +194,9 @@ public class Player {
 
 	   }
 	   final void endTurn() {
-		   System.out.println(" --- --------------------------- --- ");
-  			System.out.println("TO-DO endTurn "); 
-  			System.out.println(" --- --------------------------- --- ");   
+//		   System.out.println(" --- --------------------------- --- ");
+//  			System.out.println("TO-DO endTurn "); 
+//  			System.out.println(" --- --------------------------- --- ");   
   			numActions = 1;
   			numBuys = 1;
   			coins = 0;

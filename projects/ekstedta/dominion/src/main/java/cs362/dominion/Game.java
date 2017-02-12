@@ -106,6 +106,11 @@ public class Game {
             this.shuffle(i);
         }
 
+        // deal starting hands
+        for (int i = 0; i < numPlayers; i++) {
+            this.draw(i, 5);
+        }
+
         this.startTurn();
     }
 
