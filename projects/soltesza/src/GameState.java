@@ -14,7 +14,7 @@ public class GameState {
 		otherPlayer = player2;
 	}
 	
-	public void TakeTurn(DominionBoard board) {
+	public void TakeTurn() {
 		currentPlayer.TakeTurn(this);
 		
 		Player p1 = currentPlayer;

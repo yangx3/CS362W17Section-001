@@ -2,7 +2,6 @@ import java.util.Vector;
 
 public class Player {
 	public Deck deck;
-	private int victoryPoints;
 	private String name;
 	private DominionBoard board;
 	
@@ -12,7 +11,6 @@ public class Player {
 	
 	public Player(String name, DominionBoard board) {
 		deck = new Deck();
-		victoryPoints = 0;
 		this.name = name;
 		this.board = board;
 		
@@ -23,14 +21,24 @@ public class Player {
 	
 	public int GetScore() {return deck.GetScore();}
 	
-	public int GetVictoryPoints() {return victoryPoints;}
-	
 	public void TakeTurn(GameState state) {
 		Vector<Card> hand = deck.GetHand();
 		
 		//play actions
-		
-		//hand = deck.GetHand();
+		for(int i=0; i<actions; i++) {
+			Vector<ActionCard> actionCards = new Vector<ActionCard>();
+			for(int j=0; j<hand.size(); j++) {
+				if(hand.elementAt(i) instanceof ActionCard) {
+					actionCards.add((ActionCard)hand.elementAt(i));
+				}
+			}
+			
+			if(!actionCards.isEmpty()) {
+				ActionCard card = actionCards.elementAt((int)(Math.random()*actionCards.size()));
+				card.PlayAction(state);
+				PrintAction(card);
+			}
+		}
 		//play treasures
 		coins += deck.PlayTreasures();
 		
@@ -76,12 +84,13 @@ public class Player {
 			
 			int idx = (int)(Math.random() * (buyableCards.size()-lowerBound) + lowerBound);
 			
-			Card newCard = board.BuyCard(idx);
-			deck.AddCard(newCard); //buy a card costing as much as possible
+			Vector<Card> newCards = board.BuyCard(idx);
 			
-			//if player has 0 money, buy copper
+			for(int j=0; j<newCards.size(); j++) {
+				deck.AddCard(newCards.get(j)); 
+			}
 			
-			PrintBuy(newCard);
+			PrintBuy(newCards.get(0));
 		}
 	}
 	
@@ -93,7 +102,31 @@ public class Player {
 		}
 	}
 	
+	public Card TrashFromHand() {		
+		Vector<Card> hand = deck.GetHand();
+		if(!hand.isEmpty()) {
+			int idx = (int)(Math.random()*hand.size());
+			Card card = hand.get(idx);
+			deck.TrashCard(card);
+			return card;
+		}
+		else {
+			return null;
+		}
+	}
+	
 	private void PrintBuy(Card card) {
 		System.out.println(name + " bought a " + card.GetName() + " for " + card.GetValue() + " coins.");
+	}
+	
+	private void PrintAction(ActionCard action) {
+		System.out.println(name + " played " + action.name);
+	}
+	
+	public void EmbargoPile() {
+		Vector<Card> buyable = board.GetBuyable(Integer.MAX_VALUE);
+		
+		int idx = (int)(Math.random()*buyable.size());
+		board.EmbargoPile(idx);
 	}
 }

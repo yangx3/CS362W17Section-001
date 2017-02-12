@@ -1,7 +1,9 @@
 
 public class KingdomSlot implements Comparable<KingdomSlot>{
-	private int count;
 	private Card card;
+	
+	private int count;
+	private int numEmbargoes = 0;
 	
 	public KingdomSlot(Card card, int count) {
 		this.card = card;
@@ -17,9 +19,11 @@ public class KingdomSlot implements Comparable<KingdomSlot>{
 		}
 	}
 	
-	public Card GetCard() {return card;}
+	public Card GetCard() { return card; }
 	
-	public int GetValue() {return card.GetValue();}
+	public int GetValue() { return card.GetValue(); }
+	
+	public int GetEmbargoes() { return numEmbargoes; }
 	
 	public Card DrawCard() {
 		if(count > 0) {
@@ -28,6 +32,10 @@ public class KingdomSlot implements Comparable<KingdomSlot>{
 			return card.clone();
 		}
 		return null;
+	}
+	
+	public void AddEmbargo() {
+		numEmbargoes++;
 	}
 	
 	public int compareTo(KingdomSlot other) {
