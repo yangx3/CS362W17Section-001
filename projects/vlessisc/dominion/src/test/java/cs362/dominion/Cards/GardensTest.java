@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import cs362.dominion.Exceptions.ConfiguationException;
 import cs362.dominion.Resources.Game;
+import cs362.dominion.Helpers.*;
 
 public class GardensTest {
 
@@ -59,7 +60,7 @@ public class GardensTest {
 	
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(game, Gardens.class);
+		Cards.testDescription(game, Gardens.class);
 	}
 	
 

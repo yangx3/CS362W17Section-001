@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import cs362.dominion.Exceptions.ConfiguationException;
 import cs362.dominion.Resources.Game;
+import cs362.dominion.Helpers.*;
 
 public class SmithyTest {
 
@@ -48,12 +49,12 @@ public class SmithyTest {
 	@Test
 	public void testCards() {
 		game.getCurrentPlayer().deck.hand.addCard(game.supply.drawCard(Smithy.class));
-		Helpers.Cards.testCards(game, cardType, 3);
+		Cards.testCards(game, cardType, 3);
 	}
 
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(game, cardType);
+		Cards.testDescription(game, cardType);
 	}
 
 }

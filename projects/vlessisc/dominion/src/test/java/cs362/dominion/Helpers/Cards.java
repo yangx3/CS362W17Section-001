@@ -1,4 +1,4 @@
-package Helpers;
+package cs362.dominion.Helpers;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
