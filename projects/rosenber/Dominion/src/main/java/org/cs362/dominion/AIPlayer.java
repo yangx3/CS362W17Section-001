@@ -51,16 +51,22 @@ public class AIPlayer extends Player{
 			repeat = false;
 			while(choice < 1)
 				choice = rand.nextInt(board.numDecks());
-			Card c = board.lookAtDeck(choice);
-			if(c.getCost() <= super.getMoney()){
-				giveCard(board.draw(choice));
-				super.setMoney(c.getCost() * -1);
-				int numCurses = board.getDeck(choice).getEmbargos();
-				for(int j=0; j<numCurses; j++)
-					giveCard(board.draw(board.getDeckIdx("Curse")));
+			try{
+				Card c = board.lookAtDeck(choice);
+				if(c.getCost() <= super.getMoney()){
+					giveCard(board.draw(choice));
+					super.setMoney(c.getCost() * -1);
+					int numCurses = board.getDeck(choice).getEmbargos();
+					for(int j=0; j<numCurses; j++)
+						giveCard(board.draw(board.getDeckIdx("Curse")));
+				}
+				else
+					repeat = true;
 			}
-			else
+			catch(Exception e){
+				//deck empty
 				repeat = true;
+			}
 		}while(repeat);
 	}
 }
