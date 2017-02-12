@@ -11,6 +11,8 @@ public class AIPlayer extends Player{
 	}
 	
 	public void discardCard(){
+		if(hand.size() < 1)
+			return;
 		boolean repeat;
 		int choice = -1;
 		do{
