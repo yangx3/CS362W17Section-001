@@ -2,6 +2,8 @@ package org.cs362.dominion;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class BaronTest {
@@ -23,4 +25,36 @@ public class BaronTest {
 		
 	}
 
+	@Test
+	public void testAction(){
+		ArrayList<Player> players = new ArrayList<Player>();
+		Player currentPlayer = new AIPlayer(1);
+		Board board = new Board();
+		board.createDeck(new Estate(), 20);
+		
+		Card c = new Baron();
+		c.Action(players, currentPlayer, board);
+		currentPlayer.drawCard();
+		
+		assertEquals("Estate card wasn't drawn",
+				19, board.numCardsInDeck("Estate"));
+		assertEquals("Player didn't receive new estate card",
+				1, currentPlayer.numTotalCards());
+		assertEquals("Player didn't receive another buy",
+				1, currentPlayer.getBuys());
+		
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
