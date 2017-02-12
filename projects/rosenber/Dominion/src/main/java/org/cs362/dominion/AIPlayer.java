@@ -28,6 +28,8 @@ public class AIPlayer extends Player{
 	}
 	
 	public Card playCard(){
+		if(hand.size() < 1)
+			return null;
 		boolean repeat;
 		int choice = -1;
 		Card c = null;
