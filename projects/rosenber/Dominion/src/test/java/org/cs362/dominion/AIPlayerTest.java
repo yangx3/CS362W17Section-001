@@ -2,6 +2,7 @@ package org.cs362.dominion;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import java.util.Random;
 
 public class AIPlayerTest {
 
@@ -61,6 +62,51 @@ public class AIPlayerTest {
 			result = test.playCard();
 		assertEquals("Player didn't play a card they had",
 				c, result);
+	}
+	
+	@Test
+	public void testBuyCard(){
+		
+		Random rand = new Random();
+		
+		for(int j=0; j<1000; j++){
+			test = new AIPlayer(1);
+			Board board = new Board();
+			board.createDeck(new Copper(), 1);
+			board.createDeck(new Silver(), 1);
+			board.createDeck(new Gold(), 1);
+			Card c = null;
+			int num = rand.nextInt(3);
+			switch(num){
+			case 0:
+				test.setMoney(0);
+				test.buyCard(board);
+				test.drawCard();
+				c = test.playCard();
+				assertEquals("Player bought card they didn't have the money for",
+						c.getName(), new Copper().getName());
+				break;
+			case 1:
+				test.setMoney(3);
+				test.buyCard(board);
+				test.drawCard();
+				c = test.playCard();
+				assertTrue("Player bought card they didn't have the money for",
+						c.getName().equals(new Copper().getName()) ||
+						c.getName().equals(new Silver().getName()));
+				break;
+				
+			case 2:
+				test.setMoney(6);
+				test.buyCard(board);
+				test.drawCard();
+				c = test.playCard();
+				assertTrue("Player bought card they didn't have the money for",
+						c.getName().equals(new Copper().getName()) ||
+						c.getName().equals(new Silver().getName()) ||
+						c.getName().equals(new Gold().getName()));
+			}
+		}
 		
 	}
 }
