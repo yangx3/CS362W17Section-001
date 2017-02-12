@@ -1,3 +1,11 @@
+package org.thenellb;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Collections;
+
+
 public abstract class Card {
 
     protected String cardName;          // Title of card
@@ -8,14 +16,14 @@ public abstract class Card {
     protected int plusActionValue;      // number of +Actions the card gives
     protected int plusCardValue;        // number of +Cards drawn
     protected int cost;                 // how many coins it costs to buy
-    protected Type cardType;
-
+    protected String cardType;
 
 
     //functions
 
     //constructor
-    public Card(String cardName, String text, int victoryValue, int plusBuyValue, int plusTreasuryValue, int plusActionValue, int plusCardValue, int cost, Type cardType ){
+
+    public Card(String cardName, String text, int victoryValue, int plusBuyValue, int plusTreasuryValue, int plusActionValue, int plusCardValue, int cost, String cardType ){
         this.cardName = cardName;
         this.text = text;
         this.victoryValue = victoryValue;
@@ -26,6 +34,9 @@ public abstract class Card {
         this.cost = cost;
         this.cardType = cardType;
     }
+    public Card(){}
+
+
 
 
     //getters
@@ -41,9 +52,7 @@ public abstract class Card {
     public int get_plusBuyValue() {
         return plusBuyValue;
     }
-    public int get_plusTreasuryValue() {
-        return plusTreasuryValue;
-    }
+    public int get_plusTreasuryValue() { return plusTreasuryValue; }
     public int get_plusActionValue() {
         return plusActionValue;
     }
@@ -53,9 +62,7 @@ public abstract class Card {
     public int get_cost() {
         return cost;
     }
-    public Type get_cardType() {
-        return cardType;
-    }
+    public String get_cardType() { return cardType; }
 
     public void printCard() {
         System.out.println("Name of Card:  " +  cardName + "\n");
@@ -71,9 +78,7 @@ public abstract class Card {
 
 
 
-    public static enum Type {       //from sample code provided. Makes enum for card type
-        ACTION, TREASURE, VICTORY;
-    }
+
 
 
     /*
@@ -85,7 +90,7 @@ public abstract class Card {
         // The Victory cards /
         Province,Duchy,Estate,Curse,
         // The Action cards /
-        Adventurer, Smithy, Village, Moneylender, Woodcutter,Cellar
+        org.thenellb.Adventurer, Bureaucrat, Cellar, Chancellor, Chapel, Council Room,  Festival, Smithy, Village, Moneylender, Woodcutter,Laboratory,Market
     } */
 
 
