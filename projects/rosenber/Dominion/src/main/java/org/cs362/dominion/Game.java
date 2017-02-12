@@ -47,8 +47,22 @@ public class Game {
 		board.createDeck(new Smithy(), 30);
 		board.createDeck(new Village(), 30);
 		
-		//TODO: make players
-		//TODO: make players draw initial cards
+		if(AIonly){
+			for(int j=0; j<numPlayers; j++)
+				players.add(new AIPlayer(j));
+		}
+		else{
+			//TODO: make non ai-player init
+		}
+		for(int j=0; j<numPlayers; j++){
+			//draw 7 copper
+			for(int k=0; k<7; k++)
+				players.get(j).giveCard(board.draw(board.getDeckIdx("Copper")));
+			//draw 3 estates
+			for(int k=0; k<3; k++)
+				players.get(j).giveCard(board.draw(board.getDeckIdx("Estate")));
+		}
+		
 	}
 	
 	//turn
