@@ -10,7 +10,7 @@ public class GameState implements Cloneable{
     List<Player> players = new ArrayList<Player>();
     List<Card> cards;
 	HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
-	List<Card> embargoTokens;
+	List<Card> embargoTokens = new ArrayList<Card>();
 	private Random gen = new Random();
 
 	GameState(List<Card> cards) {
