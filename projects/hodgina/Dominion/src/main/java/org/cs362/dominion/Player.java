@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import org.cs362.dominion.Card.Type;
+
 
 public class Player implements Cloneable{
 	List<Card> hand = new ArrayList<Card>();// int hand[MAX_PLAYERS][MAX_HAND];
@@ -15,9 +17,11 @@ public class Player implements Cloneable{
 												// discard[MAX_PLAYERS][MAX_DECK];
 	List<Card> playedCards = new ArrayList<Card>();
 
+	private Random rand_gen;
+
 	String player_username;
 
-
+	int numActions;
 	int numBuys;
 	int coins;
 
@@ -52,9 +56,6 @@ public class Player implements Cloneable{
 	}
 
 	   final void initializePlayerTurn() {
-		   //initialize first player's turn
-//		   state->numnumActions = 1;
-//		   state->numnumBuys = 1;
 		      numActions = 1;
 		      coins = 0;
 		      numBuys = 1;
@@ -68,7 +69,9 @@ public class Player implements Cloneable{
 	 //card goes in discard,
 	   final boolean gain(Card card) {
 		      discard.add(card);
-		      System.out.println("Player: "+this.player_username+" gains "+card);
+		      System.out.println("-----------------------------------");
+		      System.out.println(this.player_username+" gains "+card);
+              System.out.println("-----------------------------------");
 		      return true;
 		   }
 		 //Discard hand
@@ -96,35 +99,198 @@ public class Player implements Cloneable{
 		      }
 		   }
 	   final int scoreFor() {
+
+           int num_Gard = 0;
+           int num_cards = 0;
 		   int score = 0;
 		   //score from hand
-		      for (Card c : hand)
-		    	  score += c.score();
+		      for (Card c : hand) {
+                  score += c.score();
+                  num_cards = num_cards + 1;
+              }
 		      //score from discard
-		      for (Card c : discard)
-		    	  score += c.score();
+		      for (Card c : discard) {
+                  score += c.score();
+                  if (Card.getCard(discard, Card.CardName.Gardends) != null) {
+                      if (c == Card.getCard(discard, Card.CardName.Gardends)) {
+                          num_Gard++;
+                      }
+                  }
+              }
 		      //score from deck
-		      for (Card c : deck)
-		    	  score += c.score();
+		      for (Card c : deck) {
+                  if (Card.getCard(deck, Card.CardName.Gardends) != null) {
+                      if (c == Card.getCard(discard, Card.CardName.Gardends)) {
+                          num_Gard++;
+                      }
+                  }
+                  score += c.score();
+              }
+              //score from all the garden cards
+              if(num_Gard > 0){
+		          score = score + num_Gard*(num_cards/10);
+              }
 
 		      return score;
 	   }
 
 	   public void playTtreasureCard() {
-		   System.out.println(" --- --------------------------- --- ");
-    		System.out.println("TO-DO playTtreasureCard ");
-    		System.out.println(" --- --------------------------- --- ");
+           System.out.println("-----------------------------------");
+           System.out.println("        Playing TreasureCards      ");
+           System.out.println("-----------------------------------");
+		  List<Card> T_Cards = Card.filter(hand, Card.Type.TREASURE);
+		  if(T_Cards.size() == 0) {
+              return;
+          }
+		  System.out.println("Treasure Cards Played: ");
+
+		  for(Card current_card : T_Cards){ //goes through and adds up all the treasure and puts them in the played cards pile
+		  	coins += current_card.getTreasureValue();
+		  	System.out.println(current_card.toString());
+		  	playedCards.add(current_card);
+		  	hand.remove(current_card);
+		  	//System.out.println("Current Number of Coins is: " + coins);
+		  }
+		  System.out.println(player_username + " has " + coins + " to use in Buy Round.");
 	   }
-	   public void buyCard() {
-		   System.out.println(" --- --------------------------- --- ");
-   			System.out.println("TO-DO buyCard ");
-   			System.out.println(" --- --------------------------- --- ");
-	   }
+	   public void buyCard(GameState current_state) {
+
+	    //NOTE: This I got a lot of help with this function from David Baugh
+
+           System.out.println("-----------------------------------");
+           System.out.println("            Buying Cards           ");
+           System.out.println("-----------------------------------");
+
+
+        while(coins > 0 && numBuys > 0){
+           if (coins == 0 || coins == 1){
+               gain(Card.getCard(current_state.cards, Card.CardName.Copper));
+               current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Copper), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Copper)) - 1 );
+           }
+           else if (coins == 2) {
+               int rand = rand_gen.nextInt(2);
+               if (rand == 0 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Embargo)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Embargo)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Embargo));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Embargo), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Embargo)) - 1);
+                   coins = coins - 2;
+               } else if (rand == 1 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Estate)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Estate)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Estate));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Estate), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Estate)) - 1);
+                   coins = coins - 2;
+               }
+           }
+           else if (coins == 3) {//randomly choose 3 cost cards?
+               int rand = rand_gen.nextInt(4);
+               if (rand == 0 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Village)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Village)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Village));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Village), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Village)) - 1);
+                   coins = coins - 3;
+               } else if (rand == 1 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Ambassador)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Ambassador)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Ambassador));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Ambassador), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Ambassador)) - 1);
+                   coins = coins - 3;
+               } else if (rand == 2 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Great_hall)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Great_hall)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Great_hall));
+                   coins = coins - 3;
+               } else if (rand == 3 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Silver)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Silver)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Silver));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Silver), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Silver)) - 1);
+                   coins = coins - 3;
+               }
+
+           } else if (coins == 4) {//randomly choose one of these
+               int rand = rand_gen.nextInt(6);
+               if (rand == 0 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Smithy)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Smithy)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Smithy));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Smithy), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Smithy)) - 1);
+                   coins = coins - 4;
+               } else if (rand == 1 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Baron)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Baron)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Baron));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Baron), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Baron)) - 1);
+                   coins = coins - 4;
+               } else if (rand == 2 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Cutpurse)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Cutpurse)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Cutpurse));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Cutpurse), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Cutpurse)) - 1);
+                   coins = coins - 4;
+               } else if (rand == 3 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Feast)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Feast)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Feast));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Feast), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Feast)) - 1);
+                   coins = coins - 4;
+               } else if (rand == 5 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Gardends)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Gardends)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Gardends));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Gardends), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Gardends)) - 1);
+                   coins = coins - 4;
+               }
+           } else if (coins == 5) {//randomly choose one of these
+               int rand = rand_gen.nextInt(4);
+               if (rand == 0 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Mine)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Mine)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Mine));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Mine), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Mine)) - 1);
+                   coins = coins - 5;
+               } else if (rand == 1 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Council_room)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Council_room)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Council_room));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Council_room), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Council_room)) - 1);
+                   coins = coins - 5;
+               } else if (rand == 2 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Duchy)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Duchy)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Duchy));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Duchy), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Duchy)) - 1);
+                   coins = coins - 5;
+               }else if (rand == 3 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Laboratory)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Laboratory)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Laboratory));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Laboratory), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Laboratory)) - 1);
+                   coins = coins - 5;
+               }
+
+           } else if (coins == 6) {
+               int rand = rand_gen.nextInt(2);
+               if (rand == 0 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Gold)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Gold)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Gold));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Gold), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Gold)) - 1);
+                   coins = coins - 6;
+               } else if (rand == 1 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Adventurer)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Adventurer)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Adventurer));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Adventurer), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Adventurer)) - 1);
+                   coins = coins - 6;
+               }
+           } else if (coins == 7) {
+               if (current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Gold)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Gold)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Gold));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Gold), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Gold)) - 1);
+                   coins = coins - 6;
+               }
+           } else if (coins >= 8){
+               if (current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Province)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Province)) > 0) {
+                   gain(Card.getCard(current_state.cards, Card.CardName.Province));
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Province), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Province)) - 1);
+                   coins = coins - 8;
+               }
+           }
+           numBuys--;
+       }
+}
 	   final void endTurn() {
-		   System.out.println(" --- --------------------------- --- ");
-  			System.out.println("TO-DO endTurn ");
-  			System.out.println(" --- --------------------------- --- ");
+           System.out.println("-----------------------------------");
+           System.out.println("              End Turn             ");
+           System.out.println("-----------------------------------");
+
+
+           //reset all coins, actions and buys back to the start values
+           coins = 0;
+            numActions = 1;
+            numBuys = 1;
+            //discards all played cards
+            for(Card current_card : playedCards){
+                discard.add(current_card);
+            }
+            //discards everything in the hand
+           for(Card current_card : hand){
+               discard.add(current_card);
+           }
+           hand.clear(); //clears the hand list
+           playedCards.clear(); //clears the played cards list
 	   }
+
+
 
 
 	   public void printStateGame(){

@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.Random;
 
 
 
@@ -43,7 +44,9 @@ public class GameState implements Cloneable{
 
 	   }
 	   public void addPlayer(Player player) {
-		      players.add(player);
+
+	   	players.add(player);
+
 	   }
 
 	   /*	   initializing all supplies, and shuffling deck and
@@ -119,11 +122,11 @@ public class GameState implements Cloneable{
 		        	 	//player plays treasure card
 		   			    player.playTtreasureCard();
 		   			    //player buy cards
-		        	    player.buyCard();
+		        	    player.buyCard(this);
 		        	  //player ends turn
 		        	    player.endTurn();
 		         }
-		         if(turn==2)
+		         if(turn==100)
 		        	 break;
 		      }
 		      return this.getWinners();
