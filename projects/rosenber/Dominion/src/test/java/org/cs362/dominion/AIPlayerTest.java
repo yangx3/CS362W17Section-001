@@ -22,6 +22,23 @@ public class AIPlayerTest {
 				0, test.discard.size());
 	}
 
-	
+	@Test
+	public void testDiscard(){
+		
+		test = new AIPlayer(1);
+		try{
+			test.discardCard();
+		}
+		catch(Exception e){
+			fail("Discard crashed when discarding card with hand empty");
+		}
+		test.giveCard(new Copper());
+		test.drawCard();
+		test.discardCard();
+		assertEquals("Hand didn't lose card when discarding",
+				0, test.numCardsHand());
+		assertEquals("Discard didn't gain card when discarding",
+				1, test.numCardsDiscard());
+	}
 	
 }
