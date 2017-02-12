@@ -76,16 +76,61 @@ Class Game
 
 public class Game {
     public static void main(String[] args) {
-        boolean automate = false;
-        boolean slow = false;
 
+        //creates three players
+        Game dominion = new Game("Connor", "Billy", "Lily");
+        dominion.setupGameStyle(true, false, true);
 
+        //prints an empty line
+        System.out.println();
+
+        //draw 5 cards for each player
+        for (int x = 0; x < dominion.numPlayers(); x++) {
+            dominion.getPlayer(x).draw(5);
+        }
+
+        //as long as the game has not been won
+        while (!dominion.win()) {
+            for (int x = 0; x < dominion.numPlayers(); x++) {
+                dominion.playerTurn(x);
+            }
+        }
+
+        //consolidate all the cards into one deck for counting
+        for (int y = 0; y < dominion.numPlayers(); y++) {
+            dominion.getPlayer(y).discardAll();
+            dominion.getPlayer(y).recycle();
+        }
+    }
+
+    //array of all decks the game owns
+    ArrayList<Deck> bank;
+    public Deck trash;
+    int numPlayers;
+    ArrayList<Player> players;
+    static int printTime;
+    static int sleepTime;
+    public boolean automate;
+    public boolean slow;
+    public boolean silent;
+    public ArrayList<String> cardsInGame;
+
+    public boolean getAutomate() {return automate;}
+    public boolean getSlow() {return slow;}
+    public boolean getSilence() {return silent;}
+    public void setAutomate(boolean setting) {automate = setting;}
+    public void setSlow(boolean setting) {slow = setting;}
+    public void setSilent(boolean setting) {silent = setting;}
+
+    public String randomCard() {
+        Random rand = new Random();
+        return cardsInGame.get(rand.nextInt(cardsInGame.size()));
+    }
+    public void setupGameStyle(boolean automate, boolean slow, boolean silent) {
+        String pretty;
         if (!automate) {
             System.out.print("Do you want to run this program with pretty printing? (yes/no): ");
         }
-
-        String pretty;
-
 
         if (automate) {
             if (slow) {
@@ -110,57 +155,13 @@ public class Game {
             setPrintTime(0);
         }
 
-
-        //creates three players
-        Game dominion = new Game("Connor", "Billy", "Lily");
-
-
-        dominion.setAutomate(automate);
-        dominion.setSlow(slow);
-
-
-        //prints an empty line
-        System.out.println();
-
-
-        for (int x = 0; x < dominion.numPlayers(); x++) {
-            dominion.getPlayer(x).draw(5);
-        }
-
-        while (!dominion.win()) {
-            for (int x = 0; x < dominion.numPlayers(); x++) {
-                dominion.playerTurn(x);
-            }
-        }
-
-        for (int y = 0; y < dominion.numPlayers(); y++) {
-            dominion.getPlayer(y).discardAll();
-            dominion.getPlayer(y).recycle();
-        }
+        setAutomate(automate);
+        setSlow(slow);
+        setSilent(silent);
     }
 
-    //array of all decks the game owns
-    ArrayList<Deck> bank;
-    public Deck trash;
-    int numPlayers;
-    ArrayList<Player> players;
-    static int printTime;
-    static int sleepTime;
-    public boolean automate;
-    public boolean slow;
-
-    public boolean getAutomate() {return automate;}
-    public boolean getSlow() {return slow;}
-    public void setAutomate(boolean setting) {automate = setting;}
-    public void setSlow(boolean setting) {slow = setting;}
-
-    public static void setPrintTime(int number) {
-        printTime = number;
-    }
-
-    public static void setSleepTime(int number) {
-        sleepTime = number;
-    }
+    public static void setPrintTime(int number) { printTime = number; }
+    public static void setSleepTime(int number) { sleepTime = number; }
 
     public int calculateVictoryPoints(Player player) {
         int victoryPoints = 0;
@@ -188,11 +189,24 @@ public class Game {
         bank.add(new Deck(24, new Card("estate")));
 
         //action
-        //String[] decksToImplement = {"village", "smithy", "adventurer", "curse", "witch", "cellar", "market"};
+        cardsInGame.add("adventurer");
+        cardsInGame.add("ambassador");
+        cardsInGame.add("baron");
+        cardsInGame.add("council room");
+        cardsInGame.add("cutpurse");
+        cardsInGame.add("embargo");
+        cardsInGame.add("feast");
+        cardsInGame.add("gardens");
+        cardsInGame.add("great hall");
+        cardsInGame.add("mine");
+        cardsInGame.add("curse");
+        cardsInGame.add("smithy");
+        cardsInGame.add("village");
+        cardsInGame.add("witch");
+        cardsInGame.add("cellar");
+        cardsInGame.add("salvager");
 
-        String[] decksToImplement = {"adventurer", "ambassador", "baron", "council room", "cutpurse", "embargo", "feast", "gardens", "great hall", "mine", "curse"};
-
-        for (String deckName: decksToImplement) {
+        for (String deckName: cardsInGame) {
             bank.add(new Deck(10, new Card(deckName)));
         }
     }
@@ -216,6 +230,7 @@ public class Game {
     public Game(String ... names) {
         bank = new ArrayList<Deck>();
         trash = new Deck();
+        cardsInGame = new ArrayList<String>();
         //treasure
         bank.add(new Deck(30, new Card("gold")));
         bank.add(new Deck(40, new Card("silver")));
@@ -227,9 +242,24 @@ public class Game {
         bank.add(new Deck(24, new Card("estate")));
 
         //build the action decks
-        String[] decksToImplement = {"adventurer", "ambassador", "baron", "council room", "cutpurse", "embargo", "feast", "gardens", "great hall", "mine", "curse", "smithy", "village", "witch", "cellar", "salvager"};
+        cardsInGame.add("adventurer");
+        cardsInGame.add("ambassador");
+        cardsInGame.add("baron");
+        cardsInGame.add("council room");
+        cardsInGame.add("cutpurse");
+        cardsInGame.add("embargo");
+        cardsInGame.add("feast");
+        cardsInGame.add("gardens");
+        cardsInGame.add("great hall");
+        cardsInGame.add("mine");
+        cardsInGame.add("curse");
+        cardsInGame.add("smithy");
+        cardsInGame.add("village");
+        cardsInGame.add("witch");
+        cardsInGame.add("cellar");
+        cardsInGame.add("salvager");
 
-        for (String deckName: decksToImplement) {
+        for (String deckName: cardsInGame) {
             bank.add(new Deck(10, new Card(deckName)));
         }
 
@@ -258,10 +288,11 @@ public class Game {
         /******************** Begin actions ********************/
         /*******************************************************/
 
-        clearScreen();
-        printLineDelay(name + ", the game is drawing 5 cards...");
-        // getPlayer(num).draw(5);
-        clearAndShowHand(num, sleepTime);
+        if (!getSilence()) {
+            clearScreen();
+            printLineDelay(name + ", the game is drawing 5 cards...");
+            clearAndShowHand(num, sleepTime);
+        }
 
         /*******************************************************/
         /******************** Action phase ********************/
@@ -270,23 +301,23 @@ public class Game {
         //if the player has action points and they have action cards in their hand
         while (getPlayer(num).hasActions()) {
 
-            printLineDelay("Please play an action card:\n");
-            //print the number of actions, buys and coins the player has
-            System.out.println(getPlayer(num).getMoves());
+            if (!getSilence()) {
+                printLineDelay("Please play an action card:\n");
+                //print the number of actions, buys and coins the player has
+                System.out.println(getPlayer(num).getMoves());
 
-            System.out.println("\nCards you can play:");
-            //print only the action cards in their hand
-            getPlayer(num).printHandType("action");
-            System.out.print("Select your card: ");
+                System.out.println("\nCards you can play:");
+                //print only the action cards in their hand
+                getPlayer(num).printHandType("action");
+                System.out.print("Select your card: ");
+            }
 
-            // if (getAutomate()) {
+            if (getAutomate()) {
+                cardToPlay = randomCard();
+            }
+            else {
                 cardToPlay = scanner.nextLine();
-            // }
-            // else {
-                // Random rand = new Random();
-                // int  n = rand.nextInt(50) + 1;
-                // System.out.print("THIS");
-            // }
+            }
             playCard(num, cardToPlay);
 
 
@@ -298,16 +329,19 @@ public class Game {
                 getPlayer(num).showHand();
             }
         }
-        //if player did not have an action card
-        if (!getPlayer(num).handContainsType("action")) {
-            printLineDelay("You do not have an action card...");
+
+        if (!getSilence()) {
+            //if player did not have an action card
+            if (!getPlayer(num).handContainsType("action")) {
+                printLineDelay("You do not have an action card...");
+            }
+            else {
+                printLineDelay("You do not have any more action points...");
+            }
+            printLineDelay("\nMoving on to buying phase...\n");
+            printLineDelay("Press enter to continue: ");
+            scanner.nextLine();
         }
-        else {
-            printLineDelay("You do not have any more action points...");
-        }
-        printLineDelay("\nMoving on to buying phase...\n");
-        printLineDelay("Press enter to continue: ");
-        scanner.nextLine();
 
 
         /*******************************************************/
@@ -320,32 +354,44 @@ public class Game {
         //set the loop to exit by default
         boolean done = true;
         boolean previousInputError = false;
+        String purchaseCard;
         do {
-            clearAndShowHand(num, sleepTime);
-            System.out.println("");
-            //print the moves
-            printLineDelay(getPlayer(num).getMoves());
-            System.out.println("\n\nHere are all the cards you can afford in the bank: ");
-            //print only items in the bank that the player can afford
-            printBank(getPlayer(num).getValues());
+            if (!getSilence()) {
+                clearAndShowHand(num, sleepTime);
+                System.out.println("");
+                //print the moves
+                printLineDelay(getPlayer(num).getMoves());
+                System.out.println("\n\nHere are all the cards you can afford in the bank: ");
+                //print only items in the bank that the player can afford
+                printBank(getPlayer(num).getValues());
 
-            if (!previousInputError) {
-                printLineDelay("\nPlease enter a card you want to buy (or you may skip): ");
-            } else {
-                printLineDelay("\nThat is not a valid card. Please enter a card you want to buy (or you may skip): ");
+                if (!previousInputError) {
+                    printLineDelay("\nPlease enter a card you want to buy (or you may skip): ");
+                } else {
+                    printLineDelay("\nThat is not a valid card. Please enter a card you want to buy (or you may skip): ");
+                }
+
             }
-            String purchaseCard = scanner.nextLine();
-            purchaseCard = purchaseCard.toLowerCase();
-
+            if (getAutomate()) {
+                purchaseCard = randomCard();
+            }
+            else {
+                purchaseCard = scanner.nextLine();
+                purchaseCard = purchaseCard.toLowerCase();
+            }
             /*******#### HERE IS _BUG_ ####*******/
             /*******####
                 The buy function does not check the value of the card before buying
             ####*******/
+
+
             //if the getDeck function couldn't find the deck, it will return null
             //if it didn't return null, it means it found the deck.
             if (getDeck(purchaseCard) != null) {
                 getPlayer(num).buy(getDeck(purchaseCard));
-                System.out.println("Purchase sucessfull");
+
+                printLineDelay("Purchase sucessfull");
+
                 getPlayer(num).modifyBuys(-1);
                 getPlayer(num).modifyValues(-1 * getDeck(purchaseCard).cardInfo(0).getCost());
                 pause(sleepTime);
@@ -366,7 +412,9 @@ public class Game {
         } while (!done && (getPlayer(num).getBuys() > 0));
 
         getPlayer(num).discardAll();
-        printLineDelay("You may see the deck, or just press enter to end your turn: ");
+        if (!getSilence()) {
+            printLineDelay("You may see the deck, or just press enter to end your turn: ");
+        }
 
         String request = scanner.nextLine();
         request = request.toLowerCase();
@@ -667,12 +715,14 @@ public class Game {
     }
 
     public void printLineDelay(String text) {
-        char[] charArr = text.toCharArray();
-        for(int i = 0; i <= charArr.length-1; i++) {
-            System.out.print(charArr[i]);
-            pause(printTime);
+        if (!getSilence()) {
+            char[] charArr = text.toCharArray();
+            for(int i = 0; i <= charArr.length-1; i++) {
+                System.out.print(charArr[i]);
+                pause(printTime);
+            }
+            pause(sleepTime);
         }
-        pause(sleepTime);
     }
 
     public void printLineDelay(String text, int printTime) {
