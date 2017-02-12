@@ -17,7 +17,7 @@ public class Player implements Cloneable{
 												// discard[MAX_PLAYERS][MAX_DECK];
 	List<Card> playedCards = new ArrayList<Card>();
 
-	private Random rand_gen;
+	private Random rand_gen = new Random();
 
 	String player_username;
 
@@ -81,6 +81,9 @@ public class Player implements Cloneable{
 		      System.out.println("Player:  "+player_username+" discards "+card);
 		   }
 	   public void playKingdomCard() {
+           System.out.println("-----------------------------------");
+           System.out.println("        Playing Kingdom Cards      ");
+           System.out.println("-----------------------------------");
 		      while (numActions > 0) {
 		         List<Card> actionCards = Card.filter(hand, Type.ACTION);
 
@@ -99,40 +102,36 @@ public class Player implements Cloneable{
 		      }
 		   }
 	   final int scoreFor() {
+           int numGardens = 0;
+           int numCards = 0;
+           int score = 0;
+           //score from hand
+           for (Card c : hand)
+               score += c.score();
+           numCards++;
+           //score from discard
+           for (Card c : discard){
+               if(Card.getCard(discard, Card.CardName.Gardends) != null) {
+                   if(c == Card.getCard(discard ,Card.CardName.Gardends)) numGardens++;
+               }
+               score += c.score();
+               numCards++;
+           }
+           //score from deck
+           for (Card c : deck){
+               if(Card.getCard(deck, Card.CardName.Gardends) != null){
+                   if(c == Card.getCard(discard ,Card.CardName.Gardends)) numGardens++;
+               }
+               score += c.score();
+               numCards++;
+           }
+           //System.out.println("numGardens: " + numGardens);
+           if(numGardens > 0){
+               score += numGardens*(numCards/10);
+           }
 
-           int num_Gard = 0;
-           int num_cards = 0;
-		   int score = 0;
-		   //score from hand
-		      for (Card c : hand) {
-                  score += c.score();
-                  num_cards = num_cards + 1;
-              }
-		      //score from discard
-		      for (Card c : discard) {
-                  score += c.score();
-                  if (Card.getCard(discard, Card.CardName.Gardends) != null) {
-                      if (c == Card.getCard(discard, Card.CardName.Gardends)) {
-                          num_Gard++;
-                      }
-                  }
-              }
-		      //score from deck
-		      for (Card c : deck) {
-                  if (Card.getCard(deck, Card.CardName.Gardends) != null) {
-                      if (c == Card.getCard(discard, Card.CardName.Gardends)) {
-                          num_Gard++;
-                      }
-                  }
-                  score += c.score();
-              }
-              //score from all the garden cards
-              if(num_Gard > 0){
-		          score = score + num_Gard*(num_cards/10);
-              }
-
-		      return score;
-	   }
+           return score;
+       }
 
 	   public void playTtreasureCard() {
            System.out.println("-----------------------------------");

@@ -59,6 +59,6 @@ public class GameStateTest{
   public void testNextTurn(){
     g.addPlayer("Amy", true);
     g.addPlayer("Benny", true);
-    for(int i=0; i<5; i++) g.nextTurn();
+    for(int i=0; i<20; i++) g.nextTurn();
   }
 }
