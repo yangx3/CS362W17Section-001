@@ -55,7 +55,7 @@ public final class Builder {
 		//Done
 		decks.add(new Card(Card.Name.Adventurer, Card.Type.Action, 6, 0, 0, 0, 0, 0));
 		
-		//TODO: Ambassador
+		//Done
 		decks.add(new Card(Card.Name.Ambassador, Card.Type.Action, 6, 0, 0, 0, 0, 1));
 		
 		//Done

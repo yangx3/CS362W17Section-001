@@ -168,9 +168,9 @@ public class Player {
 		}
 		for(int itr = 0; itr < hand.size(); itr++)
 		{
-			if(hand.getCardAt(itr).getType() == Card.Type.Treasure)
+			if(hand.cardAt(itr).getType() == Card.Type.Treasure)
 			{
-				coins += hand.getCardAt(itr).getCoinsWorth();
+				coins += hand.cardAt(itr).getCoinsWorth();
 			}
 		}
 		return names;

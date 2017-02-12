@@ -49,8 +49,10 @@ public class GameState {
 			player.username = in.nextLine();
 			System.out.printf("Welcome to the game %s, setting up your deck now!\n", player.username);
 			player.setDeck(Builder.buildPlayerStartDeck());
+			try { Thread.sleep(1000); } 
+			catch (InterruptedException e) { e.printStackTrace(); }
+			System.out.print("\033[2J\033[K\033[H");
 		}
-//		System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		System.out.print("\033[2J\033[K\033[H");
 	}
 	
@@ -84,8 +86,7 @@ public class GameState {
 				{
 					attackPlayers(actionsPlayed, player);
 				}
-//				System.out.printf("My hand at the beginning of actions: %s\n", player.getHand());
-
+				
 				int coins = player.getCoins();
 				System.out.printf("Welcome to the buying phase %s, you have %d coins. Here are the available cards: \n\n", player.username, coins);
 				boolean purchase = true;
@@ -111,8 +112,6 @@ public class GameState {
 							System.out.println("Did a good purchase happen? : " + purchase);
 						}
 					}
-//					System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-//					System.out.print("\033[2J\033[K\033[H");
 				}while(purchase == false);
 				if(embargoed == true)
 				{
@@ -144,7 +143,6 @@ public class GameState {
 	
 	public void attackPlayers(ArrayList<String> attacks, Player player)
 	{
-//		System.out.printf("These actions were played by %s: %s\n", player.username, attacks);
 		for(int itr = 0; itr < attacks.size(); itr++)
 		{
 			if(attacks.get(itr).compareTo("Adventurer") == 0){ adventurer(player); }
@@ -309,7 +307,7 @@ public class GameState {
 	{
 		for(int itr = 0; itr < player.getDiscard().size(); itr++)
 		{
-			Card card = player.getDiscard().getCardAt(itr);
+			Card card = player.getDiscard().cardAt(itr);
 			if(card.getName().toString().compareTo("Feast") == 0)
 			{
 				int tempCoins = player.getCoins();
@@ -364,7 +362,7 @@ public class GameState {
 			String choice = in.nextLine();
 			for(int itr = 0; itr < temp.size(); itr++)
 			{
-				Card card = temp.getCardAt(itr);
+				Card card = temp.cardAt(itr);
 				if(card.toString().compareTo(choice) == 0)
 				{
 					if(card.getName() == Card.Name.Gold)

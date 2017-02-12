@@ -8,20 +8,17 @@ import java.util.Collections;
 
 public class Deck {
 	private ArrayList<Card> cards;
-	private int currentIndex;
 	boolean embargoed = false;
 	
 	Deck()
 	{
 		cards = new ArrayList<Card>();
-		this.currentIndex = 0;
 	}
 	
 	Deck(ArrayList<Card> cards)
 	{
 		this.cards = new ArrayList<Card>();
 		this.cards.addAll(cards);
-		this.currentIndex = 0;
 	}
 	
 	// Getters
@@ -37,17 +34,16 @@ public class Deck {
 	
 	public Card cardAt(int index)
 	{
+		if(cards.size() <= index || index < 0)
+		{
+			throw new IndexOutOfBoundsException("Error: index out of bounds");
+		}
 		return this.cards.get(index);
 	}
 	
 	public boolean isEmpty()
 	{
 		return this.cards.size()==0;
-	}
-	
-	public int currentIndex() // returns current index of "iterator"
-	{
-		return currentIndex;
 	}
 	
 	public Card draw() // removes card from the deck
@@ -62,17 +58,19 @@ public class Deck {
 	
 	public Card getTopCard() // returns the top card, does not remove
 	{
+		if(cards.isEmpty())
+		{
+			throw new IndexOutOfBoundsException("Error: No cards in deck");
+		}
 		return this.cards.get(0);
-	}
-	
-	public Card getCardAt(int index)
-	{
-		return cards.get(index);
 	}
 	
 	public Card getBottomCard() // returns the bottom card, does not remove
 	{
-		//Card card = this.cards.get(this.cards.size()-1);
+		if(cards.isEmpty())
+		{
+			throw new IndexOutOfBoundsException("Error: No cards in deck");
+		}
 		
 		return this.cards.get(this.cards.size()-1);
 	}
@@ -118,8 +116,9 @@ public class Deck {
 	{
 		for(int itr = 0; itr < this.cards.size(); itr++)
 		{
-			if(this.cards.get(itr) == card)
+			if(this.cards.get(itr).getName() == card.getName())
 			{
+				
 				Card newCard = this.cards.get(itr);
 				this.cards.remove(itr);
 				return newCard;
@@ -141,10 +140,6 @@ public class Deck {
 	}
 	
 	// Methods
-	public void resetCurrentIndex() // resets the currentIndex "iterator"
-	{
-		currentIndex = 0;
-	}
 	
 	public boolean toggleEmbargo()
 	{
