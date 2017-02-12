@@ -11,17 +11,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class DominionTest{
-  private GameState g;
-  private Player a;
-  private Player b;
 
-  @Before
+
+  @Test
   public void initPlayer(){
-    g = new GameState();
-    a = new Player("Armand", g, true);
-    g.addPlayer(a);
-    b = new Player("Barney", g, true);
-    g.addPlayer(b);
+    Dominion game = new Dominion();
+    game.setupGame(true, true);
   }
 
 }
