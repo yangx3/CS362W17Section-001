@@ -5,6 +5,9 @@ These instructions are intended for compiling and running on **flip.engr.oregons
 To compile all code:
 >make all
 
+To run lamki_dom.jar with arguments:
+> java -jar lamki_dom.jar <number of players> <number of kingdom cards>
+
 To compile all code and run:
 >make run
 
