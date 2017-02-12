@@ -96,17 +96,39 @@ public class PlayerTest {
 
     @Test
     public void testPlayKingdomCard() {
-
+        player1.initializePlayerTurn();
+        assertEquals(player1.hand.size(), 5);
+        assertEquals(player1.deck.size(), 5);
+        assertEquals(player1.discard.size(), 0);
+        assertEquals(player1.playedCards.size(), 0);
+        System.out.println(player1);
+        player1.hand.add(Card.getCard(cards, Card.CardName.Smithy));
+        player1.playKingdomCard();
+        assertEquals(player1.hand.size(), 8);
+        assertEquals(player1.deck.size(), 2);
+        assertEquals(player1.discard.size(), 0);
+        assertEquals(player1.playedCards.size(), 1);
+        System.out.println(player1);
     }
 
     @Test
     public void testScoreFor() {
-
+        int score = 0;
+        for(Card c : player1.discard){
+            score += c.score;
+        }
+        assertEquals(score, player1.scoreFor());
     }
 
     @Test
     public void testPlayTreasureCard() {
-
+        int money = 0;
+        player1.initializePlayerTurn();
+        for(Card c : player1.hand){
+            money += c.getTreasureValue();
+        }
+        player1.playTreasureCard();
+        assertEquals(money, player1.coins);
     }
 
     @Test
@@ -116,6 +138,17 @@ public class PlayerTest {
 
     @Test
     public void testEndTurn() {
-
+        player1.initializePlayerTurn();
+        assertEquals(player1.hand.size(), 5);
+        assertEquals(player1.deck.size(), 5);
+        assertEquals(player1.discard.size(), 0);
+        assertEquals(player1.playedCards.size(), 0);
+        System.out.println(player1);
+        player1.endTurn();
+        assertEquals(player1.hand.size(), 4);
+        assertEquals(player1.deck.size(), 5);
+        assertEquals(player1.discard.size(), 1);
+        assertEquals(player1.playedCards.size(), 0);
+        System.out.println(player1);
     }
 }
