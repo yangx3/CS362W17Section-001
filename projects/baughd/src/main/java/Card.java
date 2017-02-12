@@ -21,9 +21,9 @@ public final class Card implements Comparable<Card>, Cloneable{
 	// * @param int score the score of the card, when the game is finished
 	// * @param treasureValue  the treasure value of the treasure cards (cooper, silver, and gold cards)
 	 */
-	private final Type realType;
+	final Type realType;
 	private final CardName cardName;
-	private final int cost, score, treasureValue;
+	int cost, score, treasureValue;
 	private Random gen = new Random();
 
 	private Card(CardName cardName, Type type, int cost, int score, int treasureValue) {
