@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import cs362.dominion.Exceptions.ConfiguationException;
 import cs362.dominion.Resources.Game;
+import cs362.dominion.Helpers.*;
 
 public class VillageTest {
 
@@ -47,18 +48,18 @@ public class VillageTest {
 	 */
 	@Test
 	public void testCards() {	
-		Helpers.Cards.testCards(game, cardType, 1);
+		Cards.testCards(game, cardType, 1);
 	}
 	
 	@Test
 	public void testActions() {	
-		Helpers.Cards.testActions(game, cardType, 2);
+		Cards.testActions(game, cardType, 2);
 	}
 
 	
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(game, cardType);
+		Cards.testDescription(game, cardType);
 	}
 
 }

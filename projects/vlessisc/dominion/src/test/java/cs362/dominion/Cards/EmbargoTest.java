@@ -10,6 +10,7 @@ import org.junit.Test;
 import cs362.dominion.Exceptions.ConfiguationException;
 import cs362.dominion.Exceptions.InvalidSelectionException;
 import cs362.dominion.Resources.Game;
+import cs362.dominion.Helpers.*;
 
 public class EmbargoTest {
 
@@ -42,7 +43,7 @@ public class EmbargoTest {
 	
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(game, Embargo.class);
+		Cards.testDescription(game, Embargo.class);
 	}
 
 	

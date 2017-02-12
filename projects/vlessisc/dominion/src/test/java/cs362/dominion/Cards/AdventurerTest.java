@@ -12,6 +12,7 @@ import cs362.dominion.Exceptions.InvalidSelectionException;
 import cs362.dominion.Resources.Game;
 import cs362.dominion.Resources.Game.gamePhase;
 import cs362.dominion.Resources.Player;
+import cs362.dominion.Helpers.*;
 
 public class AdventurerTest {
 
@@ -44,7 +45,7 @@ public class AdventurerTest {
 	 */
 	@Test
 	public void testBuys() {
-		Helpers.Cards.testBuys(game, cardType, 0);
+		Cards.testBuys(game, cardType, 0);
 	}
 	
 	@Test
@@ -77,7 +78,7 @@ public class AdventurerTest {
 	
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(game, cardType);
+		Cards.testDescription(game, cardType);
 	}
 
 
