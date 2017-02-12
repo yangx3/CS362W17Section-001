@@ -31,11 +31,11 @@ public class AIPlayer extends Player{
 		boolean repeat;
 		int choice = -1;
 		Card c = null;
+		if(rand.nextBoolean()) //choosing to skip
+			return null;
 		do{
 			repeat = false;
-			choice = rand.nextInt(hand.size() + 1);
-			if(choice == hand.size()) //choosing to skip
-				return null;
+			choice = rand.nextInt(hand.size());
 			c = hand.getCard(choice);
 			if(!c.isCardType(CardType.Action))
 				repeat = true;
