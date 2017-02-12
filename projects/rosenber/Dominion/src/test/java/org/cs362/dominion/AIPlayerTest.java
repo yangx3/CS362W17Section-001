@@ -1,7 +1,6 @@
 package org.cs362.dominion;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class AIPlayerTest {
@@ -9,12 +8,12 @@ public class AIPlayerTest {
 	Player test;
 	
 	@Test
-	public void testConstructorString() {
+	public void testConstructor() {
 		
 		test = new AIPlayer(1);
 		
 		assertEquals("Name doesn't match name given",
-				"Robert", test.getName());
+				"Player_1", test.getName());
 		assertEquals("Hand isn't empty",
 				0, test.hand.size());
 		assertEquals("Deck isn't empty",
@@ -23,4 +22,6 @@ public class AIPlayerTest {
 				0, test.discard.size());
 	}
 
+	
+	
 }
