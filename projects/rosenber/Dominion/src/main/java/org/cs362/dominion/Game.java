@@ -61,10 +61,11 @@ public class Game {
 	//action phase
 	public void actionPhase(){
 		ArrayList<Card> played = new ArrayList<Card>();
-		for(int j=0; j<5; j++)
-			currentPlayer.drawCard();
 		do{
-			played.add(0, currentPlayer.playCard());
+			Card choice = currentPlayer.playCard();
+			if(choice == null) //chose to skip
+				break;
+			played.add(0, choice);
 			played.get(0).Action(players, currentPlayer, board);
 			currentPlayer.addActions(-1);
 		}while(currentPlayer.getActions() > 0);
@@ -79,15 +80,19 @@ public class Game {
 		currentPlayer.computeMoney();
 		do{
 			currentPlayer.buyCard(board);
+			currentPlayer.addBuys(-1);
 		}while(currentPlayer.getBuys() > 0);
 	}
 	
 	//clean phase
+	// - resets for next turn
 	public void cleanPhase(){
 		currentPlayer.discardHand();
 		currentPlayer.setBuys(1);
 		currentPlayer.setMoney(0);
 		currentPlayer.setActions(1);
+		for(int j=0; j<5; j++)
+			currentPlayer.drawCard();
 	}
 	
 	//check for game over

@@ -31,7 +31,9 @@ public class AIPlayer extends Player{
 		Card c = null;
 		do{
 			repeat = false;
-			choice = rand.nextInt(hand.size());
+			choice = rand.nextInt(hand.size() + 1);
+			if(choice == hand.size()) //choosing to skip
+				return null;
 			c = hand.getCard(choice);
 			if(!c.isCardType(CardType.Action))
 				repeat = true;
@@ -40,9 +42,12 @@ public class AIPlayer extends Player{
 	}
 	
 	public void buyCard(Board board){
+		
 		boolean repeat;
 		int choice = -1;
 		do{
+			if(rand.nextBoolean()) //chose not to buy
+				return;
 			repeat = false;
 			while(choice < 1)
 				choice = rand.nextInt(board.numDecks());
