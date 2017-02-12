@@ -1,3 +1,4 @@
+package org.cs362.dominion;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
