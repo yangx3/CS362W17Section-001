@@ -350,7 +350,11 @@ public class Game {
     }
 
     private static void increment(Map<Card,Integer> map, Card key) {
-        map.put(key, map.get(key) + 1);
+        int val = 0;
+        if (map.containsKey(key)) {
+            val = map.get(key);
+        }
+        map.put(key, val+1);
     }
 
     private static void decrement(Map<Card,Integer> map, Card key) {
@@ -377,6 +381,16 @@ public class Game {
         decrement(this.supply, card);
         this.coins -= card.cost();
         this.buys -= 1;
+
+        // if card is embargoed, give the player a curse
+        Integer tokens = this.embargoTokens.get(card);
+        if (tokens != null) {
+            for (int i = 0; i < tokens; i++) {
+                if (this.supplyCount(Card.Curse) > 0) {
+                    this.take(this.currentPlayer, Card.Curse);
+                }
+            }
+        }
     }
 
     // How many cards current player has in hand
@@ -395,7 +409,12 @@ public class Game {
     }
 
     // How many of given card are left in supply
-    public int supplyCount(Card card) { return supply.get(card); }
+    public int supplyCount(Card card) {
+        if (this.supply.containsKey(card)) {
+            return this.supply.get(card);
+        }
+        return 0;
+    }
 
     // Count how many cards of a certain type a player has in their hand
     public int handCount(int player, Card card) {
