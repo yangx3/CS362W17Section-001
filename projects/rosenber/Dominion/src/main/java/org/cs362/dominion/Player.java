@@ -93,6 +93,8 @@ public class Player{
 	//returns the top card of players deck
 	// - removes card from deck
 	public Card getTopCard(){
+		if(deck.size() == 0)
+			reshuffleDeck();
 		return deck.drawTop();
 	}
 	
