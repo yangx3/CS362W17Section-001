@@ -149,4 +149,43 @@ public class TestGame {
         assertEquals(1, game.fullDeckCount(0, Card.Duchy));
         assertEquals(0, game.fullDeckCount(0, Card.Feast)); // trashed
     }
+
+    @Test
+    public void testGreatHall() {
+        Game game = newGame(Card.GreatHall);
+        int pos = game.takeForTesting(0, Card.GreatHall);
+        game.playAction(pos);
+        assertEquals(6, game.numHandCards()); // +1 cards
+        assertEquals(1, game.getActions()); // +1 actions
+        game.endTurn();
+        assertEquals(4, game.scoreFor(0)); // worth 1 VP
+    }
+
+    @Test
+    public void testTreasure() {
+        Game game = newGame();
+        int pos = game.takeForTesting(0, Card.Copper);
+        game.takeForTesting(0, Card.Silver);
+        game.takeForTesting(0, Card.Gold);
+        game.playTreasure(pos);
+        game.playTreasure(pos);
+        game.playTreasure(pos);
+        assertEquals(6, game.getCoins());
+        assertEquals(1, game.getPhase());
+    }
+
+    @Test
+    public void testPhase() {
+        Game game = newGame(Card.Smithy);
+        int pos = game.takeForTesting(0, Card.Copper);
+        game.playTreasure(0);
+
+        pos = game.takeForTesting(0, Card.Smithy);
+        try {
+            game.playAction(pos);
+            fail("expected GameError");
+        } catch (GameError err) {
+            assertEquals(err.getMessage(), "can only play actions during the action phase");
+        }
+    }
 }
