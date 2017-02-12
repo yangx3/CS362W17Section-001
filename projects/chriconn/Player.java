@@ -126,26 +126,6 @@ public class Player {
         hand.printDeck();
     }
 
-    public boolean playCard(String cardName) {
-        if (hand.indexOf(cardName) >= 0) {
-            Card temp = new Card(cardName);
-            if (!temp.isType("action")) {
-                System.out.println("Error. " + cardName + " is not an action card.");
-                return false;
-            }
-            else {
-                applyCardActions(temp);
-                discard(cardName);
-                actions = actions - 1;
-                return true;
-            }
-        }
-        else {
-            System.out.println("Error. That card does not exist");
-            return false;
-        }
-    }
-
     public String getMoves() {
         return "You have:\n\t" + actions + " action(s)\n\t" + buys + " pruchase(s)\n\t" + value + " coin(s)";
     }
@@ -219,52 +199,6 @@ public class Player {
             return true;
         }
         return false;
-    }
-
-    public void applyCardActions(Card card) {
-        actions += card.getActions();
-        value += card.getValue();
-        buys += card.getBuys();
-        if (card.getCards() > 0) {
-            draw(card.getCards());
-        }
-
-
-        //Section to apply special actions from cards
-
-        if (card.isType("special action")) {
-
-            //if the card is an adventurer
-            if (card.getName().equals("adventurer")) {
-                //number of treasures drawn so far is 0
-                int numTreasures = 0;
-                //the loop stops when we draw two treasure cards
-                while (numTreasures < 2) {
-                    //if we draw a treasure, increment the treasure counter
-                    if (draw().isType("treasure")) {
-                        numTreasures++;
-                    }
-                    //otherwise, discard that card we just drew
-                    else {
-                        discardAtIndex(hand.numCards() - 1);
-                    }
-                }
-            }
-
-            if (card.getName().equals("baron")) {
-                String discard;
-                System.out.print("Do you want to discard an estate card? ");
-                discard = scanner.nextLine();
-                if (discard.toLowerCase().equals("yes")) {
-                    discard("estate");
-                    value += 4;
-                }
-                else if (discard.toLowerCase().equals("no")) {
-                    //draw from the estate deck
-                    System.out.println("You gained an estate card");
-                }
-            }
-        }
     }
 
     //sets one action and one buy that the player gets every turn
