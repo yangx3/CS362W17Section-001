@@ -41,4 +41,26 @@ public class AIPlayerTest {
 				1, test.numCardsDiscard());
 	}
 	
+	@Test
+	public void testPlayCard(){
+		
+		test = new AIPlayer(1);
+		
+		try{
+			assertNull("Play card didn't return null when hand empty",
+					test.playCard());
+		}
+		catch(Exception e){
+			fail("Play card crashed when hand empty");
+		}
+		Card c = new Copper();
+		test.giveCard(c);
+		test.drawCard();
+		Card result = null;
+		while(result == null)
+			result = test.playCard();
+		assertEquals("Player didn't play a card they had",
+				c, result);
+		
+	}
 }
