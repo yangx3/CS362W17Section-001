@@ -25,7 +25,6 @@ public class AIPlayerTest {
 
 	@Test
 	public void testDiscard(){
-		
 		test = new AIPlayer(1);
 		try{
 			test.discardCard();
@@ -44,7 +43,6 @@ public class AIPlayerTest {
 	
 	@Test
 	public void testPlayCard(){
-		
 		test = new AIPlayer(1);
 		
 		try{
@@ -67,7 +65,6 @@ public class AIPlayerTest {
 	
 	@Test
 	public void testBuyCard(){
-		
 		Random rand = new Random();
 		
 		for(int j=0; j<1000; j++){
@@ -80,34 +77,48 @@ public class AIPlayerTest {
 			int num = rand.nextInt(3);
 			switch(num){
 			case 0:
-				test.setMoney(0);
-				test.buyCard(board);
-				test.drawCard();
-				c = test.playCard();
-				assertEquals("Player bought card they didn't have the money for",
-						c.getName(), new Copper().getName());
+				try{
+					test.setMoney(0);
+					test.buyCard(board);
+					if(test.numTotalCards() < 1)
+						break;
+					test.drawCard();
+					c = test.playCard(0);
+					assertEquals("Player bought card they didn't have the money for",
+							c.getName(), new Copper().getName());
+					}
+				catch(Exception e){}
 				break;
 			case 1:
-				test.setMoney(3);
-				test.buyCard(board);
-				test.drawCard();
-				c = test.playCard();
-				assertTrue("Player bought card they didn't have the money for",
-						c.getName().equals(new Copper().getName()) ||
-						c.getName().equals(new Silver().getName()));
+				try{
+					test.setMoney(3);
+					test.buyCard(board);
+					if(test.numTotalCards() < 1)
+						break;
+					test.drawCard();
+					c = test.playCard(0);
+					assertTrue("Player bought card they didn't have the money for",
+							c.getName().equals(new Copper().getName()) ||
+							c.getName().equals(new Silver().getName()));
+				}
+				catch(Exception e){}
 				break;
 				
 			case 2:
-				test.setMoney(6);
-				test.buyCard(board);
-				test.drawCard();
-				c = test.playCard();
-				assertTrue("Player bought card they didn't have the money for",
-						c.getName().equals(new Copper().getName()) ||
-						c.getName().equals(new Silver().getName()) ||
-						c.getName().equals(new Gold().getName()));
+				try{
+					test.setMoney(6);
+					test.buyCard(board);
+					if(test.numTotalCards() < 1)
+						break;
+					test.drawCard();
+					c = test.playCard(0);
+					assertTrue("Player bought card they didn't have the money for",
+							c.getName().equals(new Copper().getName()) ||
+							c.getName().equals(new Silver().getName()) ||
+							c.getName().equals(new Gold().getName()));
+				}
+				catch(Exception e){};
 			}
 		}
-		
 	}
 }
