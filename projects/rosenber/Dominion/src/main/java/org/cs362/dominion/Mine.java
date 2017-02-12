@@ -1,7 +1,6 @@
 package org.cs362.dominion;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Random;
 
 public class Mine extends Card {

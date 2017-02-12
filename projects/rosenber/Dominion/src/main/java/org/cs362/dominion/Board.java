@@ -90,7 +90,7 @@ public class Board {
 	
 	public int getDeckIdx(String name){
 		for(int j=0; j<decks.size(); j++){
-			if(decks.get(j).getName() == name)
+			if(decks.get(j).getName().equals(name))
 				return j;
 		}
 		//TODO: not have a hacky version of this

@@ -26,7 +26,7 @@ public class AmbassadorTest {
 				test.isCardType(CardType.Attack));
 		
 	}
-
+	
 	@Test
 	public void testAction(){
 		ArrayList<Player> plist = new ArrayList<Player>();

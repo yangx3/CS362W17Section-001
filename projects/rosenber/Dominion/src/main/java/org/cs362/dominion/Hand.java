@@ -78,7 +78,7 @@ public class Hand{
 	public Card playCard(String name){
 		int idx = -1;
 		for(int j=0; j<hand.size(); j++){
-			if(hand.get(j).getName() == name){
+			if(hand.get(j).getName().equals(name)){
 				idx = j;
 				break;
 			}

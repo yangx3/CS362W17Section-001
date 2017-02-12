@@ -32,13 +32,13 @@ public class CouncilRoomTest {
 		plist.add(player);
 		Board board = new Board();
 		
-		for(int j=0; j<4; j++);
+		for(int j=0; j<4; j++)
 			player.giveCard(new Copper());
 		
 		Player other = new AIPlayer(2);
 		other.giveCard(new Copper());
 		plist.add(other);
-		
+
 		Card c = new CouncilRoom();
 		c.Action(plist, player, board);
 		

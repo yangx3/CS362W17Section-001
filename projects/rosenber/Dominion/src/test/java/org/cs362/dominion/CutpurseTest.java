@@ -37,8 +37,6 @@ public class CutpurseTest {
 		players.add(other);
 		other.giveCard(new Copper());
 		other.drawCard();
-		other = new AIPlayer(3);
-		players.add(other);
 		
 		Card c = new Cutpurse();
 		c.Action(players, currentPlayer, board);
@@ -46,7 +44,7 @@ public class CutpurseTest {
 		assertEquals("Player didn't gain coins",
 				2, currentPlayer.getMoney());
 		assertEquals("Player 2 didn't discard its copper",
-				0, players.get(1).numCardsHand());
+				0, other.numCardsHand());
 	}
 	
 }

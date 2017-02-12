@@ -41,11 +41,13 @@ public class MineTest {
 		assertEquals("Trash didn't gain card",
 				trash+1, board.numCardsInDeck(0));
 		
+		assertEquals("Player doesn't have 1 card",
+				1, currentPlayer.numTotalCards());
 		try{
 			currentPlayer.playCard("Silver");
 		}
 		catch(Exception e){
-			fail("Player's hand didn't contain a siler");
+			fail("Player's hand didn't contain a silver");
 		}
 		
 	}
