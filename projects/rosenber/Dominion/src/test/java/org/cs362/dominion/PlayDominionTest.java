@@ -8,9 +8,14 @@ public class PlayDominionTest {
 
 	@Test
 	public void test() {
-
-			PlayDominion.main(null);
-
+		for(int j=0; j<1000; j++){
+			try{
+				PlayDominion.main(null);
+			}
+			catch(Exception e){
+				fail("Game crashed");
+			}
+		}
 	}
 
 }
