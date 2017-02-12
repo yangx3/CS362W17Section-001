@@ -1,3 +1,4 @@
+package org.cs362.dominion;
 import java.util.*;
 
 public class Player {
