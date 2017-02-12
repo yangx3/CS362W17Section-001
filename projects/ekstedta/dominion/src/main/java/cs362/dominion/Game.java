@@ -288,7 +288,7 @@ public class Game {
                 throw new GameError("feast: choice 0 must be a Card");
             }
             Card card = (Card)choices[0];
-            if (card.cost() >= 5) {
+            if (card.cost() > 5) {
                 throw new GameError("feast: gained card must cost 5 or less");
             }
             this.take(this.currentPlayer, card);

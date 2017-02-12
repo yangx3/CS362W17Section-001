@@ -132,4 +132,21 @@ public class TestGame {
         assertEquals(1, game.fullDeckCount(0, Card.Curse));
         game.endTurn();
     }
+
+    @Test
+    public void testFeast() {
+        Game game = newGame(Card.Feast);
+        int pos = game.takeForTesting(0, Card.Feast);
+        try {
+            game.playAction(pos, Card.Gold);
+            fail("expected GameError");
+        } catch (GameError e) {
+        }
+
+        game = newGame(Card.Feast);
+        pos = game.takeForTesting(0, Card.Feast);
+        game.playAction(pos, Card.Duchy);
+        assertEquals(1, game.fullDeckCount(0, Card.Duchy));
+        assertEquals(0, game.fullDeckCount(0, Card.Feast)); // trashed
+    }
 }
