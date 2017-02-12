@@ -17,27 +17,7 @@ public class Salvager extends Card{
 			AIAction(players, currentPlayer, board);
 			return;
 		}
-			
-		currentPlayer.addBuys(1);
-		Card choice = null;
-		boolean repeat;
-		Scanner input = new Scanner(System.in);
-		do{
-			repeat = false;
-			System.out.println("What card would you like to trash?\n"
-					+ "You gain coins equal to its cost\n>");
-			String ans = input.nextLine();
-			try{
-				choice = currentPlayer.playCard(ans);
-				board.addToTrash(choice);
-				currentPlayer.addMoney(choice.getCost());
-			}
-			catch(Exception e){
-				System.out.println("That name isn't valid. Try again!");
-				repeat = true;
-			}
-		}while(repeat);
-		input.close();
+		//TODO: implement non-ai version
 	}
 	
 	private void AIAction(ArrayList<Player> players,

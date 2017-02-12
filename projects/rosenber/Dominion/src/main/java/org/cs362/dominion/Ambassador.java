@@ -23,38 +23,7 @@ public class Ambassador extends Card{
 			AIAttack(players, currentPlayer, board);
 			return;
 		}
-		Scanner input = new Scanner(System.in);
-		boolean repeat;
-		Card choice = null;
-		do{
-			repeat = false;
-			System.out.println("Which card would you like to reveal?\n>");
-			String ans = input.nextLine();
-			try{
-				choice = currentPlayer.playCard(ans);
-				board.addToDeck(choice, board.getDeckIdx(ans));
-				System.out.println("Would you like to add a second?\n(y/n");
-				ans = input.nextLine();
-				if(ans == "y"){
-					try{
-						board.addToDeck(currentPlayer.playCard(choice.getName()), 
-								board.getDeckIdx(choice.getName()));
-					}
-					catch(Exception e){
-						System.out.println("You don't have another!");
-					}
-				}
-				for(int j=0; j<players.size(); j++){
-					if(players.get(j) != currentPlayer)
-						players.get(j).giveCard(board.draw(board.getDeckIdx(choice.getName())));
-				}
-			}
-			catch(Exception e){
-				System.out.println("That wasn't a valid option, try again!");
-				repeat = true;
-			}
-		}while(repeat);
-		input.close();
+		//TODO: implement non-ai version
 	};
 	public void AIAttack(ArrayList<Player> players, Player currentPlayer, Board board){
 		Random rand = new Random();

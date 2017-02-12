@@ -2,7 +2,6 @@
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Embargo extends Card{
 
@@ -16,23 +15,7 @@ public class Embargo extends Card{
 			AIAction(players, currentPlayer, board);
 			return;
 		}
-		currentPlayer.addMoney(2);
-		board.addToTrash(this);
-		boolean repeat;
-		Scanner input = new Scanner(System.in);
-		do{
-			repeat = false;
-			System.out.println("Which supply pile would you like to add an embargo to?\n >");
-			String ans = input.nextLine();
-			try{
-				board.getDeck(board.getDeckIdx(ans)).addEmbargos(1);
-			}
-			catch(Exception e){
-				System.out.println("That was not a valid name. Try again!");
-				repeat = true;
-			}
-		}while(repeat);
-		input.close();
+		//TODO: implement non-ai version
 	};
 	
 	public void AIAction(ArrayList<Player> players,
