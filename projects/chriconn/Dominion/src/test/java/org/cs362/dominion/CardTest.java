@@ -50,6 +50,7 @@ public class CardTest {
         assertEquals("The gold card does not have 0 bonus purchases", test.getBuys(), 0);
         assertEquals("The gold card does not have 0 bonus actions", test.getActions(), 0);
         assertEquals("The gold card does not have 0 cards to draw", test.getCards(), 0);
+        test.printCard();
 
 
         test = new Card("silver");
@@ -96,7 +97,6 @@ public class CardTest {
         assertEquals("The new card does not have the proper name", test.getName(), "smithy");
         test = new Card("Salvager");
         assertEquals("The new card does not have the proper name", test.getName(), "salvager");
-
 
     }
 }
