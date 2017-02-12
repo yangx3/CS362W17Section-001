@@ -250,7 +250,8 @@ public class Card {
             cost           = 3;
             cards          = 1;
             actions        = 1;
-            description    = "Lets the player draw an extra card and have an extra action";
+            victoryPoints  = 1;
+            description    = "Lets the player draw an extra card and have an extra action. +1 victory point";
             type.add("action");
             type.add("victory");
             type.add("special action");
