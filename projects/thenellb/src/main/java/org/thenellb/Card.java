@@ -52,7 +52,9 @@ public abstract class Card {
     public int get_plusBuyValue() {
         return plusBuyValue;
     }
-    public int get_plusTreasuryValue() { return plusTreasuryValue; }
+    public int get_plusTreasuryValue() {
+        return plusTreasuryValue;
+    }
     public int get_plusActionValue() {
         return plusActionValue;
     }
@@ -62,7 +64,9 @@ public abstract class Card {
     public int get_cost() {
         return cost;
     }
-    public String get_cardType() { return cardType; }
+    public String get_cardType() {
+        return cardType;
+    }
 
     public void printCard() {
         System.out.println("Name of Card:  " +  cardName + "\n");
