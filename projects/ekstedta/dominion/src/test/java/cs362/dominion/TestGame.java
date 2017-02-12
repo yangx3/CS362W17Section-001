@@ -6,12 +6,24 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestGame {
-    int seed = 1;
+    static final int seed = 1;
+
+    private static Game newGame() {
+        ArrayList<Card> k = Game.standardCards();
+        return new Game(2, k, seed);
+    }
+
+    private static Game newGame(Card kingdomCard) {
+        ArrayList<Card> k = Game.standardCards();
+        if (!k.contains(kingdomCard)) {
+            k.set(0, kingdomCard);
+        }
+        return new Game(2, k, seed);
+    }
 
     @Test
     public void testInit() {
-        ArrayList<Card> k = Game.standardCards();
-        Game game = new Game(2, k, seed);
+        Game game = newGame();
 
         assertEquals(2, game.getNumPlayers());
 
@@ -36,8 +48,7 @@ public class TestGame {
 
     @Test
     public void testGameOver() {
-        ArrayList<Card> k = Game.standardCards();
-        Game game = new Game(2, k, seed);
+        Game game = newGame();
 
         // game shouldn't be over yet
         assertEquals(false, game.isGameOver());
@@ -52,9 +63,25 @@ public class TestGame {
     }
 
     @Test
+    public void testEndTurn() {
+        Game game = newGame();
+
+        // game starts with player 0
+        assertEquals(0, game.getCurrentPlayer());
+
+        // ending a turn moves to the next player
+        game.endTurn();
+        assertEquals(1, game.getCurrentPlayer());
+
+        // ending the last player's turn wraps around to the start
+        game.endTurn();
+        assertEquals(0, game.getCurrentPlayer());
+    }
+
+    @Test
     public void testBaron() {
-        ArrayList<Card> k = Game.standardCards();
-        Game game = new Game(2, k, seed);
+        Game game = newGame(Card.Baron);
+
         game.setHandCardForTesting(0, 0, Card.Baron);
         game.playAction(0, false);
         // discarded Baron, gained Estate
@@ -67,5 +94,29 @@ public class TestGame {
         // discarded Baron, discarded Estate
         assertEquals(3, game.numHandCards());
         assertEquals(4, game.getCoins());
+    }
+
+    @Test
+    public void testCouncilRoom() {
+        Game game = newGame(Card.CouncilRoom);
+
+        game.setHandCardForTesting(0, 0, Card.CouncilRoom);
+        game.playAction(0);
+        assertEquals(8, game.numHandCards()); // +4 cards
+        assertEquals(2, game.getBuys()); // +1 buy
+        // and each other player draws a card
+    }
+
+    @Test
+    public void testCutpurse() {
+        Game game = newGame(Card.Cutpurse);
+        game.setHandCardForTesting(0, 0, Card.Cutpurse);
+        int copper = game.handCount(1, Card.Copper);
+        game.playAction(0);
+        if (copper > 0) {
+            copper--;
+        }
+        assertEquals(copper, game.handCount(1, Card.Copper));
+        assertEquals(2, game.getCoins());
     }
 }

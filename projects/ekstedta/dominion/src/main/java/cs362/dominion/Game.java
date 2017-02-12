@@ -397,8 +397,8 @@ public class Game {
     // How many of given card are left in supply
     public int supplyCount(Card card) { return supply.get(card); }
 
-    // Count how many cards of a certain type a player has, in total
-    public int fullDeckCount(int player, Card card) {
+    // Count how many cards of a certain type a player has in their hand
+    public int handCount(int player, Card card) {
         List<Card> hand = this.hand.get(player);
         int count = 0;
         for (Card x : hand) {
@@ -521,18 +521,18 @@ public class Game {
 
     /* convenience functions */    
     static ArrayList<Card> standardCards() {
-        ArrayList<Card> k = new ArrayList<>();
-        k.add(Card.Adventurer);
-        k.add(Card.Baron);
-        k.add(Card.CouncilRoom);
-        k.add(Card.Feast);
-        k.add(Card.Gardens);
-        k.add(Card.GreatHall);
-        k.add(Card.Market);
-        k.add(Card.Mine);
-        k.add(Card.Smithy);
-        k.add(Card.Village);
-        return k;
+        return Card.list(
+            Card.Adventurer,
+            Card.Baron,
+            Card.CouncilRoom,
+            Card.Feast,
+            Card.Gardens,
+            Card.GreatHall,
+            Card.Market,
+            Card.Mine,
+            Card.Smithy,
+            Card.Village
+        );
     }
 
     /* methods to support testing */
