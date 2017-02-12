@@ -1,10 +1,11 @@
 
-public class VictoryCard extends Card {
+public class VictoryCard extends Card implements Cloneable {
 	public enum VictoryType {
 		CURSE,
 		ESTATE,
 		DUCHY,
-		PROVINCE
+		PROVINCE,
+		GARDENS
 	}
 	
 	public final VictoryType type;
@@ -25,11 +26,20 @@ public class VictoryCard extends Card {
 				super.name = "Duchy";
 				super.cost = 5;
 				break;
-			default:
+			case PROVINCE:
 				super.name = "Province";
 				super.cost = 8;
 				break;
+			default:
+				super.name = "Gardens";
+				super.cost = 4;
 		}
+	}
+	
+	@Override
+	public VictoryCard clone() {
+		final VictoryCard clone = (VictoryCard)super.clone();
+		return clone;
 	}
 	
 	public int GetVPs() {
@@ -43,8 +53,10 @@ public class VictoryCard extends Card {
 			case DUCHY:
 				return 5;
 				
-			default:
+			case PROVINCE:
 				return 8;
+			default:
+				return 1;
 		}
 	}
 }

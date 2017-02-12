@@ -1,11 +1,29 @@
-default: hello.java
+ALL_FILES = Dominion.java Player.java Game.java Card.java Treasure.java Adventure.java Victory.java
 
-hello: hello.java
-	javac hello.java
+default: all
 
-run:
-	java hello
+all: $(ALL_FILES)
+	javac -d . $(ALL_FILES)
+	echo Main-Class: dominion.Dominion > dominion/manifest.txt
+	jar cvfm lamki_dom.jar dominion/manifest.txt dominion/*.class
+	chmod +x lamki_dom.jar
+
+run: all
+	java -jar lamki_dom.jar
+
+tests: all
+	cp -R *.java tests/
+	javac -cp .:tests/lib/junit-4.12.jar:tests/lib/hamcrest-core-1.3.jar tests/*.java
+	java -cp .:"$LIB/*":tests/lib/junit-4.12.jar org.junit.runner.JUnitCore tests/DominionTest
 
 clean:
-	rm hello.class
-
+	rm -f lamki_dom.jar
+	rm -f -rf dominion/
+	rm -f tests/*.class
+	rm -f tests/Dominion.java
+	rm -f tests/Player.java
+	rm -f tests/Game.java
+	rm -f tests/Card.java
+	rm -f tests/Treasure.java
+	rm -f tests/Adventure.java
+	rm -f tests/Victory.java
