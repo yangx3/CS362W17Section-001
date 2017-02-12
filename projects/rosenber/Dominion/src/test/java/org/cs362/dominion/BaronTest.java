@@ -43,6 +43,17 @@ public class BaronTest {
 		assertEquals("Player didn't receive another buy",
 				1, currentPlayer.getBuys());
 		
+		c.Action(players, currentPlayer, board);
+		
+		while(currentPlayer.getMoney() < 4){
+			try{
+				c.Action(players, currentPlayer, board);
+			}
+			catch(Exception e){
+				board.getDeck(1).addTop(new Estate());
+			}
+		}
+		
 	}
 	
 }
