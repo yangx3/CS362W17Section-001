@@ -13,34 +13,59 @@ public class TestGame {
         ArrayList<Card> k = Game.standardCards();
         Game game = new Game(2, k, seed);
 
-        assertEquals(game.getNumPlayers(), 2);
+        assertEquals(2, game.getNumPlayers());
 
         // player 1 starts
-        assertEquals(game.getCurrentPlayer(), 0);
+        assertEquals(0, game.getCurrentPlayer());
 
         // Each player starts with 3 estates
-        assertEquals(game.scoreFor(0), 3);
-        assertEquals(game.scoreFor(1), 3);
+        assertEquals(3, game.scoreFor(0));
+        assertEquals(3, game.scoreFor(1));
 
         // Each player should start with 5 cards in their hand
-        assertEquals(game.numHandCards(), 5);
+        assertEquals(5, game.numHandCards());
 
         // ending the turn should advance the player
         game.endTurn();
-        assertEquals(game.getCurrentPlayer(), 1);
-        assertEquals(game.numHandCards(), 5);
+        assertEquals(1, game.getCurrentPlayer());
+        assertEquals(5, game.numHandCards());
 
-        //
         // check supply
-        // assertEquals(game.supplyCount(Card.Estate), 60-6);
+        assertEquals(24-6, game.supplyCount(Card.Estate));
     }
 
     @Test
-    public void testMarket() {
+    public void testGameOver() {
         ArrayList<Card> k = Game.standardCards();
         Game game = new Game(2, k, seed);
-        game.setHandCard(0, 0, Card.Baron);
+
+        // game shouldn't be over yet
+        assertEquals(false, game.isGameOver());
+
+        // give player 1 all the Provinces
+        for (int i = 0; i < 12; i++) {
+            game.takeForTesting(0, Card.Province);
+        }
+
+        // all provinces are gone - game over
+        assertEquals(true, game.isGameOver());
+    }
+
+    @Test
+    public void testBaron() {
+        ArrayList<Card> k = Game.standardCards();
+        Game game = new Game(2, k, seed);
+        game.setHandCardForTesting(0, 0, Card.Baron);
         game.playAction(0, false);
-        assertEquals(game.numHandCards(), 5);
+        // discarded Baron, gained Estate
+        assertEquals(5, game.numHandCards());
+        assertEquals(0, game.getCoins());
+
+        game.setHandCardForTesting(0, 0, Card.Baron);
+        game.setHandCardForTesting(0, 1, Card.Estate);
+        game.playAction(0, true);
+        // discarded Baron, discarded Estate
+        assertEquals(3, game.numHandCards());
+        assertEquals(4, game.getCoins());
     }
 }

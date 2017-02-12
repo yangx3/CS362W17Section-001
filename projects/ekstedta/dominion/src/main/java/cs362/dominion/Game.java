@@ -395,7 +395,7 @@ public class Game {
     }
 
     // How many of given card are left in supply
-    public int supply(Card card) { return supply.get(card); }
+    public int supplyCount(Card card) { return supply.get(card); }
 
     // Count how many cards of a certain type a player has, in total
     public int fullDeckCount(int player, Card card) {
@@ -536,7 +536,10 @@ public class Game {
     }
 
     /* methods to support testing */
-    void setHandCard(int player, int i, Card card) {
+    void setHandCardForTesting(int player, int i, Card card) {
         this.hand.get(player).set(i, card);
+    }
+    void takeForTesting(int player, Card card) {
+        this.take(player, card);
     }
 }
