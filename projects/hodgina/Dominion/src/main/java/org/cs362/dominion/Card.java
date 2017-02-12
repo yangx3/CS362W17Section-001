@@ -181,7 +181,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 			System.out.println("+1 Card. +2 Actions.");
 			System.out.println("+4 coins or gains Estate.");
 			if(getCard(player.hand, CardName.Estate) != null) {
-				player.discard(getCard(player.hand, CardName.Estate));
 				player.coins = player.coins + 4;
 			} else player.gain(getCard(state.cards, CardName.Estate));
 			return;
@@ -252,11 +251,12 @@ public final class Card implements Comparable<Card>, Cloneable{
 			System.out.println("+1 Card, +1 Action, +1 Victory Point");
 			player.drawCard();
 			player.numActions++;
-			player.discard(getCard(player.hand, CardName.Great_hall) );
 			return;
 			case Laboratory:
 				//+2 Cards; +1 Action
+
 				player.drawCard();
+
 				player.drawCard();
 				player.numActions++;
 				return;

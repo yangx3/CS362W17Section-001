@@ -96,6 +96,7 @@ public class Player implements Cloneable{
 		         System.out.println("Player.actionPhase Card:" + c.toString());
 
 			      playedCards.add(c);
+			      hand.remove(c);
 			      numActions -= 1;
 
 			      c.play(this, gameState);
