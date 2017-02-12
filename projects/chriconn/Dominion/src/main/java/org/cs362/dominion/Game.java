@@ -1,78 +1,7 @@
 package org.cs362.dominion;
 import java.io.*;
 import java.util.*;
-/*
-Class Game
-    Variables:
-        Private:
 
-        Public:
-            ArrayList   <Deck>bank;
-            int         numPlayers;
-            ArrayList   <Player>players;
-
-    Functions:
-        Private:
-
-        Public:
-            Game()
-            Game()
-            Game(String ... names)
-            printBank       ()
-            playerTurn      (int playerNumber):
-
-
-        Game()
-            Game(String ... names)
-            void        printBank();
-            void        playerTurn(int playerNumber);
-
-
-        Game()
-            Description:
-            Input:
-            Output:
-            Potential Errors:
-                -
-
-        Game(String ... names):
-            Description:
-            Input:
-            Output:
-            Potential Errors:
-                -
-
-        printBank:
-            Description:
-            Input:
-            Output:
-            Potential Errors:
-                -
-
-        playerTurn:
-            Description:
-            Input:
-            Output:
-            Potential Errors:
-                -
-
-
-        Number of cards:
-        Gold:   30
-        Silver: 40
-        Copper: 60
-
-        Actions: 10
-
-        Estate:     24
-        Dutchy:     12
-        Province:   12
-
-        Curse:
-        2 players: 10
-        3 players: 20
-        4 players: 30
-*/
 
 public class Game {
     public static void main(String[] args) {

@@ -1,50 +1,5 @@
 package org.cs362.dominion;
 import java.util.*;
-/*
-    What I thought was required cards
-    Money   - Gold, Silver, Copper
-    Victory - Province, Dutchy, Estate
-    Action  - Village, Smithy, Adventurer, Curse
-
-    Required Cards:
-    Adventurer
-    Ambassador
-    Baron
-    Council room
-    Cutpurse
-    Embargo
-    Feast
-    Gardens
-    Great hall
-    Mine
-
-    Custom cards
-    Witch, Cellar, Market
-
-    Reqired custom cards:
-    Village, Smithy, Salvager
-
-
-    Class Card
-        Variables:
-            Private:
-            String            name;
-            int               value;
-            int               cost;
-            int               victoryPoints;
-            String            description;
-            ArrayList<String> type;
-            int               cards;
-            int               actions;
-            int               buys;
-            int               coins;
-
-
-        Functions:
-        Private:
-
-        Public:
-*/
 
 
 public class Card {
@@ -250,7 +205,8 @@ public class Card {
             cost           = 3;
             cards          = 1;
             actions        = 1;
-            description    = "Lets the player draw an extra card and have an extra action";
+            victoryPoints  = 1;
+            description    = "Lets the player draw an extra card and have an extra action. +1 victory point";
             type.add("action");
             type.add("victory");
             type.add("special action");
@@ -327,16 +283,6 @@ public class Card {
 
     //printing fuction for testing
     public void printCard() {
-        System.out.println("Card Info:" +
-        "\nName: " + name +
-        "\nValue: " + value +
-        "\nCost: " + cost +
-        "\nVictory Points: " + victoryPoints +
-        "\nDescription: " + description +
-        "\nExtra Cards to Draw: " + cards +
-        "\nExtra Actions: " + actions +
-        "\nExtra buys: " + buys +
-        "\nExtra Coins: " + coins +
-        "\n");
+        System.out.println("Card Info:" + "\nName: " + name + "\nValue: " + value + "\nCost: " + cost + "\nVictory Points: " + victoryPoints + "\nDescription: " + description + "\nExtra Cards to Draw: " + cards + "\nExtra Actions: " + actions + "\nExtra buys: " + buys + "\nExtra Coins: " + coins + "\n");
     }
 }
