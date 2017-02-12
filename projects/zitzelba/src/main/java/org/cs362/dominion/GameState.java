@@ -68,8 +68,8 @@ public class GameState {
 				   								// we should change 3 to the  exact of the number of 
 				   								//kingdom cards. look at the requirements of the assignment-1
 		      while (selectedKindom < Kingdom_Cards_Selected) {
-			         //int random = (int)  Randomness.random.nextInt(cards.size());//
-		    	  int random = rand.nextInt(cards.size());
+			         int random = (int)  Randomness.random.nextInt(cards.size());//
+		    	  //int random = rand.nextInt(cards.size()); off for testing
 			         Card tmp = cards.get(random);
 			         if(tmp.getType()!=Card.Type.ACTION) continue;
 			         if(gameBoard.containsKey(tmp)) continue;
@@ -138,7 +138,7 @@ public class GameState {
 		   			 for(Card c: player.hand){
 		        	 		System.out.println(c.toString());
 		        	 	}
-		   			 System.out.println("played this turn:");
+//		   			 System.out.println("played this turn:" + " turn " + turn);
 		   			for(Card c: player.playedCards){
 	        	 		System.out.println(c.toString());
 	        	 	}
@@ -147,8 +147,8 @@ public class GameState {
 		        	  //player ends turn
 		        	    player.endTurn();
 		         }
-		         if(turn==3)
-		        	 break;
+//		         if(turn==3)
+//		        	 break;
 		      }
 		      return this.getWinners();
 		   }
@@ -159,7 +159,7 @@ public class GameState {
 		 //if three supply pile are at 0, the game ends
 		      int emptySupplyPile = 0;
 		      for (int i : gameBoard.values()){
-		         if (i == 0)
+		         if (i <= 0)
 		        	 emptySupplyPile++;
 		         if ( emptySupplyPile >= 3)
 		         {

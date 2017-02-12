@@ -3,7 +3,7 @@ import java.util.*;
 public class Player implements Cloneable{
 	ArrayList<Card> hand;// int hand[MAX_PLAYERS][MAX_HAND];
 	LinkedList<Card> deck;// int deck[MAX_PLAYERS][MAX_DECK];
-	private List<Card> discard; // int discard[MAX_PLAYERS][MAX_DECK];
+	List<Card> discard; // int discard[MAX_PLAYERS][MAX_DECK];
 	ArrayList<Card> playedCards;
 	private Random gen;
 

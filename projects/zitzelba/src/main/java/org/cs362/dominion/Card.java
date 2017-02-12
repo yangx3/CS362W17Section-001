@@ -130,7 +130,7 @@ public final class Card implements Comparable<Card>{
 	    		  Card Top = player.drawCard();
 	    		  System.out.println("Revealed: " + Top.toString());
 	    		  if(Top.getType() == Type.TREASURE){
-	    			  player.hand.add(Top);
+//	    			  player.hand.add(Top);
 	    			  found++;
 	    		  }
 	    		  
@@ -174,7 +174,7 @@ public final class Card implements Comparable<Card>{
 				player.discard(c);
 				player.coins+= 4;
 			}
-				
+				player.numBuys++;
 			return;
 			
 		case Cutpurse:
@@ -182,7 +182,7 @@ public final class Card implements Comparable<Card>{
 			
 			player.coins+=2;
 			for(Player p: state.players){
-				List<Card> copperCards = filterName(player.hand, CardName.Cooper);
+				List<Card> copperCards = filterName(p.hand, CardName.Cooper);
 				if(copperCards.size() > 0 && p.player_username != player.player_username){
 					p.discard(copperCards.get(0));
 				}
@@ -209,7 +209,7 @@ public final class Card implements Comparable<Card>{
 			return;
 			
 		case Feast:
-			System.out.println("TODO Feast Code******************************************");
+			//System.out.println("TODO Feast Code******************************************");
 			Map<Card, Integer> treeMap = new TreeMap<Card, Integer>(state.gameBoard);
 			List<Card> buyableCards = filterObtainable(treeMap.keySet(), state, 5);
 			player.gainFromBoard(buyableCards.get(0));
@@ -259,22 +259,30 @@ public final class Card implements Comparable<Card>{
 			return;
 			
 		case Mine:
-			System.out.println("TODO Mine Code******************************************");
+			//System.out.println("TODO Mine Code******************************************");
 			
 			List<Card> treasureCards = Card.filter(player.hand, Type.TREASURE);
 			
-			Card c1 = treasureCards.get(0);
-			int coinage = c1.cost;
-			treasureCards = filter(state.cards, Type.TREASURE);
-			List<Card> SilverCards = Card.filterName(treasureCards, CardName.Silver);
-			List<Card> GoldCards = Card.filterName(treasureCards, CardName.Gold);
-			if(coinage == 0){
-				player.hand.remove(c1);
-				player.gainFromBoard(SilverCards.get(0));
-			}
-			else{
-				player.hand.remove(c1);
-				player.gainFromBoard(GoldCards.get(0));
+			if(treasureCards.size() > 0){
+				Card c1 = treasureCards.get(0);
+				int coinage = c1.cost;
+				treasureCards = filter(state.cards, Type.TREASURE);
+				List<Card> SilverCards = Card.filterName(treasureCards, CardName.Silver);
+				List<Card> GoldCards = Card.filterName(treasureCards, CardName.Gold);
+				if(coinage == 0){
+					player.hand.remove(c1);
+					player.gainFromBoard(SilverCards.get(0));
+					Card c2 = Card.getCard(player.discard,Card.CardName.Silver);
+					player.hand.add(c2);
+					player.discard.remove(c2);
+				}
+				else{
+					player.hand.remove(c1);
+					player.gainFromBoard(GoldCards.get(0));
+					Card c2 = Card.getCard(player.discard,Card.CardName.Gold);
+					player.hand.add(c2);
+					player.discard.remove(c2);
+				}
 			}
 			return;
 			

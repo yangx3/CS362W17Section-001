@@ -112,7 +112,13 @@ public final class Card implements Comparable<Card>, Cloneable{
 		    case Adventurer: //DONE
 	    	    System.out.println("+2 TREASURE Cards.");
 	    	    int cardCount = 0;
-
+	    	    //reshuffle discard into deck
+                while (player.discard.size() > 0) {
+                    int ndx = gen.nextInt(player.discard.size());
+                    // Move discard to deck
+                    player.deck.add(player.discard.remove(ndx));
+                }
+                //get two treasure cards from deck
                 Iterator<Card> it = player.deck.iterator();
                 while(it.hasNext()){
                     Card c = it.next();
@@ -122,7 +128,10 @@ public final class Card implements Comparable<Card>, Cloneable{
                         player.hand.add(c);
                         it.remove();
                         if(cardCount == 2) break;
-                    } else player.discard(c);
+                    } else {
+                        player.discard(c);
+                        it.remove();
+                    }
                 }
 			return;
 
@@ -224,10 +233,10 @@ public final class Card implements Comparable<Card>, Cloneable{
                 return;
 
             case Gardens: //DONE - within player.scoreFor()
-                System.out.println("Worth 1 VICTORY for every 10 cards.");
+                System.out.println("Doesn't Run! Worth 1 VICTORY for every 10 cards.");
                 return;
 
-            case  Great_Hall: //DONE
+            case Great_Hall: //DONE
                 System.out.println("+1 Card. +1 Action. Worth 1 VICTORY point.");
                 player.drawCard();
                 player.numActions++;
