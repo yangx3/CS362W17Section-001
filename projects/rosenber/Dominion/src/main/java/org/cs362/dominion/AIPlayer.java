@@ -33,9 +33,9 @@ public class AIPlayer extends Player{
 		boolean repeat;
 		int choice = -1;
 		Card c = null;
-		if(rand.nextBoolean()) //choosing to skip
-			return null;
 		do{
+			if(rand.nextBoolean()) //choosing to skip
+				return null;
 			repeat = false;
 			choice = rand.nextInt(hand.size());
 			c = hand.getCard(choice);

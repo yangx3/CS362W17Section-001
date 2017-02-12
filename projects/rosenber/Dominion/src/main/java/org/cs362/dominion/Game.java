@@ -78,9 +78,8 @@ public class Game {
 		do{
 			Card choice = currentPlayer.playCard();
 			if(choice != null){ //didn't chose to skip
-			
-			played.add(0, choice);
-			played.get(0).Action(players, currentPlayer, board);
+				played.add(0, choice);
+				played.get(0).Action(players, currentPlayer, board);
 			}
 			currentPlayer.addActions(-1);
 		}while(currentPlayer.getActions() > 0);
