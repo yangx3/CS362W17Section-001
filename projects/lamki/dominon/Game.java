@@ -46,16 +46,6 @@ public class Game
 		}
 	}
 
-	public void print_bcc()
-	{
-		System.out.print("\t\t"+bcc.length + ": ");
-		for (int i = 0; i < bcc.length; i++)
-		{
-			System.out.print("'"+bcc[i]+ "' ");
-		}
-		System.out.println("\n");
-	}
-
 	public int randInt(Random rnd, int max)
 	{
 		int random = rnd.nextInt(max + 1);
@@ -146,8 +136,11 @@ public class Game
 
 	public boolean player_play(int t, int hand, Random rand, Game g)
 	{
-		player[t].play_action(hand, rand, player[t], g);
-		return true;
+		if(player[t].play_action(hand, rand, player[t], g))
+                {
+                    return true;
+                }
+            return false;
 	}
 
 	public boolean player_buy(int t, int card)

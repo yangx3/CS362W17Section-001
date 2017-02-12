@@ -80,7 +80,7 @@ public class Player
 		hand = remove(hand, n);
 	}
 
-	public void putback()
+	public void putback() 
 	{
 		int last = hand.length-1;
 		for (int i = last; i != -1; i--)
@@ -115,7 +115,7 @@ public class Player
 		return 0;
 	}
 
-	public void play_action(int i, Random rand, Player p, Game g)
+	public boolean play_action(int i, Random rand, Player p, Game g)
 	{
 		if ("action".equals(hand[i].type))
 		{
@@ -127,21 +127,23 @@ public class Player
 
 			ac_hand = ac_hand - 1;	
 			temp.play(temp.index, rand, i, p, g);
+                        return true;
 		}
+            return false;
 	}
 
 	public void to_limbo(int i)
 	{
-			limbo = append(limbo, hand[i]); 
-			hand = remove(hand, i);
+            limbo = append(limbo, hand[i]); 
+            hand = remove(hand, i);
 	}
 
 	public void to_deck(int i)
 	{
-			deck = append(deck, hand[i]); 
-			hand = remove(hand, i);
+            deck = append(deck, hand[i]); 
+            hand = remove(hand, i);
 	}
-
+/*
 	public void debug_print()
 	{
 		System.out.println("\nName: " + name + "\tVP: " + vp + "\tAC: "+ac_hand+ "\tPlayed Value: "+ played_value+"\tBuy Turns: " + buy_turns + "\tPlay Turns: " + action_turns);
@@ -157,4 +159,5 @@ public class Player
 		System.out.print("\n");
 		
 	}
+*/
 }

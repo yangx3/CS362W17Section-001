@@ -77,18 +77,6 @@ public class GameTest {
     }
 
     /**
-     * Test of print_bcc method, of class Game.
-     */
-    @Test
-    public void testPrint_bcc() {
-        System.out.println("print_bcc");
-        Game instance = new Game();
-        instance.print_bcc();
-        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of set_turn method, of class Game.
      */
     @Test
@@ -102,19 +90,6 @@ public class GameTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
       //  fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of get_winner method, of class Game.
-     */
-    @Test
-    public void testGet_winner() {
-        System.out.println("get_winner");
-        Game instance = new Game();
-        instance.initilize_game(2, 10);
-        instance.get_winner();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**

@@ -40,11 +40,7 @@ public class DominionTest {
     /**
      * Test of main method, of class Dominion.
      */
-    @Test
-    public void testMain1() {
-        System.out.println("main");
-    }
-    
+
     @Test
     public void test_0p()
     {
@@ -93,8 +89,4 @@ public class DominionTest {
         Dominion.main(args);
     }
     
-    public void main()
-    {
-        no_args();
-    }
 }
