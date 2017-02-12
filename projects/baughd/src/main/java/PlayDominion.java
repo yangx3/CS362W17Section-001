@@ -40,7 +40,7 @@ public class PlayDominion {
            }
 
 //PRINT PLAYER'S CARDS AND GAMEBOARD
-           //player.printStateGame();
+           player.printStateGame();
 		      
 		      
 			System.exit(0);  
