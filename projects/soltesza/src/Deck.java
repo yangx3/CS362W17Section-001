@@ -27,6 +27,8 @@ public class Deck {
 		Shuffle();
 	}
 	
+	public int GetCardCount() { return cardCount; }
+	
 	public int GetScore() {
 		return score + ((int)(cardCount/10))*gardenCount;
 	}
@@ -69,21 +71,28 @@ public class Deck {
 		return total;
 	}
 	
-	public Vector<Card> DrawCards(int numCards) { //will probably return a vector containing the hand
-		//draw numCards cards from drawPile into hand, return cards drawn to player
-		if(drawPile.size()<numCards) {
-			Shuffle();
-		}
-		else {
-			for(int i=0; i<numCards; i++) {
-				hand.addElement(drawPile.pop());
-			}
+	public Vector<Card> DrawCards(int numCards) { //draw numCards cards from drawPile into hand, return cards drawn
+		Vector<Card> drawnCards = new Vector<Card>();
+		
+		if(numCards > cardCount-hand.size()) { 
+			numCards = cardCount-hand.size();
 		}
 		
-		return hand;
+		
+		for(int i=0; i<numCards; i++) {
+			if(drawPile.isEmpty()) {
+				Shuffle();
+			}
+			Card newCard = drawPile.pop();
+			hand.addElement(newCard);
+			drawnCards.add(newCard);
+		}
+		
+		
+		return drawnCards;
 	}
 	
-	public void TrashCard(Card card) {
+	public void TrashCard(Card card) { //make this work
 		cardCount--;
 		
 		if(card.GetName() == "Gardens") {
@@ -91,6 +100,24 @@ public class Deck {
 		}
 		else if(card instanceof VictoryCard) {
 			score -= ((VictoryCard)card).GetVPs();
+		}
+		
+		card.SetTrashed(true);
+		
+		for(int i=0; i<drawPile.size(); i++)  {
+			if(drawPile.elementAt(i).GetTrashed()) {
+				drawPile.remove(i);
+			}
+		}
+		for(int i=0; i<hand.size(); i++)  {
+			if(hand.elementAt(i).GetTrashed()) {
+				hand.remove(i);
+			}
+		}
+		for(int i=0; i<discardPile.size(); i++)  {
+			if(discardPile.elementAt(i).GetTrashed()) {
+				discardPile.remove(i);
+			}
 		}
 	}
 	

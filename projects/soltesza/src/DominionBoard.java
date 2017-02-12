@@ -22,7 +22,7 @@ public class DominionBoard {
 		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.FEAST), 10));
 		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.GREAT_HALL), 10));
 		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.MINE), 10));
-		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.SEA_HAG), 10));
+		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.REMODEL), 10));
 		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.SMITHY), 10));
 		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.VILLAGE), 10));
 		buyableCards.addElement(new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.GARDENS), 10));
@@ -60,14 +60,24 @@ public class DominionBoard {
 		return buyable;
 	}
 	
-	public Card BuyCard(int idx) {
-		Card card = buyableCards.elementAt(idx).DrawCard();
+	public Vector<Card> BuyCard(int idx) {
+		KingdomSlot slot = buyableCards.elementAt(idx);
 		
-		if(buyableCards.elementAt(idx).IsEmpty()) {
+		Vector<Card> cards = new Vector<Card>();
+		cards.add(slot.DrawCard());
+		
+		for(int i=0; i<slot.GetEmbargoes(); i++) {
+			Card curse = BuyCurse();
+			if(curse != null) {
+				cards.addElement(curse);
+			}
+		}
+		
+		if(slot.IsEmpty()) {
 			expendedCards.addElement(buyableCards.remove(idx));
 		}
 		
-		return card;
+		return cards;
 	}
 	
 	public Card BuyCurse() {
@@ -81,6 +91,21 @@ public class DominionBoard {
 				buyableCards.remove(curseRef);
 			}
 			return card;
+		}
+	}
+	
+	public void EmbargoPile(int idx) {
+		buyableCards.elementAt(idx).AddEmbargo();
+	}
+	
+	public void PrintBoard() {
+		System.out.println("Buyable Cards: ");
+		for(int i=0; i<buyableCards.size(); i++) {
+			System.out.println(buyableCards.elementAt(i).GetCard().GetName());
+		}
+		System.out.println(System.lineSeparator() + "Expended Cards:");
+		for(int i=0; i<expendedCards.size(); i++) {
+			System.out.println(expendedCards.elementAt(i).GetCard().GetName());
 		}
 	}
 	

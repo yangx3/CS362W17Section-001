@@ -56,7 +56,6 @@ public class VictoryCard extends Card implements Cloneable {
 			case PROVINCE:
 				return 8;
 			default:
-				//GARDEN VPS HERE
 				return 1;
 		}
 	}

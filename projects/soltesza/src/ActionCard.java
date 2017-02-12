@@ -11,7 +11,7 @@ public class ActionCard extends Card {
 		FEAST,
 		GREAT_HALL,
 		MINE,
-		SEA_HAG,
+		REMODEL,
 		SMITHY,
 		VILLAGE
 	}
@@ -62,8 +62,8 @@ public class ActionCard extends Card {
 				super.name = "Smithy";
 				super.cost = 4;
 				break;
-			case SEA_HAG:
-				super.name = "Sea Hag";
+			case REMODEL:
+				super.name = "Remodel";
 				super.cost = 4;
 				break;
 			default:
@@ -82,13 +82,29 @@ public class ActionCard extends Card {
 	public void PlayAction(GameState state) {
 		switch(type) {
 			case ADVENTURER:
+				int cardCount = state.currentPlayer.deck.GetCardCount();
+				int numTreasures = 0;
+				for(int i=0; i<cardCount; i++) {
+					Vector<Card> newCard = state.currentPlayer.deck.DrawCards(1);
+					if(!(newCard.firstElement() instanceof TreasureCard)) {
+						state.currentPlayer.deck.DiscardFromHand(newCard.firstElement());
+					}
+					else {
+						numTreasures++;
+					}
+					if(numTreasures <= 2) { //Error 1: should be numTreasures >= 2
+						break;
+					}
+				}
 				
 				break;
 			case AMBASSADOR:
 			
 				break;
 			case BARON:
-			
+				state.currentPlayer.AddBuys(1);
+				
+				
 				break;
 			case CUTPURSE:
 				state.currentPlayer.AddCoins(2);
@@ -101,8 +117,10 @@ public class ActionCard extends Card {
 					}
 				}
 				break;
-			case EMBARGO:
-				
+			case EMBARGO:                            
+				state.currentPlayer.AddCoins(2);
+				state.currentPlayer.EmbargoPile();
+				state.currentPlayer.deck.TrashCard(this);
 				break;
 			case COUNCIL_ROOM:
 				state.DrawCards(state.currentPlayer, 4);
@@ -110,20 +128,28 @@ public class ActionCard extends Card {
 				state.DrawCards(state.otherPlayer, 1);
 				break;
 			case FEAST:
-				
+				state.currentPlayer.Buy(1, 5);
+				state.currentPlayer.deck.TrashCard(this);
 				break;
 			case GREAT_HALL:
 				state.DrawCards(state.currentPlayer, 1);
 				state.currentPlayer.AddActions(1);
 				break;
 			case MINE:
-				
+				Card card = state.currentPlayer.TrashFromHand(); 
+				if(card != null) {
+					state.currentPlayer.Buy(1, card.GetValue()+3);
+				}
 				break;
 			case SMITHY:
 				state.DrawCards(state.currentPlayer, 3);
 				break;
-			case SEA_HAG:
-				
+			case REMODEL:
+				Card card1 = state.currentPlayer.TrashFromHand(); 
+				System.out.println(card1);
+				if(card1 != null) {
+					state.currentPlayer.Buy(1, card1.GetValue()+2);
+				}
 				break;
 			default:
 				state.DrawCards(state.currentPlayer, 1);

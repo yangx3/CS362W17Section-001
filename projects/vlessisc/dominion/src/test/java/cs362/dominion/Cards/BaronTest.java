@@ -12,6 +12,7 @@ import cs362.dominion.Exceptions.InvalidSelectionException;
 import cs362.dominion.Resources.Game;
 import cs362.dominion.Resources.Option;
 import cs362.dominion.Resources.Player;
+import cs362.dominion.Helpers.*;
 
 public class BaronTest {
 	
@@ -46,7 +47,7 @@ public class BaronTest {
 	public void testBuys() {
 		Game game = newGame();
 		int expectedBuys=1;
-		Helpers.Cards.testBuys(game, cardType, expectedBuys);
+		Cards.testBuys(game, cardType, expectedBuys);
 	}
 	
 	/**
@@ -78,7 +79,7 @@ public class BaronTest {
 	
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(newGame(), Baron.class);
+		Cards.testDescription(newGame(), Baron.class);
 	}
 
 }

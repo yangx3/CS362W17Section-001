@@ -10,6 +10,7 @@ import org.junit.Test;
 import cs362.dominion.Exceptions.ConfiguationException;
 import cs362.dominion.Exceptions.InvalidSelectionException;
 import cs362.dominion.Resources.Game;
+import cs362.dominion.Helpers.*;
 
 public class CutpurseTest {
 
@@ -58,7 +59,7 @@ public class CutpurseTest {
 	
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(game, Cutpurse.class);
+		Cards.testDescription(game, Cutpurse.class);
 	}
 
 }

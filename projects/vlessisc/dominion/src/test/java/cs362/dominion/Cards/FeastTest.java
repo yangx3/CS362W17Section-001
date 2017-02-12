@@ -13,6 +13,7 @@ import cs362.dominion.Exceptions.InvalidOptionException;
 import cs362.dominion.Exceptions.InvalidSelectionException;
 import cs362.dominion.Resources.Game;
 import cs362.dominion.Resources.Option;
+import cs362.dominion.Helpers.*;
 
 public class FeastTest {
 
@@ -74,7 +75,7 @@ public class FeastTest {
 	
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(game, Feast.class);
+		Cards.testDescription(game, Feast.class);
 	}
 	
 	

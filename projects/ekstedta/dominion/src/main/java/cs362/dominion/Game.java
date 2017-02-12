@@ -106,6 +106,11 @@ public class Game {
             this.shuffle(i);
         }
 
+        // deal starting hands
+        for (int i = 0; i < numPlayers; i++) {
+            this.draw(i, 5);
+        }
+
         this.startTurn();
     }
 
@@ -196,9 +201,16 @@ public class Game {
         this.doEffect(card);
     }
 
-    private void take(int player, Card card) {
+    // Gain a card to the player's hand
+    private void takeHand(int player, Card card) {
         decrement(this.supply, card);
         this.hand.get(player).add(card);
+    }
+
+    // Gain a card to the player's discard pile
+    private void takeDiscard(int player, Card card) {
+        decrement(this.supply, card);
+        this.discard.get(player).add(card);
     }
 
     private int doEffect(Card playedCard, Object... choices) {
@@ -283,10 +295,10 @@ public class Game {
                 throw new GameError("feast: choice 0 must be a Card");
             }
             Card card = (Card)choices[0];
-            if (card.cost() >= 5) {
+            if (card.cost() > 5) {
                 throw new GameError("feast: gained card must cost 5 or less");
             }
-            this.take(this.currentPlayer, card);
+            this.takeDiscard(this.currentPlayer, card);
             return TRASH;
         } else if (playedCard == Card.GreatHall) {
             // +1 Card; +1 Action. Worth 1 Victory
@@ -345,7 +357,11 @@ public class Game {
     }
 
     private static void increment(Map<Card,Integer> map, Card key) {
-        map.put(key, map.get(key) + 1);
+        int val = 0;
+        if (map.containsKey(key)) {
+            val = map.get(key);
+        }
+        map.put(key, val+1);
     }
 
     private static void decrement(Map<Card,Integer> map, Card key) {
@@ -372,6 +388,16 @@ public class Game {
         decrement(this.supply, card);
         this.coins -= card.cost();
         this.buys -= 1;
+
+        // if card is embargoed, give the player a curse
+        Integer tokens = this.embargoTokens.get(card);
+        if (tokens != null) {
+            for (int i = 0; i < tokens; i++) {
+                if (this.supplyCount(Card.Curse) > 0) {
+                    this.takeDiscard(this.currentPlayer, Card.Curse);
+                }
+            }
+        }
     }
 
     // How many cards current player has in hand
@@ -379,24 +405,54 @@ public class Game {
         return this.hand.get(this.currentPlayer).size();
     }
 
-    // enum value of indexed card in player's hand
-    public Card handCard(int handNum) {
+    // Get the card at the given position in the current player's hand
+    public Card handCard(int pos) {
         List<Card> hand = this.hand.get(this.currentPlayer);
-        if (0 <= handNum && handNum < hand.size()) {
-            return hand.get(handNum);
+        if (0 <= pos && pos < hand.size()) {
+            return hand.get(pos);
         } else {
             return null;
         }
     }
 
     // How many of given card are left in supply
-    public int supply(Card card) { return supply.get(card); }
+    public int supplyCount(Card card) {
+        if (this.supply.containsKey(card)) {
+            return this.supply.get(card);
+        }
+        return 0;
+    }
 
-    // Count how many cards of a certain type a player has, in total
-    public int fullDeckCount(int player, Card card) {
+    // Count how many cards of a certain type a player has in their hand
+    public int handCount(int player, Card card) {
         List<Card> hand = this.hand.get(player);
         int count = 0;
         for (Card x : hand) {
+            if (x == card) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // Count how many cards of a certain type a player has in their hand,
+    // deck, and discard pile.
+    public int fullDeckCount(int player, Card card) {
+        List<Card> hand = this.hand.get(player);
+        List<Card> deck = this.deck.get(player);
+        List<Card> discard = this.discard.get(player);
+        int count = 0;
+        for (Card x : hand) {
+            if (x == card) {
+                count++;
+            }
+        }
+        for (Card x : deck) {
+            if (x == card) {
+                count++;
+            }
+        }
+        for (Card x : discard) {
             if (x == card) {
                 count++;
             }
@@ -516,22 +572,27 @@ public class Game {
 
     /* convenience functions */    
     static ArrayList<Card> standardCards() {
-        ArrayList<Card> k = new ArrayList<>();
-        k.add(Card.Adventurer);
-        k.add(Card.Baron);
-        k.add(Card.CouncilRoom);
-        k.add(Card.Feast);
-        k.add(Card.Gardens);
-        k.add(Card.GreatHall);
-        k.add(Card.Market);
-        k.add(Card.Mine);
-        k.add(Card.Smithy);
-        k.add(Card.Village);
-        return k;
+        return Card.list(
+            Card.Adventurer,
+            Card.Baron,
+            Card.CouncilRoom,
+            Card.Feast,
+            Card.Gardens,
+            Card.GreatHall,
+            Card.Market,
+            Card.Mine,
+            Card.Smithy,
+            Card.Village
+        );
     }
 
     /* methods to support testing */
-    void setHandCard(int player, int i, Card card) {
+    void setHandCardForTesting(int player, int i, Card card) {
         this.hand.get(player).set(i, card);
+    }
+    // Add a card to the player's hand, and return the index of the card
+    int takeForTesting(int player, Card card) {
+        this.takeHand(player, card);
+        return this.hand.get(player).lastIndexOf(card);
     }
 }

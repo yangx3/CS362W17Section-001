@@ -2,6 +2,7 @@
 public abstract class Card implements Cloneable {
 	protected String name;
 	protected int cost;
+	private boolean trashed = false;
 	
 	@Override
 	public Card clone() {
@@ -13,7 +14,11 @@ public abstract class Card implements Cloneable {
 		}
 	}
 	
-	public String GetName() {return name;}
+	public String GetName() { return name; }
 	
-	public int GetValue() {return cost;}
+	public int GetValue() { return cost; }
+	
+	public boolean GetTrashed() { return trashed; }
+	
+	public void SetTrashed(boolean val) { trashed = val; }
 }

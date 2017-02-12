@@ -13,6 +13,7 @@ import cs362.dominion.Exceptions.InvalidSelectionException;
 import cs362.dominion.Resources.Game;
 import cs362.dominion.Resources.Option;
 import cs362.dominion.Resources.Player;
+import cs362.dominion.Helpers.*;
 
 public class AmbassadorTest {
 
@@ -90,7 +91,7 @@ public class AmbassadorTest {
 	
 	@Test
 	public void testDescription() {
-		Helpers.Cards.testDescription(game, cardType);
+		Cards.testDescription(game, cardType);
 	}
 	
 }

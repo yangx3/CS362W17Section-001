@@ -5,7 +5,7 @@ public class PlayDom {
 		GameState state = new GameState(board);
 
 		while(true) {
-			state.TakeTurn(board);
+			state.TakeTurn();
 			if(board.GameOver()) {
 				break;
 			}
