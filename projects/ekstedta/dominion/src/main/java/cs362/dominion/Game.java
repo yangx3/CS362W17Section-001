@@ -93,7 +93,7 @@ public class Game {
         for (int i = 0; i < numPlayers; i++) {
             for (int j = 0; j < 7; j++) {
                 this.deck.get(i).add(Card.Copper);
-                this.supply.put(Card.Copper, this.supply.get(Card.Copper)-1);
+                decrement(this.supply, Card.Copper);
             }
             for (int j = 0; j < 3; j++) {
                 this.deck.get(i).add(Card.Estate);
@@ -223,20 +223,22 @@ public class Game {
         if (playedCard == Card.Adventurer) {
             // Reveal cards from your deck until you reveal 2 Treasure cards.
             // Put those Treasure cards into your hand and discard the other revealed cards
-            // XXX revealed cards should not be discarded until after the action is complete
+            // (Revealed cards are not be discarded until the action is complete.)
+            List<Card> revealed = new ArrayList<Card>();
             int treasureCards = 0;
             while (treasureCards < 2 && deck.size() >= 1) {
                 Card card = deck.get(deck.size()-1);
+                deck.remove(deck.size()-1);
+                System.out.printf("adventurer: drew %s\n", card);
                 if (card.isTreasure()) {
-                    deck.remove(deck.size()-1);
                     hand.add(card);
-                    this.coins += card.coins();
                     treasureCards++;
                 } else {
-                    deck.remove(deck.size()-1);
-                    discard.add(card);
+                    revealed.add(card);
                 }
             }
+            System.out.printf("adventurer: done\n");
+            discard.addAll(revealed);
         } else if (playedCard == Card.Ambassador) {
             // Reveal a card from your hand.
             // Return up to 2 copies of it from your hand to the Supply.
@@ -410,9 +412,8 @@ public class Game {
         List<Card> hand = this.hand.get(this.currentPlayer);
         if (0 <= pos && pos < hand.size()) {
             return hand.get(pos);
-        } else {
-            return null;
         }
+        return null;
     }
 
     // How many of given card are left in supply
@@ -587,12 +588,31 @@ public class Game {
     }
 
     /* methods to support testing */
-    void setHandCardForTesting(int player, int i, Card card) {
-        this.hand.get(player).set(i, card);
-    }
     // Add a card to the player's hand, and return the index of the card
     int takeForTesting(int player, Card card) {
         this.takeHand(player, card);
         return this.hand.get(player).lastIndexOf(card);
+    }
+
+    void reshuffleForTesting(int player) {
+        this.deck.get(player).addAll(this.discard.get(player));
+        this.discard.get(player).clear();
+        this.shuffle(player);
+    }
+
+    void printHand(int player) {
+        System.out.printf("Player 0 hand:");
+        for (Card c : this.hand.get(player)) {
+            System.out.printf(" %s", c);
+        }
+        System.out.printf("\n");
+    }
+
+    void printDeck(int player) {
+        System.out.printf("Player 0 deck:");
+        for (Card c : this.deck.get(player)) {
+            System.out.printf(" %s", c);
+        }
+        System.out.printf("\n");
     }
 }

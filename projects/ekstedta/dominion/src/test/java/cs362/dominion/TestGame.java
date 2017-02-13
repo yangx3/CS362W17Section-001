@@ -80,6 +80,35 @@ public class TestGame {
     }
 
     @Test
+    public void testAdventurer() {
+        ArrayList<Card> k = Game.standardCards();
+        if (!k.contains(Card.Adventurer)) {
+            k.set(0, Card.Adventurer);
+        }
+        Game game = new Game(2, k, 3);
+
+        int pos = game.takeForTesting(0, Card.Adventurer);
+        game.printHand(0);
+        game.printDeck(0);
+        // we have 7 coppers and drew five cards,
+        // so there are at least 2 coppers in the deck
+        int copper = game.handCount(0, Card.Copper);
+        game.playAction(pos);
+        assertEquals(copper+2, game.handCount(0, Card.Copper));
+        game.printHand(0);
+        game.printDeck(0);
+
+        // do it a couple more times to get all the copper
+        pos = game.takeForTesting(0, Card.Adventurer);
+        game.playAction(pos);
+        pos = game.takeForTesting(0, Card.Adventurer);
+        game.playAction(pos);
+
+        copper = game.handCount(0, Card.Copper);
+        assertEquals(7, game.handCount(0, Card.Copper));
+    }
+
+    @Test
     public void testBaron() {
         Game game = newGame(Card.Baron);
 
@@ -156,6 +185,29 @@ public class TestGame {
         assertEquals(1, game.fullDeckCount(0, Card.Duchy));
         assertEquals(0, game.fullDeckCount(0, Card.Feast)); // trashed
         assertEquals(5, game.numHandCards()); // duchy in discard
+    }
+
+    @Test
+    public void testGardens() {
+        Game game = newGame(Card.Gardens);
+        int pos = game.takeForTesting(0, Card.Gardens);
+        // test Garden in hand
+        assertEquals(4, game.scoreFor(0));
+        // test Garden in discards
+        game.endTurn(); // p0 discards Garden, draws 5 cards
+        game.endTurn(); // p1
+        assertEquals(4, game.scoreFor(0));
+        // test Garden in deck
+        game.reshuffleForTesting(0);
+        assertEquals(4, game.scoreFor(0));
+
+        // Gardens are worth 1 point for every 10 cards in deck
+        for (int i = 0; i < 8; i++) {
+            game.takeForTesting(0, Card.Copper);
+        }
+        assertEquals(4, game.scoreFor(0)); // 19 cards
+        game.takeForTesting(0, Card.Copper);
+        assertEquals(5, game.scoreFor(0)); // 20 cards
     }
 
     @Test
