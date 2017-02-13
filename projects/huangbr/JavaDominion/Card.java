@@ -1,3 +1,5 @@
+import java.util.*;
+
 public abstract class Card
 {
 	protected enum cardType {Treasure, Victory, Action, Attack, Curse};
@@ -17,18 +19,16 @@ public abstract class Card
 		System.out.println(name);
 	}
 
-	public void discard(Dominion game, Player player)
+	public void discard(Dominion game, Player player, String name)
 	{
-		for(int i=0; i < game.players[player.playerID].hand.getSize(); i++)
+		for(int i=0; i < player.hand.getSize(); i++)
 		{
-			if(game.players[player.playerID].hand.cards.get(i).name == name)
+			if(player.hand.cards.get(i).name == name)
 			{
-				game.players[player.playerID].discardCard(i);
+				player.discardCard(player.hand, i);
 				break;
 			}
 		}
 	}
-
-
 }
 

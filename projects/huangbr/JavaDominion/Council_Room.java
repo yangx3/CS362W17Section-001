@@ -16,7 +16,7 @@ public class Council_Room extends Card
 		player.buy += buy;
 		for(int i=0; i < draw; i++)
 		{
-			player.drawCard();
+			player.hand.addCard(player.drawCard());
 		}
 		for(int j=0; j < game.players.length; j++)
 		{
@@ -29,6 +29,6 @@ public class Council_Room extends Card
 				game.players[j].drawCard();
 			}
 		}
-		discard(game, player);
+		discard(game, player, name);
 	}
 }

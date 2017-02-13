@@ -14,7 +14,7 @@ public class Copper extends Card
 	public void play(Dominion game, Player player)
 	{
 		player.money += value;
-		discard(game, player);
+		discard(game, player, name);
 	}	
 }
 

@@ -1,0 +1,1 @@
+THE COVERAGE REPORT IS FOUND IN index.html
