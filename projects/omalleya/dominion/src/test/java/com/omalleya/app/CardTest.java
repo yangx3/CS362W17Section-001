@@ -5,9 +5,12 @@ import static junit.framework.Assert.*;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import java.util.LinkedList;
 import java.util.List;
 
 import com.omalleya.app.Card.CardName;
+import com.omalleya.app.Card.Type;
 
 /**
  * Unit test for simple App.
@@ -34,9 +37,59 @@ public class CardTest
     }
 
     /**
-     * Tests smithy
+     * Tests get type
      */
-    public void testSmithy()
+    public void testGetType()
+    {
+        Card c = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);
+
+        assertTrue( c.getType() == Type.TREASURE );
+    }
+
+    /**
+     * Tests get card name
+     */
+    public void testGetCardName()
+    {
+        Card c = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);
+
+        assertTrue( c.getCardName() == CardName.Copper );
+    }
+
+    /**
+     * Tests get treasure value
+     */
+    public void testGetTreasureVal()
+    {
+        Card c = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);
+
+        assertTrue( c.getTreasureValue() == 1 );
+    }
+
+    /**
+     * Tests get score
+     */
+    public void testGetScore()
+    {
+        Card c = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);
+
+        assertTrue( c.getScore() == 0 );
+    }
+
+    /**
+     * Tests get cost
+     */
+    public void testGetCost()
+    {
+        Card c = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);
+
+        assertTrue( c.getScore() == 0 );
+    }
+
+    /**
+     * Tests get card
+     */
+    public void testGetCard()
     {
         List<Card> cards = Card.createCards();
         GameState gs = new GameState(cards);
@@ -47,14 +100,29 @@ public class CardTest
         gs.addPlayer(p2);
         gs.initializeGame();
 
-        //add smithy to hand and play it
-        p1.initializePlayerTurn();
-        p1.hand.add(Card.getCard(cards, CardName.Smithy));
-        p1.action();
+        Card check = null;
 
-        //testing to see what the players' hand looks like
-        //should be 8 because we start with 6, play smithy
-        //giving us 5, add 3 cards from smithy giving 8
-        assertTrue( p1.hand.size() == 8 && p1.playedCards.size() == 1 );
+        for(Card c : cards) {
+            if(c.getCardName() == CardName.Copper)
+                check = c;
+        };
+
+        assertTrue( check.equals(Card.getCard(cards, CardName.Copper)) );
+    }
+
+    /**
+     * Tests get card
+     */
+    public void testFilter()
+    {
+        List<Card> cards = Card.createCards();
+
+        List<Card> check = new LinkedList<Card>();
+        for(Card c : cards) {
+            if(c.getType() == Type.TREASURE)
+                check.add(c);
+        }
+
+        assertTrue( Card.filter(cards, Type.TREASURE).equals(check) );
     }
 }

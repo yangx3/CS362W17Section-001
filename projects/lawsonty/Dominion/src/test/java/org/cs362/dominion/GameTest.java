@@ -30,6 +30,10 @@ public class GameTest extends TestCase {
 		assertEquals(9, game.countVictory(p1));
 		p1.getDeck().add(Card.DUCHY);
 		assertEquals(12, game.countVictory(p1));
+		
+		assertEquals(false, game.ended());
+		game.victorySupply.get(2).getCards().clear();
+		assertEquals(true, game.ended());
 	}
 	
 }

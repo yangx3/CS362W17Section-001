@@ -68,20 +68,9 @@ public enum Card {
     			}
     		}
     		else {
-    		Scanner reader = new Scanner(System.in);
-    		foundCard:
-    		while(true){
-    			System.out.println("Enter a card costing up to 5 gold:");
-    			Card c = Card.valueOf(strToName(reader.next()));
-    			for (Deck d: game.supply){
-    				if (c.compareTo(d.peek()) == 0){
-    					game.getCurrentPlayer().discard.add(d.take());
-    					break foundCard;
-    				}
-    			}
+
+    	}
     		}
-    		reader.close();
-    	}}
     },
     GARDENS("Gardens", EnumSet.of(CardType.VICTORY), 4),
     MINE("Mine", EnumSet.of(CardType.ACTION), 5){
@@ -109,35 +98,8 @@ public enum Card {
     			}
     		}
     		else {
-    		Scanner reader = new Scanner(System.in);
-    		int value = 0;
-    		foundCard:
-    		while(true){
-    			System.out.println("Choose a treasure card from your hand:");
-    			Card c = Card.valueOf(strToName(reader.next()));
-    			for (Card d : game.getCurrentPlayer().hand) {
-    				if (c.compareTo(d) == 0 && c.getType().contains(CardType.TREASURE)){
-    					value = c.cost();
-    					game.getCurrentPlayer().hand.remove(c);
-    					break foundCard;
-    				}
-    			}		
-    		}
-    		foundCard:
-    		while(true){
-    			System.out.println("Choose a Treasure Card costing up to 3 more:");
-    			Card c = Card.valueOf(strToName(reader.next()));
-    			if (c.cost > (value + 3) || !c.getType().contains(CardType.TREASURE))
-    				continue;
-    			for (Deck d : game.supply){
-    				if (c.compareTo(d.peek()) == 0){
-    					game.getCurrentPlayer().hand.add(d.take());
-    					break foundCard;
-    				}
     			}
     		}
-    		reader.close();
-    	}}
     },
     REMODEL("Remodel", EnumSet.of(CardType.ACTION), 4){
     	public void play (Game game){
@@ -157,33 +119,9 @@ public enum Card {
         			}
     			}
     		} else {
-    		Scanner reader = new Scanner(System.in);
-    		foundCard:
-    		while(true){
-    			System.out.println("Choose a card from your hand:");
-    			Card c = Card.valueOf(strToName(reader.next()));
-    			for (Card d : game.getCurrentPlayer().hand) {
-    				if (c.compareTo(d) == 0){
-    					value = c.cost();
-    					game.getCurrentPlayer().hand.remove(c);
-    					break foundCard;
-    				}
-    			}		
-    		}
     		
-    		foundCard:
-    		while(true){
-    			System.out.println("Enter a card costing up to 2 more gold:");
-    			Card c = Card.valueOf(strToName(reader.next()));
-    			for (Deck d: game.supply){
-    				if (c.compareTo(d.peek()) == 0){
-    					game.getCurrentPlayer().discard.add(d.take());
-    					break foundCard;
-    				}
     			}
     		}
-    		reader.close();
-    	}}
     },
     SMITHY("Smithy", EnumSet.of(CardType.ACTION), 4, 0, 0, 3, 0, 0),
     VILLAGE("Village", EnumSet.of(CardType.ACTION), 3, 0, 0, 1, 0, 2),

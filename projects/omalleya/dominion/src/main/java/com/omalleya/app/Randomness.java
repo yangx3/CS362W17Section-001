@@ -33,21 +33,6 @@ public final class Randomness {
     totalCallsToRandom++;
     return random.nextInt(i);
   }
-  public static <T> T randomMember(List<T> list) {
-    if (list == null || list.isEmpty())
-      throw new IllegalArgumentException("Expected non-empty list");
-    return list.get(nextRandomInt(list.size()));
-  }
-
-	public  static void main(String args[]){
-		
-		Randomness.reset(10);	   
-
-		for(int i=0; i<10;i++){
-			System.out.println("value=: "+ Randomness.nextRandomInt(10));
-		}
-		System.exit(0);   
-	}
 
 
 }
