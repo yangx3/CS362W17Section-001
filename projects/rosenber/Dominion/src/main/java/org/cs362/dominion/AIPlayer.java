@@ -37,7 +37,7 @@ public class AIPlayer extends Player{
 		Card c = null;
 		do{
 			if(rand.nextBoolean()){ //choosing to skip
-				System.out.println(this.getName()+ "is choosing to skip playing a card");
+				System.out.println(this.getName()+ " is choosing to skip playing a card");
 				return null;
 			}
 			repeat = false;
@@ -57,7 +57,7 @@ public class AIPlayer extends Player{
 		int choice = -1;
 		do{
 			if(rand.nextBoolean()){ //chose not to buy
-				System.out.println(this.getName()+ "is choosing to skip buying a card");
+				System.out.println(this.getName()+ " is choosing to skip buying a card");
 				return;
 			}
 			repeat = false;
