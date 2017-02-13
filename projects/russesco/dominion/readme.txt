@@ -12,9 +12,13 @@ How to Run the code on Unix System:
 
 6. In order to run just the Dominion Game:
 
-7. From the Source Folder (Inside src/main/java/org/cs362/dominion where the java files are)
-8. javac *.java
-// Compile all java files
-9. java org.cs362.dominion.PlayDominion
-// Run PlayDominion Using the shared org package.
-10. Play Dominion Should now run through a short 3 turn game.
+7. From the Same Folder (Where readme.txt and pom.xml are)
+
+8. mvn compile
+// Compile through maven
+
+9. mvn package
+// Create a executable .jar file in Target Folder
+
+10. java -jar target.Dominion-1.0-SNAPSHOT.jar
+// Now we access the .jar file in the target folder (Dominion-1.0-SNAPSHOT.jar) was the name of the file for me
