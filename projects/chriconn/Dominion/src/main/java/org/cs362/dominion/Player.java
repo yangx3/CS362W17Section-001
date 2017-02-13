@@ -36,23 +36,26 @@ public class Player {
         return "You have:\n\t" + actions + " action(s)\n\t" + buys + " pruchase(s)\n\t" + value + " coin(s)";
     }
     public void buy(Deck type) {
-        discard.addCard(type.drawCard());
+        Card temp = type.drawCard();
+        if (temp != null)
+            discard.addCard(temp);
     }
     public Card draw() {
-        if (drawDeck.empty()) {
+        if (drawDeck.empty())
             recycle();
-        }
         Card temp = drawDeck.drawCard();
         hand.addBottomCard(temp);
         return temp;
     }
     public void discard() {
-        if (!hand.empty()) {
-            discard.addCard(hand.drawCard());
-        }
+        Card temp = hand.drawCard();
+        if (temp != null)
+            discard.addCard(temp);
     }
     public void discard(String cardName) {
-        discard.addCard(hand.drawCard(cardName));
+        Card temp = hand.drawCard(cardName);
+        if (temp != null)
+            discard.addCard(temp);
     }
     public void discardAll() {
         while (!hand.empty()) {
@@ -60,7 +63,12 @@ public class Player {
         }
     }
     public void discardAtIndex(int index) {
-        discard.addCard(hand.drawCardAtIndex(index));
+        if (index > hand.numCards()) {
+            Card temp = hand.drawCardAtIndex(index);
+            if (temp != null) {
+                discard.addCard(temp);
+            }
+        }
     }
     public void draw(int number) {
         for (int x = 0; x < number; x++) {
@@ -87,9 +95,8 @@ public class Player {
         return false;
     }
     public boolean hasMoves() {
-        if (actions > 0 || buys > 0) {
+        if (actions > 0 || buys > 0)
             return true;
-        }
         return false;
     }
     public void starterPoints() {

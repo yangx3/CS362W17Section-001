@@ -5,7 +5,6 @@ public class Deck {
     public ArrayList<Card> deck = new ArrayList<Card>();
     int tokens = 0;
     public Card emptyDeckCard;
-    public Iterator deckIterator = deck.iterator();
 
     public Deck() {
         emptyDeckCard = null;
@@ -19,48 +18,52 @@ public class Deck {
             this.addNumberOfCardType(3, new Card("estate"));
         }
     }
+    //only ment to be used when the deck will only contain one kind of card
     public Deck(int number, Card card) {
         emptyDeckCard = new Card(card.getName());
-
         this.addNumberOfCardType(number, card);
     }
     public void printDeck() {
-        for (int x = 0; x < deck.size(); x++) {
-            if (this.cardInfo(x) == null) {
-                System.out.printf("NULL CARD\n");
-            }
-            else {
-                System.out.printf("Card %2d: %s\n", (x+1), this.cardInfo(x).getName());
-            }
+        int counter = 0;
+        for (Card temp: deck) {
+            counter++;
+            if (temp == null)
+                System.out.println("NULL CARD\n");
+            else
+                System.out.printf("Card %2d: %s\n", counter, temp.getName());
         }
     }
+    //print all cards in the deck that match a type
     public void printType(String type) {
         type = type.toLowerCase();
-        for (int x = 0; x < deck.size(); x++) {
-            if (this.cardInfo(x).isType(type)) {
-                System.out.printf("Card #2%d: %-15sDescription: %s\n",(x+1), this.cardInfo(x).getName(), this.cardInfo(x).getDescription());
-            }
+        int counter = 0;
+        for (Card temp: deck) {
+            counter++;
+            if (temp.isType(type))
+                System.out.printf("Card #2%d: %-15sDescription: %s\n", counter, temp.getName(), temp.getDescription());
         }
     }
     public void shuffle() {
         Collections.shuffle(deck, new Random(System.nanoTime()));
     };
     public void addCard(Card card) {
-        if (card != null) {
+        if (card != null)
             deck.add(0, card);
-        }
     }
     public void addBottomCard(Card card) {
-        if (card != null) {
+        if (card != null)
             deck.add(card);
-        }
     }
     public String getName() {
-        return this.cardInfo(0).getName();
+        if (deck.size() > 0)
+            return this.cardInfo(0).getName();
+        else
+            return emptyDeckCard.getName();
     }
     public int getTokens()                  {return tokens;}
-    public void setTokens(int number)       {tokens = number;}
     public void modifyTokens (int number)   {tokens += number;}
+    public void resetTokens()               {tokens = 0;}
+    //if the deck is not empty, return the top element, else return null
     public Card drawCard() {
         return (deck.size() > 0) ? deck.remove(0) : null;
     };
@@ -84,8 +87,8 @@ public class Deck {
         if (this.empty()) {
             return false;
         }
-        for (int x = 0; x < deck.size(); x++) {
-            if (cardInfo(x).isType(type)) {
+        for (Card temp: deck) {
+            if (temp.isType(type)) {
                 return true;
             }
         }
@@ -95,8 +98,8 @@ public class Deck {
         if (this.empty()) {
             return false;
         }
-        for (int x = 0; x < deck.size(); x++) {
-            if (cardInfo(x).getName().equals(name)) {
+        for (Card temp: deck) {
+            if (temp.getName().equals(name)) {
                 return true;
             }
         }
