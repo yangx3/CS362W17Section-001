@@ -22,8 +22,8 @@ import java.util.*;
 
 
 
-public class GameState {
-    public final List<Player> players = new ArrayList<Player>();
+public class GameState implements Cloneable{
+    public List<Player> players = new ArrayList<Player>();
     public final List<Card> cards;
     public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
 
@@ -40,28 +40,14 @@ public class GameState {
         if (players.size() > 4 || players.size() < 2) {
             System.err.println("the number of players must be between 2 and 4");
             return;
-        }else if(players.size() == 4) {
-            //12 each of estate duchy and provinces
-            gameBoard.put(Card.getCard(cards, CardName.Estate), 12);
-            gameBoard.put(Card.getCard(cards, CardName.Duchy), 12);
-            gameBoard.put(Card.getCard(cards, CardName.Province), 12);
-            //30 curse cards
-            gameBoard.put(Card.getCard(cards, CardName.Curse), 30);
-        }else if(players.size() == 3) {
-            //12 each of estate duchy and provinces
-            gameBoard.put(Card.getCard(cards, CardName.Estate), 12);
-            gameBoard.put(Card.getCard(cards, CardName.Duchy), 12);
-            gameBoard.put(Card.getCard(cards, CardName.Province), 12);
-            //20 curse cards
-            gameBoard.put(Card.getCard(cards, CardName.Curse), 20);
-        }else if(players.size() == 2) {
-            //8 each of estate duchy and provinces
-            gameBoard.put(Card.getCard(cards, CardName.Estate), 8);
-            gameBoard.put(Card.getCard(cards, CardName.Duchy), 8);
-            gameBoard.put(Card.getCard(cards, CardName.Province), 8);
-            //10 curse cards
-            gameBoard.put(Card.getCard(cards, CardName.Curse), 10);
         }
+        
+        //8 each of estate duchy and provinces
+        gameBoard.put(Card.getCard(cards, CardName.Estate), 8);
+        gameBoard.put(Card.getCard(cards, CardName.Duchy), 8);
+        gameBoard.put(Card.getCard(cards, CardName.Province), 8);
+        //10 curse cards
+        gameBoard.put(Card.getCard(cards, CardName.Curse), 10);
 
         //Put Treasure Cards on table
         gameBoard.put(Card.getCard(cards, CardName.Gold), 30);
@@ -72,16 +58,15 @@ public class GameState {
         //10 sets of 10 kingdom cards
             //if the kindom card is a victory card as well follow rules for estate, etc.
         int kingdomCount = 0;
-        int kingdomSets = 3;
-        while(kingdomCount < kingdomSets) {
-            for(Card c : cards) {
-                if(c.getType() != Type.ACTION || gameBoard.containsKey(c)) {
-                    continue;
-                }else {
-                    gameBoard.put(Card.getCard(cards, c.getCardName()), 10);
-                    kingdomCount++;
-                }
-            }
+        int kingdomSets = 10;
+
+        while (kingdomCount < kingdomSets) {
+            int random = (int)  Randomness.random.nextInt(cards.size());
+            Card tmp = cards.get(random);
+            if(tmp.getType()!=Card.Type.ACTION) continue;
+            if(gameBoard.containsKey(tmp)) continue;
+            gameBoard.put(tmp, 10);
+            kingdomCount++;
         }
 
         for(Player p : players) {
@@ -90,21 +75,86 @@ public class GameState {
             
             for(int i=3; i>0; i--)
                 p.gain(Card.getCard(cards, CardName.Estate));
+
+            //5 cards as your starting hand
+            for (int i = 0; i < 5; i++) {
+                p.drawCard();
+            }
         }
+        //System.out.println(this);
     }
 
-    public void play() {
+    public void removeCard(Card c) {
+        int currentNum = gameBoard.get(c);
+        gameBoard.put(c, currentNum-1);
+    }
+
+    public HashMap<Player, Integer> play() {
+        int turns = 0;
         while(!endGame()) {
+            turns++;
             for(Player p : players) {
+                p.initializePlayerTurn();
                 p.action();
                 p.buy(this);
                 p.cleanUp();
+                //5 cards as your starting hand
+                for (int i = 0; i < 5; i++) {
+                    p.drawCard();
+                }
             }
+            if(turns==3)
+                break;
         }
+
+        return this.getWinners();
     }
 
-    public Boolean endGame() {
+    public boolean endGame() {
+		 //if stack of Province cards is empty, the game ends
+        if((gameBoard.get(Card.getCard(cards, CardName.Province))==null)||(gameBoard.get(Card.getCard(cards, CardName.Province))== 0))
+            return true;
+        //if three supply pile are at 0, the game ends
+        int emptySupplyPile = 0;
+        for (int i : gameBoard.values()){
+            if (i == 0)
+                emptySupplyPile++;
+            if ( emptySupplyPile >= 3)
+            {
+                return true;
+            }
+        }
         return false;
+    }
+
+    /* Set HashMap  of each player and the score (remember ties!) */
+	public HashMap<Player, Integer>  getWinners() {
+		HashMap<Player, Integer> playerScore = new HashMap<Player, Integer>();
+
+        //get score for each player
+        for (Player p : players) {
+            int score = p.scoreFor();
+            playerScore.put(p, score);
+		}
+        return playerScore;
+    }
+
+    private GameState(List<Card> cards, List<Player> players, HashMap<Card,Integer> gameBoard) {
+        this.cards=cards;    
+        this.players=players;    
+        this.gameBoard=gameBoard;   
+    }
+
+    public GameState clone() throws CloneNotSupportedException {    
+        List<Player> clonePlayers = new ArrayList<Player>();    
+        List<Card> cloneCards = new LinkedList<Card>();    
+        HashMap<Card, Integer> cloneGmeBoard = new HashMap<Card,Integer>(gameBoard);   
+        for (Player player : players)     
+            clonePlayers.add((Player) player.clone());     
+        for (Card card : cards)     
+            cloneCards.add((Card) card.clone());
+        final GameState cloneState= new GameState(cloneCards,clonePlayers,cloneGmeBoard);
+        return  cloneState;     
     }
 
     @Override
