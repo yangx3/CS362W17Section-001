@@ -151,10 +151,6 @@ public class PlayerTest {
 		test.computeMoney();
 		assertEquals("Player has doesn't have 4 coins even though 4 are in hand",
 				4, test.getMoney());
-				
-		for(int j=0; j<10; j++)
-			test.giveCard(new Garden());
-		assertEquals(3, test.getVictoryPoints());
 	}
 	
 	@Test
@@ -170,7 +166,7 @@ public class PlayerTest {
 		test.addToHand(new Garden());
 		
 		assertEquals("Victory points from gardens doesn't equal 3",
-				3, test.getVictoryPoints());
+				9, test.getVictoryPoints());
 	}
 	
 	
