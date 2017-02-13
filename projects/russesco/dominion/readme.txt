@@ -20,5 +20,5 @@ How to Run the code on Unix System:
 9. mvn package
 // Create a executable .jar file in Target Folder
 
-10. java -jar target.Dominion-1.0-SNAPSHOT.jar
+10. java -jar target/Dominion-1.0-SNAPSHOT.jar
 // Now we access the .jar file in the target folder (Dominion-1.0-SNAPSHOT.jar) was the name of the file for me
