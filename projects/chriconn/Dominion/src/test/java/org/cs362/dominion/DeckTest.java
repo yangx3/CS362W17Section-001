@@ -103,6 +103,9 @@ public class DeckTest {
             int n = rand.nextInt(10) + 1;
             test = new Deck(n, randomCard());
         }
+
+        test = new Deck();
+        test.addNumberOfCardType(rand.nextInt(30), randomCard());
     }
 
     @Test

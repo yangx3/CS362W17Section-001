@@ -8,6 +8,9 @@ import org.junit.Test;
 //assertEquals("THIS IS TEXT", testTheThing, what it should be);
 
 public class PlayerTest {
+    public ArrayList<String> cardsInGame = new ArrayList<String>();
+
+
     @Test
     public void CreatePlayer() {
         Player test = new Player();
@@ -53,5 +56,68 @@ public class PlayerTest {
         if (test.hand.hasType("treasure")) {
             assertNotEquals("Player treasure cards in their hand did not have the values added past 0", test.getValues(), 0);
         }
+    }
+
+    @Test
+    public void RandomCards() {
+        //build the action decks
+        cardsInGame.add("ambassador");
+        cardsInGame.add("baron");
+        cardsInGame.add("council room");
+        cardsInGame.add("cutpurse");
+        cardsInGame.add("embargo");
+        cardsInGame.add("feast");
+        cardsInGame.add("gardens");
+        cardsInGame.add("great hall");
+        cardsInGame.add("curse");
+        cardsInGame.add("smithy");
+        cardsInGame.add("village");
+        cardsInGame.add("cellar");
+        cardsInGame.add("salvager");
+
+
+        Player person = new Player("Connor");
+        person.draw(5);
+        person.showHand();
+        person.discard("copper");
+        person.discardAll();
+        person.draw(5);
+        person.discardAtIndex(0);
+        person.discard();
+        person.discardAll();
+        person.draw(7);
+        person.printHandType("treasure");
+        person.printAllDecks();
+        person.getMoves();
+
+        person.discardAll();
+        for (int x = 0; x < 6; x++)  {
+            person.draw();
+        }
+
+        person.sumTreasure();
+        person.skipActionsPhase();
+        person.endTurn();
+    }
+
+    public String randomCard() {
+        Random rand = new Random();
+        return cardsInGame.get(rand.nextInt(cardsInGame.size()));
+    }
+    public boolean yesNo() {
+        Random rand = new Random();
+        if (rand.nextInt(2) == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public String randomTreasure() {
+        Random rand = new Random();
+        int n = rand.nextInt(3);
+        if (n == 0)         { return "gold";   }
+        else if (n == 1)    { return "silver"; }
+        else                { return "copper"; }
     }
 }

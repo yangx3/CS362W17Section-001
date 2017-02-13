@@ -99,4 +99,18 @@ public class CardTest {
         assertEquals("The new card does not have the proper name", test.getName(), "salvager");
 
     }
+
+    @Test
+    public void changeCardValues() {
+        Card test = new Card("copper");
+        test.setName("gold");
+        test.setValue(8);
+        test.setCost(0);
+        test.setVictoryPoints(1);
+        test.setDescription("This is a description");
+        test.setCards(1);
+        test.setActions(3);
+        test.setBuys(4);
+        test.setCoins(1);
+    }
 }

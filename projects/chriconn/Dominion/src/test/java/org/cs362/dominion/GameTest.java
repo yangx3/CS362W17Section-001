@@ -9,7 +9,12 @@ import org.junit.Test;
 
 public class GameTest {
     @Test
-    public void CreatePlayers() {
+    public void emptyGame() {
+        Game dominion = new Game();
+    }
 
+    @Test
+    public void testMain() {
+        Game.main(null);
     }
 }
