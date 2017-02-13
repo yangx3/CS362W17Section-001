@@ -6,4 +6,4 @@ java -cp ./target/classes org.cs362.dominion.PlayDominion
 
 TESTING: 
 mvn test
-HTML of code coverage can be found all three classes can be found under 
+HTML of code coverage for all three classes (org.cs362.dominion.Card.html, org.cs362.dominion.Player.html, org.cs362.dominion.GameState.html) can be found under cobertura/ 
