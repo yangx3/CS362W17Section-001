@@ -1,32 +1,18 @@
 package org.cs362.dominion;
 import java.io.*;
 import java.util.*;
-
 public class Player {
-
     public Deck drawDeck;
     public Deck hand;
     public Deck discard;
-
-    //the name of the player
     private String name;
-    //number of actions the player has left in the turn
     private int actions;
-    //purchasing power of the players hand
     private int value;
-    //how many buys you can use
     private int buys;
-
     public Player() {
-        //build the starter deck
         drawDeck = new Deck("starter");
-        //build an empty hand
         hand = new Deck();
-        //build and empty discard pile
         discard = new Deck();
-
-        //both the actions of the player start with 0
-        //the game should add and remove action ammounts
         actions = 0;
         value = 0;
         buys = 0;
@@ -56,14 +42,12 @@ public class Player {
         if (drawDeck.empty()) {
             recycle();
         }
-        //the hand is drawing a card from the drawCard deck
         Card temp = drawDeck.drawCard();
         hand.addBottomCard(temp);
         return temp;
     }
     public void discard() {
         if (!hand.empty()) {
-            //the discard deck is drawing from the hand
             discard.addCard(hand.drawCard());
         }
     }
@@ -108,13 +92,11 @@ public class Player {
         }
         return false;
     }
-    //sets one action and one buy that the player gets every turn
     public void starterPoints() {
         actions = 1;
         buys = 1;
         value = 0;
     }
-    //adds up the total value of the treasure cards in the hand
     public void sumTreasure() {
         for (int x = 0; x < hand.numCards(); x++) {
             if (hand.cardInfo(x).isType("treasure")) {
@@ -122,25 +104,21 @@ public class Player {
             }
         }
     }
-    //returns boolean depending on what type exists in the deck
     public boolean handContainsType(String type) {
         return hand.hasType(type);
     }
-    //sets actions, buys and value to 0
     public void endTurn() {
         buys = 0;
         actions = 0;
         value = 0;
     }
-    //prints only the cards in the hand that match a type
     public void printHandType(String type) {
         hand.printType(type);
     }
-    //sets actions to 0 to skip action phase
     public void skipActionsPhase() {
         actions = 0;
     }
-    //prints all decks, draw, hand and discard
+
     public void printAllDecks() {
         String name = getName();
         System.out.println("\n" + name + "'s draw deck: ");

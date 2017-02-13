@@ -1,28 +1,18 @@
 package org.cs362.dominion;
 import java.util.*;
-
-
 public class Card {
 
-    /* Basic card info */
-    private String name;           //the name of the card
-    private int value;             //if the card is a coin, it will have a value
-    private int cost;              //all cards have a set cost
-    private int victoryPoints;     //if it is a victory card, it will have a victory point value
-    private String description;    //some cards have some descriptions about specific rules
+    private String name;
+    private int value;
+    private int cost;
+    private int victoryPoints;
+    private String description;
     private ArrayList<String> type;
+    private int cards;
+    private int actions;
+    private int buys;
+    private int coins;
 
-    /*
-    Card action stats
-    Each of these stats will only be added to the user if they play the card
-    */
-
-    private int cards;    //how many extra cards you may draw
-    private int actions;  //how many extra actions you may use
-    private int buys;     //how many extra buys you may have
-    private int coins;    //how many extra coins you may have
-
-    //The default constructor for the card
     public Card() {
         name = "null";
         value = 0;
@@ -35,8 +25,6 @@ public class Card {
         buys = 0;
         coins = 0;
     }
-
-    //Non-default constructor that gives card values for each type
     public Card(String setName) {
         value = 0;
         cost = 0;
@@ -48,7 +36,6 @@ public class Card {
         buys = 0;
         coins = 0;
         setName = setName.toLowerCase();
-
         if (setName.equals("gold")) {
             name           = "gold";
             value          = 3;
@@ -226,51 +213,26 @@ public class Card {
         }
     }
 
-    /******************** Individual Settings ********************/
-
     public void setName(String setName)     {name = setName;}
-    public void setValue(int setValue) {
-        if (setValue > -1 && setValue < 11) {
-            value = setValue;
-        } else {
-            System.out.println("Error: Card value must be more than -1 and less than 11");
-            System.exit(1);
-        }
-    }
-    public void setCost(int setCost) {
-        if (setCost > -1 && setCost < 11) {
-            cost = setCost;
-        } else {
-            System.out.println("Error: Card cost must be more than -1 and less than 11");
-            System.exit(1);
-        }
-    }
-
-    public void setVictoryPoints(int setVictoryPoints)
-    {victoryPoints = setVictoryPoints;}
-    public void setDescription(String setDescription)
-    {description = setDescription;}
-
-
+    public void setValue(int setValue)      {value = setValue;}
+    public void setCost(int setCost)        {cost = setCost;}
+    public void setVictoryPoints(int setVictoryPoints) {victoryPoints = setVictoryPoints;}
+    public void setDescription(String setDescription)  {description = setDescription;}
     public void setCards(int setCards)      { cards = setCards; }
     public void setActions(int setActions)  { actions = setActions; }
     public void setBuys(int setBuys)        { buys = setBuys; }
     public void setCoins(int setCoins)      { coins = setCoins; }
 
-
-    /******************** End Individual Settings ********************/
-
-    //getter functions for the contents of the class
-    public String getName()           {return name;}
-    public int getValue()             {return value;}
-    public int getCost()              {return cost;}
-    public int getVictoryPoints()     {return victoryPoints;}
-    public String getDescription()    {return description;}
-    public ArrayList<String> getType(){return type;}
-    public int getCards()             {return cards;}
-    public int getBuys()              {return buys;}
-    public int getActions()           {return actions;}
-    public int getCoins()             {return coins;}
+    public String getName()                 {return name;}
+    public int getValue()                   {return value;}
+    public int getCost()                    {return cost;}
+    public int getVictoryPoints()           {return victoryPoints;}
+    public String getDescription()          {return description;}
+    public ArrayList<String> getType()      {return type;}
+    public int getCards()                   {return cards;}
+    public int getBuys()                    {return buys;}
+    public int getActions()                 {return actions;}
+    public int getCoins()                   {return coins;}
 
     public boolean isType(String typeName) {
         for (int x = 0; x < type.size(); x++) {
@@ -280,8 +242,6 @@ public class Card {
         }
         return false;
     }
-
-    //printing fuction for testing
     public void printCard() {
         System.out.println("Card Info:" + "\nName: " + name + "\nValue: " + value + "\nCost: " + cost + "\nVictory Points: " + victoryPoints + "\nDescription: " + description + "\nExtra Cards to Draw: " + cards + "\nExtra Actions: " + actions + "\nExtra buys: " + buys + "\nExtra Coins: " + coins + "\n");
     }
