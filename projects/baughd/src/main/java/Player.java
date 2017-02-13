@@ -47,8 +47,6 @@ public class Player{
 		numActions = 1;
 		coins = 0;
 		numBuys = 1;
-		//Shuffle your starting 10 cards (7 Coppers & 3 Estates) and place them face-down as your Deck. Draw the top
-		//5 cards as your starting hand
 		for (int i = 0; i < 5; i++) {
 			drawCard();
 		}
