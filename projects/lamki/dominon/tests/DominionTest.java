@@ -88,5 +88,10 @@ public class DominionTest {
         String[] args = {};
         Dominion.main(args);
     }
+
+    public static void main(String[] args) 
+    {
+        System.err.println("Hello World!");
+    }
     
 }

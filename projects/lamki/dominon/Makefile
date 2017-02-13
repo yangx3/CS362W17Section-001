@@ -12,13 +12,14 @@ run: all
 	java -jar lamki_dom.jar
 
 tests: all
-	cp -R *.java tests/
+	cp -R dominion/*.class tests/
+	#cp -R *.java tests/
 	javac -cp .:tests/lib/junit-4.12.jar:tests/lib/hamcrest-core-1.3.jar tests/*.java
-	java -cp .:"$LIB/*":tests/lib/junit-4.12.jar org.junit.runner.JUnitCore tests/DominionTest
+	java -cp .:tests/lib/junit-4.12.jar:tests/:. org.junit.runner.JUnitCore DominionTest
 
 clean:
-	rm -f lamki_dom.jar
 	rm -f -rf dominion/
+	rm -f *.class
 	rm -f tests/*.class
 	rm -f tests/Dominion.java
 	rm -f tests/Player.java
@@ -27,3 +28,4 @@ clean:
 	rm -f tests/Treasure.java
 	rm -f tests/Adventure.java
 	rm -f tests/Victory.java
+	rm -f lamki_dom.jar
