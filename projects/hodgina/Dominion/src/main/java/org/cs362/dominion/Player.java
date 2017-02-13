@@ -36,23 +36,26 @@ public class Player implements Cloneable{
 
 
 	final Card drawCard() {
-		if (deck.isEmpty()) {// Deck is empty
-			// Step 1 Shuffle the discard pile back into a deck
-			System.out.println("reshuffle the deck of the player "
-					+ player_username + " to draw FIVE cards");
-			while (discard.size() > 0) {
-				int ndx = (int) Randomness.nextRandomInt(discard.size());
-				// Move discard to deck
-				deck.add(discard.remove(ndx));
-			}
-		}
+	    if(discard.isEmpty() && deck.isEmpty()) {
+            return null;
+        }
+            if (deck.isEmpty()) {// Deck is empty
+                // Step 1 Shuffle the discard pile back into a deck
+                System.out.println("reshuffle the deck of the player "
+                        + player_username + " to draw FIVE cards");
+                while (discard.size() > 0) {
+                    int ndx = (int) Randomness.nextRandomInt(discard.size());
+                    // Move discard to deck
+                    deck.add(discard.remove(ndx));
+                }
+            }
 
-		Card toDraw = deck.poll();
-		hand.add(toDraw);// Add card to hand and hand count automatically will
-							// be incremented since we use List
-		System.out.println("draw " + toDraw);
-		Collections.sort(hand);
-		return toDraw;
+            Card toDraw = deck.removeFirst();//poll();
+            hand.add(toDraw);// Add card to hand and hand count automatically will
+            // be incremented since we use List
+            System.out.println("draw " + toDraw);
+            Collections.sort(hand);
+            return toDraw;
 	}
 
 	   final void initializePlayerTurn() {
@@ -235,9 +238,10 @@ public class Player implements Cloneable{
                    gain(Card.getCard(current_state.cards, Card.CardName.Duchy));
                    current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Duchy), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Duchy)) - 1);
                    coins = coins - 5;
-               }else if (rand == 3 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Laboratory)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Laboratory)) > 0) {
+               }
+               else if (rand == 3 && current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Laboratory)) && current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Laboratory)) > 0) {
                    gain(Card.getCard(current_state.cards, Card.CardName.Laboratory));
-                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Laboratory), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Laboratory)) - 1);
+                   current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Duchy), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Laboratory)) - 1);
                    coins = coins - 5;
                }
 
