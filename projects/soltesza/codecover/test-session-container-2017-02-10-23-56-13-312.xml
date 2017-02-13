@@ -1,0 +1,4561 @@
+<?xml version="1.0" encoding="UTF-8"?><TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1486799773244" TestSessionContainerId="35e7010f-2d49-432e-80f3-142033d183fe" version="1.0">
+<SrcFileList>
+<SrcFile Content="import java.util.Vector;&#13;&#10;&#13;&#10;public class ActionCard extends Card {&#13;&#10;&#9;public enum ActionType {&#13;&#10;&#9;&#9;ADVENTURER,&#13;&#10;&#9;&#9;AMBASSADOR,&#13;&#10;&#9;&#9;BARON,&#13;&#10;&#9;&#9;COUNCIL_ROOM,&#13;&#10;&#9;&#9;CUTPURSE,&#13;&#10;&#9;&#9;EMBARGO,&#13;&#10;&#9;&#9;FEAST,&#13;&#10;&#9;&#9;GREAT_HALL,&#13;&#10;&#9;&#9;MINE,&#13;&#10;&#9;&#9;REMODEL,&#13;&#10;&#9;&#9;SMITHY,&#13;&#10;&#9;&#9;VILLAGE&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;private ActionType type;&#13;&#10;&#9;&#13;&#10;&#9;public ActionCard(ActionType type) {&#13;&#10;&#9;&#9;this.type = type;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;switch(type) {&#13;&#10;&#9;&#9;&#9;case ADVENTURER:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Adventurer&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 6;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case AMBASSADOR:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Ambassador&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 3;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case BARON:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Baron&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 4;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case COUNCIL_ROOM:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Council Room&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 5;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case CUTPURSE&#9;:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Cutpurse&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 4;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case EMBARGO:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Embargo&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 2;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case FEAST:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Feast&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 4;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case GREAT_HALL:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Great Hall&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 3;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case MINE:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Mine&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 5;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case SMITHY:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Smithy&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 4;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case REMODEL:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Remodel&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 4;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;default:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Village&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 3;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;@Override&#13;&#10;&#9;public ActionCard clone() {&#13;&#10;&#9;&#9;final ActionCard clone = (ActionCard)super.clone();&#13;&#10;&#9;&#9;return clone;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void PlayAction(GameState state) {&#13;&#10;&#9;&#9;switch(type) {&#13;&#10;&#9;&#9;&#9;case ADVENTURER:&#13;&#10;&#9;&#9;&#9;&#9;int cardCount = state.currentPlayer.deck.GetCardCount();&#13;&#10;&#9;&#9;&#9;&#9;int numTreasures = 0;&#13;&#10;&#9;&#9;&#9;&#9;for(int i=0; i&lt;cardCount; i++) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;Vector&lt;Card&gt; newCard = state.currentPlayer.deck.DrawCards(1);&#13;&#10;&#9;&#9;&#9;&#9;&#9;if(!(newCard.firstElement() instanceof TreasureCard)) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;state.currentPlayer.deck.DiscardFromHand(newCard.firstElement());&#13;&#10;&#9;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#9;&#9;else {&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;numTreasures++;&#13;&#10;&#9;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#9;&#9;if(numTreasures &lt;= 2) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case AMBASSADOR:&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case BARON:&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.AddBuys(1);&#13;&#10;&#9;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case CUTPURSE:&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.AddCoins(2);&#13;&#10;&#9;&#9;&#9;&#9;Vector&lt;Card&gt; hand = state.otherPlayer.deck.GetHand();&#13;&#10;&#9;&#9;&#9;&#9;for(int i=0; i&lt;hand.size(); i++) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;Card card = hand.get(i);&#13;&#10;&#9;&#9;&#9;&#9;&#9;if(card.GetName() == &quot;Copper&quot;) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;state.otherPlayer.deck.DiscardFromHand(card);&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case EMBARGO:                            //TEST THIS&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.AddCoins(2);&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.EmbargoPile();&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.deck.TrashCard(this);&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case COUNCIL_ROOM:&#13;&#10;&#9;&#9;&#9;&#9;state.DrawCards(state.currentPlayer, 4);&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.AddBuys(1);&#13;&#10;&#9;&#9;&#9;&#9;state.DrawCards(state.otherPlayer, 1);&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case FEAST:&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.Buy(1, 5);&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.deck.TrashCard(this);&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case GREAT_HALL:&#13;&#10;&#9;&#9;&#9;&#9;state.DrawCards(state.currentPlayer, 1);&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.AddActions(1);&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case MINE:&#13;&#10;&#9;&#9;&#9;&#9;Card card = state.currentPlayer.TrashFromHand(); &#13;&#10;&#9;&#9;&#9;&#9;if(card != null) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;state.currentPlayer.Buy(1, card.GetValue()+3);&#13;&#10;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case SMITHY:&#13;&#10;&#9;&#9;&#9;&#9;state.DrawCards(state.currentPlayer, 3);&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case REMODEL:&#13;&#10;&#9;&#9;&#9;&#9;Card card1 = state.currentPlayer.TrashFromHand(); &#13;&#10;&#9;&#9;&#9;&#9;if(card1 != null) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;state.currentPlayer.Buy(1, card1.GetValue()+2);&#13;&#10;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;default:&#13;&#10;&#9;&#9;&#9;&#9;state.DrawCards(state.currentPlayer, 1);&#13;&#10;&#9;&#9;&#9;&#9;state.currentPlayer.AddActions(2);&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;}&#13;&#10;" Filename="ActionCard.java" Intrnl_Id="1"/>
+<SrcFile Content="&#13;&#10;public abstract class Card implements Cloneable {&#13;&#10;&#9;protected String name;&#13;&#10;&#9;protected int cost;&#13;&#10;&#9;private boolean trashed = false;&#13;&#10;&#9;&#13;&#10;&#9;@Override&#13;&#10;&#9;public Card clone() {&#13;&#10;&#9;&#9;try {&#13;&#10;&#9;&#9;return (Card)super.clone();&#13;&#10;&#9;&#9;} &#13;&#10;&#9;&#9;catch(CloneNotSupportedException e) {&#13;&#10;&#9;&#9;&#9;throw new Error(&quot;Error cloning object!&quot;);&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public String GetName() { return name; }&#13;&#10;&#9;&#13;&#10;&#9;public int GetValue() { return cost; }&#13;&#10;&#9;&#13;&#10;&#9;public boolean GetTrashed() { return trashed; }&#13;&#10;&#9;&#13;&#10;&#9;public void SetTrashed(boolean val) { trashed = val; }&#13;&#10;}" Filename="Card.java" Intrnl_Id="2"/>
+<SrcFile Content="import java.util.Vector;&#13;&#10;import java.util.Stack;&#13;&#10;import java.util.Collections;&#13;&#10;&#13;&#10;public class Deck {&#13;&#10;&#9;private Stack&lt;Card&gt; drawPile;&#13;&#10;&#9;private Stack&lt;Card&gt; discardPile;&#13;&#10;&#9;private Vector&lt;Card&gt; hand;&#13;&#10;&#9;&#13;&#10;&#9;private int cardCount = 0;&#13;&#10;&#9;private int gardenCount = 0;&#13;&#10;&#9;private int score = 0;&#13;&#10;&#9;&#13;&#10;&#9;public Deck() {&#13;&#10;&#9;&#9;drawPile = new Stack&lt;Card&gt;();&#13;&#10;&#9;&#9;discardPile = new Stack&lt;Card&gt;();&#13;&#10;&#9;&#9;hand = new Vector&lt;Card&gt;();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;//add starting cards to the deck&#13;&#10;&#9;&#9;for(int i=0; i&lt;7; i++) {&#13;&#10;&#9;&#9;&#9;AddCard(new TreasureCard(TreasureCard.TreasureType.COPPER));&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;for(int i=0; i&lt;3; i++) {&#13;&#10;&#9;&#9;&#9;AddCard(new VictoryCard(VictoryCard.VictoryType.ESTATE));&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;Shuffle();&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public int GetCardCount() { return cardCount; }&#13;&#10;&#9;&#13;&#10;&#9;public int GetScore() {&#13;&#10;&#9;&#9;return score + ((int)(cardCount/10))*gardenCount;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;private void Shuffle() { //shuffle the deck&#13;&#10;&#9;&#9;while(!discardPile.empty()) {&#13;&#10;&#9;&#9;&#9;drawPile.push(discardPile.pop());&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;for(int i = (drawPile.size()-1); i &gt; 0; i--) {&#13;&#10;&#9;&#9;&#9;int rand = (int)(Math.random() * i);&#13;&#10;&#9;&#9;&#9;Collections.swap(drawPile, i, rand);&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void AddCard(Card card) { //add a card to the deck&#13;&#10;&#9;&#9;discardPile.push(card);&#13;&#10;&#9;&#9;cardCount++;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;if(card.GetName() == &quot;Gardens&quot;) {&#13;&#10;&#9;&#9;&#9;gardenCount++;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;else if(card instanceof VictoryCard) {&#13;&#10;&#9;&#9;&#9;score += ((VictoryCard)card).GetVPs();&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public Vector&lt;Card&gt; GetHand() { return hand; }&#13;&#10;&#9;&#13;&#10;&#9;public int PlayTreasures() {&#13;&#10;&#9;&#9;int total = 0;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;for(int i=0; i&lt;hand.size(); i++) {&#13;&#10;&#9;&#9;&#9;if(hand.elementAt(i) instanceof TreasureCard) {&#13;&#10;&#9;&#9;&#9;&#9;total += hand.elementAt(i).GetValue();&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;return total;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public Vector&lt;Card&gt; DrawCards(int numCards) { //draw numCards cards from drawPile into hand, return cards drawn&#13;&#10;&#9;&#9;Vector&lt;Card&gt; drawnCards = new Vector&lt;Card&gt;();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;if(drawPile.size()&lt;numCards) {&#13;&#10;&#9;&#9;&#9;Shuffle();&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;else {&#13;&#10;&#9;&#9;&#9;for(int i=0; i&lt;numCards; i++) {&#13;&#10;&#9;&#9;&#9;&#9;Card newCard = drawPile.pop();&#13;&#10;&#9;&#9;&#9;&#9;hand.addElement(newCard);&#13;&#10;&#9;&#9;&#9;&#9;drawnCards.add(newCard);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;return drawnCards;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void TrashCard(Card card) { //make this work&#13;&#10;&#9;&#9;cardCount--;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;if(card.GetName() == &quot;Gardens&quot;) {&#13;&#10;&#9;&#9;&#9;gardenCount--;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;else if(card instanceof VictoryCard) {&#13;&#10;&#9;&#9;&#9;score -= ((VictoryCard)card).GetVPs();&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;card.SetTrashed(true);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;for(int i=0; i&lt;drawPile.size(); i++)  {&#13;&#10;&#9;&#9;&#9;if(drawPile.elementAt(i).GetTrashed()) {&#13;&#10;&#9;&#9;&#9;&#9;drawPile.remove(i);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;for(int i=0; i&lt;hand.size(); i++)  {&#13;&#10;&#9;&#9;&#9;if(hand.elementAt(i).GetTrashed()) {&#13;&#10;&#9;&#9;&#9;&#9;hand.remove(i);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;for(int i=0; i&lt;discardPile.size(); i++)  {&#13;&#10;&#9;&#9;&#9;if(discardPile.elementAt(i).GetTrashed()) {&#13;&#10;&#9;&#9;&#9;&#9;discardPile.remove(i);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void DiscardHand() {&#13;&#10;&#9;&#9;for(int i=0; i&lt;hand.size(); i++) {&#13;&#10;&#9;&#9;&#9;discardPile.push(hand.get(i));&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;hand.clear();&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void DiscardFromHand(Card card) {&#13;&#10;&#9;&#9;if(hand.remove(card)) {&#13;&#10;&#9;&#9;&#9;discardPile.push(card);&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;}&#13;&#10;" Filename="Deck.java" Intrnl_Id="3"/>
+<SrcFile Content="import java.util.Vector;&#13;&#10;import java.util.Collections;&#13;&#10;&#13;&#10;public class DominionBoard {&#13;&#10;&#9;private KingdomSlot provinceRef;&#13;&#10;&#9;private KingdomSlot curseRef;&#13;&#10;&#9;&#13;&#10;&#9;private Vector&lt;KingdomSlot&gt; buyableCards;&#13;&#10;&#9;private Vector&lt;KingdomSlot&gt; expendedCards;&#13;&#10;&#9;&#13;&#10;&#9;public DominionBoard() {&#9;&#9;&#13;&#10;&#9;&#9;buyableCards = new Vector&lt;KingdomSlot&gt;();&#13;&#10;&#9;&#9;expendedCards = new Vector&lt;KingdomSlot&gt;();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;//list of all possible kingdom cards&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.ADVENTURER), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.AMBASSADOR), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.BARON), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.COUNCIL_ROOM), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.CUTPURSE), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.EMBARGO), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.FEAST), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.GREAT_HALL), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.MINE), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.REMODEL), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.SMITHY), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.VILLAGE), 10));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.GARDENS), 10));&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;while(buyableCards.size() &gt; 10) {&#13;&#10;&#9;&#9;&#9;buyableCards.remove((int)(Math.random()*buyableCards.size()));&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new TreasureCard(TreasureCard.TreasureType.GOLD), 30));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new TreasureCard(TreasureCard.TreasureType.SILVER), 40));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new TreasureCard(TreasureCard.TreasureType.COPPER), 46));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.DUCHY), 8));&#13;&#10;&#9;&#9;buyableCards.addElement(new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.ESTATE), 8));&#13;&#10;&#9;&#9;curseRef = new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.CURSE), 10);&#13;&#10;&#9;&#9;buyableCards.addElement(curseRef);&#13;&#10;&#9;&#9;provinceRef = new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.PROVINCE), 8);&#13;&#10;&#9;&#9;buyableCards.addElement(provinceRef);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;Collections.sort(buyableCards);&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public Vector&lt;Card&gt; GetBuyable(int money) {&#13;&#10;&#9;&#9;Vector&lt;Card&gt; buyable = new Vector&lt;Card&gt;();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;for(int i=0; i&lt;buyableCards.size();  i++) {&#13;&#10;&#9;&#9;&#9;if(buyableCards.elementAt(i).GetValue() &lt;= money) { //if the player can buy the card&#13;&#10;&#9;&#9;&#9;&#9;//add card to buyable vector&#13;&#10;&#9;&#9;&#9;&#9;buyable.add(buyableCards.elementAt(i).GetCard());&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;else {&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#13;&#10;&#9;&#9;return buyable;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public Vector&lt;Card&gt; BuyCard(int idx) {&#13;&#10;&#9;&#9;KingdomSlot slot = buyableCards.elementAt(idx);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;Vector&lt;Card&gt; cards = new Vector&lt;Card&gt;();&#13;&#10;&#9;&#9;cards.add(slot.DrawCard());&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;for(int i=0; i&lt;slot.GetEmbargoes(); i++) {&#13;&#10;&#9;&#9;&#9;Card curse = BuyCurse();&#13;&#10;&#9;&#9;&#9;if(curse != null) {&#13;&#10;&#9;&#9;&#9;&#9;cards.addElement(curse);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;if(slot.IsEmpty()) {&#13;&#10;&#9;&#9;&#9;expendedCards.addElement(buyableCards.remove(idx));&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;return cards;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public Card BuyCurse() {&#13;&#10;&#9;&#9;if(expendedCards.contains(curseRef)) {&#13;&#10;&#9;&#9;&#9;return null;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;else {&#13;&#10;&#9;&#9;&#9;Card card = curseRef.DrawCard();&#13;&#10;&#9;&#9;&#9;if(curseRef.IsEmpty()) {&#13;&#10;&#9;&#9;&#9;&#9;expendedCards.add(curseRef);&#13;&#10;&#9;&#9;&#9;&#9;buyableCards.remove(curseRef);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;return card;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void EmbargoPile(int idx) {&#13;&#10;&#9;&#9;buyableCards.elementAt(idx).AddEmbargo();&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public boolean GameOver() {&#13;&#10;&#9;&#9;if(expendedCards.contains(provinceRef)) { //if provinces are included in the vector of expended cards&#13;&#10;&#9;&#9;&#9;System.out.println(&quot;All provinces expended. Game over.&quot;);&#13;&#10;&#9;&#9;&#9;return true;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;else if(expendedCards.size() &gt;= 3) { //if there are more than three piles of expended cards&#13;&#10;&#9;&#9;&#9;System.out.println(&quot;Three piles expended. Game over.&quot;);&#13;&#10;&#9;&#9;&#9;return true;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;return false;&#13;&#10;&#9;}&#13;&#10;}&#13;&#10;" Filename="DominionBoard.java" Intrnl_Id="4"/>
+<SrcFile Content="&#13;&#10;public class GameState {&#13;&#10;&#9;public Player currentPlayer; //implement this&#13;&#10;&#9;public Player otherPlayer; //implement this&#13;&#10;&#9;&#13;&#10;&#9;private Player player1;&#13;&#10;&#9;private Player player2;&#13;&#10;&#9;&#13;&#10;&#9;public GameState(DominionBoard board) {&#13;&#10;&#9;&#9;player1 = new Player(&quot;Player 1&quot;, board);&#13;&#10;&#9;&#9;player2 = new Player(&quot;Player 2&quot;, board);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;currentPlayer = player1;&#13;&#10;&#9;&#9;otherPlayer = player2;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void TakeTurn(DominionBoard board) {&#13;&#10;&#9;&#9;currentPlayer.TakeTurn(this);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;Player p1 = currentPlayer;&#13;&#10;&#9;&#9;currentPlayer = otherPlayer;&#13;&#10;&#9;&#9;otherPlayer = p1;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void DrawCards(Player player, int numCards) {&#13;&#10;&#9;&#9;player.deck.DrawCards(numCards);&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void PrintScore() {&#13;&#10;&#9;&#9;System.out.println(&quot;Score:&quot;);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;System.out.println(player1.GetName() + &quot;: &quot; + player1.GetScore());&#13;&#10;&#9;&#9;System.out.println(player2.GetName() + &quot;: &quot; + player2.GetScore());&#13;&#10;&#9;}&#13;&#10;}&#13;&#10;" Filename="GameState.java" Intrnl_Id="5"/>
+<SrcFile Content="&#13;&#10;public class KingdomSlot implements Comparable&lt;KingdomSlot&gt;{&#13;&#10;&#9;private Card card;&#13;&#10;&#9;&#13;&#10;&#9;private int count;&#13;&#10;&#9;private int numEmbargoes = 0;&#13;&#10;&#9;&#13;&#10;&#9;public KingdomSlot(Card card, int count) {&#13;&#10;&#9;&#9;this.card = card;&#13;&#10;&#9;&#9;this.count = count;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public boolean IsEmpty() {&#13;&#10;&#9;&#9;if(count &gt; 0) {&#13;&#10;&#9;&#9;&#9;return false;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;else {&#13;&#10;&#9;&#9;&#9;return true;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public Card GetCard() { return card; }&#13;&#10;&#9;&#13;&#10;&#9;public int GetValue() { return card.GetValue(); }&#13;&#10;&#9;&#13;&#10;&#9;public int GetEmbargoes() { return numEmbargoes; }&#13;&#10;&#9;&#13;&#10;&#9;public Card DrawCard() {&#13;&#10;&#9;&#9;if(count &gt; 0) {&#13;&#10;&#9;&#9;&#9;count -= 1;&#13;&#10;&#9;&#9;&#9;//return new object of type card&#13;&#10;&#9;&#9;&#9;return card.clone();&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;return null;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void AddEmbargo() {&#13;&#10;&#9;&#9;numEmbargoes++;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public int compareTo(KingdomSlot other) {&#13;&#10;&#9;&#9;return card.GetValue() - other.GetValue();&#13;&#10;&#9;}&#13;&#10;}&#13;&#10;" Filename="KingdomSlot.java" Intrnl_Id="6"/>
+<SrcFile Content="&#13;&#10;public class PlayDom {&#13;&#10;&#9;public static void main(String args[]) {&#13;&#10;&#9;&#9;DominionBoard board = new DominionBoard();&#13;&#10;&#9;&#9;GameState state = new GameState(board);&#13;&#10;&#13;&#10;&#9;&#9;while(true) {&#13;&#10;&#9;&#9;&#9;state.TakeTurn(board);&#13;&#10;&#9;&#9;&#9;if(board.GameOver()) {&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;//game is now over. Figure out who won&#13;&#10;&#9;&#9;System.out.println(&quot;Finished game.&quot;);&#13;&#10;&#9;&#9;state.PrintScore();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;System.exit(0);&#13;&#10;&#9;}&#13;&#10;}&#13;&#10;" Filename="PlayDom.java" Intrnl_Id="7"/>
+<SrcFile Content="import java.util.Vector;&#13;&#10;&#13;&#10;public class Player {&#13;&#10;&#9;public Deck deck;&#13;&#10;&#9;private int victoryPoints;&#13;&#10;&#9;private String name;&#13;&#10;&#9;private DominionBoard board;&#13;&#10;&#9;&#13;&#10;&#9;private int actions = 1;&#13;&#10;&#9;private int buys = 1;&#13;&#10;&#9;private int coins = 0;&#13;&#10;&#9;&#13;&#10;&#9;public Player(String name, DominionBoard board) {&#13;&#10;&#9;&#9;deck = new Deck();&#13;&#10;&#9;&#9;victoryPoints = 0;&#13;&#10;&#9;&#9;this.name = name;&#13;&#10;&#9;&#9;this.board = board;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;deck.DrawCards(5);&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public String GetName() {return name;}&#13;&#10;&#9;&#13;&#10;&#9;public int GetScore() {return deck.GetScore();}&#13;&#10;&#9;&#13;&#10;&#9;public int GetVictoryPoints() {return victoryPoints;}&#13;&#10;&#9;&#13;&#10;&#9;public void TakeTurn(GameState state) {&#13;&#10;&#9;&#9;Vector&lt;Card&gt; hand = deck.GetHand();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;//play actions&#13;&#10;&#9;&#9;for(int i=0; i&lt;actions; i++) {&#13;&#10;&#9;&#9;&#9;Vector&lt;ActionCard&gt; actionCards = new Vector&lt;ActionCard&gt;();&#13;&#10;&#9;&#9;&#9;for(int j=0; j&lt;hand.size(); j++) {&#13;&#10;&#9;&#9;&#9;&#9;if(hand.elementAt(i) instanceof ActionCard) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;actionCards.add((ActionCard)hand.elementAt(i));&#13;&#10;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;if(!actionCards.isEmpty()) {&#13;&#10;&#9;&#9;&#9;&#9;ActionCard card = actionCards.elementAt((int)(Math.random()*actionCards.size()));&#13;&#10;&#9;&#9;&#9;&#9;card.PlayAction(state);&#13;&#10;&#9;&#9;&#9;&#9;PrintAction(card);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;//play treasures&#13;&#10;&#9;&#9;coins += deck.PlayTreasures();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;//buy&#13;&#10;&#9;&#9;Buy(buys, coins);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;//cleanup&#13;&#10;&#9;&#9;deck.DiscardHand();&#13;&#10;&#9;&#9;deck.DrawCards(5);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;actions = 1;&#13;&#10;&#9;&#9;buys = 1;&#13;&#10;&#9;&#9;coins = 0;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void AddActions(int numActions) {&#13;&#10;&#9;&#9;this.actions += numActions;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void AddBuys(int numBuys) {&#13;&#10;&#9;&#9;this.buys += numBuys;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void AddCoins(int numCoins) {&#13;&#10;&#9;&#9;this.coins += numCoins;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void Buy(int numBuys, int numCoins) {&#13;&#10;&#9;&#9;for(int i=0; i&lt;numBuys; i++) {&#13;&#10;&#9;&#9;&#9;Vector&lt;Card&gt; buyableCards = board.GetBuyable(numCoins);&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;int highestValue = 0;&#13;&#10;&#9;&#9;&#9;int lowerBound = buyableCards.size()-1;&#13;&#10;&#9;&#9;&#9;for(int j=buyableCards.size()-1; j&gt;0; j--) {&#13;&#10;&#9;&#9;&#9;&#9;int val = buyableCards.get(j).GetValue();&#13;&#10;&#9;&#9;&#9;&#9;if(val &gt; highestValue) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;highestValue = val;&#13;&#10;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#9;else if(val &lt; highestValue) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;lowerBound = j;&#13;&#10;&#9;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;int idx = (int)(Math.random() * (buyableCards.size()-lowerBound) + lowerBound);&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;Vector&lt;Card&gt; newCards = board.BuyCard(idx);&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;for(int j=0; j&lt;newCards.size(); j++) {&#13;&#10;&#9;&#9;&#9;&#9;deck.AddCard(newCards.get(j)); &#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;PrintBuy(newCards.get(0));&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void GainCurse() {&#13;&#10;&#9;&#9;Card curse = board.BuyCurse();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;if(curse != null) {&#13;&#10;&#9;&#9;&#9;deck.AddCard(curse);&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public Card TrashFromHand() {&#9;&#9;&#13;&#10;&#9;&#9;Vector&lt;Card&gt; hand = deck.GetHand();&#13;&#10;&#9;&#9;if(!hand.isEmpty()) {&#13;&#10;&#9;&#9;&#9;int idx = (int)(Math.random()*hand.size());&#13;&#10;&#9;&#9;&#9;Card card = hand.get(idx);&#13;&#10;&#9;&#9;&#9;deck.TrashCard(card);&#13;&#10;&#9;&#9;&#9;return card;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;else {&#13;&#10;&#9;&#9;&#9;return null;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;private void PrintBuy(Card card) {&#13;&#10;&#9;&#9;System.out.println(name + &quot; bought a &quot; + card.GetName() + &quot; for &quot; + card.GetValue() + &quot; coins.&quot;);&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;private void PrintAction(ActionCard action) {&#13;&#10;&#9;&#9;System.out.println(name + &quot; played &quot; + action.name);&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public void EmbargoPile() {&#13;&#10;&#9;&#9;Vector&lt;Card&gt; buyable = board.GetBuyable(Integer.MAX_VALUE);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;int idx = (int)(Math.random()*buyable.size());&#13;&#10;&#9;&#9;board.EmbargoPile(idx);&#13;&#10;&#9;}&#13;&#10;}&#13;&#10;" Filename="Player.java" Intrnl_Id="8"/>
+<SrcFile Content="&#13;&#10;public class TreasureCard extends Card {&#9;&#13;&#10;&#9;public enum TreasureType {&#13;&#10;&#9;&#9;COPPER,&#13;&#10;&#9;&#9;SILVER,&#13;&#10;&#9;&#9;GOLD&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public final TreasureType type;&#13;&#10;&#9;&#13;&#10;&#9;public TreasureCard(TreasureType type) {&#13;&#10;&#9;&#9;this.type = type;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;switch(type) {&#13;&#10;&#9;&#9;&#9;case GOLD:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Gold&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 6;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;&#9;case SILVER:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Silver&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 3;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;default:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Copper&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 0;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;@Override&#13;&#10;&#9;public TreasureCard clone() {&#13;&#10;&#9;&#9;final TreasureCard clone = (TreasureCard)super.clone();&#13;&#10;&#9;&#9;return clone;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public int GetValue() {&#13;&#10;&#9;&#9;switch(type) {&#13;&#10;&#9;&#9;&#9;case GOLD:&#13;&#10;&#9;&#9;&#9;&#9;return 3;&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;case SILVER:&#13;&#10;&#9;&#9;&#9;&#9;return 2;&#13;&#10;&#9;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;default:&#13;&#10;&#9;&#9;&#9;&#9;return 1;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;}&#13;&#10;" Filename="TreasureCard.java" Intrnl_Id="9"/>
+<SrcFile Content="&#13;&#10;public class VictoryCard extends Card implements Cloneable {&#13;&#10;&#9;public enum VictoryType {&#13;&#10;&#9;&#9;CURSE,&#13;&#10;&#9;&#9;ESTATE,&#13;&#10;&#9;&#9;DUCHY,&#13;&#10;&#9;&#9;PROVINCE,&#13;&#10;&#9;&#9;GARDENS&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public final VictoryType type;&#13;&#10;&#9;&#13;&#10;&#9;public VictoryCard(VictoryType type) {&#13;&#10;&#9;&#9;this.type = type;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;switch(type) {&#13;&#10;&#9;&#9;&#9;case CURSE:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Curse&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 0;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case ESTATE:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Estate&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 1;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case DUCHY:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Duchy&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 5;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;case PROVINCE:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Province&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 8;&#13;&#10;&#9;&#9;&#9;&#9;break;&#13;&#10;&#9;&#9;&#9;default:&#13;&#10;&#9;&#9;&#9;&#9;super.name = &quot;Gardens&quot;;&#13;&#10;&#9;&#9;&#9;&#9;super.cost = 4;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;@Override&#13;&#10;&#9;public VictoryCard clone() {&#13;&#10;&#9;&#9;final VictoryCard clone = (VictoryCard)super.clone();&#13;&#10;&#9;&#9;return clone;&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;public int GetVPs() {&#13;&#10;&#9;&#9;switch(type) {&#13;&#10;&#9;&#9;&#9;case CURSE:&#13;&#10;&#9;&#9;&#9;&#9;return -1;&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;case ESTATE:&#13;&#10;&#9;&#9;&#9;&#9;return 1;&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;case DUCHY:&#13;&#10;&#9;&#9;&#9;&#9;return 5;&#13;&#10;&#9;&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;case PROVINCE:&#13;&#10;&#9;&#9;&#9;&#9;return 8;&#13;&#10;&#9;&#9;&#9;default:&#13;&#10;&#9;&#9;&#9;&#9;//GARDEN VPS HERE&#13;&#10;&#9;&#9;&#9;&#9;return 1;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;}&#13;&#10;" Filename="VictoryCard.java" Intrnl_Id="10"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.LoopCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.ConditionCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.StatementCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList>
+<BoolOp Arity="1" Intrnl_Id="11" Name="not (!)">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="1" Value="false"/>
+<MapEntry BoolAssgnmnt="0" Value="true"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+</BoolOpList>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="enumeration" IntrnlName="enum" Intrnl_Id="12"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="13"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="14"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="15"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="72" HierarchyLvlTypeId="15" Intrnl_Id="16" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="5" HierarchyLvlTypeId="14" Intrnl_Id="17" Name="ActionCard">
+<Header>
+<Loc EndOffset="64" SrcFileId="1" StartOffset="28"/>
+</Header>
+<LocList>
+<Loc EndOffset="69" SrcFileId="1" StartOffset="28"/>
+<Loc EndOffset="3564" SrcFileId="1" StartOffset="247"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="1" HierarchyLvlTypeId="12" Intrnl_Id="18" Name="ActionType">
+<Header>
+<Loc EndOffset="91" SrcFileId="1" StartOffset="69"/>
+</Header>
+<LocList>
+<Loc EndOffset="247" SrcFileId="1" StartOffset="69"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="2" HierarchyLvlTypeId="13" Intrnl_Id="19" Name="ActionCard">
+<Header>
+<Loc EndOffset="317" SrcFileId="1" StartOffset="283"/>
+</Header>
+<LocList>
+<Loc EndOffset="1341" SrcFileId="1" StartOffset="283"/>
+</LocList>
+<StmntSeq Intrnl_Id="20">
+<LocList>
+<Loc EndOffset="340" SrcFileId="1" StartOffset="323"/>
+<Loc EndOffset="1337" SrcFileId="1" StartOffset="348"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="ActionCard.java" Intrnl_Id="21">
+<LocList>
+<Loc EndOffset="340" SrcFileId="1" StartOffset="323"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S2" CovItemPrefix="ActionCard.java" Intrnl_Id="22">
+<Branch CovItemId="B1" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="23">
+<Cond>
+<Loc EndOffset="382" SrcFileId="1" StartOffset="367"/>
+</Cond>
+<LocList>
+<Loc EndOffset="448" SrcFileId="1" StartOffset="389"/>
+</LocList>
+<StmntSeq Intrnl_Id="24">
+<LocList>
+<Loc EndOffset="415" SrcFileId="1" StartOffset="389"/>
+<Loc EndOffset="436" SrcFileId="1" StartOffset="421"/>
+<Loc EndOffset="448" SrcFileId="1" StartOffset="442"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="ActionCard.java" Intrnl_Id="25">
+<LocList>
+<Loc EndOffset="415" SrcFileId="1" StartOffset="389"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="ActionCard.java" Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="436" SrcFileId="1" StartOffset="421"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="ActionCard.java" Intrnl_Id="27">
+<LocList>
+<Loc EndOffset="448" SrcFileId="1" StartOffset="442"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="28">
+<Cond>
+<Loc EndOffset="468" SrcFileId="1" StartOffset="453"/>
+</Cond>
+<LocList>
+<Loc EndOffset="534" SrcFileId="1" StartOffset="475"/>
+</LocList>
+<StmntSeq Intrnl_Id="29">
+<LocList>
+<Loc EndOffset="501" SrcFileId="1" StartOffset="475"/>
+<Loc EndOffset="522" SrcFileId="1" StartOffset="507"/>
+<Loc EndOffset="534" SrcFileId="1" StartOffset="528"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="ActionCard.java" Intrnl_Id="30">
+<LocList>
+<Loc EndOffset="501" SrcFileId="1" StartOffset="475"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="ActionCard.java" Intrnl_Id="31">
+<LocList>
+<Loc EndOffset="522" SrcFileId="1" StartOffset="507"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="ActionCard.java" Intrnl_Id="32">
+<LocList>
+<Loc EndOffset="534" SrcFileId="1" StartOffset="528"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B3" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="33">
+<Cond>
+<Loc EndOffset="549" SrcFileId="1" StartOffset="539"/>
+</Cond>
+<LocList>
+<Loc EndOffset="610" SrcFileId="1" StartOffset="556"/>
+</LocList>
+<StmntSeq Intrnl_Id="34">
+<LocList>
+<Loc EndOffset="577" SrcFileId="1" StartOffset="556"/>
+<Loc EndOffset="598" SrcFileId="1" StartOffset="583"/>
+<Loc EndOffset="610" SrcFileId="1" StartOffset="604"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="ActionCard.java" Intrnl_Id="35">
+<LocList>
+<Loc EndOffset="577" SrcFileId="1" StartOffset="556"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="ActionCard.java" Intrnl_Id="36">
+<LocList>
+<Loc EndOffset="598" SrcFileId="1" StartOffset="583"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="ActionCard.java" Intrnl_Id="37">
+<LocList>
+<Loc EndOffset="610" SrcFileId="1" StartOffset="604"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="38">
+<Cond>
+<Loc EndOffset="632" SrcFileId="1" StartOffset="615"/>
+</Cond>
+<LocList>
+<Loc EndOffset="700" SrcFileId="1" StartOffset="639"/>
+</LocList>
+<StmntSeq Intrnl_Id="39">
+<LocList>
+<Loc EndOffset="667" SrcFileId="1" StartOffset="639"/>
+<Loc EndOffset="688" SrcFileId="1" StartOffset="673"/>
+<Loc EndOffset="700" SrcFileId="1" StartOffset="694"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="ActionCard.java" Intrnl_Id="40">
+<LocList>
+<Loc EndOffset="667" SrcFileId="1" StartOffset="639"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S13" CovItemPrefix="ActionCard.java" Intrnl_Id="41">
+<LocList>
+<Loc EndOffset="688" SrcFileId="1" StartOffset="673"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S14" CovItemPrefix="ActionCard.java" Intrnl_Id="42">
+<LocList>
+<Loc EndOffset="700" SrcFileId="1" StartOffset="694"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B5" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="43">
+<Cond>
+<Loc EndOffset="718" SrcFileId="1" StartOffset="705"/>
+</Cond>
+<LocList>
+<Loc EndOffset="783" SrcFileId="1" StartOffset="726"/>
+</LocList>
+<StmntSeq Intrnl_Id="44">
+<LocList>
+<Loc EndOffset="750" SrcFileId="1" StartOffset="726"/>
+<Loc EndOffset="771" SrcFileId="1" StartOffset="756"/>
+<Loc EndOffset="783" SrcFileId="1" StartOffset="777"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="ActionCard.java" Intrnl_Id="45">
+<LocList>
+<Loc EndOffset="750" SrcFileId="1" StartOffset="726"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S16" CovItemPrefix="ActionCard.java" Intrnl_Id="46">
+<LocList>
+<Loc EndOffset="771" SrcFileId="1" StartOffset="756"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S17" CovItemPrefix="ActionCard.java" Intrnl_Id="47">
+<LocList>
+<Loc EndOffset="783" SrcFileId="1" StartOffset="777"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="48">
+<Cond>
+<Loc EndOffset="800" SrcFileId="1" StartOffset="788"/>
+</Cond>
+<LocList>
+<Loc EndOffset="863" SrcFileId="1" StartOffset="807"/>
+</LocList>
+<StmntSeq Intrnl_Id="49">
+<LocList>
+<Loc EndOffset="830" SrcFileId="1" StartOffset="807"/>
+<Loc EndOffset="851" SrcFileId="1" StartOffset="836"/>
+<Loc EndOffset="863" SrcFileId="1" StartOffset="857"/>
+</LocList>
+<BasicStmnt CovItemId="S18" CovItemPrefix="ActionCard.java" Intrnl_Id="50">
+<LocList>
+<Loc EndOffset="830" SrcFileId="1" StartOffset="807"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S19" CovItemPrefix="ActionCard.java" Intrnl_Id="51">
+<LocList>
+<Loc EndOffset="851" SrcFileId="1" StartOffset="836"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S20" CovItemPrefix="ActionCard.java" Intrnl_Id="52">
+<LocList>
+<Loc EndOffset="863" SrcFileId="1" StartOffset="857"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B7" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="53">
+<Cond>
+<Loc EndOffset="878" SrcFileId="1" StartOffset="868"/>
+</Cond>
+<LocList>
+<Loc EndOffset="939" SrcFileId="1" StartOffset="885"/>
+</LocList>
+<StmntSeq Intrnl_Id="54">
+<LocList>
+<Loc EndOffset="906" SrcFileId="1" StartOffset="885"/>
+<Loc EndOffset="927" SrcFileId="1" StartOffset="912"/>
+<Loc EndOffset="939" SrcFileId="1" StartOffset="933"/>
+</LocList>
+<BasicStmnt CovItemId="S21" CovItemPrefix="ActionCard.java" Intrnl_Id="55">
+<LocList>
+<Loc EndOffset="906" SrcFileId="1" StartOffset="885"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S22" CovItemPrefix="ActionCard.java" Intrnl_Id="56">
+<LocList>
+<Loc EndOffset="927" SrcFileId="1" StartOffset="912"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S23" CovItemPrefix="ActionCard.java" Intrnl_Id="57">
+<LocList>
+<Loc EndOffset="939" SrcFileId="1" StartOffset="933"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="58">
+<Cond>
+<Loc EndOffset="959" SrcFileId="1" StartOffset="944"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1025" SrcFileId="1" StartOffset="966"/>
+</LocList>
+<StmntSeq Intrnl_Id="59">
+<LocList>
+<Loc EndOffset="992" SrcFileId="1" StartOffset="966"/>
+<Loc EndOffset="1013" SrcFileId="1" StartOffset="998"/>
+<Loc EndOffset="1025" SrcFileId="1" StartOffset="1019"/>
+</LocList>
+<BasicStmnt CovItemId="S24" CovItemPrefix="ActionCard.java" Intrnl_Id="60">
+<LocList>
+<Loc EndOffset="992" SrcFileId="1" StartOffset="966"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S25" CovItemPrefix="ActionCard.java" Intrnl_Id="61">
+<LocList>
+<Loc EndOffset="1013" SrcFileId="1" StartOffset="998"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S26" CovItemPrefix="ActionCard.java" Intrnl_Id="62">
+<LocList>
+<Loc EndOffset="1025" SrcFileId="1" StartOffset="1019"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B9" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="63">
+<Cond>
+<Loc EndOffset="1039" SrcFileId="1" StartOffset="1030"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1099" SrcFileId="1" StartOffset="1046"/>
+</LocList>
+<StmntSeq Intrnl_Id="64">
+<LocList>
+<Loc EndOffset="1066" SrcFileId="1" StartOffset="1046"/>
+<Loc EndOffset="1087" SrcFileId="1" StartOffset="1072"/>
+<Loc EndOffset="1099" SrcFileId="1" StartOffset="1093"/>
+</LocList>
+<BasicStmnt CovItemId="S27" CovItemPrefix="ActionCard.java" Intrnl_Id="65">
+<LocList>
+<Loc EndOffset="1066" SrcFileId="1" StartOffset="1046"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S28" CovItemPrefix="ActionCard.java" Intrnl_Id="66">
+<LocList>
+<Loc EndOffset="1087" SrcFileId="1" StartOffset="1072"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S29" CovItemPrefix="ActionCard.java" Intrnl_Id="67">
+<LocList>
+<Loc EndOffset="1099" SrcFileId="1" StartOffset="1093"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B10" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="68">
+<Cond>
+<Loc EndOffset="1115" SrcFileId="1" StartOffset="1104"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1177" SrcFileId="1" StartOffset="1122"/>
+</LocList>
+<StmntSeq Intrnl_Id="69">
+<LocList>
+<Loc EndOffset="1144" SrcFileId="1" StartOffset="1122"/>
+<Loc EndOffset="1165" SrcFileId="1" StartOffset="1150"/>
+<Loc EndOffset="1177" SrcFileId="1" StartOffset="1171"/>
+</LocList>
+<BasicStmnt CovItemId="S30" CovItemPrefix="ActionCard.java" Intrnl_Id="70">
+<LocList>
+<Loc EndOffset="1144" SrcFileId="1" StartOffset="1122"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S31" CovItemPrefix="ActionCard.java" Intrnl_Id="71">
+<LocList>
+<Loc EndOffset="1165" SrcFileId="1" StartOffset="1150"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S32" CovItemPrefix="ActionCard.java" Intrnl_Id="72">
+<LocList>
+<Loc EndOffset="1177" SrcFileId="1" StartOffset="1171"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B11" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="73">
+<Cond>
+<Loc EndOffset="1194" SrcFileId="1" StartOffset="1182"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1257" SrcFileId="1" StartOffset="1201"/>
+</LocList>
+<StmntSeq Intrnl_Id="74">
+<LocList>
+<Loc EndOffset="1224" SrcFileId="1" StartOffset="1201"/>
+<Loc EndOffset="1245" SrcFileId="1" StartOffset="1230"/>
+<Loc EndOffset="1257" SrcFileId="1" StartOffset="1251"/>
+</LocList>
+<BasicStmnt CovItemId="S33" CovItemPrefix="ActionCard.java" Intrnl_Id="75">
+<LocList>
+<Loc EndOffset="1224" SrcFileId="1" StartOffset="1201"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S34" CovItemPrefix="ActionCard.java" Intrnl_Id="76">
+<LocList>
+<Loc EndOffset="1245" SrcFileId="1" StartOffset="1230"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S35" CovItemPrefix="ActionCard.java" Intrnl_Id="77">
+<LocList>
+<Loc EndOffset="1257" SrcFileId="1" StartOffset="1251"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B12" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="78">
+<Cond>
+<Loc EndOffset="1269" SrcFileId="1" StartOffset="1262"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1332" SrcFileId="1" StartOffset="1276"/>
+</LocList>
+<StmntSeq Intrnl_Id="79">
+<LocList>
+<Loc EndOffset="1299" SrcFileId="1" StartOffset="1276"/>
+<Loc EndOffset="1320" SrcFileId="1" StartOffset="1305"/>
+<Loc EndOffset="1332" SrcFileId="1" StartOffset="1326"/>
+</LocList>
+<BasicStmnt CovItemId="S36" CovItemPrefix="ActionCard.java" Intrnl_Id="80">
+<LocList>
+<Loc EndOffset="1299" SrcFileId="1" StartOffset="1276"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S37" CovItemPrefix="ActionCard.java" Intrnl_Id="81">
+<LocList>
+<Loc EndOffset="1320" SrcFileId="1" StartOffset="1305"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S38" CovItemPrefix="ActionCard.java" Intrnl_Id="82">
+<LocList>
+<Loc EndOffset="1332" SrcFileId="1" StartOffset="1326"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="354" SrcFileId="1" StartOffset="348"/>
+<LocList>
+<Loc EndOffset="1337" SrcFileId="1" StartOffset="348"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="3" HierarchyLvlTypeId="13" Intrnl_Id="83" Name="clone">
+<Header>
+<Loc EndOffset="1384" SrcFileId="1" StartOffset="1347"/>
+</Header>
+<LocList>
+<Loc EndOffset="1462" SrcFileId="1" StartOffset="1347"/>
+</LocList>
+<StmntSeq Intrnl_Id="84">
+<LocList>
+<Loc EndOffset="1441" SrcFileId="1" StartOffset="1390"/>
+<Loc EndOffset="1458" SrcFileId="1" StartOffset="1445"/>
+</LocList>
+<BasicStmnt CovItemId="S39" CovItemPrefix="ActionCard.java" Intrnl_Id="85">
+<LocList>
+<Loc EndOffset="1441" SrcFileId="1" StartOffset="1390"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S40" CovItemPrefix="ActionCard.java" Intrnl_Id="86">
+<LocList>
+<Loc EndOffset="1458" SrcFileId="1" StartOffset="1445"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="4" HierarchyLvlTypeId="13" Intrnl_Id="87" Name="PlayAction">
+<Header>
+<Loc EndOffset="1507" SrcFileId="1" StartOffset="1468"/>
+</Header>
+<LocList>
+<Loc EndOffset="3561" SrcFileId="1" StartOffset="1468"/>
+</LocList>
+<StmntSeq Intrnl_Id="88">
+<LocList>
+<Loc EndOffset="3557" SrcFileId="1" StartOffset="1513"/>
+</LocList>
+<CondStmnt CovItemId="S41" CovItemPrefix="ActionCard.java" Intrnl_Id="89">
+<Branch CovItemId="B13" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="90">
+<Cond>
+<Loc EndOffset="1547" SrcFileId="1" StartOffset="1532"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2007" SrcFileId="1" StartOffset="1554"/>
+</LocList>
+<StmntSeq Intrnl_Id="91">
+<LocList>
+<Loc EndOffset="1610" SrcFileId="1" StartOffset="1554"/>
+<Loc EndOffset="1637" SrcFileId="1" StartOffset="1616"/>
+<Loc EndOffset="1989" SrcFileId="1" StartOffset="1643"/>
+<Loc EndOffset="2007" SrcFileId="1" StartOffset="2001"/>
+</LocList>
+<BasicStmnt CovItemId="S42" CovItemPrefix="ActionCard.java" Intrnl_Id="92">
+<LocList>
+<Loc EndOffset="1610" SrcFileId="1" StartOffset="1554"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S43" CovItemPrefix="ActionCard.java" Intrnl_Id="93">
+<LocList>
+<Loc EndOffset="1637" SrcFileId="1" StartOffset="1616"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S44" CovItemPrefix="ActionCard.java" Intrnl_Id="94" MltplExecId="L1-2" MltplExecPrefix="ActionCard.java" NvrExecId="L1-0" NvrExecPrefix="ActionCard.java" OnceExecutedId="L1-1" OnceExecutedPrefix="ActionCard.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="95">
+<LocList>
+<Loc EndOffset="1743" SrcFileId="1" StartOffset="1682"/>
+<Loc EndOffset="1930" SrcFileId="1" StartOffset="1750"/>
+<Loc EndOffset="1982" SrcFileId="1" StartOffset="1937"/>
+</LocList>
+<BasicStmnt CovItemId="S45" CovItemPrefix="ActionCard.java" Intrnl_Id="96">
+<LocList>
+<Loc EndOffset="1743" SrcFileId="1" StartOffset="1682"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S46" CovItemPrefix="ActionCard.java" Intrnl_Id="97">
+<Branch CovItemId="B14" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="98">
+<Cond/>
+<LocList>
+<Loc EndOffset="1886" SrcFileId="1" StartOffset="1804"/>
+</LocList>
+<StmntSeq Intrnl_Id="99">
+<LocList>
+<Loc EndOffset="1878" SrcFileId="1" StartOffset="1813"/>
+</LocList>
+<BasicStmnt CovItemId="S47" CovItemPrefix="ActionCard.java" Intrnl_Id="100">
+<LocList>
+<Loc EndOffset="1878" SrcFileId="1" StartOffset="1813"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B15" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="101">
+<Cond>
+<Loc EndOffset="1897" SrcFileId="1" StartOffset="1893"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1930" SrcFileId="1" StartOffset="1898"/>
+</LocList>
+<StmntSeq Intrnl_Id="102">
+<LocList>
+<Loc EndOffset="1922" SrcFileId="1" StartOffset="1907"/>
+</LocList>
+<BasicStmnt CovItemId="S48" CovItemPrefix="ActionCard.java" Intrnl_Id="103">
+<LocList>
+<Loc EndOffset="1922" SrcFileId="1" StartOffset="1907"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1752" SrcFileId="1" StartOffset="1750"/>
+<LocList>
+<Loc EndOffset="1930" SrcFileId="1" StartOffset="1750"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="ActionCard.java" Intrnl_Id="104">
+<OpTerm BooleanOpId="11" Intrnl_Id="105">
+<BasicBoolTerm Intrnl_Id="106">
+<LocList>
+<Loc EndOffset="1801" SrcFileId="1" StartOffset="1755"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="1754" SrcFileId="1" StartOffset="1753"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<CondStmnt CovItemId="S49" CovItemPrefix="ActionCard.java" Intrnl_Id="107">
+<Branch CovItemId="B16" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="108">
+<Cond/>
+<LocList>
+<Loc EndOffset="1982" SrcFileId="1" StartOffset="1959"/>
+</LocList>
+<StmntSeq Intrnl_Id="109">
+<LocList>
+<Loc EndOffset="1974" SrcFileId="1" StartOffset="1968"/>
+</LocList>
+<BasicStmnt CovItemId="S50" CovItemPrefix="ActionCard.java" Intrnl_Id="110">
+<LocList>
+<Loc EndOffset="1974" SrcFileId="1" StartOffset="1968"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B17" CovItemPrefix="ActionCard.java" Implct="true" Intrnl_Id="111">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="112">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1939" SrcFileId="1" StartOffset="1937"/>
+<LocList>
+<Loc EndOffset="1982" SrcFileId="1" StartOffset="1937"/>
+</LocList>
+<RootTerm CovItemId="C3" CovItemPrefix="ActionCard.java" Intrnl_Id="113">
+<BasicBoolTerm Intrnl_Id="114">
+<LocList>
+<Loc EndOffset="1957" SrcFileId="1" StartOffset="1940"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="1646" SrcFileId="1" StartOffset="1643"/>
+<LocList>
+<Loc EndOffset="1989" SrcFileId="1" StartOffset="1643"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="ActionCard.java" Intrnl_Id="115">
+<BasicBoolTerm Intrnl_Id="116">
+<LocList>
+<Loc EndOffset="1667" SrcFileId="1" StartOffset="1656"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S51" CovItemPrefix="ActionCard.java" Intrnl_Id="117">
+<LocList>
+<Loc EndOffset="2007" SrcFileId="1" StartOffset="2001"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B18" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="118">
+<Cond>
+<Loc EndOffset="2027" SrcFileId="1" StartOffset="2012"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2045" SrcFileId="1" StartOffset="2039"/>
+</LocList>
+<StmntSeq Intrnl_Id="119">
+<LocList>
+<Loc EndOffset="2045" SrcFileId="1" StartOffset="2039"/>
+</LocList>
+<BasicStmnt CovItemId="S52" CovItemPrefix="ActionCard.java" Intrnl_Id="120">
+<LocList>
+<Loc EndOffset="2045" SrcFileId="1" StartOffset="2039"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B19" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="121">
+<Cond>
+<Loc EndOffset="2060" SrcFileId="1" StartOffset="2050"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2122" SrcFileId="1" StartOffset="2067"/>
+</LocList>
+<StmntSeq Intrnl_Id="122">
+<LocList>
+<Loc EndOffset="2098" SrcFileId="1" StartOffset="2067"/>
+<Loc EndOffset="2122" SrcFileId="1" StartOffset="2116"/>
+</LocList>
+<BasicStmnt CovItemId="S53" CovItemPrefix="ActionCard.java" Intrnl_Id="123">
+<LocList>
+<Loc EndOffset="2098" SrcFileId="1" StartOffset="2067"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S54" CovItemPrefix="ActionCard.java" Intrnl_Id="124">
+<LocList>
+<Loc EndOffset="2122" SrcFileId="1" StartOffset="2116"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B20" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="125">
+<Cond>
+<Loc EndOffset="2140" SrcFileId="1" StartOffset="2127"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2442" SrcFileId="1" StartOffset="2147"/>
+</LocList>
+<StmntSeq Intrnl_Id="126">
+<LocList>
+<Loc EndOffset="2179" SrcFileId="1" StartOffset="2147"/>
+<Loc EndOffset="2238" SrcFileId="1" StartOffset="2185"/>
+<Loc EndOffset="2430" SrcFileId="1" StartOffset="2244"/>
+<Loc EndOffset="2442" SrcFileId="1" StartOffset="2436"/>
+</LocList>
+<BasicStmnt CovItemId="S55" CovItemPrefix="ActionCard.java" Intrnl_Id="127">
+<LocList>
+<Loc EndOffset="2179" SrcFileId="1" StartOffset="2147"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S56" CovItemPrefix="ActionCard.java" Intrnl_Id="128">
+<LocList>
+<Loc EndOffset="2238" SrcFileId="1" StartOffset="2185"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S57" CovItemPrefix="ActionCard.java" Intrnl_Id="129" MltplExecId="L2-2" MltplExecPrefix="ActionCard.java" NvrExecId="L2-0" NvrExecPrefix="ActionCard.java" OnceExecutedId="L2-1" OnceExecutedPrefix="ActionCard.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="130">
+<LocList>
+<Loc EndOffset="2309" SrcFileId="1" StartOffset="2285"/>
+<Loc EndOffset="2423" SrcFileId="1" StartOffset="2316"/>
+</LocList>
+<BasicStmnt CovItemId="S58" CovItemPrefix="ActionCard.java" Intrnl_Id="131">
+<LocList>
+<Loc EndOffset="2309" SrcFileId="1" StartOffset="2285"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S59" CovItemPrefix="ActionCard.java" Intrnl_Id="132">
+<Branch CovItemId="B21" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="133">
+<Cond/>
+<LocList>
+<Loc EndOffset="2423" SrcFileId="1" StartOffset="2347"/>
+</LocList>
+<StmntSeq Intrnl_Id="134">
+<LocList>
+<Loc EndOffset="2401" SrcFileId="1" StartOffset="2356"/>
+<Loc EndOffset="2415" SrcFileId="1" StartOffset="2409"/>
+</LocList>
+<BasicStmnt CovItemId="S60" CovItemPrefix="ActionCard.java" Intrnl_Id="135">
+<LocList>
+<Loc EndOffset="2401" SrcFileId="1" StartOffset="2356"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S61" CovItemPrefix="ActionCard.java" Intrnl_Id="136">
+<LocList>
+<Loc EndOffset="2415" SrcFileId="1" StartOffset="2409"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B22" CovItemPrefix="ActionCard.java" Implct="true" Intrnl_Id="137">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="138">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2318" SrcFileId="1" StartOffset="2316"/>
+<LocList>
+<Loc EndOffset="2423" SrcFileId="1" StartOffset="2316"/>
+</LocList>
+<RootTerm CovItemId="C5" CovItemPrefix="ActionCard.java" Intrnl_Id="139">
+<BasicBoolTerm Intrnl_Id="140">
+<LocList>
+<Loc EndOffset="2345" SrcFileId="1" StartOffset="2319"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="2247" SrcFileId="1" StartOffset="2244"/>
+<LocList>
+<Loc EndOffset="2430" SrcFileId="1" StartOffset="2244"/>
+</LocList>
+<RootTerm CovItemId="C4" CovItemPrefix="ActionCard.java" Intrnl_Id="141">
+<BasicBoolTerm Intrnl_Id="142">
+<LocList>
+<Loc EndOffset="2270" SrcFileId="1" StartOffset="2257"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S62" CovItemPrefix="ActionCard.java" Intrnl_Id="143">
+<LocList>
+<Loc EndOffset="2442" SrcFileId="1" StartOffset="2436"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B23" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="144">
+<Cond>
+<Loc EndOffset="2459" SrcFileId="1" StartOffset="2447"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2636" SrcFileId="1" StartOffset="2505"/>
+</LocList>
+<StmntSeq Intrnl_Id="145">
+<LocList>
+<Loc EndOffset="2537" SrcFileId="1" StartOffset="2505"/>
+<Loc EndOffset="2577" SrcFileId="1" StartOffset="2543"/>
+<Loc EndOffset="2624" SrcFileId="1" StartOffset="2583"/>
+<Loc EndOffset="2636" SrcFileId="1" StartOffset="2630"/>
+</LocList>
+<BasicStmnt CovItemId="S63" CovItemPrefix="ActionCard.java" Intrnl_Id="146">
+<LocList>
+<Loc EndOffset="2537" SrcFileId="1" StartOffset="2505"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S64" CovItemPrefix="ActionCard.java" Intrnl_Id="147">
+<LocList>
+<Loc EndOffset="2577" SrcFileId="1" StartOffset="2543"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S65" CovItemPrefix="ActionCard.java" Intrnl_Id="148">
+<LocList>
+<Loc EndOffset="2624" SrcFileId="1" StartOffset="2583"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S66" CovItemPrefix="ActionCard.java" Intrnl_Id="149">
+<LocList>
+<Loc EndOffset="2636" SrcFileId="1" StartOffset="2630"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B24" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="150">
+<Cond>
+<Loc EndOffset="2658" SrcFileId="1" StartOffset="2641"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2798" SrcFileId="1" StartOffset="2665"/>
+</LocList>
+<StmntSeq Intrnl_Id="151">
+<LocList>
+<Loc EndOffset="2705" SrcFileId="1" StartOffset="2665"/>
+<Loc EndOffset="2742" SrcFileId="1" StartOffset="2711"/>
+<Loc EndOffset="2786" SrcFileId="1" StartOffset="2748"/>
+<Loc EndOffset="2798" SrcFileId="1" StartOffset="2792"/>
+</LocList>
+<BasicStmnt CovItemId="S67" CovItemPrefix="ActionCard.java" Intrnl_Id="152">
+<LocList>
+<Loc EndOffset="2705" SrcFileId="1" StartOffset="2665"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S68" CovItemPrefix="ActionCard.java" Intrnl_Id="153">
+<LocList>
+<Loc EndOffset="2742" SrcFileId="1" StartOffset="2711"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S69" CovItemPrefix="ActionCard.java" Intrnl_Id="154">
+<LocList>
+<Loc EndOffset="2786" SrcFileId="1" StartOffset="2748"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S70" CovItemPrefix="ActionCard.java" Intrnl_Id="155">
+<LocList>
+<Loc EndOffset="2798" SrcFileId="1" StartOffset="2792"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B25" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="156">
+<Cond>
+<Loc EndOffset="2813" SrcFileId="1" StartOffset="2803"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2909" SrcFileId="1" StartOffset="2820"/>
+</LocList>
+<StmntSeq Intrnl_Id="157">
+<LocList>
+<Loc EndOffset="2850" SrcFileId="1" StartOffset="2820"/>
+<Loc EndOffset="2897" SrcFileId="1" StartOffset="2856"/>
+<Loc EndOffset="2909" SrcFileId="1" StartOffset="2903"/>
+</LocList>
+<BasicStmnt CovItemId="S71" CovItemPrefix="ActionCard.java" Intrnl_Id="158">
+<LocList>
+<Loc EndOffset="2850" SrcFileId="1" StartOffset="2820"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S72" CovItemPrefix="ActionCard.java" Intrnl_Id="159">
+<LocList>
+<Loc EndOffset="2897" SrcFileId="1" StartOffset="2856"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S73" CovItemPrefix="ActionCard.java" Intrnl_Id="160">
+<LocList>
+<Loc EndOffset="2909" SrcFileId="1" StartOffset="2903"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B26" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="161">
+<Cond>
+<Loc EndOffset="2929" SrcFileId="1" StartOffset="2914"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3028" SrcFileId="1" StartOffset="2936"/>
+</LocList>
+<StmntSeq Intrnl_Id="162">
+<LocList>
+<Loc EndOffset="2976" SrcFileId="1" StartOffset="2936"/>
+<Loc EndOffset="3016" SrcFileId="1" StartOffset="2982"/>
+<Loc EndOffset="3028" SrcFileId="1" StartOffset="3022"/>
+</LocList>
+<BasicStmnt CovItemId="S74" CovItemPrefix="ActionCard.java" Intrnl_Id="163">
+<LocList>
+<Loc EndOffset="2976" SrcFileId="1" StartOffset="2936"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S75" CovItemPrefix="ActionCard.java" Intrnl_Id="164">
+<LocList>
+<Loc EndOffset="3016" SrcFileId="1" StartOffset="2982"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S76" CovItemPrefix="ActionCard.java" Intrnl_Id="165">
+<LocList>
+<Loc EndOffset="3028" SrcFileId="1" StartOffset="3022"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B27" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="166">
+<Cond>
+<Loc EndOffset="3042" SrcFileId="1" StartOffset="3033"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3194" SrcFileId="1" StartOffset="3049"/>
+</LocList>
+<StmntSeq Intrnl_Id="167">
+<LocList>
+<Loc EndOffset="3097" SrcFileId="1" StartOffset="3049"/>
+<Loc EndOffset="3182" SrcFileId="1" StartOffset="3104"/>
+<Loc EndOffset="3194" SrcFileId="1" StartOffset="3188"/>
+</LocList>
+<BasicStmnt CovItemId="S77" CovItemPrefix="ActionCard.java" Intrnl_Id="168">
+<LocList>
+<Loc EndOffset="3097" SrcFileId="1" StartOffset="3049"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S78" CovItemPrefix="ActionCard.java" Intrnl_Id="169">
+<Branch CovItemId="B28" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="170">
+<Cond/>
+<LocList>
+<Loc EndOffset="3182" SrcFileId="1" StartOffset="3121"/>
+</LocList>
+<StmntSeq Intrnl_Id="171">
+<LocList>
+<Loc EndOffset="3175" SrcFileId="1" StartOffset="3129"/>
+</LocList>
+<BasicStmnt CovItemId="S79" CovItemPrefix="ActionCard.java" Intrnl_Id="172">
+<LocList>
+<Loc EndOffset="3175" SrcFileId="1" StartOffset="3129"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B29" CovItemPrefix="ActionCard.java" Implct="true" Intrnl_Id="173">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="174">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3106" SrcFileId="1" StartOffset="3104"/>
+<LocList>
+<Loc EndOffset="3182" SrcFileId="1" StartOffset="3104"/>
+</LocList>
+<RootTerm CovItemId="C6" CovItemPrefix="ActionCard.java" Intrnl_Id="175">
+<BasicBoolTerm Intrnl_Id="176">
+<LocList>
+<Loc EndOffset="3119" SrcFileId="1" StartOffset="3107"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S80" CovItemPrefix="ActionCard.java" Intrnl_Id="177">
+<LocList>
+<Loc EndOffset="3194" SrcFileId="1" StartOffset="3188"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B30" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="178">
+<Cond>
+<Loc EndOffset="3210" SrcFileId="1" StartOffset="3199"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3269" SrcFileId="1" StartOffset="3217"/>
+</LocList>
+<StmntSeq Intrnl_Id="179">
+<LocList>
+<Loc EndOffset="3257" SrcFileId="1" StartOffset="3217"/>
+<Loc EndOffset="3269" SrcFileId="1" StartOffset="3263"/>
+</LocList>
+<BasicStmnt CovItemId="S81" CovItemPrefix="ActionCard.java" Intrnl_Id="180">
+<LocList>
+<Loc EndOffset="3257" SrcFileId="1" StartOffset="3217"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S82" CovItemPrefix="ActionCard.java" Intrnl_Id="181">
+<LocList>
+<Loc EndOffset="3269" SrcFileId="1" StartOffset="3263"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B31" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="182">
+<Cond>
+<Loc EndOffset="3286" SrcFileId="1" StartOffset="3274"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3441" SrcFileId="1" StartOffset="3293"/>
+</LocList>
+<StmntSeq Intrnl_Id="183">
+<LocList>
+<Loc EndOffset="3342" SrcFileId="1" StartOffset="3293"/>
+<Loc EndOffset="3429" SrcFileId="1" StartOffset="3349"/>
+<Loc EndOffset="3441" SrcFileId="1" StartOffset="3435"/>
+</LocList>
+<BasicStmnt CovItemId="S83" CovItemPrefix="ActionCard.java" Intrnl_Id="184">
+<LocList>
+<Loc EndOffset="3342" SrcFileId="1" StartOffset="3293"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S84" CovItemPrefix="ActionCard.java" Intrnl_Id="185">
+<Branch CovItemId="B32" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="186">
+<Cond/>
+<LocList>
+<Loc EndOffset="3429" SrcFileId="1" StartOffset="3367"/>
+</LocList>
+<StmntSeq Intrnl_Id="187">
+<LocList>
+<Loc EndOffset="3422" SrcFileId="1" StartOffset="3375"/>
+</LocList>
+<BasicStmnt CovItemId="S85" CovItemPrefix="ActionCard.java" Intrnl_Id="188">
+<LocList>
+<Loc EndOffset="3422" SrcFileId="1" StartOffset="3375"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B33" CovItemPrefix="ActionCard.java" Implct="true" Intrnl_Id="189">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="190">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3351" SrcFileId="1" StartOffset="3349"/>
+<LocList>
+<Loc EndOffset="3429" SrcFileId="1" StartOffset="3349"/>
+</LocList>
+<RootTerm CovItemId="C7" CovItemPrefix="ActionCard.java" Intrnl_Id="191">
+<BasicBoolTerm Intrnl_Id="192">
+<LocList>
+<Loc EndOffset="3365" SrcFileId="1" StartOffset="3352"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S86" CovItemPrefix="ActionCard.java" Intrnl_Id="193">
+<LocList>
+<Loc EndOffset="3441" SrcFileId="1" StartOffset="3435"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B34" CovItemPrefix="ActionCard.java" Implct="false" Intrnl_Id="194">
+<Cond>
+<Loc EndOffset="3453" SrcFileId="1" StartOffset="3446"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3552" SrcFileId="1" StartOffset="3460"/>
+</LocList>
+<StmntSeq Intrnl_Id="195">
+<LocList>
+<Loc EndOffset="3500" SrcFileId="1" StartOffset="3460"/>
+<Loc EndOffset="3540" SrcFileId="1" StartOffset="3506"/>
+<Loc EndOffset="3552" SrcFileId="1" StartOffset="3546"/>
+</LocList>
+<BasicStmnt CovItemId="S87" CovItemPrefix="ActionCard.java" Intrnl_Id="196">
+<LocList>
+<Loc EndOffset="3500" SrcFileId="1" StartOffset="3460"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S88" CovItemPrefix="ActionCard.java" Intrnl_Id="197">
+<LocList>
+<Loc EndOffset="3540" SrcFileId="1" StartOffset="3506"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S89" CovItemPrefix="ActionCard.java" Intrnl_Id="198">
+<LocList>
+<Loc EndOffset="3552" SrcFileId="1" StartOffset="3546"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1519" SrcFileId="1" StartOffset="1513"/>
+<LocList>
+<Loc EndOffset="3557" SrcFileId="1" StartOffset="1513"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="11" HierarchyLvlTypeId="14" Intrnl_Id="199" Name="Card">
+<Header>
+<Loc EndOffset="49" SrcFileId="2" StartOffset="2"/>
+</Header>
+<LocList>
+<Loc EndOffset="520" SrcFileId="2" StartOffset="2"/>
+</LocList>
+<StmntSeq Intrnl_Id="200">
+<LocList>
+<Loc EndOffset="133" SrcFileId="2" StartOffset="101"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="Card.java" Intrnl_Id="201">
+<LocList>
+<Loc EndOffset="133" SrcFileId="2" StartOffset="101"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="6" HierarchyLvlTypeId="13" Intrnl_Id="202" Name="clone">
+<Header>
+<Loc EndOffset="170" SrcFileId="2" StartOffset="139"/>
+</Header>
+<LocList>
+<Loc EndOffset="314" SrcFileId="2" StartOffset="139"/>
+</LocList>
+<StmntSeq Intrnl_Id="203">
+<LocList>
+<Loc EndOffset="212" SrcFileId="2" StartOffset="185"/>
+<Loc EndOffset="310" SrcFileId="2" StartOffset="176"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="Card.java" Intrnl_Id="204">
+<LocList>
+<Loc EndOffset="212" SrcFileId="2" StartOffset="185"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S2" CovItemPrefix="Card.java" Intrnl_Id="205">
+<Branch CovItemId="B1" CovItemPrefix="Card.java" Implct="true" Intrnl_Id="206">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="207">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="Card.java" Implct="false" Intrnl_Id="208">
+<Cond>
+<Loc EndOffset="257" SrcFileId="2" StartOffset="222"/>
+</Cond>
+<LocList>
+<Loc EndOffset="310" SrcFileId="2" StartOffset="258"/>
+</LocList>
+<StmntSeq Intrnl_Id="209">
+<LocList>
+<Loc EndOffset="305" SrcFileId="2" StartOffset="264"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="Card.java" Intrnl_Id="210">
+<LocList>
+<Loc EndOffset="305" SrcFileId="2" StartOffset="264"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="179" SrcFileId="2" StartOffset="176"/>
+<LocList>
+<Loc EndOffset="310" SrcFileId="2" StartOffset="176"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="7" HierarchyLvlTypeId="13" Intrnl_Id="211" Name="GetName">
+<Header>
+<Loc EndOffset="343" SrcFileId="2" StartOffset="320"/>
+</Header>
+<LocList>
+<Loc EndOffset="360" SrcFileId="2" StartOffset="320"/>
+</LocList>
+<StmntSeq Intrnl_Id="212">
+<LocList>
+<Loc EndOffset="358" SrcFileId="2" StartOffset="346"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="Card.java" Intrnl_Id="213">
+<LocList>
+<Loc EndOffset="358" SrcFileId="2" StartOffset="346"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="8" HierarchyLvlTypeId="13" Intrnl_Id="214" Name="GetValue">
+<Header>
+<Loc EndOffset="387" SrcFileId="2" StartOffset="366"/>
+</Header>
+<LocList>
+<Loc EndOffset="404" SrcFileId="2" StartOffset="366"/>
+</LocList>
+<StmntSeq Intrnl_Id="215">
+<LocList>
+<Loc EndOffset="402" SrcFileId="2" StartOffset="390"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="Card.java" Intrnl_Id="216">
+<LocList>
+<Loc EndOffset="402" SrcFileId="2" StartOffset="390"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="9" HierarchyLvlTypeId="13" Intrnl_Id="217" Name="GetTrashed">
+<Header>
+<Loc EndOffset="437" SrcFileId="2" StartOffset="410"/>
+</Header>
+<LocList>
+<Loc EndOffset="457" SrcFileId="2" StartOffset="410"/>
+</LocList>
+<StmntSeq Intrnl_Id="218">
+<LocList>
+<Loc EndOffset="455" SrcFileId="2" StartOffset="440"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="Card.java" Intrnl_Id="219">
+<LocList>
+<Loc EndOffset="455" SrcFileId="2" StartOffset="440"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="10" HierarchyLvlTypeId="13" Intrnl_Id="220" Name="SetTrashed">
+<Header>
+<Loc EndOffset="498" SrcFileId="2" StartOffset="463"/>
+</Header>
+<LocList>
+<Loc EndOffset="517" SrcFileId="2" StartOffset="463"/>
+</LocList>
+<StmntSeq Intrnl_Id="221">
+<LocList>
+<Loc EndOffset="515" SrcFileId="2" StartOffset="501"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="Card.java" Intrnl_Id="222">
+<LocList>
+<Loc EndOffset="515" SrcFileId="2" StartOffset="501"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="23" HierarchyLvlTypeId="14" Intrnl_Id="223" Name="Deck">
+<Header>
+<Loc EndOffset="101" SrcFileId="3" StartOffset="84"/>
+</Header>
+<LocList>
+<Loc EndOffset="2910" SrcFileId="3" StartOffset="84"/>
+</LocList>
+<StmntSeq Intrnl_Id="224">
+<LocList>
+<Loc EndOffset="231" SrcFileId="3" StartOffset="205"/>
+<Loc EndOffset="262" SrcFileId="3" StartOffset="234"/>
+<Loc EndOffset="287" SrcFileId="3" StartOffset="265"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="Deck.java" Intrnl_Id="225">
+<LocList>
+<Loc EndOffset="231" SrcFileId="3" StartOffset="205"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="Deck.java" Intrnl_Id="226">
+<LocList>
+<Loc EndOffset="262" SrcFileId="3" StartOffset="234"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="Deck.java" Intrnl_Id="227">
+<LocList>
+<Loc EndOffset="287" SrcFileId="3" StartOffset="265"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="12" HierarchyLvlTypeId="13" Intrnl_Id="228" Name="Deck">
+<Header>
+<Loc EndOffset="306" SrcFileId="3" StartOffset="293"/>
+</Header>
+<LocList>
+<Loc EndOffset="662" SrcFileId="3" StartOffset="293"/>
+</LocList>
+<StmntSeq Intrnl_Id="229">
+<LocList>
+<Loc EndOffset="341" SrcFileId="3" StartOffset="312"/>
+<Loc EndOffset="377" SrcFileId="3" StartOffset="345"/>
+<Loc EndOffset="407" SrcFileId="3" StartOffset="381"/>
+<Loc EndOffset="545" SrcFileId="3" StartOffset="451"/>
+<Loc EndOffset="640" SrcFileId="3" StartOffset="549"/>
+<Loc EndOffset="658" SrcFileId="3" StartOffset="648"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="Deck.java" Intrnl_Id="230">
+<LocList>
+<Loc EndOffset="341" SrcFileId="3" StartOffset="312"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="Deck.java" Intrnl_Id="231">
+<LocList>
+<Loc EndOffset="377" SrcFileId="3" StartOffset="345"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="Deck.java" Intrnl_Id="232">
+<LocList>
+<Loc EndOffset="407" SrcFileId="3" StartOffset="381"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S7" CovItemPrefix="Deck.java" Intrnl_Id="233" MltplExecId="L1-2" MltplExecPrefix="Deck.java" NvrExecId="L1-0" NvrExecPrefix="Deck.java" OnceExecutedId="L1-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="234">
+<LocList>
+<Loc EndOffset="540" SrcFileId="3" StartOffset="480"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="Deck.java" Intrnl_Id="235">
+<LocList>
+<Loc EndOffset="540" SrcFileId="3" StartOffset="480"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="454" SrcFileId="3" StartOffset="451"/>
+<LocList>
+<Loc EndOffset="545" SrcFileId="3" StartOffset="451"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="Deck.java" Intrnl_Id="236">
+<BasicBoolTerm Intrnl_Id="237">
+<LocList>
+<Loc EndOffset="467" SrcFileId="3" StartOffset="464"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<LoopStmnt CovItemId="S9" CovItemPrefix="Deck.java" Intrnl_Id="238" MltplExecId="L2-2" MltplExecPrefix="Deck.java" NvrExecId="L2-0" NvrExecPrefix="Deck.java" OnceExecutedId="L2-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="239">
+<LocList>
+<Loc EndOffset="635" SrcFileId="3" StartOffset="578"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="Deck.java" Intrnl_Id="240">
+<LocList>
+<Loc EndOffset="635" SrcFileId="3" StartOffset="578"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="552" SrcFileId="3" StartOffset="549"/>
+<LocList>
+<Loc EndOffset="640" SrcFileId="3" StartOffset="549"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="Deck.java" Intrnl_Id="241">
+<BasicBoolTerm Intrnl_Id="242">
+<LocList>
+<Loc EndOffset="565" SrcFileId="3" StartOffset="562"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="Deck.java" Intrnl_Id="243">
+<LocList>
+<Loc EndOffset="658" SrcFileId="3" StartOffset="648"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="13" HierarchyLvlTypeId="13" Intrnl_Id="244" Name="GetCardCount">
+<Header>
+<Loc EndOffset="693" SrcFileId="3" StartOffset="668"/>
+</Header>
+<LocList>
+<Loc EndOffset="715" SrcFileId="3" StartOffset="668"/>
+</LocList>
+<StmntSeq Intrnl_Id="245">
+<LocList>
+<Loc EndOffset="713" SrcFileId="3" StartOffset="696"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="Deck.java" Intrnl_Id="246">
+<LocList>
+<Loc EndOffset="713" SrcFileId="3" StartOffset="696"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="14" HierarchyLvlTypeId="13" Intrnl_Id="247" Name="GetScore">
+<Header>
+<Loc EndOffset="742" SrcFileId="3" StartOffset="721"/>
+</Header>
+<LocList>
+<Loc EndOffset="801" SrcFileId="3" StartOffset="721"/>
+</LocList>
+<StmntSeq Intrnl_Id="248">
+<LocList>
+<Loc EndOffset="797" SrcFileId="3" StartOffset="748"/>
+</LocList>
+<BasicStmnt CovItemId="S13" CovItemPrefix="Deck.java" Intrnl_Id="249">
+<LocList>
+<Loc EndOffset="797" SrcFileId="3" StartOffset="748"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="15" HierarchyLvlTypeId="13" Intrnl_Id="250" Name="Shuffle">
+<Header>
+<Loc EndOffset="829" SrcFileId="3" StartOffset="807"/>
+</Header>
+<LocList>
+<Loc EndOffset="1075" SrcFileId="3" StartOffset="807"/>
+</LocList>
+<StmntSeq Intrnl_Id="251">
+<LocList>
+<Loc EndOffset="926" SrcFileId="3" StartOffset="854"/>
+<Loc EndOffset="1063" SrcFileId="3" StartOffset="930"/>
+</LocList>
+<LoopStmnt CovItemId="S14" CovItemPrefix="Deck.java" Intrnl_Id="252" MltplExecId="L3-2" MltplExecPrefix="Deck.java" NvrExecId="L3-0" NvrExecPrefix="Deck.java" OnceExecutedId="L3-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="253">
+<LocList>
+<Loc EndOffset="921" SrcFileId="3" StartOffset="888"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="Deck.java" Intrnl_Id="254">
+<LocList>
+<Loc EndOffset="921" SrcFileId="3" StartOffset="888"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="859" SrcFileId="3" StartOffset="854"/>
+<LocList>
+<Loc EndOffset="926" SrcFileId="3" StartOffset="854"/>
+</LocList>
+<RootTerm CovItemId="C3" CovItemPrefix="Deck.java" Intrnl_Id="255">
+<OpTerm BooleanOpId="11" Intrnl_Id="256">
+<BasicBoolTerm Intrnl_Id="257">
+<LocList>
+<Loc EndOffset="880" SrcFileId="3" StartOffset="861"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="861" SrcFileId="3" StartOffset="860"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</LoopStmnt>
+<LoopStmnt CovItemId="S16" CovItemPrefix="Deck.java" Intrnl_Id="258" MltplExecId="L4-2" MltplExecPrefix="Deck.java" NvrExecId="L4-0" NvrExecPrefix="Deck.java" OnceExecutedId="L4-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="259">
+<LocList>
+<Loc EndOffset="1017" SrcFileId="3" StartOffset="981"/>
+<Loc EndOffset="1058" SrcFileId="3" StartOffset="1022"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="Deck.java" Intrnl_Id="260">
+<LocList>
+<Loc EndOffset="1017" SrcFileId="3" StartOffset="981"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S18" CovItemPrefix="Deck.java" Intrnl_Id="261">
+<LocList>
+<Loc EndOffset="1058" SrcFileId="3" StartOffset="1022"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="933" SrcFileId="3" StartOffset="930"/>
+<LocList>
+<Loc EndOffset="1063" SrcFileId="3" StartOffset="930"/>
+</LocList>
+<RootTerm CovItemId="C4" CovItemPrefix="Deck.java" Intrnl_Id="262">
+<BasicBoolTerm Intrnl_Id="263">
+<LocList>
+<Loc EndOffset="968" SrcFileId="3" StartOffset="963"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="16" HierarchyLvlTypeId="13" Intrnl_Id="264" Name="AddCard">
+<Header>
+<Loc EndOffset="1111" SrcFileId="3" StartOffset="1081"/>
+</Header>
+<LocList>
+<Loc EndOffset="1340" SrcFileId="3" StartOffset="1081"/>
+</LocList>
+<StmntSeq Intrnl_Id="265">
+<LocList>
+<Loc EndOffset="1165" SrcFileId="3" StartOffset="1142"/>
+<Loc EndOffset="1181" SrcFileId="3" StartOffset="1169"/>
+<Loc EndOffset="1336" SrcFileId="3" StartOffset="1189"/>
+</LocList>
+<BasicStmnt CovItemId="S19" CovItemPrefix="Deck.java" Intrnl_Id="266">
+<LocList>
+<Loc EndOffset="1165" SrcFileId="3" StartOffset="1142"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S20" CovItemPrefix="Deck.java" Intrnl_Id="267">
+<LocList>
+<Loc EndOffset="1181" SrcFileId="3" StartOffset="1169"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S21" CovItemPrefix="Deck.java" Intrnl_Id="268">
+<Branch CovItemId="B1" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="269">
+<Cond/>
+<LocList>
+<Loc EndOffset="1246" SrcFileId="3" StartOffset="1221"/>
+</LocList>
+<StmntSeq Intrnl_Id="270">
+<LocList>
+<Loc EndOffset="1241" SrcFileId="3" StartOffset="1227"/>
+</LocList>
+<BasicStmnt CovItemId="S22" CovItemPrefix="Deck.java" Intrnl_Id="271">
+<LocList>
+<Loc EndOffset="1241" SrcFileId="3" StartOffset="1227"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="272">
+<Cond>
+<Loc EndOffset="1254" SrcFileId="3" StartOffset="1250"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1336" SrcFileId="3" StartOffset="1255"/>
+</LocList>
+<StmntSeq Intrnl_Id="273">
+<LocList>
+<Loc EndOffset="1336" SrcFileId="3" StartOffset="1255"/>
+</LocList>
+<CondStmnt CovItemId="S23" CovItemPrefix="Deck.java" Intrnl_Id="274">
+<Branch CovItemId="B3" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="275">
+<Cond/>
+<LocList>
+<Loc EndOffset="1336" SrcFileId="3" StartOffset="1287"/>
+</LocList>
+<StmntSeq Intrnl_Id="276">
+<LocList>
+<Loc EndOffset="1331" SrcFileId="3" StartOffset="1293"/>
+</LocList>
+<BasicStmnt CovItemId="S24" CovItemPrefix="Deck.java" Intrnl_Id="277">
+<LocList>
+<Loc EndOffset="1331" SrcFileId="3" StartOffset="1293"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="Deck.java" Implct="true" Intrnl_Id="278">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="279">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1257" SrcFileId="3" StartOffset="1255"/>
+<LocList>
+<Loc EndOffset="1336" SrcFileId="3" StartOffset="1255"/>
+</LocList>
+<RootTerm CovItemId="C6" CovItemPrefix="Deck.java" Intrnl_Id="280">
+<BasicBoolTerm Intrnl_Id="281">
+<LocList>
+<Loc EndOffset="1285" SrcFileId="3" StartOffset="1258"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1191" SrcFileId="3" StartOffset="1189"/>
+<LocList>
+<Loc EndOffset="1336" SrcFileId="3" StartOffset="1189"/>
+</LocList>
+<RootTerm CovItemId="C5" CovItemPrefix="Deck.java" Intrnl_Id="282">
+<BasicBoolTerm Intrnl_Id="283">
+<LocList>
+<Loc EndOffset="1219" SrcFileId="3" StartOffset="1192"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="17" HierarchyLvlTypeId="13" Intrnl_Id="284" Name="GetHand">
+<Header>
+<Loc EndOffset="1375" SrcFileId="3" StartOffset="1346"/>
+</Header>
+<LocList>
+<Loc EndOffset="1392" SrcFileId="3" StartOffset="1346"/>
+</LocList>
+<StmntSeq Intrnl_Id="285">
+<LocList>
+<Loc EndOffset="1390" SrcFileId="3" StartOffset="1378"/>
+</LocList>
+<BasicStmnt CovItemId="S25" CovItemPrefix="Deck.java" Intrnl_Id="286">
+<LocList>
+<Loc EndOffset="1390" SrcFileId="3" StartOffset="1378"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="18" HierarchyLvlTypeId="13" Intrnl_Id="287" Name="PlayTreasures">
+<Header>
+<Loc EndOffset="1424" SrcFileId="3" StartOffset="1398"/>
+</Header>
+<LocList>
+<Loc EndOffset="1618" SrcFileId="3" StartOffset="1398"/>
+</LocList>
+<StmntSeq Intrnl_Id="288">
+<LocList>
+<Loc EndOffset="1444" SrcFileId="3" StartOffset="1430"/>
+<Loc EndOffset="1593" SrcFileId="3" StartOffset="1452"/>
+<Loc EndOffset="1614" SrcFileId="3" StartOffset="1601"/>
+</LocList>
+<BasicStmnt CovItemId="S26" CovItemPrefix="Deck.java" Intrnl_Id="289">
+<LocList>
+<Loc EndOffset="1444" SrcFileId="3" StartOffset="1430"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S27" CovItemPrefix="Deck.java" Intrnl_Id="290" MltplExecId="L5-2" MltplExecPrefix="Deck.java" NvrExecId="L5-0" NvrExecPrefix="Deck.java" OnceExecutedId="L5-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="291">
+<LocList>
+<Loc EndOffset="1588" SrcFileId="3" StartOffset="1491"/>
+</LocList>
+<CondStmnt CovItemId="S28" CovItemPrefix="Deck.java" Intrnl_Id="292">
+<Branch CovItemId="B5" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="293">
+<Cond/>
+<LocList>
+<Loc EndOffset="1588" SrcFileId="3" StartOffset="1537"/>
+</LocList>
+<StmntSeq Intrnl_Id="294">
+<LocList>
+<Loc EndOffset="1582" SrcFileId="3" StartOffset="1544"/>
+</LocList>
+<BasicStmnt CovItemId="S29" CovItemPrefix="Deck.java" Intrnl_Id="295">
+<LocList>
+<Loc EndOffset="1582" SrcFileId="3" StartOffset="1544"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="Deck.java" Implct="true" Intrnl_Id="296">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="297">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1493" SrcFileId="3" StartOffset="1491"/>
+<LocList>
+<Loc EndOffset="1588" SrcFileId="3" StartOffset="1491"/>
+</LocList>
+<RootTerm CovItemId="C8" CovItemPrefix="Deck.java" Intrnl_Id="298">
+<BasicBoolTerm Intrnl_Id="299">
+<LocList>
+<Loc EndOffset="1535" SrcFileId="3" StartOffset="1494"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="1455" SrcFileId="3" StartOffset="1452"/>
+<LocList>
+<Loc EndOffset="1593" SrcFileId="3" StartOffset="1452"/>
+</LocList>
+<RootTerm CovItemId="C7" CovItemPrefix="Deck.java" Intrnl_Id="300">
+<BasicBoolTerm Intrnl_Id="301">
+<LocList>
+<Loc EndOffset="1478" SrcFileId="3" StartOffset="1465"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S30" CovItemPrefix="Deck.java" Intrnl_Id="302">
+<LocList>
+<Loc EndOffset="1614" SrcFileId="3" StartOffset="1601"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="19" HierarchyLvlTypeId="13" Intrnl_Id="303" Name="DrawCards">
+<Header>
+<Loc EndOffset="1667" SrcFileId="3" StartOffset="1624"/>
+</Header>
+<LocList>
+<Loc EndOffset="2026" SrcFileId="3" StartOffset="1624"/>
+</LocList>
+<StmntSeq Intrnl_Id="304">
+<LocList>
+<Loc EndOffset="1784" SrcFileId="3" StartOffset="1739"/>
+<Loc EndOffset="1996" SrcFileId="3" StartOffset="1792"/>
+<Loc EndOffset="2022" SrcFileId="3" StartOffset="2004"/>
+</LocList>
+<BasicStmnt CovItemId="S31" CovItemPrefix="Deck.java" Intrnl_Id="305">
+<LocList>
+<Loc EndOffset="1784" SrcFileId="3" StartOffset="1739"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S32" CovItemPrefix="Deck.java" Intrnl_Id="306">
+<Branch CovItemId="B7" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="307">
+<Cond/>
+<LocList>
+<Loc EndOffset="1842" SrcFileId="3" StartOffset="1821"/>
+</LocList>
+<StmntSeq Intrnl_Id="308">
+<LocList>
+<Loc EndOffset="1837" SrcFileId="3" StartOffset="1827"/>
+</LocList>
+<BasicStmnt CovItemId="S33" CovItemPrefix="Deck.java" Intrnl_Id="309">
+<LocList>
+<Loc EndOffset="1837" SrcFileId="3" StartOffset="1827"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="310">
+<Cond>
+<Loc EndOffset="1850" SrcFileId="3" StartOffset="1846"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1996" SrcFileId="3" StartOffset="1851"/>
+</LocList>
+<StmntSeq Intrnl_Id="311">
+<LocList>
+<Loc EndOffset="1991" SrcFileId="3" StartOffset="1857"/>
+</LocList>
+<LoopStmnt CovItemId="S34" CovItemPrefix="Deck.java" Intrnl_Id="312" MltplExecId="L6-2" MltplExecPrefix="Deck.java" NvrExecId="L6-0" NvrExecPrefix="Deck.java" OnceExecutedId="L6-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="313">
+<LocList>
+<Loc EndOffset="1924" SrcFileId="3" StartOffset="1894"/>
+<Loc EndOffset="1955" SrcFileId="3" StartOffset="1930"/>
+<Loc EndOffset="1985" SrcFileId="3" StartOffset="1961"/>
+</LocList>
+<BasicStmnt CovItemId="S35" CovItemPrefix="Deck.java" Intrnl_Id="314">
+<LocList>
+<Loc EndOffset="1924" SrcFileId="3" StartOffset="1894"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S36" CovItemPrefix="Deck.java" Intrnl_Id="315">
+<LocList>
+<Loc EndOffset="1955" SrcFileId="3" StartOffset="1930"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S37" CovItemPrefix="Deck.java" Intrnl_Id="316">
+<LocList>
+<Loc EndOffset="1985" SrcFileId="3" StartOffset="1961"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="1860" SrcFileId="3" StartOffset="1857"/>
+<LocList>
+<Loc EndOffset="1991" SrcFileId="3" StartOffset="1857"/>
+</LocList>
+<RootTerm CovItemId="C10" CovItemPrefix="Deck.java" Intrnl_Id="317">
+<BasicBoolTerm Intrnl_Id="318">
+<LocList>
+<Loc EndOffset="1880" SrcFileId="3" StartOffset="1870"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1794" SrcFileId="3" StartOffset="1792"/>
+<LocList>
+<Loc EndOffset="1996" SrcFileId="3" StartOffset="1792"/>
+</LocList>
+<RootTerm CovItemId="C9" CovItemPrefix="Deck.java" Intrnl_Id="319">
+<BasicBoolTerm Intrnl_Id="320">
+<LocList>
+<Loc EndOffset="1819" SrcFileId="3" StartOffset="1795"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S38" CovItemPrefix="Deck.java" Intrnl_Id="321">
+<LocList>
+<Loc EndOffset="2022" SrcFileId="3" StartOffset="2004"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="20" HierarchyLvlTypeId="13" Intrnl_Id="322" Name="TrashCard">
+<Header>
+<Loc EndOffset="2064" SrcFileId="3" StartOffset="2032"/>
+</Header>
+<LocList>
+<Loc EndOffset="2661" SrcFileId="3" StartOffset="2032"/>
+</LocList>
+<StmntSeq Intrnl_Id="323">
+<LocList>
+<Loc EndOffset="2099" SrcFileId="3" StartOffset="2087"/>
+<Loc EndOffset="2254" SrcFileId="3" StartOffset="2107"/>
+<Loc EndOffset="2284" SrcFileId="3" StartOffset="2262"/>
+<Loc EndOffset="2412" SrcFileId="3" StartOffset="2292"/>
+<Loc EndOffset="2524" SrcFileId="3" StartOffset="2416"/>
+<Loc EndOffset="2657" SrcFileId="3" StartOffset="2528"/>
+</LocList>
+<BasicStmnt CovItemId="S39" CovItemPrefix="Deck.java" Intrnl_Id="324">
+<LocList>
+<Loc EndOffset="2099" SrcFileId="3" StartOffset="2087"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S40" CovItemPrefix="Deck.java" Intrnl_Id="325">
+<Branch CovItemId="B9" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="326">
+<Cond/>
+<LocList>
+<Loc EndOffset="2164" SrcFileId="3" StartOffset="2139"/>
+</LocList>
+<StmntSeq Intrnl_Id="327">
+<LocList>
+<Loc EndOffset="2159" SrcFileId="3" StartOffset="2145"/>
+</LocList>
+<BasicStmnt CovItemId="S41" CovItemPrefix="Deck.java" Intrnl_Id="328">
+<LocList>
+<Loc EndOffset="2159" SrcFileId="3" StartOffset="2145"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B10" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="329">
+<Cond>
+<Loc EndOffset="2172" SrcFileId="3" StartOffset="2168"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2254" SrcFileId="3" StartOffset="2173"/>
+</LocList>
+<StmntSeq Intrnl_Id="330">
+<LocList>
+<Loc EndOffset="2254" SrcFileId="3" StartOffset="2173"/>
+</LocList>
+<CondStmnt CovItemId="S42" CovItemPrefix="Deck.java" Intrnl_Id="331">
+<Branch CovItemId="B11" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="332">
+<Cond/>
+<LocList>
+<Loc EndOffset="2254" SrcFileId="3" StartOffset="2205"/>
+</LocList>
+<StmntSeq Intrnl_Id="333">
+<LocList>
+<Loc EndOffset="2249" SrcFileId="3" StartOffset="2211"/>
+</LocList>
+<BasicStmnt CovItemId="S43" CovItemPrefix="Deck.java" Intrnl_Id="334">
+<LocList>
+<Loc EndOffset="2249" SrcFileId="3" StartOffset="2211"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B12" CovItemPrefix="Deck.java" Implct="true" Intrnl_Id="335">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="336">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2175" SrcFileId="3" StartOffset="2173"/>
+<LocList>
+<Loc EndOffset="2254" SrcFileId="3" StartOffset="2173"/>
+</LocList>
+<RootTerm CovItemId="C12" CovItemPrefix="Deck.java" Intrnl_Id="337">
+<BasicBoolTerm Intrnl_Id="338">
+<LocList>
+<Loc EndOffset="2203" SrcFileId="3" StartOffset="2176"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2109" SrcFileId="3" StartOffset="2107"/>
+<LocList>
+<Loc EndOffset="2254" SrcFileId="3" StartOffset="2107"/>
+</LocList>
+<RootTerm CovItemId="C11" CovItemPrefix="Deck.java" Intrnl_Id="339">
+<BasicBoolTerm Intrnl_Id="340">
+<LocList>
+<Loc EndOffset="2137" SrcFileId="3" StartOffset="2110"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S44" CovItemPrefix="Deck.java" Intrnl_Id="341">
+<LocList>
+<Loc EndOffset="2284" SrcFileId="3" StartOffset="2262"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S45" CovItemPrefix="Deck.java" Intrnl_Id="342" MltplExecId="L7-2" MltplExecPrefix="Deck.java" NvrExecId="L7-0" NvrExecPrefix="Deck.java" OnceExecutedId="L7-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="343">
+<LocList>
+<Loc EndOffset="2407" SrcFileId="3" StartOffset="2336"/>
+</LocList>
+<CondStmnt CovItemId="S46" CovItemPrefix="Deck.java" Intrnl_Id="344">
+<Branch CovItemId="B13" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="345">
+<Cond/>
+<LocList>
+<Loc EndOffset="2407" SrcFileId="3" StartOffset="2375"/>
+</LocList>
+<StmntSeq Intrnl_Id="346">
+<LocList>
+<Loc EndOffset="2401" SrcFileId="3" StartOffset="2382"/>
+</LocList>
+<BasicStmnt CovItemId="S47" CovItemPrefix="Deck.java" Intrnl_Id="347">
+<LocList>
+<Loc EndOffset="2401" SrcFileId="3" StartOffset="2382"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B14" CovItemPrefix="Deck.java" Implct="true" Intrnl_Id="348">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="349">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2338" SrcFileId="3" StartOffset="2336"/>
+<LocList>
+<Loc EndOffset="2407" SrcFileId="3" StartOffset="2336"/>
+</LocList>
+<RootTerm CovItemId="C14" CovItemPrefix="Deck.java" Intrnl_Id="350">
+<BasicBoolTerm Intrnl_Id="351">
+<LocList>
+<Loc EndOffset="2373" SrcFileId="3" StartOffset="2339"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="2295" SrcFileId="3" StartOffset="2292"/>
+<LocList>
+<Loc EndOffset="2412" SrcFileId="3" StartOffset="2292"/>
+</LocList>
+<RootTerm CovItemId="C13" CovItemPrefix="Deck.java" Intrnl_Id="352">
+<BasicBoolTerm Intrnl_Id="353">
+<LocList>
+<Loc EndOffset="2322" SrcFileId="3" StartOffset="2305"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<LoopStmnt CovItemId="S48" CovItemPrefix="Deck.java" Intrnl_Id="354" MltplExecId="L8-2" MltplExecPrefix="Deck.java" NvrExecId="L8-0" NvrExecPrefix="Deck.java" OnceExecutedId="L8-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="355">
+<LocList>
+<Loc EndOffset="2519" SrcFileId="3" StartOffset="2456"/>
+</LocList>
+<CondStmnt CovItemId="S49" CovItemPrefix="Deck.java" Intrnl_Id="356">
+<Branch CovItemId="B15" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="357">
+<Cond/>
+<LocList>
+<Loc EndOffset="2519" SrcFileId="3" StartOffset="2491"/>
+</LocList>
+<StmntSeq Intrnl_Id="358">
+<LocList>
+<Loc EndOffset="2513" SrcFileId="3" StartOffset="2498"/>
+</LocList>
+<BasicStmnt CovItemId="S50" CovItemPrefix="Deck.java" Intrnl_Id="359">
+<LocList>
+<Loc EndOffset="2513" SrcFileId="3" StartOffset="2498"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B16" CovItemPrefix="Deck.java" Implct="true" Intrnl_Id="360">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="361">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2458" SrcFileId="3" StartOffset="2456"/>
+<LocList>
+<Loc EndOffset="2519" SrcFileId="3" StartOffset="2456"/>
+</LocList>
+<RootTerm CovItemId="C16" CovItemPrefix="Deck.java" Intrnl_Id="362">
+<BasicBoolTerm Intrnl_Id="363">
+<LocList>
+<Loc EndOffset="2489" SrcFileId="3" StartOffset="2459"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="2419" SrcFileId="3" StartOffset="2416"/>
+<LocList>
+<Loc EndOffset="2524" SrcFileId="3" StartOffset="2416"/>
+</LocList>
+<RootTerm CovItemId="C15" CovItemPrefix="Deck.java" Intrnl_Id="364">
+<BasicBoolTerm Intrnl_Id="365">
+<LocList>
+<Loc EndOffset="2442" SrcFileId="3" StartOffset="2429"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<LoopStmnt CovItemId="S51" CovItemPrefix="Deck.java" Intrnl_Id="366" MltplExecId="L9-2" MltplExecPrefix="Deck.java" NvrExecId="L9-0" NvrExecPrefix="Deck.java" OnceExecutedId="L9-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="367">
+<LocList>
+<Loc EndOffset="2652" SrcFileId="3" StartOffset="2575"/>
+</LocList>
+<CondStmnt CovItemId="S52" CovItemPrefix="Deck.java" Intrnl_Id="368">
+<Branch CovItemId="B17" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="369">
+<Cond/>
+<LocList>
+<Loc EndOffset="2652" SrcFileId="3" StartOffset="2617"/>
+</LocList>
+<StmntSeq Intrnl_Id="370">
+<LocList>
+<Loc EndOffset="2646" SrcFileId="3" StartOffset="2624"/>
+</LocList>
+<BasicStmnt CovItemId="S53" CovItemPrefix="Deck.java" Intrnl_Id="371">
+<LocList>
+<Loc EndOffset="2646" SrcFileId="3" StartOffset="2624"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B18" CovItemPrefix="Deck.java" Implct="true" Intrnl_Id="372">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="373">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2577" SrcFileId="3" StartOffset="2575"/>
+<LocList>
+<Loc EndOffset="2652" SrcFileId="3" StartOffset="2575"/>
+</LocList>
+<RootTerm CovItemId="C18" CovItemPrefix="Deck.java" Intrnl_Id="374">
+<BasicBoolTerm Intrnl_Id="375">
+<LocList>
+<Loc EndOffset="2615" SrcFileId="3" StartOffset="2578"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="2531" SrcFileId="3" StartOffset="2528"/>
+<LocList>
+<Loc EndOffset="2657" SrcFileId="3" StartOffset="2528"/>
+</LocList>
+<RootTerm CovItemId="C17" CovItemPrefix="Deck.java" Intrnl_Id="376">
+<BasicBoolTerm Intrnl_Id="377">
+<LocList>
+<Loc EndOffset="2561" SrcFileId="3" StartOffset="2541"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="21" HierarchyLvlTypeId="13" Intrnl_Id="378" Name="DiscardHand">
+<Header>
+<Loc EndOffset="2692" SrcFileId="3" StartOffset="2667"/>
+</Header>
+<LocList>
+<Loc EndOffset="2797" SrcFileId="3" StartOffset="2667"/>
+</LocList>
+<StmntSeq Intrnl_Id="379">
+<LocList>
+<Loc EndOffset="2772" SrcFileId="3" StartOffset="2698"/>
+<Loc EndOffset="2793" SrcFileId="3" StartOffset="2780"/>
+</LocList>
+<LoopStmnt CovItemId="S54" CovItemPrefix="Deck.java" Intrnl_Id="380" MltplExecId="L10-2" MltplExecPrefix="Deck.java" NvrExecId="L10-0" NvrExecPrefix="Deck.java" OnceExecutedId="L10-1" OnceExecutedPrefix="Deck.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="381">
+<LocList>
+<Loc EndOffset="2767" SrcFileId="3" StartOffset="2737"/>
+</LocList>
+<BasicStmnt CovItemId="S55" CovItemPrefix="Deck.java" Intrnl_Id="382">
+<LocList>
+<Loc EndOffset="2767" SrcFileId="3" StartOffset="2737"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="2701" SrcFileId="3" StartOffset="2698"/>
+<LocList>
+<Loc EndOffset="2772" SrcFileId="3" StartOffset="2698"/>
+</LocList>
+<RootTerm CovItemId="C19" CovItemPrefix="Deck.java" Intrnl_Id="383">
+<BasicBoolTerm Intrnl_Id="384">
+<LocList>
+<Loc EndOffset="2724" SrcFileId="3" StartOffset="2711"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S56" CovItemPrefix="Deck.java" Intrnl_Id="385">
+<LocList>
+<Loc EndOffset="2793" SrcFileId="3" StartOffset="2780"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="22" HierarchyLvlTypeId="13" Intrnl_Id="386" Name="DiscardFromHand">
+<Header>
+<Loc EndOffset="2841" SrcFileId="3" StartOffset="2803"/>
+</Header>
+<LocList>
+<Loc EndOffset="2907" SrcFileId="3" StartOffset="2803"/>
+</LocList>
+<StmntSeq Intrnl_Id="387">
+<LocList>
+<Loc EndOffset="2903" SrcFileId="3" StartOffset="2847"/>
+</LocList>
+<CondStmnt CovItemId="S57" CovItemPrefix="Deck.java" Intrnl_Id="388">
+<Branch CovItemId="B19" CovItemPrefix="Deck.java" Implct="false" Intrnl_Id="389">
+<Cond/>
+<LocList>
+<Loc EndOffset="2903" SrcFileId="3" StartOffset="2869"/>
+</LocList>
+<StmntSeq Intrnl_Id="390">
+<LocList>
+<Loc EndOffset="2898" SrcFileId="3" StartOffset="2875"/>
+</LocList>
+<BasicStmnt CovItemId="S58" CovItemPrefix="Deck.java" Intrnl_Id="391">
+<LocList>
+<Loc EndOffset="2898" SrcFileId="3" StartOffset="2875"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B20" CovItemPrefix="Deck.java" Implct="true" Intrnl_Id="392">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="393">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2849" SrcFileId="3" StartOffset="2847"/>
+<LocList>
+<Loc EndOffset="2903" SrcFileId="3" StartOffset="2847"/>
+</LocList>
+<RootTerm CovItemId="C20" CovItemPrefix="Deck.java" Intrnl_Id="394">
+<BasicBoolTerm Intrnl_Id="395">
+<LocList>
+<Loc EndOffset="2867" SrcFileId="3" StartOffset="2850"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="30" HierarchyLvlTypeId="14" Intrnl_Id="396" Name="DominionBoard">
+<Header>
+<Loc EndOffset="85" SrcFileId="4" StartOffset="59"/>
+</Header>
+<LocList>
+<Loc EndOffset="4188" SrcFileId="4" StartOffset="59"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="24" HierarchyLvlTypeId="13" Intrnl_Id="397" Name="DominionBoard">
+<Header>
+<Loc EndOffset="274" SrcFileId="4" StartOffset="252"/>
+</Header>
+<LocList>
+<Loc EndOffset="2575" SrcFileId="4" StartOffset="252"/>
+</LocList>
+<StmntSeq Intrnl_Id="398">
+<LocList>
+<Loc EndOffset="323" SrcFileId="4" StartOffset="282"/>
+<Loc EndOffset="369" SrcFileId="4" StartOffset="327"/>
+<Loc EndOffset="512" SrcFileId="4" StartOffset="417"/>
+<Loc EndOffset="611" SrcFileId="4" StartOffset="516"/>
+<Loc EndOffset="705" SrcFileId="4" StartOffset="615"/>
+<Loc EndOffset="806" SrcFileId="4" StartOffset="709"/>
+<Loc EndOffset="903" SrcFileId="4" StartOffset="810"/>
+<Loc EndOffset="999" SrcFileId="4" StartOffset="907"/>
+<Loc EndOffset="1093" SrcFileId="4" StartOffset="1003"/>
+<Loc EndOffset="1192" SrcFileId="4" StartOffset="1097"/>
+<Loc EndOffset="1285" SrcFileId="4" StartOffset="1196"/>
+<Loc EndOffset="1381" SrcFileId="4" StartOffset="1289"/>
+<Loc EndOffset="1476" SrcFileId="4" StartOffset="1385"/>
+<Loc EndOffset="1572" SrcFileId="4" StartOffset="1480"/>
+<Loc EndOffset="1671" SrcFileId="4" StartOffset="1576"/>
+<Loc EndOffset="1784" SrcFileId="4" StartOffset="1679"/>
+<Loc EndOffset="1887" SrcFileId="4" StartOffset="1792"/>
+<Loc EndOffset="1988" SrcFileId="4" StartOffset="1891"/>
+<Loc EndOffset="2089" SrcFileId="4" StartOffset="1992"/>
+<Loc EndOffset="2185" SrcFileId="4" StartOffset="2093"/>
+<Loc EndOffset="2282" SrcFileId="4" StartOffset="2189"/>
+<Loc EndOffset="2365" SrcFileId="4" StartOffset="2286"/>
+<Loc EndOffset="2403" SrcFileId="4" StartOffset="2369"/>
+<Loc EndOffset="2491" SrcFileId="4" StartOffset="2407"/>
+<Loc EndOffset="2532" SrcFileId="4" StartOffset="2495"/>
+<Loc EndOffset="2571" SrcFileId="4" StartOffset="2540"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="DominionBoard.java" Intrnl_Id="399">
+<LocList>
+<Loc EndOffset="323" SrcFileId="4" StartOffset="282"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="DominionBoard.java" Intrnl_Id="400">
+<LocList>
+<Loc EndOffset="369" SrcFileId="4" StartOffset="327"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="DominionBoard.java" Intrnl_Id="401">
+<LocList>
+<Loc EndOffset="512" SrcFileId="4" StartOffset="417"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="DominionBoard.java" Intrnl_Id="402">
+<LocList>
+<Loc EndOffset="611" SrcFileId="4" StartOffset="516"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="DominionBoard.java" Intrnl_Id="403">
+<LocList>
+<Loc EndOffset="705" SrcFileId="4" StartOffset="615"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="DominionBoard.java" Intrnl_Id="404">
+<LocList>
+<Loc EndOffset="806" SrcFileId="4" StartOffset="709"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="DominionBoard.java" Intrnl_Id="405">
+<LocList>
+<Loc EndOffset="903" SrcFileId="4" StartOffset="810"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="DominionBoard.java" Intrnl_Id="406">
+<LocList>
+<Loc EndOffset="999" SrcFileId="4" StartOffset="907"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S9" CovItemPrefix="DominionBoard.java" Intrnl_Id="407">
+<LocList>
+<Loc EndOffset="1093" SrcFileId="4" StartOffset="1003"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="DominionBoard.java" Intrnl_Id="408">
+<LocList>
+<Loc EndOffset="1192" SrcFileId="4" StartOffset="1097"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="DominionBoard.java" Intrnl_Id="409">
+<LocList>
+<Loc EndOffset="1285" SrcFileId="4" StartOffset="1196"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S12" CovItemPrefix="DominionBoard.java" Intrnl_Id="410">
+<LocList>
+<Loc EndOffset="1381" SrcFileId="4" StartOffset="1289"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S13" CovItemPrefix="DominionBoard.java" Intrnl_Id="411">
+<LocList>
+<Loc EndOffset="1476" SrcFileId="4" StartOffset="1385"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S14" CovItemPrefix="DominionBoard.java" Intrnl_Id="412">
+<LocList>
+<Loc EndOffset="1572" SrcFileId="4" StartOffset="1480"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S15" CovItemPrefix="DominionBoard.java" Intrnl_Id="413">
+<LocList>
+<Loc EndOffset="1671" SrcFileId="4" StartOffset="1576"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S16" CovItemPrefix="DominionBoard.java" Intrnl_Id="414" MltplExecId="L1-2" MltplExecPrefix="DominionBoard.java" NvrExecId="L1-0" NvrExecPrefix="DominionBoard.java" OnceExecutedId="L1-1" OnceExecutedPrefix="DominionBoard.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="415">
+<LocList>
+<Loc EndOffset="1779" SrcFileId="4" StartOffset="1717"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="DominionBoard.java" Intrnl_Id="416">
+<LocList>
+<Loc EndOffset="1779" SrcFileId="4" StartOffset="1717"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="1684" SrcFileId="4" StartOffset="1679"/>
+<LocList>
+<Loc EndOffset="1784" SrcFileId="4" StartOffset="1679"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="DominionBoard.java" Intrnl_Id="417">
+<BasicBoolTerm Intrnl_Id="418">
+<LocList>
+<Loc EndOffset="1709" SrcFileId="4" StartOffset="1685"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S18" CovItemPrefix="DominionBoard.java" Intrnl_Id="419">
+<LocList>
+<Loc EndOffset="1887" SrcFileId="4" StartOffset="1792"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S19" CovItemPrefix="DominionBoard.java" Intrnl_Id="420">
+<LocList>
+<Loc EndOffset="1988" SrcFileId="4" StartOffset="1891"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S20" CovItemPrefix="DominionBoard.java" Intrnl_Id="421">
+<LocList>
+<Loc EndOffset="2089" SrcFileId="4" StartOffset="1992"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S21" CovItemPrefix="DominionBoard.java" Intrnl_Id="422">
+<LocList>
+<Loc EndOffset="2185" SrcFileId="4" StartOffset="2093"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S22" CovItemPrefix="DominionBoard.java" Intrnl_Id="423">
+<LocList>
+<Loc EndOffset="2282" SrcFileId="4" StartOffset="2189"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S23" CovItemPrefix="DominionBoard.java" Intrnl_Id="424">
+<LocList>
+<Loc EndOffset="2365" SrcFileId="4" StartOffset="2286"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S24" CovItemPrefix="DominionBoard.java" Intrnl_Id="425">
+<LocList>
+<Loc EndOffset="2403" SrcFileId="4" StartOffset="2369"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S25" CovItemPrefix="DominionBoard.java" Intrnl_Id="426">
+<LocList>
+<Loc EndOffset="2491" SrcFileId="4" StartOffset="2407"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S26" CovItemPrefix="DominionBoard.java" Intrnl_Id="427">
+<LocList>
+<Loc EndOffset="2532" SrcFileId="4" StartOffset="2495"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S27" CovItemPrefix="DominionBoard.java" Intrnl_Id="428">
+<LocList>
+<Loc EndOffset="2571" SrcFileId="4" StartOffset="2540"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="25" HierarchyLvlTypeId="13" Intrnl_Id="429" Name="GetBuyable">
+<Header>
+<Loc EndOffset="2622" SrcFileId="4" StartOffset="2581"/>
+</Header>
+<LocList>
+<Loc EndOffset="2964" SrcFileId="4" StartOffset="2581"/>
+</LocList>
+<StmntSeq Intrnl_Id="430">
+<LocList>
+<Loc EndOffset="2670" SrcFileId="4" StartOffset="2628"/>
+<Loc EndOffset="2939" SrcFileId="4" StartOffset="2678"/>
+<Loc EndOffset="2960" SrcFileId="4" StartOffset="2945"/>
+</LocList>
+<BasicStmnt CovItemId="S28" CovItemPrefix="DominionBoard.java" Intrnl_Id="431">
+<LocList>
+<Loc EndOffset="2670" SrcFileId="4" StartOffset="2628"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S29" CovItemPrefix="DominionBoard.java" Intrnl_Id="432" MltplExecId="L2-2" MltplExecPrefix="DominionBoard.java" NvrExecId="L2-0" NvrExecPrefix="DominionBoard.java" OnceExecutedId="L2-1" OnceExecutedPrefix="DominionBoard.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="433">
+<LocList>
+<Loc EndOffset="2934" SrcFileId="4" StartOffset="2726"/>
+</LocList>
+<CondStmnt CovItemId="S30" CovItemPrefix="DominionBoard.java" Intrnl_Id="434">
+<Branch CovItemId="B1" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="435">
+<Cond/>
+<LocList>
+<Loc EndOffset="2905" SrcFileId="4" StartOffset="2776"/>
+</LocList>
+<StmntSeq Intrnl_Id="436">
+<LocList>
+<Loc EndOffset="2899" SrcFileId="4" StartOffset="2850"/>
+</LocList>
+<BasicStmnt CovItemId="S31" CovItemPrefix="DominionBoard.java" Intrnl_Id="437">
+<LocList>
+<Loc EndOffset="2899" SrcFileId="4" StartOffset="2850"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="438">
+<Cond>
+<Loc EndOffset="2914" SrcFileId="4" StartOffset="2910"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2934" SrcFileId="4" StartOffset="2915"/>
+</LocList>
+<StmntSeq Intrnl_Id="439">
+<LocList>
+<Loc EndOffset="2928" SrcFileId="4" StartOffset="2922"/>
+</LocList>
+<BasicStmnt CovItemId="S32" CovItemPrefix="DominionBoard.java" Intrnl_Id="440">
+<LocList>
+<Loc EndOffset="2928" SrcFileId="4" StartOffset="2922"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2728" SrcFileId="4" StartOffset="2726"/>
+<LocList>
+<Loc EndOffset="2934" SrcFileId="4" StartOffset="2726"/>
+</LocList>
+<RootTerm CovItemId="C3" CovItemPrefix="DominionBoard.java" Intrnl_Id="441">
+<BasicBoolTerm Intrnl_Id="442">
+<LocList>
+<Loc EndOffset="2774" SrcFileId="4" StartOffset="2729"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="2681" SrcFileId="4" StartOffset="2678"/>
+<LocList>
+<Loc EndOffset="2939" SrcFileId="4" StartOffset="2678"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="DominionBoard.java" Intrnl_Id="443">
+<BasicBoolTerm Intrnl_Id="444">
+<LocList>
+<Loc EndOffset="2712" SrcFileId="4" StartOffset="2691"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S33" CovItemPrefix="DominionBoard.java" Intrnl_Id="445">
+<LocList>
+<Loc EndOffset="2960" SrcFileId="4" StartOffset="2945"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="26" HierarchyLvlTypeId="13" Intrnl_Id="446" Name="BuyCard">
+<Header>
+<Loc EndOffset="3006" SrcFileId="4" StartOffset="2970"/>
+</Header>
+<LocList>
+<Loc EndOffset="3396" SrcFileId="4" StartOffset="2970"/>
+</LocList>
+<StmntSeq Intrnl_Id="447">
+<LocList>
+<Loc EndOffset="3059" SrcFileId="4" StartOffset="3012"/>
+<Loc EndOffset="3107" SrcFileId="4" StartOffset="3067"/>
+<Loc EndOffset="3138" SrcFileId="4" StartOffset="3111"/>
+<Loc EndOffset="3282" SrcFileId="4" StartOffset="3146"/>
+<Loc EndOffset="3371" SrcFileId="4" StartOffset="3290"/>
+<Loc EndOffset="3392" SrcFileId="4" StartOffset="3379"/>
+</LocList>
+<BasicStmnt CovItemId="S34" CovItemPrefix="DominionBoard.java" Intrnl_Id="448">
+<LocList>
+<Loc EndOffset="3059" SrcFileId="4" StartOffset="3012"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S35" CovItemPrefix="DominionBoard.java" Intrnl_Id="449">
+<LocList>
+<Loc EndOffset="3107" SrcFileId="4" StartOffset="3067"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S36" CovItemPrefix="DominionBoard.java" Intrnl_Id="450">
+<LocList>
+<Loc EndOffset="3138" SrcFileId="4" StartOffset="3111"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S37" CovItemPrefix="DominionBoard.java" Intrnl_Id="451" MltplExecId="L3-2" MltplExecPrefix="DominionBoard.java" NvrExecId="L3-0" NvrExecPrefix="DominionBoard.java" OnceExecutedId="L3-1" OnceExecutedPrefix="DominionBoard.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="452">
+<LocList>
+<Loc EndOffset="3217" SrcFileId="4" StartOffset="3193"/>
+<Loc EndOffset="3277" SrcFileId="4" StartOffset="3222"/>
+</LocList>
+<BasicStmnt CovItemId="S38" CovItemPrefix="DominionBoard.java" Intrnl_Id="453">
+<LocList>
+<Loc EndOffset="3217" SrcFileId="4" StartOffset="3193"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S39" CovItemPrefix="DominionBoard.java" Intrnl_Id="454">
+<Branch CovItemId="B3" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="455">
+<Cond/>
+<LocList>
+<Loc EndOffset="3277" SrcFileId="4" StartOffset="3240"/>
+</LocList>
+<StmntSeq Intrnl_Id="456">
+<LocList>
+<Loc EndOffset="3271" SrcFileId="4" StartOffset="3247"/>
+</LocList>
+<BasicStmnt CovItemId="S40" CovItemPrefix="DominionBoard.java" Intrnl_Id="457">
+<LocList>
+<Loc EndOffset="3271" SrcFileId="4" StartOffset="3247"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="DominionBoard.java" Implct="true" Intrnl_Id="458">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="459">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3224" SrcFileId="4" StartOffset="3222"/>
+<LocList>
+<Loc EndOffset="3277" SrcFileId="4" StartOffset="3222"/>
+</LocList>
+<RootTerm CovItemId="C5" CovItemPrefix="DominionBoard.java" Intrnl_Id="460">
+<BasicBoolTerm Intrnl_Id="461">
+<LocList>
+<Loc EndOffset="3238" SrcFileId="4" StartOffset="3225"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="3149" SrcFileId="4" StartOffset="3146"/>
+<LocList>
+<Loc EndOffset="3282" SrcFileId="4" StartOffset="3146"/>
+</LocList>
+<RootTerm CovItemId="C4" CovItemPrefix="DominionBoard.java" Intrnl_Id="462">
+<BasicBoolTerm Intrnl_Id="463">
+<LocList>
+<Loc EndOffset="3180" SrcFileId="4" StartOffset="3159"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<CondStmnt CovItemId="S41" CovItemPrefix="DominionBoard.java" Intrnl_Id="464">
+<Branch CovItemId="B5" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="465">
+<Cond/>
+<LocList>
+<Loc EndOffset="3371" SrcFileId="4" StartOffset="3309"/>
+</LocList>
+<StmntSeq Intrnl_Id="466">
+<LocList>
+<Loc EndOffset="3366" SrcFileId="4" StartOffset="3315"/>
+</LocList>
+<BasicStmnt CovItemId="S42" CovItemPrefix="DominionBoard.java" Intrnl_Id="467">
+<LocList>
+<Loc EndOffset="3366" SrcFileId="4" StartOffset="3315"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="DominionBoard.java" Implct="true" Intrnl_Id="468">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="469">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3292" SrcFileId="4" StartOffset="3290"/>
+<LocList>
+<Loc EndOffset="3371" SrcFileId="4" StartOffset="3290"/>
+</LocList>
+<RootTerm CovItemId="C6" CovItemPrefix="DominionBoard.java" Intrnl_Id="470">
+<BasicBoolTerm Intrnl_Id="471">
+<LocList>
+<Loc EndOffset="3307" SrcFileId="4" StartOffset="3293"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S43" CovItemPrefix="DominionBoard.java" Intrnl_Id="472">
+<LocList>
+<Loc EndOffset="3392" SrcFileId="4" StartOffset="3379"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="27" HierarchyLvlTypeId="13" Intrnl_Id="473" Name="BuyCurse">
+<Header>
+<Loc EndOffset="3424" SrcFileId="4" StartOffset="3402"/>
+</Header>
+<LocList>
+<Loc EndOffset="3668" SrcFileId="4" StartOffset="3402"/>
+</LocList>
+<StmntSeq Intrnl_Id="474">
+<LocList>
+<Loc EndOffset="3664" SrcFileId="4" StartOffset="3430"/>
+</LocList>
+<CondStmnt CovItemId="S44" CovItemPrefix="DominionBoard.java" Intrnl_Id="475">
+<Branch CovItemId="B7" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="476">
+<Cond/>
+<LocList>
+<Loc EndOffset="3490" SrcFileId="4" StartOffset="3467"/>
+</LocList>
+<StmntSeq Intrnl_Id="477">
+<LocList>
+<Loc EndOffset="3485" SrcFileId="4" StartOffset="3473"/>
+</LocList>
+<BasicStmnt CovItemId="S45" CovItemPrefix="DominionBoard.java" Intrnl_Id="478">
+<LocList>
+<Loc EndOffset="3485" SrcFileId="4" StartOffset="3473"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="479">
+<Cond>
+<Loc EndOffset="3498" SrcFileId="4" StartOffset="3494"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3664" SrcFileId="4" StartOffset="3499"/>
+</LocList>
+<StmntSeq Intrnl_Id="480">
+<LocList>
+<Loc EndOffset="3537" SrcFileId="4" StartOffset="3505"/>
+<Loc EndOffset="3642" SrcFileId="4" StartOffset="3542"/>
+<Loc EndOffset="3659" SrcFileId="4" StartOffset="3647"/>
+</LocList>
+<BasicStmnt CovItemId="S46" CovItemPrefix="DominionBoard.java" Intrnl_Id="481">
+<LocList>
+<Loc EndOffset="3537" SrcFileId="4" StartOffset="3505"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S47" CovItemPrefix="DominionBoard.java" Intrnl_Id="482">
+<Branch CovItemId="B9" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="483">
+<Cond/>
+<LocList>
+<Loc EndOffset="3642" SrcFileId="4" StartOffset="3565"/>
+</LocList>
+<StmntSeq Intrnl_Id="484">
+<LocList>
+<Loc EndOffset="3600" SrcFileId="4" StartOffset="3572"/>
+<Loc EndOffset="3636" SrcFileId="4" StartOffset="3606"/>
+</LocList>
+<BasicStmnt CovItemId="S48" CovItemPrefix="DominionBoard.java" Intrnl_Id="485">
+<LocList>
+<Loc EndOffset="3600" SrcFileId="4" StartOffset="3572"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S49" CovItemPrefix="DominionBoard.java" Intrnl_Id="486">
+<LocList>
+<Loc EndOffset="3636" SrcFileId="4" StartOffset="3606"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B10" CovItemPrefix="DominionBoard.java" Implct="true" Intrnl_Id="487">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="488">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3544" SrcFileId="4" StartOffset="3542"/>
+<LocList>
+<Loc EndOffset="3642" SrcFileId="4" StartOffset="3542"/>
+</LocList>
+<RootTerm CovItemId="C8" CovItemPrefix="DominionBoard.java" Intrnl_Id="489">
+<BasicBoolTerm Intrnl_Id="490">
+<LocList>
+<Loc EndOffset="3563" SrcFileId="4" StartOffset="3545"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S50" CovItemPrefix="DominionBoard.java" Intrnl_Id="491">
+<LocList>
+<Loc EndOffset="3659" SrcFileId="4" StartOffset="3647"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3432" SrcFileId="4" StartOffset="3430"/>
+<LocList>
+<Loc EndOffset="3664" SrcFileId="4" StartOffset="3430"/>
+</LocList>
+<RootTerm CovItemId="C7" CovItemPrefix="DominionBoard.java" Intrnl_Id="492">
+<BasicBoolTerm Intrnl_Id="493">
+<LocList>
+<Loc EndOffset="3465" SrcFileId="4" StartOffset="3433"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="28" HierarchyLvlTypeId="13" Intrnl_Id="494" Name="EmbargoPile">
+<Header>
+<Loc EndOffset="3706" SrcFileId="4" StartOffset="3674"/>
+</Header>
+<LocList>
+<Loc EndOffset="3757" SrcFileId="4" StartOffset="3674"/>
+</LocList>
+<StmntSeq Intrnl_Id="495">
+<LocList>
+<Loc EndOffset="3753" SrcFileId="4" StartOffset="3712"/>
+</LocList>
+<BasicStmnt CovItemId="S51" CovItemPrefix="DominionBoard.java" Intrnl_Id="496">
+<LocList>
+<Loc EndOffset="3753" SrcFileId="4" StartOffset="3712"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="29" HierarchyLvlTypeId="13" Intrnl_Id="497" Name="GameOver">
+<Header>
+<Loc EndOffset="3788" SrcFileId="4" StartOffset="3763"/>
+</Header>
+<LocList>
+<Loc EndOffset="4185" SrcFileId="4" StartOffset="3763"/>
+</LocList>
+<StmntSeq Intrnl_Id="498">
+<LocList>
+<Loc EndOffset="4156" SrcFileId="4" StartOffset="3794"/>
+<Loc EndOffset="4181" SrcFileId="4" StartOffset="4168"/>
+</LocList>
+<CondStmnt CovItemId="S52" CovItemPrefix="DominionBoard.java" Intrnl_Id="499">
+<Branch CovItemId="B11" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="500">
+<Cond/>
+<LocList>
+<Loc EndOffset="3979" SrcFileId="4" StartOffset="3834"/>
+</LocList>
+<StmntSeq Intrnl_Id="501">
+<LocList>
+<Loc EndOffset="3957" SrcFileId="4" StartOffset="3900"/>
+<Loc EndOffset="3974" SrcFileId="4" StartOffset="3962"/>
+</LocList>
+<BasicStmnt CovItemId="S53" CovItemPrefix="DominionBoard.java" Intrnl_Id="502">
+<LocList>
+<Loc EndOffset="3957" SrcFileId="4" StartOffset="3900"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S54" CovItemPrefix="DominionBoard.java" Intrnl_Id="503">
+<LocList>
+<Loc EndOffset="3974" SrcFileId="4" StartOffset="3962"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B12" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="504">
+<Cond>
+<Loc EndOffset="3987" SrcFileId="4" StartOffset="3983"/>
+</Cond>
+<LocList>
+<Loc EndOffset="4156" SrcFileId="4" StartOffset="3988"/>
+</LocList>
+<StmntSeq Intrnl_Id="505">
+<LocList>
+<Loc EndOffset="4156" SrcFileId="4" StartOffset="3988"/>
+</LocList>
+<CondStmnt CovItemId="S55" CovItemPrefix="DominionBoard.java" Intrnl_Id="506">
+<Branch CovItemId="B13" CovItemPrefix="DominionBoard.java" Implct="false" Intrnl_Id="507">
+<Cond/>
+<LocList>
+<Loc EndOffset="4156" SrcFileId="4" StartOffset="4018"/>
+</LocList>
+<StmntSeq Intrnl_Id="508">
+<LocList>
+<Loc EndOffset="4134" SrcFileId="4" StartOffset="4079"/>
+<Loc EndOffset="4151" SrcFileId="4" StartOffset="4139"/>
+</LocList>
+<BasicStmnt CovItemId="S56" CovItemPrefix="DominionBoard.java" Intrnl_Id="509">
+<LocList>
+<Loc EndOffset="4134" SrcFileId="4" StartOffset="4079"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S57" CovItemPrefix="DominionBoard.java" Intrnl_Id="510">
+<LocList>
+<Loc EndOffset="4151" SrcFileId="4" StartOffset="4139"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B14" CovItemPrefix="DominionBoard.java" Implct="true" Intrnl_Id="511">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="512">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3990" SrcFileId="4" StartOffset="3988"/>
+<LocList>
+<Loc EndOffset="4156" SrcFileId="4" StartOffset="3988"/>
+</LocList>
+<RootTerm CovItemId="C10" CovItemPrefix="DominionBoard.java" Intrnl_Id="513">
+<BasicBoolTerm Intrnl_Id="514">
+<LocList>
+<Loc EndOffset="4016" SrcFileId="4" StartOffset="3991"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3796" SrcFileId="4" StartOffset="3794"/>
+<LocList>
+<Loc EndOffset="4156" SrcFileId="4" StartOffset="3794"/>
+</LocList>
+<RootTerm CovItemId="C9" CovItemPrefix="DominionBoard.java" Intrnl_Id="515">
+<BasicBoolTerm Intrnl_Id="516">
+<LocList>
+<Loc EndOffset="3832" SrcFileId="4" StartOffset="3797"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S58" CovItemPrefix="DominionBoard.java" Intrnl_Id="517">
+<LocList>
+<Loc EndOffset="4181" SrcFileId="4" StartOffset="4168"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="35" HierarchyLvlTypeId="14" Intrnl_Id="518" Name="GameState">
+<Header>
+<Loc EndOffset="24" SrcFileId="5" StartOffset="2"/>
+</Header>
+<LocList>
+<Loc EndOffset="857" SrcFileId="5" StartOffset="2"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="31" HierarchyLvlTypeId="13" Intrnl_Id="519" Name="GameState">
+<Header>
+<Loc EndOffset="218" SrcFileId="5" StartOffset="181"/>
+</Header>
+<LocList>
+<Loc EndOffset="370" SrcFileId="5" StartOffset="181"/>
+</LocList>
+<StmntSeq Intrnl_Id="520">
+<LocList>
+<Loc EndOffset="264" SrcFileId="5" StartOffset="224"/>
+<Loc EndOffset="308" SrcFileId="5" StartOffset="268"/>
+<Loc EndOffset="340" SrcFileId="5" StartOffset="316"/>
+<Loc EndOffset="366" SrcFileId="5" StartOffset="344"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="GameState.java" Intrnl_Id="521">
+<LocList>
+<Loc EndOffset="264" SrcFileId="5" StartOffset="224"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="GameState.java" Intrnl_Id="522">
+<LocList>
+<Loc EndOffset="308" SrcFileId="5" StartOffset="268"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="GameState.java" Intrnl_Id="523">
+<LocList>
+<Loc EndOffset="340" SrcFileId="5" StartOffset="316"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="GameState.java" Intrnl_Id="524">
+<LocList>
+<Loc EndOffset="366" SrcFileId="5" StartOffset="344"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="32" HierarchyLvlTypeId="13" Intrnl_Id="525" Name="TakeTurn">
+<Header>
+<Loc EndOffset="417" SrcFileId="5" StartOffset="376"/>
+</Header>
+<LocList>
+<Loc EndOffset="543" SrcFileId="5" StartOffset="376"/>
+</LocList>
+<StmntSeq Intrnl_Id="526">
+<LocList>
+<Loc EndOffset="452" SrcFileId="5" StartOffset="423"/>
+<Loc EndOffset="486" SrcFileId="5" StartOffset="460"/>
+<Loc EndOffset="518" SrcFileId="5" StartOffset="490"/>
+<Loc EndOffset="539" SrcFileId="5" StartOffset="522"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="GameState.java" Intrnl_Id="527">
+<LocList>
+<Loc EndOffset="452" SrcFileId="5" StartOffset="423"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="GameState.java" Intrnl_Id="528">
+<LocList>
+<Loc EndOffset="486" SrcFileId="5" StartOffset="460"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="GameState.java" Intrnl_Id="529">
+<LocList>
+<Loc EndOffset="518" SrcFileId="5" StartOffset="490"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="GameState.java" Intrnl_Id="530">
+<LocList>
+<Loc EndOffset="539" SrcFileId="5" StartOffset="522"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="33" HierarchyLvlTypeId="13" Intrnl_Id="531" Name="DrawCards">
+<Header>
+<Loc EndOffset="599" SrcFileId="5" StartOffset="549"/>
+</Header>
+<LocList>
+<Loc EndOffset="641" SrcFileId="5" StartOffset="549"/>
+</LocList>
+<StmntSeq Intrnl_Id="532">
+<LocList>
+<Loc EndOffset="637" SrcFileId="5" StartOffset="605"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="GameState.java" Intrnl_Id="533">
+<LocList>
+<Loc EndOffset="637" SrcFileId="5" StartOffset="605"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="34" HierarchyLvlTypeId="13" Intrnl_Id="534" Name="PrintScore">
+<Header>
+<Loc EndOffset="671" SrcFileId="5" StartOffset="647"/>
+</Header>
+<LocList>
+<Loc EndOffset="854" SrcFileId="5" StartOffset="647"/>
+</LocList>
+<StmntSeq Intrnl_Id="535">
+<LocList>
+<Loc EndOffset="706" SrcFileId="5" StartOffset="677"/>
+<Loc EndOffset="780" SrcFileId="5" StartOffset="714"/>
+<Loc EndOffset="850" SrcFileId="5" StartOffset="784"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="GameState.java" Intrnl_Id="536">
+<LocList>
+<Loc EndOffset="706" SrcFileId="5" StartOffset="677"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="GameState.java" Intrnl_Id="537">
+<LocList>
+<Loc EndOffset="780" SrcFileId="5" StartOffset="714"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S12" CovItemPrefix="GameState.java" Intrnl_Id="538">
+<LocList>
+<Loc EndOffset="850" SrcFileId="5" StartOffset="784"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="44" HierarchyLvlTypeId="14" Intrnl_Id="539" Name="KingdomSlot">
+<Header>
+<Loc EndOffset="61" SrcFileId="6" StartOffset="2"/>
+</Header>
+<LocList>
+<Loc EndOffset="807" SrcFileId="6" StartOffset="2"/>
+</LocList>
+<StmntSeq Intrnl_Id="540">
+<LocList>
+<Loc EndOffset="139" SrcFileId="6" StartOffset="110"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="KingdomSlot.java" Intrnl_Id="541">
+<LocList>
+<Loc EndOffset="139" SrcFileId="6" StartOffset="110"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="36" HierarchyLvlTypeId="13" Intrnl_Id="542" Name="KingdomSlot">
+<Header>
+<Loc EndOffset="185" SrcFileId="6" StartOffset="145"/>
+</Header>
+<LocList>
+<Loc EndOffset="235" SrcFileId="6" StartOffset="145"/>
+</LocList>
+<StmntSeq Intrnl_Id="543">
+<LocList>
+<Loc EndOffset="208" SrcFileId="6" StartOffset="191"/>
+<Loc EndOffset="231" SrcFileId="6" StartOffset="212"/>
+</LocList>
+<BasicStmnt CovItemId="S2" CovItemPrefix="KingdomSlot.java" Intrnl_Id="544">
+<LocList>
+<Loc EndOffset="208" SrcFileId="6" StartOffset="191"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="KingdomSlot.java" Intrnl_Id="545">
+<LocList>
+<Loc EndOffset="231" SrcFileId="6" StartOffset="212"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="37" HierarchyLvlTypeId="13" Intrnl_Id="546" Name="IsEmpty">
+<Header>
+<Loc EndOffset="265" SrcFileId="6" StartOffset="241"/>
+</Header>
+<LocList>
+<Loc EndOffset="345" SrcFileId="6" StartOffset="241"/>
+</LocList>
+<StmntSeq Intrnl_Id="547">
+<LocList>
+<Loc EndOffset="341" SrcFileId="6" StartOffset="271"/>
+</LocList>
+<CondStmnt CovItemId="S4" CovItemPrefix="KingdomSlot.java" Intrnl_Id="548">
+<Branch CovItemId="B1" CovItemPrefix="KingdomSlot.java" Implct="false" Intrnl_Id="549">
+<Cond/>
+<LocList>
+<Loc EndOffset="309" SrcFileId="6" StartOffset="285"/>
+</LocList>
+<StmntSeq Intrnl_Id="550">
+<LocList>
+<Loc EndOffset="304" SrcFileId="6" StartOffset="291"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="KingdomSlot.java" Intrnl_Id="551">
+<LocList>
+<Loc EndOffset="304" SrcFileId="6" StartOffset="291"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="KingdomSlot.java" Implct="false" Intrnl_Id="552">
+<Cond>
+<Loc EndOffset="317" SrcFileId="6" StartOffset="313"/>
+</Cond>
+<LocList>
+<Loc EndOffset="341" SrcFileId="6" StartOffset="318"/>
+</LocList>
+<StmntSeq Intrnl_Id="553">
+<LocList>
+<Loc EndOffset="336" SrcFileId="6" StartOffset="324"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="KingdomSlot.java" Intrnl_Id="554">
+<LocList>
+<Loc EndOffset="336" SrcFileId="6" StartOffset="324"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="273" SrcFileId="6" StartOffset="271"/>
+<LocList>
+<Loc EndOffset="341" SrcFileId="6" StartOffset="271"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="KingdomSlot.java" Intrnl_Id="555">
+<BasicBoolTerm Intrnl_Id="556">
+<LocList>
+<Loc EndOffset="283" SrcFileId="6" StartOffset="274"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="38" HierarchyLvlTypeId="13" Intrnl_Id="557" Name="GetCard">
+<Header>
+<Loc EndOffset="372" SrcFileId="6" StartOffset="351"/>
+</Header>
+<LocList>
+<Loc EndOffset="389" SrcFileId="6" StartOffset="351"/>
+</LocList>
+<StmntSeq Intrnl_Id="558">
+<LocList>
+<Loc EndOffset="387" SrcFileId="6" StartOffset="375"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="KingdomSlot.java" Intrnl_Id="559">
+<LocList>
+<Loc EndOffset="387" SrcFileId="6" StartOffset="375"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="39" HierarchyLvlTypeId="13" Intrnl_Id="560" Name="GetValue">
+<Header>
+<Loc EndOffset="416" SrcFileId="6" StartOffset="395"/>
+</Header>
+<LocList>
+<Loc EndOffset="444" SrcFileId="6" StartOffset="395"/>
+</LocList>
+<StmntSeq Intrnl_Id="561">
+<LocList>
+<Loc EndOffset="442" SrcFileId="6" StartOffset="419"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="KingdomSlot.java" Intrnl_Id="562">
+<LocList>
+<Loc EndOffset="442" SrcFileId="6" StartOffset="419"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="40" HierarchyLvlTypeId="13" Intrnl_Id="563" Name="GetEmbargoes">
+<Header>
+<Loc EndOffset="475" SrcFileId="6" StartOffset="450"/>
+</Header>
+<LocList>
+<Loc EndOffset="500" SrcFileId="6" StartOffset="450"/>
+</LocList>
+<StmntSeq Intrnl_Id="564">
+<LocList>
+<Loc EndOffset="498" SrcFileId="6" StartOffset="478"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="KingdomSlot.java" Intrnl_Id="565">
+<LocList>
+<Loc EndOffset="498" SrcFileId="6" StartOffset="478"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="41" HierarchyLvlTypeId="13" Intrnl_Id="566" Name="DrawCard">
+<Header>
+<Loc EndOffset="528" SrcFileId="6" StartOffset="506"/>
+</Header>
+<LocList>
+<Loc EndOffset="652" SrcFileId="6" StartOffset="506"/>
+</LocList>
+<StmntSeq Intrnl_Id="567">
+<LocList>
+<Loc EndOffset="632" SrcFileId="6" StartOffset="534"/>
+<Loc EndOffset="648" SrcFileId="6" StartOffset="636"/>
+</LocList>
+<CondStmnt CovItemId="S10" CovItemPrefix="KingdomSlot.java" Intrnl_Id="568">
+<Branch CovItemId="B3" CovItemPrefix="KingdomSlot.java" Implct="false" Intrnl_Id="569">
+<Cond/>
+<LocList>
+<Loc EndOffset="632" SrcFileId="6" StartOffset="548"/>
+</LocList>
+<StmntSeq Intrnl_Id="570">
+<LocList>
+<Loc EndOffset="565" SrcFileId="6" StartOffset="554"/>
+<Loc EndOffset="627" SrcFileId="6" StartOffset="607"/>
+</LocList>
+<BasicStmnt CovItemId="S11" CovItemPrefix="KingdomSlot.java" Intrnl_Id="571">
+<LocList>
+<Loc EndOffset="565" SrcFileId="6" StartOffset="554"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S12" CovItemPrefix="KingdomSlot.java" Intrnl_Id="572">
+<LocList>
+<Loc EndOffset="627" SrcFileId="6" StartOffset="607"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="KingdomSlot.java" Implct="true" Intrnl_Id="573">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="574">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="536" SrcFileId="6" StartOffset="534"/>
+<LocList>
+<Loc EndOffset="632" SrcFileId="6" StartOffset="534"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="KingdomSlot.java" Intrnl_Id="575">
+<BasicBoolTerm Intrnl_Id="576">
+<LocList>
+<Loc EndOffset="546" SrcFileId="6" StartOffset="537"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S13" CovItemPrefix="KingdomSlot.java" Intrnl_Id="577">
+<LocList>
+<Loc EndOffset="648" SrcFileId="6" StartOffset="636"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="42" HierarchyLvlTypeId="13" Intrnl_Id="578" Name="AddEmbargo">
+<Header>
+<Loc EndOffset="682" SrcFileId="6" StartOffset="658"/>
+</Header>
+<LocList>
+<Loc EndOffset="707" SrcFileId="6" StartOffset="658"/>
+</LocList>
+<StmntSeq Intrnl_Id="579">
+<LocList>
+<Loc EndOffset="703" SrcFileId="6" StartOffset="688"/>
+</LocList>
+<BasicStmnt CovItemId="S14" CovItemPrefix="KingdomSlot.java" Intrnl_Id="580">
+<LocList>
+<Loc EndOffset="703" SrcFileId="6" StartOffset="688"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="43" HierarchyLvlTypeId="13" Intrnl_Id="581" Name="compareTo">
+<Header>
+<Loc EndOffset="752" SrcFileId="6" StartOffset="713"/>
+</Header>
+<LocList>
+<Loc EndOffset="804" SrcFileId="6" StartOffset="713"/>
+</LocList>
+<StmntSeq Intrnl_Id="582">
+<LocList>
+<Loc EndOffset="800" SrcFileId="6" StartOffset="758"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="KingdomSlot.java" Intrnl_Id="583">
+<LocList>
+<Loc EndOffset="800" SrcFileId="6" StartOffset="758"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="46" HierarchyLvlTypeId="14" Intrnl_Id="584" Name="PlayDom">
+<Header>
+<Loc EndOffset="22" SrcFileId="7" StartOffset="2"/>
+</Header>
+<LocList>
+<Loc EndOffset="388" SrcFileId="7" StartOffset="2"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="45" HierarchyLvlTypeId="13" Intrnl_Id="585" Name="main">
+<Header>
+<Loc EndOffset="65" SrcFileId="7" StartOffset="27"/>
+</Header>
+<LocList>
+<Loc EndOffset="385" SrcFileId="7" StartOffset="27"/>
+</LocList>
+<StmntSeq Intrnl_Id="586">
+<LocList>
+<Loc EndOffset="113" SrcFileId="7" StartOffset="71"/>
+<Loc EndOffset="156" SrcFileId="7" StartOffset="117"/>
+<Loc EndOffset="252" SrcFileId="7" StartOffset="162"/>
+<Loc EndOffset="335" SrcFileId="7" StartOffset="298"/>
+<Loc EndOffset="358" SrcFileId="7" StartOffset="339"/>
+<Loc EndOffset="381" SrcFileId="7" StartOffset="366"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="PlayDom.java" Intrnl_Id="587">
+<LocList>
+<Loc EndOffset="113" SrcFileId="7" StartOffset="71"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="PlayDom.java" Intrnl_Id="588">
+<LocList>
+<Loc EndOffset="156" SrcFileId="7" StartOffset="117"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S3" CovItemPrefix="PlayDom.java" Intrnl_Id="589" MltplExecId="L1-2" MltplExecPrefix="PlayDom.java" NvrExecId="L1-0" NvrExecPrefix="PlayDom.java" OnceExecutedId="L1-1" OnceExecutedPrefix="PlayDom.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="590">
+<LocList>
+<Loc EndOffset="202" SrcFileId="7" StartOffset="180"/>
+<Loc EndOffset="247" SrcFileId="7" StartOffset="207"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="PlayDom.java" Intrnl_Id="591">
+<LocList>
+<Loc EndOffset="202" SrcFileId="7" StartOffset="180"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S5" CovItemPrefix="PlayDom.java" Intrnl_Id="592">
+<Branch CovItemId="B1" CovItemPrefix="PlayDom.java" Implct="false" Intrnl_Id="593">
+<Cond/>
+<LocList>
+<Loc EndOffset="247" SrcFileId="7" StartOffset="228"/>
+</LocList>
+<StmntSeq Intrnl_Id="594">
+<LocList>
+<Loc EndOffset="241" SrcFileId="7" StartOffset="235"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="PlayDom.java" Intrnl_Id="595">
+<LocList>
+<Loc EndOffset="241" SrcFileId="7" StartOffset="235"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="PlayDom.java" Implct="true" Intrnl_Id="596">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="597">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="209" SrcFileId="7" StartOffset="207"/>
+<LocList>
+<Loc EndOffset="247" SrcFileId="7" StartOffset="207"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="PlayDom.java" Intrnl_Id="598">
+<BasicBoolTerm Intrnl_Id="599">
+<LocList>
+<Loc EndOffset="226" SrcFileId="7" StartOffset="210"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="167" SrcFileId="7" StartOffset="162"/>
+<LocList>
+<Loc EndOffset="252" SrcFileId="7" StartOffset="162"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="PlayDom.java" Intrnl_Id="600">
+<LocList>
+<Loc EndOffset="335" SrcFileId="7" StartOffset="298"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="PlayDom.java" Intrnl_Id="601">
+<LocList>
+<Loc EndOffset="358" SrcFileId="7" StartOffset="339"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S9" CovItemPrefix="PlayDom.java" Intrnl_Id="602">
+<LocList>
+<Loc EndOffset="381" SrcFileId="7" StartOffset="366"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="61" HierarchyLvlTypeId="14" Intrnl_Id="603" Name="Player">
+<Header>
+<Loc EndOffset="47" SrcFileId="8" StartOffset="28"/>
+</Header>
+<LocList>
+<Loc EndOffset="3089" SrcFileId="8" StartOffset="28"/>
+</LocList>
+<StmntSeq Intrnl_Id="604">
+<LocList>
+<Loc EndOffset="182" SrcFileId="8" StartOffset="158"/>
+<Loc EndOffset="206" SrcFileId="8" StartOffset="185"/>
+<Loc EndOffset="231" SrcFileId="8" StartOffset="209"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="Player.java" Intrnl_Id="605">
+<LocList>
+<Loc EndOffset="182" SrcFileId="8" StartOffset="158"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="Player.java" Intrnl_Id="606">
+<LocList>
+<Loc EndOffset="206" SrcFileId="8" StartOffset="185"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="Player.java" Intrnl_Id="607">
+<LocList>
+<Loc EndOffset="231" SrcFileId="8" StartOffset="209"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="47" HierarchyLvlTypeId="13" Intrnl_Id="608" Name="Player">
+<Header>
+<Loc EndOffset="284" SrcFileId="8" StartOffset="237"/>
+</Header>
+<LocList>
+<Loc EndOffset="404" SrcFileId="8" StartOffset="237"/>
+</LocList>
+<StmntSeq Intrnl_Id="609">
+<LocList>
+<Loc EndOffset="308" SrcFileId="8" StartOffset="290"/>
+<Loc EndOffset="330" SrcFileId="8" StartOffset="312"/>
+<Loc EndOffset="351" SrcFileId="8" StartOffset="334"/>
+<Loc EndOffset="374" SrcFileId="8" StartOffset="355"/>
+<Loc EndOffset="400" SrcFileId="8" StartOffset="382"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="Player.java" Intrnl_Id="610">
+<LocList>
+<Loc EndOffset="308" SrcFileId="8" StartOffset="290"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="Player.java" Intrnl_Id="611">
+<LocList>
+<Loc EndOffset="330" SrcFileId="8" StartOffset="312"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="Player.java" Intrnl_Id="612">
+<LocList>
+<Loc EndOffset="351" SrcFileId="8" StartOffset="334"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="Player.java" Intrnl_Id="613">
+<LocList>
+<Loc EndOffset="374" SrcFileId="8" StartOffset="355"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="Player.java" Intrnl_Id="614">
+<LocList>
+<Loc EndOffset="400" SrcFileId="8" StartOffset="382"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="48" HierarchyLvlTypeId="13" Intrnl_Id="615" Name="GetName">
+<Header>
+<Loc EndOffset="433" SrcFileId="8" StartOffset="410"/>
+</Header>
+<LocList>
+<Loc EndOffset="448" SrcFileId="8" StartOffset="410"/>
+</LocList>
+<StmntSeq Intrnl_Id="616">
+<LocList>
+<Loc EndOffset="447" SrcFileId="8" StartOffset="435"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="Player.java" Intrnl_Id="617">
+<LocList>
+<Loc EndOffset="447" SrcFileId="8" StartOffset="435"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="49" HierarchyLvlTypeId="13" Intrnl_Id="618" Name="GetScore">
+<Header>
+<Loc EndOffset="475" SrcFileId="8" StartOffset="454"/>
+</Header>
+<LocList>
+<Loc EndOffset="501" SrcFileId="8" StartOffset="454"/>
+</LocList>
+<StmntSeq Intrnl_Id="619">
+<LocList>
+<Loc EndOffset="500" SrcFileId="8" StartOffset="477"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="Player.java" Intrnl_Id="620">
+<LocList>
+<Loc EndOffset="500" SrcFileId="8" StartOffset="477"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="50" HierarchyLvlTypeId="13" Intrnl_Id="621" Name="GetVictoryPoints">
+<Header>
+<Loc EndOffset="536" SrcFileId="8" StartOffset="507"/>
+</Header>
+<LocList>
+<Loc EndOffset="560" SrcFileId="8" StartOffset="507"/>
+</LocList>
+<StmntSeq Intrnl_Id="622">
+<LocList>
+<Loc EndOffset="559" SrcFileId="8" StartOffset="538"/>
+</LocList>
+<BasicStmnt CovItemId="S11" CovItemPrefix="Player.java" Intrnl_Id="623">
+<LocList>
+<Loc EndOffset="559" SrcFileId="8" StartOffset="538"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="51" HierarchyLvlTypeId="13" Intrnl_Id="624" Name="TakeTurn">
+<Header>
+<Loc EndOffset="603" SrcFileId="8" StartOffset="566"/>
+</Header>
+<LocList>
+<Loc EndOffset="1310" SrcFileId="8" StartOffset="566"/>
+</LocList>
+<StmntSeq Intrnl_Id="625">
+<LocList>
+<Loc EndOffset="644" SrcFileId="8" StartOffset="609"/>
+<Loc EndOffset="1109" SrcFileId="8" StartOffset="670"/>
+<Loc EndOffset="1163" SrcFileId="8" StartOffset="1133"/>
+<Loc EndOffset="1197" SrcFileId="8" StartOffset="1180"/>
+<Loc EndOffset="1237" SrcFileId="8" StartOffset="1218"/>
+<Loc EndOffset="1259" SrcFileId="8" StartOffset="1241"/>
+<Loc EndOffset="1279" SrcFileId="8" StartOffset="1267"/>
+<Loc EndOffset="1292" SrcFileId="8" StartOffset="1283"/>
+<Loc EndOffset="1306" SrcFileId="8" StartOffset="1296"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="Player.java" Intrnl_Id="626">
+<LocList>
+<Loc EndOffset="644" SrcFileId="8" StartOffset="609"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S13" CovItemPrefix="Player.java" Intrnl_Id="627" MltplExecId="L1-2" MltplExecPrefix="Player.java" NvrExecId="L1-0" NvrExecPrefix="Player.java" OnceExecutedId="L1-1" OnceExecutedPrefix="Player.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="628">
+<LocList>
+<Loc EndOffset="763" SrcFileId="8" StartOffset="705"/>
+<Loc EndOffset="920" SrcFileId="8" StartOffset="768"/>
+<Loc EndOffset="1104" SrcFileId="8" StartOffset="930"/>
+</LocList>
+<BasicStmnt CovItemId="S14" CovItemPrefix="Player.java" Intrnl_Id="629">
+<LocList>
+<Loc EndOffset="763" SrcFileId="8" StartOffset="705"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S15" CovItemPrefix="Player.java" Intrnl_Id="630" MltplExecId="L2-2" MltplExecPrefix="Player.java" NvrExecId="L2-0" NvrExecPrefix="Player.java" OnceExecutedId="L2-1" OnceExecutedPrefix="Player.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="631">
+<LocList>
+<Loc EndOffset="914" SrcFileId="8" StartOffset="808"/>
+</LocList>
+<CondStmnt CovItemId="S16" CovItemPrefix="Player.java" Intrnl_Id="632">
+<Branch CovItemId="B1" CovItemPrefix="Player.java" Implct="false" Intrnl_Id="633">
+<Cond/>
+<LocList>
+<Loc EndOffset="914" SrcFileId="8" StartOffset="852"/>
+</LocList>
+<StmntSeq Intrnl_Id="634">
+<LocList>
+<Loc EndOffset="907" SrcFileId="8" StartOffset="860"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="Player.java" Intrnl_Id="635">
+<LocList>
+<Loc EndOffset="907" SrcFileId="8" StartOffset="860"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="Player.java" Implct="true" Intrnl_Id="636">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="637">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="810" SrcFileId="8" StartOffset="808"/>
+<LocList>
+<Loc EndOffset="914" SrcFileId="8" StartOffset="808"/>
+</LocList>
+<RootTerm CovItemId="C3" CovItemPrefix="Player.java" Intrnl_Id="638">
+<BasicBoolTerm Intrnl_Id="639">
+<LocList>
+<Loc EndOffset="850" SrcFileId="8" StartOffset="811"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="771" SrcFileId="8" StartOffset="768"/>
+<LocList>
+<Loc EndOffset="920" SrcFileId="8" StartOffset="768"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="Player.java" Intrnl_Id="640">
+<BasicBoolTerm Intrnl_Id="641">
+<LocList>
+<Loc EndOffset="794" SrcFileId="8" StartOffset="781"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<CondStmnt CovItemId="S18" CovItemPrefix="Player.java" Intrnl_Id="642">
+<Branch CovItemId="B3" CovItemPrefix="Player.java" Implct="false" Intrnl_Id="643">
+<Cond/>
+<LocList>
+<Loc EndOffset="1104" SrcFileId="8" StartOffset="957"/>
+</LocList>
+<StmntSeq Intrnl_Id="644">
+<LocList>
+<Loc EndOffset="1045" SrcFileId="8" StartOffset="964"/>
+<Loc EndOffset="1074" SrcFileId="8" StartOffset="1051"/>
+<Loc EndOffset="1098" SrcFileId="8" StartOffset="1080"/>
+</LocList>
+<BasicStmnt CovItemId="S19" CovItemPrefix="Player.java" Intrnl_Id="645">
+<LocList>
+<Loc EndOffset="1045" SrcFileId="8" StartOffset="964"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S20" CovItemPrefix="Player.java" Intrnl_Id="646">
+<LocList>
+<Loc EndOffset="1074" SrcFileId="8" StartOffset="1051"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S21" CovItemPrefix="Player.java" Intrnl_Id="647">
+<LocList>
+<Loc EndOffset="1098" SrcFileId="8" StartOffset="1080"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="Player.java" Implct="true" Intrnl_Id="648">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="649">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="932" SrcFileId="8" StartOffset="930"/>
+<LocList>
+<Loc EndOffset="1104" SrcFileId="8" StartOffset="930"/>
+</LocList>
+<RootTerm CovItemId="C4" CovItemPrefix="Player.java" Intrnl_Id="650">
+<OpTerm BooleanOpId="11" Intrnl_Id="651">
+<BasicBoolTerm Intrnl_Id="652">
+<LocList>
+<Loc EndOffset="955" SrcFileId="8" StartOffset="934"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="934" SrcFileId="8" StartOffset="933"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="673" SrcFileId="8" StartOffset="670"/>
+<LocList>
+<Loc EndOffset="1109" SrcFileId="8" StartOffset="670"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="Player.java" Intrnl_Id="653">
+<BasicBoolTerm Intrnl_Id="654">
+<LocList>
+<Loc EndOffset="692" SrcFileId="8" StartOffset="683"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S22" CovItemPrefix="Player.java" Intrnl_Id="655">
+<LocList>
+<Loc EndOffset="1163" SrcFileId="8" StartOffset="1133"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S23" CovItemPrefix="Player.java" Intrnl_Id="656">
+<LocList>
+<Loc EndOffset="1197" SrcFileId="8" StartOffset="1180"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S24" CovItemPrefix="Player.java" Intrnl_Id="657">
+<LocList>
+<Loc EndOffset="1237" SrcFileId="8" StartOffset="1218"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S25" CovItemPrefix="Player.java" Intrnl_Id="658">
+<LocList>
+<Loc EndOffset="1259" SrcFileId="8" StartOffset="1241"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S26" CovItemPrefix="Player.java" Intrnl_Id="659">
+<LocList>
+<Loc EndOffset="1279" SrcFileId="8" StartOffset="1267"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S27" CovItemPrefix="Player.java" Intrnl_Id="660">
+<LocList>
+<Loc EndOffset="1292" SrcFileId="8" StartOffset="1283"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S28" CovItemPrefix="Player.java" Intrnl_Id="661">
+<LocList>
+<Loc EndOffset="1306" SrcFileId="8" StartOffset="1296"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="52" HierarchyLvlTypeId="13" Intrnl_Id="662" Name="AddActions">
+<Header>
+<Loc EndOffset="1354" SrcFileId="8" StartOffset="1316"/>
+</Header>
+<LocList>
+<Loc EndOffset="1391" SrcFileId="8" StartOffset="1316"/>
+</LocList>
+<StmntSeq Intrnl_Id="663">
+<LocList>
+<Loc EndOffset="1387" SrcFileId="8" StartOffset="1360"/>
+</LocList>
+<BasicStmnt CovItemId="S29" CovItemPrefix="Player.java" Intrnl_Id="664">
+<LocList>
+<Loc EndOffset="1387" SrcFileId="8" StartOffset="1360"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="53" HierarchyLvlTypeId="13" Intrnl_Id="665" Name="AddBuys">
+<Header>
+<Loc EndOffset="1429" SrcFileId="8" StartOffset="1397"/>
+</Header>
+<LocList>
+<Loc EndOffset="1460" SrcFileId="8" StartOffset="1397"/>
+</LocList>
+<StmntSeq Intrnl_Id="666">
+<LocList>
+<Loc EndOffset="1456" SrcFileId="8" StartOffset="1435"/>
+</LocList>
+<BasicStmnt CovItemId="S30" CovItemPrefix="Player.java" Intrnl_Id="667">
+<LocList>
+<Loc EndOffset="1456" SrcFileId="8" StartOffset="1435"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="54" HierarchyLvlTypeId="13" Intrnl_Id="668" Name="AddCoins">
+<Header>
+<Loc EndOffset="1500" SrcFileId="8" StartOffset="1466"/>
+</Header>
+<LocList>
+<Loc EndOffset="1533" SrcFileId="8" StartOffset="1466"/>
+</LocList>
+<StmntSeq Intrnl_Id="669">
+<LocList>
+<Loc EndOffset="1529" SrcFileId="8" StartOffset="1506"/>
+</LocList>
+<BasicStmnt CovItemId="S31" CovItemPrefix="Player.java" Intrnl_Id="670">
+<LocList>
+<Loc EndOffset="1529" SrcFileId="8" StartOffset="1506"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="55" HierarchyLvlTypeId="13" Intrnl_Id="671" Name="Buy">
+<Header>
+<Loc EndOffset="1581" SrcFileId="8" StartOffset="1539"/>
+</Header>
+<LocList>
+<Loc EndOffset="2259" SrcFileId="8" StartOffset="1539"/>
+</LocList>
+<StmntSeq Intrnl_Id="672">
+<LocList>
+<Loc EndOffset="2255" SrcFileId="8" StartOffset="1587"/>
+</LocList>
+<LoopStmnt CovItemId="S32" CovItemPrefix="Player.java" Intrnl_Id="673" MltplExecId="L3-2" MltplExecPrefix="Player.java" NvrExecId="L3-0" NvrExecPrefix="Player.java" OnceExecutedId="L3-1" OnceExecutedPrefix="Player.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="674">
+<LocList>
+<Loc EndOffset="1677" SrcFileId="8" StartOffset="1622"/>
+<Loc EndOffset="1708" SrcFileId="8" StartOffset="1687"/>
+<Loc EndOffset="1752" SrcFileId="8" StartOffset="1713"/>
+<Loc EndOffset="1981" SrcFileId="8" StartOffset="1757"/>
+<Loc EndOffset="2070" SrcFileId="8" StartOffset="1991"/>
+<Loc EndOffset="2123" SrcFileId="8" StartOffset="2080"/>
+<Loc EndOffset="2214" SrcFileId="8" StartOffset="2133"/>
+<Loc EndOffset="2250" SrcFileId="8" StartOffset="2224"/>
+</LocList>
+<BasicStmnt CovItemId="S33" CovItemPrefix="Player.java" Intrnl_Id="675">
+<LocList>
+<Loc EndOffset="1677" SrcFileId="8" StartOffset="1622"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S34" CovItemPrefix="Player.java" Intrnl_Id="676">
+<LocList>
+<Loc EndOffset="1708" SrcFileId="8" StartOffset="1687"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S35" CovItemPrefix="Player.java" Intrnl_Id="677">
+<LocList>
+<Loc EndOffset="1752" SrcFileId="8" StartOffset="1713"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S36" CovItemPrefix="Player.java" Intrnl_Id="678" MltplExecId="L4-2" MltplExecPrefix="Player.java" NvrExecId="L4-0" NvrExecPrefix="Player.java" OnceExecutedId="L4-1" OnceExecutedPrefix="Player.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="679">
+<LocList>
+<Loc EndOffset="1848" SrcFileId="8" StartOffset="1807"/>
+<Loc EndOffset="1975" SrcFileId="8" StartOffset="1854"/>
+</LocList>
+<BasicStmnt CovItemId="S37" CovItemPrefix="Player.java" Intrnl_Id="680">
+<LocList>
+<Loc EndOffset="1848" SrcFileId="8" StartOffset="1807"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S38" CovItemPrefix="Player.java" Intrnl_Id="681">
+<Branch CovItemId="B5" CovItemPrefix="Player.java" Implct="false" Intrnl_Id="682">
+<Cond/>
+<LocList>
+<Loc EndOffset="1911" SrcFileId="8" StartOffset="1877"/>
+</LocList>
+<StmntSeq Intrnl_Id="683">
+<LocList>
+<Loc EndOffset="1904" SrcFileId="8" StartOffset="1885"/>
+</LocList>
+<BasicStmnt CovItemId="S39" CovItemPrefix="Player.java" Intrnl_Id="684">
+<LocList>
+<Loc EndOffset="1904" SrcFileId="8" StartOffset="1885"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="Player.java" Implct="false" Intrnl_Id="685">
+<Cond>
+<Loc EndOffset="1921" SrcFileId="8" StartOffset="1917"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1975" SrcFileId="8" StartOffset="1922"/>
+</LocList>
+<StmntSeq Intrnl_Id="686">
+<LocList>
+<Loc EndOffset="1975" SrcFileId="8" StartOffset="1922"/>
+</LocList>
+<CondStmnt CovItemId="S40" CovItemPrefix="Player.java" Intrnl_Id="687">
+<Branch CovItemId="B7" CovItemPrefix="Player.java" Implct="false" Intrnl_Id="688">
+<Cond/>
+<LocList>
+<Loc EndOffset="1975" SrcFileId="8" StartOffset="1945"/>
+</LocList>
+<StmntSeq Intrnl_Id="689">
+<LocList>
+<Loc EndOffset="1968" SrcFileId="8" StartOffset="1953"/>
+</LocList>
+<BasicStmnt CovItemId="S41" CovItemPrefix="Player.java" Intrnl_Id="690">
+<LocList>
+<Loc EndOffset="1968" SrcFileId="8" StartOffset="1953"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="Player.java" Implct="true" Intrnl_Id="691">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="692">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1924" SrcFileId="8" StartOffset="1922"/>
+<LocList>
+<Loc EndOffset="1975" SrcFileId="8" StartOffset="1922"/>
+</LocList>
+<RootTerm CovItemId="C8" CovItemPrefix="Player.java" Intrnl_Id="693">
+<BasicBoolTerm Intrnl_Id="694">
+<LocList>
+<Loc EndOffset="1943" SrcFileId="8" StartOffset="1925"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1856" SrcFileId="8" StartOffset="1854"/>
+<LocList>
+<Loc EndOffset="1975" SrcFileId="8" StartOffset="1854"/>
+</LocList>
+<RootTerm CovItemId="C7" CovItemPrefix="Player.java" Intrnl_Id="695">
+<BasicBoolTerm Intrnl_Id="696">
+<LocList>
+<Loc EndOffset="1875" SrcFileId="8" StartOffset="1857"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="1760" SrcFileId="8" StartOffset="1757"/>
+<LocList>
+<Loc EndOffset="1981" SrcFileId="8" StartOffset="1757"/>
+</LocList>
+<RootTerm CovItemId="C6" CovItemPrefix="Player.java" Intrnl_Id="697">
+<BasicBoolTerm Intrnl_Id="698">
+<LocList>
+<Loc EndOffset="1793" SrcFileId="8" StartOffset="1790"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S42" CovItemPrefix="Player.java" Intrnl_Id="699">
+<LocList>
+<Loc EndOffset="2070" SrcFileId="8" StartOffset="1991"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S43" CovItemPrefix="Player.java" Intrnl_Id="700">
+<LocList>
+<Loc EndOffset="2123" SrcFileId="8" StartOffset="2080"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S44" CovItemPrefix="Player.java" Intrnl_Id="701" MltplExecId="L5-2" MltplExecPrefix="Player.java" NvrExecId="L5-0" NvrExecPrefix="Player.java" OnceExecutedId="L5-1" OnceExecutedPrefix="Player.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="702">
+<LocList>
+<Loc EndOffset="2207" SrcFileId="8" StartOffset="2177"/>
+</LocList>
+<BasicStmnt CovItemId="S45" CovItemPrefix="Player.java" Intrnl_Id="703">
+<LocList>
+<Loc EndOffset="2207" SrcFileId="8" StartOffset="2177"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="2136" SrcFileId="8" StartOffset="2133"/>
+<LocList>
+<Loc EndOffset="2214" SrcFileId="8" StartOffset="2133"/>
+</LocList>
+<RootTerm CovItemId="C9" CovItemPrefix="Player.java" Intrnl_Id="704">
+<BasicBoolTerm Intrnl_Id="705">
+<LocList>
+<Loc EndOffset="2163" SrcFileId="8" StartOffset="2146"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S46" CovItemPrefix="Player.java" Intrnl_Id="706">
+<LocList>
+<Loc EndOffset="2250" SrcFileId="8" StartOffset="2224"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="1590" SrcFileId="8" StartOffset="1587"/>
+<LocList>
+<Loc EndOffset="2255" SrcFileId="8" StartOffset="1587"/>
+</LocList>
+<RootTerm CovItemId="C5" CovItemPrefix="Player.java" Intrnl_Id="707">
+<BasicBoolTerm Intrnl_Id="708">
+<LocList>
+<Loc EndOffset="1609" SrcFileId="8" StartOffset="1600"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="56" HierarchyLvlTypeId="13" Intrnl_Id="709" Name="GainCurse">
+<Header>
+<Loc EndOffset="2288" SrcFileId="8" StartOffset="2265"/>
+</Header>
+<LocList>
+<Loc EndOffset="2385" SrcFileId="8" StartOffset="2265"/>
+</LocList>
+<StmntSeq Intrnl_Id="710">
+<LocList>
+<Loc EndOffset="2324" SrcFileId="8" StartOffset="2294"/>
+<Loc EndOffset="2381" SrcFileId="8" StartOffset="2332"/>
+</LocList>
+<BasicStmnt CovItemId="S47" CovItemPrefix="Player.java" Intrnl_Id="711">
+<LocList>
+<Loc EndOffset="2324" SrcFileId="8" StartOffset="2294"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S48" CovItemPrefix="Player.java" Intrnl_Id="712">
+<Branch CovItemId="B9" CovItemPrefix="Player.java" Implct="false" Intrnl_Id="713">
+<Cond/>
+<LocList>
+<Loc EndOffset="2381" SrcFileId="8" StartOffset="2350"/>
+</LocList>
+<StmntSeq Intrnl_Id="714">
+<LocList>
+<Loc EndOffset="2376" SrcFileId="8" StartOffset="2356"/>
+</LocList>
+<BasicStmnt CovItemId="S49" CovItemPrefix="Player.java" Intrnl_Id="715">
+<LocList>
+<Loc EndOffset="2376" SrcFileId="8" StartOffset="2356"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B10" CovItemPrefix="Player.java" Implct="true" Intrnl_Id="716">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="717">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2334" SrcFileId="8" StartOffset="2332"/>
+<LocList>
+<Loc EndOffset="2381" SrcFileId="8" StartOffset="2332"/>
+</LocList>
+<RootTerm CovItemId="C10" CovItemPrefix="Player.java" Intrnl_Id="718">
+<BasicBoolTerm Intrnl_Id="719">
+<LocList>
+<Loc EndOffset="2348" SrcFileId="8" StartOffset="2335"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="57" HierarchyLvlTypeId="13" Intrnl_Id="720" Name="TrashFromHand">
+<Header>
+<Loc EndOffset="2418" SrcFileId="8" StartOffset="2391"/>
+</Header>
+<LocList>
+<Loc EndOffset="2649" SrcFileId="8" StartOffset="2391"/>
+</LocList>
+<StmntSeq Intrnl_Id="721">
+<LocList>
+<Loc EndOffset="2461" SrcFileId="8" StartOffset="2426"/>
+<Loc EndOffset="2645" SrcFileId="8" StartOffset="2465"/>
+</LocList>
+<BasicStmnt CovItemId="S50" CovItemPrefix="Player.java" Intrnl_Id="722">
+<LocList>
+<Loc EndOffset="2461" SrcFileId="8" StartOffset="2426"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S51" CovItemPrefix="Player.java" Intrnl_Id="723">
+<Branch CovItemId="B11" CovItemPrefix="Player.java" Implct="false" Intrnl_Id="724">
+<Cond/>
+<LocList>
+<Loc EndOffset="2613" SrcFileId="8" StartOffset="2485"/>
+</LocList>
+<StmntSeq Intrnl_Id="725">
+<LocList>
+<Loc EndOffset="2534" SrcFileId="8" StartOffset="2491"/>
+<Loc EndOffset="2565" SrcFileId="8" StartOffset="2539"/>
+<Loc EndOffset="2591" SrcFileId="8" StartOffset="2570"/>
+<Loc EndOffset="2608" SrcFileId="8" StartOffset="2596"/>
+</LocList>
+<BasicStmnt CovItemId="S52" CovItemPrefix="Player.java" Intrnl_Id="726">
+<LocList>
+<Loc EndOffset="2534" SrcFileId="8" StartOffset="2491"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S53" CovItemPrefix="Player.java" Intrnl_Id="727">
+<LocList>
+<Loc EndOffset="2565" SrcFileId="8" StartOffset="2539"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S54" CovItemPrefix="Player.java" Intrnl_Id="728">
+<LocList>
+<Loc EndOffset="2591" SrcFileId="8" StartOffset="2570"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S55" CovItemPrefix="Player.java" Intrnl_Id="729">
+<LocList>
+<Loc EndOffset="2608" SrcFileId="8" StartOffset="2596"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B12" CovItemPrefix="Player.java" Implct="false" Intrnl_Id="730">
+<Cond>
+<Loc EndOffset="2621" SrcFileId="8" StartOffset="2617"/>
+</Cond>
+<LocList>
+<Loc EndOffset="2645" SrcFileId="8" StartOffset="2622"/>
+</LocList>
+<StmntSeq Intrnl_Id="731">
+<LocList>
+<Loc EndOffset="2640" SrcFileId="8" StartOffset="2628"/>
+</LocList>
+<BasicStmnt CovItemId="S56" CovItemPrefix="Player.java" Intrnl_Id="732">
+<LocList>
+<Loc EndOffset="2640" SrcFileId="8" StartOffset="2628"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="2467" SrcFileId="8" StartOffset="2465"/>
+<LocList>
+<Loc EndOffset="2645" SrcFileId="8" StartOffset="2465"/>
+</LocList>
+<RootTerm CovItemId="C11" CovItemPrefix="Player.java" Intrnl_Id="733">
+<OpTerm BooleanOpId="11" Intrnl_Id="734">
+<BasicBoolTerm Intrnl_Id="735">
+<LocList>
+<Loc EndOffset="2483" SrcFileId="8" StartOffset="2469"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="2469" SrcFileId="8" StartOffset="2468"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="58" HierarchyLvlTypeId="13" Intrnl_Id="736" Name="PrintBuy">
+<Header>
+<Loc EndOffset="2687" SrcFileId="8" StartOffset="2655"/>
+</Header>
+<LocList>
+<Loc EndOffset="2794" SrcFileId="8" StartOffset="2655"/>
+</LocList>
+<StmntSeq Intrnl_Id="737">
+<LocList>
+<Loc EndOffset="2790" SrcFileId="8" StartOffset="2693"/>
+</LocList>
+<BasicStmnt CovItemId="S57" CovItemPrefix="Player.java" Intrnl_Id="738">
+<LocList>
+<Loc EndOffset="2790" SrcFileId="8" StartOffset="2693"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="59" HierarchyLvlTypeId="13" Intrnl_Id="739" Name="PrintAction">
+<Header>
+<Loc EndOffset="2843" SrcFileId="8" StartOffset="2800"/>
+</Header>
+<LocList>
+<Loc EndOffset="2905" SrcFileId="8" StartOffset="2800"/>
+</LocList>
+<StmntSeq Intrnl_Id="740">
+<LocList>
+<Loc EndOffset="2901" SrcFileId="8" StartOffset="2849"/>
+</LocList>
+<BasicStmnt CovItemId="S58" CovItemPrefix="Player.java" Intrnl_Id="741">
+<LocList>
+<Loc EndOffset="2901" SrcFileId="8" StartOffset="2849"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="60" HierarchyLvlTypeId="13" Intrnl_Id="742" Name="EmbargoPile">
+<Header>
+<Loc EndOffset="2936" SrcFileId="8" StartOffset="2911"/>
+</Header>
+<LocList>
+<Loc EndOffset="3086" SrcFileId="8" StartOffset="2911"/>
+</LocList>
+<StmntSeq Intrnl_Id="743">
+<LocList>
+<Loc EndOffset="3001" SrcFileId="8" StartOffset="2942"/>
+<Loc EndOffset="3055" SrcFileId="8" StartOffset="3009"/>
+<Loc EndOffset="3082" SrcFileId="8" StartOffset="3059"/>
+</LocList>
+<BasicStmnt CovItemId="S59" CovItemPrefix="Player.java" Intrnl_Id="744">
+<LocList>
+<Loc EndOffset="3001" SrcFileId="8" StartOffset="2942"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S60" CovItemPrefix="Player.java" Intrnl_Id="745">
+<LocList>
+<Loc EndOffset="3055" SrcFileId="8" StartOffset="3009"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S61" CovItemPrefix="Player.java" Intrnl_Id="746">
+<LocList>
+<Loc EndOffset="3082" SrcFileId="8" StartOffset="3059"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="66" HierarchyLvlTypeId="14" Intrnl_Id="747" Name="TreasureCard">
+<Header>
+<Loc EndOffset="40" SrcFileId="9" StartOffset="2"/>
+</Header>
+<LocList>
+<Loc EndOffset="46" SrcFileId="9" StartOffset="2"/>
+<Loc EndOffset="763" SrcFileId="9" StartOffset="106"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="62" HierarchyLvlTypeId="12" Intrnl_Id="748" Name="TreasureType">
+<Header>
+<Loc EndOffset="70" SrcFileId="9" StartOffset="46"/>
+</Header>
+<LocList>
+<Loc EndOffset="106" SrcFileId="9" StartOffset="46"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="63" HierarchyLvlTypeId="13" Intrnl_Id="749" Name="TreasureCard">
+<Header>
+<Loc EndOffset="187" SrcFileId="9" StartOffset="149"/>
+</Header>
+<LocList>
+<Loc EndOffset="476" SrcFileId="9" StartOffset="149"/>
+</LocList>
+<StmntSeq Intrnl_Id="750">
+<LocList>
+<Loc EndOffset="210" SrcFileId="9" StartOffset="193"/>
+<Loc EndOffset="472" SrcFileId="9" StartOffset="218"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="TreasureCard.java" Intrnl_Id="751">
+<LocList>
+<Loc EndOffset="210" SrcFileId="9" StartOffset="193"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S2" CovItemPrefix="TreasureCard.java" Intrnl_Id="752">
+<Branch CovItemId="B1" CovItemPrefix="TreasureCard.java" Implct="false" Intrnl_Id="753">
+<Cond>
+<Loc EndOffset="246" SrcFileId="9" StartOffset="237"/>
+</Cond>
+<LocList>
+<Loc EndOffset="306" SrcFileId="9" StartOffset="253"/>
+</LocList>
+<StmntSeq Intrnl_Id="754">
+<LocList>
+<Loc EndOffset="273" SrcFileId="9" StartOffset="253"/>
+<Loc EndOffset="294" SrcFileId="9" StartOffset="279"/>
+<Loc EndOffset="306" SrcFileId="9" StartOffset="300"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="TreasureCard.java" Intrnl_Id="755">
+<LocList>
+<Loc EndOffset="273" SrcFileId="9" StartOffset="253"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="TreasureCard.java" Intrnl_Id="756">
+<LocList>
+<Loc EndOffset="294" SrcFileId="9" StartOffset="279"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="TreasureCard.java" Intrnl_Id="757">
+<LocList>
+<Loc EndOffset="306" SrcFileId="9" StartOffset="300"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="TreasureCard.java" Implct="false" Intrnl_Id="758">
+<Cond>
+<Loc EndOffset="326" SrcFileId="9" StartOffset="315"/>
+</Cond>
+<LocList>
+<Loc EndOffset="388" SrcFileId="9" StartOffset="333"/>
+</LocList>
+<StmntSeq Intrnl_Id="759">
+<LocList>
+<Loc EndOffset="355" SrcFileId="9" StartOffset="333"/>
+<Loc EndOffset="376" SrcFileId="9" StartOffset="361"/>
+<Loc EndOffset="388" SrcFileId="9" StartOffset="382"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="TreasureCard.java" Intrnl_Id="760">
+<LocList>
+<Loc EndOffset="355" SrcFileId="9" StartOffset="333"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="TreasureCard.java" Intrnl_Id="761">
+<LocList>
+<Loc EndOffset="376" SrcFileId="9" StartOffset="361"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="TreasureCard.java" Intrnl_Id="762">
+<LocList>
+<Loc EndOffset="388" SrcFileId="9" StartOffset="382"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B3" CovItemPrefix="TreasureCard.java" Implct="false" Intrnl_Id="763">
+<Cond>
+<Loc EndOffset="405" SrcFileId="9" StartOffset="398"/>
+</Cond>
+<LocList>
+<Loc EndOffset="467" SrcFileId="9" StartOffset="412"/>
+</LocList>
+<StmntSeq Intrnl_Id="764">
+<LocList>
+<Loc EndOffset="434" SrcFileId="9" StartOffset="412"/>
+<Loc EndOffset="455" SrcFileId="9" StartOffset="440"/>
+<Loc EndOffset="467" SrcFileId="9" StartOffset="461"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="TreasureCard.java" Intrnl_Id="765">
+<LocList>
+<Loc EndOffset="434" SrcFileId="9" StartOffset="412"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="TreasureCard.java" Intrnl_Id="766">
+<LocList>
+<Loc EndOffset="455" SrcFileId="9" StartOffset="440"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="TreasureCard.java" Intrnl_Id="767">
+<LocList>
+<Loc EndOffset="467" SrcFileId="9" StartOffset="461"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="224" SrcFileId="9" StartOffset="218"/>
+<LocList>
+<Loc EndOffset="472" SrcFileId="9" StartOffset="218"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="64" HierarchyLvlTypeId="13" Intrnl_Id="768" Name="clone">
+<Header>
+<Loc EndOffset="521" SrcFileId="9" StartOffset="482"/>
+</Header>
+<LocList>
+<Loc EndOffset="603" SrcFileId="9" StartOffset="482"/>
+</LocList>
+<StmntSeq Intrnl_Id="769">
+<LocList>
+<Loc EndOffset="582" SrcFileId="9" StartOffset="527"/>
+<Loc EndOffset="599" SrcFileId="9" StartOffset="586"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="TreasureCard.java" Intrnl_Id="770">
+<LocList>
+<Loc EndOffset="582" SrcFileId="9" StartOffset="527"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S13" CovItemPrefix="TreasureCard.java" Intrnl_Id="771">
+<LocList>
+<Loc EndOffset="599" SrcFileId="9" StartOffset="586"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="65" HierarchyLvlTypeId="13" Intrnl_Id="772" Name="GetValue">
+<Header>
+<Loc EndOffset="630" SrcFileId="9" StartOffset="609"/>
+</Header>
+<LocList>
+<Loc EndOffset="760" SrcFileId="9" StartOffset="609"/>
+</LocList>
+<StmntSeq Intrnl_Id="773">
+<LocList>
+<Loc EndOffset="756" SrcFileId="9" StartOffset="636"/>
+</LocList>
+<CondStmnt CovItemId="S14" CovItemPrefix="TreasureCard.java" Intrnl_Id="774">
+<Branch CovItemId="B4" CovItemPrefix="TreasureCard.java" Implct="false" Intrnl_Id="775">
+<Cond>
+<Loc EndOffset="664" SrcFileId="9" StartOffset="655"/>
+</Cond>
+<LocList>
+<Loc EndOffset="680" SrcFileId="9" StartOffset="671"/>
+</LocList>
+<StmntSeq Intrnl_Id="776">
+<LocList>
+<Loc EndOffset="680" SrcFileId="9" StartOffset="671"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="TreasureCard.java" Intrnl_Id="777">
+<LocList>
+<Loc EndOffset="680" SrcFileId="9" StartOffset="671"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B5" CovItemPrefix="TreasureCard.java" Implct="false" Intrnl_Id="778">
+<Cond>
+<Loc EndOffset="701" SrcFileId="9" StartOffset="690"/>
+</Cond>
+<LocList>
+<Loc EndOffset="717" SrcFileId="9" StartOffset="708"/>
+</LocList>
+<StmntSeq Intrnl_Id="779">
+<LocList>
+<Loc EndOffset="717" SrcFileId="9" StartOffset="708"/>
+</LocList>
+<BasicStmnt CovItemId="S16" CovItemPrefix="TreasureCard.java" Intrnl_Id="780">
+<LocList>
+<Loc EndOffset="717" SrcFileId="9" StartOffset="708"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="TreasureCard.java" Implct="false" Intrnl_Id="781">
+<Cond>
+<Loc EndOffset="735" SrcFileId="9" StartOffset="728"/>
+</Cond>
+<LocList>
+<Loc EndOffset="751" SrcFileId="9" StartOffset="742"/>
+</LocList>
+<StmntSeq Intrnl_Id="782">
+<LocList>
+<Loc EndOffset="751" SrcFileId="9" StartOffset="742"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="TreasureCard.java" Intrnl_Id="783">
+<LocList>
+<Loc EndOffset="751" SrcFileId="9" StartOffset="742"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="642" SrcFileId="9" StartOffset="636"/>
+<LocList>
+<Loc EndOffset="756" SrcFileId="9" StartOffset="636"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="71" HierarchyLvlTypeId="14" Intrnl_Id="784" Name="VictoryCard">
+<Header>
+<Loc EndOffset="60" SrcFileId="10" StartOffset="2"/>
+</Header>
+<LocList>
+<Loc EndOffset="65" SrcFileId="10" StartOffset="2"/>
+<Loc EndOffset="1033" SrcFileId="10" StartOffset="149"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="67" HierarchyLvlTypeId="12" Intrnl_Id="785" Name="VictoryType">
+<Header>
+<Loc EndOffset="88" SrcFileId="10" StartOffset="65"/>
+</Header>
+<LocList>
+<Loc EndOffset="149" SrcFileId="10" StartOffset="65"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="68" HierarchyLvlTypeId="13" Intrnl_Id="786" Name="VictoryCard">
+<Header>
+<Loc EndOffset="227" SrcFileId="10" StartOffset="191"/>
+</Header>
+<LocList>
+<Loc EndOffset="656" SrcFileId="10" StartOffset="191"/>
+</LocList>
+<StmntSeq Intrnl_Id="787">
+<LocList>
+<Loc EndOffset="250" SrcFileId="10" StartOffset="233"/>
+<Loc EndOffset="652" SrcFileId="10" StartOffset="258"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="VictoryCard.java" Intrnl_Id="788">
+<LocList>
+<Loc EndOffset="250" SrcFileId="10" StartOffset="233"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S2" CovItemPrefix="VictoryCard.java" Intrnl_Id="789">
+<Branch CovItemId="B1" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="790">
+<Cond>
+<Loc EndOffset="287" SrcFileId="10" StartOffset="277"/>
+</Cond>
+<LocList>
+<Loc EndOffset="348" SrcFileId="10" StartOffset="294"/>
+</LocList>
+<StmntSeq Intrnl_Id="791">
+<LocList>
+<Loc EndOffset="315" SrcFileId="10" StartOffset="294"/>
+<Loc EndOffset="336" SrcFileId="10" StartOffset="321"/>
+<Loc EndOffset="348" SrcFileId="10" StartOffset="342"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="VictoryCard.java" Intrnl_Id="792">
+<LocList>
+<Loc EndOffset="315" SrcFileId="10" StartOffset="294"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="VictoryCard.java" Intrnl_Id="793">
+<LocList>
+<Loc EndOffset="336" SrcFileId="10" StartOffset="321"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="VictoryCard.java" Intrnl_Id="794">
+<LocList>
+<Loc EndOffset="348" SrcFileId="10" StartOffset="342"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="795">
+<Cond>
+<Loc EndOffset="364" SrcFileId="10" StartOffset="353"/>
+</Cond>
+<LocList>
+<Loc EndOffset="426" SrcFileId="10" StartOffset="371"/>
+</LocList>
+<StmntSeq Intrnl_Id="796">
+<LocList>
+<Loc EndOffset="393" SrcFileId="10" StartOffset="371"/>
+<Loc EndOffset="414" SrcFileId="10" StartOffset="399"/>
+<Loc EndOffset="426" SrcFileId="10" StartOffset="420"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="VictoryCard.java" Intrnl_Id="797">
+<LocList>
+<Loc EndOffset="393" SrcFileId="10" StartOffset="371"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="VictoryCard.java" Intrnl_Id="798">
+<LocList>
+<Loc EndOffset="414" SrcFileId="10" StartOffset="399"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="VictoryCard.java" Intrnl_Id="799">
+<LocList>
+<Loc EndOffset="426" SrcFileId="10" StartOffset="420"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B3" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="800">
+<Cond>
+<Loc EndOffset="441" SrcFileId="10" StartOffset="431"/>
+</Cond>
+<LocList>
+<Loc EndOffset="502" SrcFileId="10" StartOffset="448"/>
+</LocList>
+<StmntSeq Intrnl_Id="801">
+<LocList>
+<Loc EndOffset="469" SrcFileId="10" StartOffset="448"/>
+<Loc EndOffset="490" SrcFileId="10" StartOffset="475"/>
+<Loc EndOffset="502" SrcFileId="10" StartOffset="496"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="VictoryCard.java" Intrnl_Id="802">
+<LocList>
+<Loc EndOffset="469" SrcFileId="10" StartOffset="448"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="VictoryCard.java" Intrnl_Id="803">
+<LocList>
+<Loc EndOffset="490" SrcFileId="10" StartOffset="475"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="VictoryCard.java" Intrnl_Id="804">
+<LocList>
+<Loc EndOffset="502" SrcFileId="10" StartOffset="496"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="805">
+<Cond>
+<Loc EndOffset="520" SrcFileId="10" StartOffset="507"/>
+</Cond>
+<LocList>
+<Loc EndOffset="584" SrcFileId="10" StartOffset="527"/>
+</LocList>
+<StmntSeq Intrnl_Id="806">
+<LocList>
+<Loc EndOffset="551" SrcFileId="10" StartOffset="527"/>
+<Loc EndOffset="572" SrcFileId="10" StartOffset="557"/>
+<Loc EndOffset="584" SrcFileId="10" StartOffset="578"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="VictoryCard.java" Intrnl_Id="807">
+<LocList>
+<Loc EndOffset="551" SrcFileId="10" StartOffset="527"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S13" CovItemPrefix="VictoryCard.java" Intrnl_Id="808">
+<LocList>
+<Loc EndOffset="572" SrcFileId="10" StartOffset="557"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S14" CovItemPrefix="VictoryCard.java" Intrnl_Id="809">
+<LocList>
+<Loc EndOffset="584" SrcFileId="10" StartOffset="578"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B5" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="810">
+<Cond>
+<Loc EndOffset="596" SrcFileId="10" StartOffset="589"/>
+</Cond>
+<LocList>
+<Loc EndOffset="647" SrcFileId="10" StartOffset="603"/>
+</LocList>
+<StmntSeq Intrnl_Id="811">
+<LocList>
+<Loc EndOffset="626" SrcFileId="10" StartOffset="603"/>
+<Loc EndOffset="647" SrcFileId="10" StartOffset="632"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="VictoryCard.java" Intrnl_Id="812">
+<LocList>
+<Loc EndOffset="626" SrcFileId="10" StartOffset="603"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S16" CovItemPrefix="VictoryCard.java" Intrnl_Id="813">
+<LocList>
+<Loc EndOffset="647" SrcFileId="10" StartOffset="632"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="264" SrcFileId="10" StartOffset="258"/>
+<LocList>
+<Loc EndOffset="652" SrcFileId="10" StartOffset="258"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="69" HierarchyLvlTypeId="13" Intrnl_Id="814" Name="clone">
+<Header>
+<Loc EndOffset="700" SrcFileId="10" StartOffset="662"/>
+</Header>
+<LocList>
+<Loc EndOffset="780" SrcFileId="10" StartOffset="662"/>
+</LocList>
+<StmntSeq Intrnl_Id="815">
+<LocList>
+<Loc EndOffset="759" SrcFileId="10" StartOffset="706"/>
+<Loc EndOffset="776" SrcFileId="10" StartOffset="763"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="VictoryCard.java" Intrnl_Id="816">
+<LocList>
+<Loc EndOffset="759" SrcFileId="10" StartOffset="706"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S18" CovItemPrefix="VictoryCard.java" Intrnl_Id="817">
+<LocList>
+<Loc EndOffset="776" SrcFileId="10" StartOffset="763"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="70" HierarchyLvlTypeId="13" Intrnl_Id="818" Name="GetVPs">
+<Header>
+<Loc EndOffset="805" SrcFileId="10" StartOffset="786"/>
+</Header>
+<LocList>
+<Loc EndOffset="1030" SrcFileId="10" StartOffset="786"/>
+</LocList>
+<StmntSeq Intrnl_Id="819">
+<LocList>
+<Loc EndOffset="1026" SrcFileId="10" StartOffset="811"/>
+</LocList>
+<CondStmnt CovItemId="S19" CovItemPrefix="VictoryCard.java" Intrnl_Id="820">
+<Branch CovItemId="B6" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="821">
+<Cond>
+<Loc EndOffset="840" SrcFileId="10" StartOffset="830"/>
+</Cond>
+<LocList>
+<Loc EndOffset="857" SrcFileId="10" StartOffset="847"/>
+</LocList>
+<StmntSeq Intrnl_Id="822">
+<LocList>
+<Loc EndOffset="857" SrcFileId="10" StartOffset="847"/>
+</LocList>
+<BasicStmnt CovItemId="S20" CovItemPrefix="VictoryCard.java" Intrnl_Id="823">
+<LocList>
+<Loc EndOffset="857" SrcFileId="10" StartOffset="847"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B7" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="824">
+<Cond>
+<Loc EndOffset="878" SrcFileId="10" StartOffset="867"/>
+</Cond>
+<LocList>
+<Loc EndOffset="894" SrcFileId="10" StartOffset="885"/>
+</LocList>
+<StmntSeq Intrnl_Id="825">
+<LocList>
+<Loc EndOffset="894" SrcFileId="10" StartOffset="885"/>
+</LocList>
+<BasicStmnt CovItemId="S21" CovItemPrefix="VictoryCard.java" Intrnl_Id="826">
+<LocList>
+<Loc EndOffset="894" SrcFileId="10" StartOffset="885"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="827">
+<Cond>
+<Loc EndOffset="914" SrcFileId="10" StartOffset="904"/>
+</Cond>
+<LocList>
+<Loc EndOffset="930" SrcFileId="10" StartOffset="921"/>
+</LocList>
+<StmntSeq Intrnl_Id="828">
+<LocList>
+<Loc EndOffset="930" SrcFileId="10" StartOffset="921"/>
+</LocList>
+<BasicStmnt CovItemId="S22" CovItemPrefix="VictoryCard.java" Intrnl_Id="829">
+<LocList>
+<Loc EndOffset="930" SrcFileId="10" StartOffset="921"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B9" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="830">
+<Cond>
+<Loc EndOffset="954" SrcFileId="10" StartOffset="941"/>
+</Cond>
+<LocList>
+<Loc EndOffset="970" SrcFileId="10" StartOffset="961"/>
+</LocList>
+<StmntSeq Intrnl_Id="831">
+<LocList>
+<Loc EndOffset="970" SrcFileId="10" StartOffset="961"/>
+</LocList>
+<BasicStmnt CovItemId="S23" CovItemPrefix="VictoryCard.java" Intrnl_Id="832">
+<LocList>
+<Loc EndOffset="970" SrcFileId="10" StartOffset="961"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B10" CovItemPrefix="VictoryCard.java" Implct="false" Intrnl_Id="833">
+<Cond>
+<Loc EndOffset="982" SrcFileId="10" StartOffset="975"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1021" SrcFileId="10" StartOffset="1012"/>
+</LocList>
+<StmntSeq Intrnl_Id="834">
+<LocList>
+<Loc EndOffset="1021" SrcFileId="10" StartOffset="1012"/>
+</LocList>
+<BasicStmnt CovItemId="S24" CovItemPrefix="VictoryCard.java" Intrnl_Id="835">
+<LocList>
+<Loc EndOffset="1021" SrcFileId="10" StartOffset="1012"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="817" SrcFileId="10" StartOffset="811"/>
+<LocList>
+<Loc EndOffset="1026" SrcFileId="10" StartOffset="811"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+</TestSessionContainer>

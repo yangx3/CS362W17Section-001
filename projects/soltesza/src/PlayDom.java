@@ -1,11 +1,18 @@
 
 public class PlayDom {
 	public static void main(String args[]) {
-		Player player1 = new Player();
-		Player player2 = new Player();
+		DominionBoard board = new DominionBoard();
+		GameState state = new GameState(board);
+
+		while(true) {
+			state.TakeTurn();
+			if(board.GameOver()) {
+				break;
+			}
+		}
 		
-		player1.TakeTurn();
-		player2.TakeTurn();
+		System.out.println("Finished game.");
+		state.PrintScore();
 		
 		System.exit(0);
 	}

@@ -4,77 +4,56 @@ import java.util.ArrayList;
 
 public class Play {
     public static void main(String[] arguments) {
-        // Standard starting set of kingdom cards.
         // I can't believe java doesn't have array literals??
         ArrayList<Card> kingdomCards = new ArrayList<>();
-        kingdomCards.add(Card.Cellar);
+        kingdomCards.add(Card.Adventurer);
+        kingdomCards.add(Card.Ambassador);
+        kingdomCards.add(Card.Baron);
+        kingdomCards.add(Card.Cutpurse);
+        kingdomCards.add(Card.Gardens);
+        kingdomCards.add(Card.GreatHall);
         kingdomCards.add(Card.Market);
-        kingdomCards.add(Card.Militia);
         kingdomCards.add(Card.Mine);
-        kingdomCards.add(Card.Moat);
-        kingdomCards.add(Card.Remodel);
         kingdomCards.add(Card.Smithy);
         kingdomCards.add(Card.Village);
-        kingdomCards.add(Card.Woodcutter);
-        //kingdomCards.add(Card.Workshop);
-        kingdomCards.add(Card.Adventurer);
 
         int seed = 1;
-
         Game game = new Game(2, kingdomCards, seed);
+
+        ////
 
         System.out.println("Starting game.");
 
-        int money = 0;
-        int smithyPos = -1;
-        int adventurerPos = -1;
-        int i = 0;
-
         int numSmithies = 0;
         int numAdventurers = 0;
+        int numMarkets = 0;
 
         while (!game.isGameOver()) {
-            money = 0;
-            smithyPos = -1;
-            adventurerPos = -1;
-            for (i = 0; i < game.numHandCards(); i++) {
-                if (game.handCard(i) == Card.Copper) {
-                    money++;
-                } else if (game.handCard(i) == Card.Silver) {
-                    money += 2;
-                } else if (game.handCard(i) == Card.Gold) {
-                    money += 3;
-                } else if (game.handCard(i) == Card.Smithy) {
+            int smithyPos = -1;
+            int adventurerPos = -1;
+            int marketPos = -1;
+
+            for (int i = 0; i < game.numHandCards(); i++) {
+                if (game.handCard(i) == Card.Smithy) {
                     smithyPos = i;
                 } else if (game.handCard(i) == Card.Adventurer) {
                     adventurerPos = i;
+                } else if (game.handCard(i) == Card.Market) {
+                    marketPos = i;
                 }
             }
 
-            if (game.whoseTurn() == 0) {
+            printCards(game);
+
+            if (game.getCurrentPlayer() == 0) {
                 // Player 0: likes to buy smithies
                 if (smithyPos != -1) {
                     System.out.printf("0: smithy played from position %d\n", smithyPos);
-                    game.playCard(smithyPos, -1, -1, -1);
+                    game.playAction(smithyPos);
                     System.out.printf("smithy played.\n");
-                    money = 0;
-                    for (i = 0; i < game.numHandCards(); i++) {
-                        if (game.handCard(i) == Card.Copper){
-                            game.playCard(i, -1, -1, -1);
-                            money++;
-                        }
-                        else if (game.handCard(i) == Card.Silver){
-                            game.playCard(i, -1, -1, -1);
-                            money += 2;
-                        }
-                        else if (game.handCard(i) == Card.Gold){
-                            game.playCard(i, -1, -1, -1);
-                            money += 3;
-                        }
-                        i++;
-                    }
                 }
 
+                int money = playTreasures(game);
                 System.out.printf("0: money = %d\n", money);
 
                 if (money >= 8) {
@@ -98,26 +77,15 @@ public class Play {
                 // Player 1: likes to buy adventurers
                 if (adventurerPos != -1) {
                     System.out.printf("1: adventurer played from position %d\n", adventurerPos);
-                    game.playCard(adventurerPos, -1, -1, -1);
-                    money = 0;
-                    i=0;
-                    for (i = 0; i < game.numHandCards(); i++) {
-                        if (game.handCard(i) == Card.Copper){
-                            game.playCard(i, -1, -1, -1);
-                            money++;
-                        }
-                        else if (game.handCard(i) == Card.Silver){
-                            game.playCard(i, -1, -1, -1);
-                            money += 2;
-                        }
-                        else if (game.handCard(i) == Card.Gold){
-                            game.playCard(i, -1, -1, -1);
-                            money += 3;
-                        }
-                        i++;
-                    }
+                    game.playAction(adventurerPos);
+                    printCards(game);
+                } else if (marketPos != -1) {
+                    System.out.printf("1: market played");
+                    game.playAction(marketPos);
+                    printCards(game);
                 }
 
+                int money = playTreasures(game);
                 System.out.printf("1: money = %d\n", money);
 
                 if (money >= 8) {
@@ -127,6 +95,9 @@ public class Play {
                     System.out.printf("1: bought adventurer\n");
                     game.buyCard(Card.Adventurer);
                     numAdventurers++;
+                } else if (money >= Card.Market.cost() && numMarkets < 2) {
+                    game.buyCard(Card.Market);
+                    numMarkets++;
                 } else if (money >= 6) {
                     System.out.printf("1: bought gold\n");
                     game.buyCard(Card.Gold);
@@ -147,5 +118,33 @@ public class Play {
         System.out.printf("Player 0: %d\n", game.scoreFor(0));
         System.out.printf("Player 1: %d\n", game.scoreFor(1));
 
+    }
+
+    public static int playTreasures(Game game) {
+        int money = 0;
+        for (int i = 0; i < game.numHandCards(); i++) {
+            if (game.handCard(i) == Card.Copper){
+                game.playTreasure(i);
+                money++;
+                i--;
+            }
+            else if (game.handCard(i) == Card.Silver){
+                game.playTreasure(i);
+                money += 2;
+                i--;
+            }
+            else if (game.handCard(i) == Card.Gold){
+                game.playTreasure(i);
+                money += 3;
+                i--;
+            }
+        }
+        return money;
+    }
+
+    public static void printCards(Game game) {
+        for (int i = 0; i < game.numHandCards(); i++) {
+            System.out.printf("Player %d card %d: %s\n", game.getCurrentPlayer(), i, game.handCard(i));
+        }
     }
 }
