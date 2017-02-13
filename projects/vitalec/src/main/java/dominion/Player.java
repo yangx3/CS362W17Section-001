@@ -22,7 +22,7 @@ public class Player {
 	int numBuys;
 	int coins;
 
-	   final GameState gameState;
+	final GameState gameState;
 
 	
 	public Player(GameState gameState,String player_username) {

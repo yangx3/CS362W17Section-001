@@ -13,7 +13,7 @@ public class mainPlayer {
 		
 		Randomness.reset(10);	   
 
-		List<Card> cards=new LinkedList<Card>();
+		List<Card> cards;
 		//the cards  are achieved by each element/constant in the enum class 
 		cards = new ArrayList<Card>(Card.createCards());
 

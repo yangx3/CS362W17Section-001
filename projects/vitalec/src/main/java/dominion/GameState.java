@@ -29,7 +29,7 @@ import java.util.TreeMap;
 
 public class GameState {
 
-  public final List < Player > players = new ArrayList < Player > ();;
+  public final List < Player > players = new ArrayList < Player > ();
   public final List < Card > cards;
   public HashMap < Card, Integer > gameBoard = new HashMap < Card, Integer > ();
 
@@ -55,17 +55,17 @@ public class GameState {
       return;
     }
     //initialize supply for only two players
-    int selectedKindom = 0;
+    int selectedKingdom = 0;
     int Kingdom_Cards_Selected = 3; // We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
     // we should change 3 to the  exact of the number of 
     //kingdom cards. look at the requirements of the assignment-1
-    while (selectedKindom < Kingdom_Cards_Selected) {
+    while (selectedKingdom < Kingdom_Cards_Selected) {
       int random = (int) Randomness.random.nextInt(cards.size()); //
       Card tmp = cards.get(random);
       if (tmp.getType() != Card.Type.ACTION) continue;
       if (gameBoard.containsKey(tmp)) continue;
       gameBoard.put(tmp, 10);
-      selectedKindom++;
+      selectedKingdom++;
     }
     //set number of Curse cards the default number of players is 2			   
     gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
@@ -77,12 +77,12 @@ public class GameState {
     //set number of Treasure cards
     gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
     gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
-    gameBoard.put(Card.getCard(cards, Card.CardName.Cooper), 46);
+    gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
 
 
     for (Player player: players) {
       for (int i = 0; i < 7; i++) {
-        player.gain(Card.getCard(cards, Card.CardName.Cooper));
+        player.gain(Card.getCard(cards, Card.CardName.Copper));
       }
 
       for (int i = 0; i < 3; i++) {
