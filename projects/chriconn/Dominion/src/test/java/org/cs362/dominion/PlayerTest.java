@@ -34,5 +34,24 @@ public class PlayerTest {
         assertEquals("New player values is not 0", test.getValues(), 0);
         assertEquals("New player buys is not 0", test.getBuys(), 0);
         assertEquals("New player name is not null", test.getName(), "connor");
+
+
+        test.modifyActions(1);
+        test.modifyValues(1);
+        test.modifyBuys(1);
+
+        assertEquals("Player with modified +1 actions does not have 1 actions", test.getActions(), 1);
+        assertEquals("Player with modified +1 values does not have 1 values", test.getValues(), 1);
+        assertEquals("Player with modified +1 buys does not have 1 buys", test.getBuys(), 1);
+
+        test.starterPoints();
+        assertEquals("Player with starterPoints() does not have proper actions points", test.getActions(), 1);
+        assertEquals("Player with starterPoints() does not have proper buys points", test.getBuys(), 1);
+        assertEquals("Player with starterPoints() does not have proper values points", test.getValues(), 0);
+
+        test.sumTreasure();
+        if (test.hand.hasType("treasure")) {
+            assertNotEquals("Player treasure cards in their hand did not have the values added past 0", test.getValues(), 0);
+        }
     }
 }
