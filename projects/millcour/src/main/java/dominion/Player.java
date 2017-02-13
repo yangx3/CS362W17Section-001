@@ -113,7 +113,7 @@ public class Player{
 
 		public void discardToDraw(){
 			Card temp;
-			for(int i=0; i<discard.getPile().size(); i++){
+			for(int i=discard.getPile().size()-1; i>=0; i--){
 				temp = discard.getPile().get(i);
 				discard.getPile().remove(i);
 				draw.getPile().add(temp);
