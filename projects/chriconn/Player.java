@@ -131,7 +131,10 @@ public class Player {
     }
 
     public void buy(Deck type) {
-        discard.addCard(type.drawCard());
+        Card test = type.drawCard();
+        if (test != null) {
+            discard.addCard(test);
+        }
     }
 
     public Card draw() {
