@@ -156,4 +156,12 @@ public class PlayerTest {
 			test.giveCard(new Garden());
 		assertEquals(3, test.getVictoryPoints());
 	}
+	
+	@Test
+	public void testVictoryComputationWithGardens(){
+		
+	}
+	
+	
+	
 }
