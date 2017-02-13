@@ -20,19 +20,5 @@ public class GardenTest {
 		assertTrue("Garden type doesn't match",
 				test.isCardType(CardType.Victory));
 		
-	}
-
-	@Test
-	public void testVictoryPointCalculation(){
-		Player p = new AIPlayer(1);
-		Card c = new Garden();
-		p.giveCard(c);
-		for(int j=1; j<11; j++){
-			assertEquals("Garden point value ("+p.getVictoryPoints()+
-					") doesn't match expected ("+j/10+")",
-					j/10, p.getVictoryPoints());
-			p.giveCard(new Copper());
-		}
-	}
-	
+	}	
 }
