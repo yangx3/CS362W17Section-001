@@ -21,3 +21,4 @@ coverage:
 clean:
 	mvn clean
 	rm -f -rf dominion/
+	rm -f lamki_dom.jar
