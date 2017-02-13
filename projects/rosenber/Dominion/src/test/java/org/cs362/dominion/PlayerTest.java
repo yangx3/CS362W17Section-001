@@ -160,8 +160,30 @@ public class PlayerTest {
 	@Test
 	public void testVictoryComputationWithGardens(){
 		
+		test = new AIPlayer(1);
+		
+		for(int j=0; j<30; j++)
+			test.giveCard(new Copper());
+		
+		test.discard.addBottom(new Garden());
+		test.deck.addBottom(new Garden());
+		test.addToHand(new Garden());
+		
+		assertEquals("Victory points from gardens doesn't equal 3",
+				3, test.getVictoryPoints());
 	}
 	
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+

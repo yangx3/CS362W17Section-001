@@ -202,19 +202,19 @@ public class Player{
 		int sum = 0;
 		for(int j=0; j<hand.size(); j++)
 			if(hand.getCard(j).getName() == "Garden"){
-				sum = (numTotalCards()/10);
+				sum += (numTotalCards()/10);
 			}
 			else
 				sum += hand.getCard(j).getVictoryPoints();
 		for(int j=0; j<deck.size(); j++)
 			if(deck.findSpecific(j).getName() == "Garden"){
-				sum = (numTotalCards()/10);
+				sum += (numTotalCards()/10);
 			}
 			else
 				sum += deck.findSpecific(j).getVictoryPoints();
 		for(int j=0; j<discard.size(); j++)
 			if(discard.findSpecific(j).getName() == "Garden"){
-				sum = (numTotalCards()/10);
+				sum += (numTotalCards()/10);
 			}
 			else
 				sum += discard.findSpecific(j).getVictoryPoints();
