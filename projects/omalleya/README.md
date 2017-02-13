@@ -15,11 +15,12 @@ Create README.md for Aidan O'Malley
 "mvn cobertura:cobertura"
 
 -mvn test will run the unit tests
+
 -running the cobertura tool afterwards creates the coverage files
 
 -to run a specific test
 
-"mvn -Dtest=<TESTCLASS>#<TESTMETHODNAME> test"
+"mvn -Dtest=TESTCLASSNAME#TESTMETHODNAME test"
 
 -the code coverage can be seen in the cobertura/ directory in the index.html file
 
