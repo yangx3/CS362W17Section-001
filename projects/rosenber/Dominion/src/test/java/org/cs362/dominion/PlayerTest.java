@@ -14,10 +14,10 @@ public class PlayerTest {
 	@Test
 	public void testConstructorString() {
 		
-		test = new Player("Robert", false);
+		test = new Player("test player", false);
 		
 		assertEquals("Name doesn't match name given",
-				"Robert", test.getName());
+				"test player", test.getName());
 		assertEquals("Hand isn't empty",
 				0, test.hand.size());
 		assertEquals("Deck isn't empty",
@@ -34,7 +34,7 @@ public class PlayerTest {
 	@Test
 	public void testSetters(){
 		
-		test = new Player("asdf", false);
+		test = new Player("test player", false);
 		
 		test.setBuys(5);
 		assertEquals("Buys doesn't equal what it was set to",
@@ -52,7 +52,7 @@ public class PlayerTest {
 	@Test
 	public void testAdds(){
 		
-		test = new Player("asdf", false);
+		test = new Player("test player", false);
 		
 		test.addBuys(5);
 		assertEquals("Buys doesn't equal what it was set to",
@@ -71,7 +71,7 @@ public class PlayerTest {
 	@Test
 	public void testHandDeckDiscardInteractions(){
 		
-		test = new Player("asdf", false);
+		test = new Player("test player", false);
 		Card c = createCard("foo", 1, 2, 3);
 		test.hand.addCard(c);
 		test.discardCard(c);
@@ -113,7 +113,7 @@ public class PlayerTest {
 	@Test
 	public void testSeeHand(){
 		
-		test = new Player("asdf", false);
+		test = new Player("test player", false);
 		try{
 			test.seeHand();
 		}
@@ -126,7 +126,7 @@ public class PlayerTest {
 	@Test
 	public void testMoneyVictoryComputations(){
 		
-		test = new Player("asdf", false);
+		test = new Player("test player", false);
 		Card c = createCard("foo", 0, 2, 4);
 		test.giveCard(c);
 		
