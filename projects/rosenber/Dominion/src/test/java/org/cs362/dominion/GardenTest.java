@@ -14,9 +14,9 @@ public class GardenTest {
 		assertEquals("Garden cost doesn't match",
 				4, test.getCost());
 		assertEquals("Garden victory points doesn't match",
-				0, test.getVictoryPoints());
+				1, test.getVictoryPoints());
 		assertEquals("Garden value doesn't match",
-				1, test.getTreasure());
+				0, test.getTreasure());
 		assertTrue("Garden type doesn't match",
 				test.isCardType(CardType.Victory));
 		
