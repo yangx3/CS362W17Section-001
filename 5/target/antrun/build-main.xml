@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <zip destfile="/nfs/stak/students/d/dimc/cs362/CS362W17Section-001/5/target/app.zip">
+    <zipfileset dir="/nfs/stak/students/d/dimc/cs362/CS362W17Section-001/5/target/docker"/>
+    <zipfileset includes="5.jar" dir="/nfs/stak/students/d/dimc/cs362/CS362W17Section-001/5/target"/>
+  </zip>
+</target>
+</project>
