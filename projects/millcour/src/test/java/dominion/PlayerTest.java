@@ -90,6 +90,6 @@ public class PlayerTest {
 		p1.getDiscard().getPile().add(new Card(Card.CardName.Copper, Card.Type.TREASURE, 0, 0, 1));
 		p1.getDiscard().getPile().add(new Card(Card.CardName.Copper, Card.Type.TREASURE, 0, 0, 1));
 		p1.getDraw().getPile().add(new Card(Card.CardName.Copper, Card.Type.TREASURE, 0, 0, 1));
-		//p1.drawHand();
+		p1.drawHand();
 	}
 }
