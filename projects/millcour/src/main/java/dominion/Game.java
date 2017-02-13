@@ -136,26 +136,6 @@ public class Game{
 		dealHands();		
 	}
 
-	public void printVictoryCards(){
-		for(int j=0; j<5; j++){
-			for(int i=0; i<board.get(j).getPile().size(); i++){
-				System.out.println(board.get(j).getPile().get(i).getCardName());
-			}
-		}
-	}	
-	
-	public void printTreasureCards(){
-		for(int j=5; j<8; j++){
-			for(int i=0; i<board.get(j).getPile().size(); i++){
-				System.out.println(board.get(j).getPile().get(i).getCardName());
-			}
-		}
-	}
-
-	public void resetGame(){
-		//reset all values back to the beginning of the game again
-	}
-
 	public boolean checkForEnd(){
 		int numEmpty = 0;
 		if(board.get(2).getPile().size() == 0){
@@ -410,15 +390,6 @@ public class Game{
 			System.out.println("Revealing: " + toDiscard.getCardName());
 			players.get(other).getDiscard().getPile().add(toDiscard);
 		}
-	}
-
-	public boolean hasAction(int x){
-		for(int i=players.get(x).getHand().getPile().size()-1; i>=0; i--){
-			if(players.get(x).getHand().getPile().get(i).getType() == Card.Type.ACTION){
-				return true;
-			}
-		}
-		return false;
 	}
 
 	public void runAction(Card.CardName name, int x){
