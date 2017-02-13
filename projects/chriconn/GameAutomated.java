@@ -37,26 +37,7 @@ public class GameAutomated {
     ArrayList<Player> players;
     public ArrayList<String> cardsInGame;
 
-    public String randomCard() {
-        Random rand = new Random();
-        return cardsInGame.get(rand.nextInt(cardsInGame.size()));
-    }
-    public boolean yesNo() {
-        Random rand = new Random();
-        if (rand.nextInt(2) == 1) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    public String randomTreasure() {
-        Random rand = new Random();
-        int n = rand.nextInt(3);
-        if (n == 0)         { return "gold";   }
-        else if (n == 1)    { return "silver"; }
-        else                { return "copper"; }
-    }
+    //CONSTRUCTORS
     public GameAutomated() {
         bank = new ArrayList<Deck>();
         players = new ArrayList<Player>();
@@ -116,7 +97,6 @@ public class GameAutomated {
         bank.add(new Deck(24, new Card("estate")));
 
         //build the action decks
-        cardsInGame.add("adventurer");
         cardsInGame.add("ambassador");
         cardsInGame.add("baron");
         cardsInGame.add("council room");
@@ -125,13 +105,15 @@ public class GameAutomated {
         cardsInGame.add("feast");
         cardsInGame.add("gardens");
         cardsInGame.add("great hall");
-        cardsInGame.add("mine");
         cardsInGame.add("curse");
         cardsInGame.add("smithy");
         cardsInGame.add("village");
-        cardsInGame.add("witch");
         cardsInGame.add("cellar");
         cardsInGame.add("salvager");
+
+        // cardsInGame.add("adventurer");
+        // cardsInGame.add("mine");
+        // cardsInGame.add("witch");
 
         for (String deckName: cardsInGame) {
             bank.add(new Deck(10, new Card(deckName)));
@@ -151,6 +133,29 @@ public class GameAutomated {
         }
         numPlayers = names.length;
     }
+
+    //RANDOM
+    public String randomCard() {
+        Random rand = new Random();
+        return cardsInGame.get(rand.nextInt(cardsInGame.size()));
+    }
+    public boolean yesNo() {
+        Random rand = new Random();
+        if (rand.nextInt(2) == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public String randomTreasure() {
+        Random rand = new Random();
+        int n = rand.nextInt(3);
+        if (n == 0)         { return "gold";   }
+        else if (n == 1)    { return "silver"; }
+        else                { return "copper"; }
+    }
+
     public void playerTurn(int num) {
 
         /*******************************************************/

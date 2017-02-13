@@ -50,22 +50,23 @@ import java.util.*;
 public class Card {
 
     /* Basic card info */
-    private String name;           //the name of the card
-    private int value;             //if the card is a coin, it will have a value
-    private int cost;              //all cards have a set cost
-    private int victoryPoints;     //if it is a victory card, it will have a victory point value
-    private String description;    //some cards have some descriptions about specific rules
-    private ArrayList<String> type;
+    private String name;            //the name of the card
+    private int value;              //if the card is a coin, it will have a value
+    private int cost;               //all cards have a set cost
+    private int victoryPoints;      //if it is a victory card, it will have a victory point value
+    private String description;     //some cards have some descriptions about specific rules
+    private ArrayList<String> type; //an array of the types the card possesses
 
-    /*
-    Card action stats
-    Each of these stats will only be added to the user if they play the card
-    */
-
+    //Card action stats
     private int cards;    //how many extra cards you may draw
     private int actions;  //how many extra actions you may use
     private int buys;     //how many extra buys you may have
     private int coins;    //how many extra coins you may have
+
+
+    /***************************
+           CONSTRUCTORS
+    ****************************/
 
     //The default constructor for the card
     public Card() {
@@ -271,9 +272,26 @@ public class Card {
         }
     }
 
-    /******************** Individual Settings ********************/
+    /***************************
+             ACCESSORS
+    ****************************/
+    public String getName()           {return name;}
+    public int getValue()             {return value;}
+    public int getCost()              {return cost;}
+    public int getVictoryPoints()     {return victoryPoints;}
+    public int getCards()             {return cards;}
+    public int getBuys()              {return buys;}
+    public int getActions()           {return actions;}
+    public int getCoins()             {return coins;}
+    public String getDescription()    {return description;}
+    public ArrayList<String> getType(){return type;}
 
-    public void setName(String setName)     {name = setName;}
+
+    /***************************
+             MUTATORS
+    ****************************/
+
+    public void setName(String setName) {name = setName;}
     public void setValue(int setValue) {
         if (setValue > -1 && setValue < 11) {
             value = setValue;
@@ -291,11 +309,8 @@ public class Card {
         }
     }
 
-    public void setVictoryPoints(int setVictoryPoints)
-    {victoryPoints = setVictoryPoints;}
-    public void setDescription(String setDescription)
-    {description = setDescription;}
-
+    public void setVictoryPoints(int setVictoryPoints) {victoryPoints = setVictoryPoints;}
+    public void setDescription(String setDescription)  {description = setDescription;}
 
     public void setCards(int setCards)      { cards = setCards; }
     public void setActions(int setActions)  { actions = setActions; }
@@ -303,20 +318,9 @@ public class Card {
     public void setCoins(int setCoins)      { coins = setCoins; }
 
 
-    /******************** End Individual Settings ********************/
-
-    //getter functions for the contents of the class
-    public String getName()           {return name;}
-    public int getValue()             {return value;}
-    public int getCost()              {return cost;}
-    public int getVictoryPoints()     {return victoryPoints;}
-    public String getDescription()    {return description;}
-    public ArrayList<String> getType(){return type;}
-    public int getCards()             {return cards;}
-    public int getBuys()              {return buys;}
-    public int getActions()           {return actions;}
-    public int getCoins()             {return coins;}
-
+    /***************************
+              CHECKS
+    ****************************/
     public boolean isType(String typeName) {
         for (int x = 0; x < type.size(); x++) {
             if (type.get(x).equals(typeName)) {
@@ -326,6 +330,10 @@ public class Card {
         return false;
     }
 
+
+    /***************************
+             PRINTING
+    ****************************/
     //printing fuction for testing
     public void printCard() {
         System.out.println("Card Info:" +

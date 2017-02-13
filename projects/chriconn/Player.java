@@ -94,6 +94,9 @@ public class Player {
     //how many buys you can use
     private int buys;
 
+    /***************************
+            CONSTRUCTORS
+    ****************************/
     public Player() {
         //build the starter deck
         drawDeck = new Deck("starter");
@@ -110,7 +113,6 @@ public class Player {
         name = "null";
         drawDeck.shuffle();
     }
-
     public Player(String playerName) {
         drawDeck = new Deck("starter");
         hand = new Deck();
@@ -122,58 +124,68 @@ public class Player {
         drawDeck.shuffle();
     }
 
-    public void showHand() {
-        hand.printDeck();
-    }
+    /***************************
+             ACCESSORS
+    ****************************/
 
-    public String getMoves() {
-        return "You have:\n\t" + actions + " action(s)\n\t" + buys + " pruchase(s)\n\t" + value + " coin(s)";
-    }
+    public String getName() {return name;}
+    public int getActions() {return actions;}
+    public int getValues()  {return value;}
+    public int getBuys()    {return buys;}
 
+    /***************************
+             MUTATORS
+    ****************************/
+    public void modifyActions(int number) {actions = actions + number;}
+    public void modifyValues(int number) {value = value + number;}
+    public void modifyBuys(int number) {buys = buys + number;}
+
+    /***************************
+            CARD MOVING
+    ****************************/
     public void buy(Deck type) {
         Card test = type.drawCard();
         if (test != null) {
             discard.addCard(test);
         }
     }
-
     public Card draw() {
         if (drawDeck.empty()) {
             recycle();
         }
         //the hand is drawing a card from the drawCard deck
         Card temp = drawDeck.drawCard();
-        hand.addBottomCard(temp);
+        if (temp != null) {
+            hand.addBottomCard(temp);
+        }
         return temp;
     }
-
     public void discard() {
         if (!hand.empty()) {
             //the discard deck is drawing from the hand
             discard.addCard(hand.drawCard());
         }
     }
-
     public void discard(String cardName) {
-        discard.addCard(hand.drawCard(cardName));
+        if (!hand.empty()) {
+            discard.addCard(hand.drawCard(cardName));
+        }
     }
-
     public void discardAll() {
         while (!hand.empty()) {
             discard.addCard(hand.drawCard());
         }
     }
-
     public void discardAtIndex(int index) {
-        discard.addCard(hand.drawCardAtIndex(index));
+        if (index > hand.numCards()) {
+            discard.addCard(hand.drawCardAtIndex(index));
+        }
     }
-
     public void draw(int number) {
         for (int x = 0; x < number; x++) {
             draw();
         }
     }
-
     public void recycle() {
         while (!discard.empty()) {
             drawDeck.addCard(discard.drawCard());
@@ -181,36 +193,36 @@ public class Player {
         drawDeck.shuffle();
     }
 
-    public String getName() {return name;}
-    public int getActions() {return actions;}
-    public int getValues()  {return value;}
-    public int getBuys()    {return buys;}
 
-    public void modifyActions(int number) {actions = actions + number;}
-    public void modifyValues(int number) {value = value + number;}
-    public void modifyBuys(int number) {buys = buys + number;}
-
+    /***************************
+             CHECKS
+    ****************************/
     public boolean hasActions() {
         if (actions > 0 && hand.hasType("action")) {
             return true;
         }
         return false;
     }
-
     public boolean hasMoves() {
         if (actions > 0 || buys > 0) {
             return true;
         }
         return false;
     }
+    public boolean handContainsType(String type) {
+        return hand.hasType(type);
+    }
 
+
+    /***************************
+       PLAYER POINT MODIFIERS
+    ****************************/
     //sets one action and one buy that the player gets every turn
     public void starterPoints() {
         actions = 1;
         buys = 1;
         value = 0;
     }
-
     //adds up the total value of the treasure cards in the hand
     public void sumTreasure() {
         for (int x = 0; x < hand.numCards(); x++) {
@@ -219,39 +231,28 @@ public class Player {
             }
         }
     }
-
-    //returns boolean depending on what type exists in the deck
-    public boolean handContainsType(String type) {
-        return hand.hasType(type);
-    }
-
     //sets actions, buys and value to 0
     public void endTurn() {
         buys = 0;
         actions = 0;
         value = 0;
     }
-
-    //prints only the cards in the hand that match a type
-    public void printHandType(String type) {
-        hand.printType(type);
-    }
-
     //sets actions to 0 to skip action phase
     public void skipActionsPhase() {
         actions = 0;
     }
 
-    //prints all decks, draw, hand and discard
-    public void printAllDecks() {
-        String name = getName();
-        System.out.println("\n" + name + "'s draw deck: ");
-        drawDeck.printDeck();
-        System.out.println("\n" +  name + "'s hand:");
-        showHand();
-        System.out.println("\n" + name + "'s discarded deck: ");
-        discard.printDeck();
+
+    /***************************
+            PRINTING
+    ****************************/
+    public void showHand() {
+        hand.printDeck();
     }
+    public String getMoves() {
+        return "You have:\n\t" + actions + " action(s)\n\t" + buys + " pruchase(s)\n\t" + value + " coin(s)";
+    }
+
 
     private static Scanner scanner = new Scanner(System.in);
 }

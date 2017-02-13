@@ -130,14 +130,19 @@ public class Deck {
     int tokens;
     public Card emptyDeckCard;
 
-    //default constructor assigns empty space to deck
+
+    /***************************
+            CONSTRUCTORS
+    ****************************/
+
+    //Default constructor assigns empty space to deck
     public Deck() {
         deck = new ArrayList<Card>();
         tokens = 0;
         emptyDeckCard = null;
     }
 
-    //Non-default constructor creates specific decks depending on name
+    //Creates specific decks depending on name
     public Deck(String type) {
         deck = new ArrayList<Card>();
         type = type.toLowerCase();
@@ -176,7 +181,7 @@ public class Deck {
         }
     }
 
-    //Non-default constructor creates a specific deck x number of one type of card
+    //Creates a specific deck x number of one type of card
     public Deck(int number, Card card) {
         deck = new ArrayList<Card>();
         emptyDeckCard = new Card(card.getName());
@@ -184,6 +189,49 @@ public class Deck {
             this.addCard(card);
         }
     }
+
+
+    /***************************
+             ACCESSORS
+    ****************************/
+    public int numCards()   {return deck.size();}
+    public String getName() {
+        return this.cardInfo(0).getName();
+    }
+    public int getTokens()  {return tokens;}
+    public int indexOf(String cardName) {
+        for (int x = 0; x < deck.size(); x++) {
+            if (cardInfo(x).getName().equals(cardName)) {
+                return x;
+            }
+        }
+        return -1;
+    }
+    public int indexOfType(String type) {
+        for (int x = 0; x < deck.size(); x++) {
+            if (cardInfo(x).isType(type)) {
+                return x;
+            }
+        }
+        return -1;
+    }
+    public Card cardInfo(int index) {
+        if (this.empty() && emptyDeckCard != null) {
+            return emptyDeckCard;
+        }
+        return deck.get(index);
+    }
+
+
+    /***************************
+              MUTATORS
+    ****************************/
+    public void setTokens(int number)     {tokens = number;}
+    public void modifyTokens (int number) {tokens += number;}
+
+    /***************************
+             PRINTING
+    ****************************/
 
     public void printDeck() {
         for (int x = 0; x < deck.size(); x++) {
@@ -206,46 +254,13 @@ public class Deck {
         }
     }
 
-    public void shuffle() {
-        Collections.shuffle(deck, new Random(System.nanoTime()));
-    };
 
-    //adds card to the top of the deck
-    public void addCard(Card card)          {deck.add(0, card);}
-    public void addBottomCard(Card card)    {deck.add(card);}
-
-    public String getName() {
-        return this.cardInfo(0).getName();
+    /***************************
+              CHECKS
+    ****************************/
+    public boolean cardNameEquals(int index, String name) {
+        return deck.get(index).getName().equals(name);
     }
-    public int getTokens()                  {return tokens;}
-
-    public void setTokens(int number)       {tokens = number;}
-    public void modifyTokens (int number)   {tokens += number;}
-
-    //draws a card from the top of the deck
-    public Card drawCard() {
-        //if deck is larger than 0 remove and return, else return null
-        return (deck.size() > 0) ? deck.remove(0) : null;
-    };
-
-    //draws the first card that matches that name or returns null
-    public Card drawCard(String name) {
-        for (int x = 0; x < deck.size(); x++) {
-            if (this.cardNameEquals(x, name)) {
-                return deck.remove(x);
-            }
-        }
-        return null;
-    }
-
-    public Card drawCardAtIndex(int index) {
-        return deck.remove(index);
-    }
-
-    //if the deck size is 0, return true, else return false
-    public boolean empty()  {return (deck.size() == 0) ? true : false;}
-    public int numCards()   {return deck.size();}
-
     public boolean hasType(String type) {
         if (this.empty()) {
             return false;
@@ -257,7 +272,6 @@ public class Deck {
         }
         return false;
     }
-
     public boolean hasCard(String name) {
         if (this.empty()) {
             return false;
@@ -269,40 +283,48 @@ public class Deck {
         }
         return false;
     }
+    public boolean empty()  {return (deck.size() == 0) ? true : false;}
 
+
+    /***************************
+              DRAWING
+    ****************************/
+
+    //draws a card from the top of the deck
+    public Card drawCard() {
+        //if deck is larger than 0 remove and return, else return null
+        return (deck.size() > 0) ? deck.remove(0) : null;
+    };
+    public Card drawCardAtIndex(int index) {
+        return deck.remove(index);
+    }
+    //draws the first card that matches that name or returns null
+    public Card drawCard(String name) {
+        for (int x = 0; x < deck.size(); x++) {
+            if (this.cardNameEquals(x, name)) {
+                return deck.remove(x);
+            }
+        }
+        return null;
+    }
+
+
+    /***************************
+               ADDING
+    ****************************/
+    public void addCard(Card card)       {deck.add(0, card);}
+    public void addBottomCard(Card card) {deck.add(card);}
     public void addNumberOfCardType(int number, Card card) {
         for (int x = 0; x < number; x++) {
             this.addCard(card);
         }
     }
 
-    public Card cardInfo(int index) {
-        if (this.empty() && emptyDeckCard != null) {
-            return emptyDeckCard;
-        }
-        return deck.get(index);
-    }
 
-    public boolean cardNameEquals(int index, String name) {
-        return deck.get(index).getName().equals(name);
-    }
-
-    //get the index of a card with a certain name
-    public int indexOf(String cardName) {
-        for (int x = 0; x < deck.size(); x++) {
-            if (cardInfo(x).getName().equals(cardName)) {
-                return x;
-            }
-        }
-        return -1;
-    }
-
-    public int indexOfType(String type) {
-        for (int x = 0; x < deck.size(); x++) {
-            if (cardInfo(x).isType(type)) {
-                return x;
-            }
-        }
-        return -1;
-    }
+    /***************************
+                OTHER
+    ****************************/
+    public void shuffle() {
+        Collections.shuffle(deck, new Random(System.nanoTime()));
+    };
 }
