@@ -100,9 +100,7 @@ public class Player {
     	temp.clear();
     }
     public boolean buy(Card c){
-    	if (c.cost() > gold || buys < 1 ){
-    		return false;
-    	} else {
+    	if (c.cost() <= gold) { //add && buys > 0
     		for (Deck d : game.supply){
     			if (d.peek() == c) {
     				discard.add(d.take());
@@ -115,8 +113,9 @@ public class Player {
     				return true;
     			}
     		}
-    		return false;
+    		
     	}
+    	return false;
     }
     public void cleanup(){
     	gold = 0;
