@@ -50,14 +50,4 @@ public class TestCards {
 		((ActionCard)testCard).PlayAction(state);
 		assertEquals("Player gained or lost a card while playing a Remodel", count, state.currentPlayer.deck.GetCardCount());
 	}
-	
-	@Test
-	public void testVictoryCards() {
-		
-	}
-	
-	@Test
-	public void testTreasureCards() {
-		
-	}
 }

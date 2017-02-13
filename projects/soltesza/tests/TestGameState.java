@@ -1,3 +1,6 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import java.util.Vector;
@@ -10,7 +13,7 @@ public class TestGameState {
 		
 		Player curr = state.currentPlayer;
 		state.TakeTurn();
-		assert !curr.equals(state.currentPlayer);
-		assert curr.equals(state.otherPlayer);
+		assertFalse(curr.equals(state.currentPlayer));
+		assertTrue(curr.equals(state.otherPlayer));
 	}
 }

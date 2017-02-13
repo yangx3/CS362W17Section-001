@@ -92,11 +92,11 @@ public class Deck {
 		return drawnCards;
 	}
 	
-	public void TrashCard(Card card) { //make this work
+	public void TrashCard(Card card) {
 		cardCount--;
 		
 		if(card.GetName() == "Gardens") {
-			gardenCount--;
+			//gardenCount--; //Error 2: not decrementing gardenCount when a garden is removed
 		}
 		else if(card instanceof VictoryCard) {
 			score -= ((VictoryCard)card).GetVPs();

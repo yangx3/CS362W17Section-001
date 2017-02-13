@@ -16,21 +16,21 @@ public class TestPlayer {
 		GameState state = new GameState(board);
 		Player player = new Player("Player", board);
 		
-		assert player.GetName() == "Player";
+		assertEquals("Player not named correctly", "Player", player.GetName());
 		
 		int count = player.deck.GetCardCount();
 		player.TakeTurn(state);
-		assert count < player.deck.GetCardCount();
+		assertTrue("Player not buying cards on turn", (count < player.deck.GetCardCount()));
 		
 		//test GainCurse
 		int score = player.GetScore();
 		player.GainCurse();
-		assert score > player.GetScore();
+		assertTrue("Player not losing point on curse aquisition", (score > player.GetScore()));
 		
 		//test TrashFromHand
 		int handSize = player.deck.GetHand().size();
 		player.TrashFromHand();
-		assert handSize > player.deck.GetHand().size();
+		assertTrue("Player not discarding from hand", (handSize > player.deck.GetHand().size()));
 		
 	}
 }

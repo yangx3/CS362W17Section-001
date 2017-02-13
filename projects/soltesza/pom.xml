@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>Dominion</groupId>
   <artifactId>Dominion</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -12,6 +12,12 @@
         <configuration>
           <source/>
           <target/>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>com.Dominion.PlayDom.main</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>

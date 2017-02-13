@@ -29,7 +29,7 @@ public class KingdomSlot implements Comparable<KingdomSlot>{
 		if(count > 0) {
 			count -= 1;
 			//return new object of type card
-			return card.clone();
+			return card; //Error 5: should return card.clone(), not card (deep copy vs shallow copy)
 		}
 		return null;
 	}

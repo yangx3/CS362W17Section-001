@@ -10,7 +10,7 @@ public class PlayDom {
 				break;
 			}
 		}
-		//game is now over. Figure out who won
+		
 		System.out.println("Finished game.");
 		state.PrintScore();
 		

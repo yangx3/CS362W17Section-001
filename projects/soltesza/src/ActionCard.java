@@ -146,7 +146,6 @@ public class ActionCard extends Card {
 				break;
 			case REMODEL:
 				Card card1 = state.currentPlayer.TrashFromHand(); 
-				System.out.println(card1);
 				if(card1 != null) {
 					state.currentPlayer.Buy(1, card1.GetValue()+2);
 				}

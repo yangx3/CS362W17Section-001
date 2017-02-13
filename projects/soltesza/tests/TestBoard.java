@@ -17,56 +17,56 @@ public class TestBoard {
 		
 		//test GetBuyable
 		Vector<Card> buyable = board.GetBuyable(100);
-		assert buyable.size() == 17;
+		assertEquals("Unexpected number of buyable cards", 17, buyable.size());
 		
 		buyable = board.GetBuyable(2);
-		assert buyable.size() < 17;
+		assertTrue((buyable.size() < 17));
 		
 		buyable = board.GetBuyable(0);
-		assert buyable.size() != 0;
+		assertTrue(buyable.size() != 0);
 		
 		//test BuyCard
 		buyable = board.GetBuyable(5);
 		int idx = buyable.size()-1;
 		Vector<Card> cards = board.BuyCard(idx);
-		assert cards.size() == 1;
-		assert cards.elementAt(0).GetName() == buyable.elementAt(idx).GetName();
+		assertEquals("Card vector contains more than 1 card", 1, cards.size());
+		assertEquals("Bought card not same type as specified card", buyable.elementAt(idx).GetName(), cards.elementAt(0).GetName());
 		
 		board.EmbargoPile(idx);
 		cards = board.BuyCard(idx);
-		assert cards.size() == 2;
-		assert cards.elementAt(0).GetName() == buyable.elementAt(idx).GetName();
-		assert cards.elementAt(cards.size()-1).GetName() == "Curse";
+		assertEquals("Curse not returned with embargoed card", 2, cards.size());
+		assertEquals("Embargoed pile did not return specified card in first position", cards.elementAt(0).GetName(), buyable.elementAt(idx).GetName());
+		assertEquals("Curse", cards.elementAt(cards.size()-1).GetName());
 		
 		board.EmbargoPile(idx);
 		cards = board.BuyCard(idx);
-		assert cards.size() == 3;
-		assert cards.elementAt(0).GetName() == buyable.elementAt(idx).GetName();
-		assert cards.elementAt(cards.size()-1).GetName() == "Curse";
+		assertEquals("did not return correct number of curses", 3, cards.size());
+		assertEquals(cards.elementAt(0).GetName(), buyable.elementAt(idx).GetName());
+		assertEquals("Curse card not returned", "Curse", cards.elementAt(cards.size()-1).GetName());
 		
 		//test BuyCurse
 		Card curse = board.BuyCurse();
-		assert curse.GetName() == "Curse";
+		assertEquals("Curse", curse.GetName());
 		
 		while(curse != null) {
 			curse = board.BuyCurse();
 		}
 		
 		curse  = board.BuyCurse();
-		assert curse == null;
+		assertEquals("attempting to buy from empty pile does not return null object", null, curse);
 		
 		//curse should be in expended cards pile
-		board.PrintBoard();
+		//board.PrintBoard();
 		
 		buyable = board.GetBuyable(5);
 		idx = buyable.size()-1;
 		board.EmbargoPile(idx);
 		cards = board.BuyCard(idx);
-		assert cards.size() == 1;
-		assert cards.elementAt(0).GetName() == buyable.elementAt(idx).GetName();
+		assertEquals(1, cards.size());
+		assertEquals(cards.elementAt(0).GetName(), buyable.elementAt(idx).GetName());
 		
 		//test GameOver
-		assert board.GameOver() == false;
+		assertFalse("incorrect game end", board.GameOver());
 		
 		int max = buyable.size();
 		while(buyable.size() >= max) {
@@ -81,7 +81,7 @@ public class TestBoard {
 		}
 		
 		board.PrintBoard();
-		assert board.GameOver() == true;
+		assertTrue("Does not recognize end of game through depletion of 3 piles", board.GameOver());
 		
 		board = new DominionBoard();
 		
@@ -90,7 +90,7 @@ public class TestBoard {
 		cards = board.BuyCard(buyable.size()-1);
 		
 		if(cards.firstElement().GetName() == "Province") {
-			assert board.GameOver() == false;
+			assertFalse(board.GameOver());
 			
 			max = buyable.size();
 			while(buyable.size() >= max) {
@@ -98,7 +98,7 @@ public class TestBoard {
 				buyable = board.GetBuyable(8);
 			}
 			
-			assert board.GameOver() == true;
+			assertTrue("does not recognize end of game due to depletion of province cards", board.GameOver());
 		}
 	}
 }
