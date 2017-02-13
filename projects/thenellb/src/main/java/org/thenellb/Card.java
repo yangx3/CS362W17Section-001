@@ -34,7 +34,9 @@ public abstract class Card {
         this.cost = cost;
         this.cardType = cardType;
     }
-    public Card(){}
+    public Card(){
+
+    }
 
 
 
