@@ -16,6 +16,7 @@ To compile and run test:
 
 To compile and run test with coverage:
 >make coverage
+
 Cobertua coverage is stored in subdirectory **target/site/cobertura**
 
 To clean build and all executibles:
