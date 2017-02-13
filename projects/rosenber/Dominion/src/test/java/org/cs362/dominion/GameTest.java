@@ -68,8 +68,8 @@ public class GameTest {
 		test.actionPhase();
 		assertEquals("Player's action wasn't decremented",
 				-1, test.players.get(0).getActions());
-		
 	}
+	
 }
 
 
