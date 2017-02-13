@@ -71,26 +71,38 @@ public class GameStateTest {
             state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Province), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Province)) - 1 );
         }
         assertTrue(state.isGameOver());
+/* if cards isn't in Supply then boom
+        GameState State;
+        State = new GameState(cards);
+        Player player3 = new Player(State, "PLAYER 3");
+        State.addPlayer(player3);
+        Player player4 = new Player(State, "PLAYER 4");
+        State.addPlayer(player4);
+        State.initializeGame();
+        for(int i = 0; i < 10; i++) {
+            player1.deck.add(Card.getCard(State.cards, Card.CardName.Smithy));
+            State.gameBoard.put(Card.getCard(State.cards, Card.CardName.Smithy), State.gameBoard.get(Card.getCard(State.cards, Card.CardName.Smithy)) - 1 );
+            player1.deck.add(Card.getCard(State.cards, Card.CardName.Mine));
+            State.gameBoard.put(Card.getCard(State.cards, Card.CardName.Mine), State.gameBoard.get(Card.getCard(State.cards, Card.CardName.Mine)) - 1 );
+            player1.deck.add(Card.getCard(State.cards, Card.CardName.Feast));
+            State.gameBoard.put(Card.getCard(State.cards, Card.CardName.Feast), State.gameBoard.get(Card.getCard(State.cards, Card.CardName.Feast)) - 1 );
+        }
+        assertTrue(state.isGameOver());
+*/
+    }
 
+    @Test
+    public void testGetWinners(){
         player1 = new Player(state, "PLAYER 1");
         state.addPlayer(player1);
         player2 = new Player(state, "PLAYER 2");
         state.addPlayer(player2);
         state.initializeGame();
-        for(int i = 0; i < 10; i++) {
-            player1.deck.add(Card.getCard(state.cards, Card.CardName.Smithy));
-            state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Smithy), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) - 1 );
-            player1.deck.add(Card.getCard(state.cards, Card.CardName.Mine));
-            state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Mine), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Mine)) - 1 );
-            player1.deck.add(Card.getCard(state.cards, Card.CardName.Feast));
-            state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Feast), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Feast)) - 1 );
+        for(int i = 0; i < 8; i++) {
+            player1.deck.add(Card.getCard(state.cards, Card.CardName.Province));
+            state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Province), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Province)) - 1 );
         }
-        assertTrue(state.isGameOver());
-    }
-
-    @Test
-    public void testGetWinners(){
-
+        System.out.println(state.getWinners());
     }
 
     @Test

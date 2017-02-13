@@ -105,7 +105,7 @@ public class GameState{
 		         return false;
 		   }
 
-	private HashMap<Player, Integer>  getWinners() {
+	HashMap<Player, Integer>  getWinners() {
     //Set HashMap  of each player and the score (remember ties!)
 	    HashMap<Player, Integer> playerScore = new HashMap<Player, Integer>();
 

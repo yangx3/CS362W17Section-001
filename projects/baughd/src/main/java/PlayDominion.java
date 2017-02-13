@@ -9,7 +9,6 @@ public class PlayDominion {
 
 		    List<Card> cards;
 		    GameState state;
-			//Randomness.reset(10);
 
 //INITIALIZE CARDS AND STATE
 			//the cards are achieved by each element/constant in the enum class

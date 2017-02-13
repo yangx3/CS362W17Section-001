@@ -390,6 +390,7 @@ public class CardTest {
         assertEquals(player1.playedCards.size(), 1);
         assertTrue(before.size() != after.size());
         assertTrue(Card.getCard(player1.discard, Card.CardName.Silver) != null);
+        assertTrue(Card.getCard(player1.discard, Card.CardName.Gold) == null);
         System.out.println(player1);
     }
 
