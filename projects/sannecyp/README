@@ -11,3 +11,4 @@ Without code coverage
 
 With code coverage
 3. Enter command: mvn clean jacoco:prepare-agent install jacoco:report
+4. Enter command: mvn jacoco:report
