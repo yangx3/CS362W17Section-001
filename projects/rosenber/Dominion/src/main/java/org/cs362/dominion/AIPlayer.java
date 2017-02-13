@@ -56,8 +56,10 @@ public class AIPlayer extends Player{
 		boolean repeat;
 		int choice = -1;
 		do{
-			if(rand.nextBoolean()) //chose not to buy
+			if(rand.nextBoolean()){ //chose not to buy
+				System.out.println(this.getName()+ "is choosing to skip buying a card");
 				return;
+			}
 			repeat = false;
 			while(choice < 1){
 				choice = rand.nextInt(board.numDecks());
@@ -65,6 +67,7 @@ public class AIPlayer extends Player{
 			try{
 				Card c = board.lookAtDeck(choice);
 				if(c.getCost() <= super.getMoney()){
+					System.out.println(this.getName()+" is buying a " + c.getName());
 					giveCard(board.draw(choice));
 					super.addMoney(c.getCost() * -1);
 					int numCurses = board.getDeck(choice).getEmbargos();
