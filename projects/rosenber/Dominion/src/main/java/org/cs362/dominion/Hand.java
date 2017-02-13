@@ -88,13 +88,9 @@ public class Hand{
 	
 	//prints the cards in the hand
 	public void print(){
-		int cardsPerRow = 4;
-		for(int j=0; j<10; j++){
-			for(int k=0; k<cardsPerRow; k++){
-				//TODO
-				//PRINT THE CARDS
-			}
-		}
+		for(int j=0; j<hand.size(); j++)
+			hand.get(j).print();
+		System.out.println("\n");
 	}
 }
 

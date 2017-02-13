@@ -99,7 +99,7 @@ public class HandTest {
 					break;
 				case 7:
 					try{
-						test.print();
+						//test.print();
 					}
 					catch(Exception e){
 						fail("Print function crashed");

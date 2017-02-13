@@ -161,6 +161,7 @@ public class Player{
 	//See hand
 	//prints the hands
 	public void seeHand(){
+		System.out.println("\n"+this.getName()+"'s hand\n");
 		hand.print();
 	}
 	

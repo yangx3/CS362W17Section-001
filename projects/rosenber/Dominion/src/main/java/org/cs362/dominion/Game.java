@@ -67,6 +67,7 @@ public class Game {
 	
 	//turn
 	public void turn(){
+		System.out.println("Beginning " + currentPlayer.getName()+"'s turn!\n");
 		actionPhase();
 		buyPhase();
 		cleanPhase();
@@ -74,6 +75,9 @@ public class Game {
 	
 	//action phase
 	public void actionPhase(){
+		System.out.println("\n******************************\n"
+				           + "*        Action Phase        *\n"
+				           + "******************************\n");
 		ArrayList<Card> played = new ArrayList<Card>();
 		do{
 			Card choice = currentPlayer.playCard();
@@ -91,6 +95,9 @@ public class Game {
 	
 	//buy phase
 	public void buyPhase(){
+		System.out.println("\n******************************\n"
+		           + "*        Buy Phase        *\n"
+		           + "******************************\n");
 		currentPlayer.computeMoney();
 		do{
 			currentPlayer.buyCard(board);
@@ -133,13 +140,14 @@ public class Game {
 				winner = players.get(j);
 				maxVP = winner.getVictoryPoints();
 			}
-		System.out.println("The game is over!\n"
+		System.out.println("\nThe game is over!\n"
 				+ winner.getName() + " is the winner with "
-				+ maxVP + " victory points!!");
+				+ maxVP + " victory points!!\n\n");
 	}
 	
 	//play a game
 	public void play(){
+		System.out.println("Welcome to Dominion!!!!\n\n");
 		do{
 			currentPlayer = players.get(curPlayerIdx);
 			turn();

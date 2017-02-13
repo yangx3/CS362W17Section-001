@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class Card {
 	
 	private String name;
+	private String description;
 	private int cost;
 	private int victoryPoints;
 	private int treasure;
@@ -29,6 +30,7 @@ public class Card {
 		types = new ArrayList<CardType>();
 	}
 	public Card(String name, int cost, int victoryPoints, int treasure, CardType[] types){
+		this.description = "";
 		this.name = new String(name);
 		this.cost = cost;
 		this.victoryPoints = victoryPoints;
@@ -38,6 +40,7 @@ public class Card {
 			this.types.add(types[j]);
 	}
 	public Card(Card other){
+		this.description = "";
 		name = new String(other.name);
 		cost = other.cost;
 		victoryPoints = other.victoryPoints;
@@ -82,7 +85,9 @@ public class Card {
 	public void Reaction(){};
 	
 	//prints the card
-	public void print(){}
+	public void print(){
+		System.out.println(getName()+"\n"+this.description);
+	}
 }
 
 
