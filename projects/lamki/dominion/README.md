@@ -11,5 +11,12 @@ To run lamki_dom.jar with arguments:
 To compile all code and run:
 >make run
 
-To compile test and run: (Note: If this does not work, please download the dominion.zip file and import it into NetBeans IDE, install JaCoCodecoverage tool and run the coverage tests from there)
+To compile and run test:
 >make test
+
+To compile and run test with coverage:
+>make coverage
+Cobertua coverage is stored in subdirectory **target/site/cobertura**
+
+To clean build and all executibles:
+>make clean
