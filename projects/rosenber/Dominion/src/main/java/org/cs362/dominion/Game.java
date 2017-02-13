@@ -122,27 +122,26 @@ public class Game {
 			return true;
 		else{
 			int numWithZero = 0;
-			for(int j=0; j<board.numDecks(); j++)
+			for(int j=1; j<board.numDecks(); j++)
 				if(board.numCardsInDeck(j) == 0)
 					numWithZero++;
-			if(numWithZero >= 3)
+			if(numWithZero > 3)
 				return true;
 		}
 		return false;
 	}
 	
 	//declare winner
-	public void declareWinner(){
+	public Player declareWinner(){
 		double maxVP = (Double.POSITIVE_INFINITY * -1);
 		Player winner = null;
 		for(int j=0; j<players.size(); j++)
-			if(players.get(j).getVictoryPoints() > maxVP){
+			if(players.get(j).getVictoryPoints() > maxVP)
 				winner = players.get(j);
-				maxVP = winner.getVictoryPoints();
-			}
 		System.out.println("\nThe game is over!\n"
 				+ winner.getName() + " is the winner with "
 				+ maxVP + " victory points!!\n\n");
+		return winner;
 	}
 	
 	//play a game

@@ -29,6 +29,7 @@ public class FeastTest {
 		Player currentPlayer = new AIPlayer(1);
 		Board board = new Board();
 		board.createDeck(new Copper(), 5);
+		board.createDeck(new Gold(), 5);
 		
 		Card c = new Feast();
 		

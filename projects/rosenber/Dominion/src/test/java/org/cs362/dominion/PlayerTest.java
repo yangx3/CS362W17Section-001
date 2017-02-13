@@ -53,18 +53,20 @@ public class PlayerTest {
 	public void testAdds(){
 		
 		test = new Player("test player", false);
-		
+		test.setBuys(1);
 		test.addBuys(5);
 		assertEquals("Buys doesn't equal what it was set to",
-				5, test.getBuys());
+				6, test.getBuys());
 		
+		test.setActions(1);
 		test.addActions(4);
 		assertEquals("Actions doesn't equal what is was set to",
-				4, test.getActions());
+				5, test.getActions());
 		
+		test.setMoney(1);
 		test.addMoney(3);
 		assertEquals("Money doesn't equal what it was set to",
-				3, test.getMoney());
+				4, test.getMoney());
 		
 	}
 	
@@ -150,5 +152,8 @@ public class PlayerTest {
 		assertEquals("Player has doesn't have 4 coins even though 4 are in hand",
 				4, test.getMoney());
 				
+		for(int j=0; j<10; j++)
+			test.giveCard(new Garden());
+		assertEquals(3, test.getVictoryPoints());
 	}
 }

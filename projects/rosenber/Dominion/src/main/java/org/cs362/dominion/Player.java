@@ -67,7 +67,7 @@ public class Player{
 	//Adders
 	//adds taken in value to variable
 	public void addBuys(int num){
-		buys += num;
+		buys = num;
 	}
 	public void addActions(int num){
 		actions += num;
@@ -201,20 +201,20 @@ public class Player{
 	public int getVictoryPoints(){
 		int sum = 0;
 		for(int j=0; j<hand.size(); j++)
-			if(hand.getCard(j).getName().equals("Garden")){
-				sum += (numTotalCards()/10);
+			if(hand.getCard(j).getName() == "Garden"){
+				sum = (numTotalCards()/10);
 			}
 			else
 				sum += hand.getCard(j).getVictoryPoints();
 		for(int j=0; j<deck.size(); j++)
-			if(deck.findSpecific(j).getName().equals("Garden")){
-				sum += (numTotalCards()/10);
+			if(deck.findSpecific(j).getName() == "Garden"){
+				sum = (numTotalCards()/10);
 			}
 			else
 				sum += deck.findSpecific(j).getVictoryPoints();
 		for(int j=0; j<discard.size(); j++)
-			if(discard.findSpecific(j).getName().equals("Garden")){
-				sum += (numTotalCards()/10);
+			if(discard.findSpecific(j).getName() == "Garden"){
+				sum = (numTotalCards()/10);
 			}
 			else
 				sum += discard.findSpecific(j).getVictoryPoints();
