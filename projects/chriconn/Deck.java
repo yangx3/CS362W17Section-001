@@ -128,16 +128,20 @@ Class Deck
 public class Deck {
     private ArrayList<Card> deck;
     int tokens;
+    public Card emptyDeckCard;
 
     //default constructor assigns empty space to deck
     public Deck() {
         deck = new ArrayList<Card>();
+        tokens = 0;
+        emptyDeckCard = null;
     }
 
     //Non-default constructor creates specific decks depending on name
     public Deck(String type) {
         deck = new ArrayList<Card>();
         type = type.toLowerCase();
+        emptyDeckCard = null;
 
         if (type == "starter") {
             for (int x = 0; x < 7; x++) {
@@ -175,6 +179,7 @@ public class Deck {
     //Non-default constructor creates a specific deck x number of one type of card
     public Deck(int number, Card card) {
         deck = new ArrayList<Card>();
+        emptyDeckCard = new Card(card.getName());
         for (int x = 0; x < number; x++) {
             this.addCard(card);
         }
@@ -182,7 +187,12 @@ public class Deck {
 
     public void printDeck() {
         for (int x = 0; x < deck.size(); x++) {
-            System.out.printf("Card %2d: %s\n", (x+1), deck.get(x).getName());
+            if (this.cardInfo(x) == null) {
+                System.out.printf("NULL CARD\n");
+            }
+            else {
+                System.out.printf("Card %2d: %s\n", (x+1), this.cardInfo(x).getName());
+            }
         }
     }
 
@@ -201,12 +211,16 @@ public class Deck {
     };
 
     //adds card to the top of the deck
-    public void addCard(Card card)          {deck.add(0, card);};
-    public void addBottomCard(Card card)    {deck.add(card);};
+    public void addCard(Card card)          {deck.add(0, card);}
+    public void addBottomCard(Card card)    {deck.add(card);}
 
-    public int getTokens() {return tokens;}
-    public void setTokens(int number) {tokens = number;}
-    public void modifyTokens (int number) {tokens += number;}
+    public String getName() {
+        return this.cardInfo(0).getName();
+    }
+    public int getTokens()                  {return tokens;}
+
+    public void setTokens(int number)       {tokens = number;}
+    public void modifyTokens (int number)   {tokens += number;}
 
     //draws a card from the top of the deck
     public Card drawCard() {
@@ -229,8 +243,8 @@ public class Deck {
     }
 
     //if the deck size is 0, return true, else return false
-    public boolean empty()  {return (deck.size() == 0) ? true : false;};
-    public int numCards()   {return deck.size();};
+    public boolean empty()  {return (deck.size() == 0) ? true : false;}
+    public int numCards()   {return deck.size();}
 
     public boolean hasType(String type) {
         if (this.empty()) {
@@ -263,6 +277,9 @@ public class Deck {
     }
 
     public Card cardInfo(int index) {
+        if (this.empty() && emptyDeckCard != null) {
+            return emptyDeckCard;
+        }
         return deck.get(index);
     }
 
