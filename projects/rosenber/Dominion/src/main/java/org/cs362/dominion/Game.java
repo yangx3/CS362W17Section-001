@@ -96,7 +96,7 @@ public class Game {
 	//buy phase
 	public void buyPhase(){
 		System.out.println("\n******************************\n"
-		           + "*        Buy Phase        *\n"
+		           + "*          Buy Phase         *\n"
 		           + "******************************\n");
 		currentPlayer.computeMoney();
 		do{
