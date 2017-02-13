@@ -234,7 +234,7 @@ public class Test1_2 {
 	}
 	
 	@Test
-	public void testcardEffect()
+	public void testcardEffect_council_room()
 	{
 		gameState test=new gameState();
 		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
@@ -255,9 +255,32 @@ public class Test1_2 {
 		test.cardEffect(CARD.council_room.get_CARD(), -1, -1, -1, 0, i);
 		//four cards drawn, 1 discarded
 		assertEquals(old_cards+3, test.players[0].handcount);
+	}
+	
+	@Test
+	public void testcardEffect_feast()
+	{
+		gameState test=new gameState();
+		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
+			       CARD.sea_hag.get_CARD()};
+		test.initializeGame(2, k, 4);
 		
+		intWrapper i = new intWrapper();
+		i.int_wrapped=0;
 		test.cardEffect(CARD.feast.get_CARD(), 1, -1, -1, 0, i);
 
+	}
+	
+	@Test
+	public void testcardEffect_mine()
+	{
+		gameState test=new gameState();
+		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
+			       CARD.sea_hag.get_CARD()};
+		test.initializeGame(2, k, 4);
+		
+		intWrapper i = new intWrapper();
+		i.int_wrapped=0;
 		int[] choice=test.players[0].hand;
 		test.cardEffect(CARD.mine.get_CARD(), 1, -1, -1, 0, i);
 		
@@ -267,40 +290,99 @@ public class Test1_2 {
 	     assertEquals(1,0);         
 	          
 	    }
-       
+	}
 	    
-	    
-	    
-	    
-	   
-	    
-	    
+	@Test
+	public void testcardEffect_ambassador()
+	{
+		gameState test=new gameState();
+		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
+			       CARD.sea_hag.get_CARD()};
+		test.initializeGame(2, k, 4);
+		
+		intWrapper i = new intWrapper();
+		i.int_wrapped=0;
 	    
 	    test.initializeGame(2, k, 4);
-	    old_cards=test.players[0].handcount;
+	    int old_cards=test.players[0].handcount;
 	    test.cardEffect(CARD.ambassador.get_CARD(), 1, 2, -1, 0, i);
 	    //assertEquals(old_cards-1,test.handcount);
-	    
+	}
+	
+	@Test
+	public void testcardEffect_cutpurse()
+	{
+		gameState test=new gameState();
+		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
+			       CARD.sea_hag.get_CARD()};
+		test.initializeGame(2, k, 4);
+		
+		intWrapper i = new intWrapper();
+		i.int_wrapped=0;
 	    int old_coins=test.coins;
 	    test.cardEffect(CARD.cutpurse.get_CARD(), 1, 2, -1, 0, i);
 	    assertEquals(old_coins+2,test.coins);
-	    
-	    old_coins=test.coins;
+	}
+	
+	@Test
+	public void testcardEffect_embargo()
+	{
+		gameState test=new gameState();
+		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
+			       CARD.sea_hag.get_CARD()};
+		test.initializeGame(2, k, 4);
+		
+		intWrapper i = new intWrapper();
+		i.int_wrapped=0;
+	    int old_coins=test.coins;
 	    test.cardEffect(CARD.embargo.get_CARD(), 1, 2, -1, 0, i);
 	    assertEquals(old_coins+2,test.coins);
-	    
+	}
+	
+	@Test
+	public void testcardEffect_outpost()
+	{
+		gameState test=new gameState();
+		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
+			       CARD.sea_hag.get_CARD()};
+		test.initializeGame(2, k, 4);
+		
+		intWrapper i = new intWrapper();
+		i.int_wrapped=0;
 	    test.initializeGame(2, k, 4);
-	    old_cards=test.players[0].handcount;
+	    int old_cards=test.players[0].handcount;
 	    test.cardEffect(CARD.outpost.get_CARD(), 1, 1, -1, 0, i);
 	    //one card discarded
 	    assertEquals(old_cards-1,test.players[0].handcount);
-	    
+	}
+	
+	@Test
+	public void testcardEffect_salvager()
+	{
+		gameState test=new gameState();
+		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
+			       CARD.sea_hag.get_CARD()};
+		test.initializeGame(2, k, 4);
+		
+		intWrapper i = new intWrapper();
+		i.int_wrapped=0;
 	    test.initializeGame(2, k, 4);
-	    old_cards=test.players[0].handcount;
+	    int old_cards=test.players[0].handcount;
 	    test.cardEffect(CARD.salvager.get_CARD(), 1, 1, -1, 0, i);
 	    //two cards discarded in total
 	    assertEquals(old_cards-2,test.players[0].handcount);
-	    
+	}
+	
+	@Test
+	public void testcardEffect_sea_hag()
+	{
+		gameState test=new gameState();
+		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
+			       CARD.sea_hag.get_CARD()};
+		test.initializeGame(2, k, 4);
+		
+		intWrapper i = new intWrapper();
+		i.int_wrapped=0;
 	    test.initializeGame(2, k, 4);
 	    int old_cards_deck=test.players[0].deckCount;
 	    int old_cards_discard=test.players[0].discardCount;
@@ -308,11 +390,22 @@ public class Test1_2 {
 	    //current players's deck/discard shouldn't be changed
 	    assertEquals(old_cards_deck,test.players[0].deckCount);
 	    assertEquals(old_cards_discard,test.players[0].discardCount);
-	    
+	}
+	
+	@Test
+	public void testcardEffect_estate()
+	{
+		gameState test=new gameState();
+		int[] k = {CARD.adventurer.get_CARD(), CARD.gardens.get_CARD(), CARD.embargo.get_CARD(),CARD.mine.get_CARD(), CARD.cutpurse.get_CARD(), 
+			       CARD.sea_hag.get_CARD()};
+		test.initializeGame(2, k, 4);
+		
+		intWrapper i = new intWrapper();
+		i.int_wrapped=0;
 	    test.initializeGame(2, k, 4);
 		test.players[0].hand[0]=CARD.estate.get_CARD();
 	    int old_numBuys=test.numBuys;
-	    old_coins=test.coins;
+	   int old_coins=test.coins;
 	    test.cardEffect(CARD.baron.get_CARD(), 1, 1, -1, 0, i);
 	    assertEquals(old_numBuys+1,test.numBuys);
 	    assertEquals(old_coins+4,test.coins);
