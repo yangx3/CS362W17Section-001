@@ -138,15 +138,18 @@ public class Game {
 		for(int j=0; j<players.size(); j++)
 			if(players.get(j).getVictoryPoints() > maxVP)
 				winner = players.get(j);
-		System.out.println("\nThe game is over!\n"
+		System.out.println("\n*********************\nThe game is over!\n"
 				+ winner.getName() + " is the winner with "
-				+ maxVP + " victory points!!\n\n");
+				+ maxVP + " victory points!!\n"
+						+ "************************\n");
 		return winner;
 	}
 	
 	//play a game
 	public void play(){
-		System.out.println("Welcome to Dominion!!!!\n\n");
+		System.out.println("\n\n\n**************************"
+				+ "\n\nWelcome to Dominion!!!!\n\n"
+				+ "***************************\n\n");
 		do{
 			currentPlayer = players.get(curPlayerIdx);
 			turn();
