@@ -6,6 +6,7 @@ public class Pile
 	public int size;
 	public int value;
 	public int points;
+	public int embargo;
 
 	public Pile()
 	{
@@ -13,6 +14,7 @@ public class Pile
 		size = 0;
 		value = 0;
 		points = 0;
+		embargo = 0;
 	}
 
 	public Pile(Card card, int num)
@@ -66,6 +68,11 @@ public class Pile
 		return points;
 	}
 
+	public String getName(int index)
+	{
+		return cards.get(index).name;
+	}
+
 	public Card getCard(int cardIndex)
 	{
 		return cards.get(cardIndex);
@@ -97,12 +104,18 @@ public class Pile
 		}
 	}
 
-	public void reveal()
+	public void revealAll()
 	{
+		System.out.println("Revealing all cards.");
 		for(int i=0; i < size; i++)
 		{
 			System.out.println(cards.get(i).name);
 		}
+	}
+
+	public void revealCard(int index)
+	{
+		System.out.println("Revealing " + cards.get(index).name);
 	}
 
 	public void print()

@@ -7,7 +7,6 @@ public class Dominion
 	public Player[] players;
 	public List<Pile> kingdomCards;
 	public List<Pile> basicCards;
-	public Board gameBoard;
 
 	public Dominion(int randomSeed)
 	{
@@ -35,14 +34,34 @@ public class Dominion
 
 		kingdomCards = new ArrayList<Pile>();
 		kingdomCards.add(new Pile(new Cutpurse(), 10));
-	       	kingdomCards.add(new Pile(new Council_Room(), 10));
+		kingdomCards.add(new Pile(new Council_Room(), 10));
 
 	}
 
-	public void play()
+	public void playGame()
 	{
 		
 	}
+
+	public Pile getRandomKingdomCard()
+	{
+		Random rand = new Random();
+		Pile randomPile = kingdomCards.get(rand.nextInt(kingdomCards.size()));
+		return randomPile;
+	}
+
+	public int getKingdomCardIndex(String name)
+	{
+		for(int i=0; i < kingdomCards.size(); i++)
+		{
+			if(kingdomCards.get(i).getName(0) == name)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+
 
 }
 

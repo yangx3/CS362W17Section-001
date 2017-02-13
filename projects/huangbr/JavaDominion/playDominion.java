@@ -6,7 +6,7 @@ public class playDominion
 		System.out.println("Hello world");
 
 		Dominion newGame = new Dominion(seed);
-		newGame.play();
+		newGame.playGame();
 	}
 }
 

@@ -13,6 +13,7 @@ public class Province extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		discard(game, player, name);
 		return;
 	}
 }
