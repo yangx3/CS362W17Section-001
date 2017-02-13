@@ -19,6 +19,7 @@ public class DeckTest {
 
         test.addCard(new Card("copper"));
 
+        assertEquals("The single card copper deck is not named copper", test.getName(), "copper");
         assertFalse("The empty() returns true for a non-empty deck", test.empty());
         assertEquals("The deck with one copper does not have a size of 1", test.deck.size(), 1);
         assertEquals("The deck.size() and deck.numCards() dont match", test.deck.size(), test.numCards());
@@ -109,6 +110,16 @@ public class DeckTest {
     }
 
     @Test
+    public void tokens() {
+        Deck tokenTest = new Deck();
+        assertEquals("Tokens on empty deck are not zero", tokenTest.getTokens(), 0);
+        tokenTest.modifyTokens(3);
+        assertEquals("Tokens on 3 token deck are not three", tokenTest.getTokens(), 3);
+        tokenTest.resetTokens();
+        assertEquals("Reset tokens on are not zero", tokenTest.getTokens(), 0);
+    }
+
+    @Test
     public void checkFindingFunctions() {
         Deck test = new Deck();
         for (int x = 0; x < 100; x++) {
@@ -123,6 +134,25 @@ public class DeckTest {
         assertTrue("hasCard could not find a copper in a deck of only coppers", test.hasCard("copper"));
         assertEquals("IndexOf could find a smithy in a deck of only coppers", test.indexOf("smithy"), -1);
         assertFalse("hasCard could find a smithy in a deck of only coppers", test.hasCard("smithy"));
+
+    }
+
+    @Test
+    public void testEmptyDeck() {
+        Deck test = new Deck(1, new Card("gold"));
+        assertEquals("The single item gold deck does not have only one card", test.numCards(), 1);
+        test.drawCard();
+        assertTrue("The gold deck was emptied and does not have 0 cards", test.empty());
+
+        assertEquals("The empty gold deck get info for name is not gold", test.getName(), "gold");
+        assertEquals("The empty gold deck get info for name is not gold", test.cardInfo(0).getName(), "gold");
+        assertEquals("The empty gold deck get info for value is not 3", test.cardInfo(0).getValue(), 3);
+        assertEquals("The empty gold deck get info for cost is not 6", test.cardInfo(0).getCost(), 6);
+        assertEquals("The empty gold deck get info for description is not the proper description", test.cardInfo(0).getDescription(), "The gold card is a treasure card worth 3 coins");
+
+        test.cardInfo(0).getType();
+        assertEquals("The empty gold deck values it shouldn't have it does", test.getTokens(), 0);
+        assertEquals("The empty gold deck values it shouldn't have it does", test.cardInfo(0).getBuys(), 0);
 
     }
 

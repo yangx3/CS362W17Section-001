@@ -50,6 +50,7 @@ public class CardTest {
         assertEquals("The gold card does not have 0 bonus purchases", test.getBuys(), 0);
         assertEquals("The gold card does not have 0 bonus actions", test.getActions(), 0);
         assertEquals("The gold card does not have 0 cards to draw", test.getCards(), 0);
+        test.getCoins();
         test.printCard();
 
 
@@ -112,5 +113,20 @@ public class CardTest {
         test.setActions(3);
         test.setBuys(4);
         test.setCoins(1);
+    }
+
+    @Test
+    public void getCardValues() {
+        Card test = new Card("mine");
+        test.getName();
+        test.getValue();
+        test.getCost();
+        test.getVictoryPoints();
+        test.getDescription();
+        test.getType();
+        test.getCards();
+        test.getBuys();
+        test.getActions();
+        test.getCoins();
     }
 }
