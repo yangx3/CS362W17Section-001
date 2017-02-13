@@ -9,12 +9,12 @@ public class PlayDominionTest {
 	@Test
 	public void test() {
 		for(int j=0; j<1000; j++){
-			try{
+		//	try{
 				PlayDominion.main(null);
-			}
-			catch(Exception e){
-				fail("Game crashed");
-			}
+//			}
+//			catch(Exception e){
+//				fail("Game crashed");
+//			}
 		}
 	}
 

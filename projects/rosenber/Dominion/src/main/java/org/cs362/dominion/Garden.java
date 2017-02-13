@@ -4,13 +4,13 @@ public class Garden extends Card{
 	
 	public Garden(){
 		
-		super("Garden", 4, 0, 0,
+		super("Garden", 4, 0, 1,
 				new CardType[] {CardType.Victory});
 		
 	}
 
-	public int getVictoryPoints(Player player){
-		return player.numTotalCards()/10;
-	}
+//	public int getVictoryPoints(Player player){
+//		return player.numTotalCards()/10;
+//	}
 	
 }

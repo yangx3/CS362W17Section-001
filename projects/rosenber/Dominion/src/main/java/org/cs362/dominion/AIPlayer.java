@@ -19,7 +19,9 @@ public class AIPlayer extends Player{
 			repeat = false;
 			try{
 				choice = rand.nextInt(hand.size());
-				discard.addTop(hand.playCard(choice));
+				Card d = hand.playCard(choice);
+				System.out.println(this.getName() + " is discarding " + d.getName());
+				discard.addTop(d);
 			}
 			catch(Exception e){
 				repeat = true;
@@ -34,15 +36,19 @@ public class AIPlayer extends Player{
 		int choice = -1;
 		Card c = null;
 		do{
-			if(rand.nextBoolean()) //choosing to skip
+			if(rand.nextBoolean()){ //choosing to skip
+				System.out.println(this.getName()+ "is choosing to skip playing a card");
 				return null;
+			}
 			repeat = false;
 			choice = rand.nextInt(hand.size());
 			c = hand.getCard(choice);
 			if(!c.isCardType(CardType.Action))
 				repeat = true;
 		}while(repeat);
-		return hand.playCard(choice);
+		Card d =hand.playCard(choice);
+		System.out.println(this.getName()+ " is playing "+d.getName());
+		return d;
 	}
 	
 	public void buyCard(Board board){
