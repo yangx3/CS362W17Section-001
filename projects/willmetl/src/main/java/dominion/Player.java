@@ -26,6 +26,7 @@ public class Player{
   public GameState gameState;
 
   public Scanner scan = new Scanner(System.in);
+  public Random rand = new Random();
 
   public Player(String pName, GameState game){
     this(pName, game, false);
@@ -96,7 +97,6 @@ public class Player{
         // Card c = chooseActionCard();
         Card c = chooseTypeOfCard(Card.Type.ACTION);
         if(c != null){
-          remActions--;
           playCard(c);
         }else{  // this is ugly
           return;
@@ -135,8 +135,10 @@ public class Player{
     ArrayList<Card> tcards = new ArrayList<Card>();
     for(Card c: hand)
       if(c.getType() == Card.Type.TREASURE) tcards.add(c);
-    for(Card c: tcards)
-      if(hand.remove(c)) playCard(c);
+    for(Card c: tcards){
+      hand.remove(c);
+      playCard(c);
+    }
     // seeHand();
     while(remBuys >= 1){
       System.out.format("%s has %d buys and %d money to spend.\n",
@@ -148,7 +150,7 @@ public class Player{
       int choice = 0;
       if(ISBOT){
         // Bots play the first card of the correct type
-        choice = 0;
+        choice = rand.nextInt(20)+1;
       }else choice = scan.nextInt();
       if( choice>0 && choice<=availCards )
         buyCard(Card.values()[choice-1]);
@@ -175,15 +177,16 @@ public class Player{
     if(ISBOT){
       // Bots select a random card
       Collections.shuffle(hand);
-      if(hand.size() > 0) return hand.remove(0);
-      return null;
+      if(hand.size() > 0)
+        return hand.remove(rand.nextInt(hand.size()));
+      else return null;
     }
     for(int i=0; i<hand.size(); i++){
       System.out.println(i+1+" - "+hand.get(i));
     }
     System.out.format("Please enter the card number (1-%d) you want to play,"+
       " or 0 to cancel: ", hand.size());
-    int choice = scan.nextInt();
+    int choice = scan.nextInt()-1;
     if( choice>0 && choice<hand.size() ){
       Card c = hand.remove(choice);
       if(DEBUGGING) System.out.format("%s chose %s.\n", playerName, c);
@@ -236,17 +239,14 @@ public class Player{
     return total;
   }
 
-  public boolean discardRandomFromHand(){
+  public boolean discardFromHand(){
     // This player discards a random card from their hand
-    int handsize = hand.size();
-    // generate random number in range of hand size instead of this
-    Card c = hand.remove(0);
-    return discard(c);
+    // int handsize = hand.size();
+    Card c = hand.get(rand.nextInt(hand.size()));
+    return discardFromHand(c);
   }
-
   public boolean discardFromHand(Card c){
     int i = hand.indexOf(c);
-    // if(DEBUGGING) System.out.format("%s has index %d", c, i);
     if(i>=0)
       return cardPile.add(hand.remove(i));
     return false;
@@ -259,12 +259,10 @@ public class Player{
   }
 
   public Card draw(){
-    // System.out.print("Drawing.. "+drawsRemaining+" ->");
     if(drawsRemaining == 0)
       drawsRemaining = shuffle();
     drawsRemaining--;
     Card c = cardPile.remove(0);
-    // System.out.println(drawsRemaining+"("+c+")");
     return c;
   }
 
@@ -287,13 +285,8 @@ public class Player{
     return playCard(card, this);
   }
   public boolean playCard(Card c, Player target){
-    if(hand.contains(c) == false){
-      System.out.format("%s does not have a %s to play.\n", playerName, c);
-      return false;
-    }
-    if(c.costsAction==0 || remActions>1){
+    if(c.getType() != Card.Type.ACTION || remActions>=1){
       remActions -= c.costsAction;
-      // if(DEBUGGING) System.out.println("Playing "+c);
       if(c.play(this) == null)
         hand.remove(c); // trash the card from your hand
       else

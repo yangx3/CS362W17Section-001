@@ -21,6 +21,7 @@ public class GameState{
   private final int bankKingdomCards = 10;
   private final int bankCurses = 10;  // scales with players, 10, 20, 30, etc
 
+  private ArrayList<Card> embargoTokens;
   private ArrayList<Card> supply;
   public Player[] players;
   public int numPlayers = 0;
@@ -39,19 +40,21 @@ public class GameState{
     for(int i=0; i<bankDuchies; i++)      supply.add(Card.DUCHY);
     for(int i=0; i<bankProvinces; i++)    supply.add(Card.PROVINCE);
     for(int i=0; i<bankCurses; i++)       supply.add(Card.CURSE);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.ADVENTURER);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.AMBASSADOR);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.BARON);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.COUNCILROOM);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.CUTPURSE);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.EMBARGO);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.FEAST);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.GARDENS);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.GREAT_HALL);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.MINE);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.SALVAGER);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.SMITHY);
-    for(int i=0; i<bankKingdomCards; i++) supply.add(Card.VILLAGE);
+    for(int i=0; i<bankKingdomCards; i++){
+      supply.add(Card.ADVENTURER);
+      supply.add(Card.AMBASSADOR);
+      supply.add(Card.BARON);
+      supply.add(Card.COUNCILROOM);
+      supply.add(Card.CUTPURSE);
+      supply.add(Card.EMBARGO);
+      supply.add(Card.FEAST);
+      supply.add(Card.GARDENS);
+      supply.add(Card.GREAT_HALL);
+      supply.add(Card.MINE);
+      supply.add(Card.SALVAGER);
+      supply.add(Card.SMITHY);
+      supply.add(Card.VILLAGE);
+    }
   }
 
   public boolean addPlayer(String name){
@@ -80,8 +83,7 @@ public class GameState{
     for(Card c: Card.values()){
       if(supply.contains(c) == false) missingCards++;
     }
-    if(supply.contains(Card.PROVINCE)==false || missingCards>=3) endGame();
-    return false;
+    return supply.contains(Card.PROVINCE)==false || missingCards>=3;
   }
 
   public Card takeCard(Card c){
@@ -93,7 +95,8 @@ public class GameState{
   public void nextTurn(){
     players[playerTurn].newTurn();
     playerTurn = (playerTurn+1)%numPlayers;
-    checkEndConditions();
+    if(checkEndConditions())
+      endGame();
   }
 
   public int listCards(){
@@ -119,6 +122,5 @@ public class GameState{
       );
     }
     System.out.println("Thanks for playing!");
-    System.exit(0);
   }
 }

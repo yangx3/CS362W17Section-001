@@ -7,23 +7,19 @@ package dominion;
 
 public class Dominion{
 
-  public void setupGame(){
+  public void setupGame(boolean p1Bot, boolean p2Bot){
     GameState game = new GameState();
-    // assert(game.bankCards.size() == 194);
 
+    game.addPlayer("Amy", p1Bot);
+    game.addPlayer("Billy", p2Bot);
 
-    game.addPlayer("Amy");
-    assert(game.numPlayers == 1);
-
-    game.addPlayer("Billy");
-    assert(game.numPlayers == 2);
-
-    while(true)
+    while(game.checkEndConditions())
       game.nextTurn();
   }
 
   public static void main(String [ ] args){
+    System.out.println("Making a new Dominion game.");
     Dominion game1 = new Dominion();
-    game1.setupGame();
+    game1.setupGame(true, true);
   }
 }

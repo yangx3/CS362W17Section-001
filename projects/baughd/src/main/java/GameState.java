@@ -5,24 +5,22 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.Random;
 
+public class GameState{
+    List<Player> players = new ArrayList<Player>();
+    List<Card> cards;
+	HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
+	List<Card> embargoTokens = new ArrayList<Card>();
+	private Random gen = new Random();
 
-public class GameState implements Cloneable{
-    public List<Player> players = new ArrayList<Player>();
-    public List<Card> cards;
-	public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
-	public List<Card> embargoTokens;
-	Random gen = new Random();
-
-	   
-	public GameState(List<Card> cards) {
+	GameState(List<Card> cards) {
 		   this.cards = cards;
 	   }
 
-	public void addPlayer(Player player) {
+	void addPlayer(Player player) {
 		      players.add(player);
 	   }
 	   
-	public void initializeGame(){
+	void initializeGame(){
 
 //CHECK NUMBER OF PLAYERS
         if (players.size() > 4 || players.size() < 2) {
@@ -33,6 +31,7 @@ public class GameState implements Cloneable{
 		int selectedKingdom = 0;
 		int Kingdom_Cards_Selected = 10;
 
+//INITIALIZE ACTION CARDS
         while (selectedKingdom < Kingdom_Cards_Selected) {
 		    int random = gen.nextInt(cards.size());//
 			Card tmp = cards.get(random);
@@ -45,11 +44,12 @@ public class GameState implements Cloneable{
     //set number of Curse cards the default number of players is 2
 		gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
 		      
-	//set number of Victory cards
+//INITIALIZE VICTORY CARDS
 		gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
-	//set number of Treasure cards
+
+//INITIALIZE TREASURE CARDS
 		gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
@@ -61,40 +61,34 @@ public class GameState implements Cloneable{
 			    player.gain(Card.getCard(cards, Card.CardName.Copper));
             for (int i = 0; i < 3; i++)
 			    player.gain(Card.getCard(cards,Card.CardName.Estate));
-			         
-            player.numActions = 1;
-			player.coins = 0;
-			player.numBuys = 1;
-	//Shuffle your starting 10 cards and draw 5 cards
-			for (int i = 0; i < 5; i++) {
-			    player.drawCard();
-			}
         }
     }
 	   
-	public HashMap<Player, Integer>  play() {
+	HashMap<Player, Integer>  play() {
 			 
-		   	  int turn =0;	
+		   	  int turn = 0;
 		      while (!isGameOver()) {
 		    	  turn++;
 		         for (Player player : players) {
-		        	 	System.out.println("\n\nPlayer: "+ player.player_username + " is playing\n\n");
+		        	 	System.out.println("\n--- " + player.player_username + " IS PLAYING ---");
+		        	 	player.initializePlayerTurn();
 		   				//player plays action card
 		        	 	player.playKingdomCard();
 		        	 	//player plays treasure card
 		   			    player.playTreasureCard();
 		   			    //player buy cards
-		        	    player.buyCard();
+		        	    player.buyCard(this);
 		        	  //player ends turn
 		        	    player.endTurn();
 		         }
-		         if(turn == 2)
-		        	 break;
+		         if(turn == 100)
+		        	break;
 		      }
+		      System.out.println("\nTURNS PLAYED\n" + turn);
 		      return this.getWinners();
 		   }
 
-	public boolean isGameOver() {
+	boolean isGameOver() {
 		 //if stack of Province cards is empty, the game ends
 		   if((this.gameBoard.get(Card.getCard(cards, Card.CardName.Province))==null)||(this.gameBoard.get(Card.getCard(cards, Card.CardName.Province))== 0))
 			   return true;
@@ -111,7 +105,7 @@ public class GameState implements Cloneable{
 		         return false;
 		   }
 
-	public HashMap<Player, Integer>  getWinners() {
+	HashMap<Player, Integer>  getWinners() {
     //Set HashMap  of each player and the score (remember ties!)
 	    HashMap<Player, Integer> playerScore = new HashMap<Player, Integer>();
 
@@ -124,7 +118,7 @@ public class GameState implements Cloneable{
         return playerScore;
     }
 
-	public static void addEmbargo()
+	static void addEmbargo(Card card)
     {
         System.out.println("Token Added.");
     }
@@ -137,14 +131,13 @@ public class GameState implements Cloneable{
 			sb.append("The board game is empty you need to intialize the game!!!!");
 		else {
 			for (Player player : players)
-				sb.append(" --- " + player.toString() + "\n");
+				sb.append(" --- ").append(player.toString()).append("\n");
 			sb.append(" --- gameBoard --- \n");
 			sb.append("Cards on the table: \n");
 			sb.append("Card Name: \t\t NumberCards: \n");
 			Map<Card, Integer> treeMap = new TreeMap<Card, Integer>(gameBoard);
 			for (Card card : treeMap.keySet())
-				sb.append("\t" + card.getCardName() + "\t\t\t"
-						+ treeMap.get(card) + "\n");
+				sb.append("\t").append(card.getCardName()).append("\t\t\t").append(treeMap.get(card)).append("\n");
 		}
 		return sb.toString();
 	}   
@@ -154,48 +147,4 @@ public class GameState implements Cloneable{
 		   this.players=players;
 		   this.gameBoard=gameBoard;
 	   }
-
-	public GameState clone() throws CloneNotSupportedException {
-		   List<Player> clonePlayers = new ArrayList<Player>();
-		   List<Card> cloneCards = new ArrayList<Card>();
-		   HashMap<Card, Integer> cloneGmeBoard = new HashMap<Card, Integer>();	
-		   
-		    for (Player player : players) 
-		    	clonePlayers.add((Player) player.clone());
-		    for (Card card : cards) 
-		    	cloneCards.add((Card) card.clone());
-		    for (Card card : gameBoard.keySet())
-		    	cloneGmeBoard.put((Card) card.clone(),gameBoard.get(card));
-
-		   final GameState cloneState= new GameState(cloneCards,clonePlayers,cloneGmeBoard);
-	        return  cloneState;
-	    }
 }
-
-
-
-
-
-
-/*
-struct gameState {
-    int numPlayers; //number of players
-	int supplyCount[treasure_map+1];  //this is the amount of a specific type of card given a specific number.
-	int embargoTokens[treasure_map+1];
-	int outpostPlayed;
-	int outpostTurn;
-	int whoseTurn;
-	int phase;
-	int numActions;  Starts at 1 each turn
-    int coins; /* Use as you see fit!
-    int numBuys; /* Starts at 1 each turn
-    int hand[MAX_PLAYERS][MAX_HAND];
-    int handCount[MAX_PLAYERS];
-    int deck[MAX_PLAYERS][MAX_DECK];
-    int deckCount[MAX_PLAYERS];
-    int discard[MAX_PLAYERS][MAX_DECK];
-    int discardCount[MAX_PLAYERS];
-    int playedCards[MAX_DECK];
-    int playedCardCount;
-};
-*/
