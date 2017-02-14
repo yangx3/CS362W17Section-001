@@ -6,7 +6,7 @@ public class Pile
 	public int size;
 	public int value;
 	public int points;
-	public int embargo;
+	public int embargos;
 
 	public Pile()
 	{
@@ -14,7 +14,7 @@ public class Pile
 		size = 0;
 		value = 0;
 		points = 0;
-		embargo = 0;
+		embargos = 0;
 	}
 
 	public Pile(Card card, int num)
@@ -78,7 +78,7 @@ public class Pile
 		return cards.get(cardIndex);
 	}
 
-	public void shufflePile()
+	/*public void shufflePile()
 	{
 		int deckSize = size;
 		ArrayList<Card> tempDeck = new ArrayList<Card>();
@@ -90,6 +90,12 @@ public class Pile
 		}
 
 		cards = tempDeck;
+	}*/
+	
+
+	public void shufflePile()
+	{
+		Collections.shuffle(cards);
 	}
 
 	public boolean isEmpty()

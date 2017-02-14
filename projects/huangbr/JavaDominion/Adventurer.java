@@ -12,6 +12,7 @@ public class Adventurer extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		int numTreasures =0;
 		Pile tempPile = new Pile();
 		while(numTreasures < 2)

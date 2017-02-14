@@ -3,7 +3,7 @@
   @version 2/12/17 Software Engineering 2 - Assignment 1
 */
 
-package org.cs362.dominion;
+package dominion;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

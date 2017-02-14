@@ -114,7 +114,7 @@ class Player{
 		  /* SORT CARDS IN DECK TO ENSURE DETERMINISM! */
 
 		  while (deckCount > 0) {
-			card = (int)java.lang.Math.floor(Math.random() + deckCount);
+			card = (int)java.lang.Math.floor(Math.random() * deckCount);
 		    newDeck[newDeckPos] = deck[card];
 		    newDeckPos++;
 		    for (i = card; i < deckCount-1; i++) {
@@ -488,7 +488,7 @@ class gameState {
 	  int who;
 	  
 	
-	  // I don't know what to do about the phase thing.
+	  
 	
 	  who = this.whoseTurn;
 	
@@ -506,7 +506,7 @@ class gameState {
 	    //this.supplyCount[supplyPos]--;
 	    gainCard(supplyPos, 0, who); 
 	
-	    this.coins = (this.coins) - (this.getCost(supplyPos));
+	    this.coins = (this.coins) + (this.getCost(supplyPos));
 	    this.numBuys--;
 	    
 	  }
@@ -582,7 +582,7 @@ class gameState {
 	  int j;
 		
 	  //if stack of Province cards is empty, the game ends
-	  if (this.playedCards[CARD.province.get_CARD()] == 0)
+	  if (this.supplyCount[CARD.province.get_CARD()] == 0)
 	    {
 	      return 1;
 	    }
@@ -591,7 +591,7 @@ class gameState {
 	  j = 0;
 	  for (i = 0; i < 18; i++)
 	    {
-		  if (this.playedCards[i] == 0)
+		  if (this.supplyCount[i] == 0)
 		{
 		  j++;
 		}
@@ -634,7 +634,7 @@ class gameState {
 	} else if (cardNumber == CARD.gardens.get_CARD()) {
 		return 4;
 	} else if (cardNumber == CARD.mine.get_CARD()) {
-		return 5;
+		return 3;
 	} else if (cardNumber == CARD.baron.get_CARD()) {
 		return 4;
 	} else if (cardNumber == CARD.great_hall.get_CARD()) {
@@ -948,7 +948,7 @@ class gameState {
 		return 0;
 	} else if (card == CARD.sea_hag.get_CARD()) {
 		for (i = 0; i < this.numPlayers; i++){
-		if (i != currentPlayer){
+		if (i == currentPlayer){
 			players[i].discard[players[i].discardCount] = players[i].deck[players[i].deckCount--];			    
 			players[i].deckCount--;
 			players[i].discardCount++;
@@ -993,7 +993,7 @@ class gameState {
 	      //set last card to -1
 		  players[currentPlayer].hand[players[currentPlayer].handcount - 1] = -1;
 	      //reduce number of cards in hand
-		  players[currentPlayer].handcount--;
+		  players[currentPlayer].handcount++;
 	    }
 		
 	  return 0;
@@ -1017,7 +1017,7 @@ class gameState {
 	  if (toFlag == 1)
 	    {
 	      players[player].deck[ players[player].deckCount] = supplyPos;
-	      players[player].deckCount++;
+	      players[player].deckCount--;
 	    }
 	  else if (toFlag == 2)
 	    {
@@ -1089,7 +1089,7 @@ public class Main {
 		
 		int numAdventurers = 0;
 		
-		while (State.whoseTurn()==0) {
+		while (State.isGameOver()==0) {
 		    money = 0;
 		    smithyPos = -1;
 		    adventurerPos = -1;
@@ -1126,7 +1126,7 @@ public class Main {
 		  	    money += 3;
 		  	  }
 		  	  
-		  	  
+		  	  i++;
 		  	}
 		        }
 		        

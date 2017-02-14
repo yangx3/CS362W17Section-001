@@ -13,6 +13,7 @@ public class Baron extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		int estateIndex = player.getCardIndexbyName(player.hand, "Estate");
 		if(estateIndex == -1)
 		{
@@ -26,7 +27,7 @@ public class Baron extends Card
 		}
 		else
 		{
-			player.discardCard(estateIndex);
+			player.discardCard(player.hand, estateIndex);
 			player.money += 4;
 		}
 		discard(game, player, name);
