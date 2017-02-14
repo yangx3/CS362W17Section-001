@@ -137,14 +137,5 @@ public class GameStateTest {
         assertTrue(state.isGameOver());
     }
 
-    @Test
-    public void getWinners() throws Exception {
-
-    }
-
-   // @Test
-    //public void toString() throws Exception {
-
-//    }
 
 }
