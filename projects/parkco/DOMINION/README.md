@@ -2,6 +2,7 @@ How to compile the program under test and run the unit tests, with and without c
 
 To build and run:
 	mvn package
+	
 	java -jar target/DOMINION-1.0-SNAPSHOT.jar
 
 To test (without coverage):
