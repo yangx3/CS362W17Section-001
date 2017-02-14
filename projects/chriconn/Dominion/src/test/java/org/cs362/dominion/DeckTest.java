@@ -156,6 +156,19 @@ public class DeckTest {
 
     }
 
+    @Test
+    public void twoDecks() {
+        Deck one = new Deck(10, new Card("witch"));
+        Deck two = new Deck(10, new Card("adventurer"));
+
+        for (int x = 0; x < 20; x++) {
+            one.addCard(two.drawCard());
+        }
+
+        System.out.println("TWO DECKS PRINTED");
+        one.printDeck();
+    }
+
     public Card randomCard() {
         String[] cardList = { "gold", "silver", "copper", "estate", "dutchy", "province", "adventurer", "ambassador", "baron", "council room", "cutpurse", "embargo", "feast", "gardens", "great hall", "mine", "witch", "cellar", "market", "village", "smithy", "salvager" };
 
