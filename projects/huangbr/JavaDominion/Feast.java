@@ -23,6 +23,7 @@ public class Feast extends Card
 			{
 				player.discard.addCard(randomPile.drawCard());
 				player.trashCard(player.getCardIndexbyName(player.hand, "Feast"));
+				goodCard = true;
 			}
 			else
 			{

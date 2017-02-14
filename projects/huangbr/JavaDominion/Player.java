@@ -36,6 +36,10 @@ public class Player
 	//Player draws a card from their deck.
 	public Card drawCard()
 	{
+		if(deck.getSize() == 0)
+		{
+			rebuildDeck();
+		}
 		return deck.drawCard();
 	}
 
@@ -91,7 +95,6 @@ public class Player
 			}
 
 			int randomIndex = rand.nextInt(hand.getSize());
-			System.out.println("Playing " + hand.getCard(actionIndex).name);
 			hand.getCard(actionIndex).play(game,this);
 			actions--;
 		}
@@ -102,24 +105,19 @@ public class Player
 	{
 		Random rand = new Random();
 		money += hand.value;
-		System.out.println(money);
 		while(buy > 0 && money != 0)
 		{
 			if(money >= 8)
 			{
 				buyCard(game, money, "Province");
 			}
-			else if(money >= 6)
+			else if(money == 7)
 			{
-				int n = rand.nextInt(1 + 1 - 0) + 0;
-				if(n == 0)
-				{
-					buyCard(game, money, "Gold");
-				}
-				else if(n ==1)
-				{
-					buyCard(game, money, game.getRandomKingdomCard().getName(0));
-				}
+				buyCard(game, money, game.getRandomKingdomCard().getName(0));
+			}
+			else if(money == 6)
+			{
+				buyCard(game, money, "Gold");
 			}
 			else if(money == 3)
 			{

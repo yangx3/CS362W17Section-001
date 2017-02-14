@@ -45,17 +45,20 @@ public class Dominion
 
 	public void playGame()
 	{
+		int turnCounter = 0;
 		for(int i=0; i < playerCount; i++)
 		{
-			if(gameOver())
+			if(gameOver() == true)
 			{
 				Player temp = getWinner();
 				System.out.println("Player " + temp.playerID + " Wins");
 				System.out.println("Player " + temp.playerID + " has " + temp.getPoints() + " points.");
-				break;
+				System.exit(0);
 			}
+			System.out.println(turnCounter);
 			System.out.println("Player " + i);
 			players[i].takeTurn(this);
+			turnCounter++;
 			if(i == playerCount-1)
 			{
 				i = -1;
