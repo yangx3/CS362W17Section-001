@@ -1,1 +1,1 @@
-Gabriel Jonas projects folder for CS362
+The folder for Gabriel Jonas
