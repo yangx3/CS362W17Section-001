@@ -13,6 +13,7 @@ public class Great_Hall extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		player.actions += actions;
 		for(int i=0; i < draw; i++)
 		{
