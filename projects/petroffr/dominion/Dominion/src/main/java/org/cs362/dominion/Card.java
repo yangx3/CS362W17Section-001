@@ -78,7 +78,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);
 		ret.add(o);
-
+		
 		/** The Victory cards  */ 
 		o = new Card(CardName.Province,Type.VICTORY, 	8, 6, 0);
 		ret.add(o);
@@ -97,26 +97,26 @@ public final class Card implements Comparable<Card>, Cloneable{
 		o = new Card(CardName.Village,Type.ACTION,3,0,0);
 		ret.add(o);	
 		o = new Card(CardName.Ambassador,Type.ACTION,3,0,0);
-        ret.add(o);
-        o = new Card(CardName.Baron,Type.ACTION,4,0,0);
-        ret.add(o);
-        o = new Card(CardName.Council_Room,Type.ACTION,5,0,0);
-        ret.add(o);
-        o = new Card(CardName.Cutpurse,Type.ACTION,4,0,2);
-        ret.add(o);
-        o = new Card(CardName.Embargo,Type.ACTION,2,0,2);
-        ret.add(o);
-        o = new Card(CardName.Feast,Type.ACTION,4,0,0);
-        ret.add(o);
-        o = new Card(CardName.Gardens,Type.ACTION,4,0,0);
-        ret.add(o);
-        o = new Card(CardName.Great_Hall,Type.ACTION,3,1,0);//
-        ret.add(o);
-        o = new Card(CardName.Mine,Type.ACTION,5,0,0);
-        ret.add(o);
-        o = new Card(CardName.Remodel,Type.ACTION,4,0,0);
-        ret.add(o);
-		return ret;
+		ret.add(o);
+		o = new Card(CardName.Baron,Type.ACTION,4,0,0);
+		ret.add(o);
+		o = new Card(CardName.Council_Room,Type.ACTION,5,0,0);
+		ret.add(o);
+		o = new Card(CardName.Cutpurse,Type.ACTION,4,0,2);
+		ret.add(o);
+		o = new Card(CardName.Embargo,Type.ACTION,2,0,2);
+		ret.add(o);
+		o = new Card(CardName.Feast,Type.ACTION,4,0,0);
+		ret.add(o);
+		o = new Card(CardName.Gardens,Type.ACTION,4,0,0);
+		ret.add(o);
+		o = new Card(CardName.Great_Hall,Type.ACTION,3,1,0);
+		ret.add(o);
+		o = new Card(CardName.Mine,Type.ACTION,5,0,0);
+		ret.add(o);
+		o = new Card(CardName.Remodel,Type.ACTION,4,0,0);
+		ret.add(o);
+return ret;
 	}
 	
 	public void play(Player player, GameState state) {
