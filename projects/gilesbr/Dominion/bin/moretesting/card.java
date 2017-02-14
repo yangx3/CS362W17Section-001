@@ -1,4 +1,4 @@
-package moretesting;
+//package moretesting;
 
 public class card extends player {
 	

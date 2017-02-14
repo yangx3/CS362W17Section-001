@@ -1,4 +1,4 @@
-package moretesting;
+//package moretesting;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -361,11 +361,8 @@ public class player extends main {
 	}
 	//displays player stats as round progresses
 	public void display(){
-		
-		
 		//calc how much stuff in hand
 	
-		
 		System.out.println("coins: " + coin + " cards: " + cards +" buys: " + buypoints + " actions: " + actionpoints);
 		System.out.println("===========================================================");
 		for (int i = 0; i < handsize; i ++){
@@ -411,7 +408,7 @@ public class player extends main {
 		}
 		
 		//If a card has special abilities they are activated here
-		System.out.println("Special abilities beyond basics not included in demo: please pay 15$ to @Brennan Giles for full content");
+		System.out.println("Special abilities beyond basics not included in demo: please pay 15$ to @BrennanGiles for full content ^_^");
 		
 	}
 	//buys a card from pile and places it into pile that owns pilesize
