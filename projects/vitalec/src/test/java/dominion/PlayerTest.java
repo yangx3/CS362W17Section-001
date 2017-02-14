@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -69,5 +70,37 @@ public class PlayerTest {
     @Test
     public void testPlayerCanDrawCard() {
         assertTrue(player.drawCard() != null);
+    }
+
+    @Test
+    public void testInitializePlayerTurn() {
+        player.initializePlayerTurn();
+        assertAll(
+                () -> assertEquals(1, player.numActions),
+                () -> assertEquals(0, player.coins),
+                () -> assertEquals(1, player.numBuys)
+        );
+    }
+
+    @Test
+    public void testGainCard() {
+        player.gainCard(Card.getCard(allCards, Card.CardName.FESTIVAL));
+        assertTrue(player.discard.contains(Card.getCard(allCards, Card.CardName.FESTIVAL)));
+    }
+
+    @Test
+    public void playerCanDrawCard() {
+        int handSize = player.hand.size();
+        player.drawCard();
+        assertEquals(handSize + 1, player.hand.size());
+    }
+
+    @Test
+    public void playerCanDiscardCard() {
+        player.drawCard();
+        assertEquals(1, player.hand.size());
+
+        player.discard(player.hand.get(0));
+        assertEquals(0, player.hand.size());
     }
 }

@@ -2,21 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d215fa5a-e322-467e-8950-bd8b9367e5cc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/dominion/Supply.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/dominion/mainCard.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/dominion/mainPlayer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/dominion/mainRandomness.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/dominion/TestCard.java" afterPath="$PROJECT_DIR$/src/test/java/dominion/CardTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dominion.iml" afterPath="$PROJECT_DIR$/dominion.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dominion/Card.java" afterPath="$PROJECT_DIR$/src/main/java/dominion/Card.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dominion/GameState.java" afterPath="$PROJECT_DIR$/src/main/java/dominion/GameState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dominion/PlayDominion.java" afterPath="$PROJECT_DIR$/src/main/java/dominion/PlayDominion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dominion/Player.java" afterPath="$PROJECT_DIR$/src/main/java/dominion/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/.classes/Card.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/.classes/Card.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/.classes/GameState.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/.classes/GameState.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/.classes/PlayDominion.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/.classes/PlayDominion.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/.classes/Player.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/.classes/Player.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/.classes/Randomness.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/.classes/Randomness.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_BLOCK.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_BLOCK.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_BLOCK_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_BLOCK_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_CLASS.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_CLASS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_CLASS_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_CLASS_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_LINE.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_LINE.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_LINE_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_LINE_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_METHOD.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_METHOD.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_METHOD_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_METHOD_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_NAME_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/dominion/index_SORT_BY_NAME_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index.html" afterPath="$PROJECT_DIR$/coveragereport/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index_SORT_BY_BLOCK.html" afterPath="$PROJECT_DIR$/coveragereport/index_SORT_BY_BLOCK.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index_SORT_BY_BLOCK_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/index_SORT_BY_BLOCK_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index_SORT_BY_CLASS.html" afterPath="$PROJECT_DIR$/coveragereport/index_SORT_BY_CLASS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index_SORT_BY_CLASS_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/index_SORT_BY_CLASS_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index_SORT_BY_LINE.html" afterPath="$PROJECT_DIR$/coveragereport/index_SORT_BY_LINE.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index_SORT_BY_LINE_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/index_SORT_BY_LINE_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index_SORT_BY_METHOD.html" afterPath="$PROJECT_DIR$/coveragereport/index_SORT_BY_METHOD.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index_SORT_BY_METHOD_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/index_SORT_BY_METHOD_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coveragereport/index_SORT_BY_NAME_DESC.html" afterPath="$PROJECT_DIR$/coveragereport/index_SORT_BY_NAME_DESC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/dominion/PlayerTest.java" afterPath="$PROJECT_DIR$/src/test/java/dominion/PlayerTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +39,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/dominion$PlayerTest.coverage" NAME="PlayerTest Coverage Results" MODIFIED="1487057482971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/dominion$PlayerTest.coverage" NAME="PlayerTest Coverage Results" MODIFIED="1487058570770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>dominion.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/dominion$CardTest.coverage" NAME="CardTest Coverage Results" MODIFIED="1487056644591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -59,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dominion/GameState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="68" column="31" lean-forward="true" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
+            <state relative-caret-position="69">
+              <caret line="68" column="31" lean-forward="false" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -73,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/dominion/PlayDominion.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="76">
-              <caret line="40" column="61" lean-forward="true" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
+              <caret line="40" column="61" lean-forward="false" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,24 +96,24 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dominion/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="58" column="9" lean-forward="false" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+            <state relative-caret-position="-1387">
+              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PlayerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/dominion/PlayerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="450">
+              <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2085#2086#0" expanded="true" />
-                <element signature="e#2149#2150#0" expanded="true" />
-                <element signature="e#2349#2350#0" expanded="true" />
-                <element signature="e#2402#2403#0" expanded="true" />
+                <element signature="e#2143#2144#0" expanded="true" />
+                <element signature="e#2207#2208#0" expanded="true" />
+                <element signature="e#2407#2408#0" expanded="true" />
+                <element signature="e#2460#2461#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,8 +151,8 @@
       <find>tt</find>
       <find>num</find>
       <find>--</find>
-      <find>init</find>
       <find>discard</find>
+      <find>init</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -158,9 +170,9 @@
         <option value="$PROJECT_DIR$/src/main/java/dominion/Card.java" />
         <option value="$PROJECT_DIR$/src/test/java/dominion/CardTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/dominion/PlayDominion.java" />
-        <option value="$PROJECT_DIR$/src/test/java/dominion/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dominion/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/dominion/GameState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dominion/Player.java" />
+        <option value="$PROJECT_DIR$/src/test/java/dominion/PlayerTest.java" />
       </list>
     </option>
   </component>
@@ -584,34 +596,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 18m 50s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 45m 40s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 19m 40s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 45m 56s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 19m 49s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 46m 33s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 21m 24s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 47m 44s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 24m 59s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 47m 45s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 25m 20s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 47m 47s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 25m 38s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 47m 50s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 26m 48s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 47m 58s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 27m 21s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 48m 10s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlayerTest - 2017.02.13 at 23h 31m 24s.xml">
+    <history-entry file="PlayerTest - 2017.02.13 at 23h 49m 31s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -867,43 +879,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/dominion/PlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2085#2086#0" expanded="true" />
-            <element signature="e#2149#2150#0" expanded="true" />
-            <element signature="e#2349#2350#0" expanded="true" />
-            <element signature="e#2402#2403#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dominion/PlayDominion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
-          <caret line="40" column="61" lean-forward="true" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
+          <caret line="40" column="61" lean-forward="false" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dominion/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="58" column="9" lean-forward="false" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dominion/GameState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="68" column="31" lean-forward="true" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
+        <state relative-caret-position="69">
+          <caret line="68" column="31" lean-forward="false" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dominion/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1387">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/dominion/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2143#2144#0" expanded="true" />
+            <element signature="e#2207#2208#0" expanded="true" />
+            <element signature="e#2407#2408#0" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

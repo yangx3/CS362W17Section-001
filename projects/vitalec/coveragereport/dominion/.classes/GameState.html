@@ -146,8 +146,8 @@
 <i>72</i>&nbsp;            // Player Turn
 <b class="nc"><i>73</i>&nbsp;            for (Player player: players) {</b>
 <b class="nc"><i>74</i>&nbsp;                System.out.println(player.player_username + &quot; is playing  [Turn &quot; + turn + &quot;]&quot;);</b>
-<b class="nc"><i>75</i>&nbsp;                System.out.println(&quot;ACTION PHASE:&quot;);</b>
-<b class="nc"><i>76</i>&nbsp;                player.numActions = 1;</b>
+<b class="nc"><i>75</i>&nbsp;                player.initializePlayerTurn();</b>
+<b class="nc"><i>76</i>&nbsp;                System.out.println(&quot;ACTION PHASE:&quot;);</b>
 <b class="nc"><i>77</i>&nbsp;                player.playKingdomCard();</b>
 <i>78</i>&nbsp;
 <b class="nc"><i>79</i>&nbsp;                System.out.println(&quot;BUY PHASE:&quot;);</b>
@@ -206,7 +206,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2017-02-13 23:31</div>
+    <div style="float:right;">generated on 2017-02-13 23:49</div>
 </div>
 </body>
 </html>
