@@ -258,4 +258,31 @@ public class GameTest {
 			assertEquals(game.getBoard().get(2).getPile().size(), 0);
 		}
 	}
+	
+	@Test
+	public void checkWhoWon(){
+		int points = 0;
+		game.playGame();
+		game.whoWon();
+		for(int i=0; i<game.getPlayers().get(0).getHand().getPile().size(); i++){
+			points += game.getPlayers().get(0).getHand().getPile().get(i).getScore();
+		}
+		for(int i=0; i<game.getPlayers().get(0).getDraw().getPile().size(); i++){
+			points += game.getPlayers().get(0).getDraw().getPile().get(i).getScore();
+		}
+		for(int i=0; i<game.getPlayers().get(0).getDiscard().getPile().size(); i++){
+			points += game.getPlayers().get(0).getDiscard().getPile().get(i).getScore();
+		}
+		assertEquals(points, game.getPlayers().get(0).getVictory());
+		for(int i=0; i<game.getPlayers().get(1).getHand().getPile().size(); i++){
+			points += game.getPlayers().get(1).getHand().getPile().get(i).getScore();
+		}
+		for(int i=0; i<game.getPlayers().get(1).getDraw().getPile().size(); i++){
+			points += game.getPlayers().get(1).getDraw().getPile().get(i).getScore();
+		}
+		for(int i=0; i<game.getPlayers().get(1).getDiscard().getPile().size(); i++){
+			points += game.getPlayers().get(1).getDiscard().getPile().get(i).getScore();
+		}
+		assertEquals(points, game.getPlayers().get(1).getVictory());
+	}
 }
