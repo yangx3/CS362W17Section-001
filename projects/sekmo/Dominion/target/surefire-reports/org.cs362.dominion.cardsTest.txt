@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: org.cs362.dominion.AppTest
+Test set: org.cs362.dominion.cardsTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 sec
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.04 sec
