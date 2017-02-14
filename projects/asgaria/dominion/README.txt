@@ -5,4 +5,6 @@ java -jar target/DOMINION-1.0-SNAPSHOT.jar
 To run the unit tests:
 mvn test
 
-All the code coverage is found in index.html
+The code coverage can be found in target/site/cobertura/index.html
+
+
