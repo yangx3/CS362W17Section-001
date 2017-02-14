@@ -258,7 +258,7 @@ public class GameTest {
             setups(dominion, dominion.getPlayer(0), 0, "feast");
 
             //TESTING FOR CARD RESULTS
-            assertTrue("The purchased card with feast is less than a value of 5", dominion.getPlayer(0).discard.cardInfo(0).getCost() <= 5);
+            assertTrue("The purchased card with feast is greater than a value of 5", dominion.getPlayer(0).discard.cardInfo(0).getCost() <= 5);
             assertEquals("The player did not move to 0 moves after playing council room", dominion.getPlayer(0).getActions(), 0);
             dominion = new Game("Connor");
         }
@@ -319,4 +319,45 @@ public class GameTest {
         System.out.println("\n\n############################# MAIN GAME #############################\n\n");
         Game.main(null);
     }
+
+
+    @Test
+    public void testPointTally() {
+        System.out.println("\n\n############################# TEST POINT TALLEY #############################\n\n");
+        Game dominion = new Game("Connor");
+        for (Player player: dominion.players) {
+
+            player.modifyVictoryPoints(dominion.calculateVictoryPoints(player));
+
+            assertEquals("The estate card does not sum to 1 victory point", player.getVictoryPoints(), 3);
+
+            player.drawDeck.addCard(new Card("gardens"));
+            dominion.tallyPoints();
+            assertEquals("3 estates, 7 coppers and a garden does not sum up to 4 victory points", 4, player.getVictoryPoints());
+        }
+    }
+
+    @Test
+    public void checkCurseCard() {
+        System.out.println("\n\n############ TEST CURSE CARD COUNTER ############\n\n");
+        Game dominion = new Game("Connor");
+        for (Player player: dominion.players) {
+            player.drawDeck.addCard(new Card("curse"));
+            player.modifyVictoryPoints(dominion.calculateVictoryPoints(player));
+
+            assertEquals("The witch card has no effect", player.getVictoryPoints(), 2);
+        }
+    }
+
+    // @Test
+    // public void checkTokens() {
+    //     System.out.println("\n\n############ CHECK TOKENS ############\n\n");
+    //     Game dominion = new Game("Connor");
+    //     for (Player player: dominion.players) {
+    //         getDeck("copper").modifyTokens(1);
+    //         player.addCard(getDeck("copper"))
+    //
+    //         assertEquals("The witch card has no effect", player.getVictoryPoints(), 2);
+    //     }
+    // }
 }

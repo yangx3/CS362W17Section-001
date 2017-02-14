@@ -12,6 +12,14 @@ public class CardTest {
     public void CreateCard() {
         Card test = new Card();
         assertEquals("The new card is not initialized to null", test.getName(), "null");
+        assertEquals("The new card is not initialized to ", test.getValue(), 0);
+        assertEquals("The new card is not initialized to ", test.getCost(), 0);
+        assertEquals("The new card is not initialized to ", test.getVictoryPoints(), 0);
+        assertEquals("The new card is not initialized to ", test.getDescription(), "null");
+        assertEquals("The new card is not initialized to ", test.getCards(), 0);
+        assertEquals("The new card is not initialized to ", test.getBuys(), 0);
+        assertEquals("The new card is not initialized to ", test.getActions(), 0);
+        assertEquals("The new card is not initialized to ", test.getCoins(), 0);
     }
 
     @Test
