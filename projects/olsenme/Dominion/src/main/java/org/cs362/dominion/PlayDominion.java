@@ -1,4 +1,5 @@
 package org.cs362.dominion;
+/*Collaborated with David Baugh*/
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,37 +10,46 @@ import java.util.Collections;
 public class PlayDominion {
 
 	   public  static void main(String args[]){
-		   
+
+	   	    //members
 		    List<Card> cards;
 		    GameState state;
+		    //set seed
 			Randomness.reset(10);	   
-			
-			//the cards  are achieved by each element/constant in the enum class 
+		   //initialize
 			cards = new ArrayList<Card>(Card.createCards());
 			state = new GameState(cards);
-//			 System.out.println("Initialization DominionBoard:\n " + state.toString()); 
-			
-		      Player player = new Player(state, "player-1");
-//		      player.printStateGame();
-		      state.addPlayer(player);
-		      //   player.hand.add(Card.getCard(cards,Card.CardName.adventurer));
+			//print initial state of gameboard
+			 System.out.println("Initial DominionBoard:\n " + state.toString());
+//		     System.out.println("Adding players:\n ");
+		      Player player1 = new Player(state,"Player1");
+		      state.addPlayer(player1);
+		      //player.printStateGame();
+		    Player player2 = new Player(state,"Player2");
+		   //player2.printStateGame();
+		    state.addPlayer(player2);
+		  // System.out.println("Players added:\n ");
+
+		   //  player.hand.add(Card.getCard(cards,Card.CardName.adventurer));
 		        // player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
-		       player = new Player(state, "player-2");
+
 		        // player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
 		         //player.hand.add(Card.getCard(cards,Card.CardName.Village));
-		      state.addPlayer(player);		      
-		      //Initialize the game!
 		      state.initializeGame();
-		      
-		      System.out.println("Initialization DominionBoard:\n " + state.toString());
-		      
-		      HashMap<Player, Integer> winners=state.play();
-		      System.out.println ("Finished game.\n");
-		    
-		      for(Player p: winners.keySet()) {
-				  System.out.println("Player name: " + p.player_username + ",Score: " + winners.get(p));
-			  }
-		      player.printStateGame();
+		      //output state of gameboard +players
+		   System.out.println("DominionBoard with players and cards:\n " + state.toString());
+		   //System.out.println("Player 1 stats:\n" + player1.toString());
+		  // System.out.println("Player 2 stats:\n" + player2.toString());
+
+		   HashMap<Player, Integer> winners = state.play();
+		   System.out.println ("Finished game.\n");
+
+		       //Print winners
+		      for(Player p: winners.keySet()){
+		    	  System.out.println ("Player name: " +p.player_username+", Score: " + winners.get(p) );
+		      }
+		   System.out.println("Ending board state:\n " + state.toString());
+	//	      //player.printStateGame();
 			System.exit(0);  
 	   }		
 }

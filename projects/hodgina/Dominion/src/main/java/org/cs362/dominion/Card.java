@@ -159,6 +159,8 @@ public final class Card implements Comparable<Card>, Cloneable{
 						}
 						else{
 							player.discard(player.deck.get(i));
+							player.deck.remove(player.deck.get(i));
+
 					}
 				}
 			}
@@ -169,19 +171,24 @@ public final class Card implements Comparable<Card>, Cloneable{
 				System.out.println("Give every other player a copy of a card");
 				Card given_card = player.hand.get(0); //pick the first card
 				state.gameBoard.put(given_card, state.gameBoard.get(given_card) +1); //put it back in supply
-				for(Player players : state.players){ //give every other player that card
-					players.gain(given_card);
-					state.gameBoard.put(given_card, state.gameBoard.get(given_card) - 1);
+				for(Player p : state.players){ //give every other player that card
+
+						p.gain(given_card);
+						state.gameBoard.put(given_card, state.gameBoard.get(given_card) - 1);
+
 				}
 				player.hand.remove(given_card);
 
 				return;
 
 		case Baron: //done
-			System.out.println("+1 Card. +2 Actions.");
+			System.out.println("+1 Card. +1 Buy.");
+			player.drawCard();
+			player.numBuys++;
 			System.out.println("+4 coins or gains Estate.");
 			if(getCard(player.hand, CardName.Estate) != null) {
 				player.coins = player.coins + 4;
+				player.discard(getCard(player.hand, CardName.Estate));
 			} else player.gain(getCard(state.cards, CardName.Estate));
 			return;
 
@@ -196,7 +203,9 @@ public final class Card implements Comparable<Card>, Cloneable{
 			player.numBuys = player.numBuys + 1;
 
 			for(Player players : state.players){ //All other players +1 card to their hands
-				players.drawCard();
+				if(players != player) {
+					players.drawCard();
+				}
 			}
 
 			return;
@@ -207,11 +216,11 @@ public final class Card implements Comparable<Card>, Cloneable{
 		//Each other player discards a Copper card (or reveals a hand with no Copper).
 			System.out.println("+2 Coins, Every other player discard a copper card");
 			player.coins = player.coins + 2;
-			//for(Player players : state.players){ //for all players but the player who plaed it look for a copper and discard it
-				//(players != player && getCard(players.hand, cardName.Copper) != null){
-				//	players.discard(getCard(players.hand, CardName.Copper));
-			//	}
-			//}
+			for(Player players : state.players){ //for all players but the player who plaed it look for a copper and discard it
+				if(players != player && getCard(players.hand, CardName.Copper) != null){
+					players.discard(getCard(players.hand, CardName.Copper));
+				}
+			}
 			return;
 
 		case Embargo:
@@ -254,20 +263,18 @@ public final class Card implements Comparable<Card>, Cloneable{
 			return;
 			case Laboratory:
 				//+2 Cards; +1 Action
-
 				player.drawCard();
-
 				player.drawCard();
 				player.numActions++;
 				return;
 
 		case Mine:
 			System.out.println("Trash a Treasure Card. Gain Next Level of Treasure Card ");
-			if(getCard(player.playedCards, CardName.Silver) != null) { //if player has silver in their hand upgrade it to a gold
-				player.playedCards.remove(getCard(player.playedCards, CardName.Silver));
+			if(getCard(player.hand, CardName.Silver) != null) { //if player has silver in their hand upgrade it to a gold
+				player.hand.remove(getCard(player.hand, CardName.Silver));
 				player.gain(getCard(state.cards, CardName.Gold));
-			} else if(getCard(player.playedCards, CardName.Copper) != null) { //if the player has copper in there hand and no silver then upgrade to a silver
-				player.playedCards.remove(getCard(player.playedCards, CardName.Copper));
+			} else if(getCard(player.hand, CardName.Copper) != null) { //if the player has copper in there hand and no silver then upgrade to a silver
+				player.hand.remove(getCard(player.hand, CardName.Copper));
 				player.gain(getCard(state.cards, CardName.Silver));
 			}
 			return; //if neither is true it will just return
@@ -283,7 +290,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 					player.drawCard();
 	    	  System.out.println("The player gets +2 play Actions.");
 					player.numActions = player.numActions + 2;
-			player.discard(getCard(player.hand, CardName.Village) );
 			return;
 
 
@@ -333,7 +339,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 	@Override
 	public int compareTo(Card o) {
-		// TODO Auto-generated method stub
+
 		return cardName.compareTo(o.cardName);
 	}
     protected Object clone() throws CloneNotSupportedException {

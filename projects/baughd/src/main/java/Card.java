@@ -1,6 +1,6 @@
 import java.util.*;
 
-public final class Card implements Comparable<Card>, Cloneable{
+public final class Card implements Comparable<Card>{
 	public enum Type {
 		ACTION, TREASURE, VICTORY
 	}
@@ -177,10 +177,9 @@ public final class Card implements Comparable<Card>, Cloneable{
                 return;
 
             case Baron: //DONE
-                System.out.println("+1 Card. +2 Actions.");
+                System.out.println("+1 Card. +2 Buys.");
                 System.out.println("+4 coins or gains Estate.");
-                player.drawCard();
-                player.numActions = player.numActions + 2;
+                player.numBuys = player.numBuys + 1;
                 if(getCard(player.hand, CardName.Estate) != null) {
                     player.discard(getCard(player.hand, CardName.Estate));
                     player.coins = player.coins + 4;
@@ -245,6 +244,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                 } else if(getCard(player.hand, CardName.Copper) != null) {
                     player.hand.remove(getCard(player.hand, CardName.Copper));
                     player.gain(getCard(state.cards, CardName.Silver));
+                    //decrement from gameBoard lolz
                 }
                 return;
 
@@ -294,9 +294,4 @@ public final class Card implements Comparable<Card>, Cloneable{
 	public int compareTo(Card o) {
 		return cardName.compareTo(o.cardName);
 	}
-
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    } 
-
 }

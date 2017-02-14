@@ -10,8 +10,8 @@
     <name>Dominion</name>
     <url>https://github.com/aburasali/CS362W17Section-001/tree/master/projects/ekstedta/dominion</url>
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>

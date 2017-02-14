@@ -62,7 +62,6 @@ public class PlayerTest {
     }
 
     @Test
-    //card goes in discard,
     public void testGain() {
         assertEquals(player1.hand.size(), 0);
         assertEquals(player1.deck.size(), 0);
@@ -78,7 +77,6 @@ public class PlayerTest {
     }
 
     @Test
-        //Discard hand
     public void testDiscard() {
         player1.initializePlayerTurn();
         assertEquals(player1.hand.size(), 5);
@@ -133,7 +131,18 @@ public class PlayerTest {
 
     @Test
     public void testBuyCard() {
-
+        player1.initializePlayerTurn();
+        assertEquals(player1.hand.size(), 5);
+        assertEquals(player1.deck.size(), 5);
+        assertEquals(player1.discard.size(), 0);
+        assertEquals(player1.playedCards.size(), 0);
+        System.out.println(player1);
+        player1.playTreasureCard();
+        player1.buyCard(state);
+        assertTrue(player1.hand.size() < 5);
+        assertEquals(player1.deck.size(), 5);
+        assertEquals(player1.discard.size(), 1);
+        System.out.println(player1);
     }
 
     @Test
@@ -145,9 +154,9 @@ public class PlayerTest {
         assertEquals(player1.playedCards.size(), 0);
         System.out.println(player1);
         player1.endTurn();
-        assertEquals(player1.hand.size(), 4);
+        assertEquals(player1.hand.size(), 0);
         assertEquals(player1.deck.size(), 5);
-        assertEquals(player1.discard.size(), 1);
+        assertEquals(player1.discard.size(), 5);
         assertEquals(player1.playedCards.size(), 0);
         System.out.println(player1);
     }

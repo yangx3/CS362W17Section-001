@@ -1,7 +1,7 @@
 
 public class GameState {
-	public Player currentPlayer; //implement this
-	public Player otherPlayer; //implement this
+	public Player currentPlayer;
+	public Player otherPlayer; 
 	
 	private Player player1;
 	private Player player2;

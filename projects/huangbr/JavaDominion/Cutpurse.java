@@ -26,16 +26,16 @@ public class Cutpurse extends Card
 				{
 					if(game.players[i].hand.cards.get(j).name == "Copper")
 					{
-						game.players[i].hand.cards.get(j).discard(game, game.players[i]);
+						game.players[i].hand.cards.get(j).discard(game, game.players[i], "Copper");
 					}
 					else
 					{
-						game.players[i].hand.reveal();
+						game.players[i].hand.revealAll();
 					}
 				}
 			}
 		}
-		discard(game, player);
+		discard(game, player, name);
 	}
 }
 

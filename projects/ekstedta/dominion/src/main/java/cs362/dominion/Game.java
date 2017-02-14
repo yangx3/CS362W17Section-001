@@ -201,9 +201,16 @@ public class Game {
         this.doEffect(card);
     }
 
-    private void take(int player, Card card) {
+    // Gain a card to the player's hand
+    private void takeHand(int player, Card card) {
         decrement(this.supply, card);
         this.hand.get(player).add(card);
+    }
+
+    // Gain a card to the player's discard pile
+    private void takeDiscard(int player, Card card) {
+        decrement(this.supply, card);
+        this.discard.get(player).add(card);
     }
 
     private int doEffect(Card playedCard, Object... choices) {
@@ -291,7 +298,7 @@ public class Game {
             if (card.cost() > 5) {
                 throw new GameError("feast: gained card must cost 5 or less");
             }
-            this.take(this.currentPlayer, card);
+            this.takeDiscard(this.currentPlayer, card);
             return TRASH;
         } else if (playedCard == Card.GreatHall) {
             // +1 Card; +1 Action. Worth 1 Victory
@@ -387,7 +394,7 @@ public class Game {
         if (tokens != null) {
             for (int i = 0; i < tokens; i++) {
                 if (this.supplyCount(Card.Curse) > 0) {
-                    this.take(this.currentPlayer, Card.Curse);
+                    this.takeDiscard(this.currentPlayer, Card.Curse);
                 }
             }
         }
@@ -585,7 +592,7 @@ public class Game {
     }
     // Add a card to the player's hand, and return the index of the card
     int takeForTesting(int player, Card card) {
-        this.take(player, card);
+        this.takeHand(player, card);
         return this.hand.get(player).lastIndexOf(card);
     }
 }

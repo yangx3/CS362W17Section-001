@@ -27,7 +27,7 @@ public class DominionBoard {
 		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.VILLAGE), 10));
 		buyableCards.addElement(new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.GARDENS), 10));
 		
-		while(buyableCards.size() > 10) {
+		while(buyableCards.size() >= 10) { //Error 4: should be > not >=
 			buyableCards.remove((int)(Math.random()*buyableCards.size()));
 		}
 		
@@ -68,9 +68,9 @@ public class DominionBoard {
 		
 		for(int i=0; i<slot.GetEmbargoes(); i++) {
 			Card curse = BuyCurse();
-			if(curse != null) {
+			//if(curse != null) { //Error 3: not checking the return value before adding it to the list
 				cards.addElement(curse);
-			}
+			//}
 		}
 		
 		if(slot.IsEmpty()) {
