@@ -293,9 +293,6 @@ public class Game {
         } else if (playedCard == Card.Feast) {
             // Trash this card. Gain a card costing up to 5.
             // Choice 0 = card to gain
-            if (choices[0] instanceof Card == false) {
-                throw new GameError("feast: choice 0 must be a Card");
-            }
             Card card = (Card)choices[0];
             if (card.cost() > 5) {
                 throw new GameError("feast: gained card must cost 5 or less");
@@ -311,15 +308,6 @@ public class Game {
             // Gain a Treasure card costing up to 3 Coins more; put it into your hand.
             // Choice 0: index of treasure card to trash
             // Choice 1: card to gain
-            if (choices.length != 2) {
-                throw new GameError("mine: must supply two choices");
-            }
-            if (choices[0] instanceof Integer == false) {
-                throw new GameError("mine: choice 0 must be an Integer");
-            }
-            if (choices[1] instanceof Card == false) {
-                throw new GameError("mine: choice 1 must be a Card");
-            }
 
             int treasurePos = (int)choices[0];
             Card newCard = (Card)choices[1];
