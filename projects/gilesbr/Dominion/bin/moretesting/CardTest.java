@@ -8,10 +8,13 @@ public class CardTest extends player {
 
 	@Test
 	public void test() {
+		
+		//Card Creation
 		card card = new card();
 		assertTrue(1 == 1);
 		assertTrue(card.num == -1);
 		
+		//Card Assignment
 		card.num = 1;
 		card.category = "copper";
 		card.value = 1;
@@ -22,7 +25,7 @@ public class CardTest extends player {
 		card.coinadd = 1;
 		card.description = "+1 coin";
 		
-		//cards work
+		//cards hold information
 		card[] copperpile = new card[1];
 		copperpile[1] = card;
 		assertTrue(copperpile[1].num == 1);
@@ -35,6 +38,14 @@ public class CardTest extends player {
 		assertTrue(copperpile[1].coinadd == 1);
 		assertTrue(copperpile[1].description == "+1 coin");
 		
+		
+		//assigncard works
+		card assignCard = new card();
+		card.assignCard(2, assignCard);
+		assertTrue(assignCard.category == "silver");
+		
+		
+		//startround works by putting cards in each pile
 		startRound();
 		findDeckSizes();
 		assertTrue(handsize == 5);
@@ -59,21 +70,27 @@ public class CardTest extends player {
 		assertTrue(woodcuttersize == 10);
 		assertTrue(workshopsize == 10);
 		
+		//input validation works
+		System.out.println("enter val between 0 and 100");
 		int test = inpVal();
 		assertTrue(test > 0);
 		assertTrue(test < 100);
 		
+		
+		//moveCard works, places card from hand into discard pile
 		card newCard = new card();
 		newCard.num = -5;
 		hand[20] = newCard;
 		moveCard(hand, discard, 20, discardsize);
 		assertTrue(discard[discardsize].num == -5);
 		
+		//activate card works, reads value from card and activates action
 		card actionCard = new card();
 		actionCard.coinadd = 10;
 		activateCard(actionCard);
 		assertTrue(coinbonus == 10);
 		
+		//buyCard works, buys a card and adds that card to discard pile
 		coin = 100;
 		buyCard(colonypile, 10, discardsize);
 		assertTrue(discard[discardsize].num == 8); //colony ID is 8
