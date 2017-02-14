@@ -150,7 +150,7 @@ public class Player{
       int choice = 0;
       if(ISBOT){
         // Bots play the first card of the correct type
-        choice = rand.nextInt(20);
+        choice = rand.nextInt(20)+1;
       }else choice = scan.nextInt();
       if( choice>0 && choice<=availCards )
         buyCard(Card.values()[choice-1]);
@@ -186,7 +186,7 @@ public class Player{
     }
     System.out.format("Please enter the card number (1-%d) you want to play,"+
       " or 0 to cancel: ", hand.size());
-    int choice = scan.nextInt();
+    int choice = scan.nextInt()-1;
     if( choice>0 && choice<hand.size() ){
       Card c = hand.remove(choice);
       if(DEBUGGING) System.out.format("%s chose %s.\n", playerName, c);
