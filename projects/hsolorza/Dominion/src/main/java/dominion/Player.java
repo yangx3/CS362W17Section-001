@@ -1,9 +1,10 @@
 package dominion;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.Random;
 
 public class Player implements Cloneable{
 	List<Card> hand = new ArrayList<Card>();// int hand[MAX_PLAYERS][MAX_HAND];
@@ -14,6 +15,7 @@ public class Player implements Cloneable{
 	List<Card> playedCards = new ArrayList<Card>();
 
 	String player_username;
+	private Random gen = new Random();
 
 	int numActions;
 	int numBuys;
@@ -35,7 +37,7 @@ public class Player implements Cloneable{
 			// System.out.println("reshuffle the deck of the player "
 			// 		+ player_username + " to draw FIVE cards");
 			while (discard.size() > 0) {
-				int ndx = (int) Randomness.nextRandomInt(discard.size());
+				int ndx = gen.nextInt(discard.size());
 				// Move discard to deck
 				deck.add(discard.remove(ndx));
 			}
@@ -55,7 +57,7 @@ public class Player implements Cloneable{
 			// System.out.println("reshuffle the deck of the player "
 			// 		+ player_username + " to draw FIVE cards");
 			while (discard.size() > 0) {
-				int ndx = (int) Randomness.nextRandomInt(discard.size());
+				int ndx = gen.nextInt(discard.size());
 				// Move discard to deck
 				deck.add(discard.remove(ndx));
 			}
@@ -149,6 +151,7 @@ public class Player implements Cloneable{
 					}
 					else if(coins < boughtCard.getCost()){
 						System.out.println("You cannot afford that card");
+						return;
 					}
 					else{
 						coins -= boughtCard.getCost();
