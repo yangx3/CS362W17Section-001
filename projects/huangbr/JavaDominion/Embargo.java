@@ -1,11 +1,11 @@
-import java.util.*
+import java.util.*;
 
 public class Embargo extends Card
 {
 	public Embargo()
 	{
 		name = "Embargo";
-		Type = Action;
+		type = cardType.Action;
 		cost = 2;
 		value = 0;
 		points = 0;
@@ -15,10 +15,11 @@ public class Embargo extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		player.money += 2;
-		game.getRandomKingdomCard().embargo++;
+		game.getRandomKingdomCard().embargos++;
 
-		player.trashCard(player.getCardIndexbyName(player.hand, "Embargo");
+		player.trashCard(player.getCardIndexbyName(player.hand, "Embargo"));
 	}
 }
 

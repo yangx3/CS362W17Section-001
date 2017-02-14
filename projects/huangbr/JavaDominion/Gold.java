@@ -13,8 +13,7 @@ public class Gold extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
-		player.money += value;
-		discard(game, player, name);
+		return;
 	}
 }
 

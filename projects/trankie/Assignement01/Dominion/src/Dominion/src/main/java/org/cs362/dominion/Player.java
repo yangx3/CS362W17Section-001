@@ -1,8 +1,9 @@
 package org.cs362.dominion;
+
 import java.util.*;
+import java.util.Random;
 
 public class Player {
-	Scanner inp = new Scanner(System.in);
 	long seed = System.nanoTime();
 	List<Card> hand = new ArrayList<Card>();
 	LinkedList<Card> deck = new LinkedList<Card>();
@@ -41,12 +42,13 @@ public class Player {
 	public void buildDeck(){
 		this.deck = new LinkedList<Card>(Card.createCards());
 	}
-	// Testing 
+	// Testing
+	/*
 	public void printDeck(){
 		System.out.print("\nGoing to print the Deck now");
 		for (Card card:this.deck)
 			System.out.print(card.toString());
-	}
+	}*/
 	// Testing
 	public void printHand(){
 		int i = 1;
@@ -103,11 +105,12 @@ public class Player {
 		this.Buys = 1;
 		this.Coins = 0;
 	}
-	public void activateCard(int num, DominionBoard board, List<Card> hand2, List<Card> discard2){
-		Card temp = this.hand.get(num-1);
+	public void activateCard(Card c, DominionBoard board, Player player2){
+		Random rand = new Random();
+		Card temp = c;
 		Card act;
 		int counter=0, tempNum, i = 1, tempNum2;
-		this.hand.remove(num-1);
+		this.hand.remove(temp);
 		if(temp.getCardName() == Card.CardName.Laboratory){
 			if(this.deck.isEmpty() && this.discard.isEmpty()){
 				System.out.print("\nYou have no more cards to draw from your deck!");
@@ -153,35 +156,36 @@ public class Player {
 				System.out.print("\nNo more silver to add to deck");
 			else{
 				System.out.print("\nAdding silver to top of deck");
-				act = board.buyCards.get(6);
+				act = board.buyCards.get(5);
 				this.deck.addFirst(act);
 			}
-			for(Card card:hand2){
+			for(Card card:player2.hand){
 				if(card.checkTypeVictory() == 1){
 					System.out.print("\nRemoved "+ card.getCardName()+" from other player's hand");
-					discard2.add(card);
-					hand2.remove(counter);
+					player2.discard.add(card);
+					player2.hand.remove(counter);
 					return;
 				}
 				else
 					counter++;
 			}
 			System.out.print("\nNo victory cards in other's hand, showing hand");
-			for(Card card:hand2){
+			for(Card card:player2.hand){
 				System.out.print(card.toString(i));
 				i++;
 			}
 		}
 		else if(temp.getCardName() == Card.CardName.Cellar){
-			System.out.print("\nHow many cards would you like to discard: ");
-			tempNum = inp.nextInt();
+			tempNum = rand.nextInt(this.hand.size());
+			System.out.println("\nDiscarding " + tempNum + " cards");
 			this.printHand();
+			tempNum++;
 			for(int j = 0; j < tempNum; j++){
-				System.out.print("\nSelect which cards you would like to discard: ");
-				tempNum2 = inp.nextInt();
-				act = this.hand.get(tempNum2-1);
+				tempNum2 = rand.nextInt(this.hand.size());
+				act = this.hand.get(tempNum2);
+				System.out.println("\nDiscarding: "+ act.getCardName());
 				this.discard.add(act);
-				this.hand.remove(tempNum2-1);
+				this.hand.remove(tempNum2);
 				this.printHand();
 			}
 			System.out.print("\nDrawing "+ tempNum + " new cards");
@@ -201,19 +205,17 @@ public class Player {
 			System.out.print("\nAdded 2 Coins and discarded entire deck to discard pile");
 		}
 		else if(temp.getCardName() == Card.CardName.Chapel){
-			for(int j = 0; j < 4; j++){
+			tempNum2 = rand.nextInt(5);
+			for(int j = 0; j < tempNum2; j++){
 				this.printHand();
-				System.out.print("\nWhich card do you want to trash (Enter 0 to end this action): ");
-				tempNum = inp.nextInt();
+				tempNum = rand.nextInt(this.hand.size());
 				if(tempNum == 0){
 					this.discard.add(temp);
 					return;
 				}
-				else{
-					act = this.hand.remove(tempNum-1);
-					System.out.print("\nTrashing "+ act.getCardName());
+				act = this.hand.remove(tempNum);
+				System.out.println("Trashing "+ act.getCardName());
 				}
-			}
 			this.discard.add(temp);
 		}
 		else if(temp.getCardName() == Card.CardName.Council_Room){
@@ -222,23 +224,34 @@ public class Player {
 			for(int j = 0; j < 4; j++){
 				this.drawCard();
 			}
-			act = discard2.remove(0);
-			hand2.add(act);
+			act = player2.deck.remove(0);
+			player2.hand.add(act);
 			this.discard.add(temp);
 		}
 		else if(temp.getCardName() == Card.CardName.Feast){
 			this.setCoins(5);
-			this.setBuys(1);
-			this.discard.add(temp);
+			while(true) {
+				tempNum = rand.nextInt(19);
+				if (board.buyingCard(tempNum + 1) == 0)
+					continue;
+				if (board.buyCards.get(tempNum).getCost() > this.getCoins())
+					continue;
+				temp = board.buyCards.get(tempNum);
+				System.out.print("\nYou just bought " + temp.getCardName() + "!");
+				this.discard.add(temp);
+				this.setCoins((-1) * temp.getCost());
+				break;
+			}
+			this.setCoins((-1)*this.getCoins());
 		}
 		else if(temp.getCardName() == Card.CardName.Library){
 			tempNum = this.hand.size();
 			while(true){
 				this.drawCard();
-				act = this.hand.get(tempNum-1);
+				act = this.hand.get(tempNum);
 				if(act.getType() == Card.Type.ACTION){
 					this.discard.add(act);
-					this.hand.remove(tempNum-1);
+					this.hand.remove(tempNum);
 				}
 				else
 					tempNum++;
@@ -248,13 +261,13 @@ public class Player {
 			this.discard.add(temp);
 		}
 		else if(temp.getCardName() == Card.CardName.Smithy){
-			System.out.println("Drawing 3 cards!");
+			System.out.println("\nDrawing 3 cards!");
 			for(int j = 0; j < 3; j++)
 				this.drawCard();
 			this.discard.add(temp);
 		}
 		else if(temp.getCardName() == Card.CardName.Market){
-			System.out.println("+1 Card, +1 Action, +1 Buy, +1 Coin");
+			System.out.println("\n+1 Card, +1 Action, +1 Buy, +1 Coin");
 			this.drawCard();
 			this.setActions(1);
 			this.setBuys(1);
@@ -262,7 +275,7 @@ public class Player {
 			this.discard.add(temp);
 		}
 		else if(temp.getCardName() == Card.CardName.Village){
-			System.out.println("+2 Actions, +1 Card");
+			System.out.println("\n+2 Actions, +1 Card");
 			this.setActions(2);
 			this.drawCard();
 		}

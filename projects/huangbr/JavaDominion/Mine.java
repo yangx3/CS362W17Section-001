@@ -12,6 +12,7 @@ public class Mine extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		int copperInHand = player.getCardIndexbyName(player.hand, "Copper");
 		if(copperInHand == -1)
 		{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="5" time="0.563" errors="0" skipped="0" tests="12" name="cs362.dominion.CardTest">
+<testsuite failures="5" time="0.053" errors="0" skipped="0" tests="12" name="cs362.dominion.CardTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/amd64"/>
@@ -61,7 +61,7 @@
     <property name="project.build.outputDirectory" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/generated-classes/cobertura"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.531" classname="cs362.dominion.CardTest" name="test10">
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test10">
     <failure message="expected:&lt;4&gt; but was:&lt;6&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;6&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:743)
@@ -176,10 +176,10 @@ hand buys = 1, expected = 2
 hand discard = 5
 </system-out>
   </testcase>
-  <testcase time="0.002" classname="cs362.dominion.CardTest" name="test11"/>
+  <testcase time="0.003" classname="cs362.dominion.CardTest" name="test11"/>
   <testcase time="0.003" classname="cs362.dominion.CardTest" name="test0"/>
   <testcase time="0.003" classname="cs362.dominion.CardTest" name="test1"/>
-  <testcase time="0.002" classname="cs362.dominion.CardTest" name="test2"/>
+  <testcase time="0.004" classname="cs362.dominion.CardTest" name="test2"/>
   <testcase time="0.004" classname="cs362.dominion.CardTest" name="test3">
     <failure message="expected:&lt;1&gt; but was:&lt;2&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;2&gt;
 	at org.junit.Assert.fail(Assert.java:88)
@@ -273,7 +273,7 @@ hand buys = 1, expected= 2
 hand discard = 1
 </system-out>
   </testcase>
-  <testcase time="0.003" classname="cs362.dominion.CardTest" name="test4">
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test4">
     <failure message="expected:&lt;5&gt; but was:&lt;4&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;5&gt; but was:&lt;4&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:743)
@@ -364,8 +364,8 @@ hand buys = 1
 hand discard = 0
 </system-out>
   </testcase>
-  <testcase time="0.002" classname="cs362.dominion.CardTest" name="test5"/>
-  <testcase time="0.003" classname="cs362.dominion.CardTest" name="test6">
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test5"/>
+  <testcase time="0.006" classname="cs362.dominion.CardTest" name="test6">
     <failure message="expected:&lt;11&gt; but was:&lt;10&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;11&gt; but was:&lt;10&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:743)
@@ -466,8 +466,8 @@ hand buys = 2, expected = 2
 hand discard = 0
 </system-out>
   </testcase>
-  <testcase time="0.002" classname="cs362.dominion.CardTest" name="test7"/>
-  <testcase time="0.003" classname="cs362.dominion.CardTest" name="test8"/>
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test7"/>
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test8"/>
   <testcase time="0.005" classname="cs362.dominion.CardTest" name="test9">
     <failure message="expected:&lt;0&gt; but was:&lt;2&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;0&gt; but was:&lt;2&gt;
 	at org.junit.Assert.fail(Assert.java:88)

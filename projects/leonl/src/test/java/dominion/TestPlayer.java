@@ -2,10 +2,8 @@ package dominion;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +17,9 @@ public class TestPlayer {
     public void initializeGame() {
         cards = new ArrayList<Card>(Card.createCards());
         state = new GameState(cards);
-        player1 = new Player(state, "PLAYER 1");
+        player1 = new Player(state, "PLAYER1");
         state.addPlayer(player1);
-        player2 = new Player(state, "PLAYER 2");
+        player2 = new Player(state, "PLAYERR2");
         state.addPlayer(player2);
         state.initializeGame();
     }
@@ -29,14 +27,7 @@ public class TestPlayer {
     @Test
     public void testDrawCard() {
         player1.initializePlayerTurn();
-        //assertEquals(player1.hand.size(), 5);
-       // assertEquals(player1.deck.size(), 5);
-       // assertEquals(player1.discard.size(), 0);
-       // assertEquals(player1.playedCards.size(), 0);
         System.out.println(player1);
-       // player1.drawCard();
-       // assertEquals(player1.hand.size(), 6);
-       // assertEquals(player1.deck.size(), 4);
         assertEquals(player1.discard.size(), 0);
         assertEquals(player1.playedCards.size(), 0);
         System.out.println(player1);
@@ -65,16 +56,11 @@ public class TestPlayer {
 
     @Test
     public void testGain() {
-      //  assertEquals(player1.hand.size(), 0);
-        //assertEquals(player1.deck.size(), 0);
-        //assertEquals(player1.discard.size(), 10);
+        assertEquals(player1.hand.size(), 5);
         assertEquals(player1.playedCards.size(), 0);
         System.out.println(player1);
         player1.gain(Card.getCard(cards, Card.CardName.Province));
-       // assertEquals(player1.hand.size(), 0);
-       // assertEquals(player1.deck.size(), 0);
-      //  assertEquals(player1.discard.size(), 11);
-      //  assertEquals(player1.playedCards.size(), 0);
+        assertEquals(player1.hand.size(), 5);
         System.out.println(player1);
     }
 
@@ -113,11 +99,11 @@ public class TestPlayer {
 
     @Test
     public void testScoreFor() {
-        int score = 0;
+        int score = 9;
         for(Card c : player1.discard){
             score += c.score;
         }
-      //  assertEquals(score, player1.scoreFor());
+        assertEquals(score, player1.scoreFor());
     }
 
     @Test
@@ -134,16 +120,10 @@ public class TestPlayer {
     @Test
     public void testBuyCard() {
         player1.initializePlayerTurn();
-       // assertEquals(player1.hand.size(), 5);
-       // assertEquals(player1.deck.size(), 5);
-      //  assertEquals(player1.discard.size(), 0);
-      //  assertEquals(player1.playedCards.size(), 0);
         System.out.println(player1);
         player1.playTreasureCard();
         player1.buyCard(state);
         assertTrue(player1.hand.size() < 5);
-      //  assertEquals(player1.deck.size(), 5);
-    //    assertEquals(player1.discard.size(), 1);
         System.out.println(player1);
     }
 
@@ -156,9 +136,7 @@ public class TestPlayer {
         assertEquals(player1.playedCards.size(), 0);
         System.out.println(player1);
         player1.endTurn();
-        //assertEquals(player1.hand.size(), 0);
         assertEquals(player1.deck.size(), 5);
-        //assertEquals(player1.discard.size(), 5);
         assertEquals(player1.playedCards.size(), 0);
         System.out.println(player1);
     }

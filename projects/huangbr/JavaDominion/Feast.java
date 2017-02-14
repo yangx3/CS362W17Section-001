@@ -13,6 +13,7 @@ public class Feast extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		boolean goodCard = false;
 		while(goodCard == false)
 		{

@@ -13,6 +13,7 @@ public class Cutpurse extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		player.money += 2;
 		for(int i=0; i < game.players.length; i++)
 		{

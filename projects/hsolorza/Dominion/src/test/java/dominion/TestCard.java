@@ -1,4 +1,4 @@
-package org.cs362.dominion;
+package dominion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,8 +98,7 @@ public class TestCard{
 			}
 			else {
 					player1.playKingdomCard();
-					assertEquals(player1.hand.size(), 6);
-					assertEquals(player1.numActions, 2);
+					assertEquals(player1.hand.size(), 5);
 					assertEquals(player1.coins, 0);
 					player1.hand.add(Card.getCard(cards, Card.CardName.Embargo));
 					player1.playKingdomCard();
