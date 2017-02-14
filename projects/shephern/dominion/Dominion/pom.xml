@@ -33,7 +33,7 @@
 					<manifest>
 						<addClasspath>true</addClasspath>
 						<classpathPrefix>lib/</classpathPrefix>
-						<mainClass>org.cs362.dominion.PlayDominion</mainClass>
+						<mainClass>dominion.PlayDominion</mainClass>
 					</manifest>
 				</archive>
 			</configuration>
