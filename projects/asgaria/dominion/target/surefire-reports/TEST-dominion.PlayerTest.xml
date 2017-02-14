@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="dominion.PlayerTest" time="0.074" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="dominion.PlayerTest" time="0.135" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib"/>
@@ -63,7 +63,7 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="dominion.PlayerTest" name="testPlayTreasureCardsBranchesTest" time="0.004"/>
-  <testcase classname="dominion.PlayerTest" name="testWholeGame" time="0.067"/>
-  <testcase classname="dominion.PlayerTest" name="testPlayKingdomCardsBranchesTest" time="0.002"/>
+  <testcase classname="dominion.PlayerTest" name="testWholeGame" time="0.11"/>
+  <testcase classname="dominion.PlayerTest" name="testPlayKingdomCardsBranchesTest" time="0.02"/>
   <testcase classname="dominion.PlayerTest" name="testBuyCardsBranchesTest" time="0.001"/>
 </testsuite>
