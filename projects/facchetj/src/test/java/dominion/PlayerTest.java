@@ -156,7 +156,7 @@ public class PlayerTest {
 		int stock = joueur.deck.size();
 		joueur.play(joueur.hand.get(joueur.hand.size() - 1));
 		assertEquals(joueur.deck.size(), stock - 1);
-		assertEquals(joueur.getAction(), 2);
+		assertEquals(joueur.getAction(), 3);
 	}
 
 	@Test
@@ -266,7 +266,7 @@ public class PlayerTest {
 		joueur.hand.add(new Card(1));
 		joueur.playTreasure();
 		assertEquals(joueur.achat(2, plateau), false);
-		assertEquals(joueur.achat(6, plateau), false);
+		assertEquals(joueur.achat(6, plateau), true);
 	}
 
 	@Test
@@ -279,9 +279,11 @@ public class PlayerTest {
 		joueur.defausse.add(new Card(1));
 		joueur.defausse.add(new Card(1));
 		joueur.defausse.add(new Card(1));
+		assertEquals(0, joueur.poubelle.size());
 		joueur.clear();
 		assertEquals(joueur.defausse.size(), 0);
 		assertEquals(joueur.hand.size(), 0);
+		assertEquals(8, joueur.poubelle.size());
 
 	}
 

@@ -287,7 +287,7 @@ public class Player {
 			}
 			break;
 		case 18:
-			this.nbAction = +2;
+			this.nbAction += 2;
 			draw();
 			break;
 		case 19:
@@ -333,7 +333,7 @@ public class Player {
 	}
 
 	public boolean achat(int position, Board board) {
-		if (board.getCards()[position].getType() != "curse" && this.argent >= board.getCards()[position].getPrix()) {
+		if (this.argent >= board.getCards()[position].getPrix()) {
 			if (board.getAvailability(position) > 0) {
 				this.defausse.add(this.gameBoard.giveCard(position));
 				this.argent -= board.getCards()[position].getPrix();

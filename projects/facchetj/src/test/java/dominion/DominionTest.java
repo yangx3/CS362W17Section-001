@@ -62,6 +62,6 @@ public class DominionTest {
 		String[] arg = new String[1];
 		arg[0] = "";
 		main.main(arg);
-		;
+		
 	}
 }
