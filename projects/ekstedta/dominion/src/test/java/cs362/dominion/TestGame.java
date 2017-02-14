@@ -259,8 +259,8 @@ public class TestGame {
         game.endTurn();
 
         // What if coinPos > pos?
-        pos = game.takeForTesting(1, Card.Mine);
-        coinPos = game.takeForTesting(1, Card.Silver);
+        pos = game.takeForTesting(0, Card.Mine);
+        coinPos = game.takeForTesting(0, Card.Silver);
         game.playAction(pos, coinPos, Card.Gold);
     }
 
