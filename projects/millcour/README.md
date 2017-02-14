@@ -1,11 +1,11 @@
 How to compile and run files:
 
-Compile
-*mvn compile
-*mvn package
+Compile:
+mvn compile
+mvn package
 
-Run
-*mvn test
+Run:
+mvn test
 
-Code coverage
-*mvn cobertura:cobertura
+Code coverage:
+mvn cobertura:cobertura
