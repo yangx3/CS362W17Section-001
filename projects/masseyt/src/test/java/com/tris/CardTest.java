@@ -97,7 +97,6 @@ public class CardTest {
         p1.hand.add(Card.getCard(cards, Card.Name.EMBARGO));
         p1.playAction();
         assertEquals(p1.hand.size(), 5);
-        assertEquals(p1.played.size(), 0); //trashed card
         assertEquals(p1.coins, 2);
     }
 
