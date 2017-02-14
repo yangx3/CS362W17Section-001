@@ -3,6 +3,7 @@ package dominion;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class Card implements Comparable<Card>{
 
@@ -41,9 +42,9 @@ public final class Card implements Comparable<Card>{
 			this.name = name;
 		}
 
-		public String getName() {
-			return this.name;
-		}
+		//public String getName() {
+		//	return this.name;
+		//}
 	}
 	/**
 	 * @param enum CardName the name of the card (GOLD, SILVER, COPPER, 
@@ -55,6 +56,8 @@ public final class Card implements Comparable<Card>{
 	private final Type realType;
 	private final CardName cardName;
 	private final int cost, score, treasureValue;
+
+	public int getCost() { return this.cost; }
 
 	Card(CardName cardName, Type type, int cost, int score, int treasureValue) {
 		this.cost = cost;
@@ -103,31 +106,81 @@ public final class Card implements Comparable<Card>{
 		ret.add(o);
 
 		/** The Kingdom cards , it should more than 10 cards*/
+		// 2* Cards
 		o = new Card(CardName.CELLAR, Type.ACTION, 2, 0, 0);
 		ret.add(o);
-        o = new Card(CardName.MARKET, Type.ACTION, 5, 0, 0);
+		o = new Card(CardName.CHAPEL, Type.ACTION, 2, 0, 0);
+		ret.add(o);
+        o = new Card(CardName.MOAT, Type.ACTION, 2, 0, 0);
+        ret.add(o);
+
+        // 3* Cards
+        o = new Card(CardName.HARBINGER, Type.ACTION, 3, 0, 0);
         ret.add(o);
         o = new Card(CardName.MERCHANT, Type.ACTION, 3, 0, 0);
         ret.add(o);
+        o = new Card(CardName.VASSAL, Type.ACTION, 3, 0, 0);
+        ret.add(o);
+        o = new Card(CardName.VILLAGE,Type.ACTION,3,0,0);
+        ret.add(o);
+        o = new Card(CardName.WORKSHOP, Type.ACTION, 3, 0 , 0);
+        ret.add(o);
+
+
+        // 4* Cards
+        o = new Card(CardName.BUREAUCRAT, Type.ACTION, 4, 0, 0);
+        ret.add(o);
+        o = new Card(CardName.GARDENS, Type.VICTORY, 4, 0, 0);
+        ret.add(o);
         o = new Card(CardName.MILITIA, Type.ACTION, 4, 0, 0);
         ret.add(o);
-        o = new Card(CardName.MINE, Type.ACTION, 5, 0, 0);
+        o = new Card(CardName.MONEYLENDER, Type.ACTION, 4, 0, 0);
         ret.add(o);
-        o = new Card(CardName.MOAT, Type.ACTION, 2, 0, 0);
+        o = new Card(CardName.POACHER, Type.ACTION, 4, 0, 0);
         ret.add(o);
         o = new Card(CardName.REMODEL, Type.ACTION, 4, 0, 0);
         ret.add(o);
 		o = new Card(CardName.SMITHY,Type.ACTION,4,0,0);
-		ret.add(o);	
-		o = new Card(CardName.VILLAGE,Type.ACTION,3,0,0);
 		ret.add(o);
-		o = new Card(CardName.WORKSHOP, Type.ACTION, 3, 0 , 0);
+		o = new Card(CardName.THRONE_ROOM, Type.ACTION, 4, 0, 0);
 		ret.add(o);
+
+		// 5* Cards
+        o = new Card(CardName.BANDIT, Type.ACTION, 5, 0, 0);
+        ret.add(o);
+        o = new Card(CardName.COUNCIL_ROOM, Type.ACTION, 5, 0, 0);
+        ret.add(o);
+        o = new Card(CardName.FESTIVAL, Type.ACTION, 5, 0 ,0);
+        ret.add(o);
+        o = new Card(CardName.LABORATORY, Type.ACTION, 5, 0, 0);
+        ret.add(o);
+        o = new Card(CardName.LIBRARY, Type.ACTION, 5, 0, 0);
+        ret.add(o);
+        o = new Card(CardName.MARKET, Type.ACTION, 5, 0, 0);
+        ret.add(o);
+        o = new Card(CardName.MINE, Type.ACTION, 5, 0, 0);
+        ret.add(o);
+        o = new Card(CardName.SENTRY, Type.ACTION, 5, 0, 0);
+        ret.add(o);
+        o = new Card(CardName.WITCH, Type.ACTION, 5, 0, 0);
+        ret.add(o);
+
+        // 6* Cards
+        o = new Card(CardName.ARTISAN, Type.ACTION, 5, 0, 0);
+        ret.add(o);
 
 		return ret;
 	}
+
+	public List<Card> getByType(List<Card> cards, Type type) {
+	    List<Card> matchingCards = cards.stream()
+                .filter(card -> card.getType() == type)
+                .collect(Collectors.toList());
+
+	    return matchingCards;
+    }
 	
-	public void play(Player player, GameState state, ArrayList<Card> cards, Integer numActions) {
+	public void play(Player player, GameState state, List<Card> cards, Integer numActions) {
 		
 		switch(this.cardName) {
             case CELLAR:
@@ -146,12 +199,10 @@ public final class Card implements Comparable<Card>{
             case MOAT:
                 return;
 
+			// TODO: Implement Harbinger Card
             case HARBINGER:
                 player.drawCard();
                 player.numActions++;
-                if(cards.size() == 1) {
-                    player.deck.add(player.discard.remove(card));
-                }
                 return;
 
             // TODO: Implement Merchant Card
@@ -300,12 +351,18 @@ public final class Card implements Comparable<Card>{
 
 	@Override
 	public boolean equals(Object obj) {
-		if(this == obj) return true;
-		if(!super.equals(obj)) return false;
-		if(!(obj instanceof Card)) return false;
+        if(this == obj) return true;
+        if(!(obj instanceof Card)) return false;
 
-		return cardName.equals(((Card) obj).cardName);
+        return cardName.equals(((Card) obj).cardName);
 	}
+
+	@Override
+    public int hashCode() {
+	    int hash = 5;
+	    hash = hash + (this.cardName != null ? this.cardName.hashCode() : 0);
+	    return hash;
+    }
 
 	public int compareTo(Card o) {
 		// TODO Auto-generated method stub
