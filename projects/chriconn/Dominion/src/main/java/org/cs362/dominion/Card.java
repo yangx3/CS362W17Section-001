@@ -133,6 +133,7 @@ public class Card {
             victoryPoints  =  -1;
             description    = "Counts as a negative victory point";
             type.add("curse");
+            type.add("victory");
         }
         else if (setName.equals("ambassador")) {
             name           = "ambassador";
