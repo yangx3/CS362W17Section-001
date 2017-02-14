@@ -127,31 +127,48 @@ public final class Card implements Comparable<Card>{
 		return ret;
 	}
 	
-	public void play(Player player, GameState state) {
+	public void play(Player player, GameState state, ArrayList<Card> cards, Integer numActions) {
 		
 		switch(this.cardName) {
-		    // TODO: Implement Cellar Card
             case CELLAR:
+                player.numActions++;
+                cards.forEach(card -> {
+                    player.hand.remove(card);
+                    player.drawCard();
+                });
                 return;
 
-            // TODO: Implement Chapel Card
             case CHAPEL:
+                cards.forEach(card -> player.hand.remove(card));
                 return;
 
             // TODO: Implement Moat Card
             case MOAT:
                 return;
 
-            // TODO: Implement Harbinger Card
             case HARBINGER:
+                player.drawCard();
+                player.numActions++;
+                if(cards.size() == 1) {
+                    player.deck.add(player.discard.remove(card));
+                }
                 return;
 
             // TODO: Implement Merchant Card
             case MERCHANT:
+                player.drawCard();
+                player.numActions++;
+                // TODO: "The first time you play a Silver this turn, +1 coin"
                 return;
 
             // TODO: Implement Vassal Card
             case VASSAL:
+                player.coins += 2;
+                Card card = player.deck.pop();
+                if(card.getType() == Type.ACTION) {
+                    // TODO: "You *may* play it"
+                }
+                player.discard(card);
                 return;
 
             case VILLAGE:
@@ -159,8 +176,10 @@ public final class Card implements Comparable<Card>{
                 player.numActions += 2;
                 return;
 
-            // TODO: Implement Workshop Card
             case WORKSHOP:
+                if(cards.size() == 1 && cards.get(0).cost <= 4) {
+                    player.hand.add(cards.get(0));
+                }
                 return;
 
             // TODO: Implement Bureaucrat Card

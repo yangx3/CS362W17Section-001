@@ -21,7 +21,7 @@ public class PlayDominion {
 		// System.out.println("Initialization DominionBoard:\n " + state.toString()); 
 
 		Player player = new Player(state, "player-1");
-	  // player.printStateGame();
+	  	// player.printStateGame();
 		player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
 		player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
 

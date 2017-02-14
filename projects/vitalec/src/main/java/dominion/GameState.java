@@ -31,7 +31,7 @@ public class GameState {
 
   public final List < Player > players = new ArrayList < Player > ();
   public final List < Card > cards;
-  public HashMap < Card, Integer > gameBoard = new HashMap < Card, Integer > ();
+  public Supply supply;
 
 
   public GameState(List < Card > cards) {
