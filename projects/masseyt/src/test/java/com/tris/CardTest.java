@@ -61,19 +61,12 @@ public class CardTest {
     }
 
     @Test
-    public void testAmbassador() {
-        p1.hand.add(Card.getCard(cards, Card.Name.AMBASSADOR));
-        p1.playAction();
-        assertTrue(p1.hand.size() <= 3);
-    }
-
-    @Test
     public void testBaron() {
         p1.hand.add(Card.getCard(cards, Card.Name.BARON));
         p1.playAction();
         p1.listCards(p1.hand);
-        assertEquals(p1.hand.size(), 4);
-        assertEquals(p1.coins, 4);
+        assertTrue(p1.hand.size() == 4 || p1.hand.size() == 5);
+        assertTrue(p1.coins == 4 || p1.coins == 0);
         assertEquals(p1.played.size(), 1);
     }
 
@@ -104,7 +97,6 @@ public class CardTest {
         p1.hand.add(Card.getCard(cards, Card.Name.EMBARGO));
         p1.playAction();
         assertEquals(p1.hand.size(), 5);
-        assertEquals(p1.played.size(), 0); //trashed card
         assertEquals(p1.coins, 2);
     }
 
@@ -113,7 +105,6 @@ public class CardTest {
         p1.hand.add(Card.getCard(cards, Card.Name.FEAST));
         p1.playAction();
         assertEquals(p1.hand.size(), 5);
-        assertEquals(p1.played.size(), 0); //trashed card
     }
 
     @Test

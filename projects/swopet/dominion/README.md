@@ -8,3 +8,7 @@ mvn test
 To run with code coverage:
 add cobertura dependency to pom.xml
 mvn cobertura:cobertura
+
+If you were absolutely dying to run the code without the testing, in the folder containing all of the .java source files, run:
+javac *.java
+java PlayDom 2
