@@ -1,5 +1,5 @@
 # Please let me know if there are any problems making this work properly I spent probably 8 hours screwing with maven 
-
+# Send me an email at dringb@oregonstate.edu and I can help you with any confusion
 ## To get it to run the simple program I had to copy it to my personal repository
 Link to my personal Repo that has the Dominion files : https://github.com/El-Dringo-Brannde/CS362_SoftwareEngineeringII/tree/master/TurnInHW1
 
