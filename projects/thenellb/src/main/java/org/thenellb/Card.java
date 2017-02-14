@@ -17,6 +17,7 @@ public abstract class Card {
     protected int plusCardValue;        // number of +Cards drawn
     protected int cost;                 // how many coins it costs to buy
     protected String cardType;
+    protected int plusDiscardValue;
 
 
     //functions
@@ -35,7 +36,7 @@ public abstract class Card {
         this.cardType = cardType;
     }
     public Card(){
-
+        //no default
     }
 
 
@@ -82,10 +83,11 @@ public abstract class Card {
         System.out.println("Card type:  " + cardType + "\n");
     }
 
-    public void activate() {
+    public int activate() {
         System.out.println("Playing the card:  " + cardName);
 
         //add things that will allow me to look through deck once deck is made
+        return 0;
     }
 
 

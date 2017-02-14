@@ -5,12 +5,14 @@ package org.thenellb;
 // All cards will now have same format
 
 
+
+
 public class Cellar extends Card {
 
 
 //constructor
-public Cellar() {
-        cardName ="";
+    public Cellar() {
+        cardName ="Cellar";
         text =    "";    // official description from dominion website
         victoryValue = 0;         // number of Victory points the card gives
         plusBuyValue = 0;         // number of +Buys the card gives
@@ -19,15 +21,11 @@ public Cellar() {
         plusCardValue = 0;        // number of +Cards drawn
         cost = 2;                 // how many coins it costs to buy
         cardType = "ACTION";
+        plusDiscardValue = 0;
+    }
+    public int activate() {
+        System.out.println("Playing the card:  " + cardName+"\n");
+        return 3;
 
-        }
-public void activate() {
-        System.out.println("Playing the card:  " + cardName);
-
-        //add things that will allow me to look through deck once deck is made
-        }
-
-
-
-
-        }
+    }
+}

@@ -23,8 +23,18 @@ public class TestDeck {
 
             System.out.println("Card at index "+q +" is " + myDeck.cardDeck.get(q).get_cardName());
         }
+        for (int q = 0; q<10; q++){ //checking again to see if it reshuffles just fine
+            myDeck.addCardToDiscard(myDeck.cardDeck.get(q));
+        }
+        myDeck.shuffle();
+        for (int q = 0; q<11; q++) {    //trying to draw more cards than there are in deck, results in reshuffle
+            myDeck.addCardToDiscard(myDeck.drawCard());
 
-
+        }
 
     }
+
+
+
+
 }

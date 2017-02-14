@@ -55,13 +55,44 @@ public class Deck {
         cardDeck.clear();   //removes all held elements in card deck
         Collections.shuffle(discard);
         for (int i=0; i<discardSize; i++) { //copies card from shuffled discard pile to empty deck
+            System.out.println("Index inside loop:  "+ i+"\n");
+            System.out.println("Size of discard:  "+ discard.size()+"\n");
             addCardToDeck(discard.get(i));
+
         }
         discard.clear();                    //clears discard pile
+        deckIndex=0;
     }
     public Card drawCard(){
+
+        if (deckIndex == deckSize)
+            shuffle();
         return cardDeck.get(deckIndex++);
     }
+
+    public int tallyVictoryPoints() {
+        int total=0;
+        shuffle();
+        for (int i=0; i<cardDeck.size(); i++){
+            total += cardDeck.get(i).get_victoryValue();
+        }
+        return total;
+
+    }
+
+    public Card scanForTreasure(){
+        for (int j=deckIndex; j<deckSize; j++)
+            if (cardDeck.get(j).get_cardType() == "TREASURE")
+                return drawCard();
+            else {
+                System.out.println("Card being discarded: \n");
+                cardDeck.get(deckIndex).printCard();
+                addCardToDiscard(drawCard());
+            }
+    return null;
+    }
+
+
 
 
 

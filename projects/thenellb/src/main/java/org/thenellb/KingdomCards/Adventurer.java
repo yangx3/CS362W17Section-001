@@ -19,10 +19,12 @@ public class Adventurer extends Card {
         plusCardValue = 0;        // number of +Cards drawn
         cost = 6;                 // how many coins it costs to buy
         cardType = "ACTION";
+        plusDiscardValue = 0;
 
     }
-    public void activate() {
+    public int activate() {
         System.out.println("Playing the card:  " + cardName);
+        return 1;
 
         //add things that will allow me to look through deck once deck is made
     }

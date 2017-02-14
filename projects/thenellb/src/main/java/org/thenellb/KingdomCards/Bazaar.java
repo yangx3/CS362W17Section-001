@@ -19,10 +19,11 @@ public class Bazaar extends Card {
         plusCardValue = 1;        // number of +Cards drawn
         cost = 5;                 // how many coins it costs to buy
         cardType = "ACTION";
-
+        plusDiscardValue = 0;
     }
-    public void activate() {
+    public int activate() {
         System.out.println("Playing the card:  " + cardName);
+        return 2;
 
         //add things that will allow me to look through deck once deck is made
     }
