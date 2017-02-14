@@ -139,14 +139,12 @@ public class Game{
 	public boolean checkForEnd(){
 		int numEmpty = 0;
 		if(board.get(2).getPile().size() == 0){
-			System.out.println("PROVINCES EMPTY\n");
 			return false;
 		}else{
 			for(int i=board.size()-1; i>=0; i--){
 				if(board.get(i).getPile().size() == 0){
 					numEmpty++;
 				}if(numEmpty == 3){
-					System.out.println("SPACES ARE EMPTY\n");
 					return false;
 				}		
 			}
@@ -159,7 +157,6 @@ public class Game{
 	public void adventurerAction(int x){
 		int numTreasures = 0;
 		int index;
-		System.out.println("IN ADVENTURER\n");
 		while(numTreasures < 2){
 			index = players.get(x).getDraw().getPile().size() - 1;
 			if(players.get(x).getDraw().getPile().size() == 0){
@@ -178,7 +175,6 @@ public class Game{
 	}
 
 	public void ambassadorAction(int x){
-		System.out.println("IN AMBASSADOR\n");
 		Card.CardName toSearch;
 		Random rand = new Random();
 		int numDiscarded = 0;
@@ -188,7 +184,6 @@ public class Game{
 		System.out.println("Revealing: " + toSearch);
 		for(int i=board.size()-1; i>=0; i--){
 			if(toSearch == board.get(i).getName()){
-				System.out.println("FOUND DECK");
 				toReplace = i;
 				break;
 			}
@@ -206,7 +201,6 @@ public class Game{
 
 
 	public void baronAction(int x){
-		System.out.println("IN BARON\n");
 		players.get(x).setNumBuys(players.get(x).getNumBuys()+1);
 		for(int i=players.get(x).getHand().getPile().size()-1; i>=0; i--){
 			if(players.get(x).getHand().getPile().get(i).getCardName() == Card.CardName.Estate){
@@ -220,7 +214,6 @@ public class Game{
 	}
 
 	public void councilRoomAction(int x){
-		System.out.println("IN COUNCIL ROOM\n");
 		if(players.get(x).getDraw().getPile().size() < 4){
 			players.get(x).getDiscard().shuffleDeck();
 			players.get(x).discardToDraw();
@@ -245,7 +238,6 @@ public class Game{
 	}
 
 	public void cutpurseAction(int x){
-		System.out.println("IN CUTPURSE\n");
 		players.get(x).setCoins(players.get(x).getCoins()+2);
 		int other;
 		if(x==0)
@@ -258,12 +250,11 @@ public class Game{
 				return;
 			}
 		}
-		System.out.println("Revealing Hand With no Copper");
+		System.out.println("Revealing Hand With no Copper:");
 		players.get(other).printHand();
 	}
 
 	public void embargoAction(int x){
-		System.out.println("IN EMBARGO\n");
 		Random rand = new Random();
 		int token = 0;
 		while(token == 3){
@@ -280,7 +271,6 @@ public class Game{
 	}
 
 	public void feastAction(int x){
-		System.out.println("IN FEAST\n");
 		ArrayList<Integer> temp = new ArrayList<Integer>();
 		Random rand = new Random();
 		for(int i=0; i<players.get(x).getDiscard().getPile().size(); i++){
@@ -303,7 +293,6 @@ public class Game{
 	}
 
 	public void greatHallAction(int x){
-		System.out.println("IN GREAT HALL\n");
 		players.get(x).setNumActions(players.get(x).getNumActions()+1);
 		if(players.get(x).getDraw().getPile().size() == 0){
 			players.get(x).getDiscard().shuffleDeck();
@@ -314,7 +303,6 @@ public class Game{
 	}
 
 	public void mineAction(int x){
-		System.out.println("IN MINE\n");
 		Random rand = new Random();
 		ArrayList<Integer> temp = new ArrayList<Integer>();
 		for(int i=0; i<players.get(x).getHand().getPile().size(); i++){
@@ -351,7 +339,6 @@ public class Game{
 	}
 
 	public void smithyAction(int x){
-		System.out.println("IN SMITHY\n");
 		for(int i=0; i<3; i++){
 			if(players.get(x).getDraw().getPile().size() == 0){
 				players.get(x).getDiscard().shuffleDeck();
@@ -363,7 +350,6 @@ public class Game{
 	}
 
 	public void villageAction(int x){
-		System.out.println("IN VILLAGE\n");
 		if(players.get(x).getDraw().getPile().size() == 0){
 			players.get(x).getDiscard().shuffleDeck();
 			players.get(x).discardToDraw();
@@ -373,7 +359,6 @@ public class Game{
 	}
 
 	public void tributeAction(int x){
-		System.out.println("IN TRIBUTE\n");
 		int other;
 		Card toDiscard;
 		if(x==0){
@@ -445,7 +430,7 @@ public class Game{
 		Random rand = new Random();
 		int buy = 0;
 		ArrayList<Integer> temp = new ArrayList<Integer>();
-		System.out.println("Player " + (x+1) + " COINS: " + players.get(x).getCoins() + "\n");
+		System.out.println("Player " + (x+1) + " COINS: " + players.get(x).getCoins());
 		for(int i=board.size()-1; i>=0; i--){
 			if(board.get(i).getPile().size() > 0){
 				if(players.get(x).getCoins() >= board.get(i).getPile().get(0).getCost()){
@@ -458,7 +443,7 @@ public class Game{
 			buy = rand.nextInt(temp.size());
 			System.out.println("Buying: " + board.get(temp.get(buy)).getPile().get(0).getCardName() + "\n");
 			players.get(x).setCoins(players.get(x).getCoins() - board.get(temp.get(buy)).getPile().get(0).getCost());
-			System.out.println("Player " + (x+1) + " COINS: " + players.get(x).getCoins() + "\n");
+			//System.out.println("Player " + (x+1) + " COINS: " + players.get(x).getCoins() + "\n");
 			players.get(x).getHand().getPile().add(board.get(temp.get(buy)).drawCard());
 
 			//Test with embargo implementation
@@ -478,7 +463,7 @@ public class Game{
 			invokeAction(x);
 			players.get(x).setNumActions(players.get(x).getNumActions()-1);
 		}
-		System.out.println("STARTING BUY");
+		System.out.println("STARTING BUY---");
 		players.get(x).printHand();
 		players.get(x).totalCoins();
 		while(players.get(x).getNumBuys() > 0){
@@ -541,10 +526,12 @@ public class Game{
 		}
 		players.get(1).setVictory(points);
 		if(players.get(0).getVictory() > players.get(1).getVictory()){
+			System.out.println("--------GAME OVER----------");
 			System.out.println("Player 1 Points: " + players.get(0).getVictory());
 			System.out.println("Player 2 Points: " + players.get(1).getVictory());
 			System.out.println("Player 1 Wins!");
 		}else{
+			System.out.println("--------GAME OVER----------");
 			System.out.println("Player 1 Points: " + players.get(0).getVictory());
 			System.out.println("Player 2 Points: " + players.get(1).getVictory());
 			System.out.println("Player 2 Wins!");
