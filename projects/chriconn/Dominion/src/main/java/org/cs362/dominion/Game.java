@@ -4,7 +4,7 @@ import java.util.*;
 public class Game {
     public static void main(String[] args) {
         // Game dominion = new Game("Connor", "Billy", "Lily", "Robert");
-        Game dominion = new Game("Connor");
+        Game dominion = new Game("Connor", "Billy", "Lily", "Robert", "Aelin", "Shanna");
         for (int x = 0; x < dominion.numPlayers(); x++) {
             dominion.getPlayer(x).draw(5);
         }
@@ -13,6 +13,9 @@ public class Game {
                 dominion.playerTurn(x);
             }
         }
+
+        dominion.tallyPoints();
+
     }
 
     ArrayList<Deck> bank;
@@ -31,21 +34,25 @@ public class Game {
         bank.add(new Deck(12, new Card("province")));
         bank.add(new Deck(12, new Card("dutchy")));
         bank.add(new Deck(24, new Card("estate")));
-        // cardsInGame.add("ambassador");
-        // cardsInGame.add("baron");
-        // cardsInGame.add("council room");
-        // cardsInGame.add("cutpurse");
-        // cardsInGame.add("embargo");
-        // cardsInGame.add("feast");
-        // cardsInGame.add("gardens");
-        // cardsInGame.add("great hall");
-        // cardsInGame.add("curse");
-        // cardsInGame.add("smithy");
-        // cardsInGame.add("village");
-        // cardsInGame.add("cellar");
-        // cardsInGame.add("salvager");
-        // cardsInGame.add("mine");
-        // cardsInGame.add("witch");
+
+        cardsInGame.add("village");
+        cardsInGame.add("smithy");
+        cardsInGame.add("adventurer");
+        cardsInGame.add("witch");
+        cardsInGame.add("cellar");
+        cardsInGame.add("market");
+        cardsInGame.add("curse");
+        cardsInGame.add("ambassador");
+        cardsInGame.add("baron");
+        cardsInGame.add("council room");
+        cardsInGame.add("cutpurse");
+        cardsInGame.add("embargo");
+        cardsInGame.add("feast");
+        cardsInGame.add("gardens");
+        cardsInGame.add("great hall");
+        cardsInGame.add("mine");
+        cardsInGame.add("salvager");
+
         for (String deckName: cardsInGame) {
             bank.add(new Deck(10, new Card(deckName)));
         }
@@ -187,6 +194,7 @@ public class Game {
                         player.discard(discard);
                         numDraw++;
                         player.showHand();
+                        System.out.println("");
                     }
                 } while (!discard.equals("done"));
                 player.draw(numDraw);
@@ -201,8 +209,11 @@ public class Game {
             else if (card.getName().equals("cutpurse")) {
                 for (int x = 0; x < players.size(); x++) {
                     if (x != num) {
-                        if (getPlayer(x).hand.indexOf("copper") >= 0) {
-                            getPlayer(x).discardAtIndex(getPlayer(x).hand.indexOf("copper"));
+                        if (getPlayer(x).hand.hasCard("copper")) {
+                            // Line below is buggy code
+                            // getPlayer(x).discardAtIndex(getPlayer(x).hand.indexOf("copper"));
+                            // this one is correct
+                            getPlayer(x).discard("copper");
                         }
                     }
                 }
@@ -212,23 +223,23 @@ public class Game {
                 buy(player, randomCard());
             }
             else if (card.getName().equals("mine")) {
-                String treasureName = randomTreasure();
-                boolean again = false;
-                do {
-                    if (treasureName.equals("copper")) {
-                        trash.addCard(player.hand.drawCard("copper"));
-                        player.hand.addCard(getDeck("silver").drawCard());
-                        again = false;
-                    }
-                    else if (treasureName.equals("silver")) {
-                        trash.addCard(player.hand.drawCard("silver"));
-                        player.hand.addCard(getDeck("gold").drawCard());
-                        again = false;
-                    }
-                    else {
-                        again = true;
-                    }
-                } while (again);
+                boolean again = true;
+                if (player.hand.hasCard("copper") || player.hand.hasCard("silver")) {
+                    String treasureName = randomTreasure();
+                    do {
+                        if (treasureName.equals("copper") && player.hand.hasCard("copper")) {
+                            trash.addCard(player.hand.drawCard("copper"));
+                            player.hand.addCard(getDeck("silver").drawCard());
+                            again = false;
+                        }
+                        else if (treasureName.equals("silver") && player.hand.hasCard("silver")) {
+                            trash.addCard(player.hand.drawCard("silver"));
+                            player.hand.addCard(getDeck("gold").drawCard());
+                            again = false;
+                        }
+                        treasureName = randomTreasure();
+                    } while(again);
+                }
             }
             else if (card.getName().equals("ambassador")) {
                 String supply = randomCard();
@@ -319,6 +330,24 @@ public class Game {
             if (bank.get(x).cardInfo(0).getCost() <= coinLimit) {
                 System.out.printf("%-15s# remaining: %d\tCost: %d\tTokens: %d\tDescription: %s\n", bank.get(x).cardInfo(0).getName(), bank.get(x).numCards(), bank.get(x).cardInfo(0).getCost(), bank.get(x).getTokens(), bank.get(x).cardInfo(0).getDescription());
             }
+        }
+    }
+    public void tallyPoints() {
+        int gardensCount = 0;
+        for (Player player: players) {
+            player.discardAll();
+            player.recycle();
+
+            player.printAllDecks();
+            for (int y = 0; y < player.drawDeck.numCards(); y++) {
+                if (player.drawDeck.cardInfo(y).getName().equals("gardens")) {
+                    gardensCount++;
+                }
+            }
+            System.out.printf("\n\n\n\nNUMBER OF GARDENS: %d\n\n", gardensCount);
+            player.modifyVictoryPoints(calculateVictoryPoints(player));
+            player.modifyVictoryPoints(gardensCount * (player.drawDeck.numCards() / 10));
+            System.out.printf("%-15s has %d victory points\n", player.getName(), player.getVictoryPoints());
         }
     }
 }
