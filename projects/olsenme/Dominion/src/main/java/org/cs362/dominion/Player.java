@@ -48,8 +48,6 @@ import org.cs362.dominion.Card.Type;
 		}
 		final void initializePlayerTurn() {
 			   //initialize first player's turn
-//			   state->numnumActions = 1;
-//			   state->numnumBuys = 1;
 			      numActions = 1;
 			      coins = 0;
 			      numBuys = 1;
@@ -77,7 +75,6 @@ import org.cs362.dominion.Card.Type;
 			   
 			         if (actionCards.size() == 0)
 			            return;
-			         
 			         Card c = (Card)actionCards.get(0);
 			         if (c == null)
 				      return;
@@ -90,21 +87,52 @@ import org.cs362.dominion.Card.Type;
 			      }
 			   }
 		   //gets score for a single player
-		   final int scoreFor() { 
+		   final int scoreFor() {
 			   int score = 0;
 			   //score from hand
-			      for (Card c : hand)
-			    	  score += c.getScore();
-			      //score from discard
-			      for (Card c : discard)
-			    	  score += c.getScore();
-			      //score from deck
-			      for (Card c : deck)
-			    	  score += c.getScore();
+			   for (Card c : hand) {
+				   score += c.getScore();
+			   }
+			   //score from discard
+			   for (Card c : discard)
+				   score += c.getScore();
+			   //check for gardens
+			   if (discard.contains(Card.getCard(discard, Card.CardName.gardens))) {
+				   if (discard.size() > 10 && discard.size() < 20) {
+					   score += 1;
+				   } else if (discard.size() > 20 && discard.size() < 30) {
+					   score += 2;
+				   } else if (discard.size() > 30 && discard.size() < 40) {
+					   score += 3;
+				   } else if (discard.size() > 40 && discard.size() < 50) {
+					   score += 4;
+				   } else if (discard.size() > 50 && discard.size() < 60) {
+					   score += 5;
+				   } else {
+					   score += 0;
+				   }
+			   }
+			   //score from deck
+			   for (Card c : deck){
+				   score += c.getScore();
+			   //check for gardens
+			   if (deck.contains(Card.getCard(deck, Card.CardName.gardens))) {
+				   if (deck.size() > 10 && deck.size() < 20) {
+					   score += 1;
+				   } else if (deck.size() > 20 && deck.size() < 30) {
+					   score += 2;
+				   } else if (deck.size() > 30 && deck.size() < 40) {
+					   score += 3;
+				   } else if (deck.size() > 40 && deck.size() < 50) {
+					   score += 4;
+				   } else if (deck.size() > 50 && deck.size() < 60) {
+					   score += 5;
+				   }
+			   }
+		   }
 			      return score;
-			      
 		   }    
-		   public void playTtreasureCard() {
+		   public void playTreasureCard() {
 			   System.out.println(" --- --------------------------- --- ");
 			   //get treasure cards
 	    		List<Card> treasures= Card.filter(hand,Type.TREASURE); 
@@ -163,8 +191,7 @@ import org.cs362.dominion.Card.Type;
 						    else
 						    {
 							   //add a card to discard
-							   gain(Card.getCard(gameState.cards, Card.CardName.Duchy));  
-							   
+							   gain(Card.getCard(gameState.cards, Card.CardName.Duchy));
 						     }
 					 }
 			   }
@@ -212,7 +239,7 @@ import org.cs362.dominion.Card.Type;
 	       	 sb.append("Deck: " + this.deck);
 	       	 sb.append("Played Cards: " + this.playedCards);
 	       	 sb.append("numActions: " + this.numActions);
-	       	 sb.append("coinss: " + this.coins);
+	       	 sb.append("coins: " + this.coins);
 	       	 sb.append("numBuys: " + this.numBuys);
 	       	 sb.append("\n");     
 			 

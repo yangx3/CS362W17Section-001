@@ -4,7 +4,7 @@ public class Estate extends Card
 	{
 		name = "Estate";
 		type = cardType.Victory;
-		cost = 0;
+		cost = 2;
 		value = 0;
 		points = 1;
 		actions = 0;

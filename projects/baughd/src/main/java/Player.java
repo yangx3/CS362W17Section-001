@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Player implements Cloneable{
+public class Player{
 	ArrayList<Card> hand;// int hand[MAX_PLAYERS][MAX_HAND];
 	LinkedList<Card> deck;// int deck[MAX_PLAYERS][MAX_DECK];
 	List<Card> discard; // int discard[MAX_PLAYERS][MAX_DECK];
@@ -47,8 +47,6 @@ public class Player implements Cloneable{
 		numActions = 1;
 		coins = 0;
 		numBuys = 1;
-		//Shuffle your starting 10 cards (7 Coppers & 3 Estates) and place them face-down as your Deck. Draw the top
-		//5 cards as your starting hand
 		for (int i = 0; i < 5; i++) {
 			drawCard();
 		}
@@ -292,16 +290,5 @@ public class Player implements Cloneable{
                 "\n";
 
         return sb;
-	}
-	   
-	protected Player clone() throws CloneNotSupportedException {
-		Player clonePlayer = (Player) super.clone();
-		clonePlayer.hand = new ArrayList<Card>(hand);// int hand[MAX_PLAYERS][MAX_HAND];
-		clonePlayer.deck = new LinkedList<Card>(deck);// int
-		// deck[MAX_PLAYERS][MAX_DECK];
-		clonePlayer.discard = new ArrayList<Card>(discard); // int
-		// discard[MAX_PLAYERS][MAX_DECK];
-		clonePlayer.playedCards = new ArrayList<Card>(playedCards);
-		return clonePlayer;
 	}
 }

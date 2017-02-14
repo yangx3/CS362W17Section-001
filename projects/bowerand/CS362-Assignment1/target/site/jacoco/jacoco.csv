@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+CS362-Assignment1,org.cs362.dominion,GameState,329,204,32,16,64,38,23,10,6,3
+CS362-Assignment1,org.cs362.dominion,Card.CardName,5,213,0,0,0,4,1,3,1,3
+CS362-Assignment1,org.cs362.dominion,Card,783,423,112,11,169,75,66,17,2,13
+CS362-Assignment1,org.cs362.dominion,PlayDominion,85,0,2,0,17,0,3,0,2,0
+CS362-Assignment1,org.cs362.dominion,Randomness,40,21,6,0,9,6,6,3,3,3
+CS362-Assignment1,org.cs362.dominion,Card.new Object() {...},14,89,0,0,0,1,0,1,0,1
+CS362-Assignment1,org.cs362.dominion,Card.Type,9,39,0,0,0,2,2,2,2,2
+CS362-Assignment1,org.cs362.dominion,Player,1240,329,104,22,196,67,63,15,7,8

@@ -14,7 +14,7 @@ public class CardTest {
     private List<Card> cards;
 
     @Before
-    public void initializePlayer() {
+    public void initializeGame() {
         cards = new ArrayList<Card>(Card.createCards());
         state = new GameState(cards);
         player1 = new Player(state, "PLAYER 1");
@@ -29,12 +29,9 @@ public class CardTest {
 //---------------------
     @Test
     public void testValuesCopper() {
+        Card Copper = Card.getCard(cards, Card.CardName.Copper);
         //assertEquals(Card.getCard(cards, Card.CardName.Copper).getCardName(), "Copper"); //String<Copper> vs CardName<Copper>?
-        //assertEquals(Card.COPPER.costsAction, 0);
-        assertEquals(Card.getCard(cards, Card.CardName.Copper).getCost(), 0);
-        //assertEquals(Card.COPPER.givesActions, 0);
-        //assertEquals(Card.COPPER.givesCardDraws, 0);
-        //assertEquals(Card.COPPER.givesMoney, 1);
+        assertEquals(Copper.getCost(), 0);
         assertEquals(Card.getCard(cards, Card.CardName.Copper).score(), 0);
         assertEquals(Card.getCard(cards, Card.CardName.Copper).getType(), Card.Type.TREASURE);
     }
@@ -195,7 +192,7 @@ public class CardTest {
     @Test
     public void testPlayBaron() {
         player1.initializePlayerTurn();
-        assertEquals(player1.numActions, 1);
+        assertEquals(player1.numBuys, 1);
         assertEquals(player1.hand.size(), 5);
         assertEquals(player1.deck.size(), 5);
         assertEquals(player1.discard.size(), 0);
@@ -205,15 +202,15 @@ public class CardTest {
         System.out.println(player1);
         if(Card.getCard(player1.hand, Card.CardName.Estate) != null){
             player1.playKingdomCard();
-            assertEquals(player1.hand.size(), 5);
-            assertEquals(player1.deck.size(), 4);
+            assertEquals(player1.hand.size(), 4);
+            assertEquals(player1.deck.size(), 5);
             assertEquals(player1.discard.size(), 1);
             assertEquals(player1.playedCards.size(), 1);
-            assertEquals(player1.numActions, 2);
+            assertEquals(player1.numBuys, 2);
             assertEquals(player1.coins, 4);
         } else {
             player1.playKingdomCard();
-            assertEquals(player1.hand.size(), 6);
+            assertEquals(player1.hand.size(), 5);
             assertEquals(player1.deck.size(), 4);
             assertEquals(player1.discard.size(), 0);
             assertEquals(player1.playedCards.size(), 1);
@@ -393,6 +390,7 @@ public class CardTest {
         assertEquals(player1.playedCards.size(), 1);
         assertTrue(before.size() != after.size());
         assertTrue(Card.getCard(player1.discard, Card.CardName.Silver) != null);
+        assertTrue(Card.getCard(player1.discard, Card.CardName.Gold) == null);
         System.out.println(player1);
     }
 
@@ -418,6 +416,5 @@ public class CardTest {
         assertTrue(player1.coins > 2);
         System.out.println(player1);
     }
-
 
 }

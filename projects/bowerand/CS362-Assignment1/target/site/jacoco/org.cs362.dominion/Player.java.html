@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CS362-Assignment1</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import org.cs362.dominion.Card.Type;
+
+public class Player implements Cloneable{
+<span class="fc" id="L11">	List&lt;Card&gt; hand = new ArrayList&lt;Card&gt;();// int hand[MAX_PLAYERS][MAX_HAND];</span>
+<span class="fc" id="L12">	LinkedList&lt;Card&gt; deck = new LinkedList&lt;Card&gt;();// int</span>
+													// deck[MAX_PLAYERS][MAX_DECK];
+<span class="fc" id="L14">	List&lt;Card&gt; discard = new ArrayList&lt;Card&gt;(); // int</span>
+												// discard[MAX_PLAYERS][MAX_DECK];
+<span class="fc" id="L16">	List&lt;Card&gt; playedCards = new ArrayList&lt;Card&gt;();</span>
+
+	String player_username;
+
+	int numActions;
+	int numBuys;
+	int coins;
+
+	   final GameState gameState;
+
+	
+<span class="fc" id="L27">	public Player(GameState gameState,String player_username) {</span>
+<span class="fc" id="L28">		this.player_username = player_username;</span>
+<span class="fc" id="L29">		this.gameState=gameState;</span>
+<span class="fc" id="L30">	}</span>
+            
+        
+        final Card checkCardType(Card input) {
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">		if (deck.isEmpty()) {// Deck is empty</span>
+			// Step 1 Shuffle the discard pile back into a deck
+<span class="nc" id="L36">			System.out.println(&quot;reshuffle the deck of the player &quot;</span>
+					+ player_username + &quot; to draw FIVE cards&quot;);
+<span class="nc bnc" id="L38" title="All 2 branches missed.">			while (discard.size() &gt; 0) {</span>
+<span class="nc" id="L39">				int ndx = (int) Randomness.nextRandomInt(discard.size());</span>
+				// Move discard to deck
+<span class="nc" id="L41">				deck.add(discard.remove(ndx));</span>
+<span class="nc" id="L42">			}</span>
+		}
+<span class="fc" id="L44">                boolean x = true;</span>
+<span class="fc" id="L45">                Card toDraw = null;</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">                while(x) {</span>
+<span class="fc" id="L47">                    toDraw = deck.poll();</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">                    if(toDraw.getType() == input.getType()) {</span>
+<span class="fc" id="L49">                        hand.add(toDraw);// Add card to hand and hand count automatically will</span>
+							// be incremented since we use List
+                        //System.out.println(&quot;draw &quot; + toDraw);
+<span class="fc" id="L52">                        Collections.sort(hand);</span>
+<span class="fc" id="L53">                        x = false;</span>
+                    }
+                    else {
+<span class="nc" id="L56">                        discard(toDraw);</span>
+                    }
+                }
+<span class="fc" id="L59">		return toDraw;</span>
+	}
+
+	final Card drawCard() {
+<span class="fc bfc" id="L63" title="All 2 branches covered.">		if (deck.isEmpty()) {// Deck is empty</span>
+			// Step 1 Shuffle the discard pile back into a deck
+<span class="fc" id="L65">			System.out.println(&quot;reshuffle the deck of the player &quot;</span>
+					+ player_username + &quot; to draw FIVE cards&quot;);
+<span class="fc bfc" id="L67" title="All 2 branches covered.">			while (discard.size() &gt; 0) {</span>
+<span class="fc" id="L68">				int ndx = (int) Randomness.nextRandomInt(discard.size());</span>
+				// Move discard to deck
+<span class="fc" id="L70">				deck.add(discard.remove(ndx));</span>
+<span class="fc" id="L71">			}</span>
+		}
+
+<span class="fc" id="L74">		Card toDraw = deck.poll();</span>
+<span class="fc" id="L75">		hand.add(toDraw);// Add card to hand and hand count automatically will</span>
+							// be incremented since we use List
+<span class="fc" id="L77">		System.out.println(&quot;draw &quot; + toDraw);</span>
+<span class="fc" id="L78">		Collections.sort(hand);</span>
+<span class="fc" id="L79">		return toDraw;</span>
+	}
+	
+	   final void initializePlayerTurn() {
+		   //initialize first player's turn
+//		   state-&gt;numnumActions = 1;
+//		   state-&gt;numnumBuys = 1;
+<span class="nc" id="L86">		      numActions = 1;</span>
+<span class="nc" id="L87">		      coins = 0;</span>
+<span class="nc" id="L88">		      numBuys = 1;</span>
+		      //Shuffle your starting 10 cards (7 Coppers &amp; 3 Estates) and place them face-down as your Deck. Draw the top
+		      //5 cards as your starting hand
+<span class="nc bnc" id="L91" title="All 2 branches missed.">		      for (int i = 0; i &lt; 5; i++) {</span>
+<span class="nc" id="L92">		    	  drawCard();</span>
+		      }
+<span class="nc" id="L94">		   }</span>
+
+	 //card goes in discard,
+	   final boolean gain(Card card) {
+<span class="fc" id="L98">		      discard.add(card);</span>
+<span class="fc" id="L99">		      System.out.println(&quot;Player: &quot;+this.player_username+&quot; gains &quot;+card);</span>
+<span class="fc" id="L100">		      return true;</span>
+		   }		
+           public void trash(Card card) {
+<span class="nc" id="L103">               hand.remove(card);</span>
+<span class="nc" id="L104">               System.out.println(&quot;Player:  &quot;+player_username+&quot; threw away this card: &quot;+card);</span>
+<span class="nc" id="L105">           }</span>
+		 //Discard hand
+	   public void discard(Card card) {
+<span class="fc" id="L108">		     hand.remove(card);</span>
+<span class="fc" id="L109">		      discard.add(card);</span>
+<span class="fc" id="L110">		      System.out.println(&quot;Player:  &quot;+player_username+&quot; discards &quot;+card);</span>
+<span class="fc" id="L111">		   }</span>
+	   public void playKingdomCard() {
+<span class="nc bnc" id="L113" title="All 2 branches missed.">		      while (numActions &gt; 0) {</span>
+<span class="nc" id="L114">		         List&lt;Card&gt; actionCards = Card.filter(hand, Type.ACTION);</span>
+		   
+<span class="nc bnc" id="L116" title="All 2 branches missed.">		         if (actionCards.size() == 0)</span>
+<span class="nc" id="L117">		            return;</span>
+		         
+<span class="nc" id="L119">		         Card c = (Card)actionCards.get(0);</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">		         if (c == null)</span>
+<span class="nc" id="L121">			           return;</span>
+<span class="nc" id="L122">		         System.out.println(&quot;Player.actionPhase Card:&quot; + c.toString());</span>
+
+<span class="nc" id="L124">			      playedCards.add(c);</span>
+<span class="nc" id="L125">			      numActions -= 1;</span>
+
+<span class="nc" id="L127">			      c.play(this, gameState);</span>
+<span class="nc" id="L128">		      }</span>
+<span class="nc" id="L129">		   }</span>
+	   final int scoreFor() { 
+<span class="fc" id="L131">		   int score = 0;</span>
+		   //score from hand
+<span class="fc bfc" id="L133" title="All 2 branches covered.">		      for (Card c : hand)</span>
+<span class="fc" id="L134">		    	  score += c.score();</span>
+		      //score from discard
+<span class="pc bpc" id="L136" title="1 of 2 branches missed.">		      for (Card c : discard)</span>
+<span class="nc" id="L137">		    	  score += c.score();</span>
+		      //score from deck
+<span class="fc bfc" id="L139" title="All 2 branches covered.">		      for (Card c : deck)</span>
+<span class="fc" id="L140">		    	  score += c.score();</span>
+                      
+<span class="fc" id="L142">		      return score;</span>
+	   }    
+	   
+	   public void playTtreasureCard() {
+		/*
+                System.out.println(&quot; --- --------------------------- --- &quot;);
+    		System.out.println(&quot;TO-DO playTtreasureCard &quot;); 
+    		System.out.println(&quot; --- --------------------------- --- &quot;);
+                */
+                
+<span class="fc" id="L152">                List&lt;Card&gt; treasureCards = Card.filter(hand, Type.TREASURE);</span>
+<span class="fc" id="L153">                int count = treasureCards.size(); //size of hand</span>
+                
+<span class="fc bfc" id="L155" title="All 2 branches covered.">                while (count &gt; 0) {     </span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">                    if (treasureCards.size() == 0) {</span>
+<span class="nc" id="L157">                        return;</span>
+                    }
+
+<span class="fc" id="L160">                    Card c = (Card)treasureCards.get(count - 1);</span>
+<span class="pc bpc" id="L161" title="1 of 2 branches missed.">                    if (c == null)</span>
+<span class="nc" id="L162">                               return;</span>
+<span class="fc" id="L163">                    System.out.println(player_username+&quot; is using &quot;+c.toString());</span>
+
+<span class="fc" id="L165">                    playedCards.add(c);</span>
+<span class="fc" id="L166">                    coins = coins + c.getTreasureValue();</span>
+<span class="fc" id="L167">                    discard(c);</span>
+<span class="fc" id="L168">                    count = count - 1;</span>
+<span class="fc" id="L169">                  }</span>
+<span class="fc" id="L170">	   }</span>
+           
+	   public void buyCard(GameState gState) {
+                    /*
+                    System.out.println(&quot; --- --------------------------- --- &quot;);
+                    System.out.println(&quot;TO-DO buyCard &quot;); 
+                    System.out.println(&quot; --- --------------------------- --- &quot;);
+                    */
+                    
+<span class="pc bpc" id="L179" title="1 of 2 branches missed.">                    if (numBuys == 0) {</span>
+<span class="nc" id="L180">                        System.out.println(&quot;You have used up all of your buys. You can only make one purchase per turn.&quot;);</span>
+                    }
+                    else {
+<span class="fc bfc" id="L183" title="All 2 branches covered.">                        while (numBuys &gt; 0) {</span>
+                            int x;
+<span class="fc" id="L185">                            int randCost =  (int) Randomness.random.nextInt(coins + 1); //randomly s9elect a card within the range of available cards</span>
+<span class="fc" id="L186">                            System.out.println(player_username+&quot; is buying...\n&quot;);</span>
+<span class="pc bpc" id="L187" title="3 of 4 branches missed.">                            if (randCost == 0 || randCost == 1) {</span>
+<span class="fc" id="L188">                                x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Copper)); // get index of card</span>
+<span class="pc bpc" id="L189" title="1 of 2 branches missed.">                                if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L190">                                    gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L191">                                    gState.cards.get(x).supplyPile -= 1;</span>
+                                }
+<span class="fc" id="L193">                                gain(Card.getCard(gState.cards, Card.CardName.Copper));</span>
+<span class="fc" id="L194">                                numBuys = numBuys - 1; // reduce number of buys</span>
+                            }
+<span class="nc bnc" id="L196" title="All 2 branches missed.">                            else if (randCost == 2) {</span>
+<span class="nc" id="L197">                                randCost =  (int) Randomness.random.nextInt(2); // 2 = number of different cards to choose from (with same value)</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">                                if (randCost == 0) {</span>
+<span class="nc" id="L199">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Embargo)); // get index of card</span>
+<span class="nc bnc" id="L200" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L201">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L202">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L204">                                    gain(Card.getCard(gState.cards, Card.CardName.Embargo));</span>
+                                }
+                                else {
+<span class="nc" id="L207">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Estate)); // get index of card</span>
+<span class="nc bnc" id="L208" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L209">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L210">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L212">                                    gain(Card.getCard(gState.cards, Card.CardName.Estate));</span>
+                                }
+                                
+<span class="nc" id="L215">                                numBuys = numBuys - 1; // reduce number of buys</span>
+<span class="nc" id="L216">                                coins = coins - 2; // reduce by coins spent</span>
+                            }
+<span class="nc bnc" id="L218" title="All 2 branches missed.">                            else if (randCost == 3) {</span>
+<span class="nc" id="L219">                                randCost =  (int) Randomness.random.nextInt(4); // 4 = number of different cards to choose from (with same value)</span>
+<span class="nc bnc" id="L220" title="All 2 branches missed.">                                if (randCost == 0) {</span>
+<span class="nc" id="L221">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Ambassador)); // get index of card</span>
+<span class="nc bnc" id="L222" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L223">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L224">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L226">                                    gain(Card.getCard(gState.cards, Card.CardName.Ambassador));</span>
+                                }
+<span class="nc bnc" id="L228" title="All 2 branches missed.">                                else if (randCost == 1) {</span>
+<span class="nc" id="L229">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Great_Hall)); // get index of card</span>
+<span class="nc bnc" id="L230" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L231">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L232">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L234">                                    gain(Card.getCard(gState.cards, Card.CardName.Great_Hall));</span>
+                                }
+<span class="nc bnc" id="L236" title="All 2 branches missed.">                                else if (randCost == 2) {</span>
+<span class="nc" id="L237">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Village)); // get index of card</span>
+<span class="nc bnc" id="L238" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L239">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L240">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L242">                                    gain(Card.getCard(gState.cards, Card.CardName.Village));</span>
+                                }
+<span class="nc bnc" id="L244" title="All 2 branches missed.">                                else if (randCost == 3) {</span>
+<span class="nc" id="L245">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Silver)); // get index of card</span>
+<span class="nc bnc" id="L246" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L247">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L248">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L250">                                    gain(Card.getCard(gState.cards, Card.CardName.Silver));</span>
+                                }
+                                
+<span class="nc" id="L253">                                numBuys = numBuys - 1; // reduce number of buys</span>
+<span class="nc" id="L254">                                coins = coins - 3; // reduce by coins spent</span>
+                            }
+<span class="nc bnc" id="L256" title="All 2 branches missed.">                            else if (randCost == 4) {</span>
+<span class="nc" id="L257">                                randCost =  (int) Randomness.random.nextInt(6); // 6 = number of different cards to choose from (with same value)</span>
+<span class="nc bnc" id="L258" title="All 2 branches missed.">                                if (randCost == 0) {</span>
+<span class="nc" id="L259">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Baron)); // get index of card</span>
+<span class="nc bnc" id="L260" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L261">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L262">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L264">                                    gain(Card.getCard(gState.cards, Card.CardName.Baron));</span>
+                                }
+<span class="nc bnc" id="L266" title="All 2 branches missed.">                                else if (randCost == 1) {</span>
+<span class="nc" id="L267">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Cutpurse)); // get index of card</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L269">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L270">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L272">                                    gain(Card.getCard(gState.cards, Card.CardName.Cutpurse));</span>
+                                }
+<span class="nc bnc" id="L274" title="All 2 branches missed.">                                else if (randCost == 2) {</span>
+<span class="nc" id="L275">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Feast)); // get index of card</span>
+<span class="nc bnc" id="L276" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L277">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L278">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L280">                                    gain(Card.getCard(gState.cards, Card.CardName.Feast));</span>
+                                }
+<span class="nc bnc" id="L282" title="All 2 branches missed.">                                else if (randCost == 3) {</span>
+<span class="nc" id="L283">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Gardens)); // get index of card</span>
+<span class="nc bnc" id="L284" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L285">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L286">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L288">                                    gain(Card.getCard(gState.cards, Card.CardName.Gardens));</span>
+                                }
+<span class="nc bnc" id="L290" title="All 2 branches missed.">                                else if (randCost == 4) {</span>
+<span class="nc" id="L291">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Salvager)); // get index of card</span>
+<span class="nc bnc" id="L292" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L293">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L294">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L296">                                    gain(Card.getCard(gState.cards, Card.CardName.Salvager));</span>
+                                }
+<span class="nc bnc" id="L298" title="All 2 branches missed.">                                else if (randCost == 5) {</span>
+<span class="nc" id="L299">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Smithy)); // get index of card</span>
+<span class="nc bnc" id="L300" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L301">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L302">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L304">                                    gain(Card.getCard(gState.cards, Card.CardName.Smithy));</span>
+                                }
+                                
+<span class="nc" id="L307">                                numBuys = numBuys - 1; // reduce number of buys</span>
+<span class="nc" id="L308">                                coins = coins - 4; // reduce by coins spent</span>
+                            }
+<span class="nc bnc" id="L310" title="All 2 branches missed.">                            else if (randCost == 5) {</span>
+<span class="nc" id="L311">                                randCost =  (int) Randomness.random.nextInt(3); // 3 = number of different cards to choose from (with same value)</span>
+<span class="nc bnc" id="L312" title="All 2 branches missed.">                                if (randCost == 0) {</span>
+<span class="nc" id="L313">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Duchy)); // get index of card</span>
+<span class="nc bnc" id="L314" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L315">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L316">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L318">                                    gain(Card.getCard(gState.cards, Card.CardName.Duchy));</span>
+                                }
+<span class="nc bnc" id="L320" title="All 2 branches missed.">                                else if (randCost == 1) {</span>
+<span class="nc" id="L321">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Council_Room)); // get index of card</span>
+<span class="nc bnc" id="L322" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L323">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L324">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L326">                                    gain(Card.getCard(gState.cards, Card.CardName.Council_Room));</span>
+                                }
+<span class="nc bnc" id="L328" title="All 2 branches missed.">                                else if (randCost == 2) {</span>
+<span class="nc" id="L329">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Mine)); // get index of card</span>
+<span class="nc bnc" id="L330" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L331">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L332">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L334">                                    gain(Card.getCard(gState.cards, Card.CardName.Mine));</span>
+                                }
+                                
+<span class="nc" id="L337">                                numBuys = numBuys - 1; // reduce number of buys</span>
+<span class="nc" id="L338">                                coins = coins - 5; // reduce by coins spent</span>
+                            }
+<span class="nc bnc" id="L340" title="All 2 branches missed.">                            else if (randCost == 6) {</span>
+<span class="nc" id="L341">                                randCost =  (int) Randomness.random.nextInt(2); // 2 = number of different cards to choose from (with same value)</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">                                if (randCost == 0) {</span>
+<span class="nc" id="L343">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Adventurer)); // get index of card</span>
+<span class="nc bnc" id="L344" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L345">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L346">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L348">                                    gain(Card.getCard(gState.cards, Card.CardName.Adventurer));</span>
+                                }
+<span class="nc bnc" id="L350" title="All 2 branches missed.">                                else if (randCost == 1) { </span>
+<span class="nc" id="L351">                                    x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Gold)); // get index of card</span>
+<span class="nc bnc" id="L352" title="All 2 branches missed.">                                    if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L353">                                        gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L354">                                        gState.cards.get(x).supplyPile -= 1;</span>
+                                    }
+<span class="nc" id="L356">                                    gain(Card.getCard(gState.cards, Card.CardName.Gold));</span>
+                                }
+                                
+<span class="nc" id="L359">                                numBuys = numBuys - 1; // reduce number of buys</span>
+<span class="nc" id="L360">                                coins = coins - 6; // reduce by coins spent</span>
+                            }
+<span class="nc bnc" id="L362" title="All 2 branches missed.">                            else if (randCost &gt;= 8) {</span>
+<span class="nc" id="L363">                                x = gState.cards.indexOf(Card.getCard(gState.cards, Card.CardName.Province)); // get index of card</span>
+<span class="nc bnc" id="L364" title="All 2 branches missed.">                                if (gState.cards.get(x).supplyPile &gt; 0) { // check if supply pile has curse</span>
+<span class="nc" id="L365">                                    gain(Card.getCard(gState.cards, Card.CardName.Curse));</span>
+<span class="nc" id="L366">                                    gState.cards.get(x).supplyPile -= 1;</span>
+                                }
+<span class="nc" id="L368">                                gain(Card.getCard(gState.cards, Card.CardName.Province));</span>
+                                
+<span class="nc" id="L370">                                numBuys = numBuys - 1; // reduce number of buys</span>
+<span class="nc" id="L371">                                coins = coins - 8; // reduce by coins spent</span>
+                            }
+<span class="fc" id="L373">                        }</span>
+                    }
+<span class="fc" id="L375">	   }</span>
+           
+	   final void endTurn() {
+                    /*
+                    System.out.println(&quot; --- --------------------------- --- &quot;);
+                    System.out.println(&quot;TO-DO endTurn &quot;); 
+                    System.out.println(&quot; --- --------------------------- --- &quot;);
+                    */
+                    
+<span class="nc" id="L384">                    System.out.println(&quot;Player ended turn, discarding hand...\n&quot;);</span>
+<span class="nc" id="L385">                    int count = 0;</span>
+<span class="nc bnc" id="L386" title="All 2 branches missed.">                    while (!hand.isEmpty()) {</span>
+<span class="nc" id="L387">                        discard(hand.get(0));</span>
+                    }
+<span class="nc" id="L389">                    System.out.println(&quot;Drawing new hand...\n&quot;);</span>
+<span class="nc bnc" id="L390" title="All 2 branches missed.">                    while (count &lt; 5) {</span>
+<span class="nc" id="L391">                        drawCard();</span>
+<span class="nc" id="L392">                        count = count + 1;</span>
+                    }
+                    
+<span class="nc" id="L395">                    System.out.println(&quot;End of turn.\n&quot;);</span>
+<span class="nc" id="L396">           }</span>
+	   
+	   
+	   public void printStateGame(){
+<span class="nc" id="L400">                    System.out.println(&quot; --- &quot; + this.player_username + &quot; --- &quot;);</span>
+<span class="nc" id="L401">                    System.out.println(&quot; --- --------------------------- --- &quot;);</span>
+<span class="nc" id="L402">                    System.out.println(this.gameState.toString()); </span>
+<span class="nc" id="L403">                    System.out.println(&quot; --- --------------------------- --- &quot;);</span>
+<span class="nc" id="L404">	   }</span>
+	   @Override
+		public String toString() {
+<span class="nc" id="L407">		     StringBuilder sb = new StringBuilder();</span>
+		     
+<span class="nc" id="L409">       	 sb.append(&quot; --- &quot; + this.player_username + &quot; --- &quot;);</span>
+<span class="nc" id="L410">       	 sb.append(&quot; --- --------------------------- --- &quot;);</span>
+
+<span class="nc" id="L412">       	 sb.append(&quot;Hand: &quot; + this.hand);</span>
+<span class="nc" id="L413">       	 sb.append(&quot;Discard: &quot; + this.discard);</span>
+<span class="nc" id="L414">       	 sb.append(&quot;Deck: &quot; + this.deck);</span>
+<span class="nc" id="L415">       	 sb.append(&quot;Played Cards: &quot; + this.playedCards);</span>
+<span class="nc" id="L416">       	 sb.append(&quot;numActions: &quot; + this.numActions);</span>
+<span class="nc" id="L417">       	 sb.append(&quot;coinss: &quot; + this.coins);</span>
+<span class="nc" id="L418">       	 sb.append(&quot;numBuys: &quot; + this.numBuys);</span>
+<span class="nc" id="L419">       	 sb.append(&quot;\n&quot;);     </span>
+
+<span class="nc" id="L421">		     return sb.toString();</span>
+
+		}
+	   
+	    protected Player clone() throws CloneNotSupportedException {
+<span class="nc" id="L426">	    	Player clonePlayer=(Player) super.clone();</span>
+<span class="nc" id="L427">	    	clonePlayer.hand = new ArrayList&lt;Card&gt;(hand);// int hand[MAX_PLAYERS][MAX_HAND];</span>
+<span class="nc" id="L428">			clonePlayer.deck = new LinkedList&lt;Card&gt;(deck);// int</span>
+															// deck[MAX_PLAYERS][MAX_DECK];
+<span class="nc" id="L430">			clonePlayer.discard = new ArrayList&lt;Card&gt;(discard); // int</span>
+														// discard[MAX_PLAYERS][MAX_DECK];
+<span class="nc" id="L432">			clonePlayer.playedCards = new ArrayList&lt;Card&gt;(playedCards);</span>
+<span class="nc" id="L433">			return clonePlayer;</span>
+	    } 	   
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class CardStack
+{
+	public LinkedList<Card> cards;
+
+	public CardStack (){
+		cards = new LinkedList<Card>();
+	}
+
+	public void addCard(Card in){
+		cards.add(in);
+	}
+
+	public Card takeTopCard(){
+		Card returnCard;
+		returnCard = cards.getLast();
+		cards.removeLast();
+		return returnCard;
+	}
+
+	public Card lookAtTopCard(){
+		Card returnCard;
+		returnCard = cards.getLast();
+		return returnCard;
+	}
+
+	public Card takeCardAt(int pos)
+	{
+		return cards.remove(pos);
+	}
+
+	public void shuffleCards()
+	{
+		Collections.shuffle(cards);
+	}
+	public Card lookAtCardAt (int pos)
+	{
+		return cards.get(pos);
+	}
+
+
+}
