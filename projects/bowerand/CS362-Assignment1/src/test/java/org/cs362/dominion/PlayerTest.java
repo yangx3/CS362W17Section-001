@@ -107,6 +107,9 @@ public class PlayerTest {
         assert(playerDiscardSize + 1 == result);
         if(playerDiscardSize + 1 != result)
             fail("\n***************************** TEST BUY CARD FAILED *************************************\n");
+        else {
+            System.out.println("\n$$$$$$$$$$$$$$$$$$$$$$$$ BUY CARD SUCCESS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+        }
     }
     
     /**

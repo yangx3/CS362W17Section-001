@@ -139,30 +139,4 @@ public class CardTest {
         }
     }
     
-    /**
-     * Test of play method, of class Card.
-     */
-    @Test
-    public void testPlay1() {
-        List<Card> cards = new ArrayList<Card>(Card.createCards());
-        GameState state = new GameState(cards);
-        Randomness.reset(10);
-        Player player = new Player(state, "player-1");
-        state.addPlayer(player);
-        player = new Player(state, "player-2");
-        state.addPlayer(player);
-        state.initializeGame();
-        
-        System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@play SMITHY card TEST@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
-        Card instance = new Card(Card.CardName.Smithy, Card.Type.ACTION,4,0,0, 0);
-        int temp1 = state.players.get(1).hand.size();
-        int temp2 = state.players.get(1).deck.size();
-        instance.play(player, state);
-        assertEquals(state.players.get(1).hand.size(),(temp1 + 3 ));
-        assertEquals(state.players.get(1).deck.size(),(temp2 - 3 ));
-        if(state.players.get(1).hand.size() != temp1 + 3 || state.players.get(1).deck.size() != temp2 - 3) {
-            fail("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!PLAYT SMITHY TEST FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-        }
-    }
-    
 }

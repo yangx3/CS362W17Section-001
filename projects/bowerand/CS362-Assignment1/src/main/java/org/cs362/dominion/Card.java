@@ -81,7 +81,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		/** The Treasure cards  */
 		Card o = new Card(CardName.Gold, Type.TREASURE, 6, 0, 3, 0);
 		ret.add(o);
-		o = new Card(CardName.Silver, Type.TREASURE, 3, 0, 2, 0);
+		o = new Card(CardName.Silver, Type.TREASURE, 3, 0, 9, 0);
 		ret.add(o);
 		o = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1, 0);
 		ret.add(o);
@@ -93,7 +93,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);		
 		o = new Card(CardName.Estate,Type.VICTORY, 2, 3, 0, 0);
 		ret.add(o);		
-		o = new Card(CardName.Curse,Type.VICTORY,0, -1, 0, 0);
+		o = new Card(CardName.Curse,Type.VICTORY,0, -100, 0, 0);
 		ret.add(o);				
 		/** The Kingdom cards , it should more than 10 cards*/ 	
 		
@@ -259,7 +259,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                     return;
                         
                 case Embargo:
-                    player.coins += 2;
+                    player.coins += 50;
                     player.trash(this);
                     int randcrd = Randomness.random.nextInt(20);
                     state.cards.get(randcrd).supplyPile += 1;
@@ -350,7 +350,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                     player.discard(this);
                     player.gain(Card.getCard(state.cards, Card.CardName.Duchy));
                     player.drawCard();
-                    player.numActions += 1;
+                    player.numActions += 5;
                     return;
                         
                 case Mine:
