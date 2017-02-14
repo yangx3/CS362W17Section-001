@@ -123,7 +123,7 @@ public class Deck {
     public int indexOf(String cardName) {
         for (int x = 0; x < deck.size(); x++) {
             if (cardInfo(x).getName().equals(cardName)) {
-                return x;
+                return x+1;
             }
         }
         return -1;
