@@ -49,7 +49,6 @@ public class Pile
 	{
 		Card drawnCard = cards.get(0);
 		removeCard(0);
-		size--;
 		return drawnCard;
 	}
 

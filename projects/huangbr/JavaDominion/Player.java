@@ -62,10 +62,6 @@ public class Player
 
 	public void actionPhase(Dominion game)
 	{
-		System.out.println("revealing deck.");
-		deck.revealAll();
-		System.out.println("revealing hand.");
-		hand.revealAll();
 		Random rand = new Random();
 		List<Integer> indexList = new ArrayList<Integer>();
 		for(int i=0; i < hand.getSize(); i++)
@@ -82,6 +78,7 @@ public class Player
 		}
 		while(actions > 0)
 		{
+			System.out.println("Trying to play action.");
 			int randomIndex = rand.nextInt(indexList.size());
 			hand.getCard(randomIndex).play(game,this);
 			actions--;
@@ -103,7 +100,7 @@ public class Player
 			}
 			else if(money >= 6)
 			{
-				int n = rand.nextInt(1);
+				int n = rand.nextInt(1 + 1 - 0) + 0;
 				if(n == 0)
 				{
 					buyCard(game, money, "Gold");
@@ -123,6 +120,7 @@ public class Player
 			}
 			buy--;
 		}
+		System.out.println("Buy phase over.");
 	}
 
 	public void buyCard(Dominion game, int coins, String name)
@@ -156,9 +154,7 @@ public class Player
 		}
 		else if(cardIndex == -1)
 		{
-			System.out.println("Buying some basic Cards.");
 			cardIndex = game.getBasicCardIndex(name);
-			System.out.println(cardIndex);
 			if(game.basicCards.get(cardIndex).getCard(0).cost > coins)
 			{
 				System.out.println("Not enough money to buy this card.");
@@ -169,12 +165,7 @@ public class Player
 			}
 			else
 			{
-				System.out.println("Before adding card.");
 				discard.addCard(game.basicCards.get(cardIndex).drawCard());
-				System.out.println("After adding card.");
-				deck.revealAll();
-				discard.revealAll();
-				hand.revealAll();
 				money -= game.basicCards.get(cardIndex).getCard(0).cost;
 				for(int j=0; j < game.basicCards.get(cardIndex).embargos; j++)
 				{
@@ -199,7 +190,7 @@ public class Player
 			{
 				rebuildDeck();
 			}
-			hand.addCard(drawCard());
+			hand.addCard(deck.drawCard());
 		}
 		actionPhase(game);
 		buyPhase(game);
@@ -218,7 +209,7 @@ public class Player
 	//The deck is recreated by using the discard pile.
 	public void rebuildDeck()
 	{
-		while(!discard.isEmpty())
+		for(int i=0; i < discard.getSize(); i++)
 		{
 			deck.addCard(discard.drawCard());
 		}
