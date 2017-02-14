@@ -61,6 +61,8 @@ public class DominionBoard {
 	}
 	public int checkEnd(){
 		int counter=0;
+		if(this.num_Province == 0)
+			counter++;
 		if(this.num_Duchy == 0)
 			counter++;
 		if(this.num_Estate == 0)

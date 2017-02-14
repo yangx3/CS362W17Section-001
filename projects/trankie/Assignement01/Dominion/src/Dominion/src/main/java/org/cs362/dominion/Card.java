@@ -60,7 +60,7 @@ public class Card{
 		temp.add(o);
 		o = new Card(CardName.Cellar, Type.ACTION, 2, 0, 0);
 		temp.add(o);
-		o = new Card(CardName.Chancellor, Type.ACTION, 2, 0, 0);
+		o = new Card(CardName.Chancellor, Type.ACTION, 3, 0, 0);
 		temp.add(o);
 		o = new Card(CardName.Chapel, Type.ACTION, 2, 0, 0);
 		temp.add(o);
@@ -147,5 +147,26 @@ public class Card{
 			return this.getScore();
 		else
 			return 0;
+	}
+	public static List<Card> filter(Iterable<Card> cards, Type target) {
+		List<Card> out = new ArrayList<Card>();
+		for (Card c : cards)
+			if (c.getType() == target)
+				out.add(c);
+		return out;
+	}
+	public static List<Card> cmp(List<Card> all, int num){
+		List<Card> out = new ArrayList<Card>();
+		for(Card c: all)
+			if(c.getCost() <= num)
+				out.add(c);
+		return out;
+	}
+	public static Card getCard(List<Card> cards, CardName n){
+		for(Card c:cards){
+			if(c.getCardName() ==  n)
+				return c;
+		}
+		return null;
 	}
 }
