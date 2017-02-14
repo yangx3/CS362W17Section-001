@@ -524,10 +524,35 @@ public class Game{
 			again++;
 		}
 	}
+	
+	public void whoWon(){
+		int points = 0;
+		players.get(0).discardToDraw();
+		for(int i=0; i<players.get(0).getDraw().getPile().size(); i++){
+			points++;
+		}
+		players.get(0).setVictory(points);
+		points = 0;
+		players.get(1).discardToDraw();
+		for(int i=0; i<players.get(1).getDraw().getPile().size(); i++){
+			points++;
+		}
+		players.get(1).setVictory(points);
+		if(players.get(0).getVictory() > players.get(1).getVictory()){
+			System.out.println("Player 1 Points: " + players.get(0).getVictory());
+			System.out.println("Player 2 Points: " + players.get(1).getVictory());
+			System.out.println("Player 1 Wins!");
+		}else{
+			System.out.println("Player 1 Points: " + players.get(0).getVictory());
+			System.out.println("Player 2 Points: " + players.get(1).getVictory());
+			System.out.println("Player 2 Wins!");
+		}
+	}
 
 	public static void main(String [] args){
 		Game game = new Game();
 		game.setGame();
 		game.playGame();
+		game.whoWon();
 	}
 };
