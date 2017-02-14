@@ -211,9 +211,9 @@ public class Game {
                     if (x != num) {
                         if (getPlayer(x).hand.hasCard("copper")) {
                             // Line below is buggy code
-                            // getPlayer(x).discardAtIndex(getPlayer(x).hand.indexOf("copper"));
+                            getPlayer(x).discardAtIndex(getPlayer(x).hand.indexOf("copper"));
                             // this one is correct
-                            getPlayer(x).discard("copper");
+                            // getPlayer(x).discard("copper");
                         }
                     }
                 }
