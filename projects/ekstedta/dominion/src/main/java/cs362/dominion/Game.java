@@ -313,7 +313,7 @@ public class Game {
             if (card.cost() > 5) {
                 throw new GameError("feast: gained card must cost 5 or less");
             }
-            this.takeDiscard(this.currentPlayer, card);
+            this.takeHand(this.currentPlayer, card); // BUG
             return TRASH;
         } else if (playedCard == Card.GreatHall) {
             // +1 Card; +1 Action. Worth 1 Victory
@@ -400,7 +400,7 @@ public class Game {
         if (tokens != null) {
             for (int i = 0; i < tokens; i++) {
                 if (this.supplyCount(Card.Curse) > 0) {
-                    this.takeDiscard(this.currentPlayer, Card.Curse);
+                    // this.takeDiscard(this.currentPlayer, Card.Curse); // BUG
                 }
             }
         }

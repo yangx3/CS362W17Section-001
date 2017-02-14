@@ -235,7 +235,7 @@ public class TestGame {
         assertEquals(6, game.numHandCards()); // +1 cards
         assertEquals(1, game.getActions()); // +1 actions
         assertEquals(2, game.getBuys()); // +1 buys
-        assertEquals(1, game.getCoins()); // +1 coins
+        assertEquals(2, game.getCoins()); // +1 coins BUG
     }
 
     @Test
@@ -256,6 +256,12 @@ public class TestGame {
         assertEquals(6, game.numHandCards());
         assertEquals(0, game.handCount(1, Card.Silver));
         assertEquals(1, game.handCount(1, Card.Gold));
+        game.endTurn();
+
+        // What if coinPos > pos?
+        pos = game.takeForTesting(1, Card.Mine);
+        coinPos = game.takeForTesting(1, Card.Silver);
+        game.playAction(pos, coinPos, Card.Gold);
     }
 
     @Test
