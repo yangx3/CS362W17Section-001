@@ -15,6 +15,7 @@ public class Steward extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		Random rand = new Random();
 		int n = rand.nextInt(3);
 		if(n == 0)

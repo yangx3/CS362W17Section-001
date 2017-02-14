@@ -13,6 +13,7 @@ public class Smithy extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		for(int i=0; i < draw; i++)
 		{
 			player.hand.addCard(player.drawCard());

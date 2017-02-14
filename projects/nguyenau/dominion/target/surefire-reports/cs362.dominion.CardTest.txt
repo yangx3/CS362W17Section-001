@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: cs362.dominion.CardTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.641 sec <<< FAILURE!
-test10(cs362.dominion.CardTest)  Time elapsed: 0.531 sec  <<< FAILURE!
+Tests run: 12, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec <<< FAILURE!
+test10(cs362.dominion.CardTest)  Time elapsed: 0.005 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<4> but was:<6>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:743)
@@ -78,7 +78,7 @@ java.lang.AssertionError: expected:<1> but was:<2>
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-test4(cs362.dominion.CardTest)  Time elapsed: 0.003 sec  <<< FAILURE!
+test4(cs362.dominion.CardTest)  Time elapsed: 0.005 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<5> but was:<4>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:743)
@@ -116,7 +116,7 @@ java.lang.AssertionError: expected:<5> but was:<4>
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-test6(cs362.dominion.CardTest)  Time elapsed: 0.003 sec  <<< FAILURE!
+test6(cs362.dominion.CardTest)  Time elapsed: 0.006 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<11> but was:<10>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:743)
