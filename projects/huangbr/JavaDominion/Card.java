@@ -2,7 +2,7 @@ import java.util.*;
 
 public abstract class Card
 {
-	protected enum cardType {Treasure, Victory, Action, Attack, Curse};
+	public enum cardType {Treasure, Victory, Action, Attack, Curse};
 
 	protected String name;
 	protected cardType type;

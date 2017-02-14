@@ -13,6 +13,7 @@ public class Ambassador extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		int cardIndex = player.getRandomCardIndex(player.hand);
 		player.hand.revealCard(cardIndex);
 		String name = player.hand.getName(cardIndex);

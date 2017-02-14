@@ -1,10 +1,10 @@
-package org.cs362.dominion;
+package dominion;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import org.cs362.dominion.Card.Type;
+import java.util.Random;
 
 public class Player implements Cloneable{
 	List<Card> hand = new ArrayList<Card>();// int hand[MAX_PLAYERS][MAX_HAND];
@@ -15,6 +15,7 @@ public class Player implements Cloneable{
 	List<Card> playedCards = new ArrayList<Card>();
 
 	String player_username;
+	private Random gen = new Random();
 
 	int numActions;
 	int numBuys;
@@ -36,7 +37,7 @@ public class Player implements Cloneable{
 			// System.out.println("reshuffle the deck of the player "
 			// 		+ player_username + " to draw FIVE cards");
 			while (discard.size() > 0) {
-				int ndx = (int) Randomness.nextRandomInt(discard.size());
+				int ndx = gen.nextInt(discard.size());
 				// Move discard to deck
 				deck.add(discard.remove(ndx));
 			}
@@ -56,7 +57,7 @@ public class Player implements Cloneable{
 			// System.out.println("reshuffle the deck of the player "
 			// 		+ player_username + " to draw FIVE cards");
 			while (discard.size() > 0) {
-				int ndx = (int) Randomness.nextRandomInt(discard.size());
+				int ndx = gen.nextInt(discard.size());
 				// Move discard to deck
 				deck.add(discard.remove(ndx));
 			}
@@ -96,7 +97,7 @@ public class Player implements Cloneable{
 		   }
 	   public void playKingdomCard() {
 		      while (numActions > 0) {
-		         List<Card> actionCards = Card.filter(hand, Type.ACTION);
+		         List<Card> actionCards = Card.filter(hand, Card.Type.ACTION);
 
 		         if (actionCards.size() == 0)
 		            return;
@@ -150,6 +151,7 @@ public class Player implements Cloneable{
 					}
 					else if(coins < boughtCard.getCost()){
 						System.out.println("You cannot afford that card");
+						return;
 					}
 					else{
 						coins -= boughtCard.getCost();

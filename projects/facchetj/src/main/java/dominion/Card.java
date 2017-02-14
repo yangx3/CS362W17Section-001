@@ -65,8 +65,8 @@ public class Card {
 			pointVictoire = -1;
 			prix = 0;
 			valeur = 0;
-			nom = "cursee";
-			type = "curse";
+			nom = "curse";
+			type = "cursee";
 			break;
 		case 8:
 			pointVictoire = 1;

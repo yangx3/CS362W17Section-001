@@ -13,6 +13,7 @@ public class Council_Room extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		player.buy += buy;
 		for(int i=0; i < draw; i++)
 		{

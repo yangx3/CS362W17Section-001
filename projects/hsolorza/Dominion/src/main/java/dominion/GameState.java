@@ -1,4 +1,4 @@
-package org.cs362.dominion;
+package dominion;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -7,8 +7,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.List;
 import java.util.TreeMap;
-
-
+import java.util.Random;
 
 
 //struct gameState {
@@ -36,7 +35,7 @@ public class GameState implements Cloneable{
 	   public List<Player> players = new ArrayList<Player>(); ;
 	   public List<Card> cards ;
 	   public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
-
+		 private Random gen = new Random();
 
 	   public GameState(List<Card> cards) {
 		   this.cards=cards;
@@ -67,9 +66,9 @@ public class GameState implements Cloneable{
 				   								// we should change 3 to the  exact of the number of
 				   								//kingdom cards. look at the requirements of the assignment-1
 		      while (selectedKindom < Kingdom_Cards_Selected) {
-			         int random = (int)  Randomness.random.nextInt(cards.size());//
+			         int random = gen.nextInt(cards.size());//
 			         Card tmp = cards.get(random);
-			         if(tmp.getType()!=Card.Type.ACTION) continue;
+			         if(tmp.getType()!= Card.Type.ACTION) continue;
 			         if(gameBoard.containsKey(tmp)) continue;
 			         gameBoard.put(tmp, 10);
 			         selectedKindom++;

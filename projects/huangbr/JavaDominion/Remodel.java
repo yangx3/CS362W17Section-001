@@ -13,6 +13,7 @@ public class Remodel extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
+		System.out.println("Playing " + name);
 		int randomCard = player.getRandomCardIndex(player.hand);
 		int cardCost = player.hand.getCard(randomCard).cost;
 		

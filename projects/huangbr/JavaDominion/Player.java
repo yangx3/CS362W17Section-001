@@ -39,6 +39,14 @@ public class Player
 		return deck.drawCard();
 	}
 
+	public void discardHand()
+	{
+		while(hand.size != 0)
+		{
+			discard.addCard(hand.drawCard());
+		}
+	}
+
 	//Player discards a card from their hand and adds that card into their discard pile.
 	public void discardCard(Pile searchPile, int index)
 	{
@@ -52,18 +60,152 @@ public class Player
 		hand.removeCard(index);
 	}
 
+	public void actionPhase(Dominion game)
+	{
+		boolean hasAction = false;
+		Random rand = new Random();
+		List<Integer> indexList = new ArrayList<Integer>();
+		for(int i=0; i < hand.getSize(); i++)
+		{
+			if(hand.getCard(i).type == Card.cardType.Action || hand.getCard(i).type == Card.cardType.Attack)
+			{
+				hasAction = true;
+				break;
+			}
+		}
+		if(hasAction == false)
+		{
+			System.out.println("No Action cards in hand.");
+			actions--;
+		}
+		while(actions > 0)
+		{
+			int actionIndex = 0;
+			for(int i=0; i < hand.getSize(); i++)
+			{
+				if(hand.getCard(i).type == Card.cardType.Action || hand.getCard(i).type == Card.cardType.Attack)
+				{
+					actionIndex = i;
+					break;
+				}
+			}
+
+			int randomIndex = rand.nextInt(hand.getSize());
+			System.out.println("Playing " + hand.getCard(actionIndex).name);
+			hand.getCard(actionIndex).play(game,this);
+			actions--;
+		}
+		System.out.println("Action Phase Over.");
+	}
+
+	public void buyPhase(Dominion game)
+	{
+		Random rand = new Random();
+		money += hand.value;
+		System.out.println(money);
+		while(buy > 0 && money != 0)
+		{
+			if(money >= 8)
+			{
+				buyCard(game, money, "Province");
+			}
+			else if(money >= 6)
+			{
+				int n = rand.nextInt(1 + 1 - 0) + 0;
+				if(n == 0)
+				{
+					buyCard(game, money, "Gold");
+				}
+				else if(n ==1)
+				{
+					buyCard(game, money, game.getRandomKingdomCard().getName(0));
+				}
+			}
+			else if(money == 3)
+			{
+				buyCard(game, money, "Silver");
+			}
+			else
+			{
+				buyCard(game, money, "Copper");
+			}
+			buy--;
+		}
+		System.out.println("Buy phase over.");
+	}
+
+	public void buyCard(Dominion game, int coins, String name)
+	{
+		int cardIndex = game.getKingdomCardIndex(name);
+		System.out.println("Buying " + name);
+		if(cardIndex > -1)
+		{
+			if(game.kingdomCards.get(cardIndex).getCard(0).cost > coins)
+			{
+				System.out.println("Not enough money to buy this card.");
+			}
+			else if(game.kingdomCards.size() == 0)
+			{
+				System.out.println("No more of this card.");
+			}
+			else
+			{
+				discard.addCard(game.kingdomCards.get(cardIndex).drawCard());
+				money -= game.kingdomCards.get(cardIndex).getCard(0).cost;
+				for(int j=0; j < game.kingdomCards.get(cardIndex).embargos; j++)
+				{
+					if(game.basicCards.get(6).size != 0)
+					{
+						discard.addCard(game.basicCards.get(6).drawCard());
+						System.out.println("Gained a curse due to an Embargo");
+					}
+				}		
+			}
+			
+		}
+		else if(cardIndex == -1)
+		{
+			cardIndex = game.getBasicCardIndex(name);
+			if(game.basicCards.get(cardIndex).getCard(0).cost > coins)
+			{
+				System.out.println("Not enough money to buy this card.");
+			}
+			else if(game.basicCards.size() == 0)
+			{
+				System.out.println("No more of this card.");
+			}
+			else
+			{
+				discard.addCard(game.basicCards.get(cardIndex).drawCard());
+				money -= game.basicCards.get(cardIndex).getCard(0).cost;
+				for(int j=0; j < game.basicCards.get(cardIndex).embargos; j++)
+				{
+					if(game.basicCards.get(6).size != 0)
+					{
+						discard.addCard(game.basicCards.get(6).drawCard());
+						System.out.println("Gained a curse due to an Embargo");
+					}
+				}		
+			}
+		}
+	}
+
 	//Player takes his turn. 
 	public void takeTurn(Dominion game)
 	{
 		reset();
+		deck.shufflePile();
 		for(int i=0; i < 5; i++)
 		{
 			if(deck.getSize() == 0)
 			{
 				rebuildDeck();
 			}
-			hand.addCard(drawCard());
+			hand.addCard(deck.drawCard());
 		}
+		actionPhase(game);
+		buyPhase(game);
+		discardHand();
 	}
 
 	//Resets the Players buy, actions and money back to defualt.
@@ -78,7 +220,7 @@ public class Player
 	//The deck is recreated by using the discard pile.
 	public void rebuildDeck()
 	{
-		while(!discard.isEmpty())
+		for(int i=0; i < discard.getSize(); i++)
 		{
 			deck.addCard(discard.drawCard());
 		}
@@ -117,4 +259,11 @@ public class Player
 		}
 		deck.print();
 	}
+
+	public int getPoints()
+	{
+		int totalPoints = hand.points + deck.points + discard.points;
+		return totalPoints;
+	}
+
 }	

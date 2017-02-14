@@ -1,9 +1,11 @@
 package org.cs362.dominion;
+
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.*;
+
 
 public class DominionBoard {
 	List<Card> buyCards;
@@ -61,6 +63,8 @@ public class DominionBoard {
 	}
 	public int checkEnd(){
 		int counter=0;
+		if(this.num_Province == 0)
+			counter++;
 		if(this.num_Duchy == 0)
 			counter++;
 		if(this.num_Estate == 0)
