@@ -12,7 +12,7 @@ public class SeaHagTest {
 
     @Test
     public void test0()  throws Throwable  {
-	Randomness.reset(10);
+	Randomness.reset();
 
 	int newCards = 1;
 	// initialize a game state and player cards
