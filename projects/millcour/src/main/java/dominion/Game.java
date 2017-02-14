@@ -527,15 +527,17 @@ public class Game{
 	
 	public void whoWon(){
 		int points = 0;
+		players.get(0).discardHand();
 		players.get(0).discardToDraw();
 		for(int i=0; i<players.get(0).getDraw().getPile().size(); i++){
-			points++;
+			points += players.get(0).getDraw().getPile().get(i).getScore();
 		}
 		players.get(0).setVictory(points);
 		points = 0;
+		players.get(1).discardHand();
 		players.get(1).discardToDraw();
 		for(int i=0; i<players.get(1).getDraw().getPile().size(); i++){
-			points++;
+			points += players.get(1).getDraw().getPile().get(i).getScore();
 		}
 		players.get(1).setVictory(points);
 		if(players.get(0).getVictory() > players.get(1).getVictory()){
