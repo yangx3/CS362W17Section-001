@@ -184,7 +184,8 @@ public class GameTest {
 		assertEquals(numEstate, 0);
 		game.getPlayers().get(0).getHand().getPile().add(new Card(Card.CardName.Copper, Card.Type.TREASURE, 0, 0, 0));
 		game.getPlayers().get(0).getHand().getPile().add(new Card(Card.CardName.Copper, Card.Type.TREASURE, 0, 0, 0));
-		//game.runAction(Card.CardName.Baron, 0);
+		game.runAction(Card.CardName.Baron, 0);
+		assertEquals(game.getPlayers().get(0).getCoins(), 4);
 	}
 	
 	@Test
@@ -227,5 +228,34 @@ public class GameTest {
 		assertEquals(game.checkForEnd(), false);
 		game.fillActionCards();
 		assertEquals(game.checkForEnd(), true);
+	}
+	
+	@Test
+	public void invokeBuyRun(){
+		game.invokeBuy(0);
+		assertEquals(game.getPlayers().get(0).getHand().getPile().size(), 1);
+	}
+	
+	@Test
+	public void takeTurnRun(){
+		game.takeTurn(0);
+		assertEquals(game.getPlayers().get(0).getNumBuys(), 0);
+		assertEquals(game.getPlayers().get(0).getNumActions(), 0);
+	}
+	
+	@Test
+	public void playGameRun(){
+		game.playGame();
+		int out = 0;
+		if(game.getBoard().get(2).getPile().size() > 0){
+			for(int i=game.getBoard().size()-1; i>=0; i--){
+				if(game.getBoard().get(i).getPile().size() == 0){
+					out++;
+				}
+			}
+			assertEquals(out, 3);
+		}else{
+			assertEquals(game.getBoard().get(2).getPile().size(), 0);
+		}
 	}
 }
