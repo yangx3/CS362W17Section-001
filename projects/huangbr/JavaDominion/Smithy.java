@@ -16,6 +16,10 @@ public class Smithy extends Card
 		System.out.println("Playing " + name);
 		for(int i=0; i < draw; i++)
 		{
+			if(player.deck.getSize() == 0)
+			{
+				break;
+			}
 			player.hand.addCard(player.drawCard());
 		}
 		discard(game, player, name);

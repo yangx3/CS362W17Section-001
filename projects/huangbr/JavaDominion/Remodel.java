@@ -18,17 +18,22 @@ public class Remodel extends Card
 		int cardCost = player.hand.getCard(randomCard).cost;
 		
 		boolean goodCard = false;
+		int counter = 0;
 		while(goodCard == false)
 		{
 			Pile temp = game.getRandomKingdomCard();
+			counter++;
 			if(temp.getCard(0).cost <= cardCost +2)
 			{
 				player.hand.addCard(temp.drawCard());
 				goodCard = true;
 			}
+			else if(counter == 100)
+			{
+				break;
+			}
 		}
 		player.trashCard(randomCard);
-		discard(game, player, name);
 	}
 }
 

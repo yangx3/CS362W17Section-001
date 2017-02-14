@@ -238,7 +238,8 @@ public class Game{
 	}
 
 	public void cutpurseAction(int x){
-		players.get(x).setCoins(players.get(x).getCoins()+2);
+		//broken cutpurse
+		players.get(x).setCoins(players.get(x).getCoins()+1);
 		int other;
 		if(x==0)
 			other = 1;
@@ -339,12 +340,12 @@ public class Game{
 	}
 
 	public void smithyAction(int x){
-		for(int i=0; i<3; i++){
+		//broken smithy
+		for(int i=0; i<2; i++){
 			if(players.get(x).getDraw().getPile().size() == 0){
 				players.get(x).getDiscard().shuffleDeck();
 				players.get(x).discardToDraw();
 			}
-			//players.get(x).getHand().getPile().add(players.get(x).getDraw().getPile().remove(players.get(x).getDraw().getPile().size()-1));
 			players.get(x).getHand().getPile().add(players.get(x).getDraw().drawCard());
 		}
 	}
@@ -354,7 +355,8 @@ public class Game{
 			players.get(x).getDiscard().shuffleDeck();
 			players.get(x).discardToDraw();
 		}
-		players.get(x).getHand().getPile().add(players.get(x).getDraw().drawCard());
+		//broken village
+		players.get(x).getDraw().getPile().add(players.get(x).getDraw().drawCard());
 		players.get(x).setNumActions(players.get(x).getNumActions()+1);
 	}
 
@@ -419,7 +421,7 @@ public class Game{
 		if(temp.size() > 0){
 			action = rand.nextInt(temp.size());
 			toRemove = temp.get(action);
-			System.out.println("Playing: " + players.get(x).getHand().getPile().get(temp.get(action)).getCardName() + "\n");
+			System.out.println("Playing: " + players.get(x).getHand().getPile().get(temp.get(action)).getCardName());
 			name = players.get(x).getHand().getPile().get(temp.get(action)).getCardName();
 			players.get(x).getDiscard().getPile().add(players.get(x).getHand().getPile().remove(toRemove));
 			runAction(name, x);
@@ -441,9 +443,8 @@ public class Game{
 		}
 		if(temp.size() > 0){
 			buy = rand.nextInt(temp.size());
-			System.out.println("Buying: " + board.get(temp.get(buy)).getPile().get(0).getCardName() + "\n");
+			System.out.println("Buying: " + board.get(temp.get(buy)).getPile().get(0).getCardName());
 			players.get(x).setCoins(players.get(x).getCoins() - board.get(temp.get(buy)).getPile().get(0).getCost());
-			//System.out.println("Player " + (x+1) + " COINS: " + players.get(x).getCoins() + "\n");
 			players.get(x).getHand().getPile().add(board.get(temp.get(buy)).drawCard());
 
 			//Test with embargo implementation
