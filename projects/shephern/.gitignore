@@ -1,0 +1,3 @@
+#A ignore file for target folder
+/target/
+*.class
