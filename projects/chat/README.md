@@ -1,4 +1,9 @@
 Touku Cha CS 362 Assignment #1 Instructions:
 
-Edit here....
+mvn clean install
 
+mvn package
+
+mvn test
+
+mvn cobertura:cobertura
