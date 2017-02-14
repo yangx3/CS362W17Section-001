@@ -89,6 +89,8 @@ public class PlayerTest {
         person.printHandType("treasure");
         person.printAllDecks();
         person.getMoves();
+        person.discardAtIndex(1000);
+
 
         person.discardAll();
         for (int x = 0; x < 6; x++)  {
