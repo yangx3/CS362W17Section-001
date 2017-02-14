@@ -16,6 +16,25 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+	<build>
+	  <plugins>
+	    <plugin>
+	      <artifactId>maven-assembly-plugin</artifactId>
+	      <configuration>
+	       <appendAssemblyId>false</appendAssemblyId>
+	        <archive>
+	          <manifest>
+	            <mainClass>org.362.dominion.Dominion.PlayDominion</mainClass>
+	          </manifest>
+	        </archive>
+	        <descriptorRefs>
+	          <descriptorRef>jar-with-dependencies</descriptorRef>
+	        </descriptorRefs>
+	      </configuration>
+	    </plugin>
+	  </plugins>
+	</build>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
