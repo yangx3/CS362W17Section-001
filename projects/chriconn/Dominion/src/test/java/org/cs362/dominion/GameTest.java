@@ -349,15 +349,14 @@ public class GameTest {
         }
     }
 
-    // @Test
-    // public void checkTokens() {
-    //     System.out.println("\n\n############ CHECK TOKENS ############\n\n");
-    //     Game dominion = new Game("Connor");
-    //     for (Player player: dominion.players) {
-    //         getDeck("copper").modifyTokens(1);
-    //         player.addCard(getDeck("copper"))
-    //
-    //         assertEquals("The witch card has no effect", player.getVictoryPoints(), 2);
-    //     }
-    // }
+    @Test
+    public void checkTokens() {
+        System.out.println("\n\n############ CHECK TOKENS ############\n\n");
+        Game dominion = new Game("Connor");
+        for (Player player: dominion.players) {
+            dominion.getDeck("copper").modifyTokens(1);
+            dominion.buy(player, "copper");
+            assertEquals("Drawing from the tokened deck did not add a curse card", player.getVictoryPoints(), 2);
+        }
+    }
 }
