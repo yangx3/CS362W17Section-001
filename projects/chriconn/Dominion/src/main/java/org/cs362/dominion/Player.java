@@ -9,6 +9,7 @@ public class Player {
     private int actions;
     private int value;
     private int buys;
+    private int victoryPoints;
     public Player() {
         drawDeck = new Deck("starter");
         hand = new Deck();
@@ -85,9 +86,11 @@ public class Player {
     public int getActions() {return actions;}
     public int getValues()  {return value;}
     public int getBuys()    {return buys;}
+    public int getVictoryPoints() {return victoryPoints;}
     public void modifyActions(int number) {actions = actions + number;}
     public void modifyValues(int number) {value = value + number;}
     public void modifyBuys(int number) {buys = buys + number;}
+    public void modifyVictoryPoints(int number) {victoryPoints = victoryPoints + number;}
     public boolean hasActions() {
         if (actions > 0 && hand.hasType("action")) {
             return true;
