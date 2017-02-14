@@ -1,13 +1,13 @@
 package dominion;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.Random;
-
-
 
 
 //struct gameState {
@@ -31,11 +31,11 @@ import java.util.Random;
 //	  int playedCardCount;
 //	};
 
-public class GameState{
+public class GameState implements Cloneable{
 	   public List<Player> players = new ArrayList<Player>(); ;
 	   public List<Card> cards ;
 	   public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
-	   private Random gen = new Random();
+		 private Random gen = new Random();
 
 	   public GameState(List<Card> cards) {
 		   this.cards=cards;
@@ -52,37 +52,38 @@ public class GameState{
 	   public void initializeGame(){
 
 
-		//initialize supply
+			      //initialize supply
 
-		//check number of players
-	    if (players.size() > 4 || players.size() < 2){
-	    	System.err.println("the number of players mus be between 2 and 4 ");
-			return ;
-	    }
-	    //initialize supply for only two players
-	    int selectedKindom=0;
-		int Kingdom_Cards_Selected=13;
-		while (selectedKindom < Kingdom_Cards_Selected) {
-			int random = gen.nextInt(cards.size());//
-			Card tmp = cards.get(random);
-			if(tmp.getType()!=Card.Type.ACTION) continue;
-		    if(gameBoard.containsKey(tmp)) continue;
-			gameBoard.put(tmp, 10);
-			selectedKindom++;
-		}
-	    
-		//set number of Curse cards the default number of players is 2
-		gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
+			   //check number of players
+			   if (players.size() > 4 || players.size() < 2)
+			    {
+				   System.err.println("the number of players mus be between 2 and 4 ");
+			      return ;
+			    }
+			 //initialize supply for only two players
+				  int selectedKindom=0;
+				   int Kingdom_Cards_Selected=3;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
+				   								// we should change 3 to the  exact of the number of
+				   								//kingdom cards. look at the requirements of the assignment-1
+		      while (selectedKindom < Kingdom_Cards_Selected) {
+			         int random = gen.nextInt(cards.size());//
+			         Card tmp = cards.get(random);
+			         if(tmp.getType()!= Card.Type.ACTION) continue;
+			         if(gameBoard.containsKey(tmp)) continue;
+			         gameBoard.put(tmp, 10);
+			         selectedKindom++;
+			      }
+		        //set number of Curse cards the default number of players is 2
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
 
-		//set number of Victory cards
-		gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
-
-		//set number of Treasure cards
-		gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
-        gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
+		      //set number of Victory cards
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+		    //set number of Treasure cards
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
 
 
 		      for (Player player : players) {
@@ -153,7 +154,7 @@ public class GameState{
 		      return playerScore;
 		   }
 
-    @Override
+	   @Override
 	public String toString() {
 
 		StringBuilder sb = new StringBuilder();
