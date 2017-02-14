@@ -1,6 +1,12 @@
 all:
-	javac -cp ../ *.java
+	echo "Use clean, test, build, coverage, or run."
 clean:
-	rm -f *.class
-tests: all
-	java -cp ../ willmetl.Tests
+	mvn clean
+test:
+	mvn test
+build:
+	mvn package
+coverage: clean
+	mvn cobertura:cobertura
+run:
+	java -jar target/willmetl-1.0-SNAPSHOT.jar
