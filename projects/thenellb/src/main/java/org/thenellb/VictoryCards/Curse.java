@@ -10,15 +10,15 @@ public class Curse extends Card {
 
     //constructor
     public Curse() {
-        String cardName ="";
-        String text =       ""; // official description from dominion website
-        int victoryValue = 0;         // number of Victory points the card gives
-        int plusBuyValue = 0;         // number of +Buys the card gives
-        int plusTreasuryValue = 0;    // number of +Coins the card gives
-        int plusActionValue = 0;      // number of +Actions the card gives
-        int plusCardValue = 0;        // number of +Cards drawn
-        int cost = 0;                 // how many coins it costs to buy
-        String cardType = "VICTORY";
+        cardName ="";
+        text =       ""; // official description from dominion website
+        victoryValue = 0;         // number of Victory points the card gives
+        plusBuyValue = 0;         // number of +Buys the card gives
+        plusTreasuryValue = 0;    // number of +Coins the card gives
+        plusActionValue = 0;      // number of +Actions the card gives
+        plusCardValue = 0;        // number of +Cards drawn
+        cost = 0;                 // how many coins it costs to buy
+        cardType = "VICTORY";
 
     }
     public void activate() {

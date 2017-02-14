@@ -3,6 +3,7 @@ package org.thenellb;
 import java.util.ArrayList;
 import java.util.*;
 
+
 public class Deck {
     public List<Card> cardDeck; // list of cards
     public List<Card> discard;  // discard pile
@@ -25,6 +26,18 @@ public class Deck {
         treasureCards = 0;
         actionCards = 0;
         remainingCards = 0;
+        initialization();
+    }
+    public void initialization() {
+        for (int i = 0; i<7; i++){
+            Card starterCoin = new Copper();
+            addCardToDiscard(starterCoin);
+        }
+        for (int j = 0; j<3; j++) {
+            Card starterEstate = new Estate();
+            addCardToDiscard(starterEstate);
+        }
+
     }
 
     //Adds card to deck array
@@ -42,7 +55,7 @@ public class Deck {
         cardDeck.clear();   //removes all held elements in card deck
         Collections.shuffle(discard);
         for (int i=0; i<discardSize; i++) { //copies card from shuffled discard pile to empty deck
-            cardDeck.add(discard.get(i));
+            addCardToDeck(discard.get(i));
         }
         discard.clear();                    //clears discard pile
     }

@@ -82,7 +82,11 @@ public abstract class Card {
         System.out.println("Card type:  " + cardType + "\n");
     }
 
+    public void activate() {
+        System.out.println("Playing the card:  " + cardName);
 
+        //add things that will allow me to look through deck once deck is made
+    }
 
 
 

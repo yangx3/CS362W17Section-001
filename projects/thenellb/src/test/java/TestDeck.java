@@ -12,6 +12,19 @@ public class TestDeck {
     @Test
     public void addTestDeck(){
         Deck myDeck = new Deck();
+        System.out.println("Deck at initialization:  \n");
+        for (int k = 0; k<10; k++){
+            System.out.println("Card at index "+k +" is " + myDeck.discard.get(k).get_cardName());
+        }
+        System.out.println("Deck after being shuffled:  \n");
+        myDeck.shuffle();
+        System.out.println("Size of discard:  "+ myDeck.discardSize + "\nSize of deck:  "+myDeck.deckSize+"\n");
+        for (int q = 0; q<10; q++){
+
+            System.out.println("Card at index "+q +" is " + myDeck.cardDeck.get(q).get_cardName());
+        }
+
+
 
     }
 }
