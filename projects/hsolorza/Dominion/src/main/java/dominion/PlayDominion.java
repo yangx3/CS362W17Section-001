@@ -16,30 +16,36 @@ public class PlayDominion {
 		List<Card> cards;
 		GameState state;
 
-		//the cards  are achieved by each element/constant in the enum class
 		cards = new ArrayList<Card>(Card.createCards());
 		state = new GameState(cards);
 
 		Player player = new Player(state, "player-1");
-		//player.printStateGame();
+
 		state.addPlayer(player);
+		System.out.println("Added first player!");
 
 
 		player = new Player(state, "player-2");
 		state.addPlayer(player);
+		System.out.println("Added second player!");
+
 		//Initialize the game!
-		state.initializeGame();
+		System.out.println("initializing the game!");
+	 	state.initializeGame();
+		System.out.println("Finished initializing the game!");
 
-		System.out.println("Initialization DominionBoard:\n " + state.toString());
 
-		HashMap<Player, Integer> winners=state.play();
+		HashMap<Player, Integer> winners = state.play();
 		System.out.println ("Finished game.\n");
 
+		System.out.println("Players:       player-1       player-2");
+		System.out.printf("Scores:       ");
 		for(Player p: winners.keySet()){
-			System.out.println ("Player name: "+winners.get(p) + " , Score: "+ winners.get(p) );
+			System.out.printf ("  "+winners.get(p)+"    " );
+			System.out.printf("         ");
 		}
-
-		player.printStateGame();
+		System.out.println("");
+		//  player.printStateGame();
 
 
 		System.exit(0);
