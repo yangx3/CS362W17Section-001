@@ -22,7 +22,7 @@ public class Player {
 
 	String player_username;
 	
-	public static int numPlayers = 2;
+	//public static int numPlayers = 2; //shifted off for testing
 
 	int numActions;
 	int numBuys;
@@ -79,6 +79,10 @@ public class Player {
 	   
 	   final boolean gainFromBoard(Card card){
 		   gain(card);
+//		   System.out.println("Hand after gain: ");
+//		   for(Card c: this.hand){
+//			   System.out.println(c.toString());
+//		   }
 		   gameState.gameBoard.put(card, gameState.gameBoard.get(card) - 1);
 		   return true;
 	   }
@@ -190,9 +194,9 @@ public class Player {
 
 	   }
 	   final void endTurn() {
-		   System.out.println(" --- --------------------------- --- ");
-  			System.out.println("TO-DO endTurn "); 
-  			System.out.println(" --- --------------------------- --- ");   
+//		   System.out.println(" --- --------------------------- --- ");
+//  			System.out.println("TO-DO endTurn "); 
+//  			System.out.println(" --- --------------------------- --- ");   
   			numActions = 1;
   			numBuys = 1;
   			coins = 0;
@@ -243,12 +247,15 @@ public class Player {
 
 		}
 	   
-	   protected Player clone() throws CloneNotSupportedException {     Player clonePlayer=(Player) super.clone();     clonePlayer.hand = new ArrayList<Card>(hand);// int hand[MAX_PLAYERS][MAX_HAND];
-	   clonePlayer.deck = new LinkedList<Card>(deck);// int
-	   // deck[MAX_PLAYERS][MAX_DECK];
-	   clonePlayer.discard = new ArrayList<Card>(discard); // int
-	   // discard[MAX_PLAYERS][MAX_DECK];
-	   clonePlayer.playedCards = new ArrayList<Card>(playedCards); return clonePlayer;
+	   protected Player clone() throws CloneNotSupportedException {    
+		   	Player clonePlayer=(Player) super.clone();     
+		   	clonePlayer.hand = new ArrayList<Card>(hand);// int hand[MAX_PLAYERS][MAX_HAND];
+		   	clonePlayer.deck = new LinkedList<Card>(deck);// int
+	   		// deck[MAX_PLAYERS][MAX_DECK];
+	   		clonePlayer.discard = new ArrayList<Card>(discard); // int
+	   		// discard[MAX_PLAYERS][MAX_DECK];
+	   		clonePlayer.playedCards = new ArrayList<Card>(playedCards); 
+	   		return clonePlayer;
 	       }  
 	   
 }

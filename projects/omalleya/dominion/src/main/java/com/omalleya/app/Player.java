@@ -11,13 +11,16 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.omalleya.app.Card.CardName;
+
+
 import com.omalleya.app.Card.Type;
 
 
 import java.util.Collections;
 
 
-public class Player {
+public class Player implements Cloneable{
     LinkedList<Card> deck = new LinkedList<Card>();
     ArrayList<Card> hand = new ArrayList<Card>();
     LinkedList<Card> discarded = new LinkedList<Card>();
@@ -38,10 +41,6 @@ public class Player {
         numActions = 1;
         coins = 0;
         numBuys = 1;
-        //5 cards as your starting hand
-        for (int i = 0; i < 5; i++) {
-            drawCard();
-        }
 	}
 
     //Action phase
@@ -59,33 +58,69 @@ public class Player {
             if(c == null)
                 return;
             
-            playedCards.add(actionCards.remove(0));
+            playedCards.add(c);
+            System.out.println(this.player_name + " played " + c);
             hand.remove(c);
             numActions--;
-            c.play(this); //might need to give this the current player and gamestate
+            c.play(this, gameState);
 
+        }
+    }
+
+    public void playTreasureCards() {
+        List<Card> treasureCards = Card.filter(hand, Type.TREASURE);
+
+        for(int i=0; i<treasureCards.size(); i++) {
+            Card c = treasureCards.get(i);
+            coins += c.getTreasureValue();
+            playedCards.add(c);
+            hand.remove(c);
         }
     }
 
     //Buy phase
         //normally a player may only buy one card
     public void buy(GameState state) {
-        List<Card> treasureCards = Card.filter(hand, Type.TREASURE);
-
-        for(int i=0; i<treasureCards.size(); i++) {
-            Card c = treasureCards.get(i);
-            coins += c.getTreasureValue();
-            playedCards.add(hand.remove(i));
-            hand.remove(treasureCards.get(i));
-        }
-
+        if(!playedCards.contains(Card.getCard(state.cards, CardName.Feast)))
+            playTreasureCards();
         while(numBuys>0) {
+            Card toBuy = Card.getCard(state.cards, CardName.Copper);
 
-            if(treasureCards.size() == 0)
-            {
-                //buy copper?
-                return;
+            int random = (int)  Randomness.random.nextInt(3);
+
+            List<Card> treasures = Card.filter(state.cards, Type.TREASURE);
+            List<Card> victory = Card.filter(state.cards, Type.VICTORY);
+            List<Card> actions = Card.filter(state.cards, Type.ACTION);
+
+            //remove card from actions if its not in gameboard
+            for(int i=0; i<actions.size(); i++) {
+                if(!state.gameBoard.containsKey(actions.get(i))) {
+                    actions.remove(i);
+                    i--;
+                }
             }
+            
+            if(random == 0) {
+                //buy appropriate action
+                toBuy = Card.sortCost(actions, state.cards, coins);
+            }else if(random == 1) {
+                //buy appropriate treasure
+                toBuy = Card.sortCost(treasures, state.cards, coins);
+            }else if(random == 2 && coins >= 2) {
+                //buy appropriate victory
+                toBuy = Card.sortCost(victory, state.cards, coins);
+            }else {
+                //buy copper
+                toBuy = Card.sortCost(treasures, state.cards, coins);
+            }
+
+            gain(toBuy);
+            state.removeCard(toBuy);
+            coins -= toBuy.getCost();
+            System.out.println(this.player_name + " bought " + toBuy);
+            if(playedCards.contains(Card.getCard(state.cards, CardName.Feast)))
+                break;
+            numBuys--;
             
         }
     }
@@ -130,9 +165,32 @@ public class Player {
     }
 
     public void discard(Card card) {
-        hand.remove(card);
-        discarded.add(card);
+        Boolean tmp = hand.remove(card) == true ? discarded.add(card) : false;
         System.out.println(this.player_name + " discarded " + card);
+    }
+
+    final int scoreFor() { 
+        int score = 0;
+        //score from hand
+        for (Card c : hand)
+            score += c.getScore();
+        //score from discard
+        for (Card c : discarded)
+            score += c.getScore();
+        //score from deck
+        for (Card c : deck)
+            score += c.getScore();
+    
+        return score;
+    } 
+
+    protected Player clone() throws CloneNotSupportedException {     
+        Player clonePlayer=(Player) super.clone();     
+        clonePlayer.hand = new ArrayList<Card>(hand);// int hand[MAX_PLAYERS][MAX_HAND];
+        clonePlayer.deck = new LinkedList<Card>(deck);// int deck[MAX_PLAYERS][MAX_DECK];
+        clonePlayer.discarded = new LinkedList<Card>(discarded); // int discard[MAX_PLAYERS][MAX_DECK];
+        clonePlayer.playedCards = new ArrayList<Card>(playedCards); 
+        return clonePlayer;
     }
 
     @Override

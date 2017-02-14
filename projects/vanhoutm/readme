@@ -1,0 +1,11 @@
+How to compile:
+javac *.java
+
+How to run:
+java -jar Dominion.jar
+
+How to compile with code coverage tool:
+Use Netbeans and the JaCoCoverage plugin. Sorry. 
+
+
+Dominion_files folder is for Dominion.html 

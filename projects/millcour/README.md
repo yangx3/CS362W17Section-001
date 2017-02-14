@@ -1,1 +1,11 @@
-Project folder for Courtney Miller, CS362 Winter 2017
+How to compile and run files:
+
+Compile:
+mvn compile
+mvn package
+
+Run:
+mvn test
+
+Code coverage:
+mvn cobertura:cobertura

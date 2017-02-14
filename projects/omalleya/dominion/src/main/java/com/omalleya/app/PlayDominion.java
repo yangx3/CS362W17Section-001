@@ -1,5 +1,6 @@
 package com.omalleya.app;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -19,8 +20,11 @@ public class PlayDominion {
 
         //testing to see what the players' decks looks like
 
-        System.out.println(gs.toString());
-        p1.initializePlayerTurn();
-        System.out.println(gs.toString());
+        HashMap<Player, Integer> winners=gs.play();
+        System.out.println ("Finished game.\n");
+    
+        for(Player p: winners.keySet()){
+            System.out.println ("Player name: "+p.player_name + " , Score: "+ winners.get(p) );
+        }
     }
 }

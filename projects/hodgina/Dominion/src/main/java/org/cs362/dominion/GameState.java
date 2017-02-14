@@ -1,49 +1,21 @@
 package org.cs362.dominion;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
-
-
-
-//struct gameState {
-//	  int numPlayers; //number of players
-//	  int supplyCount[treasure_map+1];  //this is the amount of a specific type of card given a specific number.
-//	  int embargoTokens[treasure_map+1];
-//	  int outpostPlayed;
-//	  int outpostTurn;
-//	  int whoseTurn;
-//	  int phase;
-//	  int numActions; /* Starts at 1 each turn */
-//	  int coins; /* Use as you see fit! */
-//	  int numBuys; /* Starts at 1 each turn */
-//	  int hand[MAX_PLAYERS][MAX_HAND];
-//	  int handCount[MAX_PLAYERS];
-//	  int deck[MAX_PLAYERS][MAX_DECK];
-//	  int deckCount[MAX_PLAYERS];
-//	  int discard[MAX_PLAYERS][MAX_DECK];
-//	  int discardCount[MAX_PLAYERS];
-//	  int playedCards[MAX_DECK];
-//	  int playedCardCount;
-//	};
 
 public class GameState implements Cloneable{
 	   public List<Player> players = new ArrayList<Player>(); ;
 	   public List<Card> cards ;
 	   public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
+	   List<Card> embargoTokens;
+	   private Random gen = new Random();
 
 
 	   public GameState(List<Card> cards) {
 		   this.cards=cards;
-
 	   }
 	   public void addPlayer(Player player) {
-		      players.add(player);
+	  	 	players.add(player);
 	   }
 
 	   /*	   initializing all supplies, and shuffling deck and
@@ -63,11 +35,10 @@ public class GameState implements Cloneable{
 			    }
 			 //initialize supply for only two players
 				  int selectedKindom=0;
-				   int Kingdom_Cards_Selected=3;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
-				   								// we should change 3 to the  exact of the number of
-				   								//kingdom cards. look at the requirements of the assignment-1
+				   int Kingdom_Cards_Selected=10;
+
 		      while (selectedKindom < Kingdom_Cards_Selected) {
-			         int random = (int)  Randomness.random.nextInt(cards.size());//
+			         int random = gen.nextInt(cards.size());
 			         Card tmp = cards.get(random);
 			         if(tmp.getType()!=Card.Type.ACTION) continue;
 			         if(gameBoard.containsKey(tmp)) continue;
@@ -88,23 +59,14 @@ public class GameState implements Cloneable{
 
 
 		      for (Player player : players) {
-			         for (int i = 0; i < 7; i++)
-			            player.gain(Card.getCard(cards, Card.CardName.Copper));
+			         for (int i = 0; i < 7; i++) {
+			         	System.out.println("\n" + player.player_username + " 's Inistial Card Draw Is: ");
+						 player.gain(Card.getCard(cards, Card.CardName.Copper));
+					 }
 			         for (int i = 0; i < 3; i++)
 			            player.gain(Card.getCard(cards,Card.CardName.Estate));
 
-			         player.numActions = 1;
-			         player.coins = 0;
-			         player.numBuys = 1;
-				      //Shuffle your starting 10 cards (7 Coppers & 3 Estates) and place them face-down as your Deck. Draw the top
-				      //5 cards as your starting hand
-				      for (int i = 0; i < 5; i++) {
-				    	  player.drawCard();
-				      }
 			      }
-
-
-
 	   }
 
 	   public HashMap<Player, Integer>  play() {
@@ -113,17 +75,21 @@ public class GameState implements Cloneable{
 		      while (!isGameOver()) {
 		    	  turn++;
 		         for (Player player : players) {
+					 System.out.println("-----------------------------------");
+					 System.out.println("        Turn " + turn + "           ");
+					 System.out.println("-----------------------------------");
 		        	 	System.out.println("Player: "+ player.player_username + " is playing");
+		        	 	player.initializePlayerTurn(); //resets the player's coins, buy's, and Actions.
 		   				//player p plays action card
-		        	 	player.playKingdomCard();
+		        	 	player.playKingdomCard(); //Play Action Cards
 		        	 	//player plays treasure card
-		   			    player.playTtreasureCard();
+		   			    player.playTreasureCard(); //Count Treasure cards and add them to Coins
 		   			    //player buy cards
-		        	    player.buyCard();
+		        	    player.buyCard(this); //buy cards
 		        	  //player ends turn
-		        	    player.endTurn();
+		        	    player.endTurn(); //end the players turn and clean up
 		         }
-		         if(turn==2)
+		         if(turn==100)
 		        	 break;
 		      }
 		      return this.getWinners();
@@ -158,12 +124,17 @@ public class GameState implements Cloneable{
 		      return playerScore;
 		   }
 
-	   @Override
+
+	static void addEmbargo(Card card){
+	   	System.out.print("Embargo Token Added");
+	}
+
+	@Override
 	public String toString() {
 
 		StringBuilder sb = new StringBuilder();
 		if (gameBoard.isEmpty())
-			sb.append("The board game is embty you need to intialize the game!!!!");
+			sb.append("The board game is empty you need to initialize the game!!!!");
 		else {
 			for (Player player : players)
 				sb.append(" --- " + player.toString() + "\n");
