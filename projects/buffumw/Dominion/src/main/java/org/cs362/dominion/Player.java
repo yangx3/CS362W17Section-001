@@ -2,17 +2,19 @@ package org.cs362.dominion;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.util.Random;
+
 public class Player {
-	public String username;
-	private Deck hand;
-	private Deck draw;
-	private Deck discard;
-	private int points;
-	private int actions;
-	private int values;
-	private int buys;
-	private int cards;
-	private int coins;
+	public String username = "";
+	private Deck hand = null;
+	private Deck draw = null;
+	private Deck discard = null;
+	private int points = 0;
+	private int actions = 0;
+	private int values = 0;
+	private int buys = 0;
+	private int cards = 0;
+	private int coins = 0;
 	
 	Player()
 	{
@@ -22,15 +24,7 @@ public class Player {
 		username = "";
 		points = 0;
 	}
-	
-	Player(Deck hand, Deck draw, Deck discard, int points)
-	{
-		this.hand = hand;
-		this.draw = draw;
-		this.discard = discard;
-		this.points = points;
-	}
-	
+
 	// Getters
 	public Deck getDraw()
 	{
@@ -52,6 +46,12 @@ public class Player {
 		return coins;
 	}
 	
+	public int getPoints()
+	{
+		return points;
+	}
+	
+	
 	// Mutators
 	public Deck draw(int numDraws)
 	{
@@ -62,7 +62,11 @@ public class Player {
 			{
 				reShuffle();
 			}
-			hand.addCardToTop(draw.draw());
+			Card card = draw.draw();
+			if(card != null)
+			{
+				hand.addCardToTop(card);
+			}
 		}
 		
 		return hand;
@@ -73,7 +77,12 @@ public class Player {
 		{
 			reShuffle();
 		}
-		hand.addCardToTop(draw.draw());
+		Card card = draw.draw();
+		if(card != null)
+		{
+			hand.addCardToTop(card);
+		}
+		
 		return hand.getTopCard();
 	}
 	
@@ -122,8 +131,10 @@ public class Player {
 	public ArrayList<String> playActions()
 	{
 		Deck temp = new Deck();
+		Deck goAway = new Deck();
 		ArrayList<String> names = new ArrayList<String>();
-		temp = hand.filterBy(Card.Type.Action, Card.Type.ActionAttack, Card.Type.ActionVictory);
+		String choice;
+		
 		actions = 1;
 		buys = 0;
 		cards = 0;
@@ -131,19 +142,25 @@ public class Player {
 		
 		while(actions > 0)
 		{
+			try{
+				temp = hand.filterBy(Card.Type.Action, Card.Type.ActionAttack);
+			}catch(Exception e)
+			{
+				break;
+			}
+			
 			System.out.print("You have " + actions + " actions left, ");
-			if(temp.size() == 0)
+			if(temp.size() <= 0)
 			{
 				System.out.println("but you have no action cards in your hand. Time for the buying phase.\n\n");
 				actions = 0;
+				choice = null;
 				break;
 			}else{
+				choice = getChoice(temp);
 				System.out.printf("here are your choices: %s\n\n", temp);
+				System.out.printf("Which card would you like to play?: %s\n", choice);
 			}
-			Scanner in = new Scanner(System.in);
-			
-			String choice = in.nextLine();
-			System.out.println("Your choice is: " + temp.compare(choice));
 			
 			if(temp.compare(choice) != null)
 			{
@@ -153,22 +170,38 @@ public class Player {
 				cards+=playCard.getCards();
 				coins+=playCard.getCoinsWorth();
 				names.add(playCard.getName().toString());
-				
-				discard.addCardToTop(hand.removeCard(playCard));
+				goAway.addCardToTop(hand.removeCard(playCard));
 				
 			}
 			for(int itr = 0; itr < cards; itr++)
 			{
-				hand.addCardToTop(draw.draw());
+				try {
+					hand.addCardToTop(draw.draw());
+				}catch(Exception e)
+				{
+					continue;
+				}
+				
 			}
-			temp = hand.filterBy(Card.Type.Action, Card.Type.ActionAttack, Card.Type.ActionVictory);
+			
+			System.out.printf("You get %d actions\n", actions);
 			
 			cards = 0;
 			actions--;
 		}
+		for(int itr = 0; itr < goAway.size(); itr++)
+		{
+			try {
+				discard.addCardToTop(goAway.draw());
+			}catch(Exception e)
+			{
+				continue;
+			}
+		}
 		for(int itr = 0; itr < hand.size(); itr++)
 		{
-			if(hand.cardAt(itr).getType() == Card.Type.Treasure)
+			
+			if(hand.cardAt(itr) != null && hand.cardAt(itr).getType() == Card.Type.Treasure)
 			{
 				coins += hand.cardAt(itr).getCoinsWorth();
 			}
@@ -176,13 +209,60 @@ public class Player {
 		return names;
 	}
 	
-	public boolean playPurchasing(Deck drawPile)
+	public String getChoice(Deck temp)
 	{
-		Card drawnCard = drawPile.getTopCard();
-		if(coins-drawnCard.getCost() < 0)
-		{
-			return false;
-		}
+		int number = 0;
+		boolean good = false;
+		do{
+			Random random = new Random();
+			number = random.nextInt(temp.size());
+			if(temp.cardAt(number) != null)
+			{
+				good = true;
+			}
+		}while(!good);
+		
+		return temp.cardAt(number).toString();
+	}
+	
+	public void playPurchasing(ArrayList<Deck> board)
+	{
+		Random random = new Random();
+		int number; 
+		boolean purchase = false;
+		Deck drawPile;
+		Card drawnCard = null;
+		
+		do{
+			do{
+				
+				number = random.nextInt(board.size());
+				drawPile = board.get(number);
+				if(drawPile.size() <= 0)
+				{
+					System.out.println("Sorry, there are no more of that card available.");
+					board.remove(number);
+				}
+				
+			}while(drawPile.size() == 0);
+			purchase = true;
+			try {
+				drawnCard = drawPile.getTopCard();
+			}catch(Exception e)
+			{
+				purchase = false;
+			}
+			
+//			if(coins-drawnCard.getCost() < 0)
+//			{
+//				purchase = false;
+//				System.out.printf("Sorry, you don't have enough coins for that card. You only have %d coins\n", coins);
+//			}else{
+//				purchase = true;
+//			}
+		}while(!purchase);
+		
+		System.out.printf("What card would you like?: %s\n", drawnCard);
 		
 		discard.addCardToTop(drawPile.draw());
 		
@@ -191,7 +271,6 @@ public class Player {
 			discard.addCardToBottom(hand.draw());
 		}
 		
-		return true;
 	}
 	
 	public String toString()

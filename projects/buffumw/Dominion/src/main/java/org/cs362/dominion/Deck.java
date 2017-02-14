@@ -48,10 +48,12 @@ public class Deck {
 	
 	public Card draw() // removes card from the deck
 	{
+		
 		Card card = null;
-		if(size() > 0){
-			card = this.cards.remove(0);
+		if(size() <= 0){
+			throw new IndexOutOfBoundsException("Error: index out of bounds");
 		}
+		card = this.cards.remove(0);
 		
 		return card;
 	}
@@ -60,7 +62,7 @@ public class Deck {
 	{
 		if(cards.isEmpty())
 		{
-			throw new IndexOutOfBoundsException("Error: No cards in deck");
+			throw new IndexOutOfBoundsException("Error: index out of bounds");
 		}
 		return this.cards.get(0);
 	}
@@ -69,7 +71,7 @@ public class Deck {
 	{
 		if(cards.isEmpty())
 		{
-			throw new IndexOutOfBoundsException("Error: No cards in deck");
+			throw new IndexOutOfBoundsException("Error: index out of bounds");
 		}
 		
 		return this.cards.get(this.cards.size()-1);
@@ -80,11 +82,30 @@ public class Deck {
 		return cards;
 	}
 	
+	public void removeNull()
+	{
+		for(int itr = 0; itr < this.cards.size(); itr++)
+		{
+			if(cards.get(itr) == null)
+			{
+				cards.remove(itr);
+			}
+		}
+	}
+	
 	public Deck filterBy(Card.Type... types)
 	{
 		Deck temp = new Deck();
+		if(cards.size() == 0)
+		{
+			throw new IndexOutOfBoundsException("Error: index out of bounds");
+		}
 		for(Card card: cards)
 		{
+			if(card == null)
+			{
+				throw new IndexOutOfBoundsException("Error: index out of bounds");
+			}
 			if(card.getType() != null)
 			{
 				for(Card.Type type: types)
@@ -109,22 +130,22 @@ public class Deck {
 				return card;
 			}
 		}
-		return null;
+		throw new IndexOutOfBoundsException("Error: index out of bounds");
 	}
 	
 	public Card removeCard(Card card)
 	{
 		for(int itr = 0; itr < this.cards.size(); itr++)
 		{
+			if(this.cards == null || this.cards.get(itr) == null){
+				throw new IndexOutOfBoundsException("Error: index out of bounds");
+			}
 			if(this.cards.get(itr).getName() == card.getName())
 			{
-				
-				Card newCard = this.cards.get(itr);
-				this.cards.remove(itr);
-				return newCard;
+				return this.cards.remove(itr);
 			}
 		}
-		return null;
+		throw new IndexOutOfBoundsException("Error: index out of bounds");
 	}
 	
 	

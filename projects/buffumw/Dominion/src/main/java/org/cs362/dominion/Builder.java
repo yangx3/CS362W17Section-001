@@ -9,8 +9,7 @@ public final class Builder {
 		Deck buildDeck = new Deck();
 		int numCard = 0;
 		
-		if(card.getType() == Card.Type.Victory) numCard = 10;
-		else if(card.getName() == Card.Name.Copper) numCard = 60;
+		if(card.getName() == Card.Name.Copper) numCard = 60;
 		else if(card.getName() == Card.Name.Silver) numCard = 40;
 		else if(card.getName() == Card.Name.Gold) numCard = 30;
 		else numCard = 10;
@@ -28,8 +27,6 @@ public final class Builder {
 					card.getCards()
 			));
 		}
-		
-//		System.out.println(buildDeck);
 			
 		return buildDeck;
 	}
@@ -67,7 +64,7 @@ public final class Builder {
 		//Done
 		decks.add(new Card(Card.Name.Cutpurse, Card.Type.ActionAttack, 4, 2, 0, 0, 0, 0));
 		
-		//Place embargo token on top of a supply pile, gain curse card per embargo token on a supply deck
+		//Done
 		decks.add(new Card(Card.Name.Embargo, Card.Type.Action, 2, 2, 0, 0, 0, 0));
 		
 		//Done
