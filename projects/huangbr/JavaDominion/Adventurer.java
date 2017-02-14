@@ -17,6 +17,10 @@ public class Adventurer extends Card
 		Pile tempPile = new Pile();
 		while(numTreasures < 2)
 		{
+			if(player.deck.getSize() == 0)
+			{
+				break;
+			}
 			player.deck.revealCard(0);
 			if(player.deck.getCard(0).type == cardType.Treasure)
 			{
