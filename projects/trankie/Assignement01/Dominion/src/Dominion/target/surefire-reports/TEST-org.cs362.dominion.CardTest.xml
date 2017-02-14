@@ -63,12 +63,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.cs362.dominion.CardTest" name="TestCouncil_Room" time="0"/>
+  <testcase classname="org.cs362.dominion.CardTest" name="TestCouncil_Room" time="0.016"/>
   <testcase classname="org.cs362.dominion.CardTest" name="TestAdventurer" time="0"/>
   <testcase classname="org.cs362.dominion.CardTest" name="TestBureaucrat" time="0"/>
   <testcase classname="org.cs362.dominion.CardTest" name="PlayCooper" time="0"/>
   <testcase classname="org.cs362.dominion.CardTest" name="TestGold" time="0"/>
-  <testcase classname="org.cs362.dominion.CardTest" name="TestCellar" time="0.016"/>
+  <testcase classname="org.cs362.dominion.CardTest" name="TestCellar" time="0"/>
   <testcase classname="org.cs362.dominion.CardTest" name="TestChapel" time="0"/>
   <testcase classname="org.cs362.dominion.CardTest" name="TestCooper" time="0"/>
   <testcase classname="org.cs362.dominion.CardTest" name="TestEstate" time="0"/>
