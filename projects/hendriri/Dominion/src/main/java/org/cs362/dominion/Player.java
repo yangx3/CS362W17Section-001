@@ -6,10 +6,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * I'm guessing it is the player object but who fuckin knows how it interacts with other things because there are no comments
- * in a class about debugging.... idiotic.
- */
 
 import org.cs362.dominion.Card.Type;
 
@@ -88,6 +84,7 @@ public class Player {
 
 	   //filters out the cards and decides which ones are of type action then calls on card method play to run the action card
 	   //it doesn't seem like the cards will iterate through the list, it will only go through once
+	   //UPDATE: IT DOESNT I FIXED IT
 	   public void playKingdomCard() {
 		   System.out.println("PLAYING Kingdom CARDS******************************************");
 
@@ -169,8 +166,7 @@ public class Player {
 		      return score;
 	   }    
 
-	   //I'm not sure what the entire intention of this function is but i believe it is to get the total value of the treasure cards
-	   //and put it into player.coins so that way the player then can buy items.
+
 	   public void playTtreasureCard() {
 		   System.out.println("PLAYING TREASURE CARDS******************************************");
 		   //list of all the treasure cards
