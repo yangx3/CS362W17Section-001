@@ -71,7 +71,6 @@ public class Player{
 
 		public void totalCoins(){
 			for(int i=0; i<hand.getPile().size(); i++){
-				//System.out.println("IN TOTAL: " + hand.getPile().get(i).getTreasureValue());
 				coins += hand.getPile().get(i).getTreasureValue();	
 			}
 		}
@@ -81,12 +80,9 @@ public class Player{
 			drawHand();
 			printHand();
 			while(numActions > 0){
-				System.out.println("Taking the Action\n");
 				numActions--;
 			}while(numBuys > 0){
-				System.out.println("Taking the Buy\n");
 				totalCoins();
-				System.out.println("TV: " + coins);
 				numBuys--;
 			}
 		}
@@ -131,7 +127,8 @@ public class Player{
 		public void resetPlayer(){
 			numBuys = 1;
 			numActions = 1;
-			coins = 0;
+			//broken player
+			coins = 1;
 			discardHand();
 			drawHand();
 		}

@@ -1,0 +1,1 @@
+I couldn't ever get it to compile.  Both "mvn package" and cd'ing into \src\main\java\org\cs362\dominion and then running "javac PlayDominion.java" gave incomprehensible errors.
