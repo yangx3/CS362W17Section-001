@@ -229,7 +229,6 @@ public class Game {
             while (treasureCards < 2 && deck.size() >= 1) {
                 Card card = deck.get(deck.size()-1);
                 deck.remove(deck.size()-1);
-                System.out.printf("adventurer: drew %s\n", card);
                 if (card.isTreasure()) {
                     hand.add(card);
                     treasureCards++;
@@ -237,15 +236,32 @@ public class Game {
                     revealed.add(card);
                 }
             }
-            System.out.printf("adventurer: done\n");
             discard.addAll(revealed);
         } else if (playedCard == Card.Ambassador) {
             // Reveal a card from your hand.
             // Return up to 2 copies of it from your hand to the Supply.
             // Then each other player gains a copy of it.
             //
-            // Choice 0 - Integer - index of card to reveal
+            // Choice 0 - Card - which card to reveal
             // Choice 1 - Integer - how many copies to return to supply (0-2)
+            Card card = (Card)choices[0];
+            Integer num = (Integer)choices[1];
+            if (!hand.contains(card)) {
+                throw new GameError("ambassador: you don't have that card");
+            }
+            if (!(0 <= num && num <= 2)) {
+                throw new GameError("ambassador: number of cards to return must be 0-2");
+            }
+            while (hand.contains(card) && num > 0) {
+                hand.remove(card);
+                increment(this.supply, card);
+                num--;
+            }
+            for (int i = 0; i < this.numPlayers; i++) {
+                if (i != this.currentPlayer && this.supplyCount(card) >= 1) {
+                    this.takeDiscard(i, card);
+                }
+            }
         } else if (playedCard == Card.Baron) {
             // +1 Buy.
             // You may discard an Estate card. If you do, +4 Coins.

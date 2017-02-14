@@ -88,15 +88,11 @@ public class TestGame {
         Game game = new Game(2, k, 3);
 
         int pos = game.takeForTesting(0, Card.Adventurer);
-        game.printHand(0);
-        game.printDeck(0);
         // we have 7 coppers and drew five cards,
         // so there are at least 2 coppers in the deck
         int copper = game.handCount(0, Card.Copper);
         game.playAction(pos);
         assertEquals(copper+2, game.handCount(0, Card.Copper));
-        game.printHand(0);
-        game.printDeck(0);
 
         // do it a couple more times to get all the copper
         pos = game.takeForTesting(0, Card.Adventurer);
@@ -106,6 +102,16 @@ public class TestGame {
 
         copper = game.handCount(0, Card.Copper);
         assertEquals(7, game.handCount(0, Card.Copper));
+    }
+
+    @Test
+    public void testAmbassador() {
+        Game game = newGame(Card.Ambassador);
+        int pos = game.takeForTesting(0, Card.Ambassador);
+        // We'll always have at least 2 copper in our hand
+        game.playAction(pos, Card.Copper, 2);
+        assertEquals(5, game.fullDeckCount(0, Card.Copper)); // we discarded 2
+        assertEquals(8, game.fullDeckCount(1, Card.Copper)); // they drew 1
     }
 
     @Test
@@ -230,6 +236,26 @@ public class TestGame {
         assertEquals(1, game.getActions()); // +1 actions
         assertEquals(2, game.getBuys()); // +1 buys
         assertEquals(1, game.getCoins()); // +1 coins
+    }
+
+    @Test
+    public void testMine() {
+        Game game = newGame(Card.Mine);
+        int copper = game.handCount(0, Card.Copper);
+        int coinPos = game.takeForTesting(0, Card.Copper);
+        int pos = game.takeForTesting(0, Card.Mine);
+        game.playAction(pos, coinPos, Card.Silver);
+        assertEquals(6, game.numHandCards());
+        assertEquals(copper, game.handCount(0, Card.Copper));
+        assertEquals(1, game.handCount(0, Card.Silver));
+        game.endTurn();
+
+        coinPos = game.takeForTesting(1, Card.Silver);
+        pos = game.takeForTesting(1, Card.Mine);
+        game.playAction(pos, coinPos, Card.Gold);
+        assertEquals(6, game.numHandCards());
+        assertEquals(0, game.handCount(1, Card.Silver));
+        assertEquals(1, game.handCount(1, Card.Gold));
     }
 
     @Test
