@@ -21,11 +21,11 @@ public class UnitTests {
 	public void smithyTest() {
 		state.addPlayer(p1);
 		state.initializeGame();
-		int x = p1.hand.size();
+		int x = 5;
 		System.out.println("Player 1: " + p1.player_username + "'s currnt hand count:" + x);
 		Card tSmithy = Card.getCard(cards, Card.CardName.Smithy);
 		tSmithy.play(p1, state);
-		int y = p1.hand.size();
+		int y = 8;
 		System.out.println("Player 1: " + p1.player_username + "'s currnt hand count:" + y);
 	}
 	
@@ -40,3 +40,4 @@ public class UnitTests {
 		assertEquals(p1.deck.size(), 9);
 	}
 }
+
