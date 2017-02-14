@@ -157,7 +157,7 @@ public final class Card implements Comparable<Card>{
 			case Smithy:
 				System.out.println("SMITHY******************************************");
 				//draw 3
-	        	 player.drawCard();
+				//JK THIS IS BUG YOU ONLY GET TWO LOL BUG1
 	        	 player.drawCard();
 	        	 player.drawCard();
 	        	 player.discard(this);
@@ -169,7 +169,8 @@ public final class Card implements Comparable<Card>{
 				System.out.println("The player draw +1 Card.");
 	    	  	System.out.println("The player gets +2 play Actions.");
 	    	  	//this should hopefully work
-	    	  	player.numActions+=2;
+				//BUG THEY GET 1 ACTION NOT 2 BUG2
+	    	  	player.numActions+=1;
 	    	  	player.drawCard();
 	    	  	player.discard(this);
 				return;
@@ -179,7 +180,8 @@ public final class Card implements Comparable<Card>{
 				System.out.println("Salvager******************************************");
 				//+1 buy, Trash a card from your hand +Coin equal to its cost.
 				//most likely find the most expensive card and trash it.
-				player.numBuys += 1;
+				//BUG THEY DONT GET ANY BUYS WOW SUCH A BUG3
+				player.numBuys += 0;
 
 				//this is dumb bot that is playing so it will take the first value that it finds that is over
 				//2 and trash it for coins
@@ -247,7 +249,8 @@ public final class Card implements Comparable<Card>{
 				//iterate through hand to see if there is an estate
 				for(int i = 0; i < player.hand.size(); i++){
 					if(player.hand.get(i).getCardName() == CardName.Estate){
-						player.coins +=4;
+						//BUG PLAYER DOESN"T GET 4 COINS THEY GET 3 LMAO AM I RIGHT BUG4
+						player.coins +=3;
 						System.out.println("FOUND ESTATE BEFORE DISCARD\n" + player.hand);
 						player.discard(player.hand.get(i));
 						System.out.println("FOUND ESTATE AFTER DISCARD\n" + player.hand);
@@ -281,7 +284,8 @@ public final class Card implements Comparable<Card>{
 			case cutpurse:
 				//+2 coins
 				System.out.println("CUTPURSE******************************************\n");
-				player.coins+=2;
+				//AW JEEZ IT IS ANOTHER COIN BUG WHO WOULD HAVE GUESS BUG5 IS A COIN BUG. I DID CAUSE I WROTE IT BUG5
+				player.coins+=1;
 				System.out.println("COINS: " + player.coins + "\n");
 
 				//Each other player discards a Copper card (or reveals a hand with no Copper).
