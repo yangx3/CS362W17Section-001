@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-public class VillageTest {
+public class GreatHallTest {
 
     //   public  static void main(String args[]) throws CloneNotSupportedException{
     @Test
@@ -13,9 +13,9 @@ public class VillageTest {
         List < Card > cards;
         GameState state, testState;
         Randomness.reset(10);
-
+        
         int newCards = 1;
-        int newActions = 2;
+        int newScore = 1;
         //		 // initialize a game state and player cards
         cards = new ArrayList < Card > (Card.createCards());
         state = new GameState(cards);
@@ -30,16 +30,19 @@ public class VillageTest {
         
         testState = (GameState) state.clone();
         
-        state.players.get(0).hand.add(Card.getCard(state.cards, Card.CardName.Village));
+        state.players.get(0).hand.add(Card.getCard(state.cards, Card.CardName.Great_Hall));
         state.players.get(0).playKingdomCard();
         
         System.out.println("  *****    Player-1 Status ***** ");
         System.out.println("hand count = " + state.players.get(0).hand.size() + ", expected = " + (testState.players.get(0).hand.size() + newCards));
-        System.out.println("deck count = " + state.players.get(0).deck.size() + ", expected = " + (testState.players.get(0).deck.size() - newCards));
-        System.out.println("numActions = " + state.players.get(0).numActions + ", expected = " + (testState.players.get(0).numActions - 1 + newActions));
+        System.out.println("discard count = " + state.players.get(0).discard.size() + ", expected = " + (testState.players.get(0).discard.size() + 1));
+        System.out.println("action count = " + state.players.get(0).numActions + ", expected = " + testState.players.get(0).numActions);
+        System.out.println("score count = " + state.players.get(0).scoreFor() + ", expected = " + (testState.players.get(0).scoreFor() + newScore));
+        assertEquals(state.players.get(0).hand.size(), testState.players.get(0).hand.size() + newCards);
+        assertEquals(state.players.get(0).discard.size(), 1);
+        assertEquals(state.players.get(0).numActions, testState.players.get(0).numActions);
+        assertEquals(state.players.get(0).scoreFor(), (testState.players.get(0).scoreFor() + newScore));
 
-        assertEquals(state.players.get(0).hand.size(), (testState.players.get(0).hand.size() + newCards));
-        assertEquals(state.players.get(0).deck.size(), (testState.players.get(0).deck.size() - newCards));
     }
 }
     
