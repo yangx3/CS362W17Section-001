@@ -102,11 +102,6 @@ public class PlayerTest {
         assertEquals(player2.playedCards.size(), 0);
     }
 
-    //this will test for the embargo card
-    @Test
-    public void buyCard() throws Exception {
-
-    }
 
     @Test
     //Tests for gardens is in the cards tests please check that.
