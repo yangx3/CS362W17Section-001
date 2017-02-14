@@ -262,27 +262,61 @@ public class GameTest {
 	@Test
 	public void checkWhoWon(){
 		int points = 0;
+		int numGardens = 0;
+		int totalCards = 0;
+		int GardenPoints = 0;
 		game.playGame();
 		game.whoWon();
 		for(int i=0; i<game.getPlayers().get(0).getHand().getPile().size(); i++){
 			points += game.getPlayers().get(0).getHand().getPile().get(i).getScore();
+			if(game.getPlayers().get(0).getHand().getPile().get(i).getCardName() == Card.CardName.Gardens)
+				numGardens++;
+			totalCards++;
 		}
 		for(int i=0; i<game.getPlayers().get(0).getDraw().getPile().size(); i++){
 			points += game.getPlayers().get(0).getDraw().getPile().get(i).getScore();
+			if(game.getPlayers().get(0).getDraw().getPile().get(i).getCardName() == Card.CardName.Gardens)
+				numGardens++;
+			totalCards++;
 		}
 		for(int i=0; i<game.getPlayers().get(0).getDiscard().getPile().size(); i++){
 			points += game.getPlayers().get(0).getDiscard().getPile().get(i).getScore();
+			if(game.getPlayers().get(0).getDiscard().getPile().get(i).getCardName() == Card.CardName.Gardens)
+				numGardens++;
+			totalCards++;
 		}
+		GardenPoints = (totalCards/10)*numGardens;
+		points += GardenPoints;
 		assertEquals(points, game.getPlayers().get(0).getVictory());
+		points = 0;
+		numGardens = 0;
+		totalCards = 0;
 		for(int i=0; i<game.getPlayers().get(1).getHand().getPile().size(); i++){
 			points += game.getPlayers().get(1).getHand().getPile().get(i).getScore();
+			if(game.getPlayers().get(1).getHand().getPile().get(i).getCardName() == Card.CardName.Gardens)
+				numGardens++;
+			totalCards++;
 		}
 		for(int i=0; i<game.getPlayers().get(1).getDraw().getPile().size(); i++){
 			points += game.getPlayers().get(1).getDraw().getPile().get(i).getScore();
+			if(game.getPlayers().get(1).getDraw().getPile().get(i).getCardName() == Card.CardName.Gardens)
+				numGardens++;
+			totalCards++;
 		}
 		for(int i=0; i<game.getPlayers().get(1).getDiscard().getPile().size(); i++){
 			points += game.getPlayers().get(1).getDiscard().getPile().get(i).getScore();
+			if(game.getPlayers().get(1).getDiscard().getPile().get(i).getCardName() == Card.CardName.Gardens)
+				numGardens++;
+			totalCards++;
 		}
+		GardenPoints = (totalCards/10)*numGardens;
+		points += GardenPoints;
 		assertEquals(points, game.getPlayers().get(1).getVictory());
+	}
+	
+	@Test
+	public void callToMain(){
+		//will run more calls to all previous functions
+		game.main(null);
 	}
 }
