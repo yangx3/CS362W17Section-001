@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class ResourceStack extends CardStack
+{
+	public Card stackType;
+
+
+	public ResourceStack ( Card type, int size )
+	{
+		stackType = type;
+		for ( int i=size; i>0; i--)
+		{
+			addCard(stackType);
+		}
+	}
+
+	public void printStack()
+	{
+		String cdType = stackType.toString();
+		System.out.print("\n" + cdType );
+		if( cdType.equals("Adventurer") || cdType.equals("Ambassador") || cdType.equals("Great Hall") )
+			System.out.print(" Pile:\t" + Integer.toString(cards.size()) +  " Cards left");
+		else
+			System.out.print(" Pile:\t\t" + Integer.toString(cards.size()) + " Cards left");
+	}
+
+
+}
