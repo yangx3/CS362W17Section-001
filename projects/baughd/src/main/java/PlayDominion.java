@@ -9,7 +9,6 @@ public class PlayDominion {
 
 		    List<Card> cards;
 		    GameState state;
-			//Randomness.reset(10);
 
 //INITIALIZE CARDS AND STATE
 			//the cards are achieved by each element/constant in the enum class
@@ -39,6 +38,7 @@ public class PlayDominion {
                System.out.println ("Player name: " + p.player_username + " , Score: " + winners.get(p) );
            }
 
+//PRINT PLAYER'S CARDS AND GAMEBOARD
            player.printStateGame();
 		      
 		      

@@ -1,0 +1,132 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TestResult</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">junit.framework</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TestResult (junit.framework)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TestResult</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 55)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;
+<i>2</i>&nbsp;  // IntelliJ API Decompiler stub source generated from a class file
+<i>3</i>&nbsp;  // Implementation of methods is not available
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;package junit.framework;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;public class TestResult {
+<i>8</i>&nbsp;    protected java.util.List&lt;junit.framework.TestFailure&gt; fFailures;
+<i>9</i>&nbsp;    protected java.util.List&lt;junit.framework.TestFailure&gt; fErrors;
+<i>10</i>&nbsp;    protected java.util.List&lt;junit.framework.TestListener&gt; fListeners;
+<i>11</i>&nbsp;    protected int fRunTests;
+<i>12</i>&nbsp;    private boolean fStop;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    public TestResult() { /* compiled code */ }
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    public synchronized void addError(junit.framework.Test test, java.lang.Throwable e) { /* compiled code */ }
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    public synchronized void addFailure(junit.framework.Test test, junit.framework.AssertionFailedError e) { /* compiled code */ }
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    public synchronized void addListener(junit.framework.TestListener listener) { /* compiled code */ }
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    public synchronized void removeListener(junit.framework.TestListener listener) { /* compiled code */ }
+<i>23</i>&nbsp;
+<b class="nc"><i>24</i>&nbsp;    private synchronized java.util.List&lt;junit.framework.TestListener&gt; cloneListeners() { /* compiled code */ }</b>
+<b class="nc"><i>25</i>&nbsp;</b>
+<b class="nc"><i>26</i>&nbsp;    public void endTest(junit.framework.Test test) { /* compiled code */ }</b>
+<b class="nc"><i>27</i>&nbsp;</b>
+<b class="nc"><i>28</i>&nbsp;    public synchronized int errorCount() { /* compiled code */ }</b>
+<b class="nc"><i>29</i>&nbsp;</b>
+<b class="nc"><i>30</i>&nbsp;    public synchronized java.util.Enumeration&lt;junit.framework.TestFailure&gt; errors() { /* compiled code */ }</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    public synchronized int failureCount() { /* compiled code */ }
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    public synchronized java.util.Enumeration&lt;junit.framework.TestFailure&gt; failures() { /* compiled code */ }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    protected void run(junit.framework.TestCase test) { /* compiled code */ }
+<b class="nc"><i>37</i>&nbsp;</b>
+<b class="nc"><i>38</i>&nbsp;    public synchronized int runCount() { /* compiled code */ }</b>
+<b class="nc"><i>39</i>&nbsp;</b>
+<i>40</i>&nbsp;    public void runProtected(junit.framework.Test test, junit.framework.Protectable p) { /* compiled code */ }
+<b class="nc"><i>41</i>&nbsp;</b>
+<i>42</i>&nbsp;    public synchronized boolean shouldStop() { /* compiled code */ }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    public void startTest(junit.framework.Test test) { /* compiled code */ }
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    public synchronized void stop() { /* compiled code */ }
+<i>47</i>&nbsp;
+<b class="nc"><i>48</i>&nbsp;    public synchronized boolean wasSuccessful() { /* compiled code */ }</b>
+<b class="nc"><i>49</i>&nbsp;}</b>
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-13 23:10</div>
+</div>
+</body>
+</html>

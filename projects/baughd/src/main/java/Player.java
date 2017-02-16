@@ -1,14 +1,10 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-public class Player implements Cloneable{
+public class Player{
 	ArrayList<Card> hand;// int hand[MAX_PLAYERS][MAX_HAND];
 	LinkedList<Card> deck;// int deck[MAX_PLAYERS][MAX_DECK];
-	private List<Card> discard; // int discard[MAX_PLAYERS][MAX_DECK];
-	private ArrayList<Card> playedCards;
+	List<Card> discard; // int discard[MAX_PLAYERS][MAX_DECK];
+	ArrayList<Card> playedCards;
 	private Random gen;
 
 	String player_username;
@@ -51,8 +47,6 @@ public class Player implements Cloneable{
 		numActions = 1;
 		coins = 0;
 		numBuys = 1;
-		//Shuffle your starting 10 cards (7 Coppers & 3 Estates) and place them face-down as your Deck. Draw the top
-		//5 cards as your starting hand
 		for (int i = 0; i < 5; i++) {
 			drawCard();
 		}
@@ -75,11 +69,18 @@ public class Player implements Cloneable{
 	void playKingdomCard() {
 		while (numActions > 0) {
 			List<Card> actionCards = Card.filter(hand, Card.Type.ACTION);
-
+			Iterator<Card> it = actionCards.iterator();
+			while(it.hasNext()){
+				Card c = it.next();
+				if(c == Card.getCard(gameState.cards, Card.CardName.Gardens)){
+					it.remove();
+				}
+			}
 			if (actionCards.size() == 0)
 				return;
 
 			Card c = actionCards.get(0);
+
             if (c == null)
 				return;
 			System.out.println("Player.actionPhase Card:" + c.toString());
@@ -117,7 +118,7 @@ public class Player implements Cloneable{
 			score += c.score();
 			numCards++;
 		}
-		System.out.println("numGardens: " + numGardens);
+		//System.out.println("numGardens: " + numGardens);
 		if(numGardens > 0){
 			score += numGardens*(numCards/10);
 		}
@@ -205,7 +206,7 @@ public class Player implements Cloneable{
                     gain(Card.getCard(state.cards, Card.CardName.Remodel));
                     state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Remodel), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Remodel)) - 1);
                     coins = coins - 4;
-                } else if (rand == 4 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Gardens)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gardens)) > 0) {
+                } else if (rand == 5 && state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Gardens)) && state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gardens)) > 0) {
 					gain(Card.getCard(state.cards, Card.CardName.Gardens));
 					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Gardens), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gardens)) - 1);
 					coins = coins - 4;
@@ -289,16 +290,5 @@ public class Player implements Cloneable{
                 "\n";
 
         return sb;
-	}
-	   
-	protected Player clone() throws CloneNotSupportedException {
-		Player clonePlayer = (Player) super.clone();
-		clonePlayer.hand = new ArrayList<Card>(hand);// int hand[MAX_PLAYERS][MAX_HAND];
-		clonePlayer.deck = new LinkedList<Card>(deck);// int
-		// deck[MAX_PLAYERS][MAX_DECK];
-		clonePlayer.discard = new ArrayList<Card>(discard); // int
-		// discard[MAX_PLAYERS][MAX_DECK];
-		clonePlayer.playedCards = new ArrayList<Card>(playedCards);
-		return clonePlayer;
 	}
 }

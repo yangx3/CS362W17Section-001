@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.Random;
 
-
-public class GameState implements Cloneable{
+public class GameState{
     List<Player> players = new ArrayList<Player>();
     List<Card> cards;
 	HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
-	List<Card> embargoTokens;
+	List<Card> embargoTokens = new ArrayList<Card>();
 	private Random gen = new Random();
 
 	GameState(List<Card> cards) {
@@ -67,7 +66,7 @@ public class GameState implements Cloneable{
 	   
 	HashMap<Player, Integer>  play() {
 			 
-		   	  int turn =0;	
+		   	  int turn = 0;
 		      while (!isGameOver()) {
 		    	  turn++;
 		         for (Player player : players) {
@@ -85,10 +84,11 @@ public class GameState implements Cloneable{
 		         if(turn == 100)
 		        	break;
 		      }
+		      System.out.println("\nTURNS PLAYED\n" + turn);
 		      return this.getWinners();
 		   }
 
-	private boolean isGameOver() {
+	boolean isGameOver() {
 		 //if stack of Province cards is empty, the game ends
 		   if((this.gameBoard.get(Card.getCard(cards, Card.CardName.Province))==null)||(this.gameBoard.get(Card.getCard(cards, Card.CardName.Province))== 0))
 			   return true;
@@ -105,7 +105,7 @@ public class GameState implements Cloneable{
 		         return false;
 		   }
 
-	private HashMap<Player, Integer>  getWinners() {
+	HashMap<Player, Integer>  getWinners() {
     //Set HashMap  of each player and the score (remember ties!)
 	    HashMap<Player, Integer> playerScore = new HashMap<Player, Integer>();
 
@@ -118,7 +118,7 @@ public class GameState implements Cloneable{
         return playerScore;
     }
 
-	static void addEmbargo()
+	static void addEmbargo(Card card)
     {
         System.out.println("Token Added.");
     }
@@ -147,21 +147,4 @@ public class GameState implements Cloneable{
 		   this.players=players;
 		   this.gameBoard=gameBoard;
 	   }
-
-	public GameState clone() throws CloneNotSupportedException {
-		GameState clone = (GameState) super.clone();
-		List<Player> clonePlayers = new ArrayList<Player>();
-		   List<Card> cloneCards = new ArrayList<Card>();
-		   HashMap<Card, Integer> cloneGmeBoard = new HashMap<Card, Integer>();	
-		   
-		    for (Player player : players) 
-		    	clonePlayers.add(player.clone());
-		    for (Card card : cards)
-		    	cloneCards.add((Card) card.clone());
-		    for (Card card : gameBoard.keySet())
-		    	cloneGmeBoard.put((Card) card.clone(),gameBoard.get(card));
-
-		   final GameState cloneState= new GameState(cloneCards,clonePlayers,cloneGmeBoard);
-	        return  cloneState;
-	    }
 }
