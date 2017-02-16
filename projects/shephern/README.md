@@ -12,4 +12,8 @@ To run it is
 
 java -jar ./target/Dominion-1.0-SNAPSHOT.jar
 
-For coverage I used ECL EMMA and wasn't able to make it work with maven
+for coverage:
+
+mvn cobertura:cobertura
+
+The html is found in target/site/cobertura/index.html
