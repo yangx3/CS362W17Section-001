@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="dominion.PlayerTest" time="0.015" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="org.cs362.dominion.cardTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin"/>
     <property name="java.vm.version" value="25.121-b13"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Jonathans\Desktop\DominionGit\projects\livic\dominion"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Jonathans\Desktop\DominionGit\projects\talikk"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Jonathans\Desktop\DominionGit\projects\livic\dominion"/>
+    <property name="user.dir" value="C:\Users\Jonathans\Desktop\DominionGit\projects\talikk"/>
     <property name="java.runtime.version" value="1.8.0_121-b13"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\endorsed"/>
@@ -63,9 +63,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="dominion.PlayerTest" name="treasureCardTest" time="0"/>
-  <testcase classname="dominion.PlayerTest" name="buyCardTest" time="0"/>
-  <testcase classname="dominion.PlayerTest" name="endPhaseTest" time="0"/>
-  <testcase classname="dominion.PlayerTest" name="drawTest" time="0.015"/>
-  <testcase classname="dominion.PlayerTest" name="discardTest" time="0"/>
+  <testcase classname="org.cs362.dominion.cardTest" name="testGetters" time="0"/>
+  <testcase classname="org.cs362.dominion.cardTest" name="testDeckInitialization" time="0"/>
 </testsuite>
