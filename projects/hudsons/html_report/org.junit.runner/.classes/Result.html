@@ -1,0 +1,202 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Result</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">org.junit.runner</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Result (org.junit.runner)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Result</td>
+<td class="coverageStat">
+  <span class="percent">
+    42.9%
+  </span>
+  <span class="absValue">
+    (6/ 14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    41.4%
+  </span>
+  <span class="absValue">
+    (12/ 29)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Result$Listener</td>
+<td class="coverageStat">
+  <span class="percent">
+    57.1%
+  </span>
+  <span class="absValue">
+    (4/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    61.5%
+  </span>
+  <span class="absValue">
+    (8/ 13)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Result$SerializedForm</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 25)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    38.5%
+  </span>
+  <span class="absValue">
+    (10/ 26)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    29.9%
+  </span>
+  <span class="absValue">
+    (20/ 67)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;
+<i>2</i>&nbsp;  // IntelliJ API Decompiler stub source generated from a class file
+<i>3</i>&nbsp;  // Implementation of methods is not available
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;package org.junit.runner;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;public class Result implements java.io.Serializable {
+<i>8</i>&nbsp;    private static final long serialVersionUID = 1L;
+<i>9</i>&nbsp;    private static final java.io.ObjectStreamField[] serialPersistentFields;
+<i>10</i>&nbsp;    private final java.util.concurrent.atomic.AtomicInteger count;
+<i>11</i>&nbsp;    private final java.util.concurrent.atomic.AtomicInteger ignoreCount;
+<i>12</i>&nbsp;    private final java.util.concurrent.CopyOnWriteArrayList&lt;org.junit.runner.notification.Failure&gt; failures;
+<i>13</i>&nbsp;    private final java.util.concurrent.atomic.AtomicLong runTime;
+<i>14</i>&nbsp;    private final java.util.concurrent.atomic.AtomicLong startTime;
+<i>15</i>&nbsp;    private org.junit.runner.Result.SerializedForm serializedForm;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    public Result() { /* compiled code */ }
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    private Result(org.junit.runner.Result.SerializedForm serializedForm) { /* compiled code */ }
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    public int getRunCount() { /* compiled code */ }
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public int getFailureCount() { /* compiled code */ }
+<i>24</i>&nbsp;
+<b class="fc"><i>25</i>&nbsp;    public long getRunTime() { /* compiled code */ }</b>
+<i>26</i>&nbsp;
+<b class="fc"><i>27</i>&nbsp;    public java.util.List&lt;org.junit.runner.notification.Failure&gt; getFailures() { /* compiled code */ }</b>
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    public int getIgnoreCount() { /* compiled code */ }
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    public boolean wasSuccessful() { /* compiled code */ }
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    private void writeObject(java.io.ObjectOutputStream s) throws java.io.IOException { /* compiled code */ }
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    private void readObject(java.io.ObjectInputStream s) throws java.lang.ClassNotFoundException, java.io.IOException { /* compiled code */ }
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    private java.lang.Object readResolve() { /* compiled code */ }
+<b class="fc"><i>38</i>&nbsp;</b>
+<b class="fc"><i>39</i>&nbsp;    public org.junit.runner.notification.RunListener createListener() { /* compiled code */ }</b>
+<b class="fc"><i>40</i>&nbsp;</b>
+<b class="fc"><i>41</i>&nbsp;    private static class SerializedForm implements java.io.Serializable {</b>
+<b class="fc"><i>42</i>&nbsp;        private static final long serialVersionUID = 1L;</b>
+<b class="fc"><i>43</i>&nbsp;        private final java.util.concurrent.atomic.AtomicInteger fCount;</b>
+<b class="fc"><i>44</i>&nbsp;        private final java.util.concurrent.atomic.AtomicInteger fIgnoreCount;</b>
+<i>45</i>&nbsp;        private final java.util.List&lt;org.junit.runner.notification.Failure&gt; fFailures;
+<b class="nc"><i>46</i>&nbsp;        private final long fRunTime;</b>
+<b class="nc"><i>47</i>&nbsp;        private final long fStartTime;</b>
+<b class="nc"><i>48</i>&nbsp;</b>
+<b class="nc"><i>49</i>&nbsp;        public SerializedForm(org.junit.runner.Result result) { /* compiled code */ }</b>
+<b class="nc"><i>50</i>&nbsp;</b>
+<b class="nc"><i>51</i>&nbsp;        private SerializedForm(java.io.ObjectInputStream.GetField fields) throws java.io.IOException { /* compiled code */ }</b>
+<b class="nc"><i>52</i>&nbsp;</b>
+<i>53</i>&nbsp;        public void serialize(java.io.ObjectOutputStream s) throws java.io.IOException { /* compiled code */ }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;        public static org.junit.runner.Result.SerializedForm deserialize(java.io.ObjectInputStream s) throws java.lang.ClassNotFoundException, java.io.IOException { /* compiled code */ }
+<i>56</i>&nbsp;    }
+<i>57</i>&nbsp;
+<b class="nc"><i>58</i>&nbsp;    @org.junit.runner.notification.RunListener.ThreadSafe</b>
+<i>59</i>&nbsp;    private class Listener extends org.junit.runner.notification.RunListener {
+<i>60</i>&nbsp;        private Listener() { /* compiled code */ }
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;        public void testRunStarted(org.junit.runner.Description description) throws java.lang.Exception { /* compiled code */ }
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;        public void testRunFinished(org.junit.runner.Result result) throws java.lang.Exception { /* compiled code */ }
+<b class="fc"><i>65</i>&nbsp;</b>
+<i>66</i>&nbsp;        public void testFinished(org.junit.runner.Description description) throws java.lang.Exception { /* compiled code */ }
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;        public void testFailure(org.junit.runner.notification.Failure failure) throws java.lang.Exception { /* compiled code */ }
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;        public void testIgnored(org.junit.runner.Description description) throws java.lang.Exception { /* compiled code */ }
+<i>71</i>&nbsp;
+<b class="nc"><i>72</i>&nbsp;        public void testAssumptionFailure(org.junit.runner.notification.Failure failure) { /* compiled code */ }</b>
+<i>73</i>&nbsp;    }
+<i>74</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-13 23:10</div>
+</div>
+</body>
+</html>

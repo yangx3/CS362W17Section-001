@@ -33,5 +33,30 @@ public class AdventurerTest extends TestCase {
 		}
 		assertEquals(count + 2, count1);
 		
+		p2.getDeck().getCards().remove(Card.COPPER);
+		p2.getDeck().getCards().remove(Card.COPPER);
+		p2.getDeck().getCards().remove(Card.COPPER);
+		p2.getDeck().getCards().add(Card.COPPER);
+		
+		p2.hand.add(Card.ADVENTURER);
+		p2.addActions(1);
+		p2.play(Card.ADVENTURER);
+		count = 0;
+		for (Card c : p2.hand){
+			if (c == Card.COPPER) count++;
+		}
+		assertEquals(count1 + 1, count);
+	
+		p2.discard.add(Card.COPPER);
+		p2.discard.add(Card.COPPER);
+		
+		p2.hand.add(Card.ADVENTURER);
+		p2.addActions(1);
+		p2.play(Card.ADVENTURER);
+		count1 = 0;
+		for (Card c : p2.hand){
+			if (c == Card.COPPER) count1++;
+		}
+		assertEquals(count + 2, count1);
 	}
 }

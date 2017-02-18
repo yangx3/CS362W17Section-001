@@ -1,0 +1,7 @@
+org\cs362\dominion\card$CardName.class
+org\cs362\dominion\game.class
+org\cs362\dominion\player.class
+org\cs362\dominion\board.class
+org\cs362\dominion\card$Type.class
+org\cs362\dominion\card.class
+org\cs362\dominion\userInterface.class

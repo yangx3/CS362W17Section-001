@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BoardTest</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BoardTest (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BoardTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (26/ 26)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import org.junit.Test;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import static org.junit.Assert.*;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * Created by samuelhudson on 2/13/17.
+<i>7</i>&nbsp; */
+<b class="fc"><i>8</i>&nbsp;public class BoardTest {</b>
+<i>9</i>&nbsp;    @Test
+<i>10</i>&nbsp;    public void on_board() throws Exception {
+<b class="fc"><i>11</i>&nbsp;        System.out.println(&quot;\nTesting on_board function\n&quot;);</b>
+<b class="fc"><i>12</i>&nbsp;        Board the_board = new Board();</b>
+<b class="fc"><i>13</i>&nbsp;        String item_we_know_on_board = &quot;gardens&quot;;</b>
+<b class="fc"><i>14</i>&nbsp;        int position = the_board.on_board(item_we_know_on_board);</b>
+<b class="fc"><i>15</i>&nbsp;        assert(the_board.on_board.get(position).name==item_we_know_on_board);</b>
+<b class="fc"><i>16</i>&nbsp;        System.out.println(&quot;Test Passed: we found the item matching specified name on the board&quot;);</b>
+<i>17</i>&nbsp;
+<b class="fc"><i>18</i>&nbsp;    }</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    @Test
+<i>21</i>&nbsp;    public void on_board_by_value() throws Exception {
+<b class="fc"><i>22</i>&nbsp;        System.out.println(&quot;\nTesting on_board_by_value function\n&quot;);</b>
+<b class="fc"><i>23</i>&nbsp;        Board the_board = new Board();</b>
+<b class="fc"><i>24</i>&nbsp;        int item_we_know_on_board = 3;</b>
+<b class="fc"><i>25</i>&nbsp;        int position = the_board.on_board_by_value(item_we_know_on_board);</b>
+<b class="fc"><i>26</i>&nbsp;        System.out.println(the_board.on_board.get(position).value);</b>
+<b class="fc"><i>27</i>&nbsp;        assert(the_board.on_board.get(position).value&lt;=item_we_know_on_board);</b>
+<b class="fc"><i>28</i>&nbsp;        System.out.println(&quot;Test Passed: we found the item matching specified value on the board&quot;);</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;
+<b class="fc"><i>31</i>&nbsp;    }</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    @Test
+<i>34</i>&nbsp;    public void time_to_end() throws Exception {
+<b class="fc"><i>35</i>&nbsp;        System.out.println(&quot;\nTesting time_to_end() function\n&quot;);</b>
+<b class="fc"><i>36</i>&nbsp;        Board the_board = new Board();</b>
+<b class="fc"><i>37</i>&nbsp;        String item_we_know_on_board = &quot;province&quot;;</b>
+<i>38</i>&nbsp;        //Making the number of provinces equal to zero on the board.
+<b class="fc"><i>39</i>&nbsp;        for(int i=0;i&lt;8;i++) {</b>
+<b class="fc"><i>40</i>&nbsp;            int position = the_board.on_board(item_we_know_on_board);</b>
+<b class="fc"><i>41</i>&nbsp;            the_board.on_board.remove(position);</b>
+<i>42</i>&nbsp;        }
+<b class="fc"><i>43</i>&nbsp;        int result = the_board.time_to_end();</b>
+<b class="fc"><i>44</i>&nbsp;        assert(result==1);</b>
+<b class="fc"><i>45</i>&nbsp;        System.out.println(&quot;Test Passed: Ended when the number of provinces reached zero.&quot;);</b>
+<i>46</i>&nbsp;
+<b class="fc"><i>47</i>&nbsp;    }</b>
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-13 23:10</div>
+</div>
+</body>
+</html>

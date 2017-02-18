@@ -1,0 +1,10 @@
+Install intellij
+Install newest java sdk
+Start intellij make new java project, and add a new, c/programs/java/jdk8
+Hit f4 and go to libraries, add new libraries +, (Place new junit.jar into src)- [Do same with hamcrest.jar?]
+Add java files to src
+Go to top right and edit run config. Follow link: http://stackoverflow.com/questions/11469122/run-unit-tests-in-intellij-idea-from-multiple-modules-together
+Use f4  - go to module – set source and test folders and test or source resources
+Run test
+TO the right of the bug Run “coverage” to get a code coverage test and then the 4th down button on the left of the coverage table to generate those reports into html.
+	

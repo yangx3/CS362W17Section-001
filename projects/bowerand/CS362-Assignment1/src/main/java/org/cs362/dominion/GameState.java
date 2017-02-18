@@ -36,11 +36,11 @@ public class GameState implements Cloneable{
 	   public List<Player> players = new ArrayList<Player>(); ;
 	   public List<Card> cards ;
 	   public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();	
-	   
+	   public int supplyPile;
 	   
 	   public GameState(List<Card> cards) {
-		   this.cards=cards;
-		   
+                this.supplyPile = 0;
+                this.cards=cards;
 	   }
 	   public void addPlayer(Player player) {
 		      players.add(player);
@@ -63,7 +63,7 @@ public class GameState implements Cloneable{
 			    }
 			 //initialize supply for only two players
 				  int selectedKindom=0;
-				   int Kingdom_Cards_Selected=15;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
+				   int Kingdom_Cards_Selected=13;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
 				   								// we should change 3 to the  exact of the number of 
 				   								//kingdom cards. look at the requirements of the assignment-1
 		      while (selectedKindom < Kingdom_Cards_Selected) {
@@ -84,12 +84,12 @@ public class GameState implements Cloneable{
 		    //set number of Treasure cards
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Cooper), 46);
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
 		   
 
 		      for (Player player : players) {
 			         for (int i = 0; i < 7; i++)
-			            player.gain(Card.getCard(cards, Card.CardName.Cooper));
+			            player.gain(Card.getCard(cards, Card.CardName.Copper));
 			         for (int i = 0; i < 3; i++)
 			            player.gain(Card.getCard(cards,Card.CardName.Estate));
 			         
@@ -113,18 +113,24 @@ public class GameState implements Cloneable{
 		      while (!isGameOver()) {
 		    	  turn++;
 		         for (Player player : players) {
-		        	 	System.out.println("Player: "+ player.player_username + " is playing");
-		   				//player p plays action card
-		        	 	player.playKingdomCard();
-		        	 	//player plays treasure card
-		   			    player.playTtreasureCard();
-		   			    //player buy cards
-		        	    player.buyCard();
-		        	  //player ends turn
-		        	    player.endTurn();
+                                System.out.println("Player: "+ player.player_username + " is playing"); // player p plays action card
+                                player.numActions = 1;
+                                player.numBuys = 1;
+                                player.coins = 0;
+                                
+                                player.playKingdomCard(); // player plays treasure card
+                                
+                                player.playTtreasureCard();
+
+                                //player buy cards
+                                player.buyCard(this);
+
+                                //player ends turn
+                                player.endTurn();
 		         }
-		         if(turn==2)
-		        	 break;
+		        if(turn==15) {
+                            break;
+                        }
 		      }
 		      return this.getWinners();
 		   }
@@ -179,6 +185,7 @@ public class GameState implements Cloneable{
 	}   
 	   
 	   private GameState(List<Card> cards, List<Player> players, HashMap<Card, Integer> gameBoard) {
+                    this.supplyPile = 0;
 		   this.cards=cards;
 		   this.players=players;
 		   this.gameBoard=gameBoard;

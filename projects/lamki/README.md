@@ -1,3 +1,3 @@
 ##Kin-Ho Lam CS362
 
-I got **tremendous memes** people. Believe me.
+![Alt text](https://github.com/aburasali/CS362W17Section-001/blob/master/projects/lamki/meme.jpg?raw=true "salty meme")

@@ -13,7 +13,7 @@ public class Silver extends Card
 	}
 	public void play(Dominion game, Player player)
 	{
-		player.money += value;
+		return;
 	}
 }
 

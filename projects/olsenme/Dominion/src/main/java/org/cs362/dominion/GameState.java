@@ -45,22 +45,22 @@ public class GameState implements Cloneable{
 		   //initialize supply
 		   //check number of players   
 		   if (players.size() > 4 || players.size() < 2)     {
-		   System.err.println("the number of players mus bebetween 2 and 4 ");
+		   System.err.println("the number of players must be between 2 and 4 ");
 		   return ;
 		   }
 		 //initialize supply for only two players
 		   int selectedKingdom =0;   
-		   int Kingdom_Cards_Selected=10;
+		   int Kingdom_Cards_Selected=9;
 		   while (selectedKingdom < Kingdom_Cards_Selected) {
 		         int random = (int) Randomness.random.nextInt(cards.size());//
 		         Card tmp = cards.get(random);          
 		         if(tmp.getType()!=Card.Type.ACTION) continue;          
 		         if(gameBoard.containsKey(tmp)) continue;          
-		         gameBoard.put(tmp, 10);          
-		         selectedKingdom++;       
-		         }
-		 //set number of Curse cards the default number of players is 2
-		 gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
+		         gameBoard.put(tmp, 1);
+		         selectedKingdom++;
+		   }
+		 //set number of Curse cards the default number of players is
+		   gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
 		 
 		  //set number of Victory cards       
 		 gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);       
@@ -81,9 +81,9 @@ public class GameState implements Cloneable{
 	         player.coins = 0;          
 	         player.numBuys = 1;
 	         //Shuffle your starting 10 cards (7 Coppers & 3Estates) and place them face-down as your Deck. Draw the top       
-	         //5 cards as your starting hand       
+	         //5 cards as your starting hand
 	         for (int i = 0; i < 5; i++) {
-	         player.drawCard();       
+	         player.drawCard();
 	         }
 	    }
 	  } 
@@ -99,14 +99,14 @@ public class GameState implements Cloneable{
 	            //player p plays action card
 	    	     player.playKingdomCard();
 	    	     //player plays treasure card       
-	    	     player.playTtreasureCard();        
+	    	     player.playTreasureCard();
 	    	     //player buy cards             
 	    	     player.buyCard();          
 	    	    //player ends turn             
 	    	    player.endTurn();
 	    		 }
-	    		 if(turn==2)         
-	    	     break;      		   
+	    		 if(turn==100)
+	    	     break;
 	            }
 	    	    return this.getWinners();
 	    	 }
@@ -141,7 +141,7 @@ public class GameState implements Cloneable{
 	    public String toString() {
 	    StringBuilder sb = new StringBuilder(); 
 	    if (gameBoard.isEmpty())
-	    sb.append("The board game is embty you need to intialize the game!!!!");
+	    sb.append("The board game is empty you need to initialize the game!!!!");
 	    else {
 	    	for (Player player : players)
 	    	sb.append(" --- " + player.toString() + "\n");

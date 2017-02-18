@@ -17,7 +17,7 @@ public class mainPlayer {
 		cards = new ArrayList<Card>(Card.createCards());
 
 		 Player player = new Player(null,"aburasa");
-		 System.out.println("Player-1 information:\n " + player.toString()); 
+		 System.out.println("Player 1 information:\n " + player.toString());
 		 
          for (int i = 0; i < 7; i++)
 	            player.gain(Card.getCard(cards,Card.CardName.Gold));
@@ -27,7 +27,7 @@ public class mainPlayer {
          
          player.initializePlayerTurn();
          
-         System.out.println("Player-1 information:\n " + player.toString()); 
+         System.out.println("Player 1 information:\n " + player.toString());
          
          player.drawCard();
         	 	

@@ -6,6 +6,7 @@ public class Pile
 	public int size;
 	public int value;
 	public int points;
+	public int embargos;
 
 	public Pile()
 	{
@@ -13,6 +14,7 @@ public class Pile
 		size = 0;
 		value = 0;
 		points = 0;
+		embargos = 0;
 	}
 
 	public Pile(Card card, int num)
@@ -47,7 +49,6 @@ public class Pile
 	{
 		Card drawnCard = cards.get(0);
 		removeCard(0);
-		size--;
 		return drawnCard;
 	}
 
@@ -66,12 +67,17 @@ public class Pile
 		return points;
 	}
 
+	public String getName(int index)
+	{
+		return cards.get(index).name;
+	}
+
 	public Card getCard(int cardIndex)
 	{
 		return cards.get(cardIndex);
 	}
 
-	public void shufflePile()
+	/*public void shufflePile()
 	{
 		int deckSize = size;
 		ArrayList<Card> tempDeck = new ArrayList<Card>();
@@ -83,6 +89,12 @@ public class Pile
 		}
 
 		cards = tempDeck;
+	}*/
+	
+
+	public void shufflePile()
+	{
+		Collections.shuffle(cards);
 	}
 
 	public boolean isEmpty()
@@ -97,12 +109,18 @@ public class Pile
 		}
 	}
 
-	public void reveal()
+	public void revealAll()
 	{
+		System.out.println("Revealing all cards.");
 		for(int i=0; i < size; i++)
 		{
 			System.out.println(cards.get(i).name);
 		}
+	}
+
+	public void revealCard(int index)
+	{
+		System.out.println("Revealing " + cards.get(index).name);
 	}
 
 	public void print()

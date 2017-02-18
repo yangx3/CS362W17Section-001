@@ -1,5 +1,7 @@
 package cs362.dominion;
 
+import java.util.ArrayList;
+
 public enum Card {
     // cost, score, coin value, is action
     Curse(0, -1, 0, false),
@@ -41,7 +43,8 @@ public enum Card {
 
     // Intrigue expansion
     Baron(4),
-    GreatHall(3, 1, 0, true),
+    /*GreatHall(3, 1, 0, true),*/
+    GreatHall(3), // BUG
 
     // Seaside expansion
     Ambassador(3),
@@ -72,4 +75,13 @@ public enum Card {
     public int coins() { return this.coins; }
     public boolean isAction() { return this.isAction; }
     public boolean isTreasure() { return this.coins != 0; }
+
+    // construct a list of cards
+    public static ArrayList<Card> list(Card... cards) {
+        ArrayList<Card> list = new ArrayList<Card>();
+        for (int i = 0; i < cards.length; i++) {
+            list.add(cards[i]);
+        }
+        return list;
+    }
 }

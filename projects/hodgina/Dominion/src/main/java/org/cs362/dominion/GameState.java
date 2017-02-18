@@ -83,7 +83,7 @@ public class GameState implements Cloneable{
 		   				//player p plays action card
 		        	 	player.playKingdomCard(); //Play Action Cards
 		        	 	//player plays treasure card
-		   			    player.playTtreasureCard(); //Count Treasure cards and add them to Coins
+		   			    player.playTreasureCard(); //Count Treasure cards and add them to Coins
 		   			    //player buy cards
 		        	    player.buyCard(this); //buy cards
 		        	  //player ends turn

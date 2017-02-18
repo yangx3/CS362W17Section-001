@@ -93,7 +93,7 @@ public class Game {
         for (int i = 0; i < numPlayers; i++) {
             for (int j = 0; j < 7; j++) {
                 this.deck.get(i).add(Card.Copper);
-                this.supply.put(Card.Copper, this.supply.get(Card.Copper)-1);
+                decrement(this.supply, Card.Copper);
             }
             for (int j = 0; j < 3; j++) {
                 this.deck.get(i).add(Card.Estate);
@@ -201,9 +201,16 @@ public class Game {
         this.doEffect(card);
     }
 
-    private void take(int player, Card card) {
+    // Gain a card to the player's hand
+    private void takeHand(int player, Card card) {
         decrement(this.supply, card);
         this.hand.get(player).add(card);
+    }
+
+    // Gain a card to the player's discard pile
+    private void takeDiscard(int player, Card card) {
+        decrement(this.supply, card);
+        this.discard.get(player).add(card);
     }
 
     private int doEffect(Card playedCard, Object... choices) {
@@ -216,27 +223,45 @@ public class Game {
         if (playedCard == Card.Adventurer) {
             // Reveal cards from your deck until you reveal 2 Treasure cards.
             // Put those Treasure cards into your hand and discard the other revealed cards
-            // XXX revealed cards should not be discarded until after the action is complete
+            // (Revealed cards are not be discarded until the action is complete.)
+            List<Card> revealed = new ArrayList<Card>();
             int treasureCards = 0;
             while (treasureCards < 2 && deck.size() >= 1) {
                 Card card = deck.get(deck.size()-1);
+                deck.remove(deck.size()-1);
                 if (card.isTreasure()) {
-                    deck.remove(deck.size()-1);
                     hand.add(card);
-                    this.coins += card.coins();
                     treasureCards++;
                 } else {
-                    deck.remove(deck.size()-1);
-                    discard.add(card);
+                    revealed.add(card);
                 }
             }
+            discard.addAll(revealed);
         } else if (playedCard == Card.Ambassador) {
             // Reveal a card from your hand.
             // Return up to 2 copies of it from your hand to the Supply.
             // Then each other player gains a copy of it.
             //
-            // Choice 0 - Integer - index of card to reveal
+            // Choice 0 - Card - which card to reveal
             // Choice 1 - Integer - how many copies to return to supply (0-2)
+            Card card = (Card)choices[0];
+            Integer num = (Integer)choices[1];
+            if (!hand.contains(card)) {
+                throw new GameError("ambassador: you don't have that card");
+            }
+            if (!(0 <= num && num <= 2)) {
+                throw new GameError("ambassador: number of cards to return must be 0-2");
+            }
+            while (hand.contains(card) && num > 0) {
+                hand.remove(card);
+                increment(this.supply, card);
+                num--;
+            }
+            for (int i = 0; i < this.numPlayers; i++) {
+                if (i != this.currentPlayer && this.supplyCount(card) >= 1) {
+                    this.takeDiscard(i, card);
+                }
+            }
         } else if (playedCard == Card.Baron) {
             // +1 Buy.
             // You may discard an Estate card. If you do, +4 Coins.
@@ -284,14 +309,11 @@ public class Game {
         } else if (playedCard == Card.Feast) {
             // Trash this card. Gain a card costing up to 5.
             // Choice 0 = card to gain
-            if (choices[0] instanceof Card == false) {
-                throw new GameError("feast: choice 0 must be a Card");
-            }
             Card card = (Card)choices[0];
-            if (card.cost() >= 5) {
+            if (card.cost() > 5) {
                 throw new GameError("feast: gained card must cost 5 or less");
             }
-            this.take(this.currentPlayer, card);
+            this.takeHand(this.currentPlayer, card); // BUG
             return TRASH;
         } else if (playedCard == Card.GreatHall) {
             // +1 Card; +1 Action. Worth 1 Victory
@@ -302,15 +324,6 @@ public class Game {
             // Gain a Treasure card costing up to 3 Coins more; put it into your hand.
             // Choice 0: index of treasure card to trash
             // Choice 1: card to gain
-            if (choices.length != 2) {
-                throw new GameError("mine: must supply two choices");
-            }
-            if (choices[0] instanceof Integer == false) {
-                throw new GameError("mine: choice 0 must be an Integer");
-            }
-            if (choices[1] instanceof Card == false) {
-                throw new GameError("mine: choice 1 must be a Card");
-            }
 
             int treasurePos = (int)choices[0];
             Card newCard = (Card)choices[1];
@@ -350,7 +363,11 @@ public class Game {
     }
 
     private static void increment(Map<Card,Integer> map, Card key) {
-        map.put(key, map.get(key) + 1);
+        int val = 0;
+        if (map.containsKey(key)) {
+            val = map.get(key);
+        }
+        map.put(key, val+1);
     }
 
     private static void decrement(Map<Card,Integer> map, Card key) {
@@ -377,6 +394,16 @@ public class Game {
         decrement(this.supply, card);
         this.coins -= card.cost();
         this.buys -= 1;
+
+        // if card is embargoed, give the player a curse
+        Integer tokens = this.embargoTokens.get(card);
+        if (tokens != null) {
+            for (int i = 0; i < tokens; i++) {
+                if (this.supplyCount(Card.Curse) > 0) {
+                    // this.takeDiscard(this.currentPlayer, Card.Curse); // BUG
+                }
+            }
+        }
     }
 
     // How many cards current player has in hand
@@ -384,24 +411,53 @@ public class Game {
         return this.hand.get(this.currentPlayer).size();
     }
 
-    // enum value of indexed card in player's hand
-    public Card handCard(int handNum) {
+    // Get the card at the given position in the current player's hand
+    public Card handCard(int pos) {
         List<Card> hand = this.hand.get(this.currentPlayer);
-        if (0 <= handNum && handNum < hand.size()) {
-            return hand.get(handNum);
-        } else {
-            return null;
+        if (0 <= pos && pos < hand.size()) {
+            return hand.get(pos);
         }
+        return null;
     }
 
     // How many of given card are left in supply
-    public int supply(Card card) { return supply.get(card); }
+    public int supplyCount(Card card) {
+        if (this.supply.containsKey(card)) {
+            return this.supply.get(card);
+        }
+        return 0;
+    }
 
-    // Count how many cards of a certain type a player has, in total
-    public int fullDeckCount(int player, Card card) {
+    // Count how many cards of a certain type a player has in their hand
+    public int handCount(int player, Card card) {
         List<Card> hand = this.hand.get(player);
         int count = 0;
         for (Card x : hand) {
+            if (x == card) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // Count how many cards of a certain type a player has in their hand,
+    // deck, and discard pile.
+    public int fullDeckCount(int player, Card card) {
+        List<Card> hand = this.hand.get(player);
+        List<Card> deck = this.deck.get(player);
+        List<Card> discard = this.discard.get(player);
+        int count = 0;
+        for (Card x : hand) {
+            if (x == card) {
+                count++;
+            }
+        }
+        for (Card x : deck) {
+            if (x == card) {
+                count++;
+            }
+        }
+        for (Card x : discard) {
             if (x == card) {
                 count++;
             }
@@ -521,22 +577,46 @@ public class Game {
 
     /* convenience functions */    
     static ArrayList<Card> standardCards() {
-        ArrayList<Card> k = new ArrayList<>();
-        k.add(Card.Adventurer);
-        k.add(Card.Baron);
-        k.add(Card.CouncilRoom);
-        k.add(Card.Feast);
-        k.add(Card.Gardens);
-        k.add(Card.GreatHall);
-        k.add(Card.Market);
-        k.add(Card.Mine);
-        k.add(Card.Smithy);
-        k.add(Card.Village);
-        return k;
+        return Card.list(
+            Card.Adventurer,
+            Card.Baron,
+            Card.CouncilRoom,
+            Card.Feast,
+            Card.Gardens,
+            Card.GreatHall,
+            Card.Market,
+            Card.Mine,
+            Card.Smithy,
+            Card.Village
+        );
     }
 
     /* methods to support testing */
-    void setHandCard(int player, int i, Card card) {
-        this.hand.get(player).set(i, card);
+    // Add a card to the player's hand, and return the index of the card
+    int takeForTesting(int player, Card card) {
+        this.takeHand(player, card);
+        return this.hand.get(player).lastIndexOf(card);
+    }
+
+    void reshuffleForTesting(int player) {
+        this.deck.get(player).addAll(this.discard.get(player));
+        this.discard.get(player).clear();
+        this.shuffle(player);
+    }
+
+    void printHand(int player) {
+        System.out.printf("Player 0 hand:");
+        for (Card c : this.hand.get(player)) {
+            System.out.printf(" %s", c);
+        }
+        System.out.printf("\n");
+    }
+
+    void printDeck(int player) {
+        System.out.printf("Player 0 deck:");
+        for (Card c : this.deck.get(player)) {
+            System.out.printf(" %s", c);
+        }
+        System.out.printf("\n");
     }
 }
