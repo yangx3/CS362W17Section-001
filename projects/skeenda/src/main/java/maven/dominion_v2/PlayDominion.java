@@ -1,4 +1,4 @@
-package dominion_v2;
+package maven.dominion_v2;
 
 import java.util.ArrayList;
 import java.util.HashMap;

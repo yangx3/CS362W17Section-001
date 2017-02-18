@@ -1,4 +1,4 @@
-package dominion_v2;
+package maven.dominion_v2;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import dominion_v2.Card.Type;
+import maven.dominion_v2.Card.Type;
 
 //Most of this is from the code given to us in class Ali Aburas
 

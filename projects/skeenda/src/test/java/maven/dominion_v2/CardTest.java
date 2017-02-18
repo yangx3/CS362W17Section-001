@@ -1,22 +1,19 @@
-package dominion_v2;
-
-import static org.junit.Assert.*;
+package maven.dominion_v2;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.junit.Test;
+import junit.framework.TestCase;
+import maven.dominion_v2.Card.CardName;
+import maven.dominion_v2.Card.Type;
 
-import dominion_v2.Card.CardName;
-import dominion_v2.Card.Type;
+public class CardTest extends TestCase {
 
-public class CardTest {
 	List<Card> cards = new ArrayList<Card>(Card.createCards());
 	GameState state = new GameState(cards);
 	Random rand = new Random();
 		
-	@Test
 	public void testGetType() {		
 		for(int i = 0; i<25; i++){
 			int random = (int)Randomness.random.nextInt(cards.size());
@@ -38,7 +35,6 @@ public class CardTest {
 		}
 	}
 
-	@Test
 	public void testGetCardName() {
 		int random = rand.nextInt(20)+1;
 		Card tmp = cards.get(random);
@@ -62,7 +58,6 @@ public class CardTest {
 		}
 	}
 
-	@Test
 	public void testGetTreasure() {
 		int random = (int)Randomness.random.nextInt(cards.size());
 		Card tmp = cards.get(random);
@@ -77,7 +72,6 @@ public class CardTest {
 		}
 	}
 	
-	@Test
 	public void testPlay(){
 		Player player1 = new Player(state, "player-1");
 		Player player2 = new Player(state, "player-2");

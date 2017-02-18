@@ -1,4 +1,4 @@
-package dominion_v2;
+package maven.dominion_v2;
 
 import java.util.List;
 import java.util.Random;
