@@ -131,7 +131,21 @@ public class Dominion
 	public Pile getRandomKingdomCard()
 	{
 		Random rand = new Random();
-		return kingdomCards.get(rand.nextInt(kingdomCards.size()));
+		boolean goodCard = false;
+		Pile temp = new Pile();
+		while(goodCard == false)
+		{
+			temp = kingdomCards.get(rand.nextInt(kingdomCards.size()));
+			if(temp.getSize() != 0)
+			{
+				goodCard = true;
+			}
+			else
+			{
+				rand = new Random();
+			}
+		}
+		return temp;
 	}
 
 	public int getKingdomCardIndex(String name)

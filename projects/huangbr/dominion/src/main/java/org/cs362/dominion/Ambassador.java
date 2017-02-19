@@ -26,13 +26,13 @@ public class Ambassador extends Card
 			{
 				break;
 			}
-			else if(player.hand.cards.get(i).name == player.hand.getCard(cardIndex).name)
+			/*else if(player.hand.cards.get(i).name == player.hand.getCard(cardIndex).name)
 			{
 				int index = game.getKingdomCardIndex(name);
 				game.kingdomCards.get(index).addCard(player.hand.getCard(i));
 				player.hand.removeCard(i);
 				counter++;
-			}
+			}*/
 		}
 		discard(game, player, name);
 	}

@@ -124,7 +124,6 @@ public class Pile
 
 	public void print()
 	{
-		System.out.println("THe size of the pile is " + cards.size());
 		System.out.println("Size: " + size);
 		System.out.println("Value: " + value);
 		System.out.println("Points: " + points);

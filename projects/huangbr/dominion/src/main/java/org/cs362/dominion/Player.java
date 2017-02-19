@@ -157,8 +157,8 @@ public class Player
 			}
 			else
 			{
-				discard.addCard(game.kingdomCards.get(cardIndex).drawCard());
 				money -= game.kingdomCards.get(cardIndex).getCard(0).cost;
+				discard.addCard(game.kingdomCards.get(cardIndex).drawCard());
 				for(int j=0; j < game.kingdomCards.get(cardIndex).embargos; j++)
 				{
 					if(game.basicCards.get(6).size != 0)
