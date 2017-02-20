@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-public class testBaron
+public class BaronTest
 {
 	@Test
 	public void test() throws Throwable {

@@ -5,31 +5,29 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-public class testFestival
+public class FeastTest
 {
 	@Test
 	public void test() throws Throwable {
 		Randomness.reset(System.currentTimeMillis());
-		GameState state, originalState;
+		GameState state;
 		List<Card> cards;
 		cards = new ArrayList<Card>(Card.createCards());
 		state = new GameState(cards);
 		Player testPlayer = new Player(state, "test-player-1");
-		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Festival));
+		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Feast));
 		state.addPlayer(testPlayer);
 		testPlayer = new Player(state, "test-player-2");
-		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Festival));
+		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Feast));
 		state.addPlayer(testPlayer);
 		state.prepTestGame();
-		originalState=(GameState) state.clone();
 		
         for (Player player : state.players)
         {
-    	 	Card c = Card.getCard(state.cards,Card.CardName.Festival);
+    	 	Card c = Card.getCard(state.cards,Card.CardName.Feast);
     	 	c.play(player, state);
         }
-	       assertEquals( state.players.get(0).numActions, originalState.players.get(0).numActions+2 );
-            assertEquals( state.players.get(0).numBuys, originalState.players.get(0).numBuys+1 );
-            assertEquals( state.players.get(0).coins, originalState.players.get(0).coins+2 );
+		assertEquals( state.players.get(0).trashpile.size(), 1);
+    	 	assertEquals( state.players.get(0).trashpile.get(0).getCardName(), Card.CardName.Feast );
 	}
 }

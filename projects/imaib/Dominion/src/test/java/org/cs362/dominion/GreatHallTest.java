@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-public class testSmithy
+public class GreatHallTest
 {
 	@Test
 	public void test() throws Throwable {
@@ -15,19 +15,20 @@ public class testSmithy
 		cards = new ArrayList<Card>(Card.createCards());
 		state = new GameState(cards);
 		Player testPlayer = new Player(state, "test-player-1");
-		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Great_Hall));
 		state.addPlayer(testPlayer);
 		testPlayer = new Player(state, "test-player-2");
-		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Great_Hall));
 		state.addPlayer(testPlayer);
 		state.prepTestGame();
 		originalState=(GameState) state.clone();
 		
         for (Player player : state.players)
         {
-    	 	Card c = Card.getCard(state.cards,Card.CardName.Smithy);
+    	 	Card c = Card.getCard(state.cards,Card.CardName.Great_Hall);
     	 	c.play(player, state);
         }
-    	 	assertEquals( state.players.get(0).hand.size(), originalState.players.get(0).hand.size()+3 );
+	       assertEquals( state.players.get(0).hand.size(), originalState.players.get(0).hand.size()+1 );
+            assertEquals( state.players.get(0).numActions, originalState.players.get(0).numActions+1 );
 	}
 }
