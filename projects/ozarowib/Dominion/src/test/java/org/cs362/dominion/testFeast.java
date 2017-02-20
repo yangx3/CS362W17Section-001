@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-public class testFeast
+public class TestFeast
 {
 	@Test
 	// Tests playing a Feast card

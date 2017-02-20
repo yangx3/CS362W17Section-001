@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-public class testLaboratory
+public class TestLaboratory
 {
 	@Test
 	// Tests playing a Laboratory

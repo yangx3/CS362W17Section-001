@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-public class testMine
+public class TestMine
 {
 	@Test
 	// Tests playing a Mine card in general

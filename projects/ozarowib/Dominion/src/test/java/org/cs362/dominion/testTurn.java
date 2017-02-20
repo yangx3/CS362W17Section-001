@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-public class testTurn
+public class TestTurn
 {
 	@Test
 	// Tests the Player functions for choosing and using cards
