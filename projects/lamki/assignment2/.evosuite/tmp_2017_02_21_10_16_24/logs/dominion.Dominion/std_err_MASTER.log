@@ -1,0 +1,5 @@
+[MASTER] 10:20:26.514 [main] ERROR ExternalProcessHandler - Class dominion.Dominion. Clients have not finished yet, although a timeout occurred.
+ClientNode: INITIALIZATION
+
+[MASTER] 10:20:26.631 [main] ERROR SearchStatistics - No statistics has been saved because EvoSuite failed to generate any test case
+[MASTER] 10:20:26.731 [main] ERROR TestGeneration - failed to write statistics data
