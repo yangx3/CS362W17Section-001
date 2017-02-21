@@ -1,6 +1,6 @@
-##Kin-Ho Lam Dominion Assignment 1
+##Kin-Ho Lam Software Testing Assignment 2
 
-These instructions are intended for compiling and running on **flip.engr.oregonstate.edu**. 
+These instructions are intended for compiling and running on **babylon.eecs.oregonstate.edu**. 
 
 To compile all code:
 >make all
@@ -11,7 +11,10 @@ To run lamki_dom.jar with arguments:
 To compile all code and run:
 >make run
 
-To compile and run test:
+To compile and run evosuite tests: (Requires Maven 3.1)
+>make evo
+
+To compile and run tests:
 >make test
 
 To compile and run test with coverage:
@@ -22,4 +25,4 @@ Cobertua coverage webpage is stored in subdirectory **target/site/cobertura/**
 To clean build and all executibles:
 >make clean
 
-note: report.html and report.html_default are JaCoCoverage reports that verify the accuracy of Cobertua coverage.
+note: Running Evosuite requires an updated maven.
