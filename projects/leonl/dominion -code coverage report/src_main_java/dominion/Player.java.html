@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">dominion (4) (Feb 12, 2017 9:01:43 PM)</a> &gt; <a href="../../index.html" class="el_group">dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package dominion;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">dominion (3) (Feb 13, 2017 3:20:26 PM)</a> &gt; <a href="../../index.html" class="el_group">dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package dominion;
 
 import java.util.*;
 
@@ -194,19 +194,19 @@ public class Player implements Cloneable{
 <span class="fc" id="L194">					gain(Card.getCard(state.cards, Card.CardName.Smithy));</span>
 <span class="fc" id="L195">					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Smithy), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) - 1);</span>
 <span class="fc" id="L196">					coins = coins - 4;</span>
-<span class="pc bpc" id="L197" title="3 of 6 branches missed.">				} else if (rand == 1 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Baron)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Baron)) &gt; 0) {</span>
-<span class="fc" id="L198">					gain(Card.getCard(state.cards, Card.CardName.Baron));</span>
-<span class="fc" id="L199">					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Baron), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Baron)) - 1);</span>
-<span class="fc" id="L200">					coins = coins - 4;</span>
-<span class="pc bnc" id="L201" title="All 6 branches missed.">				} else if (rand == 2 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Cutpurse)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Cutpurse)) &gt; 0) {</span>
+<span class="pc bpc" id="L197" title="5 of 6 branches missed.">				} else if (rand == 1 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Baron)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Baron)) &gt; 0) {</span>
+<span class="nc" id="L198">					gain(Card.getCard(state.cards, Card.CardName.Baron));</span>
+<span class="nc" id="L199">					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Baron), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Baron)) - 1);</span>
+<span class="nc" id="L200">					coins = coins - 4;</span>
+<span class="pc bpc" id="L201" title="5 of 6 branches missed.">				} else if (rand == 2 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Cutpurse)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Cutpurse)) &gt; 0) {</span>
 <span class="nc" id="L202">					gain(Card.getCard(state.cards, Card.CardName.Cutpurse));</span>
 <span class="nc" id="L203">					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Cutpurse), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Cutpurse)) - 1);</span>
 <span class="nc" id="L204">					coins = coins - 4;</span>
-<span class="nc bnc" id="L205" title="All 6 branches missed.">				} else if (rand == 3 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Feast)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Feast)) &gt; 0) {</span>
-<span class="nc" id="L206">					gain(Card.getCard(state.cards, Card.CardName.Feast));</span>
-<span class="nc" id="L207">					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Feast), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Feast)) - 1);</span>
-<span class="nc" id="L208">					coins = coins - 4;</span>
-<span class="nc bnc" id="L209" title="All 6 branches missed.">				} else if (rand == 4 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Steward)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Steward)) &gt; 0) {</span>
+<span class="pc bpc" id="L205" title="3 of 6 branches missed.">				} else if (rand == 3 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Feast)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Feast)) &gt; 0) {</span>
+<span class="fc" id="L206">					gain(Card.getCard(state.cards, Card.CardName.Feast));</span>
+<span class="fc" id="L207">					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Feast), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Feast)) - 1);</span>
+<span class="fc" id="L208">					coins = coins - 4;</span>
+<span class="pc bnc" id="L209" title="All 6 branches missed.">				} else if (rand == 4 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Steward)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Steward)) &gt; 0) {</span>
 <span class="nc" id="L210">                    gain(Card.getCard(state.cards, Card.CardName.Steward));</span>
 <span class="nc" id="L211">                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Steward), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Steward)) - 1);</span>
 <span class="nc" id="L212">                    coins = coins - 4;</span>
@@ -312,4 +312,4 @@ public class Player implements Cloneable{
 <span class="fc" id="L312">		return clonePlayer;</span>
 	}
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>dominion (4) (Feb 12, 2017 9:01:43 PM)</div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>dominion (3) (Feb 13, 2017 3:20:26 PM)</div></body></html>

@@ -16,8 +16,12 @@ public class BoardTest {
 	@Test
 	public void testGiveCard() {
 		int i;
-		for (i = 0; i < 17; i++)
+		int number;
+		for (i = 0; i < 17; i++) {
+			number = plateau.pioche_number[i];
 			assertEquals(plateau.giveCard(i), plateau.pioche_card[i]);
+			assertEquals(plateau.pioche_number[i], number - 1);
+		}
 		assertEquals(plateau.giveCard(55).id, -1);
 		assertEquals(plateau.giveCard(-14).id, -1);
 		for (i = 0; i < 100; i++) {

@@ -12,4 +12,4 @@ coverage: clean
 run: 
 	mvn package
 	clear
-	java -jar target/junit-0.0.1-SNAPSHOT.jar
+	java -jar target/dominion-0.0.1-SNAPSHOT.jar

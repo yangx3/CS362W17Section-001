@@ -18,16 +18,18 @@ public class CardTest {
 
 	@Test
 	public void testValue() {
-		assertEquals(plateau.pioche_card[0].getValeur(), 1);
-		assertEquals(plateau.pioche_card[1].getValeur(), 2);
-		assertEquals(plateau.pioche_card[0].getPointV(), 0);
+		Card carte = new Card(1);
+		assertEquals(carte.valeur, 1);
+		assertEquals(carte.prix, 0);
+		carte = new Card(2);
+		assertEquals(carte.valeur, 2);
 
 	}
 
 	@Test
 	public void testPrix() {
-		assertEquals(plateau.pioche_card[0].getPrix(), 0);
-		assertEquals(plateau.pioche_card[1].getPrix(), 3);
+		assertEquals(plateau.pioche_card[0].prix, 0);
+		assertEquals(plateau.pioche_card[1].prix, 3);
 
 	}
 
@@ -38,42 +40,57 @@ public class CardTest {
 
 	@Test
 	public void testId() {
-		int i;
-		for (i = 0; i < 17; i++) {
-			assertEquals(plateau.pioche_card[i].getId(), i + 1);
-		}
+		Card carte = new Card(3);
+		assertEquals(3, carte.id);
+		carte = new Card(14);
+		assertEquals(14, carte.id);
+
 	}
 
 	@Test
 	public void testType() {
-		assertEquals(plateau.pioche_card[1].getType(), "tresor");
+		Card carte = new Card(2);
+		assertEquals(carte.type, "tresor");
+		assertEquals(carte.nom, "silver");
 	}
 
 	@Test
 	public void testExtraCards() {
 		Card carte = new Card(18);
-		assertEquals(carte.getNom(), "village");
+		assertEquals(carte.nom, "village");
+		assertEquals(carte.type, "action");
+		assertEquals(carte.valeur, 0);
+
 		carte = new Card(19);
-		assertEquals(carte.getNom(), "smithy");
+		assertEquals(carte.nom, "smithy");
+		assertEquals(carte.type, "action");
+		assertEquals(carte.valeur, 0);
 		carte = new Card(20);
-		assertEquals(carte.getNom(), "salvager");
-		carte = new Card(25);
+		assertEquals(carte.nom, "salvager");
+		assertEquals(carte.type, "action");
+		assertEquals(carte.valeur, 0);
 	}
 
 	@Test
 	public void testType2() {
 		int i;
 		Card carte;
-		for (i = 1; i < 21; i++) {
-			carte = new Card(i);
-			carte.getType();
-		}
+		carte = new Card(1);
+		assertEquals("tresor", carte.type);
+		carte = new Card(12);
+		assertEquals("action", carte.type);
+		carte = new Card(15);
+		assertEquals("victory", carte.type);
+		carte = new Card(4);
+		assertEquals("victory", carte.type);
+		carte = new Card(2);
+		assertEquals("tresor", carte.type);
 	}
 
 	@Test
 	public void testCurseBug() {
 		Card curse = new Card(7);
-		assertEquals("curse", curse.getNom());
+		assertEquals("curse", curse.type);
 	}
 
 	@Test

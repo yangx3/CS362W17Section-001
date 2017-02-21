@@ -1,0 +1,348 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CurseCard</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CurseCard (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CurseCard</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.util.ArrayList;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * Created by samhudson on 2/8/17.
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;class Card {
+<i>7</i>&nbsp;    String name;
+<i>8</i>&nbsp;    String type;
+<i>9</i>&nbsp;    int cost;
+<i>10</i>&nbsp;    int value;
+<i>11</i>&nbsp;}
+<i>12</i>&nbsp;class TreasureCard extends Card {
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    TreasureCard(String name, String type, int cost, int value) {
+<i>15</i>&nbsp;        super();
+<i>16</i>&nbsp;        this.name = name;
+<i>17</i>&nbsp;        this.type = type;
+<i>18</i>&nbsp;        this.cost = cost;
+<i>19</i>&nbsp;        this.value = value;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    }
+<i>22</i>&nbsp;}
+<i>23</i>&nbsp;class VictoryCard extends Card {
+<i>24</i>&nbsp;    VictoryCard(String name, String type, int cost, int value) {
+<i>25</i>&nbsp;        super();
+<i>26</i>&nbsp;        this.name = name;
+<i>27</i>&nbsp;        this.type = type;
+<i>28</i>&nbsp;        this.cost = cost;
+<i>29</i>&nbsp;        this.value = value;
+<i>30</i>&nbsp;    }
+<i>31</i>&nbsp;}
+<i>32</i>&nbsp;class CurseCard extends Card {
+<i>33</i>&nbsp;    CurseCard(String name, String type, int cost, int value) {
+<b class="fc"><i>34</i>&nbsp;        super();</b>
+<b class="fc"><i>35</i>&nbsp;        this.name = name;</b>
+<b class="fc"><i>36</i>&nbsp;        this.type = type;</b>
+<b class="fc"><i>37</i>&nbsp;        this.cost = cost;</b>
+<b class="fc"><i>38</i>&nbsp;        this.value = value;</b>
+<b class="fc"><i>39</i>&nbsp;    }</b>
+<i>40</i>&nbsp;}
+<i>41</i>&nbsp;class ActionCard extends Card {
+<i>42</i>&nbsp;    ActionCard(String name, String type, int cost, int value) {
+<i>43</i>&nbsp;        super();
+<i>44</i>&nbsp;        this.name = name;
+<i>45</i>&nbsp;        this.type = type;
+<i>46</i>&nbsp;        this.cost = cost;
+<i>47</i>&nbsp;        this.value = value;
+<i>48</i>&nbsp;    }
+<i>49</i>&nbsp;    int play(Player the_player, Player other_player, Board the_board) {
+<i>50</i>&nbsp;      if(this.name==&quot;adventurer&quot;) {
+<i>51</i>&nbsp;            return this.adventurer(the_player, other_player, the_board);
+<i>52</i>&nbsp;      }
+<i>53</i>&nbsp;      else if(this.name==&quot;bureaucrat&quot;) {
+<i>54</i>&nbsp;            return this.bureaucrat(the_player,other_player,the_board);
+<i>55</i>&nbsp;      } 
+<i>56</i>&nbsp;      else if(this.name==&quot;cellar&quot;) {
+<i>57</i>&nbsp;            return this.cellar(the_player,other_player,the_board);
+<i>58</i>&nbsp;      } 
+<i>59</i>&nbsp;      else if(this.name==&quot;chancellor&quot;) {
+<i>60</i>&nbsp;            return this.chancellor(the_player,other_player,the_board);
+<i>61</i>&nbsp;      } 
+<i>62</i>&nbsp;      else if(this.name==&quot;chapel&quot;) {
+<i>63</i>&nbsp;            return this.chapel(the_player,other_player,the_board);
+<i>64</i>&nbsp;      } 
+<i>65</i>&nbsp;      else if(this.name==&quot;council_room&quot;) {
+<i>66</i>&nbsp;            return this.council_room(the_player,other_player,the_board);
+<i>67</i>&nbsp;      } 
+<i>68</i>&nbsp;      else if(this.name==&quot;feast&quot;) {
+<i>69</i>&nbsp;            return this.feast(the_player,other_player,the_board);
+<i>70</i>&nbsp;      } 
+<i>71</i>&nbsp;      else if(this.name==&quot;festival&quot;) {
+<i>72</i>&nbsp;            return this.festival(the_player,other_player,the_board);
+<i>73</i>&nbsp;      } 
+<i>74</i>&nbsp;      else if(this.name==&quot;laboratory&quot;) {
+<i>75</i>&nbsp;            return this.laboratory(the_player,other_player,the_board);
+<i>76</i>&nbsp;      }  
+<i>77</i>&nbsp;      else if(this.name==&quot;smithy&quot;) {
+<i>78</i>&nbsp;            return this.smithy(the_player,other_player,the_board);
+<i>79</i>&nbsp;      } 
+<i>80</i>&nbsp;      else if(this.name==&quot;market&quot;) {
+<i>81</i>&nbsp;            return this.market(the_player,other_player,the_board);
+<i>82</i>&nbsp;      } 
+<i>83</i>&nbsp;      else if(this.name==&quot;village&quot;) {
+<i>84</i>&nbsp;            return this.village(the_player,other_player,the_board);
+<i>85</i>&nbsp;      }
+<i>86</i>&nbsp;      else {
+<i>87</i>&nbsp;        System.out.println(&quot;Action card doesn&#39;t exist.&quot;);
+<i>88</i>&nbsp;        return 0;
+<i>89</i>&nbsp;
+<i>90</i>&nbsp;      }
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    }
+<i>93</i>&nbsp;    int adventurer(Player the_player, Player other_player, Board the_board) {
+<i>94</i>&nbsp;        System.out.println(&quot;\nPlaying adventurer card.\n&quot;);
+<i>95</i>&nbsp;        int deck_size = the_player.deck.size();
+<i>96</i>&nbsp;        int treasure_found = 0;
+<i>97</i>&nbsp;        for(int i=0; i&lt;deck_size; i++) {
+<i>98</i>&nbsp;            if(the_player.deck.get(i).type==&quot;treasure&quot;) {
+<i>99</i>&nbsp;                System.out.println(&quot;Position: &quot;+i+&quot; Found Treasure: &quot;+the_player.deck.get(i).name);
+<i>100</i>&nbsp;                the_player.hand.add(the_player.deck.get(i));
+<i>101</i>&nbsp;                the_player.deck.remove(i);
+<i>102</i>&nbsp;                i=i-1;
+<i>103</i>&nbsp;                treasure_found++;
+<i>104</i>&nbsp;            } else {
+<i>105</i>&nbsp;                System.out.println(&quot;Position: &quot;+i+&quot; Not Treasure: &quot;+the_player.deck.get(i).name);
+<i>106</i>&nbsp;                the_player.discard.add(the_player.deck.get(i));
+<i>107</i>&nbsp;                the_player.deck.remove(i);
+<i>108</i>&nbsp;                i=i-1;
+<i>109</i>&nbsp;            }
+<i>110</i>&nbsp;            if(treasure_found==2)
+<i>111</i>&nbsp;                break;
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;        }
+<i>114</i>&nbsp;        return treasure_found;
+<i>115</i>&nbsp;    }
+<i>116</i>&nbsp;    int bureaucrat(Player the_player, Player other_player, Board the_board) {
+<i>117</i>&nbsp;        int action_count = 0;
+<i>118</i>&nbsp;        System.out.println(&quot;\nPlaying bureaucrat card.\n&quot;);
+<i>119</i>&nbsp;        int position = the_board.on_board(&quot;silver&quot;);
+<i>120</i>&nbsp;        if(position!=-1)
+<i>121</i>&nbsp;            the_player.draw_from_board_to_deck(the_board, position);
+<i>122</i>&nbsp;            action_count++;
+<i>123</i>&nbsp;        ArrayList&lt;Integer&gt; positions = other_player.in_hand(&quot;victory&quot;);
+<i>124</i>&nbsp;        if(positions.size()&gt;0) {
+<i>125</i>&nbsp;            position = positions.get(0);
+<i>126</i>&nbsp;            other_player.draw_from_hand_to_deck(position);
+<i>127</i>&nbsp;            action_count++;
+<i>128</i>&nbsp;        }
+<i>129</i>&nbsp;        return action_count;
+<i>130</i>&nbsp;    }
+<i>131</i>&nbsp;    int cellar(Player the_player, Player other_player, Board the_board) {
+<i>132</i>&nbsp;        int action_count = 1;
+<i>133</i>&nbsp;        System.out.println(&quot;\nPlaying cellar card.\n&quot;);
+<i>134</i>&nbsp;        the_player.action_phase(the_board, other_player);
+<i>135</i>&nbsp;        if(the_player.deck.size()&gt;=the_player.hand.size()) {
+<i>136</i>&nbsp;            int hand_size = the_player.hand.size();
+<i>137</i>&nbsp;            int number_to_discard = the_player.random_range(1, hand_size);
+<i>138</i>&nbsp;            for (int i = 0; i &lt; number_to_discard; i++) {
+<i>139</i>&nbsp;                the_player.discard.add(the_player.hand.get(i));
+<i>140</i>&nbsp;                the_player.draw_from_deck_to_hand();
+<i>141</i>&nbsp;            }
+<i>142</i>&nbsp;            action_count++;
+<i>143</i>&nbsp;        }
+<i>144</i>&nbsp;        return action_count;
+<i>145</i>&nbsp;    }
+<i>146</i>&nbsp;    int chancellor(Player the_player, Player other_player, Board the_board) {
+<i>147</i>&nbsp;        int action_count = 0;
+<i>148</i>&nbsp;        System.out.println(&quot;\nPlaying chancellor card.\n&quot;);
+<i>149</i>&nbsp;        for(int i=0;i&lt;2;i++) {
+<i>150</i>&nbsp;            int position = the_board.on_board(&quot;copper&quot;);
+<i>151</i>&nbsp;            if (position &gt; 0) {
+<i>152</i>&nbsp;                the_player.draw_from_board_to_discard(the_board, position);
+<i>153</i>&nbsp;
+<i>154</i>&nbsp;            }
+<i>155</i>&nbsp;        }
+<i>156</i>&nbsp;        int should_i = the_player.random_range(0,1);
+<i>157</i>&nbsp;        if(should_i==1) {
+<i>158</i>&nbsp;            int deck_count = the_player.deck.size();
+<i>159</i>&nbsp;            for (int i = 0; i &lt; deck_count; i++) {
+<i>160</i>&nbsp;                the_player.discard.add(the_player.deck.get(i));
+<i>161</i>&nbsp;            }
+<i>162</i>&nbsp;            the_player.deck.clear();
+<i>163</i>&nbsp;            action_count++;
+<i>164</i>&nbsp;        }
+<i>165</i>&nbsp;        return action_count;
+<i>166</i>&nbsp;    }
+<i>167</i>&nbsp;    int chapel(Player the_player, Player other_player, Board the_board) {
+<i>168</i>&nbsp;        int action_count = 1;
+<i>169</i>&nbsp;        System.out.println(&quot;\nPlaying chapel card.\n&quot;);
+<i>170</i>&nbsp;        int up_to = the_player.random_range(1,4);
+<i>171</i>&nbsp;        for(int i=0;i&lt;up_to;i++) {
+<i>172</i>&nbsp;            if(the_player.hand.size()&gt;=1) {
+<i>173</i>&nbsp;                int position = the_player.random_range(0, the_player.hand.size() - 1);
+<i>174</i>&nbsp;                the_player.draw_from_hand_to_trash(the_board, position);
+<i>175</i>&nbsp;            }
+<i>176</i>&nbsp;
+<i>177</i>&nbsp;        }
+<i>178</i>&nbsp;
+<i>179</i>&nbsp;        return action_count;
+<i>180</i>&nbsp;    }
+<i>181</i>&nbsp;    int council_room(Player the_player, Player other_player, Board the_board) {
+<i>182</i>&nbsp;        int action_count = 3;
+<i>183</i>&nbsp;        System.out.println(&quot;\nPlaying council_room card.\n&quot;);
+<i>184</i>&nbsp;        for(int i=0;i&lt;4;i++) {
+<i>185</i>&nbsp;            the_player.draw_from_deck_to_hand();
+<i>186</i>&nbsp;        }
+<i>187</i>&nbsp;        the_player.buy_phase(the_board);
+<i>188</i>&nbsp;        other_player.draw_from_deck_to_hand();
+<i>189</i>&nbsp;        return action_count;
+<i>190</i>&nbsp;    }
+<i>191</i>&nbsp;    int feast(Player the_player, Player other_player, Board the_board) {
+<i>192</i>&nbsp;        int action_count = 2;
+<i>193</i>&nbsp;        System.out.println(&quot;\nPlaying feast card.\n&quot;);
+<i>194</i>&nbsp;        the_player.print_in_play();
+<i>195</i>&nbsp;        System.out.println(the_player.in_play_by_name(&quot;feast&quot;));
+<i>196</i>&nbsp;        int position = the_player.in_play_by_name(&quot;feast&quot;).get(0);
+<i>197</i>&nbsp;        the_player.draw_from_in_play_to_trash(the_board,position);
+<i>198</i>&nbsp;        position = the_board.on_board_by_value(5);
+<i>199</i>&nbsp;        the_player.draw_from_board_to_deck(the_board, position);
+<i>200</i>&nbsp;        return action_count;
+<i>201</i>&nbsp;    }
+<i>202</i>&nbsp;    int festival(Player the_player, Player other_player, Board the_board) {
+<i>203</i>&nbsp;        int action_count = 3;
+<i>204</i>&nbsp;        System.out.println(&quot;\nPlaying festival card.\n&quot;);
+<i>205</i>&nbsp;        for(int i=0; i&lt;2;i++) {
+<i>206</i>&nbsp;            the_player.action_phase(the_board,other_player);
+<i>207</i>&nbsp;        }
+<i>208</i>&nbsp;        the_player.buy_phase(the_board);
+<i>209</i>&nbsp;        for(int i=0;i&lt;2;i++) {
+<i>210</i>&nbsp;            int position = the_board.on_board(&quot;copper&quot;);
+<i>211</i>&nbsp;            if (position &gt; 0) {
+<i>212</i>&nbsp;                the_player.draw_from_board_to_discard(the_board, position);
+<i>213</i>&nbsp;
+<i>214</i>&nbsp;            }
+<i>215</i>&nbsp;        }
+<i>216</i>&nbsp;
+<i>217</i>&nbsp;        return action_count;
+<i>218</i>&nbsp;    }
+<i>219</i>&nbsp;    int laboratory(Player the_player, Player other_player, Board the_board) {
+<i>220</i>&nbsp;        int action_count = 2;
+<i>221</i>&nbsp;        System.out.println(&quot;\nPlaying laboratory card.\n&quot;);
+<i>222</i>&nbsp;        for(int i=0;i&lt;2;i++) {
+<i>223</i>&nbsp;            the_player.draw_from_deck_to_hand();
+<i>224</i>&nbsp;        }
+<i>225</i>&nbsp;        the_player.action_phase(the_board,other_player);
+<i>226</i>&nbsp;        return action_count;
+<i>227</i>&nbsp;    }
+<i>228</i>&nbsp;    int smithy(Player the_player, Player other_player, Board the_board) {
+<i>229</i>&nbsp;        int action_count = 1;
+<i>230</i>&nbsp;        System.out.println(&quot;\nPlaying smithy card.\n&quot;);
+<i>231</i>&nbsp;        for(int i=0;i&lt;3;i++) {
+<i>232</i>&nbsp;            the_player.draw_from_deck_to_hand();
+<i>233</i>&nbsp;        }
+<i>234</i>&nbsp;        return action_count;
+<i>235</i>&nbsp;    }
+<i>236</i>&nbsp;    int market(Player the_player, Player other_player, Board the_board) {
+<i>237</i>&nbsp;        int action_count = 4;
+<i>238</i>&nbsp;        System.out.println(&quot;\nPlaying market card.\n&quot;);
+<i>239</i>&nbsp;        //+1 Card
+<i>240</i>&nbsp;        the_player.draw_from_deck_to_hand();
+<i>241</i>&nbsp;        //+1 Action
+<i>242</i>&nbsp;        the_player.action_phase(the_board,other_player);
+<i>243</i>&nbsp;        //+1 Buy
+<i>244</i>&nbsp;        the_player.buy_phase(the_board);
+<i>245</i>&nbsp;        //+1 Copper
+<i>246</i>&nbsp;        int position = the_board.on_board(&quot;copper&quot;);
+<i>247</i>&nbsp;        if (position &gt; 0) {
+<i>248</i>&nbsp;            the_player.draw_from_board_to_discard(the_board, position);
+<i>249</i>&nbsp;
+<i>250</i>&nbsp;        }
+<i>251</i>&nbsp;
+<i>252</i>&nbsp;        return action_count;
+<i>253</i>&nbsp;    }
+<i>254</i>&nbsp;    int village(Player the_player, Player other_player, Board the_board) {
+<i>255</i>&nbsp;        int action_count = 3;
+<i>256</i>&nbsp;        System.out.println(&quot;\nPlaying village card.\n&quot;);
+<i>257</i>&nbsp;        //+1 Card
+<i>258</i>&nbsp;        the_player.draw_from_deck_to_hand();
+<i>259</i>&nbsp;        //+2 Action
+<i>260</i>&nbsp;        for(int i=0;i&lt;2;i++)
+<i>261</i>&nbsp;            the_player.action_phase(the_board,other_player);
+<i>262</i>&nbsp;
+<i>263</i>&nbsp;        return action_count;
+<i>264</i>&nbsp;    }
+<i>265</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-13 23:10</div>
+</div>
+</body>
+</html>

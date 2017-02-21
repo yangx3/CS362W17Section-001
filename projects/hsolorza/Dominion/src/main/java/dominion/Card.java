@@ -3,10 +3,11 @@
   @version 2/12/17 Software Engineering 2 - Assignment 1
 */
 
-package org.cs362.dominion;
+package dominion;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 
 
@@ -93,6 +94,8 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Gardens, Type.VICTORY,  4, 666, 0);
 		ret.add(o);
+		o = new Card(CardName.Province,Type.VICTORY, 	8, 6, 0);
+		ret.add(o);
 
 		/** The Kingdom cards , it should more than 10 cards*/
 
@@ -148,21 +151,18 @@ public final class Card implements Comparable<Card>, Cloneable{
 				  System.out.println("Ambassador: Reveal a card from your hand. Return"+
 						"up to 2 copies of it from your hand to the Supply. Then each"+
 						"player gains a copy of it.");
-						 //
-						//  Card c = player.hand.get(0);
-						//  GameState g;
 
-						 Card chosen = player.hand.get(0);
-                    state.gameBoard.put(chosen, state.gameBoard.get(chosen) + 1);
-                    for(Player p : state.players)
-                    {
-                        p.gain(chosen);
-                        state.gameBoard.put(chosen, state.gameBoard.get(chosen) - 1);
-                    }
-                    player.hand.remove(chosen);
+						Card chosen = player.hand.get(0);
+						state.gameBoard.put(chosen, state.gameBoard.get(chosen) + 1);
+						for(Player p : state.players)
+						{
+							p.gain(chosen);
+							state.gameBoard.put(chosen, state.gameBoard.get(chosen) - 1);
+						}
+						player.hand.remove(chosen);
 
 
-			return;
+						return;
 		case Baron:
 					System.out.println("Card Baron: +1 Buy. If player choosed to discard an estate, +4. Else, gain an estate");
 
@@ -208,19 +208,13 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 					GameState gs = player.gameState;
 			return;
-		case Feast:
+			case Feast:
 					System.out.println("Feast: Trash this card. Gain a card worth up to" +
 						"5 money");
 
-					player.discard(getCard(player.hand, CardName.Feast));
-					Card c;
-					do{
-						c = player.grabSomeCards();
-						if(c.cost <= 5){
-							// player.hand.add(c);
-							break;
-						}
-					}while(c.cost <= 5);
+					player.playedCards.remove(getCard(player.playedCards, Card.CardName.Feast));
+					player.playTtreasureCard();
+					player.coins = player.coins + 5;
 
 			return;
 		case Gardens:
@@ -234,26 +228,26 @@ public final class Card implements Comparable<Card>, Cloneable{
 		case Mine:
 					System.out.println("Mine: Trash a treasure care. Gain a treasure" +
 						"card to your hand costing up to 3 more than it.");
-						player.discard(getCard(player.hand, CardName.Copper));
-
-						do{
-							c = player.grabSomeCards();
-							if(c.cost <= 3){
-								// player.hand.add(c);
-								break;
-							}
-						}while(c.cost <= 3);
-
-			return;
+						System.out.println("Trash a Treasure Card. Gain Next Level of Treasure Card ");
+	                 if(getCard(player.hand, Card.CardName.Silver) != null) {
+	                     player.hand.remove(getCard(player.hand, Card.CardName.Silver));
+	                     player.gain(getCard(state.cards, Card.CardName.Gold));
+	                 } else if(getCard(player.hand, Card.CardName.Copper) != null) {
+	                     player.hand.remove(getCard(player.hand, Card.CardName.Copper));
+	                     player.gain(getCard(state.cards, Card.CardName.Silver));
+	                 }
+	 return;
+	 
 		case Salvager:
 					System.out.println("Salvager: +1 buy. Trash a card, gain its cost in money.");
 
-					player.numBuys = player.numBuys + 1;
+			       // +1 buy, trash a card and gain money equal to it's cost
+			       player.numBuys = player.numBuys + 1;
 
-					c = player.hand.get(0);
-					player.coins = player.coins + c.cost;
+			       Card c = player.hand.get(0);
+			       player.coins = player.coins + c.cost;
+			return ;
 
-			return;
 		case Smithy:
 					System.out.println("Smithy: Gain +3 cards");
 	        for(int i = 0; i < 3; i++){ player.drawCard();}
@@ -272,12 +266,12 @@ public final class Card implements Comparable<Card>, Cloneable{
 		}
 	}
 
-	public static Card getCard(List<Card> cards,CardName cardName) {
-		for(int i=0; i<cards.size();i++){
-			if(cards.get(i).cardName.equals(cardName))
-					return 	cards.get(i);
-		}
-		return null;
+	static Card getCard(List<Card> cards,CardName cardName) {
+	        for (Card card : cards) {
+	            if (card.cardName.equals(cardName))
+	                return card;
+	        }
+			return null;
 	}
 
 	   public static List<Card> filter(Iterable<Card> cards, Type target) {

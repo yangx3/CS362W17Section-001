@@ -1,0 +1,2 @@
+The allTests doesn't do anything I don't think because Maven handles the Junit testing. It was supposed to be a Junit class to handle all
+of the other Junit classes but it is unnecessary. All of the other test classes have test in their name.

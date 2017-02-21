@@ -80,6 +80,41 @@ public class TestGame {
     }
 
     @Test
+    public void testAdventurer() {
+        ArrayList<Card> k = Game.standardCards();
+        if (!k.contains(Card.Adventurer)) {
+            k.set(0, Card.Adventurer);
+        }
+        Game game = new Game(2, k, 3);
+
+        int pos = game.takeForTesting(0, Card.Adventurer);
+        // we have 7 coppers and drew five cards,
+        // so there are at least 2 coppers in the deck
+        int copper = game.handCount(0, Card.Copper);
+        game.playAction(pos);
+        assertEquals(copper+2, game.handCount(0, Card.Copper));
+
+        // do it a couple more times to get all the copper
+        pos = game.takeForTesting(0, Card.Adventurer);
+        game.playAction(pos);
+        pos = game.takeForTesting(0, Card.Adventurer);
+        game.playAction(pos);
+
+        copper = game.handCount(0, Card.Copper);
+        assertEquals(7, game.handCount(0, Card.Copper));
+    }
+
+    @Test
+    public void testAmbassador() {
+        Game game = newGame(Card.Ambassador);
+        int pos = game.takeForTesting(0, Card.Ambassador);
+        // We'll always have at least 2 copper in our hand
+        game.playAction(pos, Card.Copper, 2);
+        assertEquals(5, game.fullDeckCount(0, Card.Copper)); // we discarded 2
+        assertEquals(8, game.fullDeckCount(1, Card.Copper)); // they drew 1
+    }
+
+    @Test
     public void testBaron() {
         Game game = newGame(Card.Baron);
 
@@ -159,6 +194,29 @@ public class TestGame {
     }
 
     @Test
+    public void testGardens() {
+        Game game = newGame(Card.Gardens);
+        int pos = game.takeForTesting(0, Card.Gardens);
+        // test Garden in hand
+        assertEquals(4, game.scoreFor(0));
+        // test Garden in discards
+        game.endTurn(); // p0 discards Garden, draws 5 cards
+        game.endTurn(); // p1
+        assertEquals(4, game.scoreFor(0));
+        // test Garden in deck
+        game.reshuffleForTesting(0);
+        assertEquals(4, game.scoreFor(0));
+
+        // Gardens are worth 1 point for every 10 cards in deck
+        for (int i = 0; i < 8; i++) {
+            game.takeForTesting(0, Card.Copper);
+        }
+        assertEquals(4, game.scoreFor(0)); // 19 cards
+        game.takeForTesting(0, Card.Copper);
+        assertEquals(5, game.scoreFor(0)); // 20 cards
+    }
+
+    @Test
     public void testGreatHall() {
         Game game = newGame(Card.GreatHall);
         int pos = game.takeForTesting(0, Card.GreatHall);
@@ -177,7 +235,33 @@ public class TestGame {
         assertEquals(6, game.numHandCards()); // +1 cards
         assertEquals(1, game.getActions()); // +1 actions
         assertEquals(2, game.getBuys()); // +1 buys
-        assertEquals(1, game.getCoins()); // +1 coins
+        assertEquals(2, game.getCoins()); // +1 coins BUG
+    }
+
+    @Test
+    public void testMine() {
+        Game game = newGame(Card.Mine);
+        int copper = game.handCount(0, Card.Copper);
+        int coinPos = game.takeForTesting(0, Card.Copper);
+        int pos = game.takeForTesting(0, Card.Mine);
+        game.playAction(pos, coinPos, Card.Silver);
+        assertEquals(6, game.numHandCards());
+        assertEquals(copper, game.handCount(0, Card.Copper));
+        assertEquals(1, game.handCount(0, Card.Silver));
+        game.endTurn();
+
+        coinPos = game.takeForTesting(1, Card.Silver);
+        pos = game.takeForTesting(1, Card.Mine);
+        game.playAction(pos, coinPos, Card.Gold);
+        assertEquals(6, game.numHandCards());
+        assertEquals(0, game.handCount(1, Card.Silver));
+        assertEquals(1, game.handCount(1, Card.Gold));
+        game.endTurn();
+
+        // What if coinPos > pos?
+        pos = game.takeForTesting(0, Card.Mine);
+        coinPos = game.takeForTesting(0, Card.Silver);
+        game.playAction(pos, coinPos, Card.Gold);
     }
 
     @Test

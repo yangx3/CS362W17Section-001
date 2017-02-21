@@ -6,20 +6,20 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testGameStart.class,
-	testAdventurer.class,
-	testAmbassador.class,
-	testBaron.class,
-	testCoins.class,
-	testCouncilRoom.class,
-	testFeast.class,
-	testFestival.class,
-	testGardens.class,
-	testGreatHall.class,
-	testLaboratory.class,
-	testMine.class,
-	testSalvager.class,
-	testSmithy.class,
-	testVillage.class,
-	testTurn.class })
+	TestGameStart.class,
+	TestAdventurer.class,
+	TestAmbassador.class,
+	TestBaron.class,
+	TestCoins.class,
+	TestCouncilRoom.class,
+	TestFeast.class,
+	TestFestival.class,
+	TestGardens.class,
+	TestGreatHall.class,
+	TestLaboratory.class,
+	TestMine.class,
+	TestSalvager.class,
+	TestSmithy.class,
+	TestVillage.class,
+	TestTurn.class })
 public class AllTests {}

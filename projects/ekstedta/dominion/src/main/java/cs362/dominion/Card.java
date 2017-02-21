@@ -43,7 +43,8 @@ public enum Card {
 
     // Intrigue expansion
     Baron(4),
-    GreatHall(3, 1, 0, true),
+    /*GreatHall(3, 1, 0, true),*/
+    GreatHall(3), // BUG
 
     // Seaside expansion
     Ambassador(3),

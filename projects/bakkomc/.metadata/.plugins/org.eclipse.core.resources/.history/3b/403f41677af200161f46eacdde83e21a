@@ -1,0 +1,287 @@
+
+import java.util.*;
+
+public class Player
+{
+	public String playerName;
+
+	public CardStack deck;
+	public CardStack discard;
+	public CardStack trashPile;
+	public CardStack hand;
+	public CardStack playPile;
+
+	public int actions;
+	public int buys;
+	public int money;
+
+	boolean actionPhase;
+
+	public Player(String name)
+	{
+		this.playerName = name;
+		deck = 		new CardStack();
+		trashPile =	new CardStack();
+		hand = 		new CardStack();
+		playPile = 	new CardStack();
+		discard = 	new CardStack();
+
+		CoinCard cp = new CoinCard( 0, CoinCard.CoinValue.Copper );
+		for (int i=0; i<7; i++)
+			deck.addCard( cp );
+
+		VictoryCard es = new VictoryCard( 2, VictoryCard.VictoryName.Estate );
+		for (int i=0; i<3; i++)
+			deck.addCard( es );
+	}
+
+	public void start()
+	{
+		actions = 1;
+		buys = 1;
+		money = 0;
+		actionPhase = true;
+
+		deck.shuffleCards();
+
+		for (int i=0; i<5; i++)
+		{
+			if (deck.cards.size() < 1)
+				replenishDeck();
+			hand.addCard(deck.takeTopCard());
+		}
+	}
+
+	public void discardFromHand(int handPosition)
+	{
+		if (hand.cards.size() < 1)
+		{
+			System.out.println("Hand is empty");
+		}
+		else if ( handPosition < 0 || handPosition >= hand.cards.size())
+		{
+			System.out.println("No card at that position");
+		}
+		else
+		{
+			discard.addCard(hand.takeCardAt(handPosition));
+		}
+	}
+
+	public void endTurn()
+	{
+		discardHand();
+		discardPlayPile();
+		actions = 1;
+		buys = 1;
+		money = 0;
+
+		for(int i=0; i<5; i++)
+			drawCard();
+
+		actionPhase = true;
+	}
+
+	public void discardPlayPile()
+	{
+		Card moveCard;
+		while(playPile.cards.size() > 0)
+		{
+			discard.addCard(playPile.takeTopCard());
+		}
+	}
+
+	public void discardHand()
+	{
+		while(hand.cards.size() > 0)
+		{
+			discard.addCard(hand.takeTopCard());
+		}
+	}
+
+	public void putAllCardsIntoDeck()
+	{
+		discardHand();
+		discardPlayPile();
+		replenishDeck();
+	}
+
+	public void trash(int handPosition)
+	{
+		if (hand.cards.size() < 1)
+		{
+			System.out.println("Hand is empty");
+		}
+		else if ( handPosition < 0 || handPosition >= hand.cards.size())
+		{
+			System.out.println("No card at that position");
+		}
+		else
+		{
+			trashPile.addCard(hand.takeCardAt(handPosition));
+		}
+	}
+
+	public Card playCard(int handPosition)
+	{
+		Card moveCard;
+		if (hand.cards.size() < 1)
+		{
+			System.out.println("Hand is empty");
+			moveCard = null;
+		}
+		else if ( handPosition < 0 || handPosition >= hand.cards.size())
+		{
+			System.out.println("No card at that position");
+			moveCard = null;
+		}
+		else
+		{
+			moveCard = hand.cards.get(handPosition);
+			if(moveCard.type == Card.Type.Victory || moveCard.type == Card.Type.Curse)
+			{
+				System.out.println("***Cannot play Victory or Curse card***");
+				moveCard = null;
+			}
+			else if(moveCard.type == Card.Type.Action && actions <= 0 )
+			{
+				System.out.println("***Cannot play card out of actions***");
+				moveCard = null;
+			}
+			else
+			{
+				playPile.addCard(hand.takeCardAt(handPosition));
+			}
+		}
+		return moveCard;
+	}
+
+	public void drawCard()
+	{
+		if(deck.cards.size() < 1)
+			replenishDeck();
+		hand.addCard(deck.takeTopCard());
+	}
+
+
+
+	public int victoryCount()
+	{
+		int retCount = 0;
+		for (Card e : deck.cards)
+		{
+			String s = e.toString();
+			switch (s){
+				case "Estate":
+						retCount += 1;
+						break;
+				case "Duchy":
+						retCount += 3;
+						break;
+				case "Province":
+						retCount += 6;
+						break;
+				case "Curse":
+						retCount -= 1;
+						break;
+				case "Great Hall":
+						retCount += 1;
+						break;
+				case "Gardens":
+					retCount += (deck.cards.size() % 10);
+			}
+
+		}
+		return retCount;
+	}
+
+	public void replenishDeck()
+	{
+		while(discard.cards.size() > 0)
+		{
+			deck.addCard(discard.takeTopCard());
+		}
+		discard.shuffleCards();
+	}
+
+	public void printPlayerFull()
+	{
+		System.out.println("\nPlayer: " + playerName);
+		System.out.println("Actions: " + actions + ",\tBuys: " + buys + ",\tMoney: " + money);
+
+		System.out.println("Deck:");
+		for( Card e : deck.cards ){
+			System.out.println("\t" + e.toString());
+		}
+		System.out.println("\nHand:");
+		for( Card e : hand.cards ){
+			System.out.println("\t" + e.toString());
+		}
+		System.out.println("\nDiscard:");
+		for( Card e : discard.cards ){
+			System.out.println("\t" + e.toString());
+		}
+		System.out.println("\nPlayPile:");
+		for( Card e : playPile.cards ){
+			System.out.println("\t" + e.toString());
+		}
+	}
+
+	public void printPlayerPlusDiscard()
+	{
+		System.out.println("\nPlayer: " + playerName);
+		System.out.println("Actions: " + actions + ",\tBuys: " + buys + ",\tMoney: " + money);
+
+		System.out.println("\nHand:");
+		for( Card e : hand.cards ){
+			System.out.println("\t" + e.toString());
+		}
+		System.out.println("\nDiscard:");
+		for( Card e : discard.cards ){
+			System.out.println("\t" + e.toString());
+		}
+		System.out.println("\nPlayPile:");
+		for( Card e : playPile.cards ){
+			System.out.println("\t" + e.toString());
+		}
+	}
+
+	public void printPlayer()
+	{
+		System.out.println("\nPlayer: " + playerName);
+		System.out.println("Actions: " + actions + ",\tBuys: " + buys + ",\tMoney: " + money);
+
+		System.out.println("Deck:");
+		for( Card e : deck.cards ){
+			System.out.println("\t" + e.toString());
+		}
+		System.out.println("\nHand:");
+		for( Card e : hand.cards ){
+			System.out.println("\t" + e.toString());
+		}
+		System.out.println("\nDiscard:");
+		for( Card e : discard.cards ){
+			System.out.println("\t" + e.toString());
+		}
+		System.out.println("\nPlayPile:");
+		for( Card e : playPile.cards ){
+			System.out.println("\t" + e.toString());
+		}
+	}
+
+	public void printCurrentStats()
+	{
+		System.out.println("\nPlayer: " + playerName);
+		System.out.println("Actions: " + actions + ",\tBuys: " + buys + ",\tMoney: " + money);
+	}
+
+	public void printHand()
+	{
+		System.out.println("\nHand:");
+		int i = 0;
+		for( Card e : hand.cards ){
+			System.out.print("(" + i + ")" + "," + e.toString());
+		}
+		System.out.println();
+	}
+}

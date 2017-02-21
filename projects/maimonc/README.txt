@@ -1,0 +1,1 @@
+I uploadeed the new version of my code. Now the test work with maven. Please use the SRC file and the pom.xml not the assignment 1 folder. I didn't know how to delete that folder. 
