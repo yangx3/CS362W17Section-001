@@ -1,4 +1,9 @@
 Run Dominion.java
 
-The jar does not work, it went and screwed up my code, and compiled without images. 
-If your resolution is low, it may smash the cards off the screen, did not get a chance to finish the screensize modifier... sorry about that.
+The Jar works. The interface may not scale correctly, if that is a problem then email me at lvlegadrew@gmail.com, provide your computer resolution and I will post a branch just for you along with the link for it. 
+If I have time, I get the resolution works correctly.
+
+Run the jar from CS362W17Section-001\projects\morrilan\Dominion\target
+It should be Dominion-1.0.jar, using 
+$java -jar Dominion-1.0.jar 
+while in the above directory.
