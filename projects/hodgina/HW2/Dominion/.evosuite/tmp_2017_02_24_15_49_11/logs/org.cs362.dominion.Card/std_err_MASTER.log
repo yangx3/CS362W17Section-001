@@ -1,0 +1,17 @@
+[MASTER] 15:49:17.236 [main] ERROR ExternalProcessHandler - Failed to start external process
+java.io.IOException: Cannot run program "C:\Program Files\Java\jdk1.8.0_121\jre\bin\java" (in directory "C:\Users\Austin Hodgin\Homework\CS362\HW1\CS362W17Section-001\projects\hodgina\HW2\Dominion"): CreateProcess error=206, The filename or extension is too long
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048) ~[na:1.8.0_121]
+	at org.evosuite.utils.ExternalProcessHandler.startProcess(ExternalProcessHandler.java:244) [evosuite-master-1.0.1.jar:1.0.1]
+	at org.evosuite.utils.ExternalProcessHandler.startProcess(ExternalProcessHandler.java:155) [evosuite-master-1.0.1.jar:1.0.1]
+	at org.evosuite.executionmode.TestGeneration.generateTests(TestGeneration.java:441) [evosuite-master-1.0.1.jar:1.0.1]
+	at org.evosuite.executionmode.TestGeneration.executeTestGeneration(TestGeneration.java:80) [evosuite-master-1.0.1.jar:1.0.1]
+	at org.evosuite.EvoSuite.parseCommandLine(EvoSuite.java:262) [evosuite-master-1.0.1.jar:1.0.1]
+	at org.evosuite.EvoSuite.main(EvoSuite.java:295) [evosuite-master-1.0.1.jar:1.0.1]
+Caused by: java.io.IOException: CreateProcess error=206, The filename or extension is too long
+	at java.lang.ProcessImpl.create(Native Method) ~[na:1.8.0_121]
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386) ~[na:1.8.0_121]
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137) ~[na:1.8.0_121]
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029) ~[na:1.8.0_121]
+	... 6 common frames omitted
+[MASTER] 15:49:17.248 [main] ERROR SearchStatistics - No statistics has been saved because EvoSuite failed to generate any test case
+[MASTER] 15:49:17.349 [main] ERROR TestGeneration - failed to write statistics data

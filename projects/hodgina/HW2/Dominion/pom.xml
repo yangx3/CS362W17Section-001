@@ -6,7 +6,8 @@
   <artifactId>Dominion</artifactId>
   <version>1.0-SNAPSHOT</version>
     <build>
-        <plugins>
+        <pluginManagement>
+            <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -15,7 +16,18 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-        </plugins>
+
+                <plugin>
+                    <groupId>org.evosuite.plugins</groupId>
+                    <artifactId>evosuite-maven-plugin</artifactId>
+                    <version>1.0.1</version>
+                    <executions><execution>
+                        <goals> <goal> prepare </goal> </goals>
+                        <phase> process-test-classes </phase>
+                    </execution></executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
     <packaging>jar</packaging>
 
@@ -24,7 +36,15 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <evosuiteVersion>1.0.1</evosuiteVersion>
   </properties>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>EvoSuite</id>
+            <name>EvoSuite Repository</name>
+            <url>http://www.evosuite.org/m2</url>
+        </pluginRepository>
+    </pluginRepositories>
 
   <dependencies>
     <dependency>
@@ -43,5 +63,12 @@
 	<artifactId>findbugs-maven-plugin</artifactId>   
 	<version>3.0.4</version>
 	</dependency>
+      <dependency>
+          <groupId>org.evosuite</groupId>
+          <artifactId>evosuite-standalone-runtime</artifactId>
+          <version>1.0.1</version>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
+
 </project>
