@@ -17,6 +17,9 @@ To compile and run evosuite tests: (Requires Maven 3.1)
 To compile and run tests:
 >make test
 
+To run RandomTestDominion with coverage report:
+>make rndtest
+
 To compile and run test with coverage:
 >make coverage
 

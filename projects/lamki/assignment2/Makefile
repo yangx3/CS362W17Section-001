@@ -16,16 +16,20 @@ lamki_dom: $(ALL_FILES) 		#compile game into executable
 run: lamki_dom #run game
 	java -jar lamki_dom.jar
 
-tests: mvn_comp #run tests
+tests: #run all tests
 	mvn test
 
+rndtest: mvn_comp # run just RandomTestDominion.java
+	mvn -Dtest=RandomTestDominion test cobertura:cobertura site
+
 evo: mvn_comp
-	mvn -DmemoryInMB=10000 -Dcores=4 evosuite:generate #evosuite:export  test
+	mvn -DmemoryInMB=30000 -Dcores=12 evosuite:generate evosuite:export  test
 	
 coverage: mvn_comp 				#run tests with coverage
 	mvn cobertura:cobertura site
 
 clean: 					#clean dir
 	mvn clean
+	mvn evosuite:clean
 	rm -f -rf dominion/
 	rm -f lamki_dom.jar
