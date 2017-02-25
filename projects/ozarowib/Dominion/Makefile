@@ -1,5 +1,5 @@
 default:
-	echo "Use 'build' to compile then 'run', 'test', or 'cover' to execute."
+	echo "Use 'build' to compile then 'run', 'test', 'randomtest', 'myrandom', or 'cover'"
 
 all: build
 
@@ -16,6 +16,15 @@ run:
 
 test:
 	mvn -Dtest=AllTests test
+
+randomtest:
+	mvn -Dtest=ErrorTest,RegressionTest test
+
+myrandom:
+	mvn -Dtest=RandomTestDominion test
+
+testall:
+	mvn test
 
 cover: clean
 	mvn cobertura:cobertura
