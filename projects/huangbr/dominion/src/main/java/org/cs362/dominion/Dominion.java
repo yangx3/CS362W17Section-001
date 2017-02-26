@@ -12,7 +12,7 @@ public class Dominion
 	public Dominion(int randomSeed)
 	{
 		seed = randomSeed;
-		playerCount = 2;
+		playerCount = 4;
 		players = new Player[playerCount];
 		for(int i=0; i < playerCount; i++)
 		{
@@ -26,13 +26,13 @@ public class Dominion
 	{
 		basicCards = new ArrayList<Pile>();
 		kingdomCards = new ArrayList<Pile>();
-		basicCards.add(new Pile(new Copper(), 50));
-		basicCards.add(new Pile(new Silver(), 40));
-		basicCards.add(new Pile(new Gold(), 30 ));
-		basicCards.add(new Pile(new Estate(), 8));
-		basicCards.add(new Pile(new Duchy(), 8));
-		basicCards.add(new Pile(new Province(), 8));
-		basicCards.add(new Pile(new Curse(), 10));
+		basicCards.add(new Pile(new Copper(), 50, "Copper"));
+		basicCards.add(new Pile(new Silver(), 40, "Silver"));
+		basicCards.add(new Pile(new Gold(), 30, "Gold"));
+		basicCards.add(new Pile(new Estate(), 8, "Estate"));
+		basicCards.add(new Pile(new Duchy(), 8, "Duchy"));
+		basicCards.add(new Pile(new Province(), 8, "Province"));
+		basicCards.add(new Pile(new Curse(), 10, "Curse"));
 
 		generateKingdomCards();
 
@@ -107,19 +107,19 @@ public class Dominion
 	public void generateKingdomCards()
 	{
 		kingdomCardList = new ArrayList<Pile>();
-		kingdomCardList.add(new Pile(new Adventurer(), 10));
-		kingdomCardList.add(new Pile(new Ambassador(), 10));
-		kingdomCardList.add(new Pile(new Baron(), 10));
-		kingdomCardList.add(new Pile(new Council_Room(), 10));
-		kingdomCardList.add(new Pile(new Cutpurse(), 10));
-		kingdomCardList.add(new Pile(new Feast(), 10));
-		kingdomCardList.add(new Pile(new Garden(), 10));
-		kingdomCardList.add(new Pile(new Embargo(), 10));
-		kingdomCardList.add(new Pile(new Great_Hall(), 10));
-		kingdomCardList.add(new Pile(new Mine(), 10));
-		kingdomCardList.add(new Pile(new Remodel(), 10));
-		kingdomCardList.add(new Pile(new Smithy(), 10));
-		kingdomCardList.add(new Pile(new Steward(), 10));
+		kingdomCardList.add(new Pile(new Adventurer(), 10, "Adventurer"));
+		kingdomCardList.add(new Pile(new Ambassador(), 10, "Ambassador"));
+		kingdomCardList.add(new Pile(new Baron(), 10, "Baron"));
+		kingdomCardList.add(new Pile(new Council_Room(), 10, "Council Room"));
+		kingdomCardList.add(new Pile(new Cutpurse(), 10, "Cutpurse"));
+		kingdomCardList.add(new Pile(new Feast(), 10, "Feast"));
+		kingdomCardList.add(new Pile(new Garden(), 10, "Garden"));
+		kingdomCardList.add(new Pile(new Embargo(), 10, "Embargo"));
+		kingdomCardList.add(new Pile(new Great_Hall(), 10, "Great Hall"));
+		kingdomCardList.add(new Pile(new Mine(), 10, "Mine"));
+		kingdomCardList.add(new Pile(new Remodel(), 10, "Remodel"));
+		kingdomCardList.add(new Pile(new Smithy(), 10, "Smithy"));
+		kingdomCardList.add(new Pile(new Steward(), 10, "Steward"));
 
 		Collections.shuffle(kingdomCardList);
 		for(int i=0; i < 10; i++)
@@ -152,7 +152,7 @@ public class Dominion
 	{
 		for(int i=0; i < kingdomCards.size(); i++)
 		{
-			if(kingdomCards.get(i).getName(0) == name)
+			if(kingdomCards.get(i).getName() == name)
 			{
 				return i;
 			}
@@ -164,7 +164,7 @@ public class Dominion
 	{
 		for(int i=0; i < basicCards.size(); i++)
 		{
-			if(basicCards.get(i).getName(0) == name)
+			if(basicCards.get(i).getName() == name)
 			{
 				return i;
 			}

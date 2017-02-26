@@ -114,7 +114,7 @@ public class Player
 			}
 			else if(money == 7)
 			{
-				buyCard(game, money, game.getRandomKingdomCard().getName(0));
+				buyCard(game, money, game.getRandomKingdomCard().getName());
 			}
 			else if(money == 6)
 			{
@@ -122,11 +122,11 @@ public class Player
 			}
 			else if(money == 5)
 			{
-				buyCard(game, money, game.getRandomKingdomCard().getName(0));
+				buyCard(game, money, game.getRandomKingdomCard().getName());
 			}
 			else if(money == 4)
 			{
-				buyCard(game, money, game.getRandomKingdomCard().getName(0));
+				buyCard(game, money, game.getRandomKingdomCard().getName());
 			}
 			else if(money == 3)
 			{
@@ -145,7 +145,11 @@ public class Player
 	{
 		int cardIndex = game.getKingdomCardIndex(name);
 		System.out.println("Buying " + name);
-		if(cardIndex > -1)
+		if(cardIndex == -2)
+		{
+			System.out.println("no more of this card.");
+		}
+		else if(cardIndex > -1)
 		{
 			if(game.kingdomCards.get(cardIndex).getCard(0).cost > coins)
 			{
