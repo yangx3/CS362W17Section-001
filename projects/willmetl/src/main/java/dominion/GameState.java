@@ -83,8 +83,6 @@ public class GameState{
     for(Card c: Card.values()){
       if(supply.contains(c) == false) missingCards++;
     }
-    // System.out.println("\tmissingCards = "+missingCards);
-    // System.out.println("\tcontains PROVINCE: "+supply.contains(Card.PROVINCE));
     return supply.contains(Card.PROVINCE)==false || missingCards>=3;
   }
 
@@ -110,7 +108,7 @@ public class GameState{
       String desc = c.getDesc();
       desc = desc.substring(0, Math.min(desc.length(), 50));
       System.out.format("%2d - %-15s %-5d %2d    %s\n",
-        ++i, c, c.costsMoney, Collections.frequency(supply, c), desc
+        ++i, c, c.getCost(), Collections.frequency(supply, c), desc
       );
     }
     return i;
