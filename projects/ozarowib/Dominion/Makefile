@@ -1,8 +1,6 @@
 default:
 	echo "Use 'build' to compile then 'run', 'test', 'randomtest', 'myrandom', or 'cover'"
 
-all: build
-
 build: compile package
 
 compile:

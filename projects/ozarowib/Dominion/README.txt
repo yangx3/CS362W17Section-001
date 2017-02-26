@@ -1,6 +1,5 @@
 --------------------------------------------------------------------------
 If using Maven:
-Run all commands in bash from the directory containing pom.xml
 
 Commands to build:
  mvn compile
@@ -46,7 +45,4 @@ Command to run all tests:
 
 Command to run code coverage:
  make cover
---------------------------------------------------------------------------
-To generate a new randoop test suite:
-java -ea -cp ./target/*:./randoop/randoop-all-3.0.9.jar randoop.main.Main gentests --classlist=./randoop/classes.txt --timelimit=10
 --------------------------------------------------------------------------
