@@ -114,14 +114,14 @@ public class Player{
       System.out.println("There are not enough "+c+" available.");
       return false;
     }
-    if(remMoney<c.costsMoney){
+    if(remMoney<c.getCost()){
       System.out.format("A %s costs %d but you only have %d money. ur broke.\n",
-        c, c.costsMoney, remMoney
+        c, c.getCost(), remMoney
       );
       return false;
     }
     if(discard(gameState.takeCard(c))){
-        remMoney -= c.costsMoney;
+        remMoney -= c.getCost();
         remBuys--;
         if(DEBUGGING) System.out.format("%s bought a %s.\n", playerName, c);
         return true;
@@ -286,7 +286,7 @@ public class Player{
   }
   public boolean playCard(Card c, Player target){
     if(c.getType() != Card.Type.ACTION || remActions>=1){
-      remActions -= c.costsAction;
+      remActions -= c.getActionCost();
       if(c.play(this) == null)
         hand.remove(c); // trash the card from your hand
       else

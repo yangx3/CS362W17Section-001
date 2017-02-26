@@ -13,14 +13,13 @@ public class RandomTestDominion{
     int numPlayers = rand.nextInt(3)+2; // 2-4 players
     String[] names = {"Amy", "Bill", "Catherine", "David"};
 
+    assert(numPlayers<=4 && numPlayers>=2);
+
     for(int i=0; i<numPlayers; i++){
       game.addPlayer(names[i], true);
     }
 
-    // System.out.println("checkEndConditions is: "+game.checkEndConditions());
-    // System.out.println("provinces: "+game.countCard(Card.PROVINCE));
     while(game.checkEndConditions() == false){
-      System.out.println("New turn");
       game.nextTurn();
     }
   }

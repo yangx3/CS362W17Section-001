@@ -27,13 +27,13 @@ public class CardTest{
   @Test
   public void testValuesCopper(){
     assertEquals(Card.COPPER.toString(), "Copper");
-    assertEquals(Card.COPPER.desc, "worth 1 money");
-    assertEquals(Card.COPPER.costsAction, 0);
-    assertEquals(Card.COPPER.costsMoney, 0);
-    assertEquals(Card.COPPER.givesActions, 0);
-    assertEquals(Card.COPPER.givesCardDraws, 0);
-    assertEquals(Card.COPPER.givesMoney, 1);
-    assertEquals(Card.COPPER.givesVictoryPoints, 0);
+    assertEquals(Card.COPPER.getDesc(), "worth 1 money");
+    assertEquals(Card.COPPER.getActionCost(), 0);
+    assertEquals(Card.COPPER.getCost(), 0);
+    // assertEquals(Card.COPPER.givesActions, 0);
+    // assertEquals(Card.COPPER.givesCardDraws, 0);
+    // assertEquals(Card.COPPER.givesMoney, 1);
+    // assertEquals(Card.COPPER.givesVictoryPoints(), 0);
     assertEquals(Card.COPPER.getType(), Card.Type.TREASURE);
   }
 
@@ -129,7 +129,7 @@ public class CardTest{
     a.playCard(Card.FEAST);
     assertEquals(a.getHandSize(), 5);
     assertEquals(a.countAllCards(), totalCards);
-    assertEquals(Card.FEAST.costsMoney, 4);
+    assertEquals(Card.FEAST.getCost(), 4);
   }
 
   @Test
