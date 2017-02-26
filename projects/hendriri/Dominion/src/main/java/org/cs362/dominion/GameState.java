@@ -20,7 +20,7 @@ public class GameState {
 	   //gets a list that will be of players and cards.
 	   public final List<Player> players = new ArrayList<Player>();
 	   public final List<Card> cards;
-	   //i think this is a table that contains and integer and card in a hashmap
+
 	   public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
 
 	   //the embargo token for the embargo card

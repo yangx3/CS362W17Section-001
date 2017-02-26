@@ -28,8 +28,11 @@ public class GameStateTest{
     Player b = new Player("Benny", g, true);
     g.addPlayer(b);
     assertEquals(g.numPlayers, 2);
-    assertFalse(g.addPlayer("Charlie", true));
-    assertEquals(g.numPlayers, 2);
+    g.addPlayer("Charlie");
+    g.addPlayer("Denise");
+    assertEquals(g.numPlayers, 4);
+    assertFalse(g.addPlayer("Xavier", true));
+    assertEquals(g.numPlayers, 4);
   }
 
   @Test

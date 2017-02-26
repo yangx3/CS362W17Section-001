@@ -1,0 +1,372 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Player</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Player (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Player</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (15/ 25)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.3%
+  </span>
+  <span class="absValue">
+    (112/ 169)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.util.*;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * Created by samhudson on 2/8/17.
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;class Player {
+<i>7</i>&nbsp;    String name;
+<i>8</i>&nbsp;    ArrayList&lt;Card&gt; hand;
+<i>9</i>&nbsp;    ArrayList&lt;Card&gt; deck;
+<i>10</i>&nbsp;    ArrayList&lt;Card&gt; discard;
+<i>11</i>&nbsp;    ArrayList&lt;Card&gt; in_play;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;
+<b class="fc"><i>14</i>&nbsp;    Player(String name) {</b>
+<b class="fc"><i>15</i>&nbsp;        this.name = name;</b>
+<b class="fc"><i>16</i>&nbsp;        this.deck = new ArrayList&lt;Card&gt;();</b>
+<b class="fc"><i>17</i>&nbsp;        this.discard = new ArrayList&lt;Card&gt;();</b>
+<b class="fc"><i>18</i>&nbsp;        this.hand = new ArrayList&lt;Card&gt;();</b>
+<b class="fc"><i>19</i>&nbsp;        this.in_play = new ArrayList&lt;Card&gt;();</b>
+<i>20</i>&nbsp;
+<b class="fc"><i>21</i>&nbsp;        for(int i=0; i&lt;10; i++) {</b>
+<b class="fc"><i>22</i>&nbsp;            if(i&lt;7) {</b>
+<b class="fc"><i>23</i>&nbsp;                this.deck.add(new TreasureCard(&quot;copper&quot;, &quot;treasure&quot;, 0, 1));</b>
+<i>24</i>&nbsp;            } else {
+<b class="fc"><i>25</i>&nbsp;                this.deck.add(new VictoryCard(&quot;estate&quot;, &quot;victory&quot;, 2, 1));</b>
+<i>26</i>&nbsp;            }
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;        }
+<b class="fc"><i>29</i>&nbsp;    }</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    void shuffle_deck() {
+<b class="fc"><i>32</i>&nbsp;        Collections.shuffle(this.deck);</b>
+<b class="fc"><i>33</i>&nbsp;    }</b>
+<i>34</i>&nbsp;    void shuffle_discard() {
+<b class="nc"><i>35</i>&nbsp;        Collections.shuffle(this.discard);</b>
+<b class="nc"><i>36</i>&nbsp;    }</b>
+<i>37</i>&nbsp;    void shuffle_hand() {
+<b class="nc"><i>38</i>&nbsp;        Collections.shuffle(this.hand);</b>
+<b class="nc"><i>39</i>&nbsp;    }</b>
+<i>40</i>&nbsp;    void shuffle_in_play() {
+<b class="fc"><i>41</i>&nbsp;        Collections.shuffle(this.in_play);</b>
+<b class="fc"><i>42</i>&nbsp;    }</b>
+<i>43</i>&nbsp;    void print_deck() {
+<b class="nc"><i>44</i>&nbsp;        System.out.println(this.name+&quot;&#39;s deck pile:&quot;);</b>
+<b class="nc"><i>45</i>&nbsp;        for(int i=0; i&lt;this.deck.size();i++) {</b>
+<b class="nc"><i>46</i>&nbsp;            System.out.println(&quot;Position: &quot;+i+&quot; Card: &quot;+this.deck.get(i).type+&quot; &quot;+this.deck.get(i).name);</b>
+<i>47</i>&nbsp;        }
+<b class="nc"><i>48</i>&nbsp;    }</b>
+<i>49</i>&nbsp;    void print_discard() {
+<b class="nc"><i>50</i>&nbsp;        System.out.println(this.name+&quot;&#39;s discard pile:&quot;);</b>
+<b class="nc"><i>51</i>&nbsp;        for(int i=0; i&lt;this.discard.size();i++) {</b>
+<b class="nc"><i>52</i>&nbsp;            System.out.println(&quot;Position: &quot;+i+&quot; Card: &quot;+this.discard.get(i).type+&quot; &quot;+this.discard.get(i).name);</b>
+<i>53</i>&nbsp;        }
+<b class="nc"><i>54</i>&nbsp;    }</b>
+<i>55</i>&nbsp;    void print_in_play() {
+<b class="nc"><i>56</i>&nbsp;        System.out.println(this.name+&quot;&#39;s in_play pile:&quot;);</b>
+<b class="nc"><i>57</i>&nbsp;        for(int i=0; i&lt;this.in_play.size();i++) {</b>
+<b class="nc"><i>58</i>&nbsp;            System.out.println(&quot;Position: &quot;+i+&quot; Card: &quot;+this.in_play.get(i).type+&quot; &quot;+this.in_play.get(i).name);</b>
+<i>59</i>&nbsp;        }
+<b class="nc"><i>60</i>&nbsp;    }</b>
+<i>61</i>&nbsp;    void print_hand() {
+<b class="nc"><i>62</i>&nbsp;        System.out.println(this.name+&quot;&#39;s hand pile:&quot;);</b>
+<b class="nc"><i>63</i>&nbsp;        for(int i=0; i&lt;this.hand.size();i++) {</b>
+<b class="nc"><i>64</i>&nbsp;            System.out.println(&quot;Position: &quot;+i+&quot; Card: &quot;+this.hand.get(i).type+&quot; &quot;+this.hand.get(i).name);</b>
+<i>65</i>&nbsp;        }
+<b class="nc"><i>66</i>&nbsp;    }</b>
+<i>67</i>&nbsp;    /* TODO: could be a bug here if the discard pile is less than 5 */
+<i>68</i>&nbsp;    void draw_from_deck() {
+<b class="fc"><i>69</i>&nbsp;        int withdraw_count, remaining_count = 0;</b>
+<b class="fc"><i>70</i>&nbsp;        if(this.deck.size()&gt;=5) {</b>
+<b class="fc"><i>71</i>&nbsp;            withdraw_count = 5;</b>
+<b class="fc"><i>72</i>&nbsp;            for(int i=0; i&lt;withdraw_count; i++) {</b>
+<b class="fc"><i>73</i>&nbsp;                this.hand.add(this.deck.get(this.deck.size() - 1));</b>
+<b class="fc"><i>74</i>&nbsp;                this.deck.remove(this.deck.size() - 1);</b>
+<i>75</i>&nbsp;            }
+<b class="nc"><i>76</i>&nbsp;        } else if(this.deck.size()&lt;5 &amp;&amp; this.deck.size()!=0){</b>
+<b class="nc"><i>77</i>&nbsp;            withdraw_count = this.deck.size();</b>
+<b class="nc"><i>78</i>&nbsp;            remaining_count = 5-this.deck.size();</b>
+<b class="nc"><i>79</i>&nbsp;            for(int i=0; i&lt;withdraw_count; i++) {</b>
+<b class="nc"><i>80</i>&nbsp;                this.hand.add(this.deck.get(this.deck.size() - 1));</b>
+<b class="nc"><i>81</i>&nbsp;                this.deck.remove(this.deck.size() - 1);</b>
+<i>82</i>&nbsp;            }
+<b class="nc"><i>83</i>&nbsp;            shuffle_discard();</b>
+<b class="nc"><i>84</i>&nbsp;            for(int i=0; i&lt;this.discard.size();i++) {</b>
+<b class="nc"><i>85</i>&nbsp;                this.deck.add(this.discard.get(this.discard.size() - 1));</b>
+<b class="nc"><i>86</i>&nbsp;                this.discard.remove(this.discard.size() - 1);</b>
+<i>87</i>&nbsp;            }
+<b class="nc"><i>88</i>&nbsp;            for(int i=0; i&lt;remaining_count; i++) {</b>
+<b class="nc"><i>89</i>&nbsp;                this.hand.add(this.deck.get(this.deck.size() - 1));</b>
+<b class="nc"><i>90</i>&nbsp;                this.deck.remove(this.deck.size() - 1);</b>
+<i>91</i>&nbsp;            }
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;        }
+<i>94</i>&nbsp;        else {
+<b class="nc"><i>95</i>&nbsp;            withdraw_count = 5;</b>
+<b class="nc"><i>96</i>&nbsp;            shuffle_discard();</b>
+<b class="nc"><i>97</i>&nbsp;            for(int i=0; i&lt;this.discard.size();i++) {</b>
+<b class="nc"><i>98</i>&nbsp;                this.deck.add(this.discard.get(this.discard.size() - 1));</b>
+<b class="nc"><i>99</i>&nbsp;                this.discard.remove(this.discard.size() - 1);</b>
+<i>100</i>&nbsp;            }
+<b class="nc"><i>101</i>&nbsp;            for(int i=0; i&lt;withdraw_count; i++) {</b>
+<b class="nc"><i>102</i>&nbsp;                this.hand.add(this.deck.get(this.deck.size() - 1));</b>
+<b class="nc"><i>103</i>&nbsp;                this.deck.remove(this.deck.size() - 1);</b>
+<i>104</i>&nbsp;            }
+<i>105</i>&nbsp;        }
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;
+<i>108</i>&nbsp;
+<b class="fc"><i>109</i>&nbsp;    }</b>
+<i>110</i>&nbsp;    ArrayList&lt;Integer&gt; in_hand(String type) {
+<b class="fc"><i>111</i>&nbsp;        ArrayList&lt;Integer&gt; positions = new ArrayList&lt;Integer&gt;();</b>
+<b class="fc"><i>112</i>&nbsp;        for(int i=0; i&lt;this.hand.size();i++) {</b>
+<b class="fc"><i>113</i>&nbsp;            if(this.hand.get(i).type==type)</b>
+<b class="fc"><i>114</i>&nbsp;                positions.add(i);</b>
+<i>115</i>&nbsp;        }
+<b class="fc"><i>116</i>&nbsp;        return positions;</b>
+<i>117</i>&nbsp;    }
+<i>118</i>&nbsp;    ArrayList&lt;Integer&gt; in_play_by_name(String name) {
+<b class="nc"><i>119</i>&nbsp;        ArrayList&lt;Integer&gt; positions = new ArrayList&lt;Integer&gt;();</b>
+<b class="nc"><i>120</i>&nbsp;        for(int i=0; i&lt;this.in_play.size();i++) {</b>
+<b class="nc"><i>121</i>&nbsp;            if(this.in_play.get(i).name==name)</b>
+<b class="nc"><i>122</i>&nbsp;                positions.add(i);</b>
+<i>123</i>&nbsp;        }
+<b class="nc"><i>124</i>&nbsp;        return positions;</b>
+<i>125</i>&nbsp;    }
+<i>126</i>&nbsp;    void action_phase(Board the_board, Player other_player) {
+<i>127</i>&nbsp;        //grabbing all the positions of type action card
+<b class="fc"><i>128</i>&nbsp;        ArrayList&lt;Integer&gt; positions = in_hand(&quot;action&quot;);</b>
+<i>129</i>&nbsp;        //check if there were positions
+<b class="fc"><i>130</i>&nbsp;        if(positions.size() &gt; 0) {</b>
+<i>131</i>&nbsp;            //play action in hand at index of random select from positions array
+<b class="fc"><i>132</i>&nbsp;            int position = random_range(0, positions.size()-1);</b>
+<i>133</i>&nbsp;            //add random action card from hand into in play
+<b class="fc"><i>134</i>&nbsp;            position = positions.get(position);</b>
+<b class="fc"><i>135</i>&nbsp;            this.in_play.add(this.hand.get(position));</b>
+<b class="fc"><i>136</i>&nbsp;            this.hand.remove(position);</b>
+<i>137</i>&nbsp;            //play action card in play
+<b class="fc"><i>138</i>&nbsp;            ActionCard action_card = (ActionCard) this.in_play.get(this.in_play.size()-1);</b>
+<b class="fc"><i>139</i>&nbsp;            System.out.println(this.name+&quot; has selected action card: &quot;+ action_card.name+&quot;.&quot;);</b>
+<b class="fc"><i>140</i>&nbsp;            action_card.play(this, other_player,the_board);</b>
+<i>141</i>&nbsp;
+<i>142</i>&nbsp;
+<b class="fc"><i>143</i>&nbsp;        } else {</b>
+<b class="fc"><i>144</i>&nbsp;            System.out.println(this.name+&quot; you currently have no action cards in your hand.&quot;);</b>
+<i>145</i>&nbsp;        }
+<i>146</i>&nbsp;
+<b class="fc"><i>147</i>&nbsp;    }</b>
+<i>148</i>&nbsp;    void buy_phase(Board the_board) {
+<i>149</i>&nbsp;        //grabbing all the positions of type treasure card
+<b class="fc"><i>150</i>&nbsp;        ArrayList&lt;Integer&gt; positions = in_hand(&quot;treasure&quot;);</b>
+<i>151</i>&nbsp;        //check if there were positions
+<b class="fc"><i>152</i>&nbsp;        if(positions.size() &gt; 0) {</b>
+<b class="fc"><i>153</i>&nbsp;            int buying_power = 0;</b>
+<b class="fc"><i>154</i>&nbsp;            int iterations = random_range(1, positions.size());</b>
+<b class="fc"><i>155</i>&nbsp;            for(int i=0; i&lt;iterations; i++) {</b>
+<b class="fc"><i>156</i>&nbsp;                int position = random_range(0, positions.size()-1);</b>
+<b class="fc"><i>157</i>&nbsp;                this.in_play.add(this.hand.get(positions.get(position)));</b>
+<b class="fc"><i>158</i>&nbsp;                buying_power += this.hand.get(positions.get(position)).value;</b>
+<b class="fc"><i>159</i>&nbsp;                this.hand.remove(positions.get(position));</b>
+<b class="fc"><i>160</i>&nbsp;                positions.remove(position);</b>
+<i>161</i>&nbsp;            }
+<b class="fc"><i>162</i>&nbsp;            System.out.println(this.name+&quot; is choosing to spend total treasure value of: &quot;+buying_power+&quot;.&quot;);</b>
+<i>163</i>&nbsp;            //Let&#39;s scan the board for a something to buy within the chosen buying power.
+<i>164</i>&nbsp;            //Just a quick shuffle to guarantee selection randomness.
+<b class="fc"><i>165</i>&nbsp;            the_board.shuffle_board();</b>
+<b class="fc"><i>166</i>&nbsp;           for(int i=0; i&lt;the_board.on_board.size();i++) {</b>
+<b class="fc"><i>167</i>&nbsp;                if(the_board.on_board.get(i).cost&lt;=buying_power &amp;&amp; the_board.on_board.get(i).type!=&quot;curse&quot;) {</b>
+<b class="fc"><i>168</i>&nbsp;                    String name = the_board.on_board.get(i).name;</b>
+<b class="fc"><i>169</i>&nbsp;                    draw_from_board_to_discard(the_board,i);</b>
+<b class="fc"><i>170</i>&nbsp;                    break;</b>
+<i>171</i>&nbsp;                }
+<i>172</i>&nbsp;
+<i>173</i>&nbsp;            }
+<i>174</i>&nbsp;
+<b class="fc"><i>175</i>&nbsp;        } else {</b>
+<b class="nc"><i>176</i>&nbsp;            System.out.println(this.name+&quot; you currently have no treasure cards in your deck.&quot;);</b>
+<i>177</i>&nbsp;        }
+<i>178</i>&nbsp;
+<i>179</i>&nbsp;
+<b class="fc"><i>180</i>&nbsp;    }</b>
+<i>181</i>&nbsp;    void clean_up_phase() {
+<i>182</i>&nbsp;
+<b class="fc"><i>183</i>&nbsp;        int in_play_count = this.in_play.size();</b>
+<b class="fc"><i>184</i>&nbsp;        int hand_count = this.hand.size();</b>
+<i>185</i>&nbsp;        //shuffle in_play because it can be discarded in any order
+<b class="fc"><i>186</i>&nbsp;        shuffle_in_play();</b>
+<i>187</i>&nbsp;        //adding to hand and in-play to discard
+<b class="fc"><i>188</i>&nbsp;        for(int i=0; i&lt;in_play_count;i++) {</b>
+<b class="fc"><i>189</i>&nbsp;            this.discard.add(this.in_play.get(i));</b>
+<i>190</i>&nbsp;        }
+<i>191</i>&nbsp;
+<b class="fc"><i>192</i>&nbsp;        for(int i=0; i&lt;hand_count;i++) {</b>
+<b class="fc"><i>193</i>&nbsp;            this.discard.add(this.hand.get(i));</b>
+<i>194</i>&nbsp;        }
+<i>195</i>&nbsp;        //clear all elements from in_play &amp; hand_count
+<b class="fc"><i>196</i>&nbsp;        this.in_play.clear();</b>
+<b class="fc"><i>197</i>&nbsp;        this.hand.clear();</b>
+<i>198</i>&nbsp;
+<b class="fc"><i>199</i>&nbsp;    }</b>
+<i>200</i>&nbsp;
+<i>201</i>&nbsp;    int random_range(int min, int max) {
+<b class="fc"><i>202</i>&nbsp;        Random rand = new Random(System.currentTimeMillis());</b>
+<b class="fc"><i>203</i>&nbsp;        return rand.nextInt(max+1-min)+min;</b>
+<i>204</i>&nbsp;    }
+<i>205</i>&nbsp;
+<i>206</i>&nbsp;
+<i>207</i>&nbsp;    void draw_from_board_to_discard(Board the_board, int position) {
+<b class="fc"><i>208</i>&nbsp;        System.out.println(this.name+&quot; is drawing from the board card: \n type:  &quot;+the_board.on_board.get(position).type+</b>
+<b class="fc"><i>209</i>&nbsp;                &quot;\n name:  &quot;+the_board.on_board.get(position).name+&quot;\n cost:  &quot;+the_board.on_board.get(position).cost+</b>
+<b class="fc"><i>210</i>&nbsp;                &quot;\n value: &quot;+the_board.on_board.get(position).value+&quot;\n from position:&quot;+position);</b>
+<b class="fc"><i>211</i>&nbsp;        this.discard.add(the_board.on_board.get(position));</b>
+<b class="fc"><i>212</i>&nbsp;        the_board.on_board.remove(position);</b>
+<b class="fc"><i>213</i>&nbsp;    }</b>
+<i>214</i>&nbsp;    void draw_from_board_to_deck(Board the_board, int position) {
+<b class="fc"><i>215</i>&nbsp;        System.out.println(this.name+&quot; is drawing from the board card: \n type:  &quot;+the_board.on_board.get(position).type+</b>
+<b class="fc"><i>216</i>&nbsp;                &quot;\n name:  &quot;+the_board.on_board.get(position).name+&quot;\n cost:  &quot;+the_board.on_board.get(position).cost+</b>
+<b class="fc"><i>217</i>&nbsp;                &quot;\n value: &quot;+the_board.on_board.get(position).value+&quot;\n from position:&quot;+position);</b>
+<b class="fc"><i>218</i>&nbsp;        this.deck.add(the_board.on_board.get(position));</b>
+<b class="fc"><i>219</i>&nbsp;        the_board.on_board.remove(position);</b>
+<b class="fc"><i>220</i>&nbsp;    }</b>
+<i>221</i>&nbsp;    void draw_from_board_to_hand(Board the_board, int position) {
+<b class="fc"><i>222</i>&nbsp;        System.out.println(this.name+&quot; is drawing from the board card: \n type:  &quot;+the_board.on_board.get(position).type+</b>
+<b class="fc"><i>223</i>&nbsp;                &quot;\n name:  &quot;+the_board.on_board.get(position).name+&quot;\n cost:  &quot;+the_board.on_board.get(position).cost+</b>
+<b class="fc"><i>224</i>&nbsp;                &quot;\n value: &quot;+the_board.on_board.get(position).value+&quot;\n from position:&quot;+position);</b>
+<b class="fc"><i>225</i>&nbsp;        this.hand.add(the_board.on_board.get(position));</b>
+<b class="fc"><i>226</i>&nbsp;        the_board.on_board.remove(position);</b>
+<b class="fc"><i>227</i>&nbsp;    }</b>
+<i>228</i>&nbsp;    void draw_from_board_to_in_play(Board the_board, int position) {
+<b class="fc"><i>229</i>&nbsp;        System.out.println(this.name+&quot; is drawing from the board card: \n type:  &quot;+the_board.on_board.get(position).type+</b>
+<b class="fc"><i>230</i>&nbsp;                &quot;\n name:  &quot;+the_board.on_board.get(position).name+&quot;\n cost:  &quot;+the_board.on_board.get(position).cost+</b>
+<b class="fc"><i>231</i>&nbsp;                &quot;\n value: &quot;+the_board.on_board.get(position).value+&quot;\n from position:&quot;+position);</b>
+<b class="fc"><i>232</i>&nbsp;        this.in_play.add(the_board.on_board.get(position));</b>
+<b class="fc"><i>233</i>&nbsp;        the_board.on_board.remove(position);</b>
+<b class="fc"><i>234</i>&nbsp;    }</b>
+<i>235</i>&nbsp;    void draw_from_hand_to_deck(int position) {
+<b class="nc"><i>236</i>&nbsp;        this.deck.add(this.hand.get(position));</b>
+<b class="nc"><i>237</i>&nbsp;        this.hand.remove(position);</b>
+<b class="nc"><i>238</i>&nbsp;    }</b>
+<i>239</i>&nbsp;    void draw_from_deck_to_hand() {
+<b class="fc"><i>240</i>&nbsp;        if(this.deck.size()==0) {</b>
+<b class="nc"><i>241</i>&nbsp;            this.draw_from_deck();</b>
+<i>242</i>&nbsp;        }
+<b class="fc"><i>243</i>&nbsp;        this.hand.add(this.deck.get(this.deck.size()-1));</b>
+<b class="fc"><i>244</i>&nbsp;        this.deck.remove(this.deck.size()-1);</b>
+<b class="fc"><i>245</i>&nbsp;    }</b>
+<i>246</i>&nbsp;
+<i>247</i>&nbsp;    void draw_from_hand_to_trash(Board the_board, int position) {
+<b class="nc"><i>248</i>&nbsp;        the_board.in_trash.add(hand.get(position));</b>
+<b class="nc"><i>249</i>&nbsp;        this.hand.remove(position);</b>
+<i>250</i>&nbsp;
+<b class="nc"><i>251</i>&nbsp;    }</b>
+<i>252</i>&nbsp;    void draw_from_in_play_to_trash(Board the_board, int position) {
+<b class="nc"><i>253</i>&nbsp;        the_board.in_trash.add(in_play.get(position));</b>
+<b class="nc"><i>254</i>&nbsp;        this.in_play.remove(position);</b>
+<i>255</i>&nbsp;
+<b class="nc"><i>256</i>&nbsp;    }</b>
+<i>257</i>&nbsp;
+<i>258</i>&nbsp;    int calculate_victory() {
+<b class="fc"><i>259</i>&nbsp;        int points = 0;</b>
+<b class="fc"><i>260</i>&nbsp;        for(int i=0;i&lt;this.in_play.size();i++) {</b>
+<b class="fc"><i>261</i>&nbsp;            if(this.in_play.get(i).type==&quot;victory&quot; || this.in_play.get(i).type==&quot;curse&quot;) {</b>
+<b class="fc"><i>262</i>&nbsp;                points = points + this.in_play.get(i).value;</b>
+<i>263</i>&nbsp;            }
+<i>264</i>&nbsp;
+<i>265</i>&nbsp;        }
+<b class="fc"><i>266</i>&nbsp;        for(int i=0;i&lt;this.hand.size();i++) {</b>
+<b class="fc"><i>267</i>&nbsp;            if(this.hand.get(i).type==&quot;victory&quot;|| this.hand.get(i).type==&quot;curse&quot;) {</b>
+<b class="fc"><i>268</i>&nbsp;                points = points + this.hand.get(i).value;</b>
+<i>269</i>&nbsp;            }
+<i>270</i>&nbsp;
+<i>271</i>&nbsp;        }
+<b class="fc"><i>272</i>&nbsp;        for(int i=0;i&lt;this.discard.size();i++) {</b>
+<b class="fc"><i>273</i>&nbsp;            if(this.discard.get(i).type==&quot;victory&quot;|| this.discard.get(i).type==&quot;curse&quot;) {</b>
+<b class="fc"><i>274</i>&nbsp;                points = points + this.discard.get(i).value;</b>
+<i>275</i>&nbsp;            }
+<i>276</i>&nbsp;
+<i>277</i>&nbsp;        }
+<b class="fc"><i>278</i>&nbsp;        for(int i=0;i&lt;this.deck.size();i++) {</b>
+<b class="fc"><i>279</i>&nbsp;            if(this.deck.get(i).type==&quot;victory&quot;|| this.deck.get(i).type==&quot;curse&quot;) {</b>
+<b class="fc"><i>280</i>&nbsp;                points = points + this.deck.get(i).value;</b>
+<i>281</i>&nbsp;            }
+<i>282</i>&nbsp;
+<i>283</i>&nbsp;        }
+<b class="fc"><i>284</i>&nbsp;        return points;</b>
+<i>285</i>&nbsp;    }
+<i>286</i>&nbsp;    //TODO Sum victory cards ** remember that garden is special and counts for 1 point per 10 cards in deck.
+<i>287</i>&nbsp;
+<i>288</i>&nbsp;
+<i>289</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-13 23:10</div>
+</div>
+</body>
+</html>

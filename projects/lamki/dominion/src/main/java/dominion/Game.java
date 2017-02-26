@@ -7,7 +7,8 @@ public class Game
 	int[] curse;
 	int[] bcc = {0, 0, 0, 30, 40, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //board card count
 	//0-2 = victory, 3-5 = treasure, 6-15 = kingdom
-        boolean winnokc = false;
+    boolean winnokc = false;
+
 	public Game()
 	{
 
@@ -126,7 +127,17 @@ public class Game
 
 	public boolean can_buy(int t)
 	{
-		return player[t].buy_turns != 0 && player[t].played_value >= 3;
+		int lowest = 256;
+		for(int i = 0; i < bcc.length; i++)
+		{
+			Card tempCard = new Card(i);
+			if(bcc[i] != 0 && tempCard.price < lowest)
+			{
+				lowest = tempCard.price;
+			}
+		}
+		return player[t].buy_turns != 0 && player[t].played_value >= lowest;
+		//return player[t].buy_turns != 0 && player[t].played_value >= 3;
 	}
 
 	public boolean can_play(int t)
@@ -172,6 +183,11 @@ public class Game
 			}
 		}
 		return false;
+	}
+
+	public void print_bcc()
+	{
+		System.out.println(Arrays.toString(bcc));
 	}
 
 }

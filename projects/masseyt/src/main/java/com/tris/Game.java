@@ -146,15 +146,15 @@ public class Game {
     }
 
     public boolean isGameOver(){
-        System.out.println("CHECKING FOR GAME OVER: PROVINCES LEFT - " + board.get(Card.getCard(cards, Card.Name.PROVINCE)));
-        System.out.println("DUTCHYS LEFT - " + board.get(Card.getCard(cards, Card.Name.DUTCHY)));
-        System.out.println("ESTATES LEFT - " + board.get(Card.getCard(cards, Card.Name.ESTATE)));
-        System.out.println("CURSES LEFT - " + board.get(Card.getCard(cards, Card.Name.CURSE)));
+        System.out.println("CHECKING FOR GAME OVER: PROVINCES LEFT: " + board.get(Card.getCard(cards, Card.Name.PROVINCE)));
+        //System.out.println("DUTCHYS LEFT - " + board.get(Card.getCard(cards, Card.Name.DUTCHY)));
+        //System.out.println("ESTATES LEFT - " + board.get(Card.getCard(cards, Card.Name.ESTATE)));
+        //System.out.println("CURSES LEFT - " + board.get(Card.getCard(cards, Card.Name.CURSE)));
         if ((board.get(Card.getCard(cards, Card.Name.PROVINCE)) == null) || (board.get(Card.getCard(cards, Card.Name.PROVINCE)) == 0)){
             System.out.println("Game over!");
             return true;
         }
-        System.out.print("CHECKING FOR GAME OVER: EMPTY PILES - ");
+        System.out.print("CHECKING FOR GAME OVER: EMPTY PILES: ");
         int empty = 0;
         for (int i : board.values()){
             if (i == 0)

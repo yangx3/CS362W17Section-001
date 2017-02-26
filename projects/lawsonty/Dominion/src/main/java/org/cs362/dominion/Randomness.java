@@ -1,5 +1,6 @@
 package org.cs362.dominion;
-import java.util.List; import java.util.Random;
+import java.util.List;
+import java.util.Random;
 public final class Randomness {
   private Randomness(){    
 	  //no instances

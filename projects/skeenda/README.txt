@@ -1,14 +1,20 @@
-To compile the program:
+To compile:
+	mvn compile
 	
-	make
+Package:
+	mvn package
+	
+To run the tests:
+	mvn test
 	
 To run the game:
-	
-	java dominion_v2.PlayDominion <NUMBER 0-12>
-	
+	java -jar ./target/dominion_v2-0.0.1-SNAPSHOT.jar <#OfKingdomCards 1-10>
 
-To run the test with the Junit tools, all files should be put into Eclipse and ran with the eclEmma code Coverage tool. This seemed to be
-the only way that I could get the Junit to run on my computer along with any of the code coverage tools. I also believe that OSU's servers
-do not have any ability to run a JUnit test without the built in background that eclipse has for JUnit. I tried several solutions to make
-running the tests work on OSU servers inluding installing the junit jars and that did not work either. So I just ran on eclipse and it
-worked out fine. 	
+The coverage for the assignment is in an html on the page
+
+
+To clean:
+
+	mvn clean
+	
+This may be required to run and test correctly

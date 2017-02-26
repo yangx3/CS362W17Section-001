@@ -1,0 +1,5 @@
+org\cs362\dominion\playerTest.class
+org\cs362\dominion\cardTest.class
+org\cs362\dominion\boardTest.class
+org\cs362\dominion\gameTest.class
+org\cs362\dominion\userInterfaceTest.class

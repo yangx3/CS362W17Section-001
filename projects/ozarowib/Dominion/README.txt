@@ -1,13 +1,48 @@
-- Commands to compile:
-mvn compile
-mvn package
-mvn test
+--------------------------------------------------------------------------
+If using Maven:
 
-- Command to run program:
-java -cp target/Dominion-1.0-SNAPSHOT.jar org.cs362.dominion.PlayDominion
+Commands to build:
+ mvn compile
+ mvn package -DskipTests
 
--  Command to run test suite:
-mvn -Dtest=AllTests test
+Command to run program:
+ java -cp target/Dominion-1.0-SNAPSHOT.jar org.cs362.dominion.PlayDominion
 
-- Code coverage:
-No code coverage tools seem to run properly on my program when used as a mvn command. I am unable to figure out why. I tried three different ones, none found any files to test. The same tools work correctly when run through the Eclipse IDE, so that is how I generated the coverage report I submitted on GitHub. I used EclEmma.
+Command to run my test suite:
+ mvn -Dtest=AllTests test
+
+Command to run randoop test suite:
+ mvn -Dtest=ErrorTest,RegressionTest test
+
+Command to run my random tester:
+ mvn -Dtest=RandomTestDominion test
+
+Command to run all tests:
+ mvn test
+
+Command to run code coverage:
+ mvn cobertura:cobertura
+--------------------------------------------------------------------------
+If using the Makefile:
+
+Command to build:
+ make build
+
+Command to run program:
+ make run
+
+Command to run my test suite:
+ make test
+
+Command to run randoop test suite:
+ make randomtest
+
+Command to run my random tester:
+ make myrandom
+
+Command to run all tests:
+ make testall
+
+Command to run code coverage:
+ make cover
+--------------------------------------------------------------------------
