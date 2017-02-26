@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>UnitTests.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">RegressionTest (Feb 26, 2017 11:29:33 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">UnitTests.java</span></div><h1>UnitTests.java</h1><pre class="source lang-java linenums">import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+	
+<span class="nc" id="L9">public class UnitTests {</span>
+
+	// Card Tests
+	   @Test
+	   public void testgetTreasure() 
+	   {	  
+<span class="nc" id="L15">	      assertEquals(Card.copper.getTreasure(), 1);</span>
+<span class="nc" id="L16">	   }</span>
+	   
+	   @Test
+	   public void testgetCost() 
+	   {
+<span class="nc" id="L21">		   assertEquals(Card.province.getCost(), 8);</span>
+<span class="nc" id="L22">	   }</span>
+	   
+	   @Test
+	   public void testgetVictory() 
+	   {
+<span class="nc" id="L27">		   assertEquals(Card.duchy.getVictory(),3);</span>
+<span class="nc" id="L28">	   }</span>
+	   
+	   @Test
+	   public void testgetTypes() 
+	   {
+<span class="nc" id="L33">		   List&lt;String&gt; types = new ArrayList&lt;String&gt;();</span>
+<span class="nc" id="L34">		   types.add(&quot;action&quot;);</span>
+<span class="nc" id="L35">		   types.add(&quot;attack&quot;);</span>
+<span class="nc" id="L36">		   assertEquals(Card.cutpurse.getTypes(),types);</span>
+<span class="nc" id="L37">	   }</span>
+	   
+	   @Test
+	   public void testsetVictory() 
+	   {
+<span class="nc" id="L42">		   Card.gardens.setVictory(7);</span>
+<span class="nc" id="L43">		   assertEquals(Card.gardens.getVictory(),7);</span>
+<span class="nc" id="L44">	   }</span>
+	   
+	   // Test GameBoard
+	   
+	   @Test
+	   public void testCreateKingdomCardList()
+	   {
+<span class="nc" id="L51">		   GameBoard gb = new GameBoard(2, &quot;test1&quot;);</span>
+<span class="nc" id="L52">	       List&lt;Card&gt; cards = gb.kingdomCards(Card.adventurer, Card.ambassador, Card.baron, Card.council_room, Card.cutpurse, Card.embargo, Card.feast, Card.gardens, Card.great_hall, Card.mine);</span>
+<span class="nc" id="L53">	       assertEquals(cards.size(),10);</span>
+<span class="nc" id="L54">	   }</span>
+	   
+	   @Test
+	   public void testCreateGameBoard()
+	   {
+<span class="nc" id="L59">	       GameBoard gb = new GameBoard(2, &quot;test1&quot;);</span>
+<span class="nc" id="L60">	       assertEquals(gb.getPlayers().size(),2);</span>
+<span class="nc" id="L61">	       gb = new GameBoard(3, &quot;test1&quot;);</span>
+<span class="nc" id="L62">	       assertEquals(gb.numCardsAvailable(Card.curse),20);</span>
+<span class="nc" id="L63">	       gb = new GameBoard(4, &quot;test1&quot;);</span>
+<span class="nc" id="L64">	       assertEquals(gb.numCardsAvailable(Card.province),12);</span>
+<span class="nc" id="L65">	   }</span>
+	   
+	   @Test
+	   public void testPlay()
+	   {
+<span class="nc" id="L70">	       GameBoard gb = new GameBoard(2, 10);</span>
+<span class="nc" id="L71">	       assertEquals(gb.play(),1);</span>
+<span class="nc" id="L72">	   }</span>
+	   
+	   @Test
+	   public void testEndOfGame()
+	   {
+<span class="nc" id="L77">	       GameBoard gb = new GameBoard(2, &quot;test1&quot;);</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">	       for (int i = 0; i &lt; 8; i++)</span>
+	       {
+<span class="nc" id="L80">	    	   gb.takeCard(Card.province);</span>
+	       }
+<span class="nc" id="L82">	       assertEquals(gb.gameDone(),true);</span>
+<span class="nc" id="L83">	       gb = new GameBoard(2, &quot;test1&quot;);</span>
+<span class="nc" id="L84">	       assertEquals(gb.gameDone(),false);</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">	       for (int i = 0; i &lt; 10; i++)</span>
+	       {
+<span class="nc" id="L87">	    	   gb.takeCard(Card.adventurer);</span>
+<span class="nc" id="L88">	    	   gb.takeCard(Card.ambassador);</span>
+<span class="nc" id="L89">	    	   gb.takeCard(Card.baron);</span>
+	       }
+<span class="nc" id="L91">	       assertEquals(gb.gameDone(),true);</span>
+<span class="nc" id="L92">	   }</span>
+	   
+	   
+	   
+	   
+	   // Player Tests
+	   
+	   
+	   @Test
+	   public void testConstructorAndGetNameNum()
+	   {
+<span class="nc" id="L103">	       GameBoard gb = new GameBoard(2, &quot;test1&quot;);</span>
+<span class="nc" id="L104">		   Player p = new Player(&quot;Player 1&quot;, 0, gb);</span>
+<span class="nc" id="L105">		   assertEquals(p.getName(), &quot;Player 1&quot;);</span>
+<span class="nc" id="L106">		   assertEquals(p.getNum(), 0);</span>
+<span class="nc" id="L107">		   assertEquals(p.getDeck().size(),5);</span>
+<span class="nc" id="L108">		   assertEquals(p.getHand().size(),5);</span>
+<span class="nc" id="L109">	   }</span>
+	   
+	   @Test
+	   public void testGainCardToHand()
+	   {
+<span class="nc" id="L114">		   GameBoard gb = new GameBoard(2, &quot;test1&quot;);</span>
+<span class="nc" id="L115">		   Player p = new Player(&quot;Player 1&quot;, 0, gb);</span>
+<span class="nc" id="L116">		   p.gainCardToHand(Card.curse, gb);</span>
+<span class="nc" id="L117">		   assertEquals(p.getHand().contains(Card.curse),true);</span>
+<span class="nc" id="L118">	   }</span>
+	   
+	   @Test
+	   public void testPlayCards()
+	   {
+
+<span class="nc" id="L124">	   	   GameBoard gb = new GameBoard(2, &quot;test1&quot;);</span>
+<span class="nc" id="L125">		   Player p = new Player(&quot;Player 1&quot;, 0, gb);</span>
+		   
+		   int handSize;
+		   int totalVictory;
+		   int coins;
+		   int totalTreasure;
+		   int deckSize;
+		   int totalEmbargo;
+		   int discardSize;
+		   int trashSize;
+		   int actions;
+		   int buys;
+		   
+<span class="nc" id="L138">		   p.addActions(100);</span>
+<span class="nc" id="L139">		   assertEquals(p.hasActions(), true);</span>
+		   
+<span class="nc" id="L141">		   p.gainCardToHand(Card.adventurer, gb);</span>
+<span class="nc" id="L142">		   p.countTreasure();</span>
+<span class="nc" id="L143">		   totalTreasure = p.getCoins();</span>
+<span class="nc" id="L144">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">		   assertTrue(p.getPlayedCards().size() &gt;= 1);</span>
+<span class="nc" id="L146">		   p.countTreasure();</span>
+<span class="nc bnc" id="L147" title="All 4 branches missed.">		   assertTrue(p.getDeck().size() == 0 || p.getCoins() &gt; totalTreasure);</span>
+		   
+<span class="nc" id="L149">		   p.gainCardToHand(Card.copper, gb);</span>
+<span class="nc" id="L150">		   p.gainCardToHand(Card.copper, gb);</span>
+<span class="nc" id="L151">		   p.gainCardToHand(Card.copper, gb);</span>
+<span class="nc" id="L152">		   p.gainCardToHand(Card.estate, gb);</span>
+<span class="nc" id="L153">		   p.gainCardToHand(Card.ambassador, gb);</span>
+<span class="nc" id="L154">		   handSize = p.getHand().size();</span>
+<span class="nc" id="L155">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">		   assertTrue(p.getHand().size() &lt;= handSize);</span>
+
+<span class="nc" id="L158">		   p.gainCardToHand(Card.estate, gb);</span>
+<span class="nc" id="L159">		   p.gainCardToHand(Card.baron, gb);</span>
+<span class="nc" id="L160">		   totalVictory = p.getTotalVictoryPoints();</span>
+<span class="nc" id="L161">		   coins = p.getCoins();</span>
+<span class="nc" id="L162">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc bnc" id="L163" title="All 4 branches missed.">		   assertTrue(p.getTotalVictoryPoints() == totalVictory + 1 || p.getCoins() &gt; coins);</span>
+		   
+<span class="nc" id="L165">		   p.gainCardToHand(Card.council_room, gb);</span>
+<span class="nc" id="L166">		   handSize = p.getHand().size();</span>
+<span class="nc" id="L167">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc" id="L168">		   assertEquals(p.getHand().size(), handSize + 3);</span>
+
+<span class="nc" id="L170">		   p.gainCardToHand(Card.cutpurse, gb);</span>
+<span class="nc" id="L171">		   coins = p.getCoins();</span>
+<span class="nc" id="L172">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc" id="L173">		   assertEquals(p.getCoins(), coins + 2);</span>
+		   
+
+<span class="nc" id="L176">		   p.gainCardToHand(Card.embargo, gb);</span>
+<span class="nc" id="L177">		   totalEmbargo = gb.getTotalEmbargoTokens();</span>
+<span class="nc" id="L178">		   coins = p.getCoins();</span>
+<span class="nc" id="L179">		   handSize = p.getHand().size();</span>
+<span class="nc" id="L180">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc bnc" id="L181" title="All 6 branches missed.">		   assertTrue(p.getCoins() == coins + 2 &amp;&amp; p.getHand().size() == handSize - 1 &amp;&amp; gb.getTotalEmbargoTokens() == totalEmbargo + 1);</span>
+
+<span class="nc" id="L183">		   p.gainCardToHand(Card.feast, gb);</span>
+<span class="nc" id="L184">		   discardSize = p.getDiscard().size();</span>
+<span class="nc" id="L185">		   trashSize = gb.getTrash().size();</span>
+<span class="nc" id="L186">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc bnc" id="L187" title="All 4 branches missed.">		   assertTrue(p.getDiscard().size() == discardSize + 1 &amp;&amp; trashSize == gb.getTrash().size() - 1);</span>
+		   
+		   
+<span class="nc" id="L190">		   p.gainCardToHand(Card.great_hall, gb);		   </span>
+<span class="nc" id="L191">		   handSize = p.getHand().size();</span>
+<span class="nc" id="L192">		   actions = p.getNumActions();</span>
+<span class="nc" id="L193">		   totalVictory = p.getTotalVictoryPoints();</span>
+<span class="nc" id="L194">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc bnc" id="L195" title="All 4 branches missed.">		   assertTrue(p.getHand().size() &gt;= handSize &amp;&amp; p.getNumActions() &gt;= actions);</span>
+		   
+<span class="nc" id="L197">		   p.discardHandAndInPlay();</span>
+<span class="nc" id="L198">		   p.gainCardToHand(Card.mine, gb);</span>
+<span class="nc" id="L199">		   p.gainCardToHand(Card.copper, gb);</span>
+<span class="nc" id="L200">		   p.gainCardToHand(Card.copper, gb);</span>
+<span class="nc" id="L201">		   p.gainCardToHand(Card.copper, gb);</span>
+<span class="nc" id="L202">		   p.gainCardToHand(Card.copper, gb);</span>
+<span class="nc" id="L203">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc" id="L204">		   assertEquals(p.getHand().contains(Card.silver), true);</span>
+		   
+<span class="nc" id="L206">		   gb = new GameBoard(2, &quot;test2&quot;);</span>
+<span class="nc" id="L207">		   p.gainCardToHand(Card.remodel, gb);</span>
+<span class="nc" id="L208">		   discardSize = p.getDiscard().size();</span>
+<span class="nc" id="L209">		   trashSize = gb.getTrash().size();</span>
+<span class="nc" id="L210">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc bnc" id="L211" title="All 4 branches missed.">		   assertTrue(p.getDiscard().size() == discardSize + 1 &amp;&amp; gb.getTrash().size() == trashSize + 1);</span>
+		   
+<span class="nc" id="L213">		   p.gainCardToHand(Card.smithy, gb);</span>
+<span class="nc" id="L214">		   handSize = p.getHand().size();</span>
+<span class="nc" id="L215">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc" id="L216">		   assertEquals(handSize, p.getHand().size() - 2);</span>
+		   
+<span class="nc" id="L218">		   p.discardHandAndInPlay();</span>
+<span class="nc" id="L219">		   p.gainCardToHand(Card.salvager, gb);</span>
+<span class="nc" id="L220">		   p.gainCardToHand(Card.silver, gb);</span>
+<span class="nc" id="L221">		   p.gainCardToHand(Card.silver, gb);</span>
+<span class="nc" id="L222">		   p.gainCardToHand(Card.silver, gb);</span>
+<span class="nc" id="L223">		   p.gainCardToHand(Card.silver, gb);</span>
+<span class="nc" id="L224">		   buys = p.getBuys();</span>
+<span class="nc" id="L225">		   coins = p.getCoins();</span>
+<span class="nc" id="L226">		   p.playCard(Randomness.randomMember(p.getActionCardIndices()), gb);</span>
+<span class="nc bnc" id="L227" title="All 4 branches missed.">		   assertTrue(p.getBuys() == buys + 1 &amp;&amp; p.getCoins() == coins + 3);</span>
+			   
+<span class="nc" id="L229">	   }</span>
+	   
+	   @Test
+	   public void testPlayDominion()
+	   {
+<span class="nc" id="L234">		   PlayDominion.main(null);</span>
+<span class="nc" id="L235">	   }</span>
+	   
+	   
+	   
+	   
+	   	   
+}
+	
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>RegressionTest (Feb 26, 2017 11:29:33 AM)</div></body></html>

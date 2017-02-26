@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>RandomTestDominion.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">RegressionTest (Feb 26, 2017 11:29:33 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">RandomTestDominion.java</span></div><h1>RandomTestDominion.java</h1><pre class="source lang-java linenums">import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+<span class="nc" id="L6">public class RandomTestDominion {</span>
+	   
+	public  static void main(String args[])
+	{
+	 
+<span class="nc" id="L11">		   int seed = 10;</span>
+<span class="nc" id="L12">		   Randomness.reset(seed);</span>
+		   
+<span class="nc" id="L14">		   List&lt;Integer&gt; possiblePlayerNums = new ArrayList&lt;Integer&gt;();</span>
+<span class="nc" id="L15">		   possiblePlayerNums.add(2);</span>
+<span class="nc" id="L16">		   possiblePlayerNums.add(3);</span>
+<span class="nc" id="L17">		   possiblePlayerNums.add(4);</span>
+<span class="nc" id="L18">		   int numPlayers = Randomness.randomMember(possiblePlayerNums);</span>
+	       
+<span class="nc" id="L20">	       GameBoard gb = new GameBoard(numPlayers, seed);</span>
+	       
+<span class="nc" id="L22">	       int playerTurn = 0;</span>
+	       int totalCards;
+	       Card c;
+			List&lt;Integer&gt; actionCardIndices;
+<span class="nc bnc" id="L26" title="All 2 branches missed.">			while (!gb.gameDone())</span>
+			{
+				//Action Phase
+<span class="nc bnc" id="L29" title="All 4 branches missed.">				while (gb.getPlayers().get(playerTurn).hasActions() &amp;&amp; gb.getPlayers().get(playerTurn).hasActionCard())</span>
+				{
+<span class="nc" id="L31">					actionCardIndices = gb.getPlayers().get(playerTurn).getActionCardIndices();</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">					if (actionCardIndices.size() &gt; 0)</span>
+					{
+<span class="nc" id="L34">						int indexToPlay = Randomness.nextRandomInt(actionCardIndices.size());</span>
+<span class="nc" id="L35">						c = gb.getPlayers().get(playerTurn).getHand().get(actionCardIndices.get(indexToPlay));</span>
+<span class="nc" id="L36">						gb.getPlayers().get(playerTurn).playCard(actionCardIndices.get(indexToPlay), gb);</span>
+<span class="nc" id="L37">						assertTrue(effectHappened(c,gb.getPlayers().get(playerTurn), gb), gb.getPlayers().get(playerTurn));</span>
+					}
+				}
+				
+				//Buy Phase
+<span class="nc" id="L42">				gb.getPlayers().get(playerTurn).countTreasure();</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">				while (gb.getPlayers().get(playerTurn).hasBuys())</span>
+				{
+<span class="nc bnc" id="L45" title="All 2 branches missed.">					if (gb.getPurchaseableCards(gb.getPlayers().get(playerTurn).getCoins()).size() &gt; 0)</span>
+					{
+<span class="nc" id="L47">						c = gb.getPlayers().get(playerTurn).getRandomBuyCard(gb);</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">						if (c != null)</span>
+						{
+<span class="nc" id="L50">							totalCards = gb.getPlayers().get(playerTurn).getTotalCards();</span>
+<span class="nc" id="L51">							gb.getPlayers().get(playerTurn).buyCard(c, gb);</span>
+<span class="nc" id="L52">							assertTrue(totalCardsIncreased(gb.getPlayers().get(playerTurn), totalCards), gb.getPlayers().get(playerTurn));</span>
+						}
+					}
+				}
+				
+				//Clean-up Phase
+<span class="nc" id="L58">				gb.getPlayers().get(playerTurn).discardHandAndInPlay();</span>
+<span class="nc bnc" id="L59" title="All 4 branches missed.">				assertTrue(gb.getPlayers().get(playerTurn).getHand().size() == 0 &amp;&amp; gb.getPlayers().get(playerTurn).getPlayedCards().size() == 0, gb.getPlayers().get(playerTurn));</span>
+<span class="nc" id="L60">				gb.getPlayers().get(playerTurn).initPlayerTurn();</span>
+<span class="nc bnc" id="L61" title="All 8 branches missed.">				assertTrue(gb.getPlayers().get(playerTurn).getHand().size() == 5 || (gb.getPlayers().get(playerTurn).getHand().size() &lt; 5 &amp;&amp; gb.getPlayers().get(playerTurn).getDeck().size() == 0 &amp;&amp; gb.getPlayers().get(playerTurn).getDiscard().size() == 0), gb.getPlayers().get(playerTurn));</span>
+				
+				//Move to next player
+<span class="nc" id="L64">				playerTurn ++;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">				if (playerTurn &gt;= gb.getPlayers().size())</span>
+				{
+<span class="nc" id="L67">					playerTurn = 0;</span>
+				}
+				
+			}
+			
+<span class="nc" id="L72">			gb.displayFinalScores();</span>
+<span class="nc" id="L73">	   }</span>
+	   
+	   public static boolean effectHappened(Card c, Player p, GameBoard gb)
+	   {
+<span class="nc bnc" id="L77" title="All 13 branches missed.">		   switch (c) </span>
+			{
+				case adventurer: 
+					//Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
+					/* If no/only 1 treasure found, stop when full deck seen */
+<span class="nc bnc" id="L82" title="All 4 branches missed.">					if (p.getDeck().size() == 0 || p.getNumberInHand(&quot;treasure&quot;) &gt;= 2)</span>
+					{
+<span class="nc" id="L84">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L88">						return false;</span>
+					}
+					
+				case ambassador:
+					//Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply. Then each other player gains a copy of it.
+					/* choice1 = hand#, choice2 = number to return to supply */
+<span class="nc" id="L94">					return true;</span>
+					
+				case baron:
+					//+1 Buy, You may discard an Estate for +4 coins. If you don't, gain an Estate.
+					/* choice1: boolean for discard of estate */
+					/* Discard is always of first (lowest index) estate */
+<span class="nc bnc" id="L100" title="All 8 branches missed.">					if (p.getBuys() &gt; 1 &amp;&amp; (p.getCoins() &gt;= 4 || p.getDiscard().contains(Card.estate) || !gb.hasCardsAvailable(Card.estate)))</span>
+					{
+<span class="nc" id="L102">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L106">						return false;</span>
+					}
+					
+				case council_room:
+					//+4 Cards, +1 Buy, Each other player draws a card.
+<span class="nc bnc" id="L111" title="All 4 branches missed.">					if (p.getHand().size() &gt;= 4 &amp;&amp; p.getBuys() &gt; 1)</span>
+					{
+<span class="nc" id="L113">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L117">						return false;</span>
+					}
+					
+				case cutpurse:
+					//+2 coin, Each other player discards a Copper card (or reveals a hand with no Copper).
+<span class="nc bnc" id="L122" title="All 2 branches missed.">					if (p.getCoins() &gt;= 2)</span>
+					{
+<span class="nc" id="L124">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L128">						return false;</span>
+					}
+					
+				case embargo:
+					//+2 coins,	Trash this card. Put an Embargo token on top of a Supply pile. When a player buys a card, he gains a Curse card per Embargo token on that pile.
+					/* choice1 = supply# */
+<span class="nc bnc" id="L134" title="All 2 branches missed.">					if (p.getCoins() &gt;= 2)</span>
+					{
+<span class="nc" id="L136">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L140">						return false;</span>
+					}
+					
+				case feast:
+					//Trash this card. Gain a card costing up to 5 coins.
+					/* choice1 is supply # of card gained) */
+<span class="nc bnc" id="L146" title="All 2 branches missed.">					if (p.getDiscard().size() &gt;= 1)</span>
+					{
+<span class="nc" id="L148">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L152">						return false;</span>
+					}
+					
+					
+				case great_hall:
+					//+1 Card, +1 Action. Worth 1 victory point
+<span class="nc bnc" id="L158" title="All 2 branches missed.">					if (p.getNumActions() &gt;= 1)</span>
+					{
+<span class="nc" id="L160">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L164">						return false;</span>
+					}
+					
+				case mine:
+					//You may trash a Treasure from your hand. Gain a Treasure to your hand costing up to 3 coins more than it.
+					/* choice1 is hand# of money to trash, choice2 is supply# of money to put in hand */
+<span class="nc" id="L170">					return true;</span>
+					
+				case remodel:
+					//Trash a card from your hand. Gain a card costing up to 2 coins more than it.
+					/* choice1 is hand# of card to remodel, choice2 is supply# */
+<span class="nc bnc" id="L175" title="All 2 branches missed.">					if (p.getDiscard().size() &gt; 0)</span>
+					{
+<span class="nc" id="L177">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L181">						return false;</span>
+					}
+					
+				case smithy:
+					//+3 Cards
+<span class="nc bnc" id="L186" title="All 2 branches missed.">					if (p.getHand().size() &gt;= 3)</span>
+					{
+<span class="nc" id="L188">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L192">						return false;</span>
+					}
+					
+				case salvager:
+					//+1 buy, trash a card from your hand. + coins equal to its cost
+<span class="nc bnc" id="L197" title="All 2 branches missed.">					if (p.getBuys() &gt; 1)</span>
+					{
+<span class="nc" id="L199">						return true;</span>
+					}
+					else
+					{
+<span class="nc" id="L203">						return false;</span>
+					}
+					
+				default:
+<span class="nc" id="L207">					return false;</span>
+			}
+		   
+	   }
+	   
+	   public static boolean totalCardsIncreased(Player p, int prev)
+	   {
+<span class="nc bnc" id="L214" title="All 2 branches missed.">		   return p.getTotalCards() &gt; prev;</span>
+	   }
+	   
+	   public static void assertTrue(boolean b, Player p)
+	   {
+<span class="nc bnc" id="L219" title="All 2 branches missed.">		   if (b)</span>
+		   {
+<span class="nc" id="L221">				System.out.println(&quot;TEST SUCCESSFULLY PASSED&quot;);</span>
+<span class="nc" id="L222">				System.out.println(p.getName() + &quot; has:&quot;);</span>
+<span class="nc" id="L223">				System.out.println(p.getBuys() + &quot; buys&quot;);</span>
+<span class="nc" id="L224">				System.out.println(p.getCoins() + &quot; coins&quot;);</span>
+<span class="nc" id="L225">				System.out.println(p.getNumActions() + &quot; actions&quot;);</span>
+
+<span class="nc" id="L227">		   }</span>
+		   else
+		   {
+<span class="nc" id="L230">			    System.out.println(&quot;TEST FAILED&quot;);</span>
+<span class="nc" id="L231">			    System.out.println(p.getName() + &quot; has:&quot;);</span>
+<span class="nc" id="L232">				System.out.println(p.getBuys() + &quot; buys&quot;);</span>
+<span class="nc" id="L233">				System.out.println(p.getCoins() + &quot; coins&quot;);</span>
+<span class="nc" id="L234">				System.out.println(p.getNumActions() + &quot; actions&quot;);</span>
+		   }
+<span class="nc" id="L236">	   }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>RegressionTest (Feb 26, 2017 11:29:33 AM)</div></body></html>
