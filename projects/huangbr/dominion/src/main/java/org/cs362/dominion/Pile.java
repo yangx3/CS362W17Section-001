@@ -4,6 +4,7 @@ import java.util.*;
 public class Pile
 {
 	public List<Card> cards;
+	public String name;
 	public int size;
 	public int value;
 	public int points;
@@ -26,6 +27,17 @@ public class Pile
 			addCard(card);
 		}
 		size = num;
+	}
+
+	public Pile(Card card, int num, String cardName)
+	{
+		cards = new ArrayList<Card>();
+		for(int i=0; i< num; i++)
+		{
+			addCard(card);
+		}
+		size = num;
+		name = cardName;
 	}
 
 	public void addCard(Card card)
@@ -66,9 +78,9 @@ public class Pile
 		return points;
 	}
 
-	public String getName(int index)
+	public String getName()
 	{
-		return cards.get(index).name;
+		return name;
 	}
 
 	public Card getCard(int cardIndex)

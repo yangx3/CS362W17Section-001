@@ -8,5 +8,8 @@ mvn package
 mvn test
 mvn validate
 
+Run only a specific test:
+mvn -Dtest=RandomTestDominion.java test
+
 Generate new code coverage report using:
 mvn cobertura:cobertura

@@ -75,6 +75,7 @@ public enum Card{
         if(other != p){
           other.putInHand(other.draw());
           System.out.println(other+" drew a card.");
+          return this;
         }
       }
       return this;
@@ -88,6 +89,7 @@ public enum Card{
       for(Player other: p.gameState.players){
         if(other != p){
           if(!other.discardFromHand(Card.COPPER)) other.seeHand();
+          return this;
         }
       }
       return this;
