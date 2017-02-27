@@ -3,9 +3,7 @@ package com.tris;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by Tristan Massey on 2/9/2017.
- */
+
 public class Randomness {
     Randomness(){
 

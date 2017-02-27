@@ -20,7 +20,7 @@ public class Adventure extends Card
         @Override
 	public void play(int card, Random rand1, int hand, Player p, Game g)
 	{
-		Random rand = ThreadLocalRandom.current();
+		//Random rand = ThreadLocalRandom.current();
 		int rnd_c;
 		switch(card)
 		{
@@ -90,7 +90,7 @@ public class Adventure extends Card
 				p.action_turns+=2;
 				p.buy_turns++;
 				p.draw(1);
-				p.shuffle(rand);
+				p.shuffle(rand1);
 			break;
 
 			case 11: //name = "Laboratory";

@@ -11,10 +11,8 @@ public class PlayDominion {
 		    GameState state;
 
 //INITIALIZE CARDS AND STATE
-			//the cards are achieved by each element/constant in the enum class
 			cards = new ArrayList<Card>(Card.createCards());
 			state = new GameState(cards);
-			//System.out.println("Initialization DominionBoard:\n " + state.toString());
 
 //INITIALIZE PLAYERS
             Player player = new Player(state, "PLAYER 1");

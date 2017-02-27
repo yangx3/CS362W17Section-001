@@ -50,7 +50,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
-        <evosuiteVersion>1.0.3</evosuiteVersion>
+        <evosuiteVersion>1.0.4</evosuiteVersion>
     </properties>
     <pluginRepositories>
         <pluginRepository>
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.evosuite</groupId>
             <artifactId>evosuite-standalone-runtime</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>

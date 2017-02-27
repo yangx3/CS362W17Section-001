@@ -42,12 +42,19 @@ public class GameState{
         }
 
     //set number of Curse cards the default number of players is 2
-		gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
+		int i = players.size()-1;
+		gameBoard.put(Card.getCard(cards, Card.CardName.Curse), (10*i));
 		      
 //INITIALIZE VICTORY CARDS
-		gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+		if(players.size() == 2) {
+			gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+		} else if(players.size() > 2) {
+			gameBoard.put(Card.getCard(cards, Card.CardName.Province), 12);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 12);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 12);
+		}
 
 //INITIALIZE TREASURE CARDS
 		gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
@@ -57,9 +64,9 @@ public class GameState{
 //INITIALIZE PLAYER'S CARDS
 		for (Player player : players) {
 		    System.out.println("\n" + player.player_username + "'s Initial Card Draw: ");
-		    for (int i = 0; i < 7; i++)
+		    for (i = 0; i < 7; i++)
 			    player.gain(Card.getCard(cards, Card.CardName.Copper));
-            for (int i = 0; i < 3; i++)
+            for (i = 0; i < 3; i++)
 			    player.gain(Card.getCard(cards,Card.CardName.Estate));
         }
     }

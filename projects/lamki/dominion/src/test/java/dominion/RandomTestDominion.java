@@ -45,7 +45,7 @@ public class RandomTestDominion {
         		try
         		{
                 System.out.println("\n\t"+p+" players, " + k + " kingdom cards");
-		        String[] args = {Integer.toString(p), Integer.toString(k)};
+		        String[] args = {Integer.toString(p), Integer.toString(k), Integer.toString(10)};
 		        Dominion.main(args);
 		        }
 		        catch(Exception e)

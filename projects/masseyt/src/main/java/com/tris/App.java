@@ -4,21 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args ) {
-        List<Card> cards;
+public class App {
+
+	public static void main(String[] args) {
+		List<Card> cards;
         Game game;
         Randomness.reset(10);
 
         cards = new ArrayList<Card>(Card.generate());
         game = new Game(cards);
 
-        int numPlayers = 2;
+        int numPlayers = Input.getInt(2, 4);
         System.out.println(numPlayers + " players!");
 
         Player player;
@@ -26,6 +22,14 @@ public class App
         game.addPlayer(player);
         player = new Player(game, "player2");
         game.addPlayer(player);
+        if (numPlayers > 2) {
+            player = new Player(game, "player3");
+            game.addPlayer(player);
+        }
+        if (numPlayers > 3) {
+            player = new Player(game, "player4");
+            game.addPlayer(player);
+        }
 
         game.initGame();
 
@@ -38,5 +42,6 @@ public class App
         }
 
         System.exit(0);
-    }
+	}
+
 }
