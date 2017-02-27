@@ -1,5 +1,7 @@
 package org.cs362.dominion;
 
+
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ public class RandomTestDominion {
 
 	@Test
 	public void test() {
-		
+		Randomness.reset(10);
 		Card[] kCard = new Card[10];
 		ArrayList<Card> cards = new ArrayList<Card>(Arrays.asList(Card.values()));
 		cards.remove(Card.COPPER);
@@ -175,21 +177,12 @@ public class RandomTestDominion {
 					break;
 				
 				}
-				if (game.getCurrentPlayer().play(Card.ADVENTURER)){
-				
-				}
-				else if (game.getCurrentPlayer().play(Card.MINE)){
-				
-				}
-				else  {
-					Card c = game.getCurrentPlayer().hand.get(Randomness.nextRandomInt(game.getCurrentPlayer().hand.size()));
-					game.getCurrentPlayer().play(c);
-				}
+
 			}
 			
 			while (game.getCurrentPlayer().buys() > 0){
 				game.getCurrentPlayer().spendGold();
-				if (game.getCurrentPlayer().buy(Card.PROVINCE)) {
+/*				if (game.getCurrentPlayer().buy(Card.PROVINCE)) {
 					
 				} else if (game.getCurrentPlayer().buy(Card.ADVENTURER)){
 					
@@ -203,10 +196,15 @@ public class RandomTestDominion {
 				else if (game.getCurrentPlayer().buy(Card.SILVER)){
 					
 				}
-				else  {
-					Card c = game.supply.get(Randomness.nextRandomInt(game.supply.size())).peek();
+		else  {*/
+
+					Card c;
+					do {
+					c = game.supply.get(Randomness.nextRandomInt(game.supply.size())).peek();
+					}
+					while (c == null);
 					game.getCurrentPlayer().buy(c);
-				}
+//				}
 			}
 			System.out.println("Cleanup");
 			game.getCurrentPlayer().cleanup();
