@@ -33,7 +33,13 @@ Assignment 2:
 This folder contains all of the information for the second
 assignment in the course. The instructions for working with
 the program in this assignment are the same as the
-instructions above.
+instructions above. Inside this directory are two working
+Dominion directories. One of these contains all of the tests
+created by the Evosuite test generation tool. The other
+contains the RandomTestDominion as well as the other manual
+tests written during the last assignment. The code coverage
+in the coverage directory is the coverage from the Evosuite
+testing suite.
 
 
 
