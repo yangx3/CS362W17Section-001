@@ -12,8 +12,8 @@ test: compile
 pack: compile
 	mvn package
 
-coverage: clean
-	mvn cobertura:cobertura
+coverage: 
+	mvn jacoco:report 
 
 run: target/Dominion-1.0-SNAPSHOT.jar
 	java -jar target/Dominion-1.0-SNAPSHOT.jar
