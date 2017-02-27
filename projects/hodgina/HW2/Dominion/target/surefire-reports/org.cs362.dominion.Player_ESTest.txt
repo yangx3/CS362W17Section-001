@@ -1,0 +1,190 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.Player_ESTest
+-------------------------------------------------------------------------------
+Tests run: 32, Failures: 0, Errors: 22, Skipped: 0, Time elapsed: 0.578 sec <<< FAILURE! - in org.cs362.dominion.Player_ESTest
+test09(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.031 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test09(Player_ESTest.java:130)
+
+test08(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.047 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test08(Player_ESTest.java:118)
+
+test07(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.047 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test07(Player_ESTest.java:105)
+
+test29(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.047 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test29(Player_ESTest.java:429)
+
+test28(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.047 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$Type
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player.playKingdomCard(Player.java:91)
+	at org.cs362.dominion.Player_ESTest.test28(Player_ESTest.java:423)
+
+test05(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.047 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Randomness
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player.drawCard(Player.java:47)
+	at org.cs362.dominion.Player_ESTest.test05(Player_ESTest.java:92)
+
+test27(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.047 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test27(Player_ESTest.java:413)
+
+test26(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.047 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test26(Player_ESTest.java:393)
+
+test25(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test25(Player_ESTest.java:383)
+
+test02(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test02(Player_ESTest.java:50)
+
+test24(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test24(Player_ESTest.java:363)
+
+test23(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test23(Player_ESTest.java:340)
+
+test22(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$Type
+	at org.cs362.dominion.Player.playTreasureCard(Player.java:144)
+	at org.cs362.dominion.Player_ESTest.test22(Player_ESTest.java:335)
+
+test19(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test19(Player_ESTest.java:309)
+
+test18(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Randomness
+	at org.cs362.dominion.Player.drawCard(Player.java:47)
+	at org.cs362.dominion.Player.initializePlayerTurn(Player.java:68)
+	at org.cs362.dominion.Player_ESTest.test18(Player_ESTest.java:302)
+
+test17(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test17(Player_ESTest.java:278)
+
+test15(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test15(Player_ESTest.java:237)
+
+test13(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test13(Player_ESTest.java:199)
+
+test12(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Randomness
+	at org.cs362.dominion.Player.drawCard(Player.java:47)
+	at org.cs362.dominion.Player.initializePlayerTurn(Player.java:68)
+	at org.cs362.dominion.Player_ESTest.test12(Player_ESTest.java:185)
+
+test11(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test11(Player_ESTest.java:159)
+
+test10(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$Type
+	at org.cs362.dominion.Player.playTreasureCard(Player.java:144)
+	at org.cs362.dominion.Player_ESTest.test10(Player_ESTest.java:143)
+
+test31(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.Player_ESTest.test31(Player_ESTest.java:456)
+
