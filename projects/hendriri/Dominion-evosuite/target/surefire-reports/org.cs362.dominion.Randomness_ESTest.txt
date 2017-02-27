@@ -1,0 +1,29 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.Randomness_ESTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 1, Errors: 3, Skipped: 0, Time elapsed: 0.003 sec <<< FAILURE! - in org.cs362.dominion.Randomness_ESTest
+test4(org.cs362.dominion.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at java.util.Random.nextInt(Random.java:388)
+	at org.cs362.dominion.Randomness.nextRandomInt(Randomness.java:34)
+	at org.cs362.dominion.Randomness_ESTest.test4(Randomness_ESTest.java:66)
+
+test3(org.cs362.dominion.Randomness_ESTest)  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<940>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at org.cs362.dominion.Randomness_ESTest.test3(Randomness_ESTest.java:61)
+
+test2(org.cs362.dominion.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at java.util.Random.nextInt(Random.java:388)
+	at org.cs362.dominion.Randomness.nextRandomInt(Randomness.java:34)
+	at org.cs362.dominion.Randomness_ESTest.test2(Randomness_ESTest.java:47)
+
+test0(org.cs362.dominion.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.Randomness.nextRandomInt(Randomness.java:34)
+	at org.cs362.dominion.Randomness_ESTest.test0(Randomness_ESTest.java:23)
+

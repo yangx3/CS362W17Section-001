@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.PlayDominion_ESTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.769 sec <<< FAILURE! - in org.cs362.dominion.PlayDominion_ESTest
+test0(org.cs362.dominion.PlayDominion_ESTest)  Time elapsed: 0.779 sec  <<< ERROR!
+org.evosuite.runtime.System$SystemExitException: null
+	at org.evosuite.runtime.System.exit(System.java:187)
+	at org.cs362.dominion.PlayDominion.main(PlayDominion.java:71)
+	at org.cs362.dominion.PlayDominion_ESTest.test0(PlayDominion_ESTest.java:25)
+

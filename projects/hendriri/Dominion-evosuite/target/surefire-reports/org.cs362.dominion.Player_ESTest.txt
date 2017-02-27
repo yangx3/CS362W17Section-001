@@ -1,0 +1,39 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.Player_ESTest
+-------------------------------------------------------------------------------
+Tests run: 29, Failures: 1, Errors: 6, Skipped: 0, Time elapsed: 2.285 sec <<< FAILURE! - in org.cs362.dominion.Player_ESTest
+test09(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.Randomness.nextRandomInt(Randomness.java:34)
+	at org.cs362.dominion.Player.drawCard(Player.java:44)
+	at org.cs362.dominion.Player.endTurn(Player.java:289)
+	at org.cs362.dominion.Player_ESTest.test09(Player_ESTest.java:289)
+
+test06(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at java.util.Random.nextInt(Random.java:388)
+	at org.cs362.dominion.Randomness.nextRandomInt(Randomness.java:34)
+	at org.cs362.dominion.Player_ESTest.test06(Player_ESTest.java:213)
+
+test04(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.ClassCastException: java.util.Random cannot be cast to org.evosuite.runtime.mock.java.util.MockRandom
+	at org.cs362.dominion.Player_ESTest.test04(Player_ESTest.java:140)
+
+test26(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: java.util.Random cannot be cast to org.evosuite.runtime.mock.java.util.MockRandom
+	at org.cs362.dominion.Player_ESTest.test26(Player_ESTest.java:639)
+
+test23(org.cs362.dominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: java.util.Random cannot be cast to org.evosuite.runtime.mock.java.util.MockRandom
+	at org.cs362.dominion.Player_ESTest.test23(Player_ESTest.java:590)
+
+test00(org.cs362.dominion.Player_ESTest)  Time elapsed: 0.026 sec  <<< FAILURE!
+java.lang.AssertionError: Expecting exception: TooManyResourcesException
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.cs362.dominion.Player_ESTest.test00(Player_ESTest.java:51)
+
+test22(org.cs362.dominion.Player_ESTest)  Time elapsed: 2.065 sec  <<< ERROR!
+org.junit.runners.model.TestTimedOutException: test timed out after 4000 milliseconds
+	at org.cs362.dominion.Player.buyCard(Player.java:211)
+	at org.cs362.dominion.Player_ESTest.test22(Player_ESTest.java:577)
+
