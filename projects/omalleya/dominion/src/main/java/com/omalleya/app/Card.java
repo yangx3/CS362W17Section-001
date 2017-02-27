@@ -118,7 +118,7 @@ public class Card implements Comparable<Card>, Cloneable{
 				player.numBuys++;
 				//randomize choice
 				int random = (int)  Randomness.random.nextInt(1);
-				if(random==0) {
+				if(random==0 && player.discarded.contains(Card.getCard(gs.cards, CardName.Estate))) {
 					player.discard(Card.getCard(gs.cards, CardName.Estate));
 					player.coins += 4;
 				} else {
