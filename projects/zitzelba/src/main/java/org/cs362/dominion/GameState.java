@@ -68,8 +68,8 @@ public class GameState {
 				   								// we should change 3 to the  exact of the number of 
 				   								//kingdom cards. look at the requirements of the assignment-1
 		      while (selectedKindom < Kingdom_Cards_Selected) {
-			         int random = (int)  Randomness.random.nextInt(cards.size());//
-		    	  //int random = rand.nextInt(cards.size()); off for testing
+			         //int random = (int)  Randomness.random.nextInt(cards.size());//
+		    	  int random = rand.nextInt(cards.size());
 			         Card tmp = cards.get(random);
 			         if(tmp.getType()!=Card.Type.ACTION) continue;
 			         if(gameBoard.containsKey(tmp)) continue;
@@ -78,17 +78,26 @@ public class GameState {
 			         selectedKindom++;
 			      }
 		        //set number of Curse cards the default number of players is 2			   
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), (10 * (players.size() - 1)));
 		      embargoes.put(Card.getCard(cards, Card.CardName.Curse), 0);
 		      
 		      //set number of Victory cards
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+		      if(players.size() <= 2){
+		    	  gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+		      }
+		      
+		      else if(players.size() >= 3){
+		    	  gameBoard.put(Card.getCard(cards, Card.CardName.Province), 12);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 12);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 12);
+		      }
+		      
 		    //set number of Treasure cards
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Cooper), 46);
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Cooper), (60 - (players.size() * 7)));
 		      
 		    //set number of Victory card embargoes
 		      embargoes.put(Card.getCard(cards, Card.CardName.Province), 0);
@@ -207,11 +216,11 @@ public class GameState {
 			      this.cards=cards;    this.players=players;    this.gameBoard=gameBoard;   
 			      }
 	   
-	   public GameState clone() throws CloneNotSupportedException {    List<Player> clonePlayers = new ArrayList<Player>();    List<Card> cloneCards = new ArrayList<Card>();    HashMap<Card, Integer> cloneGmeBoard = new HashMap<Card,
-			   Integer>();   
-			       for (Player player : players)     clonePlayers.add((Player) player.clone());     for (Card card : cards)     cloneCards.add((Card) card.clone());     for (Card card : gameBoard.keySet())     cloneGmeBoard.put((Card) card.clone(),gameBoard.get(card));
-			      final GameState cloneState= new
-			   GameState(cloneCards,clonePlayers,cloneGmeBoard);
-			           return  cloneState;     }
+//	   public GameState clone() throws CloneNotSupportedException {    List<Player> clonePlayers = new ArrayList<Player>();    List<Card> cloneCards = new ArrayList<Card>();    HashMap<Card, Integer> cloneGmeBoard = new HashMap<Card,
+//			   Integer>();   
+//			       for (Player player : players)     clonePlayers.add((Player) player.clone());     for (Card card : cards)     cloneCards.add((Card) card.clone());     for (Card card : gameBoard.keySet())     cloneGmeBoard.put((Card) card.clone(),gameBoard.get(card));
+//			      final GameState cloneState= new
+//			   GameState(cloneCards,clonePlayers,cloneGmeBoard);
+//			           return  cloneState;     }
 	   
 }

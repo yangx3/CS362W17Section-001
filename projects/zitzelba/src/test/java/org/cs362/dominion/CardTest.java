@@ -389,53 +389,53 @@ public class CardTest {
 	   }
 	  
 	  
-	  @Test
-	  public void test8()  throws Throwable  {	   
-		    List<Card> cards;
-		    GameState state;
-			Randomness.reset(10);	   
-
-		    int newCards = 3;  
-//		 // initialize a game state and player cards
-			cards = new ArrayList<Card>(Card.createCards());
-			 state = new GameState(cards);  
-//			
-		      Player player = new Player(state, "player-1");
-		         player.hand.add(Card.getCard(cards,Card.CardName.Ambassador));
-
-		         state.addPlayer(player);
-		       player = new Player(state, "player-2");
-		         state.addPlayer(player);
-		         
-		      //Initialize the game!
-		      state.initializeGame();
-		      
-		      int handSize = state.players.get(0).hand.size();
-		      int after = handSize - 3;
-		      System.out.println("hand count = " + handSize);
-		      System.out.println("player 2 hand discard = " + state.players.get(1).discard.size());
-		      int after2 = state.players.get(1).discard.size() + 1;
-		      System.out.println("hand deck = " + state.players.get(0).deck.size());
-		      System.out.println("hand coins = " + state.players.get(0).coins);
-		      System.out.println("hand numActions = " + state.players.get(0).numActions);
-		      System.out.println("hand numBuys = " + state.players.get(0).numBuys);
-	      
-		      System.out.println("hand hand = " + state.players.get(0).hand.size());
-		      System.out.println("hand discard = " + state.players.get(0).discard.size());
-		      
-		      state.players.get(0).playKingdomCard();
-		      
-		      System.out.println("hand count = " + state.players.get(0).hand.size() + ", expected = " + after);
-//		      System.out.println("player 2 hand count = " + state.players.get(1).hand.size());
-		      System.out.println("hand deck = " + state.players.get(0).deck.size());
-		      System.out.println("hand coins = " + state.players.get(0).coins);
-		      System.out.println("hand numActions = " + state.players.get(0).numActions);
-		      System.out.println("hand numBuys = " + state.players.get(0).numBuys);
-		      System.out.println("hand discard = " + state.players.get(0).discard.size());
-		      System.out.println("hand discard = " + state.players.get(1).discard.size() + ", expected = " + after2);
-		      assertEquals(state.players.get(0).hand.size(), after);
-		      assertEquals(state.players.get(1).discard.size(), after2);
-	   }
+//	  @Test
+//	  public void test8()  throws Throwable  {	   
+//		    List<Card> cards;
+//		    GameState state;
+//			Randomness.reset(10);	   
+//
+//		    int newCards = 3;  
+////		 // initialize a game state and player cards
+//			cards = new ArrayList<Card>(Card.createCards());
+//			 state = new GameState(cards);  
+////			
+//		      Player player = new Player(state, "player-1");
+//		         player.hand.add(Card.getCard(cards,Card.CardName.Ambassador));
+//
+//		         state.addPlayer(player);
+//		       player = new Player(state, "player-2");
+//		         state.addPlayer(player);
+//		         
+//		      //Initialize the game!
+//		      state.initializeGame();
+//		      
+//		      int handSize = state.players.get(0).hand.size();
+//		      int after = handSize - 3;
+//		      System.out.println("hand count = " + handSize);
+//		      System.out.println("player 2 hand discard = " + state.players.get(1).discard.size());
+//		      int after2 = state.players.get(1).discard.size() + 1;
+//		      System.out.println("hand deck = " + state.players.get(0).deck.size());
+//		      System.out.println("hand coins = " + state.players.get(0).coins);
+//		      System.out.println("hand numActions = " + state.players.get(0).numActions);
+//		      System.out.println("hand numBuys = " + state.players.get(0).numBuys);
+//	      
+//		      System.out.println("hand hand = " + state.players.get(0).hand.size());
+//		      System.out.println("hand discard = " + state.players.get(0).discard.size());
+//		      
+//		      state.players.get(0).playKingdomCard();
+//		      
+//		      System.out.println("hand count = " + state.players.get(0).hand.size() + ", expected = " + after);
+////		      System.out.println("player 2 hand count = " + state.players.get(1).hand.size());
+//		      System.out.println("hand deck = " + state.players.get(0).deck.size());
+//		      System.out.println("hand coins = " + state.players.get(0).coins);
+//		      System.out.println("hand numActions = " + state.players.get(0).numActions);
+//		      System.out.println("hand numBuys = " + state.players.get(0).numBuys);
+//		      System.out.println("hand discard = " + state.players.get(0).discard.size());
+//		      System.out.println("hand discard = " + state.players.get(1).discard.size() + ", expected = " + after2);
+//		      assertEquals(state.players.get(0).hand.size(), after);
+//		      assertEquals(state.players.get(1).discard.size(), after2);
+//	   }
 	  
 	  
 	  @Test

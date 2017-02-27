@@ -247,15 +247,15 @@ public class Player {
 
 		}
 	   
-	   protected Player clone() throws CloneNotSupportedException {    
-		   	Player clonePlayer=(Player) super.clone();     
-		   	clonePlayer.hand = new ArrayList<Card>(hand);// int hand[MAX_PLAYERS][MAX_HAND];
-		   	clonePlayer.deck = new LinkedList<Card>(deck);// int
-	   		// deck[MAX_PLAYERS][MAX_DECK];
-	   		clonePlayer.discard = new ArrayList<Card>(discard); // int
-	   		// discard[MAX_PLAYERS][MAX_DECK];
-	   		clonePlayer.playedCards = new ArrayList<Card>(playedCards); 
-	   		return clonePlayer;
-	       }  
+//	   protected Player clone() throws CloneNotSupportedException {    
+//		   	Player clonePlayer=(Player) super.clone();     
+//		   	clonePlayer.hand = new ArrayList<Card>(hand);// int hand[MAX_PLAYERS][MAX_HAND];
+//		   	clonePlayer.deck = new LinkedList<Card>(deck);// int
+//	   		// deck[MAX_PLAYERS][MAX_DECK];
+//	   		clonePlayer.discard = new ArrayList<Card>(discard); // int
+//	   		// discard[MAX_PLAYERS][MAX_DECK];
+//	   		clonePlayer.playedCards = new ArrayList<Card>(playedCards); 
+//	   		return clonePlayer;
+//	       }  
 	   
 }
