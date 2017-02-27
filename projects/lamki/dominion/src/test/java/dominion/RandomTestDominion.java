@@ -45,7 +45,7 @@ public class RandomTestDominion {
         		try
         		{
                 System.out.println("\n\t"+p+" players, " + k + " kingdom cards");
-		        String[] args = {Integer.toString(p), Integer.toString(k)};
+		        String[] args = {Integer.toString(p), Integer.toString(k), Integer.toString(10)};
 		        Dominion.main(args);
 		        }
 		        catch(Exception e)
@@ -53,6 +53,12 @@ public class RandomTestDominion {
 		           fail("Should not have thrown any exception");
 		        }
         	}
+        	/*
+        	Although the assignment instructed us to write a random amount of players with a
+        	random amount of kingdom cards I didn’t see the point in making the 
+        	test have some amount of randomness. The purpose of this test is to 
+        	discover bugs, so this is why it iterates through all possible combinations.
+        	*/
         }
     }
     

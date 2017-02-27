@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.cs362.dominion.Builder_ESTest" time="0.038" tests="9" errors="0" skipped="0" failures="3">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib"/>
+    <property name="java.vm.version" value="25.112-b16"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/Billy/School/2016-2017/Winter/Software Engineering 2/CS362W17Section-001/projects/buffumw/Dominion/Assignment-2/EvoSuite Dominion"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/Billy/School/2016-2017/Winter/Software Engineering 2/CS362W17Section-001/projects/buffumw/Dominion/Assignment-2/EvoSuite Dominion"/>
+    <property name="java.runtime.version" value="1.8.0_112-b16"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/h7/tf8p_jrd1hzgh394lvz7x5680000gn/T/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/usr/local/Cellar/maven/3.3.9/libexec/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/Billy/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.12.2"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/Billy"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="Billy"/>
+    <property name="java.class.path" value="/usr/local/Cellar/maven/3.3.9/libexec/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_112"/>
+    <property name="java.ext.dirs" value="/Users/Billy/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/local/Cellar/maven/3.3.9/libexec"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="test1" classname="org.cs362.dominion.Builder_ESTest" time="0.015">
+    <failure message="expected:&lt;10&gt; but was:&lt;30&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<10> but was:<30>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.cs362.dominion.Builder_ESTest.test1(Builder_ESTest.java:34)
+]]></failure>
+    <system-out><![CDATA[Executing org.evosuite.runtime.InitializingListener
+[INFO] dynamically loading javaagent
+[INFO] Using JavaAgent in /Users/Billy/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar
+[INFO] Tools.jar already on system classloader
+[INFO] Classpath: /Users/Billy/School/2016-2017/Winter/Software Engineering 2/CS362W17Section-001/projects/buffumw/Dominion/Assignment-2/EvoSuite Dominion/target/test-classes:/Users/Billy/School/2016-2017/Winter/Software Engineering 2/CS362W17Section-001/projects/buffumw/Dominion/Assignment-2/EvoSuite Dominion/target/classes:/Users/Billy/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/Billy/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/Billy/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar:/Users/Billy/.m2/repository/org/ow2/asm/asm/5.0.1/asm-5.0.1.jar:/Users/Billy/.m2/repository/org/ow2/asm/asm-tree/5.0.1/asm-tree-5.0.1.jar:/Users/Billy/.m2/repository/org/ow2/asm/asm-commons/5.0.1/asm-commons-5.0.1.jar:/Users/Billy/.m2/repository/org/ow2/asm/asm-util/5.0.1/asm-util-5.0.1.jar:/Users/Billy/.m2/repository/org/ow2/asm/asm-analysis/5.0.1/asm-analysis-5.0.1.jar:/Users/Billy/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar:/Users/Billy/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar:/Users/Billy/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar:/Users/Billy/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar:/Users/Billy/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar:/Users/Billy/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar:/Users/Billy/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar:/Users/Billy/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/../lib/tools.jar:/Users/Billy/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar:/Users/Billy/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar:/Users/Billy/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar:/Users/Billy/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:/Users/Billy/.m2/repository/org/codehaus/mojo/findbugs-maven-plugin/3.0.4/findbugs-maven-plugin-3.0.4.jar:/Users/Billy/.m2/repository/com/google/code/findbugs/findbugs/3.0.1/findbugs-3.0.1.jar:/Users/Billy/.m2/repository/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar:/Users/Billy/.m2/repository/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar:/Users/Billy/.m2/repository/com/google/code/findbugs/bcel-findbugs/6.0/bcel-findbugs-6.0.jar:/Users/Billy/.m2/repository/com/google/code/findbugs/jFormatString/2.0.1/jFormatString-2.0.1.jar:/Users/Billy/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar:/Users/Billy/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar:/Users/Billy/.m2/repository/org/ow2/asm/asm-debug-all/5.0.2/asm-debug-all-5.0.2.jar:/Users/Billy/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/Users/Billy/.m2/repository/com/apple/AppleJavaExtensions/1.4/AppleJavaExtensions-1.4.jar:/Users/Billy/.m2/repository/org/codehaus/groovy/groovy/2.4.7/groovy-2.4.7.jar:/Users/Billy/.m2/repository/org/codehaus/groovy/groovy-ant/2.4.7/groovy-ant-2.4.7.jar:/Users/Billy/.m2/repository/org/apache/ant/ant-antlr/1.9.4/ant-antlr-1.9.4.jar:/Users/Billy/.m2/repository/org/codehaus/groovy/groovy-groovydoc/2.4.7/groovy-groovydoc-2.4.7.jar:/Users/Billy/.m2/repository/org/codehaus/groovy/groovy-templates/2.4.7/groovy-templates-2.4.7.jar:/Users/Billy/.m2/repository/org/codehaus/groovy/groovy-xml/2.4.7/groovy-xml-2.4.7.jar:/Users/Billy/.m2/repository/org/apache/maven/reporting/maven-reporting-impl/2.1/maven-reporting-impl-2.1.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-project/2.0.10/maven-project-2.0.10.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-settings/2.0.10/maven-settings-2.0.10.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-profile/2.0.10/maven-profile-2.0.10.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-plugin-registry/2.0.10/maven-plugin-registry-2.0.10.jar:/Users/Billy/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.1/plexus-interpolation-1.1.jar:/Users/Billy/.m2/repository/commons-validator/commons-validator/1.2.0/commons-validator-1.2.0.jar:/Users/Billy/.m2/repository/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar:/Users/Billy/.m2/repository/commons-digester/commons-digester/1.6/commons-digester-1.6.jar:/Users/Billy/.m2/repository/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar:/Users/Billy/.m2/repository/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-plugin-api/2.0/maven-plugin-api-2.0.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-plugin-descriptor/2.2.1/maven-plugin-descriptor-2.2.1.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.jar:/Users/Billy/.m2/repository/org/apache/maven/doxia/doxia-core/1.4/doxia-core-1.4.jar:/Users/Billy/.m2/repository/org/apache/maven/doxia/doxia-logging-api/1.4/doxia-logging-api-1.4.jar:/Users/Billy/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/Users/Billy/.m2/repository/xerces/xercesImpl/2.9.1/xercesImpl-2.9.1.jar:/Users/Billy/.m2/repository/org/apache/httpcomponents/httpclient/4.0.2/httpclient-4.0.2.jar:/Users/Billy/.m2/repository/commons-codec/commons-codec/1.3/commons-codec-1.3.jar:/Users/Billy/.m2/repository/org/apache/httpcomponents/httpcore/4.0.1/httpcore-4.0.1.jar:/Users/Billy/.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.4/doxia-sink-api-1.4.jar:/Users/Billy/.m2/repository/org/apache/maven/doxia/doxia-decoration-model/1.4/doxia-decoration-model-1.4.jar:/Users/Billy/.m2/repository/org/apache/maven/doxia/doxia-site-renderer/1.4/doxia-site-renderer-1.4.jar:/Users/Billy/.m2/repository/org/apache/maven/doxia/doxia-module-xhtml/1.4/doxia-module-xhtml-1.4.jar:/Users/Billy/.m2/repository/org/apache/maven/doxia/doxia-module-fml/1.4/doxia-module-fml-1.4.jar:/Users/Billy/.m2/repository/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.jar:/Users/Billy/.m2/repository/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.jar:/Users/Billy/.m2/repository/org/apache/velocity/velocity/1.5/velocity-1.5.jar:/Users/Billy/.m2/repository/org/apache/velocity/velocity-tools/2.0/velocity-tools-2.0.jar:/Users/Billy/.m2/repository/commons-chain/commons-chain/1.1/commons-chain-1.1.jar:/Users/Billy/.m2/repository/sslext/sslext/1.2-0/sslext-1.2-0.jar:/Users/Billy/.m2/repository/org/apache/struts/struts-core/1.3.8/struts-core-1.3.8.jar:/Users/Billy/.m2/repository/antlr/antlr/2.7.2/antlr-2.7.2.jar:/Users/Billy/.m2/repository/org/apache/struts/struts-taglib/1.3.8/struts-taglib-1.3.8.jar:/Users/Billy/.m2/repository/org/apache/struts/struts-tiles/1.3.8/struts-tiles-1.3.8.jar:/Users/Billy/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar:/Users/Billy/.m2/repository/org/apache/maven/shared/maven-doxia-tools/1.2.1/maven-doxia-tools-1.2.1.jar:/Users/Billy/.m2/repository/commons-io/commons-io/1.4/commons-io-1.4.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.jar:/Users/Billy/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-beta-2/wagon-provider-api-1.0-beta-2.jar:/Users/Billy/.m2/repository/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.jar:/Users/Billy/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar:/Users/Billy/.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar:/Users/Billy/.m2/repository/org/codehaus/plexus/plexus-resources/1.0-alpha-7/plexus-resources-1.0-alpha-7.jar:/Users/Billy/.m2/repository/org/codehaus/plexus/plexus-utils/1.5.6/plexus-utils-1.5.6.jar:/Users/Billy/.m2/repository/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.jar:/Users/Billy/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar:
+[INFO] Going to attach agent to process 51705
+[INFO] Executing agentmain of JavaAgent
+[DEBUG] Going to instrument: org.cs362.dominion.Card
+[INFO] Adding mock interface to class org/cs362/dominion/Card
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFile for java.io.File
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileInputStream for java.io.FileInputStream
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileOutputStream for java.io.FileOutputStream
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockRandomAccessFile for java.io.RandomAccessFile
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileReader for java.io.FileReader
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileWriter for java.io.FileWriter
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockPrintStream for java.io.PrintStream
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockPrintWriter for java.io.PrintWriter
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.logging.MockFileHandler for java.util.logging.FileHandler
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.MockJFileChooser for javax.swing.JFileChooser
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.filechooser.MockFileSystemView for javax.swing.filechooser.FileSystemView
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.logging.MockLogRecord for java.util.logging.LogRecord
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.MockDefaultListSelectionModel for javax.swing.DefaultListSelectionModel
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockDate for java.util.Date
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockRandom for java.util.Random
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockGregorianCalendar for java.util.GregorianCalendar
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockCalendar for java.util.Calendar
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method clone
+[DEBUG] Skipping method format
+[DEBUG] Skipping method format
+[DEBUG] Skipping method format
+[DEBUG] Skipping method parse
+[DEBUG] Skipping method parse
+[DEBUG] Skipping method isLenient
+[DEBUG] Skipping method setCalendar
+[DEBUG] Skipping method getCalendar
+[DEBUG] Skipping method setNumberFormat
+[DEBUG] Skipping method getNumberFormat
+[DEBUG] Skipping method parseObject
+[DEBUG] Skipping method getTimeZone
+[DEBUG] Skipping method setTimeZone
+[DEBUG] Skipping method setLenient
+[DEBUG] Skipping method format
+[DEBUG] Skipping method formatToCharacterIterator
+[DEBUG] Skipping method parseObject
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.text.MockSimpleDateFormat for java.text.SimpleDateFormat
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.MockSpinnerDateModel for javax.swing.SpinnerDateModel
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.time.MockClock for java.time.Clock
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atStartOfDay
+[DEBUG] Skipping method atStartOfDay
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method until
+[DEBUG] Skipping method atOffset
+[DEBUG] Skipping method atZone
+[DEBUG] Skipping method atZone
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method toInstant
+[DEBUG] Skipping method toEpochSecond
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method until
+[DEBUG] Skipping method atOffset
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toSecondOfDay
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method toNanoOfDay
+[DEBUG] Skipping method atDate
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method with
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method isValidYear
+[DEBUG] Skipping method atYear
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method getOffset
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method toInstant
+[DEBUG] Skipping method toZonedDateTime
+[DEBUG] Skipping method toEpochSecond
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method toLocalDateTime
+[DEBUG] Skipping method withOffsetSameLocal
+[DEBUG] Skipping method withOffsetSameInstant
+[DEBUG] Skipping method atZoneSameInstant
+[DEBUG] Skipping method atZoneSimilarLocal
+[DEBUG] Skipping method toOffsetTime
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method getOffset
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method atDate
+[DEBUG] Skipping method withOffsetSameLocal
+[DEBUG] Skipping method withOffsetSameInstant
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method length
+[DEBUG] Skipping method format
+[DEBUG] Skipping method getValue
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isLeap
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method isValidMonthDay
+[DEBUG] Skipping method atDay
+[DEBUG] Skipping method atMonth
+[DEBUG] Skipping method atMonth
+[DEBUG] Skipping method atMonthDay
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method isValidDay
+[DEBUG] Skipping method atEndOfMonth
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method atDay
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method getOffset
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method until
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getZone
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method withEarlierOffsetAtOverlap
+[DEBUG] Skipping method withEarlierOffsetAtOverlap
+[DEBUG] Skipping method withLaterOffsetAtOverlap
+[DEBUG] Skipping method withLaterOffsetAtOverlap
+[DEBUG] Skipping method withZoneSameLocal
+[DEBUG] Skipping method withZoneSameLocal
+[DEBUG] Skipping method withZoneSameInstant
+[DEBUG] Skipping method withZoneSameInstant
+[DEBUG] Skipping method withFixedOffsetZone
+[DEBUG] Skipping method toOffsetDateTime
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method toLocalDateTime
+[DEBUG] Skipping method toLocalDateTime
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method toInstant
+[DEBUG] Skipping method toEpochSecond
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method withVariant
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method get
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method period
+[DEBUG] Skipping method period
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method range
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method get
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method get
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockTimer for java.util.Timer
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockThread for java.lang.Thread
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockIOException for java.io.IOException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockArithmeticException for java.lang.ArithmeticException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockArrayIndexOutOfBoundsException for java.lang.ArrayIndexOutOfBoundsException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockError for java.lang.Error
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockException for java.lang.Exception
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockIllegalAccessException for java.lang.IllegalAccessException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockIllegalArgumentException for java.lang.IllegalArgumentException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockIllegalStateException for java.lang.IllegalStateException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockNullPointerException for java.lang.NullPointerException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockRuntimeException for java.lang.RuntimeException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockThrowable for java.lang.Throwable
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockDatagramSocket for java.net.DatagramSocket
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockInetSocketAddress for java.net.InetSocketAddress
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockServerSocket for java.net.ServerSocket
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockSocket for java.net.Socket
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockSocketImpl for java.net.SocketImpl
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockURLStreamHandler for java.net.URLStreamHandler
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[INFO] No hashCode defined for: org/cs362/dominion/Card, superclass = java.lang.Object
+[INFO] Creating brand-new static initializer in class org/cs362/dominion/Card
+[DEBUG] Going to instrument: org.cs362.dominion.Builder
+[INFO] Adding mock interface to class org/cs362/dominion/Builder
+[INFO] No hashCode defined for: org/cs362/dominion/Builder, superclass = java.lang.Object
+[INFO] Creating brand-new static initializer in class org/cs362/dominion/Builder
+[DEBUG] Going to instrument: org.cs362.dominion.Card$Name
+[INFO] Adding mock interface to class org/cs362/dominion/Card$Name
+[INFO] Found static initializer in class org/cs362/dominion/Card$Name
+[INFO] No hashCode defined for: org/cs362/dominion/Card$Name, superclass = java.lang.Enum
+[DEBUG] Going to instrument: org.cs362.dominion.Card$Type
+[INFO] Adding mock interface to class org/cs362/dominion/Card$Type
+[INFO] Found static initializer in class org/cs362/dominion/Card$Type
+[INFO] No hashCode defined for: org/cs362/dominion/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: org.cs362.dominion.Deck
+[INFO] Adding mock interface to class org/cs362/dominion/Deck
+[INFO] No hashCode defined for: org/cs362/dominion/Deck, superclass = java.lang.Object
+[INFO] Creating brand-new static initializer in class org/cs362/dominion/Deck
+[DEBUG] Going to instrument: org.cs362.dominion.GameState
+[INFO] Adding mock interface to class org/cs362/dominion/GameState
+[INFO] No hashCode defined for: org/cs362/dominion/GameState, superclass = java.lang.Object
+[INFO] Creating brand-new static initializer in class org/cs362/dominion/GameState
+[DEBUG] Going to instrument: org.cs362.dominion.Player
+[INFO] Adding mock interface to class org/cs362/dominion/Player
+[INFO] No hashCode defined for: org/cs362/dominion/Player, superclass = java.lang.Object
+[INFO] Creating brand-new static initializer in class org/cs362/dominion/Player
+[DEBUG] Going to instrument: org.cs362.dominion.PlayDominion
+[INFO] Adding mock interface to class org/cs362/dominion/PlayDominion
+[INFO] No hashCode defined for: org/cs362/dominion/PlayDominion, superclass = java.lang.Object
+[INFO] Creating brand-new static initializer in class org/cs362/dominion/PlayDominion
+[DEBUG] Adding privileged thread: "Reference Handler"
+[DEBUG] Adding privileged thread: "Finalizer"
+[DEBUG] Adding privileged thread: "Signal Dispatcher"
+[DEBUG] Adding privileged thread: "Attach Listener"
+[DEBUG] Adding privileged thread: "AppKit Thread"
+[DEBUG] Adding privileged thread: "Java2D Queue Flusher"
+[DEBUG] Adding privileged thread: "Java2D Disposer"
+[DEBUG] Adding privileged thread: "main"
+]]></system-out>
+  </testcase>
+  <testcase name="test0" classname="org.cs362.dominion.Builder_ESTest" time="0.002"/>
+  <testcase name="test7" classname="org.cs362.dominion.Builder_ESTest" time="0.002"/>
+  <testcase name="test6" classname="org.cs362.dominion.Builder_ESTest" time="0.002"/>
+  <testcase name="test8" classname="org.cs362.dominion.Builder_ESTest" time="0.002"/>
+  <testcase name="test3" classname="org.cs362.dominion.Builder_ESTest" time="0.004">
+    <failure message="expected:&lt;10&gt; but was:&lt;60&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<10> but was:<60>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.cs362.dominion.Builder_ESTest.test3(Builder_ESTest.java:52)
+]]></failure>
+  </testcase>
+  <testcase name="test2" classname="org.cs362.dominion.Builder_ESTest" time="0.005">
+    <failure message="expected:&lt;10&gt; but was:&lt;40&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<10> but was:<40>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.cs362.dominion.Builder_ESTest.test2(Builder_ESTest.java:43)
+]]></failure>
+  </testcase>
+  <testcase name="test5" classname="org.cs362.dominion.Builder_ESTest" time="0.003"/>
+  <testcase name="test4" classname="org.cs362.dominion.Builder_ESTest" time="0.003"/>
+</testsuite>

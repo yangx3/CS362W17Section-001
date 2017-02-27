@@ -6,7 +6,7 @@ To compile all code:
 >make all
 
 To run lamki_dom.jar with arguments:
-> java -jar lamki_dom.jar < number of players > < number of kingdom cards >
+> java -jar lamki_dom.jar < number of players > < number of kingdom cards >  < game seed >
 
 To compile all code and run:
 >make run

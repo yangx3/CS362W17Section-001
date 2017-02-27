@@ -28,8 +28,8 @@ evo: mvn_comp
 coverage: mvn_comp 				#run tests with coverage
 	mvn cobertura:cobertura site
 
-clean: 					#clean dir
+clean: 	#clean dir
+	rm -f -rf dominion/
+	rm -f lamki_dom.jar			
 	mvn clean
 	mvn evosuite:clean
-	rm -f -rf dominion/
-	rm -f lamki_dom.jar

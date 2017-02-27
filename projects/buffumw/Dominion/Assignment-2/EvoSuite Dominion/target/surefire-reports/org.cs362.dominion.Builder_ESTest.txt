@@ -1,0 +1,31 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.Builder_ESTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 1.59 sec <<< FAILURE! - in org.cs362.dominion.Builder_ESTest
+test1(org.cs362.dominion.Builder_ESTest)  Time elapsed: 0.015 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<10> but was:<30>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.cs362.dominion.Builder_ESTest.test1(Builder_ESTest.java:34)
+
+test3(org.cs362.dominion.Builder_ESTest)  Time elapsed: 0.004 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<10> but was:<60>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.cs362.dominion.Builder_ESTest.test3(Builder_ESTest.java:52)
+
+test2(org.cs362.dominion.Builder_ESTest)  Time elapsed: 0.005 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<10> but was:<40>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at org.cs362.dominion.Builder_ESTest.test2(Builder_ESTest.java:43)
+

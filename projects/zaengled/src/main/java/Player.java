@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 //import org.cs362.dominion.Card.Type;
 
 public class Player implements Cloneable{
@@ -29,6 +26,10 @@ public class Player implements Cloneable{
 
 
 	final Card drawCard() {
+        if(deck.size() <= 1 && discard.size() <= 1){
+            this.numActions = 0;
+            return null;
+        }
 		if (deck.isEmpty()) {// Deck is empty
 			// Step 1 Shuffle the discard pile back into a deck
 			System.out.println("reshuffle the deck of the player "
@@ -45,6 +46,7 @@ public class Player implements Cloneable{
 							// be incremented since we use List
 		System.out.println("draw " + toDraw);
 		Collections.sort(hand);
+
 		return toDraw;
 	}
 	
@@ -52,9 +54,9 @@ public class Player implements Cloneable{
 		   //initialize first player's turn
 //		   state->numnumActions = 1;
 //		   state->numnumBuys = 1;
-		      numActions = 1;
-		      coins = 0;
-		      numBuys = 1;
+		      this.numActions = 1;
+		      this.coins = 0;
+		      this.numBuys = 1;
 		      //Shuffle your starting 10 cards (7 Coppers & 3 Estates) and place them face-down as your Deck. Draw the top
 		      //5 cards as your starting hand
 		      for (int i = 0; i < 5; i++) {
@@ -75,6 +77,10 @@ public class Player implements Cloneable{
 		      System.out.println("Player:  "+player_username+" discards "+card);
 		   }
 	   public void playKingdomCard() {
+	        int rand = Randomness.nextRandomInt(2);
+	        if(rand == 1){// this should break the loop where cards are just played forever.
+	            return;
+            }
 		      while (numActions > 0) {
 		         List<Card> actionCards = Card.filter(hand, Card.Type.ACTION);
 		   
@@ -112,17 +118,20 @@ public class Player implements Cloneable{
 	   
 	   public void playTtreasureCard() {
 			List<Card> cards = Card.filter(hand, Card.Type.TREASURE);
-			if(cards.size() == 0){ return;}//if we have to treasure cards to play
+			if(cards.size() == 0){
+				System.out.println("no treasure cards to play.");
+				return;
+			}//if we have no treasure cards to play
 			else{
 				for(Card c: cards){
+                    coins = coins + c.getTreasureValue();
 					playedCards.add(c);
-					coins = coins + c.getTreasureValue();
 					hand.remove(c);
 				}
 			}
-		   /*System.out.println(" --- --------------------------- --- ");
-    		System.out.println("TO-DO playTtreasureCard "); 
-    		System.out.println(" --- --------------------------- --- ");*/
+		    System.out.println(" --- --------------------------- --- ");
+    		System.out.println("Doing: playTtreasureCard ");
+    		System.out.println(" --- --------------------------- --- ");
 	   }
 	   public void buyCard() {
 		   System.out.println(" --- --------------------------- --- ");
@@ -131,37 +140,48 @@ public class Player implements Cloneable{
 		   int rand;
 		   while(numBuys > 0) {
                if (coins >= 8) {
+				   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Province), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Province)) - 1);
                    gain(Card.getCard(gameState.cards, Card.CardName.Province));
                } else if (coins >= 7) {
+				   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Gold), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Gold)) - 1);
                    gain(Card.getCard(gameState.cards, Card.CardName.Gold));
                    coins -= 6;
                } else if (coins >= 6) {
+				   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Gold), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Gold)) - 1);
                    gain(Card.getCard(gameState.cards, Card.CardName.Gold));
                    coins -= 6;
                } else if (coins >= 5){
+				   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Duchy), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Duchy)) - 1);
                     gain(Card.getCard(gameState.cards, Card.CardName.Duchy));
                     coins -= 5;
                } else if(coins >= 4){
                    rand = Randomness.nextRandomInt(7);
                    if(Card.getCard(gameState.cards, Card.CardName.Smithy) != null && rand == 1){
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Smithy), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Smithy)) - 1);
                        gain(Card.getCard(gameState.cards, Card.CardName.Smithy));
                        coins -= 4;
                    } else if(Card.getCard(gameState.cards, Card.CardName.Baron) != null && rand == 2){
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Baron), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Baron)) - 1);
                        gain(Card.getCard(gameState.cards, Card.CardName.Baron));
                        coins -= 4;
                    } else if (Card.getCard(gameState.cards, Card.CardName.Cutpurse) != null && rand == 3) {
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Cutpurse), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Cutpurse)) - 1);
                        gain(Card.getCard(gameState.cards, Card.CardName.Cutpurse));
                        coins -= 4;
                    } else if (Card.getCard(gameState.cards, Card.CardName.Feast) != null && rand == 4){
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Feast), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Feast)) - 1);
                        gain(Card.getCard(gameState.cards, Card.CardName.Feast));
                        coins -= 4;
                    } else if (Card.getCard(gameState.cards, Card.CardName.Gardens) != null && rand == 5){
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Gardens), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Gardens)) - 1);
                        gain(Card.getCard(gameState.cards, Card.CardName.Gardens));
                        coins -= 4;
                    } else if (Card.getCard(gameState.cards, Card.CardName.Sea_Hag) != null && rand == 6){
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Sea_Hag), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Sea_Hag)) - 1);
                        gain(Card.getCard(gameState.cards, Card.CardName.Sea_Hag));
                        coins -= 4;
                    } else{
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Silver), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Silver)) - 1);
                        gain(Card.getCard(gameState.cards, Card.CardName.Silver));
                        coins -= 3;
                    }
@@ -169,12 +189,15 @@ public class Player implements Cloneable{
                    rand = Randomness.nextRandomInt(4);
                    if(Card.getCard(gameState.cards, Card.CardName.Village) != null && rand == 1){
                        gain(Card.getCard(gameState.cards, Card.CardName.Village));
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Village), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Village)) - 1);
                        coins -= 3;
                    }else if(Card.getCard(gameState.cards, Card.CardName.Ambassador) != null && rand == 2){
                        gain(Card.getCard(gameState.cards, Card.CardName.Ambassador));
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Ambassador), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Ambassador)) - 1);
                        coins -= 3;
                    }else if(Card.getCard(gameState.cards, Card.CardName.Great_Hall) != null && rand == 3){
                        gain(Card.getCard(gameState.cards, Card.CardName.Great_Hall));
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Great_Hall), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Great_Hall)) - 1);
                        coins -= 3;
                    }else {
                        gain(Card.getCard(gameState.cards, Card.CardName.Silver));
@@ -184,15 +207,19 @@ public class Player implements Cloneable{
                    rand = Randomness.nextRandomInt(3);
                    if (Card.getCard(gameState.cards, Card.CardName.Estate) != null && rand == 1) {
                        gain(Card.getCard(gameState.cards, Card.CardName.Estate));
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Estate), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Estate)) - 1);
                        coins -= 2;
                    } else if (Card.getCard(gameState.cards, Card.CardName.Embargo) != null && rand == 2) {
                        gain(Card.getCard(gameState.cards, Card.CardName.Embargo));
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Embargo), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Embargo)) - 1);
                        coins -= 2;
                    } else {
                        gain(Card.getCard(gameState.cards, Card.CardName.Copper));
+					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Copper), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Copper)) - 1);
                    }
                }else if(coins >= 0){
                    gain(Card.getCard(gameState.cards, Card.CardName.Copper));
+				   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Copper), gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Copper)) - 1);
                }
                numBuys -= 1;
            }
@@ -202,8 +229,8 @@ public class Player implements Cloneable{
   			//System.out.println("TO-DO endTurn ");
   			//System.out.println(" --- --------------------------- --- ");
            coins = 0;
-           numBuys = 0;
-           numActions = 0;
+           numBuys = 1;
+           numActions = 1;
            for(Card n: hand){
                discard.add(n);
            }
@@ -212,6 +239,9 @@ public class Player implements Cloneable{
                discard.add(n);
            }
            playedCards.clear();
+           for(int i = 0; i < 5; i++){
+           	   drawCard();
+		   }
 	   }
 	   
 	   

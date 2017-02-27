@@ -1,0 +1,42 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.GameStateTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.612 sec <<< FAILURE! - in org.cs362.dominion.GameStateTest
+Council_Room(org.cs362.dominion.GameStateTest)  Time elapsed: 0.026 sec  <<< FAILURE!
+java.lang.AssertionError: Bug 4: When a player plays the council room card, other players should only draw 1 card.  expected:<1> but was:<3>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.cs362.dominion.GameStateTest.Council_Room(GameStateTest.java:193)
+
+Feast(org.cs362.dominion.GameStateTest)  Time elapsed: 0.005 sec  <<< FAILURE!
+java.lang.AssertionError: Bug 2: Player's coins not stored properly when playing Feast.  expected:<3> but was:<5>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.cs362.dominion.GameStateTest.Feast(GameStateTest.java:149)
+
+CutPurse(org.cs362.dominion.GameStateTest)  Time elapsed: 0.004 sec  <<< FAILURE!
+java.lang.AssertionError: Bug 5: Cutpurse card should remove 1 copper from another players hand, not all.  expected:<9> but was:<5>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.cs362.dominion.GameStateTest.CutPurse(GameStateTest.java:217)
+
+InitializeGame(org.cs362.dominion.GameStateTest)  Time elapsed: 0.021 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Billy]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at org.cs362.dominion.GameStateTest.InitializeGame(GameStateTest.java:63)
+
+Gardens(org.cs362.dominion.GameStateTest)  Time elapsed: 0.005 sec  <<< FAILURE!
+java.lang.AssertionError: Bug 3: Garden should give 1 point per 10 cards, this give 10 points per 1 card.  expected:<1> but was:<100>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.cs362.dominion.GameStateTest.Gardens(GameStateTest.java:171)
+

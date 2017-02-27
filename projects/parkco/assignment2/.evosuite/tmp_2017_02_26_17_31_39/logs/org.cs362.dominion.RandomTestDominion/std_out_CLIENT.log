@@ -1,0 +1,73 @@
+* Starting client
+* Connecting to master process on port 17051
+* Analyzing classpath: 
+  - /Users/corynnapark/Documents/workspace/domdom/DOMINION/target/test-classes
+  - /Users/corynnapark/Documents/workspace/domdom/DOMINION/target/classes
+  - /Users/corynnapark/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /Users/corynnapark/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class org.cs362.dominion.RandomTestDominion
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 17:38:27.996 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /Users/corynnapark/Documents/workspace/domdom/DOMINION/.evosuite/evosuite-seeds/org.cs362.dominion.RandomTestDominion.seed
+* Total number of test goals: 
+  - Line 35
+  - Branch 13
+  - Exception 0
+  - MutationFactory 80
+  - Output 0
+  - Method 3
+  - MethodNoException 3
+  - CBranchFitnessFactory 13
+* Using seed 1488159502502
+* Starting evolution
+* Search finished after 38s and 312 generations, 44768 statements, best individual has fitness: 53.953081232493
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 54%
+* Total number of goals: 35
+* Number of covered goals: 19
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 46%
+* Total number of goals: 13
+* Number of covered goals: 6
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 76%
+* Total number of goals: 80
+* Number of covered goals: 61
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 100% (no goals)
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 67%
+* Total number of goals: 3
+* Number of covered goals: 2
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 46%
+* Total number of goals: 13
+* Number of covered goals: 6
+* Generated 4 tests with total length 8
+* Resulting test suite's coverage: 70% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 6%
+* Compiling and checking tests
+* Writing JUnit test case 'RandomTestDominion_ESTest' to /Users/corynnapark/Documents/workspace/domdom/DOMINION/.evosuite/tmp_2017_02_26_17_31_39/tests
+* Done!
+
