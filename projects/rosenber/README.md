@@ -41,6 +41,14 @@ tests written during the last assignment. The code coverage
 in the coverage directory is the coverage from the Evosuite
 testing suite.
 
+To access each portion of the program, you must go to the
+subdirectory for each of the Dominion implementations. Each
+contain their own POM to be run with Maven. To see the
+Evosuite tests, enter the Dominion_Evosuite direction and
+run Maven there. To see the RandomTestDominion with other
+manual tests written, enter the other directory and use
+Maven.
+
 
 
 
