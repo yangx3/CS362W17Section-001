@@ -25,7 +25,7 @@ public class Ambassador extends Card{
 		//TODO: implement non-ai version
 	};
 	public void AIAttack(ArrayList<Player> players, Player currentPlayer, Board board){
-		Random rand = new Random();
+		Random rand = new Random(10);
 		int choice = -1;
 		Card c = null;
 		choice = rand.nextInt(currentPlayer.numCardsHand());

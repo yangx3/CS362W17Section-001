@@ -22,7 +22,7 @@ public class Mine extends Card {
 	private void AIAction(ArrayList<Player> players,
 		Player currentPlayer, Board board){
 		
-		Random rand = new Random();
+		Random rand = new Random(10);
 		int choice = -1;
 		Card c = null;
 		do{

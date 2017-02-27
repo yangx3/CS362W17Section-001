@@ -24,7 +24,7 @@ public class Embargo extends Card{
 		board.addToTrash(this);
 		boolean repeat;
 		int choice = -1;
-		Random rand = new Random();
+		Random rand = new Random(10);
 		do{
 			repeat = false;
 			while(choice < 1)

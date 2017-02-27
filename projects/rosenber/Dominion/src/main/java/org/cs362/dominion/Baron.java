@@ -21,7 +21,7 @@ public class Baron extends Card{
 	private void AIAction(ArrayList<Player> players,
 			Player currentPlayer, Board board){
 		currentPlayer.addBuys(1);
-		Random rand = new Random();
+		Random rand = new Random(10);
 		if(rand.nextBoolean()){
 			try{
 				currentPlayer.discardCard("Estate");

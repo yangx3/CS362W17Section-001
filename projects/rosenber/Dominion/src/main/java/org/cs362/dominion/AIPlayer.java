@@ -7,7 +7,7 @@ public class AIPlayer extends Player{
 	
 	public AIPlayer(int num){
 		super("Player_"+num, true);
-		rand = new Random();
+		rand = new Random(10);
 	}
 	
 	public void discardCard(){

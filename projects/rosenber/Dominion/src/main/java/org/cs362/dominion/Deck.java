@@ -110,7 +110,7 @@ public class Deck{
 		if(deck.size() < 2)
 			return;
 		int timesToSwap = 100;
-		Random rand = new Random();
+		Random rand = new Random(10);
 		int one, two;
 		for(int j=0; j<timesToSwap; j++){
 			one = rand.nextInt(deck.size());

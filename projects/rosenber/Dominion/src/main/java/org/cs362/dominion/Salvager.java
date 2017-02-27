@@ -21,7 +21,7 @@ public class Salvager extends Card{
 	
 	private void AIAction(ArrayList<Player> players,
 			Player currentPlayer, Board board){
-		Random rand = new Random();
+		Random rand = new Random(10);
 		int choice = rand.nextInt(currentPlayer.numCardsHand());
 		Card c = currentPlayer.playCard(choice);
 		board.addToTrash(c);
