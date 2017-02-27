@@ -19,6 +19,32 @@ public class Game {
 	Board board;
 	
 	//constructor
+	
+	public Game(int numPlayers, boolean AIonly, ArrayList<Card> cards){
+		currentPlayer = null;
+		curPlayerIdx = 0;
+		players = new ArrayList<Player>();
+		board = new Board();
+		for(int j=0; j<cards.size(); j++){
+			board.createDeck(cards.get(j), 30);
+		}
+		if(AIonly){
+			for(int j=0; j<numPlayers; j++)
+				players.add(new AIPlayer(j));
+		}
+		else{
+			//TODO: make non ai-player init
+		}
+		for(int j=0; j<numPlayers; j++){
+			//draw 7 copper
+			for(int k=0; k<7; k++)
+				players.get(j).giveCard(board.draw(board.getDeckIdx("Copper")));
+			//draw 3 estates
+			for(int k=0; k<3; k++)
+				players.get(j).giveCard(board.draw(board.getDeckIdx("Estate")));
+		}
+	}
+	
 	public Game(int numPlayers, boolean AIonly){
 		currentPlayer = null;
 		curPlayerIdx = 0;
