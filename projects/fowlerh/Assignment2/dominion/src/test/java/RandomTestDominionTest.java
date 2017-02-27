@@ -1,13 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
 
-public class RandomTestDominion {
-	   
-	public  static void main(String args[])
+
+
+
+public class RandomTestDominionTest {
+	
+	@Test
+	public  void randomTester()
 	{
-	 
-		   int seed = 10;
+		for (int i = 1; i < 5; i++)
+		{
+		   int seed = i * 10;
 		   Randomness.reset(seed);
 		   
 		   List<Integer> possiblePlayerNums = new ArrayList<Integer>();
@@ -69,6 +75,7 @@ public class RandomTestDominion {
 			}
 			
 			gb.displayFinalScores();
+		}
 	   }
 	   
 	   public static boolean effectHappened(Card c, Player p, GameBoard gb)
