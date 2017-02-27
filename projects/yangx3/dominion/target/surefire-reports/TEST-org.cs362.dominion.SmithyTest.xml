@@ -1,0 +1,3618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.cs362.dominion.SmithyTest" time="0.031" tests="1" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre\bin"/>
+    <property name="java.vm.version" value="25.121-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\10463\OneDrive\文档\GitHub\CS362W17Section-001\projects\yangx3\dominion"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\10463\OneDrive\文档\GitHub\CS362W17Section-001\projects\yangx3\dominion"/>
+    <property name="java.runtime.version" value="1.8.0_121-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\10463\AppData\Local\Temp\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="net.sourceforge.cobertura.datafile" value="C:\Users\10463\OneDrive\文档\GitHub\CS362W17Section-001\projects\yangx3\dominion\target\cobertura\cobertura.ser"/>
+    <property name="classworlds.conf" value="C:\apache-maven-3.3.9\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_121\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;c:\Program Files\Intel\WiFi\bin\;c:\Program Files\Common Files\Intel\WirelessCommon\;C:\apache-maven-3.3.9\bin;C:\Program Files (x86)\Java\jdk1.8.0_121;C:\apache-maven-3.3.9\bin;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\10463"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="user.name" value="10463"/>
+    <property name="java.class.path" value="C:\apache-maven-3.3.9\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher cobertura:cobertura"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="1.8.0_121"/>
+    <property name="java.ext.dirs" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\ext;C:\windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\resources.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\rt.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\jsse.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\jce.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\charsets.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\jfr.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\classes"/>
+    <property name="sun.stderr.encoding" value="ms936"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\apache-maven-3.3.9"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="project.build.outputDirectory" value="C:\Users\10463\OneDrive\文档\GitHub\CS362W17Section-001\projects\yangx3\dominion\target\generated-classes\cobertura"/>
+    <property name="sun.stdout.encoding" value="ms936"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase name="test0" classname="org.cs362.dominion.SmithyTest" time="0.031">
+    <failure message="expected:&lt;0&gt; but was:&lt;9&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<0> but was:<9>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at org.cs362.dominion.SmithyTest.test0(SmithyTest.java:58)
+]]></failure>
+    <system-out><![CDATA[player-1 cards draw: 
+Player: player-1 gains  
+	Copper
+Player: player-1 gains  
+	Copper
+Player: player-1 gains  
+	Copper
+Player: player-1 gains  
+	Copper
+Player: player-1 gains  
+	Copper
+Player: player-1 gains  
+	Copper
+Player: player-1 gains  
+	Copper
+Player: player-1 gains  
+	Estate
+Player: player-1 gains  
+	Estate
+Player: player-1 gains  
+	Estate
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-2 cards draw: 
+Player: player-2 gains  
+	Copper
+Player: player-2 gains  
+	Copper
+Player: player-2 gains  
+	Copper
+Player: player-2 gains  
+	Copper
+Player: player-2 gains  
+	Copper
+Player: player-2 gains  
+	Copper
+Player: player-2 gains  
+	Copper
+Player: player-2 gains  
+	Estate
+Player: player-2 gains  
+	Estate
+Player: player-2 gains  
+	Estate
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+hand count = 6
+hand deck = 5
+hand coins = 0
+hand numActions = 1
+hand numBuys = 1
+hand hand = 6
+hand deck = 5
+Player: player-1 is playing
+Player.actionPhase Card: 
+	Smithy
+Draw three cards
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Minion
+Player: player-2 is playing
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Ambassador
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Estate
+player-1draw  
+	Smithy
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Smithy
+Draw three cards
+player-1draw  
+	Copper
+player-1draw  
+	Minion
+player-1draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Duchy
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 4
+Player: player-2 gains  
+	Baron
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Estate
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Minion
+Player.actionPhase Card: 
+	Minion
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Feast
+Player: player-2 is playing
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-1 is playing
+player-1draw  
+	Estate
+player-1draw  
+	Smithy
+player-1draw  
+	Duchy
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Smithy
+Draw three cards
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Duchy
+Player: player-2 is playing
+player-2draw  
+	Estate
+player-2draw  
+	Baron
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player:  player-2 discards  
+	Estate
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 7
+Player: player-2 gains  
+	Gold
+Player: player-1 is playing
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Copper
+player-1draw  
+	Minion
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Minion
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+player-1draw  
+	Feast
+player-1draw  
+	Estate
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Estate
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+player-1draw  
+	Smithy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 2
+Player: player-1 gains  
+	Estate
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Great_Hall
+Player: player-1 is playing
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Smithy
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+Player.actionPhase Card: 
+	Smithy
+Draw three cards
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+player-1draw  
+	Feast
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 3
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Gold
+player-2draw  
+	Estate
+player-2draw  
+	Estate
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-2 gains  
+	Minion
+Player: player-1 is playing
+player-1draw  
+	Duchy
+player-1draw  
+	Copper
+player-1draw  
+	Minion
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Minion
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Minion
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Baron
+player-2draw  
+	Copper
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Great_Hall
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player: player-2 gains  
+	Estate
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Silver
+Player: player-1 is playing
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 3
+Player: player-1 gains  
+	Ambassador
+Player: player-2 is playing
+player-2draw  
+	Gold
+player-2draw  
+	Copper
+player-2draw  
+	Minion
+player-2draw  
+	Estate
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Minion
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-2's coins: 6
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Smithy
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Smithy
+Draw three cards
+player-1draw  
+	Feast
+player-1draw  
+	Duchy
+player-1draw  
+	Duchy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Cutpurse
+Player: player-2 is playing
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Ambassador
+Player: player-1 is playing
+player-1draw  
+	Minion
+player-1draw  
+	Minion
+player-1draw  
+	Estate
+player-1draw  
+	Estate
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Estate
+Player.actionPhase Card: 
+	Minion
+Player:  player-1 discards  
+	Estate
+Player:  player-1 discards  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Cutpurse
+player-1draw  
+	Ambassador
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Estate
+Player:  player-1 discards  
+	Cutpurse
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+player-1draw  
+	Estate
+player-1draw  
+	Feast
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 2
+Player: player-1 gains  
+	Embargo
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Great_Hall
+player-2draw  
+	Copper
+player-2draw  
+	Minion
+Player.actionPhase Card: 
+	Great_Hall
+Draw one card, get one more action, get one victory point!
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Minion
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-2 gains  
+	Duchy
+Player: player-1 is playing
+player-1draw  
+	Smithy
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+Player.actionPhase Card: 
+	Smithy
+Draw three cards
+player-1draw  
+	Copper
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Mine
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Ambassador
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 2
+Player: player-2 gains  
+	Estate
+Player: player-1 is playing
+player-1draw  
+	Ambassador
+player-1draw  
+	Estate
+player-1draw  
+	Embargo
+player-1draw  
+	Cutpurse
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+player-1's coins: 1
+Player: player-1 gains  
+	Copper
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Ambassador
+Player: player-1 is playing
+player-1draw  
+	Minion
+player-1draw  
+	Feast
+player-1draw  
+	Duchy
+player-1draw  
+	Minion
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Feast
+discard this card, gain card costing up to 5.
+Treasure Cards Played:
+ 
+	Copper
+player-1's coins: 6
+Player: player-1 gains  
+	Gold
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Silver
+player-2draw  
+	Baron
+player-2draw  
+	Copper
+player-2draw  
+	Gold
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player: player-2 gains  
+	Estate
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 7
+Player: player-1 is playing
+player-1draw  
+	Estate
+player-1draw  
+	Estate
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Estate
+player-1draw  
+	Minion
+player-1draw  
+	Embargo
+Player.actionPhase Card: 
+	Embargo
+get two coins. Discard a card.
+Whenever players buy a card, get a curse card per Embargo.
+Player: player-1 gains  
+	Embargo
+Player: player-2 is playing
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Estate
+player-2draw  
+	Duchy
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Silver
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Silver
+Player: player-1 is playing
+player-1draw  
+	Minion
+player-1draw  
+	Smithy
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Minion
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Minion
+Player: player-2 is playing
+player-2draw  
+	Estate
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Gold
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Gold
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-2 gains  
+	Mine
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+player-1draw  
+	Copper
+player-1draw  
+	Ambassador
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 3
+Player: player-1 gains  
+	Great_Hall
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Ambassador
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Ambassador
+Player: player-1 is playing
+player-1draw  
+	Gold
+player-1draw  
+	Duchy
+player-1draw  
+	Cutpurse
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-1's coins: 6
+Player: player-1 gains  
+	Gold
+Player: player-2 is playing
+player-2draw  
+	Baron
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player:  player-2 discards  
+	Estate
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 6
+Player: player-1 is playing
+player-1draw  
+	Mine
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Great_Hall
+player-1draw  
+	Minion
+Player.actionPhase Card: 
+	Great_Hall
+Draw one card, get one more action, get one victory point!
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Mine
+discard a treasure card. Gain better card 
+Player: player-1 gains  
+	Silver
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 2
+Player: player-1 gains  
+	Estate
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Minion
+player-2draw  
+	Great_Hall
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Great_Hall
+Draw one card, get one more action, get one victory point!
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Minion
+Player:  player-2 discards  
+	Copper
+Player:  player-2 discards  
+	Copper
+player-2draw  
+	Copper
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Silver
+player-2draw  
+	Gold
+player-2draw  
+	Mine
+Player:  player-2 discards  
+	Gold
+Player:  player-2 discards  
+	Copper
+Player:  player-2 discards  
+	Estate
+player-2draw  
+	Baron
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Duchy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-1 is playing
+player-1draw  
+	Ambassador
+player-1draw  
+	Gold
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Gold
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Mine
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Ambassador
+player-2draw  
+	Silver
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 4
+Player: player-2 gains  
+	Cutpurse
+Player: player-1 is playing
+player-1draw  
+	Smithy
+player-1draw  
+	Duchy
+player-1draw  
+	Minion
+player-1draw  
+	Cutpurse
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Copper
+player-1's coins: 3
+Player: player-1 gains  
+	Ambassador
+Player: player-2 is playing
+player-2draw  
+	Ambassador
+player-2draw  
+	Silver
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 4
+Player: player-2 gains  
+	Smithy
+Player: player-1 is playing
+player-1draw  
+	Minion
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Gold
+player-1draw  
+	Estate
+Player.actionPhase Card: 
+	Minion
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-1's coins: 6
+Player: player-2 is playing
+player-2draw  
+	Ambassador
+player-2draw  
+	Estate
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+player-2's coins: 1
+Player: player-2 gains  
+	Copper
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Embargo
+player-1draw  
+	Estate
+Player.actionPhase Card: 
+	Embargo
+get two coins. Discard a card.
+Whenever players buy a card, get a curse card per Embargo.
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Duchy
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Gold
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 6
+Player: player-1 is playing
+player-1draw  
+	Estate
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Ambassador
+player-1draw  
+	Copper
+player-1draw  
+	Ambassador
+player-1draw  
+	Minion
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+player-1's coins: 1
+Player: player-1 gains  
+	Copper
+Player: player-2 is playing
+player-2draw  
+	Copper
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Baron
+player-2draw  
+	Silver
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player: player-2 gains  
+	Estate
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-2 gains  
+	Minion
+Player: player-1 is playing
+player-1draw  
+	Mine
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Minion
+player-1draw  
+	Cutpurse
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Copper
+player-1's coins: 3
+Player: player-2 is playing
+player-2draw  
+	Great_Hall
+player-2draw  
+	Ambassador
+player-2draw  
+	Estate
+player-2draw  
+	Duchy
+player-2draw  
+	Silver
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+player-2's coins: 2
+Player: player-2 gains  
+	Embargo
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Silver
+player-1draw  
+	Gold
+player-1draw  
+	Copper
+player-1draw  
+	Gold
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Gold
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 10
+Player: player-1 gains  
+	Province
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-1 is playing
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+player-1draw  
+	Estate
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 2
+Player: player-1 gains  
+	Embargo
+Player: player-2 is playing
+player-2draw  
+	Silver
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Silver
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Silver
+ 
+	Copper
+player-2's coins: 5
+Player: player-2 gains  
+	Duchy
+Player: player-1 is playing
+player-1draw  
+	Mine
+player-1draw  
+	Estate
+player-1draw  
+	Minion
+player-1draw  
+	Duchy
+player-1draw  
+	Duchy
+Player.actionPhase Card: 
+	Mine
+discard a treasure card. Gain better card 
+Player: player-1 gains  
+	Copper
+Player: player-2 is playing
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Ambassador
+player-2draw  
+	Smithy
+player-2draw  
+	Gold
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Gold
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-2's coins: 4
+Player: player-2 gains  
+	Cutpurse
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Smithy
+player-1draw  
+	Great_Hall
+player-1draw  
+	Gold
+Player.actionPhase Card: 
+	Great_Hall
+Draw one card, get one more action, get one victory point!
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Smithy
+Draw three cards
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Estate
+player-1draw  
+	Duchy
+player-1draw  
+	Estate
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 6
+Player: player-2 is playing
+player-2draw  
+	Ambassador
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Cutpurse
+player-2draw  
+	Minion
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+player-2's coins: 1
+Player: player-2 gains  
+	Copper
+Player: player-1 is playing
+player-1draw  
+	Gold
+player-1draw  
+	Copper
+player-1draw  
+	Minion
+player-1draw  
+	Mine
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Mine
+discard a treasure card. Gain better card 
+Player: player-1 gains  
+	Silver
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Feast
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Silver
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-2 gains  
+	Duchy
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Ambassador
+player-1draw  
+	Minion
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 2
+Player: player-1 gains  
+	Embargo
+Player: player-2 is playing
+player-2draw  
+	Mine
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Gold
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Ambassador
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Gold
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-2's coins: 4
+Player: player-2 gains  
+	Gardens
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Silver
+player-1draw  
+	Province
+player-1draw  
+	Copper
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Baron
+Player: player-2 is playing
+player-2draw  
+	Duchy
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 4
+Player: player-2 gains  
+	Cutpurse
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Gold
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Duchy
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Minion
+Player: player-2 is playing
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Gold
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-2 gains  
+	Minion
+Player: player-1 is playing
+player-1draw  
+	Duchy
+player-1draw  
+	Ambassador
+player-1draw  
+	Minion
+player-1draw  
+	Embargo
+player-1draw  
+	Mine
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Duchy
+put two copy in supply, others get one copy
+Player: player-1 gains  
+	Copper
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Silver
+player-2draw  
+	Minion
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Minion
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 6
+Player: player-2 gains  
+	Gold
+Player: player-1 is playing
+player-1draw  
+	Cutpurse
+player-1draw  
+	Copper
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Mine
+player-1draw  
+	Embargo
+player-1draw  
+	Baron
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player: player-1 gains  
+	Estate
+Treasure Cards Played:
+ 
+	Copper
+player-1's coins: 1
+Player: player-1 gains  
+	Copper
+Player: player-2 is playing
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Gold
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-2 gains  
+	Duchy
+Player: player-1 is playing
+player-1draw  
+	Gold
+player-1draw  
+	Minion
+player-1draw  
+	Duchy
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Minion
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 7
+Player: player-2 is playing
+player-2draw  
+	Silver
+player-2draw  
+	Great_Hall
+player-2draw  
+	Silver
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Silver
+ 
+	Copper
+player-2's coins: 5
+Player: player-1 is playing
+player-1draw  
+	Great_Hall
+player-1draw  
+	Feast
+player-1draw  
+	Gold
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Feast
+discard this card, gain card costing up to 5.
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 10
+Player: player-1 gains  
+	Province
+Player: player-2 is playing
+player-2draw  
+	Ambassador
+player-2draw  
+	Embargo
+player-2draw  
+	Silver
+player-2draw  
+	Silver
+player-2draw  
+	Duchy
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Silver
+player-2's coins: 4
+Player: player-2 gains  
+	Cutpurse
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Embargo
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Silver
+Player.actionPhase Card: 
+	Embargo
+get two coins. Discard a card.
+Whenever players buy a card, get a curse card per Embargo.
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 6
+Player: player-1 gains  
+	Gold
+Player: player-2 is playing
+player-2draw  
+	Silver
+player-2draw  
+	Cutpurse
+player-2draw  
+	Copper
+player-2draw  
+	Smithy
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 6
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Minion
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+player-1draw  
+	Minion
+Player.actionPhase Card: 
+	Minion
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Duchy
+player-1draw  
+	Ambassador
+player-1draw  
+	Minion
+player-1draw  
+	Smithy
+player-1draw  
+	Copper
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Ambassador
+Player:  player-1 discards  
+	Minion
+player-1draw  
+	Province
+player-1draw  
+	Estate
+player-1draw  
+	Estate
+player-1draw  
+	Gold
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Smithy
+Player: player-2 is playing
+player-2draw  
+	Cutpurse
+player-2draw  
+	Minion
+player-2draw  
+	Estate
+player-2draw  
+	Duchy
+player-2draw  
+	Silver
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Silver
+player-2's coins: 4
+Player: player-2 gains  
+	Gardens
+Player: player-1 is playing
+player-1draw  
+	Silver
+player-1draw  
+	Mine
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+Player.actionPhase Card: 
+	Mine
+discard a treasure card. Gain better card 
+Player: player-1 gains  
+	Gold
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 2
+Player: player-1 gains  
+	Embargo
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Baron
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Ambassador
+Player: player-1 is playing
+player-1draw  
+	Ambassador
+player-1draw  
+	Estate
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+player-1's coins: 1
+Player: player-1 gains  
+	Copper
+Player: player-2 is playing
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Silver
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Minion
+player-2draw  
+	Gardens
+Player.actionPhase Card: 
+	Minion
+Player:  player-2 discards  
+	Silver
+Player:  player-2 discards  
+	Copper
+player-2draw  
+	Ambassador
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Silver
+Player:  player-2 discards  
+	Silver
+Player:  player-2 discards  
+	Copper
+Player:  player-2 discards  
+	Ambassador
+player-2draw  
+	Cutpurse
+player-2draw  
+	Copper
+player-2draw  
+	Great_Hall
+player-2draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Ambassador
+Player: player-1 is playing
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Duchy
+player-1draw  
+	Copper
+player-1draw  
+	Ambassador
+player-1draw  
+	Copper
+player-1draw  
+	Minion
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 2
+Player: player-1 gains  
+	Embargo
+Player: player-2 is playing
+player-2draw  
+	Cutpurse
+player-2draw  
+	Estate
+player-2draw  
+	Silver
+player-2draw  
+	Silver
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Silver
+ 
+	Copper
+player-2's coins: 7
+Player: player-1 is playing
+player-1draw  
+	Duchy
+player-1draw  
+	Copper
+player-1draw  
+	Embargo
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+Player.actionPhase Card: 
+	Embargo
+get two coins. Discard a card.
+Whenever players buy a card, get a curse card per Embargo.
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Cutpurse
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Duchy
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Silver
+Player: player-1 is playing
+player-1draw  
+	Ambassador
+player-1draw  
+	Estate
+player-1draw  
+	Estate
+player-1draw  
+	Minion
+player-1draw  
+	Gold
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Gold
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Gold
+player-1's coins: 3
+Player: player-1 gains  
+	Silver
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Silver
+player-2draw  
+	Silver
+player-2draw  
+	Duchy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 6
+Player: player-1 is playing
+player-1draw  
+	Duchy
+player-1draw  
+	Gold
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Minion
+Player.actionPhase Card: 
+	Minion
+Player:  player-1 discards  
+	Gold
+Player:  player-1 discards  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Estate
+player-1draw  
+	Smithy
+player-1draw  
+	Great_Hall
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Estate
+Player:  player-1 discards  
+	Great_Hall
+player-1draw  
+	Copper
+player-1draw  
+	Smithy
+player-1draw  
+	Gold
+player-1draw  
+	Copper
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Duchy
+Player: player-2 is playing
+player-2draw  
+	Gold
+player-2draw  
+	Silver
+player-2draw  
+	Copper
+player-2draw  
+	Duchy
+player-2draw  
+	Duchy
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Silver
+ 
+	Copper
+player-2's coins: 6
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Gold
+player-1draw  
+	Duchy
+player-1draw  
+	Silver
+player-1draw  
+	Gold
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Gold
+ 
+	Silver
+ 
+	Copper
+player-1's coins: 9
+Player: player-1 gains  
+	Province
+Player: player-2 is playing
+player-2draw  
+	Silver
+player-2draw  
+	Cutpurse
+player-2draw  
+	Mine
+player-2draw  
+	Ambassador
+player-2draw  
+	Ambassador
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+player-2's coins: 2
+Player: player-2 gains  
+	Estate
+Player: player-1 is playing
+player-1draw  
+	Province
+player-1draw  
+	Cutpurse
+player-1draw  
+	Copper
+player-1draw  
+	Province
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Baron
+Player: player-2 is playing
+player-2draw  
+	Cutpurse
+player-2draw  
+	Estate
+player-2draw  
+	Smithy
+player-2draw  
+	Embargo
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Player: player-2 gains  
+	Embargo
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Baron
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player: player-1 gains  
+	Estate
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Cutpurse
+Player: player-2 is playing
+player-2draw  
+	Estate
+player-2draw  
+	Gold
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+Player: player-1 is playing
+player-1draw  
+	Mine
+player-1draw  
+	Mine
+player-1draw  
+	Minion
+player-1draw  
+	Embargo
+player-1draw  
+	Estate
+Player.actionPhase Card: 
+	Embargo
+get two coins. Discard a card.
+Whenever players buy a card, get a curse card per Embargo.
+Player: player-1 gains  
+	Estate
+Player: player-2 is playing
+player-2draw  
+	Gold
+player-2draw  
+	Gold
+player-2draw  
+	Baron
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player: player-2 gains  
+	Estate
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 8
+Player: player-2 gains  
+	Province
+Player: player-1 is playing
+player-1draw  
+	Copper
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Copper
+player-1draw  
+	Ambassador
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 3
+Player: player-1 gains  
+	Silver
+Player: player-2 is playing
+player-2draw  
+	Estate
+player-2draw  
+	Minion
+player-2draw  
+	Ambassador
+player-2draw  
+	Silver
+player-2draw  
+	Gardens
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+player-2's coins: 2
+Player: player-2 gains  
+	Embargo
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 3
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Gold
+player-2draw  
+	Copper
+player-2draw  
+	Minion
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Silver
+Player.actionPhase Card: 
+	Minion
+Player:  player-2 discards  
+	Gold
+Player:  player-2 discards  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Ambassador
+player-2draw  
+	Duchy
+player-2draw  
+	Estate
+Player:  player-2 discards  
+	Silver
+Player:  player-2 discards  
+	Copper
+Player:  player-2 discards  
+	Estate
+player-2draw  
+	Ambassador
+player-2draw  
+	Duchy
+player-2draw  
+	Smithy
+player-2draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 2
+Player: player-2 gains  
+	Embargo
+Player: player-1 is playing
+player-1draw  
+	Province
+player-1draw  
+	Silver
+player-1draw  
+	Gold
+player-1draw  
+	Mine
+player-1draw  
+	Embargo
+Player.actionPhase Card: 
+	Embargo
+get two coins. Discard a card.
+Whenever players buy a card, get a curse card per Embargo.
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Silver
+player-1's coins: 7
+Player: player-1 gains  
+	Gold
+Player: player-2 is playing
+player-2draw  
+	Silver
+player-2draw  
+	Silver
+player-2draw  
+	Cutpurse
+player-2draw  
+	Gardens
+player-2draw  
+	Cutpurse
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Silver
+player-2's coins: 6
+Player: player-2 gains  
+	Gold
+Player: player-1 is playing
+player-1draw  
+	Duchy
+player-1draw  
+	Gold
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Minion
+Player: player-2 is playing
+player-2draw  
+	Embargo
+player-2draw  
+	Copper
+player-2draw  
+	Duchy
+player-2draw  
+	Copper
+player-2draw  
+	Silver
+Player.actionPhase Card: 
+	Embargo
+get two coins. Discard a card.
+Whenever players buy a card, get a curse card per Embargo.
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 6
+Player: player-1 is playing
+player-1draw  
+	Minion
+player-1draw  
+	Cutpurse
+player-1draw  
+	Silver
+player-1draw  
+	Estate
+player-1draw  
+	Estate
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Silver
+player-1's coins: 4
+Player: player-1 gains  
+	Gardens
+Player: player-2 is playing
+player-2draw  
+	Duchy
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 4
+Player: player-2 gains  
+	Baron
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Ambassador
+player-1draw  
+	Gold
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Gold
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 5
+Player: player-1 gains  
+	Minion
+Player: player-2 is playing
+player-2draw  
+	Estate
+player-2draw  
+	Great_Hall
+player-2draw  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Embargo
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Copper
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Copper
+player-2's coins: 1
+Player: player-2 gains  
+	Copper
+Player: player-1 is playing
+player-1draw  
+	Mine
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Smithy
+player-1draw  
+	Gold
+Player.actionPhase Card: 
+	Mine
+discard a treasure card. Gain better card 
+Player: player-1 gains  
+	Silver
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Feast
+Player: player-2 is playing
+player-2draw  
+	Cutpurse
+player-2draw  
+	Gold
+player-2draw  
+	Gardens
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-2's coins: 6
+Player: player-1 is playing
+player-1draw  
+	Duchy
+player-1draw  
+	Duchy
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+player-1draw  
+	Cutpurse
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Copper
+player-1's coins: 3
+Player: player-1 gains  
+	Silver
+Player: player-2 is playing
+player-2draw  
+	Province
+player-2draw  
+	Silver
+player-2draw  
+	Silver
+player-2draw  
+	Estate
+player-2draw  
+	Ambassador
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Silver
+player-2's coins: 4
+Player: player-2 gains  
+	Feast
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+player-1draw  
+	Minion
+player-1draw  
+	Gold
+player-1draw  
+	Minion
+Player.actionPhase Card: 
+	Minion
+Player:  player-1 discards  
+	Gold
+Player:  player-1 discards  
+	Duchy
+player-1draw  
+	Copper
+player-1draw  
+	Baron
+player-1draw  
+	Duchy
+player-1draw  
+	Copper
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Baron
+player-1draw  
+	Cutpurse
+player-1draw  
+	Copper
+player-1draw  
+	Baron
+player-1draw  
+	Province
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 2
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Silver
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 4
+Player: player-2 gains  
+	Smithy
+Player: player-1 is playing
+player-1draw  
+	Great_Hall
+player-1draw  
+	Minion
+player-1draw  
+	Province
+player-1draw  
+	Smithy
+player-1draw  
+	Gold
+Player.actionPhase Card: 
+	Great_Hall
+Draw one card, get one more action, get one victory point!
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Gold
+Player.actionPhase Card: 
+	Minion
+Player:  player-1 discards  
+	Gold
+Player:  player-1 discards  
+	Province
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+Player:  player-1 discards  
+	Gold
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Estate
+player-1draw  
+	Gold
+player-1draw  
+	Cutpurse
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 7
+Player: player-1 gains  
+	Gold
+Player: player-2 is playing
+player-2draw  
+	Estate
+player-2draw  
+	Baron
+player-2draw  
+	Gold
+player-2draw  
+	Mine
+player-2draw  
+	Gold
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player:  player-2 discards  
+	Estate
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Gold
+player-2's coins: 10
+Player: player-2 gains  
+	Province
+Player: player-1 is playing
+player-1draw  
+	Minion
+player-1draw  
+	Province
+player-1draw  
+	Duchy
+player-1draw  
+	Silver
+player-1draw  
+	Mine
+Player.actionPhase Card: 
+	Mine
+discard a treasure card. Gain better card 
+Player: player-1 gains  
+	Gold
+Player: player-1 gains  
+	Copper
+Player: player-2 is playing
+player-2draw  
+	Cutpurse
+player-2draw  
+	Silver
+player-2draw  
+	Copper
+player-2draw  
+	Minion
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 6
+Player: player-1 is playing
+player-1draw  
+	Copper
+player-1draw  
+	Mine
+player-1draw  
+	Ambassador
+player-1draw  
+	Baron
+player-1draw  
+	Silver
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+player-1's coins: 3
+Player: player-1 gains  
+	Great_Hall
+Player: player-2 is playing
+player-2draw  
+	Silver
+player-2draw  
+	Silver
+player-2draw  
+	Silver
+player-2draw  
+	Ambassador
+player-2draw  
+	Embargo
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Silver
+ 
+	Silver
+player-2's coins: 6
+Player: player-2 gains  
+	Gold
+Player: player-1 is playing
+player-1draw  
+	Minion
+player-1draw  
+	Duchy
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+Player.actionPhase Card: 
+	Minion
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Minion
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Copper
+Player:  player-1 discards  
+	Estate
+player-1draw  
+	Estate
+player-1draw  
+	Silver
+player-1draw  
+	Duchy
+player-1draw  
+	Gold
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Silver
+ 
+	Copper
+player-1's coins: 6
+Player: player-2 is playing
+player-2draw  
+	Silver
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Estate
+player-2draw  
+	Gold
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Silver
+ 
+	Copper
+player-2's coins: 6
+Player: player-2 gains  
+	Gold
+Player: player-1 is playing
+player-1draw  
+	Baron
+player-1draw  
+	Feast
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Duchy
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player:  player-1 discards  
+	Estate
+Treasure Cards Played:
+ 
+	Copper
+player-1's coins: 5
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Ambassador
+player-2draw  
+	Minion
+reshuffle the deck of the player-2 to draw cards
+player-2draw  
+	Silver
+player-2draw  
+	Smithy
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Silver
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+player-2's coins: 3
+Player: player-2 gains  
+	Silver
+Player: player-1 is playing
+player-1draw  
+	Gardens
+player-1draw  
+	Silver
+player-1draw  
+	Copper
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+Treasure Cards Played:
+ 
+	Silver
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Gardens
+Player: player-2 is playing
+player-2draw  
+	Baron
+player-2draw  
+	Copper
+player-2draw  
+	Gardens
+player-2draw  
+	Estate
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player:  player-2 discards  
+	Estate
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 6
+Player: player-2 gains  
+	Gold
+Player: player-1 is playing
+player-1draw  
+	Estate
+player-1draw  
+	Copper
+player-1draw  
+	Minion
+player-1draw  
+	Copper
+player-1draw  
+	Estate
+Player.actionPhase Card: 
+	Minion
+Treasure Cards Played:
+ 
+	Copper
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Cutpurse
+Player: player-2 is playing
+player-2draw  
+	Gold
+player-2draw  
+	Silver
+player-2draw  
+	Great_Hall
+player-2draw  
+	Cutpurse
+player-2draw  
+	Province
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Silver
+player-2's coins: 7
+Player: player-2 gains  
+	Gold
+Player: player-1 is playing
+player-1draw  
+	Minion
+player-1draw  
+	Silver
+player-1draw  
+	Cutpurse
+player-1draw  
+	Estate
+player-1draw  
+	Gold
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Silver
+player-1's coins: 7
+Player: player-2 is playing
+player-2draw  
+	Silver
+player-2draw  
+	Gold
+player-2draw  
+	Gold
+player-2draw  
+	Minion
+player-2draw  
+	Copper
+Player.actionPhase Card: 
+	Minion
+Player:  player-2 discards  
+	Gold
+Player:  player-2 discards  
+	Silver
+player-2draw  
+	Ambassador
+player-2draw  
+	Gardens
+player-2draw  
+	Ambassador
+player-2draw  
+	Gold
+Player:  player-2 discards  
+	Gold
+Player:  player-2 discards  
+	Copper
+Player:  player-2 discards  
+	Ambassador
+player-2draw  
+	Copper
+player-2draw  
+	Ambassador
+player-2draw  
+	Silver
+player-2draw  
+	Province
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Silver
+ 
+	Copper
+player-2's coins: 6
+Player: player-2 gains  
+	Gold
+Player: player-1 is playing
+player-1draw  
+	Smithy
+player-1draw  
+	Gold
+player-1draw  
+	Cutpurse
+player-1draw  
+	Gold
+player-1draw  
+	Gold
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Gold
+ 
+	Gold
+player-1's coins: 11
+Player: player-1 gains  
+	Province
+Player: player-2 is playing
+player-2draw  
+	Baron
+player-2draw  
+	Gold
+player-2draw  
+	Copper
+player-2draw  
+	Estate
+player-2draw  
+	Estate
+Player.actionPhase Card: 
+	Baron
+Draw one card, get two more action!
+get four coins or get Estate!
+Player:  player-2 discards  
+	Estate
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-2's coins: 8
+Player: player-2 gains  
+	Province
+Player: player-1 is playing
+player-1draw  
+	Province
+player-1draw  
+	Duchy
+player-1draw  
+	Ambassador
+player-1draw  
+	Copper
+reshuffle the deck of the player-1 to draw cards
+player-1draw  
+	Gold
+Player.actionPhase Card: 
+	Ambassador
+Player: player-1 gains  
+	Gold
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-1's coins: 4
+Player: player-1 gains  
+	Baron
+Player: player-2 is playing
+player-2draw  
+	Gold
+player-2draw  
+	Copper
+player-2draw  
+	Cutpurse
+player-2draw  
+	Estate
+player-2draw  
+	Embargo
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+player-2's coins: 6
+Player: player-2 gains  
+	Gold
+Player: player-1 is playing
+player-1draw  
+	Gold
+player-1draw  
+	Mine
+player-1draw  
+	Smithy
+player-1draw  
+	Minion
+player-1draw  
+	Cutpurse
+Player.actionPhase Card: 
+	Cutpurse
+get two coins, others discard copper!
+Treasure Cards Played:
+ 
+	Gold
+player-1's coins: 5
+Player: player-1 gains  
+	Minion
+Player: player-2 is playing
+player-2draw  
+	Copper
+player-2draw  
+	Copper
+player-2draw  
+	Cutpurse
+player-2draw  
+	Gold
+player-2draw  
+	Ambassador
+Player.actionPhase Card: 
+	Ambassador
+Player: player-2 gains  
+	Gold
+put two copy in supply, others get one copy
+Treasure Cards Played:
+ 
+	Gold
+ 
+	Copper
+ 
+	Copper
+player-2's coins: 5
+  *****    Player-1 Status ***** 
+hand count = 0, expected = 9
+deck count = 63, expected = 2
+numActions = 1, expected = 0
+  *****    Player-2 Status *****
+hand count = 0, expected = 5
+deck count = 39, expected = 5
+numActions = 1, expected = 1
+]]></system-out>
+  </testcase>
+</testsuite>

@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.SmithyTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.031 sec <<< FAILURE! - in org.cs362.dominion.SmithyTest
+test0(org.cs362.dominion.SmithyTest)  Time elapsed: 0.031 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<9>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at org.cs362.dominion.SmithyTest.test0(SmithyTest.java:58)
+

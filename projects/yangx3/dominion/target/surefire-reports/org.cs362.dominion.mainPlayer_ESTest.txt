@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.mainPlayer_ESTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.027 sec <<< FAILURE! - in org.cs362.dominion.mainPlayer_ESTest
+test1(org.cs362.dominion.mainPlayer_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Randomness
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.mainPlayer.main(mainPlayer.java:12)
+	at org.cs362.dominion.mainPlayer_ESTest.test1(mainPlayer_ESTest.java:42)
+
+test0(org.cs362.dominion.mainPlayer_ESTest)  Time elapsed: 0.014 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Randomness
+	at org.cs362.dominion.mainPlayer.main(mainPlayer.java:12)
+	at org.cs362.dominion.mainPlayer_ESTest.test0(mainPlayer_ESTest.java:26)
+
