@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>RandomTestDominion.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">RandomTestDominion (Feb 25, 2017 8:55:19 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">RandomTestDominion.java</span></div><h1>RandomTestDominion.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Test;
+import java.util.Random;
+import java.util.HashMap;
+
+<span class="fc" id="L9">public class RandomTestDominion</span>
+{
+	@Test
+	// Runs a game with a random number of players (2-4)
+	public void test() throws Throwable {
+		// Set up a test game
+<span class="fc" id="L15">		Randomness.reset(System.currentTimeMillis());</span>
+		GameState state;
+		//GameState startstate;	// Clone game state if needed
+		List&lt;Card&gt; cards;
+<span class="fc" id="L19">		cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L20">		state = new GameState(cards);</span>
+		// Set up some test players
+<span class="fc" id="L22">		Random randomnum = new Random(System.currentTimeMillis());</span>
+<span class="fc" id="L23">		int numplayers = randomnum.nextInt(4 - 2 + 1) + 2;	// Randomly choose 2,3,4</span>
+<span class="fc" id="L24">		System.out.println(&quot;** Setting up a &quot; + numplayers + &quot; player game **&quot;);</span>
+<span class="fc" id="L25">		Player addplayer = new Player(state, &quot;test-player-1&quot;);</span>
+<span class="fc" id="L26">		state.addPlayer(addplayer);</span>
+<span class="fc" id="L27">		addplayer = new Player(state, &quot;test-player-2&quot;);</span>
+<span class="fc" id="L28">		state.addPlayer(addplayer);</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">		if (numplayers == 3)</span>
+		{
+<span class="fc" id="L31">			addplayer = new Player(state, &quot;test-player-3&quot;);</span>
+<span class="fc" id="L32">			state.addPlayer(addplayer);</span>
+		}
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">		if (numplayers == 4)</span>
+		{
+<span class="nc" id="L36">			addplayer = new Player(state, &quot;test-player-3&quot;);</span>
+<span class="nc" id="L37">			state.addPlayer(addplayer);</span>
+<span class="nc" id="L38">			addplayer = new Player(state, &quot;test-player-4&quot;);</span>
+<span class="nc" id="L39">			state.addPlayer(addplayer);</span>
+		}
+		// Set up game board and display the result
+<span class="fc" id="L42">		state.initializeGame();</span>
+<span class="fc" id="L43">		System.out.println(&quot;Initial Dominion Board:\n &quot; + state.toString());</span>
+		//startstate=(GameState) state.clone();	// Original state to compare changes against
+<span class="fc" id="L45">		int goodtest = 0;</span>
+<span class="fc" id="L46">		int badtest = 0;</span>
+		// Test the game setup for correct configuration
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		for (Player player : state.players)</span>
+		{
+<span class="fc" id="L50">			System.out.println(&quot;** Testing setup of &quot; + player.player_username + &quot;**&quot;);</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">			if (player.hand.size() == 5)</span>
+<span class="fc" id="L52">				{System.out.println(&quot;TEST PASSED -- Hand size = 5&quot;); goodtest+=1;}</span>
+			else
+<span class="nc" id="L54">				{System.out.println(&quot;TEST FAILED -- Hand size = &quot; + player.hand.size() + &quot; (Should be 5)&quot;); badtest+=1;}</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">			if (player.deck.size() == 5)</span>
+<span class="fc" id="L56">				{System.out.println(&quot;TEST PASSED -- Deck size = 5&quot;); goodtest+=1;}</span>
+			else
+<span class="nc" id="L58">				{System.out.println(&quot;TEST FAILED -- Deck size = &quot; + player.deck.size() + &quot; (Should be 5)&quot;); badtest+=1;}</span>
+<span class="fc" id="L59">			int coppercount = 0;</span>
+<span class="fc" id="L60">			int estatecount = 0;</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">			for (int i=0; i&lt;5; i++)</span>
+			{
+<span class="fc" id="L63">				Card checkcard = player.deck.get(i);</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">				if (checkcard.getCardName() == Card.CardName.Copper)</span>
+<span class="fc" id="L65">					{coppercount++;}</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">				if (checkcard.getCardName() == Card.CardName.Estate)</span>
+<span class="fc" id="L67">					{estatecount++;}</span>
+			}
+<span class="fc bfc" id="L69" title="All 2 branches covered.">			for (int i=0; i&lt;5; i++)</span>
+			{
+<span class="fc" id="L71">				Card checkcard = player.hand.get(i);</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">				if (checkcard.getCardName() == Card.CardName.Copper)</span>
+<span class="fc" id="L73">					{coppercount++;}</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">				if (checkcard.getCardName() == Card.CardName.Estate)</span>
+<span class="fc" id="L75">					{estatecount++;}</span>
+			}
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">			if (coppercount == 7)</span>
+<span class="fc" id="L78">				{System.out.println(&quot;TEST PASSED -- Started with 7 Copper&quot;); goodtest+=1;}</span>
+			else
+<span class="nc" id="L80">				{System.out.println(&quot;TEST FAILED -- Started with &quot; + coppercount + &quot; Copper (Should be 7)&quot;); badtest+=1;}</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">			if (estatecount == 3)</span>
+<span class="fc" id="L82">				{System.out.println(&quot;TEST PASSED -- Started with 3 Estates&quot;); goodtest+=1;}</span>
+			else
+<span class="nc" id="L84">				{System.out.println(&quot;TEST FAILED -- Started with &quot; + estatecount + &quot; Estates (Should be 3)&quot;); badtest+=1;}</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">			if (player.discard.size() == 0)</span>
+<span class="fc" id="L86">				{System.out.println(&quot;TEST PASSED -- Discard pile is empty&quot;); goodtest+=1;}</span>
+			else
+<span class="nc" id="L88">				{System.out.println(&quot;TEST FAILED -- Discard size = &quot; + player.discard.size() + &quot; (Should be 0)&quot;); badtest+=1;}</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">			if (player.trashpile.size() == 0)</span>
+<span class="fc" id="L90">				{System.out.println(&quot;TEST PASSED -- Trash pile is empty&quot;); goodtest+=1;}</span>
+			else
+<span class="nc" id="L92">				{System.out.println(&quot;TEST FAILED -- Trash size = &quot; + player.trashpile.size() + &quot; (Should be 0)&quot;); badtest+=1;}</span>
+		}
+		// Play the game - card actions can be tested by viewing the statements they print
+<span class="fc" id="L95">		System.out.println (&quot;** Starting game **&quot;);</span>
+<span class="fc" id="L96">		HashMap&lt;Player, Integer&gt; winners=state.play();</span>
+		// state.players.get(0);	// player1
+		// state.players.get(1);	// player2
+		// state.players.get(2);	// player3
+		// state.players.get(3);	// player4
+<span class="fc" id="L101">		System.out.println (&quot;Game over after &quot; + state.totalturns + &quot; turns.&quot;);</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">		for(Player p: winners.keySet())</span>
+<span class="fc" id="L103">			{System.out.println (p.player_username + &quot; Score: &quot;+ winners.get(p) );}</span>
+		// Test that game was not ended prematurely
+<span class="fc" id="L105">		boolean shouldend = false;</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">		if (state.gameBoard.get(Card.getCard(cards,Card.CardName.Province))==0)</span>
+<span class="nc" id="L107">			{shouldend = true;}</span>
+<span class="fc" id="L108">		int emptySupplyPile = 0;</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">		for (int i : state.gameBoard.values())</span>
+		{
+<span class="fc bfc" id="L111" title="All 2 branches covered.">			if (i &lt;= 0)</span>
+<span class="fc" id="L112">				{emptySupplyPile++;}</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">			if ( emptySupplyPile &gt;= 3)</span>
+<span class="fc" id="L114">				{shouldend = true;}</span>
+		}
+<span class="pc bpc" id="L116" title="1 of 2 branches missed.">		if (shouldend == true)</span>
+<span class="fc" id="L117">			{System.out.println(&quot;TEST PASSED -- Game is over&quot;); goodtest+=1;}</span>
+		else
+<span class="nc" id="L119">			{System.out.println(&quot;TEST FAILED -- Game should not be over yet&quot;); badtest+=1;}</span>
+		// Show total testing results
+<span class="fc" id="L121">		System.out.println (&quot;\nTESTS PASSED: &quot; + goodtest + &quot; -- TESTS FAILED: &quot; + badtest);</span>
+<span class="fc" id="L122">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>RandomTestDominion (Feb 25, 2017 8:55:19 PM)</div></body></html>
