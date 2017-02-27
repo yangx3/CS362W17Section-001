@@ -5,9 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import com.tris.Card.Type;
 
-/**
- * Created by Tristan Massey on 2/9/2017.
- */
+
 public class Player {
     LinkedList<Card> deck = new LinkedList<Card>();
     List<Card> hand = new ArrayList<Card>();
@@ -104,6 +102,12 @@ public class Player {
     void playAction() {
         System.out.println("CURRENT SCORE: " + score());
         System.out.println("*****Action Phase*****");
+        System.out.println("\n            PLAYER: " + this.name);
+        System.out.println("            CARDS IN DECK: " + deck.size());
+        System.out.println("            CARDS IN HAND: " + hand.size());
+        System.out.println("            CARDS IN PLAYED: " + played.size());
+        System.out.println("            CARDS IN DISCARD: " + discard.size());
+        System.out.println("            TOTAL: " + ((discard.size())+(deck.size())+(hand.size())+(played.size())) + "\n");
         while (actions > 0) {
             System.out.println("Your current hand: ");
             listCards(hand);
@@ -118,7 +122,7 @@ public class Player {
             }
             //System.out.println("Which card would you like to play? (enter number of card, or 0 for none)");
             //int index = input.getInt(1, hand.size()) - 1;
-            int index = input.getInt(0, hand.size());
+            int index = input.getInt(0, (hand.size()-1));
             if (hand.get(index).getType().equals(Type.ACTION)) {
                 played.add(hand.get(index));
                 c = hand.remove(index);

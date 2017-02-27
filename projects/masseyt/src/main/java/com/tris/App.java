@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
     public static void main( String[] args ) {
         List<Card> cards;
         Game game;
-        Randomness.reset(10);
+        //Randomness.reset(10);
 
         cards = new ArrayList<Card>(Card.generate());
         game = new Game(cards);
