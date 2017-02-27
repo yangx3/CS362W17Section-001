@@ -49,7 +49,11 @@ public class GameState implements Cloneable {
 	/*	   initializing all supplies, and shuffling deck and
 	   drawing starting hands for all players.  Check that 10 cards selected
 	   are in fact (different) kingdom cards, and that numPlayers is valid.*/
-
+	
+	//Cheater function to help evosuite
+	public void initializeGame(){
+		this.initializeGame(13);
+	}
 	public void initializeGame(int toUseCards){		
 
 
