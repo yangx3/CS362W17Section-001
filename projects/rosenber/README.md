@@ -1,24 +1,40 @@
 Project folder for Robert Rosenberger, CS362 Winter 2017
 
 
-The following instructions for running the different facets of the
-program assume Maven is installed and set-up correctly. The pom.xml
-for Maven is located in rosenber/Dominion. The following instructions
-assume you are in the mentioned directory.
+The following instructions assume Maven is installed with
+the current version.
 
-To compile the program, run the following command:
+
+Assignment 1:
+
+This folder contains all of the information for the first
+assignment in the course. The instructions below will
+describe how to compile, test, and generate a code
+coverage report.
+
+compile:
 	mvn compile
-	mvn package
-		
-To run the tests for this program, call the following command:
+	
+test:
 	mvn test
 	
-	*note this may take some time as the full game is run multiple times
-	*There will be a lot of output printed to the screen
+	- this will compile and run the tests for the program
 	
-To run the tests and generate a code coverage report:
+coverage report:
 	mvn cobertura:cobertura
 	
- - The coverage report can be found in:
-	Dominion/target/site/cobertura/index.html
+	- this will compile, run tests, and generate the coverage
+	- the coverage report is found in the following file
+	target/site/cobertura/index.html
+	
+	
+Assignment 2:
+
+This folder contains all of the information for the second
+assignment in the course. The instructions for working with
+the program in this assignment are the same as the
+instructions above.
+
+
+
 
