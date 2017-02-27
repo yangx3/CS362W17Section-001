@@ -17,7 +17,7 @@ public class Ambassador extends Card
 		System.out.println("Playing " + name);
 		int cardIndex = player.getRandomCardIndex(player.hand);
 		player.hand.revealCard(cardIndex);
-		String name = player.hand.getName(cardIndex);
+		String name = player.hand.getCard(cardIndex).name;
 
 		int counter = 0;
 		for(int i=0; i < player.hand.getSize(); i++)

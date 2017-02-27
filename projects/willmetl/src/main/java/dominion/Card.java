@@ -75,6 +75,7 @@ public enum Card{
         if(other != p){
           other.putInHand(other.draw());
           System.out.println(other+" drew a card.");
+          return this;
         }
       }
       return this;
@@ -88,6 +89,7 @@ public enum Card{
       for(Player other: p.gameState.players){
         if(other != p){
           if(!other.discardFromHand(Card.COPPER)) other.seeHand();
+          return this;
         }
       }
       return this;
@@ -203,13 +205,13 @@ public enum Card{
 
   private final boolean DEBUGGING = true;
   public final String cardName;
-  public String desc = "No desc";
-  public int costsAction = 0;
-  public int costsMoney;
-  public int givesActions = 0;
-  public int givesCardDraws = 0;
-  public int givesMoney = 0;
-  public int givesVictoryPoints = 0;
+  private String desc = "No desc";
+  private int costsAction = 0;
+  private int costsMoney;
+  private int givesActions = 0;
+  private int givesCardDraws = 0;
+  private int givesMoney = 0;
+  private int givesVictoryPoints = 0;
   private Type type;
 
   private Card(String cName, int cost, String desc){
@@ -235,8 +237,16 @@ public enum Card{
     return this.cardName;
   }
 
+  public int getCost(){
+    return this.costsMoney;
+  }
+
+  public int getActionCost(){
+    return this.costsAction;
+  }
+
   public Type getType(){
-    return type;
+    return this.type;
   }
 
   public Card play(Player p){
@@ -246,7 +256,11 @@ public enum Card{
     return this;
   }
 
+  public int getVictoryPoints(){
+    return this.givesVictoryPoints;
+  }
   public int getVictoryPoints(Player p){
+    System.out.println(this);
     return this.givesVictoryPoints;
   }
 

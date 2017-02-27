@@ -18,6 +18,7 @@
   </properties>
 
   <dependencies>
+    <!-- Cobertura -->
     <dependency>
     <groupId>net.sourceforge.cobertura</groupId>
     <artifactId>cobertura</artifactId>
@@ -29,10 +30,18 @@
      <artifactId>findbugs-maven-plugin</artifactId>
      <version>3.0.4</version>
     </dependency>
+    <!-- JUnit -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- Evosuite -->
+    <dependency>
+      <groupId>org.evosuite</groupId>
+      <artifactId>evosuite-standalone-runtime</artifactId>
+      <version>1.0.4</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -40,16 +49,53 @@
   <build>
     <plugins>
       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
+         <version>2.17</version>
+         <configuration>
+           <properties>
+             <property>
+                <name>listener</name>
+                <!-- <forkMode>once</forkMode> -->
+                <value>org.evosuite.runtime.InitializingListener</value>
+            </property>
+           </properties>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.evosuite.plugins</groupId>
+        <artifactId>evosuite-maven-plugin</artifactId>
+        <version>1.0.4</version>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.5.5.201112152213</version>
+        <configuration>
+         <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+         <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+        </configuration>
+        <executions>
+          <execution>
+            <id>jacoco-initialize</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+            </execution>
+            <execution>
+            <id>jacoco-site</id>
+            <phase>package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
-        <configuration>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
       </plugin>
     </plugins>
   </build>
-
 </project>

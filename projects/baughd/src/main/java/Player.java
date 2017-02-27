@@ -25,6 +25,8 @@ public class Player{
     }
 
 	final Card drawCard() {
+		if (deck.isEmpty() && discard.isEmpty())
+			return null;
 		if (deck.isEmpty()) {// Deck is empty
 			// Step 1 Shuffle the discard pile back into a deck
 			System.out.println("\nReshuffle the deck of the player "

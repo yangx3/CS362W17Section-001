@@ -26,12 +26,12 @@ public class GameState{
   public Player[] players;
   public int numPlayers = 0;
   public int playerTurn = 0;
-  private final int maxPlayers = 2;
+  private final int maxPlayers = 4;
 
   public GameState(){
     // shared cards that players can buy
     this.supply = new ArrayList<Card>(200);
-    this.players = new Player[2];
+    this.players = new Player[maxPlayers];
     // Fill the shared deck with the starting cards
     for(int i=0; i<bankCopper; i++)       supply.add(Card.COPPER);
     for(int i=0; i<bankSilver; i++)       supply.add(Card.SILVER);
@@ -108,7 +108,7 @@ public class GameState{
       String desc = c.getDesc();
       desc = desc.substring(0, Math.min(desc.length(), 50));
       System.out.format("%2d - %-15s %-5d %2d    %s\n",
-        ++i, c, c.costsMoney, Collections.frequency(supply, c), desc
+        ++i, c, c.getCost(), Collections.frequency(supply, c), desc
       );
     }
     return i;
@@ -116,9 +116,9 @@ public class GameState{
 
   private void endGame(){
     System.out.println("Game over!");
-    for(Player p: players){
+    for(int i=0; i<numPlayers; i++){
       System.out.format("%s amassed %d victory points.\n",
-        p, p.countVictoryPoints()
+        players[i], players[i].countVictoryPoints()
       );
     }
     System.out.println("Thanks for playing!");

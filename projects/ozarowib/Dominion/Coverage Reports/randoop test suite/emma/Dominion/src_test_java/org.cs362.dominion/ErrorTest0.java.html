@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>ErrorTest0.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">org.cs362.dominion (Feb 25, 2017 12:06:35 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">ErrorTest0.java</span></div><h1>ErrorTest0.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+<span class="fc" id="L8">public class ErrorTest0 {</span>
+
+<span class="fc" id="L10">  public static boolean debug = false;</span>
+
+  @Test
+  public void test1() throws Throwable {
+
+<span class="pc bpc" id="L15" title="1 of 2 branches missed.">    if (debug) { System.out.format(&quot;%n%s%n&quot;,&quot;ErrorTest0.test1&quot;); }</span>
+
+<span class="fc" id="L17">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card0 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L18">    org.cs362.dominion.Card.Type type1 = org.cs362.dominion.Card.Type.TREASURE;</span>
+<span class="fc" id="L19">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card2 = org.cs362.dominion.Card.filter((java.lang.Iterable&lt;org.cs362.dominion.Card&gt;)list_card0, type1);</span>
+<span class="fc" id="L20">    org.cs362.dominion.Card.Type type3 = org.cs362.dominion.Card.Type.VICTORY;</span>
+<span class="fc" id="L21">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card4 = org.cs362.dominion.Card.filter((java.lang.Iterable&lt;org.cs362.dominion.Card&gt;)list_card0, type3);</span>
+<span class="fc" id="L22">    org.cs362.dominion.Card card5 = org.cs362.dominion.Randomness.randomMember(list_card0);</span>
+<span class="fc" id="L23">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card6 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L24">    org.cs362.dominion.Card.Type type7 = org.cs362.dominion.Card.Type.TREASURE;</span>
+<span class="fc" id="L25">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card8 = org.cs362.dominion.Card.filter((java.lang.Iterable&lt;org.cs362.dominion.Card&gt;)list_card6, type7);</span>
+<span class="fc" id="L26">    org.cs362.dominion.Card.Type type9 = org.cs362.dominion.Card.Type.VICTORY;</span>
+<span class="fc" id="L27">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card10 = org.cs362.dominion.Card.filter((java.lang.Iterable&lt;org.cs362.dominion.Card&gt;)list_card6, type9);</span>
+<span class="fc" id="L28">    org.cs362.dominion.Card card11 = org.cs362.dominion.Randomness.randomMember(list_card6);</span>
+<span class="fc" id="L29">    int i12 = card5.compareTo(card11);</span>
+<span class="fc" id="L30">    org.cs362.dominion.Card[] card_array13 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L31">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card14 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L32">    boolean b15 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card14, card_array13);</span>
+<span class="fc" id="L33">    org.cs362.dominion.GameState gameState16 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card14);</span>
+<span class="fc" id="L34">    org.cs362.dominion.Player player18 = new org.cs362.dominion.Player(gameState16, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L35">    player18.buyCard();</span>
+<span class="fc" id="L36">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card20 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L37">    org.cs362.dominion.Card.CardName cardName21 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L38">    org.cs362.dominion.Card card22 = org.cs362.dominion.Card.getCard(list_card20, cardName21);</span>
+<span class="fc" id="L39">    player18.discard(card22);</span>
+<span class="fc" id="L40">    int i24 = card22.getTreasureValue();</span>
+<span class="fc" id="L41">    org.cs362.dominion.Card[] card_array25 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L42">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card26 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L43">    boolean b27 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card26, card_array25);</span>
+<span class="fc" id="L44">    org.cs362.dominion.GameState gameState28 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card26);</span>
+<span class="fc" id="L45">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card29 = gameState28.cards;</span>
+<span class="fc" id="L46">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i30 = gameState28.gameBoard;</span>
+<span class="fc" id="L47">    java.lang.String str31 = gameState28.toString();</span>
+<span class="fc" id="L48">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i32 = gameState28.gameBoard;</span>
+<span class="fc" id="L49">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card33 = gameState28.cards;</span>
+<span class="fc" id="L50">    org.cs362.dominion.Card[] card_array34 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L51">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card35 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L52">    boolean b36 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card35, card_array34);</span>
+<span class="fc" id="L53">    org.cs362.dominion.GameState gameState37 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card35);</span>
+<span class="fc" id="L54">    org.cs362.dominion.Player player39 = new org.cs362.dominion.Player(gameState37, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L55">    player39.buyCard();</span>
+<span class="fc" id="L56">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card41 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L57">    org.cs362.dominion.Card.CardName cardName42 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L58">    org.cs362.dominion.Card card43 = org.cs362.dominion.Card.getCard(list_card41, cardName42);</span>
+<span class="fc" id="L59">    player39.discard(card43);</span>
+<span class="fc" id="L60">    gameState28.addPlayer(player39);</span>
+<span class="fc" id="L61">    org.cs362.dominion.Card[] card_array46 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L62">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card47 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L63">    boolean b48 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card47, card_array46);</span>
+<span class="fc" id="L64">    org.cs362.dominion.GameState gameState49 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card47);</span>
+<span class="fc" id="L65">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card50 = gameState49.cards;</span>
+<span class="fc" id="L66">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i51 = gameState49.gameBoard;</span>
+<span class="fc" id="L67">    card22.play(player39, gameState49);</span>
+<span class="fc" id="L68">    org.cs362.dominion.Card[] card_array53 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L69">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card54 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L70">    boolean b55 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card54, card_array53);</span>
+<span class="fc" id="L71">    org.cs362.dominion.GameState gameState56 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card54);</span>
+<span class="fc" id="L72">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card57 = gameState56.cards;</span>
+<span class="fc" id="L73">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i58 = gameState56.gameBoard;</span>
+<span class="fc" id="L74">    java.lang.String str59 = gameState56.toString();</span>
+<span class="fc" id="L75">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i60 = gameState56.gameBoard;</span>
+<span class="fc" id="L76">    card11.play(player39, gameState56);</span>
+    
+    // Checks the contract:  compareTo-equals on card22 and card43
+<span class="pc bpc" id="L79" title="2 of 4 branches missed.">    org.junit.Assert.assertTrue(&quot;Contract failed: compareTo-equals on card22 and card43&quot;, (card22.compareTo(card43) == 0) == card22.equals(card43));</span>
+
+<span class="nc" id="L81">  }</span>
+
+  @Test
+  public void test2() throws Throwable {
+
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">    if (debug) { System.out.format(&quot;%n%s%n&quot;,&quot;ErrorTest0.test2&quot;); }</span>
+
+<span class="fc" id="L88">    org.cs362.dominion.Card[] card_array0 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L89">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card1 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L90">    boolean b2 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card1, card_array0);</span>
+<span class="fc" id="L91">    org.cs362.dominion.GameState gameState3 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card1);</span>
+<span class="fc" id="L92">    org.cs362.dominion.Player player5 = new org.cs362.dominion.Player(gameState3, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L93">    player5.buyCard();</span>
+<span class="fc" id="L94">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card7 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L95">    org.cs362.dominion.Card.CardName cardName8 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L96">    org.cs362.dominion.Card card9 = org.cs362.dominion.Card.getCard(list_card7, cardName8);</span>
+<span class="fc" id="L97">    player5.discard(card9);</span>
+<span class="fc" id="L98">    int i11 = card9.getTreasureValue();</span>
+<span class="fc" id="L99">    org.cs362.dominion.Card[] card_array12 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L100">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card13 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L101">    boolean b14 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card13, card_array12);</span>
+<span class="fc" id="L102">    org.cs362.dominion.GameState gameState15 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card13);</span>
+<span class="fc" id="L103">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card16 = gameState15.cards;</span>
+<span class="fc" id="L104">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i17 = gameState15.gameBoard;</span>
+<span class="fc" id="L105">    java.lang.String str18 = gameState15.toString();</span>
+<span class="fc" id="L106">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i19 = gameState15.gameBoard;</span>
+<span class="fc" id="L107">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card20 = gameState15.cards;</span>
+<span class="fc" id="L108">    org.cs362.dominion.Card[] card_array21 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L109">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card22 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L110">    boolean b23 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card22, card_array21);</span>
+<span class="fc" id="L111">    org.cs362.dominion.GameState gameState24 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card22);</span>
+<span class="fc" id="L112">    org.cs362.dominion.Player player26 = new org.cs362.dominion.Player(gameState24, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L113">    player26.buyCard();</span>
+<span class="fc" id="L114">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card28 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L115">    org.cs362.dominion.Card.CardName cardName29 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L116">    org.cs362.dominion.Card card30 = org.cs362.dominion.Card.getCard(list_card28, cardName29);</span>
+<span class="fc" id="L117">    player26.discard(card30);</span>
+<span class="fc" id="L118">    gameState15.addPlayer(player26);</span>
+<span class="fc" id="L119">    org.cs362.dominion.Card[] card_array33 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L120">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card34 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L121">    boolean b35 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card34, card_array33);</span>
+<span class="fc" id="L122">    org.cs362.dominion.GameState gameState36 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card34);</span>
+<span class="fc" id="L123">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card37 = gameState36.cards;</span>
+<span class="fc" id="L124">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i38 = gameState36.gameBoard;</span>
+<span class="fc" id="L125">    card9.play(player26, gameState36);</span>
+<span class="fc" id="L126">    org.cs362.dominion.Card[] card_array40 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L127">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card41 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L128">    boolean b42 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card41, card_array40);</span>
+<span class="fc" id="L129">    org.cs362.dominion.GameState gameState43 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card41);</span>
+<span class="fc" id="L130">    org.cs362.dominion.Player player45 = new org.cs362.dominion.Player(gameState43, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L131">    player45.buyCard();</span>
+<span class="fc" id="L132">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card47 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L133">    org.cs362.dominion.Card.CardName cardName48 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L134">    org.cs362.dominion.Card card49 = org.cs362.dominion.Card.getCard(list_card47, cardName48);</span>
+<span class="fc" id="L135">    player45.discard(card49);</span>
+<span class="fc" id="L136">    org.cs362.dominion.Card[] card_array51 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L137">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card52 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L138">    boolean b53 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card52, card_array51);</span>
+<span class="fc" id="L139">    org.cs362.dominion.GameState gameState54 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card52);</span>
+<span class="fc" id="L140">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card55 = gameState54.cards;</span>
+<span class="fc" id="L141">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i56 = gameState54.gameBoard;</span>
+<span class="fc" id="L142">    java.util.List&lt;org.cs362.dominion.Player&gt; list_player57 = gameState54.players;</span>
+<span class="fc" id="L143">    card9.play(player45, gameState54);</span>
+    
+    // Checks the contract:  compareTo-equals on card30 and card49
+<span class="pc bpc" id="L146" title="2 of 4 branches missed.">    org.junit.Assert.assertTrue(&quot;Contract failed: compareTo-equals on card30 and card49&quot;, (card30.compareTo(card49) == 0) == card30.equals(card49));</span>
+
+<span class="nc" id="L148">  }</span>
+
+  @Test
+  public void test3() throws Throwable {
+
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">    if (debug) { System.out.format(&quot;%n%s%n&quot;,&quot;ErrorTest0.test3&quot;); }</span>
+
+<span class="fc" id="L155">    org.cs362.dominion.Card[] card_array0 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L156">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card1 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L157">    boolean b2 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card1, card_array0);</span>
+<span class="fc" id="L158">    org.cs362.dominion.GameState gameState3 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card1);</span>
+<span class="fc" id="L159">    org.cs362.dominion.Player player5 = new org.cs362.dominion.Player(gameState3, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L160">    player5.buyCard();</span>
+<span class="fc" id="L161">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card7 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L162">    org.cs362.dominion.Card.CardName cardName8 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L163">    org.cs362.dominion.Card card9 = org.cs362.dominion.Card.getCard(list_card7, cardName8);</span>
+<span class="fc" id="L164">    player5.discard(card9);</span>
+<span class="fc" id="L165">    int i11 = card9.getTreasureValue();</span>
+<span class="fc" id="L166">    org.cs362.dominion.Card[] card_array12 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L167">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card13 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L168">    boolean b14 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card13, card_array12);</span>
+<span class="fc" id="L169">    org.cs362.dominion.GameState gameState15 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card13);</span>
+<span class="fc" id="L170">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card16 = gameState15.cards;</span>
+<span class="fc" id="L171">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i17 = gameState15.gameBoard;</span>
+<span class="fc" id="L172">    java.lang.String str18 = gameState15.toString();</span>
+<span class="fc" id="L173">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i19 = gameState15.gameBoard;</span>
+<span class="fc" id="L174">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card20 = gameState15.cards;</span>
+<span class="fc" id="L175">    org.cs362.dominion.Card[] card_array21 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L176">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card22 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L177">    boolean b23 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card22, card_array21);</span>
+<span class="fc" id="L178">    org.cs362.dominion.GameState gameState24 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card22);</span>
+<span class="fc" id="L179">    org.cs362.dominion.Player player26 = new org.cs362.dominion.Player(gameState24, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L180">    player26.buyCard();</span>
+<span class="fc" id="L181">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card28 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L182">    org.cs362.dominion.Card.CardName cardName29 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L183">    org.cs362.dominion.Card card30 = org.cs362.dominion.Card.getCard(list_card28, cardName29);</span>
+<span class="fc" id="L184">    player26.discard(card30);</span>
+<span class="fc" id="L185">    gameState15.addPlayer(player26);</span>
+<span class="fc" id="L186">    org.cs362.dominion.Card[] card_array33 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L187">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card34 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L188">    boolean b35 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card34, card_array33);</span>
+<span class="fc" id="L189">    org.cs362.dominion.GameState gameState36 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card34);</span>
+<span class="fc" id="L190">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card37 = gameState36.cards;</span>
+<span class="fc" id="L191">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i38 = gameState36.gameBoard;</span>
+<span class="fc" id="L192">    card9.play(player26, gameState36);</span>
+<span class="fc" id="L193">    org.cs362.dominion.Card[] card_array40 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L194">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card41 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L195">    boolean b42 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card41, card_array40);</span>
+<span class="fc" id="L196">    org.cs362.dominion.GameState gameState43 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card41);</span>
+<span class="fc" id="L197">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card44 = gameState43.cards;</span>
+<span class="fc" id="L198">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i45 = gameState43.gameBoard;</span>
+<span class="fc" id="L199">    java.lang.String str46 = gameState43.toString();</span>
+<span class="fc" id="L200">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i47 = gameState43.gameBoard;</span>
+<span class="fc" id="L201">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card48 = gameState43.cards;</span>
+<span class="fc" id="L202">    org.cs362.dominion.Card[] card_array49 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L203">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card50 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L204">    boolean b51 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card50, card_array49);</span>
+<span class="fc" id="L205">    org.cs362.dominion.GameState gameState52 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card50);</span>
+<span class="fc" id="L206">    org.cs362.dominion.Player player54 = new org.cs362.dominion.Player(gameState52, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L207">    player54.buyCard();</span>
+<span class="fc" id="L208">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card56 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L209">    org.cs362.dominion.Card.CardName cardName57 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L210">    org.cs362.dominion.Card card58 = org.cs362.dominion.Card.getCard(list_card56, cardName57);</span>
+<span class="fc" id="L211">    player54.discard(card58);</span>
+<span class="fc" id="L212">    gameState43.addPlayer(player54);</span>
+<span class="fc" id="L213">    org.cs362.dominion.Player[] player_array61 = new org.cs362.dominion.Player[] { player54 };</span>
+<span class="fc" id="L214">    java.util.ArrayList&lt;org.cs362.dominion.Player&gt; arraylist_player62 = new java.util.ArrayList&lt;org.cs362.dominion.Player&gt;();</span>
+<span class="fc" id="L215">    boolean b63 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Player&gt;)arraylist_player62, player_array61);</span>
+<span class="fc" id="L216">    org.cs362.dominion.Player player64 = org.cs362.dominion.Randomness.randomMember((java.util.List&lt;org.cs362.dominion.Player&gt;)arraylist_player62);</span>
+<span class="fc" id="L217">    gameState36.players = arraylist_player62;</span>
+    
+    // Checks the contract:  compareTo-equals on card58 and card30
+<span class="pc bpc" id="L220" title="2 of 4 branches missed.">    org.junit.Assert.assertTrue(&quot;Contract failed: compareTo-equals on card58 and card30&quot;, (card58.compareTo(card30) == 0) == card58.equals(card30));</span>
+
+<span class="nc" id="L222">  }</span>
+
+  @Test
+  public void test4() throws Throwable {
+
+<span class="pc bpc" id="L227" title="1 of 2 branches missed.">    if (debug) { System.out.format(&quot;%n%s%n&quot;,&quot;ErrorTest0.test4&quot;); }</span>
+
+<span class="fc" id="L229">    org.cs362.dominion.Card[] card_array0 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L230">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card1 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L231">    boolean b2 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card1, card_array0);</span>
+<span class="fc" id="L232">    org.cs362.dominion.GameState gameState3 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card1);</span>
+<span class="fc" id="L233">    org.cs362.dominion.Player player5 = new org.cs362.dominion.Player(gameState3, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L234">    org.cs362.dominion.Card[] card_array6 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L235">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card7 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L236">    boolean b8 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card7, card_array6);</span>
+<span class="fc" id="L237">    org.cs362.dominion.GameState gameState9 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card7);</span>
+<span class="fc" id="L238">    org.cs362.dominion.Player player11 = new org.cs362.dominion.Player(gameState9, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L239">    player11.buyCard();</span>
+<span class="fc" id="L240">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card13 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L241">    org.cs362.dominion.Card.CardName cardName14 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L242">    org.cs362.dominion.Card card15 = org.cs362.dominion.Card.getCard(list_card13, cardName14);</span>
+<span class="fc" id="L243">    player11.discard(card15);</span>
+<span class="fc" id="L244">    int i17 = card15.getTreasureValue();</span>
+<span class="fc" id="L245">    org.cs362.dominion.Card[] card_array18 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L246">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card19 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L247">    boolean b20 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card19, card_array18);</span>
+<span class="fc" id="L248">    org.cs362.dominion.GameState gameState21 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card19);</span>
+<span class="fc" id="L249">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card22 = gameState21.cards;</span>
+<span class="fc" id="L250">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i23 = gameState21.gameBoard;</span>
+<span class="fc" id="L251">    java.lang.String str24 = gameState21.toString();</span>
+<span class="fc" id="L252">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i25 = gameState21.gameBoard;</span>
+<span class="fc" id="L253">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card26 = gameState21.cards;</span>
+<span class="fc" id="L254">    org.cs362.dominion.Card[] card_array27 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L255">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card28 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L256">    boolean b29 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card28, card_array27);</span>
+<span class="fc" id="L257">    org.cs362.dominion.GameState gameState30 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card28);</span>
+<span class="fc" id="L258">    org.cs362.dominion.Player player32 = new org.cs362.dominion.Player(gameState30, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L259">    player32.buyCard();</span>
+<span class="fc" id="L260">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card34 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L261">    org.cs362.dominion.Card.CardName cardName35 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L262">    org.cs362.dominion.Card card36 = org.cs362.dominion.Card.getCard(list_card34, cardName35);</span>
+<span class="fc" id="L263">    player32.discard(card36);</span>
+<span class="fc" id="L264">    gameState21.addPlayer(player32);</span>
+<span class="fc" id="L265">    org.cs362.dominion.Card[] card_array39 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L266">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card40 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L267">    boolean b41 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card40, card_array39);</span>
+<span class="fc" id="L268">    org.cs362.dominion.GameState gameState42 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card40);</span>
+<span class="fc" id="L269">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card43 = gameState42.cards;</span>
+<span class="fc" id="L270">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i44 = gameState42.gameBoard;</span>
+<span class="fc" id="L271">    card15.play(player32, gameState42);</span>
+<span class="fc" id="L272">    player5.discard(card15);</span>
+<span class="fc" id="L273">    org.cs362.dominion.Card[] card_array47 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L274">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card48 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L275">    boolean b49 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card48, card_array47);</span>
+<span class="fc" id="L276">    org.cs362.dominion.GameState gameState50 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card48);</span>
+<span class="fc" id="L277">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card51 = gameState50.cards;</span>
+<span class="fc" id="L278">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i52 = gameState50.gameBoard;</span>
+<span class="fc" id="L279">    java.lang.String str53 = gameState50.toString();</span>
+<span class="fc" id="L280">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i54 = gameState50.gameBoard;</span>
+<span class="fc" id="L281">    org.cs362.dominion.Card[] card_array55 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L282">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card56 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L283">    boolean b57 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card56, card_array55);</span>
+<span class="fc" id="L284">    org.cs362.dominion.GameState gameState58 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card56);</span>
+<span class="fc" id="L285">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card59 = gameState58.cards;</span>
+<span class="fc" id="L286">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i60 = gameState58.gameBoard;</span>
+<span class="fc" id="L287">    java.lang.String str61 = gameState58.toString();</span>
+<span class="fc" id="L288">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i62 = gameState58.gameBoard;</span>
+<span class="fc" id="L289">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card63 = gameState58.cards;</span>
+<span class="fc" id="L290">    org.cs362.dominion.Card[] card_array64 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L291">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card65 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L292">    boolean b66 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card65, card_array64);</span>
+<span class="fc" id="L293">    org.cs362.dominion.GameState gameState67 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card65);</span>
+<span class="fc" id="L294">    org.cs362.dominion.Player player69 = new org.cs362.dominion.Player(gameState67, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L295">    player69.buyCard();</span>
+<span class="fc" id="L296">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card71 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L297">    org.cs362.dominion.Card.CardName cardName72 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L298">    org.cs362.dominion.Card card73 = org.cs362.dominion.Card.getCard(list_card71, cardName72);</span>
+<span class="fc" id="L299">    player69.discard(card73);</span>
+<span class="fc" id="L300">    gameState58.addPlayer(player69);</span>
+<span class="fc" id="L301">    gameState50.addPlayer(player69);</span>
+<span class="fc" id="L302">    player69.playTreasureCard();</span>
+<span class="fc" id="L303">    org.cs362.dominion.Card[] card_array78 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L304">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card79 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L305">    boolean b80 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card79, card_array78);</span>
+<span class="fc" id="L306">    org.cs362.dominion.GameState gameState81 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card79);</span>
+<span class="fc" id="L307">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card82 = gameState81.cards;</span>
+<span class="fc" id="L308">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i83 = gameState81.gameBoard;</span>
+<span class="fc" id="L309">    java.lang.String str84 = gameState81.toString();</span>
+<span class="fc" id="L310">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card85 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L311">    org.cs362.dominion.Card.Type type86 = org.cs362.dominion.Card.Type.TREASURE;</span>
+<span class="fc" id="L312">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card87 = org.cs362.dominion.Card.filter((java.lang.Iterable&lt;org.cs362.dominion.Card&gt;)list_card85, type86);</span>
+<span class="fc" id="L313">    gameState81.cards = list_card85;</span>
+<span class="fc" id="L314">    card15.play(player69, gameState81);</span>
+    
+    // Checks the contract:  compareTo-equals on card73 and card36
+<span class="pc bpc" id="L317" title="2 of 4 branches missed.">    org.junit.Assert.assertTrue(&quot;Contract failed: compareTo-equals on card73 and card36&quot;, (card73.compareTo(card36) == 0) == card73.equals(card36));</span>
+
+<span class="nc" id="L319">  }</span>
+
+  @Test
+  public void test5() throws Throwable {
+
+<span class="pc bpc" id="L324" title="1 of 2 branches missed.">    if (debug) { System.out.format(&quot;%n%s%n&quot;,&quot;ErrorTest0.test5&quot;); }</span>
+
+<span class="fc" id="L326">    org.cs362.dominion.Card[] card_array0 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L327">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card1 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L328">    boolean b2 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card1, card_array0);</span>
+<span class="fc" id="L329">    org.cs362.dominion.GameState gameState3 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card1);</span>
+<span class="fc" id="L330">    org.cs362.dominion.Player player5 = new org.cs362.dominion.Player(gameState3, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L331">    player5.buyCard();</span>
+<span class="fc" id="L332">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card7 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L333">    org.cs362.dominion.Card.CardName cardName8 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L334">    org.cs362.dominion.Card card9 = org.cs362.dominion.Card.getCard(list_card7, cardName8);</span>
+<span class="fc" id="L335">    player5.discard(card9);</span>
+<span class="fc" id="L336">    int i11 = card9.getTreasureValue();</span>
+<span class="fc" id="L337">    org.cs362.dominion.Card[] card_array12 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L338">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card13 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L339">    boolean b14 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card13, card_array12);</span>
+<span class="fc" id="L340">    org.cs362.dominion.GameState gameState15 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card13);</span>
+<span class="fc" id="L341">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card16 = gameState15.cards;</span>
+<span class="fc" id="L342">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i17 = gameState15.gameBoard;</span>
+<span class="fc" id="L343">    java.lang.String str18 = gameState15.toString();</span>
+<span class="fc" id="L344">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i19 = gameState15.gameBoard;</span>
+<span class="fc" id="L345">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card20 = gameState15.cards;</span>
+<span class="fc" id="L346">    org.cs362.dominion.Card[] card_array21 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L347">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card22 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L348">    boolean b23 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card22, card_array21);</span>
+<span class="fc" id="L349">    org.cs362.dominion.GameState gameState24 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card22);</span>
+<span class="fc" id="L350">    org.cs362.dominion.Player player26 = new org.cs362.dominion.Player(gameState24, &quot;The board game is empty, you need to intialize the game!&quot;);</span>
+<span class="fc" id="L351">    player26.buyCard();</span>
+<span class="fc" id="L352">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card28 = org.cs362.dominion.Card.createCards();</span>
+<span class="fc" id="L353">    org.cs362.dominion.Card.CardName cardName29 = org.cs362.dominion.Card.CardName.Copper;</span>
+<span class="fc" id="L354">    org.cs362.dominion.Card card30 = org.cs362.dominion.Card.getCard(list_card28, cardName29);</span>
+<span class="fc" id="L355">    player26.discard(card30);</span>
+<span class="fc" id="L356">    gameState15.addPlayer(player26);</span>
+<span class="fc" id="L357">    org.cs362.dominion.Card[] card_array33 = new org.cs362.dominion.Card[] {  };</span>
+<span class="fc" id="L358">    java.util.ArrayList&lt;org.cs362.dominion.Card&gt; arraylist_card34 = new java.util.ArrayList&lt;org.cs362.dominion.Card&gt;();</span>
+<span class="fc" id="L359">    boolean b35 = java.util.Collections.addAll((java.util.Collection&lt;org.cs362.dominion.Card&gt;)arraylist_card34, card_array33);</span>
+<span class="fc" id="L360">    org.cs362.dominion.GameState gameState36 = new org.cs362.dominion.GameState((java.util.List&lt;org.cs362.dominion.Card&gt;)arraylist_card34);</span>
+<span class="fc" id="L361">    java.util.List&lt;org.cs362.dominion.Card&gt; list_card37 = gameState36.cards;</span>
+<span class="fc" id="L362">    java.util.HashMap&lt;org.cs362.dominion.Card,java.lang.Integer&gt; hashmap_card_i38 = gameState36.gameBoard;</span>
+<span class="fc" id="L363">    card9.play(player26, gameState36);</span>
+<span class="fc" id="L364">    player26.printStateGame();</span>
+    
+    // Checks the contract:  compareTo-equals on card9 and card30
+<span class="pc bpc" id="L367" title="2 of 4 branches missed.">    org.junit.Assert.assertTrue(&quot;Contract failed: compareTo-equals on card9 and card30&quot;, (card9.compareTo(card30) == 0) == card9.equals(card30));</span>
+
+<span class="nc" id="L369">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>org.cs362.dominion (Feb 25, 2017 12:06:35 AM)</div></body></html>

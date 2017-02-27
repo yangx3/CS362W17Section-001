@@ -10,3 +10,6 @@ coverage: clean
 	mvn cobertura:cobertura
 run:
 	java -jar target/willmetl-1.0-SNAPSHOT.jar
+a2:
+	mvn -Dtest=RandomTestDominionTest.java test
+
