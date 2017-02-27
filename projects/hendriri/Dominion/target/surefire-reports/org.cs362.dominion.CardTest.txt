@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.cs362.dominion.CardTest
 -------------------------------------------------------------------------------
-Tests run: 20, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.061 sec <<< FAILURE! - in org.cs362.dominion.CardTest
-Smithy(org.cs362.dominion.CardTest)  Time elapsed: 0.006 sec  <<< FAILURE!
+Tests run: 20, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.064 sec <<< FAILURE! - in org.cs362.dominion.CardTest
+Smithy(org.cs362.dominion.CardTest)  Time elapsed: 0.015 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<7> but was:<8>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -10,7 +10,7 @@ java.lang.AssertionError: expected:<7> but was:<8>
 	at org.junit.Assert.assertEquals(Assert.java:631)
 	at org.cs362.dominion.CardTest.Smithy(CardTest.java:172)
 
-Ittakesavillage(org.cs362.dominion.CardTest)  Time elapsed: 0.001 sec  <<< FAILURE!
+Ittakesavillage(org.cs362.dominion.CardTest)  Time elapsed: 0.008 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<1> but was:<2>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -18,7 +18,7 @@ java.lang.AssertionError: expected:<1> but was:<2>
 	at org.junit.Assert.assertEquals(Assert.java:631)
 	at org.cs362.dominion.CardTest.Ittakesavillage(CardTest.java:195)
 
-BaronTEST1(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< FAILURE!
+BaronTEST1(org.cs362.dominion.CardTest)  Time elapsed: 0.002 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<3> but was:<4>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -26,7 +26,7 @@ java.lang.AssertionError: expected:<3> but was:<4>
 	at org.junit.Assert.assertEquals(Assert.java:631)
 	at org.cs362.dominion.CardTest.BaronTEST1(CardTest.java:390)
 
-cuturpurse(org.cs362.dominion.CardTest)  Time elapsed: 0.001 sec  <<< FAILURE!
+cuturpurse(org.cs362.dominion.CardTest)  Time elapsed: 0.003 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<1> but was:<2>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -34,7 +34,7 @@ java.lang.AssertionError: expected:<1> but was:<2>
 	at org.junit.Assert.assertEquals(Assert.java:631)
 	at org.cs362.dominion.CardTest.cuturpurse(CardTest.java:493)
 
-salveme(org.cs362.dominion.CardTest)  Time elapsed: 0.001 sec  <<< FAILURE!
+salveme(org.cs362.dominion.CardTest)  Time elapsed: 0.002 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<1> but was:<2>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)

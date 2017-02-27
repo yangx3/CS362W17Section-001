@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.cs362.dominion.CardTest" time="0.059" tests="20" errors="0" skipped="0" failures="5">
+<testsuite name="org.cs362.dominion.CardTest" time="0.061" tests="20" errors="0" skipped="0" failures="5">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -31,7 +31,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="4.8.0-37-generic"/>
+    <property name="os.version" value="4.8.0-39-generic"/>
     <property name="user.home" value="/home/dog"/>
     <property name="user.timezone" value="America/Los_Angeles"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher cobertura:cobertura"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher cobertura::cobertura"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -61,7 +61,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="Smithy" classname="org.cs362.dominion.CardTest" time="0.006">
+  <testcase name="Smithy" classname="org.cs362.dominion.CardTest" time="0.015">
     <failure message="expected:&lt;7&gt; but was:&lt;8&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<7> but was:<8>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -81,7 +81,7 @@ Player: player-1 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 
 Player: player-1 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 reshuffle the deck of the player player-1 to draw FIVE cards
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
+draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
@@ -96,18 +96,18 @@ Player: player-2 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 
 Player: player-2 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 Player: player-2 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 reshuffle the deck of the player player-2 to draw FIVE cards
+draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
+draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
+draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
-draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 PLAYING Kingdom CARDS******************************************
 Player.actionPhase Card: 	Smithy-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0
 PLAYED CARDS: [ 	Smithy-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
 
 SMITHY******************************************
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
+draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 Player:  player-1 discards  	Smithy-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0
 [ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0]
 
@@ -116,9 +116,9 @@ DISCARD:
 
 ]]></system-out>
   </testcase>
-  <testcase name="emdargo" classname="org.cs362.dominion.CardTest" time="0"/>
-  <testcase name="cooperplay" classname="org.cs362.dominion.CardTest" time="0.001"/>
-  <testcase name="Ittakesavillage" classname="org.cs362.dominion.CardTest" time="0.001">
+  <testcase name="emdargo" classname="org.cs362.dominion.CardTest" time="0.002"/>
+  <testcase name="cooperplay" classname="org.cs362.dominion.CardTest" time="0.002"/>
+  <testcase name="Ittakesavillage" classname="org.cs362.dominion.CardTest" time="0.008">
     <failure message="expected:&lt;1&gt; but was:&lt;2&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<1> but was:<2>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -138,7 +138,7 @@ Player: player-1 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 
 Player: player-1 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 reshuffle the deck of the player player-1 to draw FIVE cards
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
+draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
@@ -165,7 +165,7 @@ PLAYED CARDS: [ 	Village-ACTION 		 Cost: 3 		 Score: 0 	Treasure Value: 0]
 Village Code******************************************
 The player draw +1 Card.
 The player gets +2 play Actions.
-draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
+draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 Player:  player-1 discards  	Village-ACTION 		 Cost: 3 		 Score: 0 	Treasure Value: 0
 [ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0]
 
@@ -174,10 +174,10 @@ DISCARD:
 
 ]]></system-out>
   </testcase>
-  <testcase name="testtreasures" classname="org.cs362.dominion.CardTest" time="0"/>
-  <testcase name="gardens" classname="org.cs362.dominion.CardTest" time="0.004"/>
-  <testcase name="FEAST" classname="org.cs362.dominion.CardTest" time="0.001"/>
-  <testcase name="BaronTEST1" classname="org.cs362.dominion.CardTest" time="0">
+  <testcase name="testtreasures" classname="org.cs362.dominion.CardTest" time="0.004"/>
+  <testcase name="gardens" classname="org.cs362.dominion.CardTest" time="0.001"/>
+  <testcase name="FEAST" classname="org.cs362.dominion.CardTest" time="0.002"/>
+  <testcase name="BaronTEST1" classname="org.cs362.dominion.CardTest" time="0.002">
     <failure message="expected:&lt;3&gt; but was:&lt;4&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<3> but was:<4>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -199,7 +199,7 @@ reshuffle the deck of the player player-1 to draw FIVE cards
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
+draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 Player: player-2 gains  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 Player: player-2 gains  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
@@ -217,6 +217,8 @@ draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
+draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
+Player:  player-1 discards  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 PLAYING Kingdom CARDS******************************************
 Player.actionPhase Card: 	Baron-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0
 PLAYED CARDS: [ 	Baron-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
@@ -232,15 +234,15 @@ Player:  player-1 discards  	Baron-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value
 [ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1]
 
 DISCARD: 
-[ 	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	Baron-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
+[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	Baron-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
 
 ]]></system-out>
   </testcase>
-  <testcase name="BaronTEST2" classname="org.cs362.dominion.CardTest" time="0.001"/>
+  <testcase name="BaronTEST2" classname="org.cs362.dominion.CardTest" time="0.002"/>
   <testcase name="minerTEST1" classname="org.cs362.dominion.CardTest" time="0.001"/>
-  <testcase name="minerTEST2" classname="org.cs362.dominion.CardTest" time="0"/>
-  <testcase name="Councilrum" classname="org.cs362.dominion.CardTest" time="0"/>
-  <testcase name="cuturpurse" classname="org.cs362.dominion.CardTest" time="0.001">
+  <testcase name="minerTEST2" classname="org.cs362.dominion.CardTest" time="0.001"/>
+  <testcase name="Councilrum" classname="org.cs362.dominion.CardTest" time="0.001"/>
+  <testcase name="cuturpurse" classname="org.cs362.dominion.CardTest" time="0.003">
     <failure message="expected:&lt;1&gt; but was:&lt;2&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<1> but was:<2>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -262,7 +264,7 @@ reshuffle the deck of the player player-1 to draw FIVE cards
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
+draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 Player: player-2 gains  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 Player: player-2 gains  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
@@ -276,7 +278,7 @@ Player: player-2 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 
 Player: player-2 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 reshuffle the deck of the player player-2 to draw FIVE cards
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
+draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
@@ -292,22 +294,22 @@ COPPER CHECK IN LOOP: Cooper
 
 WE FOUND COPPER!
 
-[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0]
+[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0]
 Player:  player-2 discards  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0]
+[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0]
 player-2
 
 OUTSIDE LOOP 
 
 Player:  player-1 discards  	cutpurse-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0
-[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0]
+[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0]
 
 DISCARD: 
 [ 	cutpurse-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
 
 ]]></system-out>
   </testcase>
-  <testcase name="salveme" classname="org.cs362.dominion.CardTest" time="0.001">
+  <testcase name="salveme" classname="org.cs362.dominion.CardTest" time="0.002">
     <failure message="expected:&lt;1&gt; but was:&lt;2&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<1> but was:<2>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -327,9 +329,9 @@ Player: player-1 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 
 Player: player-1 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 reshuffle the deck of the player player-1 to draw FIVE cards
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
-draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
+draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
+draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 Player: player-2 gains  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 Player: player-2 gains  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
@@ -344,9 +346,13 @@ Player: player-2 gains  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 
 reshuffle the deck of the player player-2 to draw FIVE cards
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
+draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
 draw  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
+Player:  player-1 discards  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
+draw  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0
+Player:  player-1 discards  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1
 PLAYING Kingdom CARDS******************************************
 Player.actionPhase Card: 	salvager-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0
 PLAYED CARDS: [ 	salvager-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
@@ -359,20 +365,20 @@ TRASH:
 NUM COINS: 
 2
 Hand before discard: 
-[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	salvager-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
+[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	salvager-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
 Hand After Discard
-[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	salvager-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
-[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Estate-VICTORY 		 Cost: 2 		 Score: 3 	Treasure Value: 0,  	salvager-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
+[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	salvager-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
+[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	salvager-ACTION 		 Cost: 4 		 Score: 0 	Treasure Value: 0]
 
 DISCARD: 
-[]
+[ 	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1,  	Cooper-TREASURE 		 Cost: 0 		 Score: 0 	Treasure Value: 1]
 
 ]]></system-out>
   </testcase>
-  <testcase name="Adventurer" classname="org.cs362.dominion.CardTest" time="0"/>
-  <testcase name="greathall" classname="org.cs362.dominion.CardTest" time="0.001"/>
-  <testcase name="silverplay" classname="org.cs362.dominion.CardTest" time="0"/>
-  <testcase name="goldplay" classname="org.cs362.dominion.CardTest" time="0.001"/>
-  <testcase name="AmbassTEST1" classname="org.cs362.dominion.CardTest" time="0.039"/>
-  <testcase name="AmbassTEST2" classname="org.cs362.dominion.CardTest" time="0.001"/>
+  <testcase name="Adventurer" classname="org.cs362.dominion.CardTest" time="0.003"/>
+  <testcase name="greathall" classname="org.cs362.dominion.CardTest" time="0.002"/>
+  <testcase name="silverplay" classname="org.cs362.dominion.CardTest" time="0.002"/>
+  <testcase name="goldplay" classname="org.cs362.dominion.CardTest" time="0.007"/>
+  <testcase name="AmbassTEST1" classname="org.cs362.dominion.CardTest" time="0.001"/>
+  <testcase name="AmbassTEST2" classname="org.cs362.dominion.CardTest" time="0"/>
 </testsuite>

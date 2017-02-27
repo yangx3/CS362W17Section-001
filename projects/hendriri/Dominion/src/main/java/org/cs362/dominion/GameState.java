@@ -160,24 +160,4 @@ public class GameState {
 		      return playerScore;
 		   }
 	   
-	  /* @Override
-	public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		if (gameBoard.isEmpty())
-			sb.append("The board game is embty you need to intialize the game!!!!");
-		else {
-			for (Player player : players)
-				sb.append(" --- " + player.toString() + "\n");
-			sb.append(" --- gameBoard --- \n");
-			sb.append("Cards on the table: \n");
-			sb.append("Card Name \t\t NumberCards: \n");
-			Map<Card, Integer> treeMap = new TreeMap<Card, Integer>(gameBoard);
-			for (Card card : treeMap.keySet())
-				sb.append("\t " + card.getCardName() + "\t\t "
-						+ treeMap.get(card) + "\n");
-		}
-		return sb.toString();
-	}   */
-	   
 }

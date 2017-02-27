@@ -1,5 +1,6 @@
 package org.cs362.dominion;
 
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -22,37 +23,25 @@ public class PlayDominion {
 
 			
 			//the cards  are achieved by each element/constant in the enum class -bad
-		   //new list of cards and a new gamestate that takes teh list of cards
+		    //new list of cards and a new gamestate that takes teh list of cards
 			cards = new ArrayList<Card>(Card.createCards());
 			state = new GameState(cards);
-			 System.out.println("Initialization DominionBoard:\n " + state.toString());
+		    System.out.println("Initialization DominionBoard:\n " + state.toString());
 
+		    //get a random number of players
+		    Random getfucked = new Random();
+		    int randomNum = getfucked.nextInt((4 - 2) + 1) + 2;
+		   	System.out.println("RANDOM FUCKING NUMBER: " + randomNum + "\n");
 
-		      //creates a new player (player) player which gets a state and the username
-		      Player player = new Player(state, "player-1");
-//		      player.printStateGame();
-		   			//player.hand.add(Card.getCard(cards,Card.CardName.embargo));
-		   			//player.hand.add(Card.getCard(cards,Card.CardName.gardens));
-		   			//player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
-		   			//player.hand.add(Card.getCard(cards,Card.CardName.feast));
-				   	//player.hand.add(Card.getCard(cards,Card.CardName.salvager));
-		   			//player.hand.add(Card.getCard(cards,Card.CardName.mine));
-		   			//player.hand.add(Card.getCard(cards,Card.CardName.Baron));
-		   			//player.hand.add(Card.getCard(cards,Card.CardName.cutpurse));
-		            //player.hand.add(Card.getCard(cards,Card.CardName.CouncilRoom));
-		            //player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
-		            //player.hand.add(Card.getCard(cards,Card.CardName.greathall));
+		   //there are not between 2 and 4 players that are possible
+		   //this for loop creates all the players
+		   for(int i = 1; i <= randomNum; i++){
+		   		System.out.println(i);
+		   		Player player = new Player(state, "player-" + i);
+		   		state.addPlayer(player);
+		   		System.out.println(player);
+		   }
 
-
-		      //adds player to the gamestate list
-		      state.addPlayer(player);
-		       player = new Player(state, "player-2");
-
-		   //??
-		         //player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
-		         //player.hand.add(Card.getCard(cards,Card.CardName.Village));
-
-		      state.addPlayer(player);		      
 		      //Initialize the game!
 		      state.initializeGame();
 		      
@@ -64,9 +53,6 @@ public class PlayDominion {
 		      for(Player p: winners.keySet()){
 		    	  System.out.println ("Player name: "+winners.get(p) + " , Score: "+ winners.get(p) );
 		      }
-		      
-	//	      player.printStateGame();
-		      
 		      
 			System.exit(0);  
 
