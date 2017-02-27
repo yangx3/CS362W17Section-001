@@ -12,7 +12,7 @@ Maven:
 	To run tests with coverage and generate a report:
 		mvn cobertura:cobertura
 		mvn cobertura:cobertura
-	*must be run twice to generate a report
+	*may have to be run twice to generate a report
 
 	To clean: 
 		mvn clean
