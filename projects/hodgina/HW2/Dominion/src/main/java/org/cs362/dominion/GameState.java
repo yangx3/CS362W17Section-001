@@ -49,9 +49,17 @@ public class GameState implements Cloneable{
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
 
 		      //set number of Victory cards
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+
+
+		     if(players.size() > 2) {
+				 gameBoard.put(Card.getCard(cards, Card.CardName.Province), 12);
+				 gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 12);
+				 gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 12);
+			 }else{
+				 gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
+				 gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
+				 gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+			 }
 		    //set number of Treasure cards
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
