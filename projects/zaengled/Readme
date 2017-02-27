@@ -3,6 +3,16 @@ Readme
 I used Intellij IDEA instead of Eclipse because I have already been using it for other classes and am more familiar with it.
 As far as I am aware it will still work the same on Eclipse.
 
+Assignment2: 
+Code coverage reports are in the Assignment2CoverageReport.zip file.
+All the generated tests are in the src\evo folder.
+The playthrough test is in the src\test\java folder. It just sets up the game and tells it to play, all of the AI is in the 
+ functions within the Player.java and Gamestate.java
+The test suite was difficult to set up and required adding a lot of stuff to my pom.xml file but because of all that it
+ SHOULD be able to run all the tests without having to add anything else. It functions perfectly on my computer but I use
+ intellij IDEA instead of eclipse.
+
+Assignment1:
 In order to run the code with test coverage I run the files in test\java which will execute all  the test cases.
 Intellij has an option to automatically include the test coverage from maven+junit by clicking "Run tests with code coverage."
 In my PDF I will go into detail on how the code covereage percents are displayed.
