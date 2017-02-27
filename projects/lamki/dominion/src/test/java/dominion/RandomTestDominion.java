@@ -53,6 +53,12 @@ public class RandomTestDominion {
 		           fail("Should not have thrown any exception");
 		        }
         	}
+        	/*
+        	Although the assignment instructed us to write a random amount of players with a
+        	random amount of kingdom cards I didn’t see the point in making the 
+        	test have some amount of randomness. The purpose of this test is to 
+        	discover bugs, so this is why it iterates through all possible combinations.
+        	*/
         }
     }
     
