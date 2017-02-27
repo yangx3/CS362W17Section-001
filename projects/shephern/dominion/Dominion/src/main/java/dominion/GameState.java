@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.List;
 import java.util.TreeMap;
 
+import dominion.Card.CardName;
+
 
 
 
@@ -48,40 +50,66 @@ public class GameState implements Cloneable {
 	   drawing starting hands for all players.  Check that 10 cards selected
 	   are in fact (different) kingdom cards, and that numPlayers is valid.*/
 
-	public void initializeGame(){		
+	public void initializeGame(int toUseCards){		
 
 
 		//initialize supply 
 
 		//check number of players
-		if (players.size() != 2)
+		if (players.size() < 2 || players.size() > 4)
 		{
-			System.err.println("The number of players must be  2 ");
+			System.err.println("The number of players must be 2-4");
 			return ;
 		}
 		
 		//initialize supply for only two players
 		int selectedKingdom=0;
-		int Kingdom_Cards_Selected=13;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
-		// we should change 3 to the  exact of the number of 
-		//kingdom cards. look at the requirements of the assignment-1
+		int Kingdom_Cards_Selected = toUseCards;
+		List<Card> newCards = new ArrayList<Card>();
+		List<Card> takeCards = new ArrayList<Card>();
+		
 		while (selectedKingdom < Kingdom_Cards_Selected) {
 			int random = (int)  Randomness.random.nextInt(cards.size());//
 			Card tmp = cards.get(random);
 			//Make an exception for gardens as it is a victory kingdom card
 			if(tmp.getType()!=Card.Type.ACTION && tmp.getCardName() != Card.CardName.Gardens) continue;
 			if(gameBoard.containsKey(tmp)) continue;
-			gameBoard.put(tmp, 10);
+			if(tmp.getCardName() == Card.CardName.Gardens)
+				gameBoard.put(tmp, 12);
+			else
+				gameBoard.put(tmp, 10);
 			tokensPlaced.put(tmp, 0);
+			newCards.add(tmp);
 			selectedKingdom++;
 		}
+		
+		for(Card c : cards){
+			if(!newCards.contains(c)){
+				if(c.getType() ==Card.Type.ACTION || c.getCardName() == Card.CardName.Gardens){
+					//Take it out of the cards array
+					takeCards.add(c);
+				}
+			}
+		}
+		cards.removeAll(takeCards);
 		
 		//set number of Curse cards the default number of players is 2			   
 		gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
 		//set number of Victory cards
-		gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+		switch(players.size()){
+		case 2:
+			gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+			break;
+		case 3:
+		case 4:
+			gameBoard.put(Card.getCard(cards, Card.CardName.Province), 12);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 12);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 12);
+			break;
+		}
+
 		//set number of Treasure cards
 		gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
@@ -154,7 +182,7 @@ public class GameState implements Cloneable {
 				//player plays treasure card
 				player.playTreasureCard();
 				//player buy cards
-				player.buyCard(this, Randomness.nextRandomInt(20));				
+				player.buyCard(this, Randomness.nextRandomInt(cards.size()));				
 				//player ends turn
 				player.endTurn();
 			}

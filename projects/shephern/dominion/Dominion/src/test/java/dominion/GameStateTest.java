@@ -39,7 +39,7 @@ public class GameStateTest {
 	public void testInitGame(){
 		System.out.println("---Test initGame---");
 		//Test error
-		state.initializeGame();
+		state.initializeGame(13);
 		assertTrue(state.gameBoard.isEmpty());
 		
 		Player p = new Player(state, "Testing1");
@@ -47,7 +47,7 @@ public class GameStateTest {
 		p = new Player(state, "Testing2");
 		state.addPlayer(p);
 		
-		state.initializeGame();
+		state.initializeGame(13);
 		
 		assertEquals(state.players.get(0).hand.size(), 5);
 		assertEquals(state.players.get(1).hand.size(), 5);
@@ -77,7 +77,7 @@ public class GameStateTest {
 		p = new Player(state, "Testing2");
 		state.addPlayer(p);
 		
-		state.initializeGame();
+		state.initializeGame(13);
 		Card tmp = Card.getCard(cards,Card.CardName.Adventurer);
 		Card tmp1 = Card.getCard(cards,Card.CardName.Baron);
 
@@ -100,7 +100,7 @@ public class GameStateTest {
 		p = new Player(state, "Testing2");
 		state.addPlayer(p);
 		
-		state.initializeGame();
+		state.initializeGame(13);
 		Card tmp = Card.getCard(cards,Card.CardName.Adventurer);
 		Card tmp1 = Card.getCard(cards,Card.CardName.Baron);
 
@@ -121,7 +121,7 @@ public class GameStateTest {
 		state.addPlayer(p);
 		p = new Player(state, "Testing2");
 		state.addPlayer(p);
-		state.initializeGame();
+		state.initializeGame(13);
 		
 		Card tmp = Card.getCard(cards,Card.CardName.Adventurer);
 		Card tmp1 = Card.getCard(cards,Card.CardName.Baron);
@@ -142,7 +142,7 @@ public class GameStateTest {
 		state.addPlayer(p);
 		p = new Player(state, "Testing2");
 		state.addPlayer(p);
-		state.initializeGame();
+		state.initializeGame(13);
 		int cardTotal = 0;
 		int cardTotalAfter = 0;
 		for(Card c: cards){
@@ -166,7 +166,7 @@ public class GameStateTest {
 		state.addPlayer(p);
 		p = new Player(state, "Testing2");
 		state.addPlayer(p);
-		state.initializeGame();
+		state.initializeGame(13);
 		//Game isn't over
 		assertFalse(state.isGameOver());
 		//Province case
@@ -188,7 +188,7 @@ public class GameStateTest {
 		state.addPlayer(p1);
 		Player p2 = new Player(state, "Testing2");
 		state.addPlayer(p2);
-		state.initializeGame();
+		state.initializeGame(13);
 		
 		HashMap<Player, Integer> results = state.play(2);
 
@@ -208,7 +208,7 @@ public class GameStateTest {
 		state.addPlayer(p1);
 		Player p2 = new Player(state, "Testing2");
 		state.addPlayer(p2);
-		state.initializeGame();
+		state.initializeGame(13);
 		
 		s = state.toString();
 		assertTrue(s.contains("gameBoard"));		

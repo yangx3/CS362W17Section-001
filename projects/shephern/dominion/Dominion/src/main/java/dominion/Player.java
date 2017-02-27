@@ -47,12 +47,15 @@ public class Player implements Cloneable {
 			}
 		}
 		Card toDraw = deck.poll();
-		
-		hand.add(toDraw);// Add card to hand and hand count automatically will
+		if(toDraw != null){
+			hand.add(toDraw);// Add card to hand and hand count automatically will
 			// be incremented since we use List
-		System.out.println("draw " + toDraw.getCardName());
-		Collections.sort(hand);
-		return toDraw;
+
+			System.out.println("draw " + toDraw.getCardName());
+			Collections.sort(hand);
+			return toDraw;
+		} else
+			return null;
 	}
 	
 	
@@ -252,4 +255,6 @@ public class Player implements Cloneable {
 		clonePlayer.playedCards = new ArrayList<Card>(playedCards);
 		return clonePlayer;
 	}
+	
+	
 }

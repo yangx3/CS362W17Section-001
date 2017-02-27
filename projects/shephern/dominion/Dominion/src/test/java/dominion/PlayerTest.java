@@ -18,13 +18,12 @@ public class PlayerTest {
 		Randomness.reset(10);
 		List<Card> cards = new ArrayList<Card>(Card.createCards());
 		state = new GameState(cards);
-		
 		player1 = new Player(state, "p1");
 		state.addPlayer(player1);
 		
 		player2 = new Player(state, "p2");
 		state.addPlayer(player2);
-		state.initializeGame();
+		state.initializeGame(13);
 	}
 	
 	@Test
