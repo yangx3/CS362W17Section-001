@@ -52,19 +52,62 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>dominion.PlayDominion</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
+        		<artifactId>maven-assembly-plugin</artifactId>
+        		<executions>
+          			<execution>
+            			<id>org.cs362.dominion.PlayDominion</id>
+            			<configuration>
+            				<appendAssemblyId>false</appendAssemblyId>
+              				<archive>
+                				<manifest>
+                  					<mainClass>dominion.PlayDominion</mainClass>
+                				</manifest>
+              				</archive>
+              				<descriptorRefs>
+                				<descriptorRef>jar-with-dependencies</descriptorRef>
+              				</descriptorRefs>
+              				<finalName>PlayDominion</finalName>
+            			</configuration>
+            			<phase>package</phase>
+            			<goals>
+                			<goal>single</goal>
+            			</goals>
+          			</execution>
+          			<execution>
+            			<id>org.cs362.dominion.RandomTestDominion</id>
+            			<configuration>
+            				<appendAssemblyId>false</appendAssemblyId>
+              				<archive>
+                				<manifest>
+                  					<mainClass>dominion.RandomTestDominion</mainClass>
+                				</manifest>
+              				</archive>
+              				<descriptorRefs>
+                				<descriptorRef>jar-with-dependencies</descriptorRef>
+              				</descriptorRefs>
+              				<finalName>RandomTestDominion</finalName>
+            			</configuration>
+            			<phase>package</phase>
+            			<goals>
+                			<goal>single</goal>
+            			</goals>
+          			</execution>
+        		</executions>
+    		</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
+<!-- 				<version>3.0.2</version> -->
+<!-- 				<configuration> -->
+<!-- 					<archive> -->
+<!-- 						<manifest> -->
+<!-- 							<addClasspath>true</addClasspath> -->
+<!-- 							<classpathPrefix>lib/</classpathPrefix> -->
+<!-- 							<mainClass>dominion.PlayDominion</mainClass> -->
+<!-- 						</manifest> -->
+<!-- 					</archive> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.evosuite.plugins</groupId>
 				<artifactId>evosuite-maven-plugin</artifactId>

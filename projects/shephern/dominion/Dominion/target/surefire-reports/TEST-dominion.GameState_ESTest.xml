@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominion.GameState_ESTest" time="0.253" tests="20" errors="18" skipped="0" failures="0">
+<testsuite name="dominion.GameState_ESTest" time="0.325" tests="20" errors="18" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib"/>
     <property name="java.vm.version" value="25.121-b13"/>
     <property name="gopherProxySet" value="false"/>
+    <property name="cores" value="2"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/Nathan/Desktop/cs362/dirClone/CS362-SE2/projects/shephern/dominion/Dominion"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/Nathan/Desktop/cs362/CS362W17Section-001/projects/shephern/dominion/Dominion"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +17,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/Nathan/Desktop/cs362/dirClone/CS362-SE2/projects/shephern/dominion/Dominion"/>
+    <property name="user.dir" value="/Users/Nathan/Desktop/cs362/CS362W17Section-001/projects/shephern/dominion/Dominion"/>
     <property name="java.runtime.version" value="1.8.0_121-b13"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/endorsed"/>
@@ -35,6 +36,7 @@
     <property name="user.home" value="/Users/Nathan"/>
     <property name="user.timezone" value="America/Los_Angeles"/>
     <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="memoryInMB" value="2000"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="user.name" value="Nathan"/>
@@ -42,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -DmemoryInMB=2000 -Dcores=2 evosuite:generate evosuite:export test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -58,7 +60,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="test01" classname="dominion.GameState_ESTest" time="0.015">
+  <testcase name="test01" classname="dominion.GameState_ESTest" time="0.02">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -68,58 +70,58 @@
 	at dominion.GameState_ESTest.test01(GameState_ESTest.java:72)
 </error>
   </testcase>
-  <testcase name="test12" classname="dominion.GameState_ESTest" time="0.012">
+  <testcase name="test12" classname="dominion.GameState_ESTest" time="0.013">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test12(GameState_ESTest.java:386)
 </error>
   </testcase>
-  <testcase name="test00" classname="dominion.GameState_ESTest" time="0.012">
+  <testcase name="test00" classname="dominion.GameState_ESTest" time="0.015">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test00(GameState_ESTest.java:36)
 </error>
   </testcase>
-  <testcase name="test11" classname="dominion.GameState_ESTest" time="0.012">
+  <testcase name="test11" classname="dominion.GameState_ESTest" time="0.014">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test11(GameState_ESTest.java:361)
 </error>
   </testcase>
-  <testcase name="test10" classname="dominion.GameState_ESTest" time="0.013">
+  <testcase name="test10" classname="dominion.GameState_ESTest" time="0.017">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
 	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
 	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
-	at dominion.GameState.isGameOver(GameState.java:167)
+	at dominion.GameState.isGameOver(GameState.java:201)
 	at dominion.GameState_ESTest.test10(GameState_ESTest.java:354)
 </error>
   </testcase>
-  <testcase name="test05" classname="dominion.GameState_ESTest" time="0.013">
+  <testcase name="test05" classname="dominion.GameState_ESTest" time="0.014">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test05(GameState_ESTest.java:214)
 </error>
   </testcase>
-  <testcase name="test16" classname="dominion.GameState_ESTest" time="0.016">
+  <testcase name="test16" classname="dominion.GameState_ESTest" time="0.015">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test16(GameState_ESTest.java:482)
 </error>
   </testcase>
-  <testcase name="test04" classname="dominion.GameState_ESTest" time="0.012">
+  <testcase name="test04" classname="dominion.GameState_ESTest" time="0.015">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test04(GameState_ESTest.java:189)
 </error>
   </testcase>
-  <testcase name="test15" classname="dominion.GameState_ESTest" time="0.009">
+  <testcase name="test15" classname="dominion.GameState_ESTest" time="0.013">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test15(GameState_ESTest.java:455)
 </error>
   </testcase>
-  <testcase name="test03" classname="dominion.GameState_ESTest" time="0.012">
+  <testcase name="test03" classname="dominion.GameState_ESTest" time="0.014">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test03(GameState_ESTest.java:155)
 </error>
   </testcase>
-  <testcase name="test14" classname="dominion.GameState_ESTest" time="0.014">
+  <testcase name="test14" classname="dominion.GameState_ESTest" time="0.018">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -129,30 +131,30 @@
 	at dominion.GameState_ESTest.test14(GameState_ESTest.java:439)
 </error>
   </testcase>
-  <testcase name="test02" classname="dominion.GameState_ESTest" time="0.013">
+  <testcase name="test02" classname="dominion.GameState_ESTest" time="0.016">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test02(GameState_ESTest.java:110)
 </error>
   </testcase>
-  <testcase name="test13" classname="dominion.GameState_ESTest" time="0.017">
+  <testcase name="test13" classname="dominion.GameState_ESTest" time="0.014">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test13(GameState_ESTest.java:404)
 </error>
   </testcase>
-  <testcase name="test09" classname="dominion.GameState_ESTest" time="0.014">
+  <testcase name="test09" classname="dominion.GameState_ESTest" time="0.027">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
-	at dominion.GameState.isGameOver(GameState.java:167)
+	at dominion.GameState.isGameOver(GameState.java:201)
 	at dominion.GameState_ESTest.test09(GameState_ESTest.java:339)
 </error>
     <system-err><![CDATA[The number of players must be 2-4
 ]]></system-err>
   </testcase>
-  <testcase name="test08" classname="dominion.GameState_ESTest" time="0.011">
+  <testcase name="test08" classname="dominion.GameState_ESTest" time="0.014">
     <error message="dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$CardName
 	at dominion.GameState_ESTest.test08(GameState_ESTest.java:315)
 </error>
   </testcase>
-  <testcase name="test19" classname="dominion.GameState_ESTest" time="0.012">
+  <testcase name="test19" classname="dominion.GameState_ESTest" time="0.019">
     <error message="dominion/Card$Type" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$Type
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -163,15 +165,15 @@
 </error>
   </testcase>
   <testcase name="test07" classname="dominion.GameState_ESTest" time="0.016"/>
-  <testcase name="test18" classname="dominion.GameState_ESTest" time="0.01">
+  <testcase name="test18" classname="dominion.GameState_ESTest" time="0.022">
     <error message="dominion/Card$Type" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$Type
 	at dominion.GameState_ESTest.test18(GameState_ESTest.java:513)
 </error>
   </testcase>
-  <testcase name="test06" classname="dominion.GameState_ESTest" time="0.009">
+  <testcase name="test06" classname="dominion.GameState_ESTest" time="0.014">
     <error message="dominion/Card$Type" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: dominion/Card$Type
 	at dominion.GameState_ESTest.test06(GameState_ESTest.java:251)
 </error>
   </testcase>
-  <testcase name="test17" classname="dominion.GameState_ESTest" time="0.011"/>
+  <testcase name="test17" classname="dominion.GameState_ESTest" time="0.015"/>
 </testsuite>

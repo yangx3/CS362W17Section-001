@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dominion.CardTest" time="0.034" tests="21" errors="0" skipped="0" failures="0">
+<testsuite name="dominion.CardTest" time="0.021" tests="21" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib"/>
     <property name="java.vm.version" value="25.121-b13"/>
     <property name="gopherProxySet" value="false"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/Nathan/Desktop/cs362/dirClone/CS362-SE2/projects/shephern/dominion/Dominion"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/Nathan/Desktop/cs362/CS362W17Section-001/projects/shephern/dominion/Dominion"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/Nathan/Desktop/cs362/dirClone/CS362-SE2/projects/shephern/dominion/Dominion"/>
+    <property name="user.dir" value="/Users/Nathan/Desktop/cs362/CS362W17Section-001/projects/shephern/dominion/Dominion"/>
     <property name="java.runtime.version" value="1.8.0_121-b13"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/endorsed"/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -60,23 +60,23 @@
   </properties>
   <testcase name="testEmbargo" classname="dominion.CardTest" time="0"/>
   <testcase name="testEstateValues" classname="dominion.CardTest" time="0.001"/>
-  <testcase name="testGreathall" classname="dominion.CardTest" time="0"/>
-  <testcase name="testCopperValues" classname="dominion.CardTest" time="0"/>
-  <testcase name="testBaron" classname="dominion.CardTest" time="0.004"/>
-  <testcase name="testFeast" classname="dominion.CardTest" time="0.002"/>
-  <testcase name="testMine" classname="dominion.CardTest" time="0.006"/>
-  <testcase name="testToString" classname="dominion.CardTest" time="0.001"/>
+  <testcase name="testGreathall" classname="dominion.CardTest" time="0.003"/>
+  <testcase name="testCopperValues" classname="dominion.CardTest" time="0.001"/>
+  <testcase name="testBaron" classname="dominion.CardTest" time="0"/>
+  <testcase name="testFeast" classname="dominion.CardTest" time="0"/>
+  <testcase name="testMine" classname="dominion.CardTest" time="0.001"/>
+  <testcase name="testToString" classname="dominion.CardTest" time="0"/>
   <testcase name="testDuchyValues" classname="dominion.CardTest" time="0.001"/>
-  <testcase name="testAdventurer" classname="dominion.CardTest" time="0.002"/>
-  <testcase name="testGardens" classname="dominion.CardTest" time="0.001"/>
-  <testcase name="testCouncilRoom" classname="dominion.CardTest" time="0.001"/>
+  <testcase name="testAdventurer" classname="dominion.CardTest" time="0.006"/>
+  <testcase name="testGardens" classname="dominion.CardTest" time="0"/>
+  <testcase name="testCouncilRoom" classname="dominion.CardTest" time="0"/>
   <testcase name="testVillage" classname="dominion.CardTest" time="0.002"/>
-  <testcase name="testAmbassador" classname="dominion.CardTest" time="0.001"/>
-  <testcase name="testCurseValues" classname="dominion.CardTest" time="0.002"/>
-  <testcase name="testProvinceValues" classname="dominion.CardTest" time="0.003"/>
-  <testcase name="testSilverValues" classname="dominion.CardTest" time="0.001"/>
-  <testcase name="testCutpurse" classname="dominion.CardTest" time="0.001"/>
+  <testcase name="testAmbassador" classname="dominion.CardTest" time="0"/>
+  <testcase name="testCurseValues" classname="dominion.CardTest" time="0"/>
+  <testcase name="testProvinceValues" classname="dominion.CardTest" time="0"/>
+  <testcase name="testSilverValues" classname="dominion.CardTest" time="0"/>
+  <testcase name="testCutpurse" classname="dominion.CardTest" time="0.004"/>
   <testcase name="testSeaHag" classname="dominion.CardTest" time="0.001"/>
-  <testcase name="testSmithy" classname="dominion.CardTest" time="0.002"/>
-  <testcase name="testGoldValues" classname="dominion.CardTest" time="0.002"/>
+  <testcase name="testSmithy" classname="dominion.CardTest" time="0"/>
+  <testcase name="testGoldValues" classname="dominion.CardTest" time="0.001"/>
 </testsuite>

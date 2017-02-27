@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: dominion.mainPlayer_ESTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.063 sec <<< FAILURE! - in dominion.mainPlayer_ESTest
-test0(dominion.mainPlayer_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
-java.lang.NoClassDefFoundError: dominion/Randomness
-	at java.lang.ClassLoader.defineClass1(Native Method)
-	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
-	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
-	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
-	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
-	at dominion.mainPlayer.main(mainPlayer.java:13)
-	at dominion.mainPlayer_ESTest.test0(mainPlayer_ESTest.java:23)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 sec - in dominion.mainPlayer_ESTest
