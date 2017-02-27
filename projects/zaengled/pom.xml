@@ -14,6 +14,14 @@
             <url>http://www.evosuite.org/m2</url>
         </repository>
     </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>org.evosuite</groupId>
+            <artifactId>evosuite-master</artifactId>
+            <version>1.0.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
     <dependencyManagement>
         <dependencies>
             <!-- https://mvnrepository.com/artifact/junit/junit -->

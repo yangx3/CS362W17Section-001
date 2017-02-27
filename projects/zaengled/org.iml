@@ -22,5 +22,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="TEST" name="Maven: org.evosuite:evosuite-master:1.0.3" level="project" />
   </component>
 </module>
