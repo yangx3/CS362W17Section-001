@@ -1,0 +1,4 @@
+#A ignore file for target folder
+dominion/target/
+*.class
+*.DS_Store

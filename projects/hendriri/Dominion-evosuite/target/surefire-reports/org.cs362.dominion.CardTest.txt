@@ -1,0 +1,104 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.CardTest
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 0, Errors: 20, Skipped: 0, Time elapsed: 0.004 sec <<< FAILURE! - in org.cs362.dominion.CardTest
+Smithy(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+emdargo(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+cooperplay(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+Ittakesavillage(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+testtreasures(org.cs362.dominion.CardTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+gardens(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+FEAST(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+BaronTEST1(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+BaronTEST2(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+minerTEST1(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+minerTEST2(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+Councilrum(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+cuturpurse(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+salveme(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+Adventurer(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+greathall(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+silverplay(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+goldplay(org.cs362.dominion.CardTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+AmbassTEST1(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+
+AmbassTEST2(org.cs362.dominion.CardTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.initializeGame(GameState.java:62)
+	at org.cs362.dominion.CardTest.initialize(CardTest.java:29)
+

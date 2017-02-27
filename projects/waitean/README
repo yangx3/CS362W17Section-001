@@ -1,0 +1,19 @@
+I have no idea how I would compile this outside of the Maven structure.
+I couldn't find a way to get the maven structure onto github (probably doesn't help that I know nothing about github).
+
+How I normally compile is by putting these files into the respective main and test folders then using the command
+mvn compile
+then I used 
+mvn package (Though I'm not sure what this does, I'm not familair with maven either)
+
+Trying to actually get the program to run would be through a java command targeting all the way into the maven file structure. 
+To get the code coverage I used 
+mvn cobertura:cobertura
+
+And just to run the tests was
+mvn test
+
+Seems fairly standard. Normally I would just run code inside of the Eclipse editor then package it into a jar file if
+I needed to run the program outside of the editor. To get the files to compile into class files outside of the editor
+I am fairly sure the command is javac *.java Then you should be able to run the game just by calling java PlayDominion.
+I could not get the tests to compile without using maven. 

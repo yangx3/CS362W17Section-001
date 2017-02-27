@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Game.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Dominion</a> &gt; <a href="index.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">Game.java</span></div><h1>Game.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Game {
+    public List&lt;Player&gt; playersList;
+    public List&lt;Deck&gt; kingdomCards;
+    public List&lt;Deck&gt; treasureSupply;
+    public List&lt;Deck&gt; victorySupply;
+    public List&lt;Deck&gt; supply;
+    public Deck curse;
+    public boolean started;
+<span class="fc" id="L15">    private int turns = 1;</span>
+    private boolean bot;
+
+<span class="fc" id="L18">    public Game(Card[] cards){</span>
+<span class="fc" id="L19">    	bot = true;</span>
+<span class="fc" id="L20">    	this.started = false;</span>
+<span class="fc" id="L21">    	this.playersList = new ArrayList&lt;Player&gt;();</span>
+<span class="fc" id="L22">    	kingdomCards = new ArrayList&lt;Deck&gt;();</span>
+<span class="fc" id="L23">    	setKingdomCards(cards);</span>
+<span class="fc" id="L24">    	treasureSupply = new ArrayList&lt;Deck&gt;();</span>
+<span class="fc" id="L25">    	setTeasureCards();</span>
+<span class="fc" id="L26">    	victorySupply = new ArrayList&lt;Deck&gt;();</span>
+<span class="fc" id="L27">    	setvictoryCards();</span>
+<span class="fc" id="L28">    	supply = new ArrayList&lt;Deck&gt;();</span>
+<span class="fc" id="L29">    	supply.addAll(kingdomCards);</span>
+<span class="fc" id="L30">    	supply.addAll(treasureSupply);</span>
+<span class="fc" id="L31">    	supply.addAll(victorySupply);</span>
+    	
+<span class="fc" id="L33">    }</span>
+    
+    private void setvictoryCards() {
+<span class="fc" id="L36">		victorySupply.add(new Deck(Card.ESTATE, 12));</span>
+<span class="fc" id="L37">		victorySupply.add(new Deck(Card.DUCHY, 12));</span>
+<span class="fc" id="L38">		victorySupply.add(new Deck(Card.PROVINCE, 12));		</span>
+<span class="fc" id="L39">	}</span>
+
+	private void setTeasureCards() {
+<span class="fc" id="L42">		treasureSupply.add(new Deck(Card.COPPER, 60));</span>
+<span class="fc" id="L43">		treasureSupply.add(new Deck(Card.SILVER, 40));</span>
+<span class="fc" id="L44">		treasureSupply.add(new Deck(Card.GOLD, 30));</span>
+<span class="fc" id="L45">	}</span>
+
+	public boolean start() {
+<span class="pc bpc" id="L48" title="2 of 4 branches missed.">        if (playersList.size() &lt; 2 || playersList.size() &gt; 8) return false;</span>
+        else {
+<span class="fc" id="L50">        	started = true;</span>
+<span class="fc" id="L51">        	curse = new Deck(Card.CURSE, (playersList.size() - 1) * 10);</span>
+<span class="fc" id="L52">        	turns = 1;</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        	for (Player p : playersList){</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        		for (int i = 0; i &lt; 7; i++){</span>
+<span class="fc" id="L55">        			p.discard.add(treasureSupply.get(0).take());</span>
+        		}
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        		for (int i = 0; i &lt; 3; i++){</span>
+<span class="fc" id="L58">        			p.discard.add(victorySupply.get(0).take());</span>
+        		}
+<span class="fc" id="L60">        		p.draw(5);</span>
+<span class="fc" id="L61">        	}</span>
+<span class="fc" id="L62">        	return true;</span>
+        }
+    }
+
+    public boolean setKingdomCards(Card[] cards){
+<span class="fc bfc" id="L67" title="All 2 branches covered.">    	for (int i = 0; i &lt; 10; i++){</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">    		kingdomCards.add(new Deck(cards[i], cards[i].getType().contains(CardType.TREASURE) ? 12 : 10));</span>
+    		
+    	}
+<span class="fc" id="L71">    	return true;</span>
+    }
+
+    public boolean addPlayer(Player newPlayer){
+<span class="fc bfc" id="L75" title="All 2 branches covered.">    	if (started)return false;</span>
+<span class="fc" id="L76">    	playersList.add(newPlayer);</span>
+<span class="fc" id="L77">		return true;</span>
+        
+    }
+    
+    public Player getCurrentPlayer(){
+<span class="fc" id="L82">    	return playersList.get(turns % playersList.size());</span>
+    }
+    
+    public boolean bot(){
+<span class="fc" id="L86">    	return bot;</span>
+    }
+    
+    public boolean ended(){
+<span class="fc bfc" id="L90" title="All 2 branches covered.">    	if (victorySupply.get(2).size() &lt; 1){</span>
+<span class="fc" id="L91">    		whoWon();</span>
+<span class="fc" id="L92">    		return true;</span>
+    	}
+<span class="fc bfc" id="L94" title="All 2 branches covered.">    	for (Deck d : kingdomCards){</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">    		if (d.size() &lt; 1){</span>
+<span class="fc" id="L96">    			whoWon();</span>
+<span class="fc" id="L97">    			return true;</span>
+    		}
+<span class="fc" id="L99">    	}</span>
+<span class="fc" id="L100">    	return false;</span>
+    }
+    public Player whoWon(){
+<span class="fc" id="L103">    	Player top = null;</span>
+<span class="fc" id="L104">    	int most = 0;</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">    	for (Player p : playersList){</span>
+<span class="fc" id="L106">    		int score = countVictory(p);</span>
+<span class="fc" id="L107">    		System.out.println(score);</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">    		if (score &gt; most){</span>
+<span class="fc" id="L109">    			top = p;</span>
+<span class="fc" id="L110">    			most = score;</span>
+    		}
+<span class="fc" id="L112">    	}</span>
+<span class="fc" id="L113">    	System.out.println(&quot;Player &quot;  + playersList.indexOf(top) + &quot; has won with a score of &quot; + most);</span>
+<span class="fc" id="L114">    	return top;</span>
+    }
+    public int countVictory(Player p){
+    	//p.cleanup();
+<span class="fc" id="L118">    	p.getDeck().getCards().addAll(p.discard);</span>
+<span class="fc" id="L119">    	p.discard.clear();</span>
+<span class="fc" id="L120">    	p.getDeck().getCards().addAll(p.hand);</span>
+<span class="fc" id="L121">    	p.hand.clear();</span>
+<span class="fc" id="L122">    	p.getDeck().getCards().addAll(p.playArea);</span>
+<span class="fc" id="L123">    	p.playArea.clear();</span>
+<span class="fc" id="L124">    	int sum = 0;</span>
+<span class="fc" id="L125">    	LinkedList&lt;Card&gt; cards = p.getDeck().getCards();</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">    	for (Card c : cards){</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">    		if (c.getType().contains(CardType.VICTORY)){</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">    			if (c == Card.GARDENS){</span>
+<span class="fc" id="L129">    				sum += cards.size() / 10;</span>
+    			}
+<span class="fc" id="L131">    			sum += c.victoryPoints();</span>
+    		}
+<span class="fc" id="L133">    	}</span>
+<span class="fc" id="L134">    	return sum;</span>
+    }
+    
+    public void nextTurn(){
+<span class="fc" id="L138">    	System.out.println(&quot;End of Turn&quot;);</span>
+<span class="fc" id="L139">    	turns++;</span>
+<span class="fc" id="L140">    }</span>
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.5.201112152213</span></div></body></html>

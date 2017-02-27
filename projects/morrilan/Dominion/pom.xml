@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.cs362.dominion</groupId>
+  <artifactId>Dominion</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>Dominion</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+  	 <resources>
+        <!-- regular resource processsing for everything except logback.xml -->
+        <resource>
+            <directory>src/main/resources</directory>
+            <!-- <excludes>
+                <exclude>logback.xml</exclude>
+            </excludes> -->
+        </resource>
+        <!-- resource processsing with a different output directory
+             for logback.xml -->
+        <resource>
+            <directory>src/main/resources</directory>
+         <!--    <includes>
+                <include>logback.xml</include>
+            </includes> -->
+            <!-- relative to target/classes
+                 i.e. ${project.build.outputDirectory} -->
+            <targetPath>..</targetPath>
+        </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <!-- Build an executable JAR -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>Dominion</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

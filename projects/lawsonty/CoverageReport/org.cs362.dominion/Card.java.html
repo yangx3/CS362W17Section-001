@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Dominion</a> &gt; <a href="index.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.Scanner;
+
+
+<span class="fc" id="L9">public enum Card {</span>
+<span class="fc" id="L10">    COPPER(&quot;Copper&quot;, EnumSet.of(CardType.TREASURE), 0, 1, 0, 0, 0, 0),</span>
+<span class="fc" id="L11">    SILVER(&quot;Silver&quot;, EnumSet.of(CardType.TREASURE), 3, 2, 0, 0, 0, 0),</span>
+<span class="fc" id="L12">    GOLD(&quot;Gold&quot;, EnumSet.of(CardType.TREASURE), 6, 3, 0, 0, 0, 0),</span>
+
+<span class="fc" id="L14">    ESTATE(&quot;Estate&quot;, EnumSet.of(CardType.VICTORY), 2, 0, 1, 0, 0, 0),</span>
+<span class="fc" id="L15">    DUCHY(&quot;Duchy&quot;, EnumSet.of(CardType.VICTORY), 5, 0, 3, 0, 0, 0),</span>
+<span class="fc" id="L16">    PROVINCE(&quot;Province&quot;, EnumSet.of(CardType.VICTORY), 8, 0, 6, 0, 0, 0),</span>
+
+<span class="fc" id="L18">    ADVENTURER(&quot;Adventurer&quot;, EnumSet.of(CardType.ACTION), 6) {</span>
+    	public void play(Game game){
+<span class="fc" id="L20">    		super.play(game);</span>
+<span class="fc" id="L21">    		ArrayList&lt;Card&gt; treasures = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L22">    		int i = 0;</span>
+<span class="fc bfc" id="L23" title="All 4 branches covered.">    		while (game.getCurrentPlayer().getDeck().size() != 0 &amp;&amp; i != 2){</span>
+<span class="fc" id="L24">    			Card c = game.getCurrentPlayer().getDeck().take();</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">    			if (c.getType().contains(CardType.TREASURE)){</span>
+<span class="fc" id="L26">    				treasures.add(c);</span>
+<span class="fc" id="L27">    				i++;</span>
+    			} else {
+<span class="fc" id="L29">    				game.getCurrentPlayer().discard.add(c);</span>
+    			}
+<span class="fc" id="L31">    		}</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">    		if (i != 2) {</span>
+<span class="fc" id="L33">    			game.getCurrentPlayer().getDeck().add(game.getCurrentPlayer().discard);</span>
+<span class="pc bpc" id="L34" title="1 of 4 branches missed.">    			while (game.getCurrentPlayer().getDeck().size() != 0 &amp;&amp; i != 2){</span>
+<span class="fc" id="L35">        			Card c = game.getCurrentPlayer().getDeck().take();</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        			if (c.getType().contains(CardType.TREASURE)){</span>
+<span class="fc" id="L37">        				treasures.add(c);</span>
+<span class="fc" id="L38">        				i++;</span>
+        			} else {
+<span class="fc" id="L40">        				game.getCurrentPlayer().discard.add(c);</span>
+        			}
+<span class="fc" id="L42">    			}</span>
+    		}
+<span class="fc" id="L44">    		game.getCurrentPlayer().hand.addAll(treasures);</span>
+<span class="fc" id="L45">    	}</span>
+    },
+<span class="fc" id="L47">    COUNCIL_ROOM(&quot;Council Room&quot;, EnumSet.of(CardType.ACTION), 5, 0, 0, 4, 1, 0){</span>
+    	public void play(Game game){
+<span class="fc" id="L49">    		super.play(game);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">    		for (Player p: game.playersList){</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    			if (p != game.getCurrentPlayer())</span>
+<span class="fc" id="L52">    				p.draw();</span>
+<span class="fc" id="L53">    		}</span>
+<span class="fc" id="L54">    	}</span>
+    },
+<span class="fc" id="L56">    FEAST(&quot;Feast&quot;, EnumSet.of(CardType.ACTION), 4){</span>
+    	public void play(Game game){
+<span class="fc" id="L58">    		super.play(game);</span>
+<span class="fc" id="L59">    		game.getCurrentPlayer().playArea.remove(this);</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">    		if (game.bot()) {</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">    			for (int i = 5; i &gt;= 0; i--){</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">    				for (Deck e : game.supply){</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">    					if (e.peek().cost() == i){</span>
+<span class="fc" id="L64">    						game.getCurrentPlayer().discard.add(e.take());</span>
+<span class="fc" id="L65">    						return;</span>
+    					}
+<span class="fc" id="L67">    				}</span>
+    			}
+    		}
+    		else {
+
+    	}
+<span class="nc" id="L73">    		}</span>
+    },
+<span class="fc" id="L75">    GARDENS(&quot;Gardens&quot;, EnumSet.of(CardType.VICTORY), 4),</span>
+<span class="fc" id="L76">    MINE(&quot;Mine&quot;, EnumSet.of(CardType.ACTION), 5){</span>
+    	public void play(Game game){
+<span class="fc" id="L78">    		super.play(game);</span>
+<span class="fc" id="L79">    		boolean check = false;</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">    		for (Card c : game.getCurrentPlayer().hand){</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">    			if (c.getType().contains(CardType.TREASURE)){</span>
+<span class="fc" id="L82">    				check = true;</span>
+    			}
+<span class="fc" id="L84">    		}</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">    		if (!check){</span>
+<span class="fc" id="L86">    			System.out.println(&quot;You have no Treasure in your hand. Boo hoo&quot;);</span>
+<span class="fc" id="L87">    			return;</span>
+    		}
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">    		if (game.bot()){</span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">    			for (Card d : EnumSet.of(Card.COPPER, Card.SILVER)){</span>
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">    				if (game.getCurrentPlayer().hand.remove(d)){</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">    					if (d == Card.COPPER)</span>
+<span class="fc" id="L93">    						game.getCurrentPlayer().hand.add(Card.SILVER);</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">    					if (d == Card.SILVER)</span>
+<span class="nc" id="L95">    						game.getCurrentPlayer().hand.add(Card.GOLD);</span>
+<span class="fc" id="L96">    					return;</span>
+    				}
+<span class="nc" id="L98">    			}</span>
+    		}
+    		else {
+    			}
+<span class="nc" id="L102">    		}</span>
+    },
+<span class="fc" id="L104">    REMODEL(&quot;Remodel&quot;, EnumSet.of(CardType.ACTION), 4){</span>
+    	public void play (Game game){
+<span class="fc" id="L106">    		super.play(game);</span>
+<span class="fc" id="L107">    		int value = 0;</span>
+    		
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">    		if (game.bot()){</span>
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">    			if (game.getCurrentPlayer().hand.size() &gt; 0){</span>
+<span class="fc" id="L111">    				value = game.getCurrentPlayer().hand.remove(0).cost();</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">    				for (int i = value + 2; i &gt;= 0; i--){</span>
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">        				for (Deck e : game.supply){</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">        					if (e.peek().cost() == i){</span>
+<span class="fc" id="L115">        						game.getCurrentPlayer().discard.add(e.take());</span>
+<span class="fc" id="L116">        						return;</span>
+        					}
+<span class="fc" id="L118">        				}</span>
+        			}
+    			}
+    		} else {
+    		
+    			}
+<span class="nc" id="L124">    		}</span>
+    },
+<span class="fc" id="L126">    SMITHY(&quot;Smithy&quot;, EnumSet.of(CardType.ACTION), 4, 0, 0, 3, 0, 0),</span>
+<span class="fc" id="L127">    VILLAGE(&quot;Village&quot;, EnumSet.of(CardType.ACTION), 3, 0, 0, 1, 0, 2),</span>
+<span class="fc" id="L128">    BARON(&quot;Baron&quot;, EnumSet.of(CardType.ACTION), 4, 0, 0, 0, 1, 0){</span>
+    	public void play(Game game){
+<span class="fc" id="L130">    		super.play(game);</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">    		if (game.getCurrentPlayer().hand.remove(Card.ESTATE)){</span>
+<span class="fc" id="L132">    			game.getCurrentPlayer().addGold(4);</span>
+    		} else {
+<span class="fc" id="L134">    			game.getCurrentPlayer().discard.add(game.victorySupply.get(0).take());</span>
+    		}
+<span class="fc" id="L136">    	}</span>
+    },
+<span class="fc" id="L138">    GREAT_HALL(&quot;Great Hall&quot;, EnumSet.of(CardType.ACTION, CardType.VICTORY), 3, 0, 1, 1, 0, 1),</span>
+<span class="fc" id="L139">    MINION(&quot;Minion&quot;, EnumSet.of(CardType.ACTION, CardType.ATTACK), 5, 0, 0, 0, 0, 1){</span>
+    	public void play(Game game){
+<span class="fc" id="L141">    		super.play(game);</span>
+<span class="fc" id="L142">    		game.getCurrentPlayer().addGold(2);</span>
+    		//Does other stuff
+<span class="fc" id="L144">    	}</span>
+    },
+<span class="fc" id="L146">    STEWARD(&quot;Steward&quot;, EnumSet.of(CardType.ACTION), 3){</span>
+    	public void play(Game game){
+<span class="fc" id="L148">    		super.play(game);</span>
+<span class="fc" id="L149">    		game.getCurrentPlayer().draw(2);</span>
+<span class="fc" id="L150">    	}</span>
+    },
+<span class="fc" id="L152">    CUTPURSE(&quot;Cutpurse&quot;, EnumSet.of(CardType.ACTION, CardType.ATTACK), 4, 2, 0, 0, 0, 0){</span>
+    	public void play(Game game){
+<span class="fc" id="L154">    		super.play(game);</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">    		for (Player p : game.playersList){</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">    			if (p != game.getCurrentPlayer()){</span>
+<span class="pc bpc" id="L157" title="1 of 2 branches missed.">    				if( p.hand.remove(Card.COPPER)){</span>
+<span class="fc" id="L158">    					p.discard.add(Card.COPPER);</span>
+    				}
+    			}
+<span class="fc" id="L161">    		}</span>
+<span class="fc" id="L162">    	}</span>
+    },
+<span class="fc" id="L164">    EMBARGO(&quot;Embargo&quot;, EnumSet.of(CardType.ACTION), 2, 2, 0, 0, 0, 0){</span>
+    	public void play(Game game){
+<span class="fc" id="L166">    		super.play(game);</span>
+<span class="fc" id="L167">    		game.kingdomCards.get(0).addEmbargo();</span>
+<span class="fc" id="L168">    		game.getCurrentPlayer().playArea.remove(this);</span>
+<span class="fc" id="L169">    	}</span>
+    },
+<span class="fc" id="L171">    SALVAGER(&quot;Salvager&quot;, EnumSet.of(CardType.ACTION), 4, 0, 0, 0, 1, 0){</span>
+    	public void play(Game game){
+<span class="fc" id="L173">    		super.play(game);</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">    		for (Card c : game.getCurrentPlayer().hand){</span>
+<span class="fc bfc" id="L175" title="All 2 branches covered.">    			if (c != Card.COPPER){</span>
+<span class="fc" id="L176">    				game.getCurrentPlayer().addGold(c.cost());</span>
+<span class="fc" id="L177">    				game.getCurrentPlayer().hand.remove(c);</span>
+<span class="fc" id="L178">    				return;</span>
+    			}
+<span class="fc" id="L180">    		}</span>
+<span class="nc" id="L181">    	}</span>
+    },
+<span class="fc" id="L183">    SEA_HAG(&quot;Sea Hag&quot;, EnumSet.of(CardType.ACTION, CardType.ATTACK), 4){</span>
+    	public void play(Game game){
+<span class="fc" id="L185">    		super.play(game);</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">    		for (Player p : game.playersList){</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">    			if (p != game.getCurrentPlayer()){</span>
+<span class="fc" id="L188">    				p.discard.add(p.getDeck().take());</span>
+<span class="fc" id="L189">    				p.getDeck().add(Card.CURSE);</span>
+    			}
+<span class="fc" id="L191">    		}</span>
+<span class="fc" id="L192">    	}</span>
+    },
+<span class="fc" id="L194">    TREASURE_MAP(&quot;Treasure Map&quot;, EnumSet.of(CardType.ACTION), 4){</span>
+    	public void play(Game game){
+    		
+<span class="fc" id="L197">    		super.play(game);</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">    		if (game.getCurrentPlayer().hand.remove(Card.TREASURE_MAP)){</span>
+<span class="fc" id="L199">    			game.getCurrentPlayer().playArea.remove(Card.TREASURE_MAP);</span>
+<span class="fc bfc" id="L200" title="All 2 branches covered.">    			for (int i = 0; i &lt; 4; i++){</span>
+<span class="fc" id="L201">    				game.getCurrentPlayer().getDeck().add(game.treasureSupply.get(2).take());</span>
+    			}
+    		}
+<span class="fc" id="L204">    	}</span>
+    },
+<span class="fc" id="L206">    CURSE(&quot;Curse&quot;, EnumSet.of(CardType.VICTORY), 0, 0, -1, 0, 0, 0);</span>
+
+    private final String name;
+    private final int cost;
+    private final EnumSet&lt;CardType&gt; type;
+    private final int gold;
+    private final int victoryPoints;
+    private final int draws;
+    private final int buys;
+    private final int actions;
+
+<span class="fc" id="L217">    Card (String n, EnumSet&lt;CardType&gt; type, int cost, int gold, int victoryPoints, int draws, int buys, int actions) {</span>
+<span class="fc" id="L218">        name = n;</span>
+<span class="fc" id="L219">        this.type = type;</span>
+<span class="fc" id="L220">        this.cost = cost;</span>
+<span class="fc" id="L221">        this.gold = gold;</span>
+<span class="fc" id="L222">        this.victoryPoints = victoryPoints;</span>
+<span class="fc" id="L223">        this.draws = draws;</span>
+<span class="fc" id="L224">        this.buys = buys;</span>
+<span class="fc" id="L225">        this.actions = actions;</span>
+
+<span class="fc" id="L227">    }</span>
+    Card (String n, EnumSet&lt;CardType&gt; type, int cost){
+<span class="fc" id="L229">        this(n, type, cost, 0, 0, 0, 0, 0);}</span>
+    
+<span class="fc" id="L231">    public String getName(){return name;}</span>
+<span class="fc" id="L232">    public int cost(){return cost;}</span>
+<span class="fc" id="L233">    public EnumSet&lt;CardType&gt; getType(){return type;}</span>
+<span class="fc" id="L234">    public int gold() {return gold;}</span>
+<span class="fc" id="L235">    public int victoryPoints() {return victoryPoints;}</span>
+<span class="fc" id="L236">    public int draws() {return draws;}</span>
+<span class="fc" id="L237">    public int buys() {return buys;}</span>
+<span class="fc" id="L238">    public int actions() {return actions;}</span>
+    
+    public void play(Game game){
+<span class="fc" id="L241">    	System.out.println(&quot;Player &quot; + game.playersList.indexOf(game.getCurrentPlayer()) + &quot; Playing &quot; + this.getName());</span>
+<span class="fc" id="L242">    	game.getCurrentPlayer().addGold(gold);</span>
+<span class="fc" id="L243">    	game.getCurrentPlayer().addActions(actions);</span>
+<span class="fc" id="L244">    	game.getCurrentPlayer().addBuys(buys);</span>
+<span class="fc" id="L245">    	game.getCurrentPlayer().draw(draws);</span>
+<span class="fc" id="L246">    	game.getCurrentPlayer().playArea.add(this);</span>
+<span class="fc" id="L247">    	game.getCurrentPlayer().hand.remove(this);</span>
+    	
+<span class="fc" id="L249">    }</span>
+
+    
+    
+    public static String strToName(String n){
+<span class="fc" id="L254">    	return n.replace(&quot; &quot;, &quot;_&quot;).toUpperCase();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.5.201112152213</span></div></body></html>

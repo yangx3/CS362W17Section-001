@@ -1,0 +1,21 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Dominion,org.cs362.dominion,Card.new Card() {...},0,40,0,4,0,8,0,4,0,2
+Dominion,org.cs362.dominion,Card.new Card() {...},0,42,0,4,0,7,0,4,0,2
+Dominion,org.cs362.dominion,Card,0,557,0,0,0,53,0,15,0,15
+Dominion,org.cs362.dominion,CardType,0,90,0,0,0,6,0,5,0,5
+Dominion,org.cs362.dominion,Card.new Card() {...},0,30,0,0,0,5,0,2,0,2
+Dominion,org.cs362.dominion,Card.new Card() {...},1,45,1,3,1,8,1,3,0,2
+Dominion,org.cs362.dominion,Game,2,418,2,30,0,82,2,26,0,12
+Dominion,org.cs362.dominion,Randomness,6,55,1,5,4,10,2,7,1,5
+Dominion,org.cs362.dominion,PlayDom,163,0,20,0,37,0,12,0,2,0
+Dominion,org.cs362.dominion,Card.new Card() {...},0,44,1,5,0,8,1,4,0,2
+Dominion,org.cs362.dominion,Card.new Card() {...},0,36,0,4,0,7,0,4,0,2
+Dominion,org.cs362.dominion,Card.new Card() {...},0,97,1,13,0,22,1,8,0,2
+Dominion,org.cs362.dominion,Card.new Card() {...},8,74,5,11,3,17,5,5,0,2
+Dominion,org.cs362.dominion,Card.new Card() {...},3,50,3,5,1,10,3,3,0,2
+Dominion,org.cs362.dominion,Card.new Card() {...},0,40,0,2,0,6,0,3,0,2
+Dominion,org.cs362.dominion,Card.new Card() {...},3,61,4,6,1,12,4,3,0,2
+Dominion,org.cs362.dominion,Deck,0,68,0,2,0,21,0,12,0,11
+Dominion,org.cs362.dominion,Card.new Card() {...},0,17,0,0,0,4,0,2,0,2
+Dominion,org.cs362.dominion,Card.new Card() {...},0,22,0,0,0,4,0,2,0,2
+Dominion,org.cs362.dominion,Player,0,339,0,30,0,76,0,30,0,15

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.Card_ESTest
+-------------------------------------------------------------------------------
+Tests run: 35, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.015 sec <<< FAILURE! - in org.cs362.dominion.Card_ESTest
+test13(org.cs362.dominion.Card_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.Randomness.nextRandomInt(Randomness.java:34)
+	at org.cs362.dominion.Player.drawCard(Player.java:44)
+	at org.cs362.dominion.Card_ESTest.test13(Card_ESTest.java:222)
+

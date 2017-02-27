@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">RegressionTest (Feb 26, 2017 11:29:33 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">import java.util.List;
+import java.util.LinkedList;
+import java.util.ArrayList;
+
+public class Player {
+	
+	
+<span class="fc" id="L8">	private List&lt;Card&gt; hand = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L9">	private LinkedList&lt;Card&gt; deck = new LinkedList&lt;Card&gt;();</span>
+<span class="fc" id="L10">	private List&lt;Card&gt; discard = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L11">	private List&lt;Card&gt; playedCards = new ArrayList&lt;Card&gt;();</span>
+	
+	private int numActions; /* Starts at 1 each turn */
+	private int coins; /* Coins available to buy with */
+	private int numBuys; /* Starts at 1 each turn */
+	
+	private String PlayerUsername;
+	private int PlayerNumber;
+	
+<span class="fc" id="L20">	public Player(String Username, int pNum, GameBoard gb)</span>
+	{
+<span class="fc" id="L22">		this.PlayerUsername = Username;</span>
+<span class="fc" id="L23">		this.PlayerNumber = pNum;</span>
+<span class="fc" id="L24">		createDeck(gb);</span>
+<span class="fc" id="L25">		initPlayerTurn();</span>
+<span class="fc" id="L26">	}</span>
+	
+	public String getName()
+	{
+<span class="fc" id="L30">		return this.PlayerUsername;</span>
+	}
+	
+	public int getNum()
+	{
+<span class="fc" id="L35">		return this.PlayerNumber;</span>
+	}
+	
+	public int getNumActions()
+	{
+<span class="fc" id="L40">		return this.numActions;</span>
+	}
+	
+	public int getCoins()
+	{
+<span class="fc" id="L45">		return this.coins;</span>
+	}
+	
+	public int getBuys()
+	{
+<span class="fc" id="L50">		return this.numBuys;</span>
+	}
+	
+	public List&lt;Card&gt; getHand()
+	{
+<span class="fc" id="L55">		return this.hand;</span>
+	}
+	
+	public LinkedList&lt;Card&gt; getDeck()
+	{
+<span class="fc" id="L60">		return this.deck;</span>
+	}
+	
+	public List&lt;Card&gt; getDiscard()
+	{
+<span class="fc" id="L65">		return this.discard;</span>
+	}
+	
+	public List&lt;Card&gt; getPlayedCards()
+	{
+<span class="fc" id="L70">		return this.playedCards;</span>
+	}
+	
+	private void createDeck(GameBoard gb)
+	{
+<span class="fc bfc" id="L75" title="All 2 branches covered.">		for (int i = 0; i &lt; 7; i++)</span>
+		{
+<span class="fc" id="L77">			gb.takeCard(Card.copper);</span>
+<span class="fc" id="L78">			deck.add(Card.copper);</span>
+		}
+		
+<span class="fc bfc" id="L81" title="All 2 branches covered.">		for (int i = 0; i &lt; 3; i++)</span>
+		{
+<span class="fc" id="L83">			gb.takeCard(Card.estate);</span>
+<span class="fc" id="L84">			deck.add(Card.estate);</span>
+		}
+<span class="fc" id="L86">	}</span>
+	
+	// Draw a card from the deck. Shuffle if deck is empty
+	public Card drawCard()
+	{
+<span class="fc bfc" id="L91" title="All 2 branches covered.">		if (deck.isEmpty())</span>
+		{
+<span class="fc" id="L93">			System.out.println(&quot;Shuffling the deck of the player &quot; + PlayerUsername + &quot;.&quot;);</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">			while (discard.size() &gt; 0)</span>
+			{
+<span class="fc" id="L96">				int index = (int) Randomness.nextRandomInt(discard.size());</span>
+<span class="fc" id="L97">				deck.add(discard.remove(index));</span>
+			}
+		}
+<span class="fc" id="L100">		Card toDraw = deck.poll();</span>
+<span class="fc" id="L101">		hand.add(toDraw);</span>
+<span class="fc" id="L102">		System.out.println(PlayerUsername + &quot; drew &quot; + toDraw);</span>
+<span class="fc" id="L103">		return toDraw;</span>
+	}
+	
+	//Called in constructor and after each turn is over
+	public void initPlayerTurn()
+	{
+<span class="fc" id="L109">		numActions = 1;</span>
+<span class="fc" id="L110">		coins = 0;</span>
+<span class="fc" id="L111">		numBuys = 1;</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">		for (int i = 0; i &lt; 5; i++)</span>
+		{
+<span class="fc bfc" id="L114" title="All 2 branches covered.">			if (deck.size() + discard.size() &gt; 0)</span>
+			{
+<span class="fc" id="L116">				drawCard();</span>
+			}
+		}
+<span class="fc" id="L119">	}</span>
+	
+	public void buyCard(Card c, GameBoard gb)
+	{
+<span class="fc bfc" id="L123" title="All 2 branches covered.">		if (numBuys &gt;= 1)</span>
+		{
+<span class="fc bfc" id="L125" title="All 2 branches covered.">			if (coins &gt;= c.getCost())</span>
+			{
+<span class="fc bfc" id="L127" title="All 2 branches covered.">				for (int i = 0; i &lt; gb.numEmbargoTokens(c); i++)</span>
+				{
+<span class="fc bfc" id="L129" title="All 2 branches covered.">					if (gb.hasCardsAvailable(Card.curse))</span>
+					{
+<span class="fc" id="L131">						System.out.println(PlayerUsername + &quot; bought card with embargo token/s.&quot;);</span>
+<span class="fc" id="L132">						gainCard(Card.curse, gb);</span>
+					}
+				}
+				
+<span class="fc" id="L136">				System.out.println(PlayerUsername + &quot; bought &quot; + c);</span>
+<span class="fc" id="L137">				gb.takeCard(c);</span>
+<span class="fc" id="L138">				discard.add(c);</span>
+<span class="fc" id="L139">				coins -= c.getCost();</span>
+			}
+		}
+		
+<span class="fc" id="L143">		numBuys --;</span>
+<span class="fc" id="L144">	}</span>
+	
+	public void gainCard(Card c, GameBoard gb)
+	{
+<span class="fc bfc" id="L148" title="All 2 branches covered.">		if (gb.hasCardsAvailable(c))</span>
+		{
+<span class="fc" id="L150">			System.out.println(PlayerUsername + &quot; gained &quot; + c);</span>
+<span class="fc" id="L151">			gb.takeCard(c);</span>
+<span class="fc" id="L152">			discard.add(c);</span>
+		}
+
+<span class="fc" id="L155">	}</span>
+	
+	public void gainCardToHand(Card c, GameBoard gb)
+	{
+<span class="fc bfc" id="L159" title="All 2 branches covered.">		if (gb.hasCardsAvailable(c))</span>
+		{
+<span class="fc" id="L161">			System.out.println(PlayerUsername + &quot; gained &quot; + c);</span>
+<span class="fc" id="L162">			gb.takeCard(c);</span>
+<span class="fc" id="L163">			hand.add(c);</span>
+		}
+<span class="fc" id="L165">	}</span>
+
+	public void Discard(Card c)
+	{
+<span class="fc" id="L169">		System.out.println(PlayerUsername + &quot; discarded &quot; + c);</span>
+<span class="fc" id="L170">		hand.remove(c);</span>
+<span class="fc" id="L171">		discard.add(c);</span>
+<span class="fc" id="L172">	}</span>
+
+	public void playCard(int handPos, GameBoard gb)
+	{
+<span class="fc" id="L176">		Card c = hand.get(handPos);</span>
+<span class="fc" id="L177">		System.out.println(PlayerUsername + &quot; played &quot; + c);</span>
+<span class="fc" id="L178">		playedCards.add(c);</span>
+<span class="fc" id="L179">		hand.remove(handPos);</span>
+		
+<span class="pc bpc" id="L181" title="1 of 2 branches missed.">		if (numActions &gt;= 1)</span>
+		{
+<span class="pc bpc" id="L183" title="3 of 13 branches missed.">			switch (c) </span>
+			{
+				case adventurer: 
+					//Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
+					/* If no/only 1 treasure found, stop when full deck seen */
+					Card card;
+<span class="nc" id="L189">					int numTreasureCards = 0;</span>
+<span class="nc bnc" id="L190" title="All 2 branches missed.">					while (numTreasureCards != 2)</span>
+					{
+<span class="nc bnc" id="L192" title="All 2 branches missed.">						if (deck.size() + discard.size() &gt; 0)</span>
+						{
+<span class="nc" id="L194">							card = drawCard();</span>
+							
+<span class="nc bnc" id="L196" title="All 2 branches missed.">							if (card.getTypes().contains(&quot;treasure&quot;))</span>
+							{
+<span class="nc" id="L198">								numTreasureCards ++;</span>
+<span class="nc" id="L199">							}</span>
+							else
+							{
+<span class="nc" id="L202">								hand.remove(card);</span>
+<span class="nc" id="L203">								discard.add(card);</span>
+							}
+<span class="nc bnc" id="L205" title="All 2 branches missed.">							if (deck.size() == 0)</span>
+							{
+<span class="nc" id="L207">								break;</span>
+							}
+						}
+						
+					}
+<span class="nc" id="L212">					break;</span>
+				case ambassador:
+					//Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply. Then each other player gains a copy of it.
+					/* choice1 = hand#, choice2 = number to return to supply */
+<span class="nc" id="L216">					int cardToReveal = Randomness.nextRandomInt(hand.size());</span>
+<span class="nc" id="L217">					Card revealCard = hand.get(cardToReveal);</span>
+<span class="nc" id="L218">					int numInHand = getNumberInHand(revealCard);</span>
+<span class="nc" id="L219">					int numToReturn = Randomness.nextRandomInt(numInHand);</span>
+<span class="nc bnc" id="L220" title="All 2 branches missed.">					if (numToReturn &gt; 2)</span>
+					{
+<span class="nc" id="L222">						numToReturn = 2;</span>
+					}
+<span class="nc bnc" id="L224" title="All 2 branches missed.">					for (int i = 0; i &lt; numToReturn; i++)</span>
+					{
+<span class="nc" id="L226">						System.out.println(PlayerUsername + &quot; returned &quot; + revealCard);</span>
+<span class="nc" id="L227">						hand.remove(revealCard);</span>
+<span class="nc" id="L228">						gb.returnCard(revealCard);</span>
+					}
+<span class="nc" id="L230">					gb.opponentGainCard(PlayerNumber, revealCard);</span>
+					
+<span class="nc" id="L232">					break;</span>
+				case baron:
+					//+1 Buy, You may discard an Estate for +4 coins. If you don't, gain an Estate.
+					/* choice1: boolean for discard of estate */
+					/* Discard is always of first (lowest index) estate */
+<span class="nc" id="L237">					int estateIndex = getFirstEstate();</span>
+<span class="nc" id="L238">					numBuys += 1;</span>
+<span class="nc" id="L239">					int willDiscard = Randomness.nextRandomInt(2);</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">					if (estateIndex != -1)</span>
+					{
+<span class="nc" id="L242">						System.out.println(&quot;Has an estate&quot;);</span>
+<span class="nc bnc" id="L243" title="All 2 branches missed.">						if (willDiscard == 1)</span>
+						{
+<span class="nc" id="L245">							System.out.println(&quot;Gaining coins&quot;);</span>
+<span class="nc" id="L246">							Discard(hand.get(estateIndex));</span>
+<span class="nc" id="L247">							coins += 8;</span>
+<span class="nc" id="L248">						}</span>
+						else
+						{
+<span class="nc" id="L251">							System.out.println(&quot;Gaining estate&quot;);</span>
+<span class="nc" id="L252">							gainCard(Card.estate, gb);</span>
+						}
+<span class="nc" id="L254">					}</span>
+					else
+					{
+<span class="nc" id="L257">						System.out.println(&quot;Gaining estate&quot;);</span>
+<span class="nc" id="L258">						gainCard(Card.estate, gb);</span>
+					}
+<span class="nc" id="L260">					break;</span>
+				case council_room:
+					//+4 Cards, +1 Buy, Each other player draws a card.
+<span class="fc bfc" id="L263" title="All 2 branches covered.">					for (int i = 0; i &lt; 4; i++)</span>
+					{
+<span class="pc bpc" id="L265" title="1 of 2 branches missed.">						if (deck.size() + discard.size() &gt; 0)</span>
+						{
+<span class="fc" id="L267">							drawCard();</span>
+						}
+					}
+<span class="fc" id="L270">					numBuys += 1;</span>
+<span class="fc" id="L271">					gb.opponentDraw(PlayerNumber);</span>
+<span class="fc" id="L272">					break;</span>
+				case cutpurse:
+					//+2 coin, Each other player discards a Copper card (or reveals a hand with no Copper).
+<span class="fc" id="L275">					coins += 2;</span>
+<span class="fc" id="L276">					gb.opponentDiscardCopper(PlayerNumber);</span>
+<span class="fc" id="L277">					break;</span>
+				case embargo:
+					//+2 coins,	Trash this card. Put an Embargo token on top of a Supply pile. When a player buys a card, he gains a Curse card per Embargo token on that pile.
+					/* choice1 = supply# */
+<span class="fc" id="L281">					coins += 2;</span>
+<span class="fc" id="L282">					gb.trashCard(c);</span>
+<span class="fc" id="L283">					playedCards.remove(playedCards.indexOf(c));</span>
+<span class="fc" id="L284">					List&lt;Card&gt; activeSupplyPiles = gb.getActiveSupplyPiles();</span>
+<span class="fc" id="L285">					int supplyIndex = (int) Randomness.nextRandomInt(activeSupplyPiles.size());</span>
+<span class="fc" id="L286">					gb.placeEmbargo(activeSupplyPiles.get(supplyIndex));</span>
+<span class="fc" id="L287">					break;</span>
+				case feast:
+					//Trash this card. Gain a card costing up to 5 coins.
+					/* choice1 is supply # of card gained) */
+<span class="fc" id="L291">					gb.trashCard(c);</span>
+<span class="fc" id="L292">					playedCards.remove(playedCards.indexOf(c));</span>
+<span class="fc" id="L293">					List&lt;Card&gt; cardsUpToFive = gb.getPurchaseableCards(5);</span>
+<span class="fc" id="L294">					int indexToGainFeast = (int) Randomness.nextRandomInt(cardsUpToFive.size());</span>
+<span class="fc" id="L295">					gainCard(cardsUpToFive.get(indexToGainFeast), gb);</span>
+<span class="fc" id="L296">					break;</span>
+				case great_hall:
+					//+1 Card, +1 Action. Worth 1 victory point
+<span class="pc bpc" id="L299" title="1 of 2 branches missed.">					if (deck.size() + discard.size() &gt; 0)</span>
+					{
+<span class="fc" id="L301">						drawCard();</span>
+					}
+<span class="pc bpc" id="L303" title="1 of 2 branches missed.">					if (deck.size() + discard.size() &gt; 0)</span>
+					{
+<span class="fc" id="L305">						drawCard();</span>
+					}
+<span class="pc bpc" id="L307" title="1 of 2 branches missed.">					if (deck.size() + discard.size() &gt; 0)</span>
+					{
+<span class="fc" id="L309">						drawCard();</span>
+					}
+<span class="fc" id="L311">					numActions += 2;</span>
+<span class="fc" id="L312">					break;</span>
+				case mine:
+					//You may trash a Treasure from your hand. Gain a Treasure to your hand costing up to 3 coins more than it.
+					/* choice1 is hand# of money to trash, choice2 is supply# of money to put in hand */
+<span class="fc" id="L316">					List&lt;Integer&gt; indices = treasureCardIndices();</span>
+<span class="fc bfc" id="L317" title="All 2 branches covered.">					if (indices.size() != 0)</span>
+					{
+<span class="fc" id="L319">						int indexTreasureToTrash = (int) Randomness.nextRandomInt(indices.size());</span>
+<span class="fc" id="L320">						List&lt;Card&gt; treasuresToGain = gb.getPurchaseableCards(hand.get(indices.get(indexTreasureToTrash)).getCost() + 3, &quot;treasure&quot;);</span>
+<span class="fc" id="L321">						gb.trashCard(hand.get(indices.get(indexTreasureToTrash)));</span>
+<span class="fc" id="L322">						hand.remove(indices.get(indexTreasureToTrash));</span>
+<span class="fc" id="L323">						hand.add(getHighestValueCard(treasuresToGain));</span>
+					}
+<span class="fc" id="L325">					break;</span>
+				case remodel:
+					//Trash a card from your hand. Gain a card costing up to 2 coins more than it.
+					/* choice1 is hand# of card to remodel, choice2 is supply# */
+<span class="fc" id="L329">					int indexToTrash = (int) Randomness.nextRandomInt(hand.size());</span>
+<span class="fc" id="L330">					gb.trashCard(hand.get(indexToTrash));</span>
+<span class="fc" id="L331">					List&lt;Card&gt; cardsToGain = gb.getPurchaseableCards(hand.get(indexToTrash).getCost());</span>
+<span class="fc" id="L332">					hand.remove(indexToTrash);</span>
+<span class="fc" id="L333">					int indexToGain = (int) Randomness.nextRandomInt(cardsToGain.size());</span>
+<span class="fc" id="L334">					gainCard(cardsToGain.get(indexToGain), gb);</span>
+<span class="fc" id="L335">					break;</span>
+				case smithy:
+					//+3 Cards
+<span class="fc bfc" id="L338" title="All 2 branches covered.">					for (int i = 0; i &lt; 3; i++)</span>
+					{
+<span class="pc bpc" id="L340" title="1 of 2 branches missed.">						if (deck.size() + discard.size() &gt; 0)</span>
+						{
+<span class="fc" id="L342">							drawCard();</span>
+						}
+					}
+<span class="fc" id="L345">					break;</span>
+				case salvager:
+					//+1 buy, trash a card from your hand. + coins equal to its cost
+<span class="fc" id="L348">					numBuys += 1;</span>
+<span class="fc" id="L349">					Card salvageCard = Randomness.randomMember(hand);</span>
+<span class="fc" id="L350">					gb.trashCard(salvageCard);</span>
+<span class="fc" id="L351">					hand.remove(hand.indexOf(salvageCard));</span>
+<span class="fc" id="L352">					coins += salvageCard.getCost();</span>
+<span class="fc" id="L353">					break;</span>
+				default:
+<span class="fc" id="L355">					break;</span>
+			
+			}
+		}
+<span class="fc" id="L359">		numActions --;</span>
+<span class="fc" id="L360">	}</span>
+	
+	private List&lt;Integer&gt; treasureCardIndices()
+	{
+<span class="fc" id="L364">		List&lt;Integer&gt; indices = new ArrayList&lt;Integer&gt;();</span>
+<span class="fc bfc" id="L365" title="All 2 branches covered.">		for (int i = 0; i &lt; hand.size(); i++)</span>
+		{
+<span class="fc bfc" id="L367" title="All 2 branches covered.">			if (hand.get(i).getTypes().contains(&quot;treasure&quot;))</span>
+			{
+<span class="fc" id="L369">				indices.add(i);</span>
+			}
+		}
+<span class="fc" id="L372">		return indices;</span>
+	}
+	
+	private Card getHighestValueCard(List&lt;Card&gt; cards)
+	{
+<span class="fc" id="L377">		int MaxValue = 0;</span>
+<span class="fc" id="L378">		Card MaxCard = null;</span>
+		
+<span class="fc bfc" id="L380" title="All 2 branches covered.">		for (Card c : cards)</span>
+		{
+<span class="fc bfc" id="L382" title="All 2 branches covered.">			if (c.getCost() &gt; MaxValue)</span>
+			{
+<span class="fc" id="L384">				MaxValue = c.getCost();</span>
+<span class="fc" id="L385">				MaxCard = c;</span>
+			}
+		}
+		
+<span class="fc" id="L389">		return MaxCard;</span>
+	}
+
+	public boolean hasCard(Card c)
+	{
+<span class="fc" id="L394">		return hand.contains(c);</span>
+	}
+	
+	private int getFirstEstate()
+	{
+<span class="nc" id="L399">		return hand.indexOf(Card.estate);</span>
+	}
+	
+	public int getNumberInHand(Card c)
+	{
+<span class="nc" id="L404">		int count = 0;</span>
+<span class="nc bnc" id="L405" title="All 2 branches missed.">		for (Card ca : hand)</span>
+		{
+<span class="nc bnc" id="L407" title="All 2 branches missed.">			if (ca == c)</span>
+			{
+<span class="nc" id="L409">				count ++;</span>
+			}
+		}
+<span class="nc" id="L412">		return count;</span>
+	}
+	
+	public int getNumberInHand(String type)
+	{
+<span class="nc" id="L417">		int count = 0;</span>
+<span class="nc bnc" id="L418" title="All 2 branches missed.">		for (Card ca : hand)</span>
+		{
+<span class="nc bnc" id="L420" title="All 2 branches missed.">			if (ca.getTypes().contains(type))</span>
+			{
+<span class="nc" id="L422">				count ++;</span>
+			}
+		}
+<span class="nc" id="L425">		return count;</span>
+	}
+	
+	public List&lt;Integer&gt; getActionCardIndices()
+	{
+<span class="fc" id="L430">		List&lt;Integer&gt; l = new ArrayList&lt;Integer&gt;();</span>
+		
+<span class="fc bfc" id="L432" title="All 2 branches covered.">		for (int i = 0; i &lt; hand.size(); i++)</span>
+		{
+<span class="fc bfc" id="L434" title="All 2 branches covered.">			if (hand.get(i).getTypes().contains(&quot;action&quot;))</span>
+			{
+<span class="fc" id="L436">				l.add(i);</span>
+			}
+		}
+		
+<span class="fc" id="L440">		return l;</span>
+	}
+	
+	public boolean hasActions()
+	{
+<span class="fc bfc" id="L445" title="All 2 branches covered.">		return numActions &gt; 0;</span>
+	}
+	
+	public boolean hasActionCard()
+	{
+<span class="fc" id="L450">		boolean hasCard = false;</span>
+<span class="fc bfc" id="L451" title="All 2 branches covered.">		for (Card c : hand)</span>
+		{
+<span class="fc bfc" id="L453" title="All 2 branches covered.">			if(c.getTypes().contains(&quot;action&quot;))</span>
+			{
+<span class="fc" id="L455">				hasCard = true;</span>
+<span class="fc" id="L456">				break;</span>
+			}
+		}
+<span class="fc" id="L459">		return hasCard;</span>
+	}
+	
+	public boolean hasBuys()
+	{
+<span class="fc bfc" id="L464" title="All 2 branches covered.">		return numBuys &gt; 0;</span>
+	}
+	
+	public Card getRandomBuyCard(GameBoard gb)
+	{
+<span class="fc" id="L469">		Card c = null;</span>
+		
+<span class="fc" id="L471">		List&lt;Card&gt; buyableCards = gb.getPurchaseableCards(coins);</span>
+<span class="fc bfc" id="L472" title="All 2 branches covered.">		if (buyableCards.size() &gt; 0)</span>
+		{
+<span class="fc" id="L474">			int cardToBuyIndex = Randomness.nextRandomInt(buyableCards.size());</span>
+<span class="fc" id="L475">			c = buyableCards.get(cardToBuyIndex);</span>
+		}
+		
+		
+<span class="fc" id="L479">		return c;</span>
+	}
+	
+	public void discardHandAndInPlay()
+	{
+<span class="fc bfc" id="L484" title="All 2 branches covered.">		for (int i = hand.size() - 1; i &gt;= 0; i--)</span>
+		{
+<span class="fc" id="L486">			discard.add(hand.get(i));</span>
+<span class="fc" id="L487">			hand.remove(i);</span>
+		}
+<span class="fc bfc" id="L489" title="All 2 branches covered.">		for (int i = playedCards.size() - 1; i &gt;= 0; i--)</span>
+		{
+<span class="fc" id="L491">			discard.add(playedCards.get(i));</span>
+<span class="fc" id="L492">			playedCards.remove(i);</span>
+		}
+<span class="fc" id="L494">	}</span>
+	
+	public int getTotalVictoryPoints()
+	{
+<span class="fc" id="L498">		int totalCards = hand.size() + deck.size() + discard.size() + playedCards.size();</span>
+<span class="fc" id="L499">		Card.gardens.setVictory(totalCards / 10);</span>
+<span class="fc" id="L500">		int victoryPoints = 0;</span>
+<span class="fc bfc" id="L501" title="All 2 branches covered.">		for (Card c : hand)</span>
+		{
+<span class="fc" id="L503">			victoryPoints += c.getVictory();</span>
+		}
+<span class="fc bfc" id="L505" title="All 2 branches covered.">		for (Card c : playedCards)</span>
+		{
+<span class="fc" id="L507">			victoryPoints += c.getVictory();</span>
+		}
+<span class="fc bfc" id="L509" title="All 2 branches covered.">		for (Card c : deck)</span>
+		{
+<span class="fc" id="L511">			victoryPoints += c.getVictory();</span>
+		}
+<span class="fc bfc" id="L513" title="All 2 branches covered.">		for (Card c : discard)</span>
+		{
+<span class="fc" id="L515">			victoryPoints += c.getVictory();</span>
+		}
+		
+<span class="fc" id="L518">		Card.gardens.setVictory(0);</span>
+		
+<span class="fc" id="L520">		return victoryPoints;</span>
+	}
+	
+	public void countTreasure()
+	{
+<span class="fc bfc" id="L525" title="All 2 branches covered.">		for (int i = hand.size() - 1; i &gt;= 0; i--)</span>
+		{
+<span class="fc bfc" id="L527" title="All 2 branches covered.">			if (hand.get(i).getTypes().contains(&quot;treasure&quot;))</span>
+			{
+<span class="fc" id="L529">				coins += hand.get(i).getTreasure();</span>
+<span class="fc" id="L530">				playedCards.add(hand.get(i));</span>
+<span class="fc" id="L531">				hand.remove(i);</span>
+			}
+		}
+<span class="fc" id="L534">	}</span>
+	
+	// This is just used to help with unit tests
+	public void addActions(int num)
+	{
+<span class="fc" id="L539">		numActions += num;</span>
+<span class="fc" id="L540">	}</span>
+	
+	public int getTotalCards()
+	{
+<span class="nc" id="L544">		return deck.size() + hand.size() + discard.size() + playedCards.size();</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>RegressionTest (Feb 26, 2017 11:29:33 AM)</div></body></html>
