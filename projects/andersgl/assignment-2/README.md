@@ -8,4 +8,4 @@ To run tests, including unit tests: mvn test
 To get code coverage for EvoSuite's tests: mvn evosuite:export
                                             mvn test (optionally add cobertura:cobertura here for coverage)
 
-To get code coverage for RandomTestDominion: mvn -Dtest=RandomTestDominion cobertura:cobertura
+To run/get code coverage for RandomTestDominion: mvn -Dtest=RandomTestDominion cobertura:cobertura
