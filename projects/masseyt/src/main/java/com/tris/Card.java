@@ -391,7 +391,7 @@ public class Card {
     }
 }
 
-//        1 REMODEL - ACTION: costs 4 - Trash a card from your hand. Gain a card gosting up to 2 Coins more than the trashed card. (10 remaining)
+//        1 REMODEL - ACTION: costs 4 - Trash a card from your hand. Gain a card costing up to 2 Coins more than the trashed card. (10 remaining)
 //        2 MARKET - ACTION: costs 5 - +1 Card. +1 Action. +1 Buy. +1 Coin. (10 remaining)
 //        3 WOODCUTTER - ACTION: costs 3 - +1 Buy. +2 Coins. (10 remaining)
 //        4 COPPER - TREASURE: costs 0, worth 1. (46 remaining)
