@@ -21,6 +21,23 @@
                 <groupId>org.evosuite.plugins</groupId>
                 <artifactId>evosuite-maven-plugin</artifactId>
                 <version>1.0.3</version>
+                <executions><execution>
+                    <goals> <goal> prepare </goal> </goals>
+                    <phase> process-test-classes </phase>
+                </execution></executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.17</version>
+                <configuration>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>org.evosuite.runtime.InitializingListener</value>
+                        </property>
+                    </properties>
+                </configuration>
             </plugin>
         </plugins>
 
@@ -33,7 +50,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
-        <evosuiteVersion>1.0.3</evosuiteVersion>
+        <evosuiteVersion>1.0.4</evosuiteVersion>
     </properties>
     <pluginRepositories>
         <pluginRepository>
@@ -47,10 +64,16 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <type>jar</type>
+            <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.evosuite</groupId>
+            <artifactId>evosuite-standalone-runtime</artifactId>
+            <version>1.0.4</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>net.sourceforge.cobertura</groupId>
             <artifactId>cobertura</artifactId>
@@ -61,7 +84,13 @@
             <artifactId>findbugs-maven-plugin</artifactId>
             <version>3.0.4</version>
         </dependency>
-
     </dependencies>
+    <repositories>
+        <repository>
+            <id>EvoSuite</id>
+            <name>EvoSuite Repository</name>
+            <url>http://www.evosuite.org/m2</url>
+        </repository>
+    </repositories>
 
 </project>

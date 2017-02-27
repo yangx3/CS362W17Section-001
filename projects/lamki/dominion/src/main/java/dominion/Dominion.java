@@ -6,29 +6,31 @@ public class Dominion
 {
 	public static void main(String[] args)
 	{
-		System.out.println("\n\t- Dominion Version 1.0 Kin-Ho Lam CS362 -");	
+		System.out.println("\n\t- Dominion Version 2.0 Kin-Ho Lam CS362 -");	
 		int play_num;
         int kc = 10;
 
-		switch (args.length) 
-		{
-		case 2:
-		    play_num = Integer.valueOf(args[0]);
+        if (args.length >= 2 || args.length == 3)
+        {
+    		play_num = Integer.valueOf(args[0]);
 		    kc = Integer.valueOf(args[1]);
 		    System.out.println("\n\tInitiating Game with "+play_num+" Players and " +kc+ " Kingdom Cards");
-		    break;
-		case 1:
-		    play_num = Integer.valueOf(args[0]);
-		    System.out.println("\n\tInitiating Game with "+play_num+" Players and 10 Kingdom Cards");
-		    break;
-		default:
-		    play_num = 2;
-		    System.out.println("\n\tUsage: java -jar lamki_dom.jar <number of players> <number of kingdom cards>");
+    	}
+    	else
+    	{
+    		play_num = 2;
+		    System.out.println("\n\tUsage: java -jar lamki_dom.jar <number of players> <number of kingdom cards> <game seed>");
 		    System.out.println("\n\tInitiating Game with 2 Players, 10 Kingdom Cards");
-		    break;
-		}
-
+    	}
+		
 		Random rand = ThreadLocalRandom.current(); //seed random
+    	int seed = rand.nextInt();
+		if (args.length == 3)
+		{
+			seed = Integer.valueOf(args[2]);
+		}
+		rand = new Random(seed);
+
 		Game game = new Game(); //create game object
 		game.initilize_game(play_num,kc); //int players, int number of kingdom cards
 		
@@ -98,5 +100,8 @@ public class Dominion
 			game.player[t].putback(); //put the player's hand back into their deck
 			t = game.set_turn(t); //Increment turn for next player
 		}
+		System.out.println("\n\t- Dominion Version 2.0 Kin-Ho Lam CS362 -");
+		System.out.println("\n\tFinished Game with "+play_num+" Players and " +kc+ " Kingdom Cards");
+		System.out.println("\tGame Seed: " + seed + "\n");
 	}
 }

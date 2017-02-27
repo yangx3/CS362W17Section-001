@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Card {
+
     public enum Type {
         TREASURE, ACTION, VICTORY;
     }
@@ -102,28 +103,33 @@ public class Card {
                 Card c;
                 do {
                     player.draw();
-                    c = player.hand.get(player.hand.size()-1);
-                    if (c.getType().equals(Type.TREASURE))
+                    c = player.hand.get(player.hand.size() - 1);
+                    if (c.getType().equals(Type.TREASURE)) {
                         two++;
-                    else
+                    } else {
                         player.discard(c);
+                    }
                 } while (two < 2);
                 return;
             case AMBASSADOR:
                 System.out.println("You play an Ambassador: Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply. Then each other player gains a copy of it.");
                 player.listCards(player.hand);
                 System.out.println("Choose a card to return to the supply:");
-                int sel = Input.getInt(1, player.hand.size()) - 1;
-                c = player.hand.remove(sel);
-                for (int i = 0; i < player.hand.size(); i++) {
-                    if (c.getName().equals(player.hand.get(i).getName())) {
-                        player.hand.remove(i);
-                        break;
+                int sel = Input.getInt(0, (player.hand.size()-1));
+                if (player.hand.get(sel).name.equals(Card.Name.CURSE)) {
+                    c = player.hand.remove(sel);
+                    for (int i = 0; i < player.hand.size(); i++) {
+                        if (c.getName().equals(player.hand.get(i).getName())) {
+                            player.hand.remove(i);
+                            break;
+                        }
+                    }
+                    for (Player p : game.players) {
+                        if (!p.name.equals(player.name)) {
+                            p.gain(c);
+                        }
                     }
                 }
-                for (Player p : game.players)
-                    if (!p.name.equals(player.name))
-                        p.gain(c);
                 return;
             case BARON:
                 System.out.println("You play a Baron: +1 Buy, You may discard an Estate card. If you do, +4 Coins. Otherwise, gain an Estate card.");
@@ -137,8 +143,9 @@ public class Card {
                         break;
                     }
                 }
-                if (extra)
+                if (extra) {
                     player.gain(getCardBoard(game.board, Name.ESTATE));
+                }
                 return;
             case COUNCIL_ROOM:
                 System.out.println("You play a Council Room: +4 Cards, +1 Buy, Each other player draws a card.");
@@ -146,8 +153,9 @@ public class Card {
                 player.draw();
                 player.draw();
                 player.buys++;
-                for (Player p : game.players)
+                for (Player p : game.players) {
                     p.draw();
+                }
 
                 return;
             case CUTPURSE:
@@ -185,15 +193,15 @@ public class Card {
                         done = true;
                     } else {
                         c = set.get(selection - 1);
-                        if (game.getRemaining(c) <= 0)
+                        if (game.getRemaining(c) <= 0) {
                             System.out.println("There are no " + c.getName() + "S remaining.");
-                        else {
+                        } else {
                             if (c.getCost() > 5) {
                                 System.out.println(c.getName() + " costs more than 5 coins.");
                             } else {
                                 game.board.put(c, game.board.get(c) - 1);
                                 player.gain(c);
-                                player.played.remove(player.played.size()-1);
+                                player.played.remove(player.played.size() - 1);
                                 done = true;
                             }
                         }
@@ -227,10 +235,12 @@ public class Card {
                 Card silver = set.get(0);
                 Card gold = set.get(0);
                 for (int i = 0; i < set.size(); i++) {
-                    if (set.get(i).getName().equals(Name.SILVER))
+                    if (set.get(i).getName().equals(Name.SILVER)) {
                         silver = set.get(i);
-                    if (set.get(i).getName().equals(Name.GOLD))
+                    }
+                    if (set.get(i).getName().equals(Name.GOLD)) {
                         gold = set.get(i);
+                    }
                 }
                 if (card.getName().equals(Name.COPPER)) {
                     player.gain(silver);
@@ -250,13 +260,18 @@ public class Card {
                 done = false;
                 set = game.listBoard();
                 do {
-                    int selection = Input.getInt(1, 17);
-                    c = set.get(selection - 1);
-                    if (game.getRemaining(c) <= 0)
+                    int selection = Input.getInt(0, 16);
+                    if (selection == 0) {
+                    	done = true;
+                    	System.out.println("Skipping gain");
+                    	break;
+                    }
+                    c = set.get(selection);
+                    if (game.getRemaining(c) <= 0) {
                         System.out.println("There are no " + c.getName() + "S remaining.");
-                    else {
-                        if (c.getCost() > (card.getCost()+2)) {
-                            System.out.println(c.getName() + " costs more than " + (card.getCost()+2) + " coins.");
+                    } else {
+                        if (c.getCost() > (card.getCost() + 2)) {
+                            System.out.println(c.getName() + " costs more than " + (card.getCost() + 2) + " coins.");
                         } else {
                             game.board.put(c, game.board.get(c) - 1);
                             player.gain(c);
@@ -344,7 +359,7 @@ public class Card {
 
     public static Card getCardBoard(HashMap<Card, Integer> map, Name name) {
         List<Card> set = new ArrayList<Card>();
-        for (Map.Entry<Card, Integer> list : map.entrySet()){
+        for (Map.Entry<Card, Integer> list : map.entrySet()) {
             Card c = list.getKey();
             set.add(c);
         }
@@ -376,7 +391,7 @@ public class Card {
     }
 }
 
-//        1 REMODEL - ACTION: costs 4 - Trash a card from your hand. Gain a card gosting up to 2 Coins more than the trashed card. (10 remaining)
+//        1 REMODEL - ACTION: costs 4 - Trash a card from your hand. Gain a card costing up to 2 Coins more than the trashed card. (10 remaining)
 //        2 MARKET - ACTION: costs 5 - +1 Card. +1 Action. +1 Buy. +1 Coin. (10 remaining)
 //        3 WOODCUTTER - ACTION: costs 3 - +1 Buy. +2 Coins. (10 remaining)
 //        4 COPPER - TREASURE: costs 0, worth 1. (46 remaining)

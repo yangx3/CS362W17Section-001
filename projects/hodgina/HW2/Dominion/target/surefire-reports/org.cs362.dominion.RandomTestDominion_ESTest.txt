@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.RandomTestDominion_ESTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.032 sec <<< FAILURE! - in org.cs362.dominion.RandomTestDominion_ESTest
+test1(org.cs362.dominion.RandomTestDominion_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.RandomTestDominion.main(RandomTestDominion.java:27)
+	at org.cs362.dominion.RandomTestDominion_ESTest.test1(RandomTestDominion_ESTest.java:43)
+
+test0(org.cs362.dominion.RandomTestDominion_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at org.cs362.dominion.RandomTestDominion.main(RandomTestDominion.java:27)
+	at org.cs362.dominion.RandomTestDominion_ESTest.test0(RandomTestDominion_ESTest.java:27)
+

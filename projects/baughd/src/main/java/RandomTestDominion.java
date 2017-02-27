@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 
 public class RandomTestDominion {
@@ -9,20 +10,31 @@ public class RandomTestDominion {
 
         List<Card> cards;
         GameState state;
+        Random gen = new Random();
 
 //INITIALIZE CARDS AND STATE
-        //the cards are achieved by each element/constant in the enum class
         cards = new ArrayList<Card>(Card.createCards());
         state = new GameState(cards);
-        //System.out.println("Initialization DominionBoard:\n " + state.toString());
 
-//INITIALIZE PLAYERS
-        Player player = new Player(state, "PLAYER 1");
+//INITIALIZE PLAYERS 2-4
+        Player player;
+        player = new Player(state, "PLAYER 1");
         state.addPlayer(player);
-
         player = new Player(state, "PLAYER 2");
         state.addPlayer(player);
+        int numPlayers = gen.nextInt(3);
+        while(numPlayers > 0)
+        {
+            player = new Player(state, "PLAYER " + (numPlayers+2));
+            state.addPlayer(player);
+            numPlayers--;
+        }
 
+        //Assert for number of players
+        if(state.players.size() >= 2 && state.players.size() <= 4)
+        {
+            System.out.println("NUMBER OF PLAYERS IS CORRECT");
+        } else System.out.println("ERROR: NUMBER OF PLAYERS IS INCORRECT");
 //INITIALIZE GAME
         state.initializeGame();
 

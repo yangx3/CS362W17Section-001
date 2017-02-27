@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Tristan Massey on 2/9/2017.
- */
+
 public class Game {
 
     List<Player> players = new ArrayList<Player>();
@@ -43,33 +41,66 @@ public class Game {
         board.put(Card.getCard(cards, Card.Name.DUTCHY), 8);
         board.put(Card.getCard(cards, Card.Name.PROVINCE), 8);
 
-        board.put(Card.getCard(cards, Card.Name.ADVENTURER), 10);
-        board.put(Card.getCard(cards, Card.Name.AMBASSADOR), 10);
-        board.put(Card.getCard(cards, Card.Name.BARON), 10);
-        board.put(Card.getCard(cards, Card.Name.COUNCIL_ROOM), 10);
-        board.put(Card.getCard(cards, Card.Name.CUTPURSE), 10);
-        board.put(Card.getCard(cards, Card.Name.EMBARGO), 10);
-        board.put(Card.getCard(cards, Card.Name.FEAST), 10);
-        board.put(Card.getCard(cards, Card.Name.GARDENS), 10);
-        board.put(Card.getCard(cards, Card.Name.GREAT_HALL), 10);
-        board.put(Card.getCard(cards, Card.Name.MINE), 10);
-//        board.put(Card.getCard(cards, Card.Name.REMODEL), 10);
-//        board.put(Card.getCard(cards, Card.Name.SMITHY), 10);
-//        board.put(Card.getCard(cards, Card.Name.VILLAGE), 10);
+        List<Integer> cardSelection = new ArrayList<Integer>();
+        while (cardSelection.size() < 10) {
+        	int rand = Input.getInt(1, 13);
+        	if (!(cardSelection.contains(rand))) {
+        		cardSelection.add(rand);
+        	}
+        }
+        if (cardSelection.contains(1)) {
+        	board.put(Card.getCard(cards, Card.Name.ADVENTURER), 10);
+            embargo.put(Card.getCard(cards, Card.Name.ADVENTURER), 0);
+        }
+        if (cardSelection.contains(2)) {
+        	board.put(Card.getCard(cards, Card.Name.AMBASSADOR), 10);
+            embargo.put(Card.getCard(cards, Card.Name.AMBASSADOR), 0);
+        }
+        if (cardSelection.contains(3)) {
+        	board.put(Card.getCard(cards, Card.Name.BARON), 10);
+            embargo.put(Card.getCard(cards, Card.Name.BARON), 0);
+        }
+        if (cardSelection.contains(4)) {
+        	board.put(Card.getCard(cards, Card.Name.COUNCIL_ROOM), 10);
+            embargo.put(Card.getCard(cards, Card.Name.COUNCIL_ROOM), 0);
+        }
+        if (cardSelection.contains(5)) {
+        	board.put(Card.getCard(cards, Card.Name.CUTPURSE), 10);
+            embargo.put(Card.getCard(cards, Card.Name.CUTPURSE), 0);
+        }
+        if (cardSelection.contains(6)) {
+        	board.put(Card.getCard(cards, Card.Name.EMBARGO), 10);
+            embargo.put(Card.getCard(cards, Card.Name.EMBARGO), 0);
+        }
+        if (cardSelection.contains(7)) {
+        	board.put(Card.getCard(cards, Card.Name.FEAST), 10);
+            embargo.put(Card.getCard(cards, Card.Name.FEAST), 0);
+        }
+        if (cardSelection.contains(8)) {
+        	board.put(Card.getCard(cards, Card.Name.GARDENS), 10);
+            embargo.put(Card.getCard(cards, Card.Name.GARDENS), 0);
+        }
+        if (cardSelection.contains(9)) {
+        	board.put(Card.getCard(cards, Card.Name.GREAT_HALL), 10);
+            embargo.put(Card.getCard(cards, Card.Name.GREAT_HALL), 0);
+        }
+        if (cardSelection.contains(10)) {
+        	board.put(Card.getCard(cards, Card.Name.MINE), 10);
+            embargo.put(Card.getCard(cards, Card.Name.MINE), 0);
+        }
+        if (cardSelection.contains(11)) {
+        	board.put(Card.getCard(cards, Card.Name.REMODEL), 10);
+            embargo.put(Card.getCard(cards, Card.Name.REMODEL), 0);
+        }
+        if (cardSelection.contains(12)) {
+        	board.put(Card.getCard(cards, Card.Name.SMITHY), 10);
+            embargo.put(Card.getCard(cards, Card.Name.SMITHY), 0);
+        }
+        if (cardSelection.contains(13)) {
+        	board.put(Card.getCard(cards, Card.Name.VILLAGE), 10);
+            embargo.put(Card.getCard(cards, Card.Name.VILLAGE), 0);
 
-        embargo.put(Card.getCard(cards, Card.Name.ADVENTURER), 0);
-        embargo.put(Card.getCard(cards, Card.Name.AMBASSADOR), 0);
-        embargo.put(Card.getCard(cards, Card.Name.BARON), 0);
-        embargo.put(Card.getCard(cards, Card.Name.COUNCIL_ROOM), 0);
-        embargo.put(Card.getCard(cards, Card.Name.CUTPURSE), 0);
-        embargo.put(Card.getCard(cards, Card.Name.EMBARGO), 0);
-        embargo.put(Card.getCard(cards, Card.Name.FEAST), 0);
-        embargo.put(Card.getCard(cards, Card.Name.GARDENS), 0);
-        embargo.put(Card.getCard(cards, Card.Name.GREAT_HALL), 0);
-        embargo.put(Card.getCard(cards, Card.Name.MINE), 0);
-//        embargo.put(Card.getCard(cards, Card.Name.REMODEL), 0);
-//        embargo.put(Card.getCard(cards, Card.Name.SMITHY), 0);
-//        embargo.put(Card.getCard(cards, Card.Name.VILLAGE), 0);
+        }
 
         for (Player p : players){
             for (int i = 0; i < 7; i++)
@@ -131,6 +162,7 @@ public class Game {
         int turn = 0;
         while (!isGameOver()){
             turn++;
+            System.out.println("CURRENT TURN: " + turn);
             for (Player p : players){
                 System.out.println(p.name + "'s turn.");
                 p.playAction();

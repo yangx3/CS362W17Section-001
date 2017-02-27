@@ -170,7 +170,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		case Baron: //done
 			System.out.println("+1 Card. +1 Buy.");
 			player.drawCard();
-			player.numBuys = player.numBuys + 2 ;
+			player.numBuys = player.numBuys + 1 ;
 			System.out.println("+4 coins or gains Estate.");
 			if(getCard(player.hand, CardName.Estate) != null) {
 				player.coins = player.coins + 4;
@@ -184,6 +184,8 @@ public final class Card implements Comparable<Card>, Cloneable{
 		//+4 Cards; +1 Buy
 		//Each other player draws a card.
 			System.out.println("+4 Cards, +1 Buy, All other Players +1 Cards");
+			player.drawCard();
+			player.drawCard();
 			player.drawCard();
 			player.drawCard();
 			player.numBuys = player.numBuys + 1;
@@ -201,7 +203,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		//+$2
 		//Each other player discards a Copper card (or reveals a hand with no Copper).
 			System.out.println("+2 Coins, Every other player discard a copper card");
-			player.coins = player.coins + 1;
+			player.coins = player.coins + 2;
 			for(Player players : state.players){ //for all players but the player who plaed it look for a copper and discard it
 				if(players != player && getCard(players.hand, CardName.Copper) != null){
 					players.discard(getCard(players.hand, CardName.Copper));
@@ -231,7 +233,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		//Trash this card. Gain a card costing up to $5.
 			System.out.println("Trash this card, Gain a Card Costing up to 5 coins");
 			player.playedCards.remove(getCard(player.playedCards, CardName.Feast));
-			player.coins = player.coins + 3;
+			player.coins = player.coins + 5;
 			return;
 
 		case Gardends: //This is taken care of in the player.score method
@@ -268,6 +270,9 @@ public final class Card implements Comparable<Card>, Cloneable{
 			return; //if neither is true it will just return
 		case Smithy:
 			player.drawCard();
+			player.drawCard();
+			player.drawCard();
+
 
 			return;
 

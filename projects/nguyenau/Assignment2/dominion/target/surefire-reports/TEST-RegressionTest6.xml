@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="110" failures="0" name="RegressionTest6" time="0.02" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.111-b15"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion"/>
+    <property name="java.runtime.version" value="1.8.0_111-b15"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="basedir" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="surefire.real.class.path" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/surefire/surefirebooter603327068955647634.jar"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="surefire.test.class.path" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/test-classes:/nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/generated-classes/cobertura:/nfs/stak/students/n/nguyenau/.m2/repository/junit/junit/4.12/junit-4.12.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/evosuite/evosuite-runtime/1.0.4-alpha2/evosuite-runtime-1.0.4-alpha2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/jboss/spec/javax/servlet/jboss-servlet-api_3.1_spec/1.0.0.Final/jboss-servlet-api_3.1_spec-1.0.0.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/ejb/javax.ejb-api/3.2/javax.ejb-api-3.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/faces/javax.faces-api/2.2/javax.faces-api-2.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/interceptor/javax.interceptor-api/1.2/javax.interceptor-api-1.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hibernate/hibernate-entitymanager/5.0.5.Final/hibernate-entitymanager-5.0.5.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hibernate/hibernate-core/5.0.5.Final/hibernate-core-5.0.5.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-orm/4.2.5.RELEASE/spring-orm-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-core/4.2.5.RELEASE/spring-core-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-jdbc/4.2.5.RELEASE/spring-jdbc-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-tx/4.2.5.RELEASE/spring-tx-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-context/4.2.5.RELEASE/spring-context-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-aop/4.2.5.RELEASE/spring-aop-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-expression/4.2.5.RELEASE/spring-expression-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/slf4j/slf4j-api/1.7.20/slf4j-api-1.7.20.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/../lib/tools.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/ow2/asm/asm-all/5.1/asm-all-5.1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar:/nfs/stak/students/n/nguyenau/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar:/nfs/stak/students/n/nguyenau/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="3.10.0-327.36.3.el7.x86_64"/>
+    <property name="user.home" value="/nfs/stak/students/n/nguyenau"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="user.name" value="nguyenau"/>
+    <property name="java.class.path" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/test-classes:/nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/generated-classes/cobertura:/nfs/stak/students/n/nguyenau/.m2/repository/junit/junit/4.12/junit-4.12.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/evosuite/evosuite-runtime/1.0.4-alpha2/evosuite-runtime-1.0.4-alpha2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/jboss/spec/javax/servlet/jboss-servlet-api_3.1_spec/1.0.0.Final/jboss-servlet-api_3.1_spec-1.0.0.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/ejb/javax.ejb-api/3.2/javax.ejb-api-3.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/faces/javax.faces-api/2.2/javax.faces-api-2.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar:/nfs/stak/students/n/nguyenau/.m2/repository/javax/interceptor/javax.interceptor-api/1.2/javax.interceptor-api-1.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hibernate/hibernate-entitymanager/5.0.5.Final/hibernate-entitymanager-5.0.5.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hibernate/hibernate-core/5.0.5.Final/hibernate-core-5.0.5.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-orm/4.2.5.RELEASE/spring-orm-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-core/4.2.5.RELEASE/spring-core-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-jdbc/4.2.5.RELEASE/spring-jdbc-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-tx/4.2.5.RELEASE/spring-tx-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-context/4.2.5.RELEASE/spring-context-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-aop/4.2.5.RELEASE/spring-aop-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/springframework/spring-expression/4.2.5.RELEASE/spring-expression-4.2.5.RELEASE.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/slf4j/slf4j-api/1.7.20/slf4j-api-1.7.20.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/../lib/tools.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/ow2/asm/asm-all/5.1/asm-all-5.1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar:/nfs/stak/students/n/nguyenau/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar:/nfs/stak/students/n/nguyenau/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar:/nfs/stak/students/n/nguyenau/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar:/nfs/stak/students/n/nguyenau/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre"/>
+    <property name="sun.java.command" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/surefire/surefirebooter603327068955647634.jar /nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/surefire/surefire861149342525504991tmp /nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/surefire/surefire5370103816201802467tmp"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_111"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/rt.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b15.el7_2.x86_64/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="localRepository" value="/nfs/stak/students/n/nguyenau/.m2/repository"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="RegressionTest6" name="test001" time="0"/>
+  <testcase classname="RegressionTest6" name="test002" time="0"/>
+  <testcase classname="RegressionTest6" name="test003" time="0"/>
+  <testcase classname="RegressionTest6" name="test004" time="0"/>
+  <testcase classname="RegressionTest6" name="test005" time="0"/>
+  <testcase classname="RegressionTest6" name="test006" time="0"/>
+  <testcase classname="RegressionTest6" name="test007" time="0"/>
+  <testcase classname="RegressionTest6" name="test008" time="0"/>
+  <testcase classname="RegressionTest6" name="test009" time="0"/>
+  <testcase classname="RegressionTest6" name="test010" time="0"/>
+  <testcase classname="RegressionTest6" name="test011" time="0"/>
+  <testcase classname="RegressionTest6" name="test012" time="0.001"/>
+  <testcase classname="RegressionTest6" name="test013" time="0"/>
+  <testcase classname="RegressionTest6" name="test014" time="0"/>
+  <testcase classname="RegressionTest6" name="test015" time="0"/>
+  <testcase classname="RegressionTest6" name="test016" time="0"/>
+  <testcase classname="RegressionTest6" name="test017" time="0"/>
+  <testcase classname="RegressionTest6" name="test018" time="0"/>
+  <testcase classname="RegressionTest6" name="test019" time="0"/>
+  <testcase classname="RegressionTest6" name="test020" time="0"/>
+  <testcase classname="RegressionTest6" name="test021" time="0"/>
+  <testcase classname="RegressionTest6" name="test022" time="0"/>
+  <testcase classname="RegressionTest6" name="test023" time="0"/>
+  <testcase classname="RegressionTest6" name="test024" time="0"/>
+  <testcase classname="RegressionTest6" name="test025" time="0"/>
+  <testcase classname="RegressionTest6" name="test026" time="0"/>
+  <testcase classname="RegressionTest6" name="test027" time="0"/>
+  <testcase classname="RegressionTest6" name="test028" time="0"/>
+  <testcase classname="RegressionTest6" name="test029" time="0"/>
+  <testcase classname="RegressionTest6" name="test030" time="0"/>
+  <testcase classname="RegressionTest6" name="test031" time="0"/>
+  <testcase classname="RegressionTest6" name="test032" time="0"/>
+  <testcase classname="RegressionTest6" name="test033" time="0"/>
+  <testcase classname="RegressionTest6" name="test034" time="0"/>
+  <testcase classname="RegressionTest6" name="test035" time="0"/>
+  <testcase classname="RegressionTest6" name="test036" time="0"/>
+  <testcase classname="RegressionTest6" name="test037" time="0"/>
+  <testcase classname="RegressionTest6" name="test038" time="0"/>
+  <testcase classname="RegressionTest6" name="test039" time="0"/>
+  <testcase classname="RegressionTest6" name="test040" time="0.001"/>
+  <testcase classname="RegressionTest6" name="test041" time="0"/>
+  <testcase classname="RegressionTest6" name="test042" time="0"/>
+  <testcase classname="RegressionTest6" name="test043" time="0"/>
+  <testcase classname="RegressionTest6" name="test044" time="0"/>
+  <testcase classname="RegressionTest6" name="test045" time="0"/>
+  <testcase classname="RegressionTest6" name="test046" time="0"/>
+  <testcase classname="RegressionTest6" name="test047" time="0"/>
+  <testcase classname="RegressionTest6" name="test048" time="0"/>
+  <testcase classname="RegressionTest6" name="test049" time="0"/>
+  <testcase classname="RegressionTest6" name="test050" time="0.001"/>
+  <testcase classname="RegressionTest6" name="test051" time="0"/>
+  <testcase classname="RegressionTest6" name="test052" time="0"/>
+  <testcase classname="RegressionTest6" name="test053" time="0"/>
+  <testcase classname="RegressionTest6" name="test054" time="0"/>
+  <testcase classname="RegressionTest6" name="test055" time="0"/>
+  <testcase classname="RegressionTest6" name="test056" time="0"/>
+  <testcase classname="RegressionTest6" name="test057" time="0"/>
+  <testcase classname="RegressionTest6" name="test058" time="0"/>
+  <testcase classname="RegressionTest6" name="test059" time="0"/>
+  <testcase classname="RegressionTest6" name="test060" time="0"/>
+  <testcase classname="RegressionTest6" name="test061" time="0"/>
+  <testcase classname="RegressionTest6" name="test062" time="0.001"/>
+  <testcase classname="RegressionTest6" name="test063" time="0"/>
+  <testcase classname="RegressionTest6" name="test064" time="0"/>
+  <testcase classname="RegressionTest6" name="test065" time="0"/>
+  <testcase classname="RegressionTest6" name="test066" time="0"/>
+  <testcase classname="RegressionTest6" name="test067" time="0"/>
+  <testcase classname="RegressionTest6" name="test068" time="0"/>
+  <testcase classname="RegressionTest6" name="test069" time="0"/>
+  <testcase classname="RegressionTest6" name="test070" time="0"/>
+  <testcase classname="RegressionTest6" name="test071" time="0"/>
+  <testcase classname="RegressionTest6" name="test072" time="0"/>
+  <testcase classname="RegressionTest6" name="test073" time="0"/>
+  <testcase classname="RegressionTest6" name="test074" time="0.001"/>
+  <testcase classname="RegressionTest6" name="test075" time="0"/>
+  <testcase classname="RegressionTest6" name="test076" time="0"/>
+  <testcase classname="RegressionTest6" name="test077" time="0"/>
+  <testcase classname="RegressionTest6" name="test078" time="0"/>
+  <testcase classname="RegressionTest6" name="test079" time="0"/>
+  <testcase classname="RegressionTest6" name="test080" time="0"/>
+  <testcase classname="RegressionTest6" name="test081" time="0"/>
+  <testcase classname="RegressionTest6" name="test082" time="0"/>
+  <testcase classname="RegressionTest6" name="test083" time="0"/>
+  <testcase classname="RegressionTest6" name="test084" time="0.001"/>
+  <testcase classname="RegressionTest6" name="test085" time="0"/>
+  <testcase classname="RegressionTest6" name="test086" time="0"/>
+  <testcase classname="RegressionTest6" name="test087" time="0"/>
+  <testcase classname="RegressionTest6" name="test088" time="0"/>
+  <testcase classname="RegressionTest6" name="test089" time="0"/>
+  <testcase classname="RegressionTest6" name="test090" time="0"/>
+  <testcase classname="RegressionTest6" name="test091" time="0"/>
+  <testcase classname="RegressionTest6" name="test092" time="0"/>
+  <testcase classname="RegressionTest6" name="test093" time="0"/>
+  <testcase classname="RegressionTest6" name="test094" time="0"/>
+  <testcase classname="RegressionTest6" name="test095" time="0.001"/>
+  <testcase classname="RegressionTest6" name="test096" time="0"/>
+  <testcase classname="RegressionTest6" name="test097" time="0"/>
+  <testcase classname="RegressionTest6" name="test098" time="0"/>
+  <testcase classname="RegressionTest6" name="test099" time="0"/>
+  <testcase classname="RegressionTest6" name="test100" time="0"/>
+  <testcase classname="RegressionTest6" name="test101" time="0"/>
+  <testcase classname="RegressionTest6" name="test102" time="0"/>
+  <testcase classname="RegressionTest6" name="test103" time="0"/>
+  <testcase classname="RegressionTest6" name="test104" time="0"/>
+  <testcase classname="RegressionTest6" name="test105" time="0"/>
+  <testcase classname="RegressionTest6" name="test106" time="0"/>
+  <testcase classname="RegressionTest6" name="test107" time="0"/>
+  <testcase classname="RegressionTest6" name="test108" time="0"/>
+  <testcase classname="RegressionTest6" name="test109" time="0"/>
+  <testcase classname="RegressionTest6" name="test110" time="0"/>
+</testsuite>
