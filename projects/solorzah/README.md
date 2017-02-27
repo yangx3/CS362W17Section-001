@@ -11,3 +11,5 @@ To run RandomTestDominion:
 	do `mvn package`
 	Go into target/
 	do `java -cp hsolorza-1.0-SNAPSHOT.jar dominion/RandomTestDominion`
+
+
