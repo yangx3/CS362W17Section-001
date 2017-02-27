@@ -9,6 +9,8 @@ All tests will run and succeed
 
 ASSIGNMENT 2 ADDITIONS
 
+"index.html" is updated coverage report. A picture (Coverage Report.png) is provided as well.
+
 EvoSuite Tests are provided in .../masseyt/evosuite-tests/com/tris/
 
 To run Random Tester:
