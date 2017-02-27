@@ -9,3 +9,5 @@ RandomTestDominion.java is at:
 To generate code coverage
 
     mvn cobertura:cobertura
+
+Code coverage report is in "codecoverage" folder in this directory

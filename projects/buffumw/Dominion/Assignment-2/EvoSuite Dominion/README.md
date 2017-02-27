@@ -9,3 +9,5 @@ To run current evosuite generated tests, type:
 To generate code coverage
 
     mvn cobertura:cobertura
+
+Code Coverage report is in the "codecoverage" folder in this directory
