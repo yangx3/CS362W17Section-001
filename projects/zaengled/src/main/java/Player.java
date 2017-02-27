@@ -39,6 +39,7 @@ public class Player implements Cloneable{
 				// Move discard to deck
 				deck.add(discard.remove(ndx));
 			}
+			Collections.shuffle(deck);
 		}
 
 		Card toDraw = deck.poll();
@@ -78,12 +79,15 @@ public class Player implements Cloneable{
 		   }
 	   public void playKingdomCard() {
 	        int rand = Randomness.nextRandomInt(2);
+	        int overkill = 0; // break us out of the loop if the computer plays one card too much
 	        if(rand == 1){// this should break the loop where cards are just played forever.
 	            return;
             }
 		      while (numActions > 0) {
 		         List<Card> actionCards = Card.filter(hand, Card.Type.ACTION);
-		   
+		         if(overkill > 3){
+		         	return;
+				 }
 		         if (actionCards.size() == 0)
 		            return;
 		         
@@ -96,6 +100,7 @@ public class Player implements Cloneable{
 			      numActions -= 1;
 
 			      c.play(this, gameState);
+			      overkill ++;
 		      }
 		   }
 	   final int scoreFor() { 
