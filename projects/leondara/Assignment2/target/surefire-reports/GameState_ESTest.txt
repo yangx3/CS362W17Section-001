@@ -1,0 +1,91 @@
+-------------------------------------------------------------------------------
+Test set: GameState_ESTest
+-------------------------------------------------------------------------------
+Tests run: 18, Failures: 0, Errors: 18, Skipped: 0, Time elapsed: 0.194 sec <<< FAILURE! - in GameState_ESTest
+test10(GameState_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at GameState_ESTest.test10(GameState_ESTest.java:689)
+
+test01(GameState_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at GameState_ESTest.test01(GameState_ESTest.java:181)
+
+test12(GameState_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at GameState_ESTest.test12(GameState_ESTest.java:823)
+
+test00(GameState_ESTest)  Time elapsed: 0.002 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test00(GameState_ESTest.java:94)
+
+test11(GameState_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test11(GameState_ESTest.java:764)
+
+test03(GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test03(GameState_ESTest.java:310)
+
+test14(GameState_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test14(GameState_ESTest.java:987)
+
+test02(GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test02(GameState_ESTest.java:269)
+
+test13(GameState_ESTest)  Time elapsed: 0.004 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at GameState_ESTest.test13(GameState_ESTest.java:878)
+
+test05(GameState_ESTest)  Time elapsed: 0.017 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test05(GameState_ESTest.java:410)
+
+test16(GameState_ESTest)  Time elapsed: 0.022 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test16(GameState_ESTest.java:1098)
+
+test04(GameState_ESTest)  Time elapsed: 0.011 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test04(GameState_ESTest.java:370)
+
+test15(GameState_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test15(GameState_ESTest.java:1043)
+
+test07(GameState_ESTest)  Time elapsed: 0.017 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test07(GameState_ESTest.java:536)
+
+test06(GameState_ESTest)  Time elapsed: 0.03 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at GameState_ESTest.test06(GameState_ESTest.java:451)
+
+test17(GameState_ESTest)  Time elapsed: 0.026 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test17(GameState_ESTest.java:1119)
+
+test09(GameState_ESTest)  Time elapsed: 0.02 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test09(GameState_ESTest.java:638)
+
+test08(GameState_ESTest)  Time elapsed: 0.019 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at GameState_ESTest.test08(GameState_ESTest.java:593)
+

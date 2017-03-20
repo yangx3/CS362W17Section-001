@@ -63,11 +63,11 @@ public class GameState implements Cloneable{
 			    }
 			 //initialize supply for only two players
 				  int selectedKindom=0;
-				   int Kingdom_Cards_Selected=3;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
+				   int Kingdom_Cards_Selected=10;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
 				   								// we should change 3 to the  exact of the number of 
 				   								//kingdom cards. look at the requirements of the assignment-1
 		      while (selectedKindom < Kingdom_Cards_Selected) {
-			         int random = (int)  Randomness.random.nextInt(cards.size());//
+			         int random = (int)  Randomness.nextRandomInt(cards.size());//
 			         Card tmp = cards.get(random);
 			         if(tmp.getType()!=Card.Type.ACTION) continue;
 			         if(gameBoard.containsKey(tmp)) continue;

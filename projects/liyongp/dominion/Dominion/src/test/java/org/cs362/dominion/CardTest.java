@@ -1,3 +1,5 @@
+package org.cs362.dominion;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -6,6 +8,13 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import main.java.org.cs362.dominion.Card;
+import main.java.org.cs362.dominion.GameState;
+import main.java.org.cs362.dominion.Player;
+import main.java.org.cs362.dominion.Card.CardName;
+import main.java.org.cs362.dominion.Card.Type;
+
 
 public class CardTest {
 	private List<Card> cards;
@@ -54,6 +63,13 @@ public class CardTest {
 		assertEquals(player.coins, 1);									//Assertions
 		assertEquals(player.playedCards.size(), 1);
 		assertEquals(player.hand.size(), 0);
+		
+		Card c = Card.getCard(cards, Card.CardName.Copper);
+		assertEquals(c.getCardName(), Card.CardName.Copper);
+		assertEquals(player.gain(Card.getCard(cards, CardName.Copper)),true);
+		assertEquals(player.discard.size(), 1);
+		assertEquals(c.equals(Card.getCard(cards, Card.CardName.Copper)), true);
+		assertEquals(c.compareTo(c), 0);
 	}
 		
 		//TEST ____ SILVER ____
@@ -191,8 +207,9 @@ public class CardTest {
 		testState.players.get(0).playKingdomCard();												//Play Ambassador
 		//System.out.println(state.players.get(0).hand.size());									
 		//System.out.println(testState.players.get(0).hand.size());
-		assertEquals(state.players.get(0).hand.size(), testState.players.get(0).hand.size()+2); 	//Ambassador move 1 or 2 cards from hand to supply
+		assertTrue(state.players.get(0).hand.size() > testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply
 		assertEquals(testState.players.get(0).playedCards.size(), 1); 							//To supply so only played 1 card
+		assertEquals(testState.players.get(1).playedCards.size(), 0);
 	}
 	
 		//TEST ____ BARON ____
@@ -216,6 +233,7 @@ public class CardTest {
 		assertEquals(state.players.get(0).hand.size() , testState.players.get(0).hand.size()+1); 
 		assertEquals(testState.players.get(0).playedCards.size(), 1); 
 		assertEquals(testState.players.get(0).discard.size(), state.players.get(0).discard.size()+1); 
+		assertEquals(testState.players.get(0).numBuys, 2);
 		assertEquals(testState.players.get(0).coins, 4); 
 	}
 		
@@ -275,6 +293,7 @@ public class CardTest {
 		//System.out.println(testState.players.get(0).hand.size());
 		assertEquals(state.players.get(0).hand.size(), testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply
 		assertEquals(testState.players.get(0).playedCards.size(), 0); 
+		assertEquals(testState.players.get(0).coins, 2);
 	}
 	
 		
@@ -317,6 +336,11 @@ public class CardTest {
 		assertEquals(testState.players.get(0).numActions, 2); // action +2 but this card used the 1 action we started with
 		assertEquals(testState.players.get(0).numBuys, 2); 
 		assertEquals(testState.players.get(0).coins, 2); 
+		
+		testState.players.get(0).playTtreasureCard();
+		testState.players.get(0).buyCard(testState);
+		assertTrue(testState.players.get(0).coins >= 0);
+		assertTrue(testState.players.get(0).coins <= 2);
 	}
 	
 		//TEST ____ GARDENS ____
@@ -330,11 +354,16 @@ public class CardTest {
 		
 		testState=(GameState) state.clone();													//Clone control State, assert involves two players
 		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Gardens));		//ADD Adventurer to hand
+		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Gardens));
+		testState.players.get(0).discard.add(Card.getCard(cards, Card.CardName.Gardens));
+		testState.players.get(0).playedCards.add(Card.getCard(cards, Card.CardName.Gardens));
+		testState.players.get(0).deck.add(Card.getCard(cards, Card.CardName.Gardens));
 		testState.players.get(0).playKingdomCard();												//Play Adventure
 		//System.out.println(state.players.get(0).hand.size());									
 		//System.out.println(testState.players.get(0).hand.size());
-		assertEquals(state.players.get(0).hand.size() , testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply
-		assertEquals(testState.players.get(0).scoreFor(), 4); //+1 points for 10 cards
+		assertEquals(state.players.get(0).hand.size()+1, testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply
+		assertEquals(testState.players.get(0).scoreFor(), 8); //+1 points for 10 cards
+		assertEquals(testState.players.get(0).numActions, 0);
 	}
 		
 		//TEST ____ GREAT_HALL ____

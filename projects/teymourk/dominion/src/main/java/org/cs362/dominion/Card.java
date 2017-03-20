@@ -1,7 +1,4 @@
 package org.cs362.dominion;
-import com.sun.org.apache.bcel.internal.generic.NEW;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -328,7 +325,25 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 			case Remodel:
 
-				System.out.print("Remodel");
+				List<Card> newCards = new ArrayList<Card>();
+
+				Card firstCard = player.hand.get(0);
+
+				int cardPrice = firstCard.getCost();
+
+				for(Card v: state.gameBoard.keySet()) {
+
+					if(v.getCost() >= cardPrice) {
+
+						newCards.add(v);
+					}
+				}
+
+				int rand = (int) Randomness.nextRandomInt(newCards.size());
+
+				Card newC = newCards.get(rand);
+
+				player.hand.add(newC);
 
 				return;
 
@@ -388,7 +403,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(" \n\t" + this.getCardName());
+		sb.append(this.getCardName());
 //		sb.append("-" + this.getType() + " ");
 //		sb.append("\t\t Cost: " + this.cost + " ");
 //		sb.append("\t\t Score: " + this.score + " ");

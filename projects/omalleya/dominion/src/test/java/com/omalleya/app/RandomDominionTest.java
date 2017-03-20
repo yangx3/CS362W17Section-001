@@ -103,6 +103,8 @@ public class RandomDominionTest {
                 System.out.println("Ambassador");
                 //hand sizes should be the same because the player plays the Ambassador card
                 //but also draws a new card
+                System.out.println("Initial Hand Size: " + clonePlayer.hand.size());
+                System.out.println("Current Hand Size: " + player.hand.size());
                 assertTrue(player.playedCards.contains(Card.getCard(cards, CardName.Ambassador)));
                 assertTrue(player.hand.size() == clonePlayer.hand.size());
             }else if(Card.getCard(cards, CardName.Baron).equals(curCard)) {
@@ -147,10 +149,14 @@ public class RandomDominionTest {
             }else if(Card.getCard(cards, CardName.Great_Hall).equals(curCard)) {
                 System.out.println("Great_Hall");
                 //hand is the same size because we've drawn a card
+                System.out.println("Initial Hand Size: " + clonePlayer.hand.size());
+                System.out.println("Current Hand Size: " + player.hand.size());
                 assertTrue(player.playedCards.contains(Card.getCard(cards, CardName.Great_Hall)));
                 assertTrue(player.hand.size() == clonePlayer.hand.size());
             }else if(Card.getCard(cards, CardName.Mine).equals(curCard)) {
                 System.out.println("Mine");
+                System.out.println("Initial hand: " + clonePlayer.hand);
+                System.out.println("Current hand: " + player.hand);
                 if(clonePlayer.hand.contains(Card.getCard(cards, CardName.Silver))) {
                     assertTrue(player.discarded.contains(Card.getCard(cards, CardName.Gold)));
                     assertTrue(Collections.frequency(clonePlayer.hand, Card.getCard(cards, CardName.Silver)) -1 == 
@@ -175,9 +181,13 @@ public class RandomDominionTest {
                 }
             }else if(Card.getCard(cards, CardName.Smithy).equals(curCard)) {
                 System.out.println("Smithy");
+                System.out.println("Initial Hand Size: " + clonePlayer.hand.size());
+                System.out.println("Current Hand Size: " + player.hand.size());
                 assertTrue(player.hand.size() == clonePlayer.hand.size() + 2);
             }else if(Card.getCard(cards, CardName.Village).equals(curCard)) {
                 System.out.println("Village");
+                System.out.println("Initial Hand Size: " + clonePlayer.hand.size());
+                System.out.println("Current Hand Size: " + player.hand.size());
                 assertTrue(player.hand.size() == clonePlayer.hand.size());
             }else {
                 System.out.println("Error");

@@ -1,0 +1,21 @@
+-------------------------------------------------------------------------------
+Test set: ORG.CS362.DOMINION.Player_ESTest
+-------------------------------------------------------------------------------
+Tests run: 34, Failures: 1, Errors: 2, Skipped: 0, Time elapsed: 0.079 sec <<< FAILURE! - in ORG.CS362.DOMINION.Player_ESTest
+test13(ORG.CS362.DOMINION.Player_ESTest)  Time elapsed: 0.069 sec  <<< FAILURE!
+java.lang.AssertionError: Expecting exception: TooManyResourcesException
+	at org.junit.Assert.fail(Assert.java:88)
+	at ORG.CS362.DOMINION.Player_ESTest.test13(Player_ESTest.java:185)
+
+test32(ORG.CS362.DOMINION.Player_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.Card.play(Card.java:142)
+	at ORG.CS362.DOMINION.Player.playKingdomCard(Player.java:116)
+	at ORG.CS362.DOMINION.Player_ESTest.test32(Player_ESTest.java:451)
+
+test19(ORG.CS362.DOMINION.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at java.util.Random.nextInt(Random.java:388)
+	at ORG.CS362.DOMINION.Player.buyCard(Player.java:169)
+	at ORG.CS362.DOMINION.Player_ESTest.test19(Player_ESTest.java:289)
+

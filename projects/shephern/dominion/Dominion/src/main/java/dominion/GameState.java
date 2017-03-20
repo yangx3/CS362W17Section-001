@@ -55,8 +55,6 @@ public class GameState implements Cloneable {
 		this.initializeGame(13);
 	}
 	public void initializeGame(int toUseCards){		
-
-
 		//initialize supply 
 
 		//check number of players
@@ -87,6 +85,7 @@ public class GameState implements Cloneable {
 			selectedKingdom++;
 		}
 		
+		//Remove cards not used from state.cards
 		for(Card c : cards){
 			if(!newCards.contains(c)){
 				if(c.getType() ==Card.Type.ACTION || c.getCardName() == Card.CardName.Gardens){

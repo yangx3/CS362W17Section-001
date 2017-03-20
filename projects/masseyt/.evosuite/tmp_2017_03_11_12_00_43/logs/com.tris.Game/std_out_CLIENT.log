@@ -1,0 +1,163 @@
+* Starting client
+* Connecting to master process on port 15755
+* Analyzing classpath: 
+  - /home/tris/Desktop/assignment2/CS362W17Section-001/projects/masseyt/target/test-classes
+  - /home/tris/Desktop/assignment2/CS362W17Section-001/projects/masseyt/target/classes
+  - /home/tris/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /home/tris/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+  - /home/tris/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.0.0-M3/junit-jupiter-api-5.0.0-M3.jar
+  - /home/tris/.m2/repository/org/opentest4j/opentest4j/1.0.0-M1/opentest4j-1.0.0-M1.jar
+  - /home/tris/.m2/repository/org/junit/platform/junit-platform-commons/1.0.0-M3/junit-platform-commons-1.0.0-M3.jar
+* Finished analyzing classpath
+* Generating tests for class com.tris.Game
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 12:03:24.455 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/tris/Desktop/assignment2/CS362W17Section-001/projects/masseyt/.evosuite/evosuite-seeds/com.tris.Game.seed
+* Total number of test goals: 
+  - Line 125
+  - Branch 87
+  - Exception 0
+  - MutationFactory 187
+  - Output 29
+  - Method 9
+  - MethodNoException 9
+  - CBranchFitnessFactory 87
+* Using seed 1489262599054
+* Starting evolution
+* Search finished after 87s and 62 generations, 20351 statements, best individual has fitness: 334.1075757575758
+* Writing sequences to pool
+* Minimizing test suite
+[MASTER] 12:05:08.870 [pool-2-thread-1] WARN  TestSuiteMinimizer - Minimization timeout. Roll back to original test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 57%
+* Total number of goals: 125
+* Number of covered goals: 71
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 25%
+* Total number of goals: 87
+* Number of covered goals: 22
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 10
+* Number of covered goals: 10
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 90%
+* Total number of goals: 187
+* Number of covered goals: 168
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 66%
+* Total number of goals: 29
+* Number of covered goals: 19
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 9
+* Number of covered goals: 9
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 89%
+* Total number of goals: 9
+* Number of covered goals: 8
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 25%
+* Total number of goals: 87
+* Number of covered goals: 22
+* Generated 21 tests with total length 245
+* Resulting test suite's coverage: 68% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 22%
+* Compiling and checking tests
+[MASTER] 12:05:27.881 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class org.evosuite.runtime.TooManyResourcesException: Loop has been executed more times than the allowed 10000
+[MASTER] 12:05:27.882 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: LinkedList<Card> linkedList0 = new LinkedList<Card>();
+Game game0 = new Game(linkedList0);
+HashMap<Card, Integer> hashMap0 = game0.board;
+Card.Name card_Name0 = Card.Name.PROVINCE;
+Card.Type card_Type0 = Card.Type.ACTION;
+Card card0 = new Card(card_Name0, card_Type0, (-176), (-1444), (-176), "");
+Integer integer0 = new Integer(1);
+hashMap0.put(card0, integer0);
+game0.embargo = hashMap0;
+List<Card> list0 = game0.listBoard();
+game0.cards = list0;
+List<Card> list1 = game0.listEmbargo();
+assertNotSame(list1, list0);
+assertTrue(list1.equals((Object)list0));
+
+HashMap<Player, Integer> hashMap1 = game0.play();
+assertEquals(0, hashMap1.size());
+
+
+[MASTER] 12:05:29.972 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class org.evosuite.runtime.TooManyResourcesException: Loop has been executed more times than the allowed 10000
+[MASTER] 12:05:29.973 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: LinkedList<Card> linkedList0 = new LinkedList<Card>();
+Game game0 = new Game(linkedList0);
+HashMap<Card, Integer> hashMap0 = game0.board;
+Card.Name card_Name0 = Card.Name.PROVINCE;
+Card.Type card_Type0 = Card.Type.ACTION;
+Card card0 = new Card(card_Name0, card_Type0, (-176), (-1444), (-176), "");
+Integer integer0 = new Integer(1);
+hashMap0.put(card0, integer0);
+game0.embargo = hashMap0;
+List<Card> list0 = game0.listBoard();
+Integer integer1 = new Integer((-1444));
+hashMap0.put(card0, integer1);
+game0.cards = list0;
+List<Card> list1 = game0.listEmbargo();
+assertTrue(list1.equals((Object)list0));
+assertNotSame(list1, list0);
+
+HashMap<Player, Integer> hashMap1 = game0.play();
+assertTrue(hashMap1.isEmpty());
+
+
+[MASTER] 12:05:30.177 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.NullPointerException: null
+[MASTER] 12:05:30.178 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: LinkedList<Card> linkedList0 = new LinkedList<Card>();
+Game game0 = new Game(linkedList0);
+HashMap<Card, Integer> hashMap0 = game0.board;
+Card.Name card_Name0 = Card.Name.PROVINCE;
+Card.Type card_Type0 = Card.Type.ACTION;
+Card card0 = new Card(card_Name0, card_Type0, (-176), (-1444), (-176), "");
+Game game1 = new Game(linkedList0);
+Player player0 = new Player(game1, "2m|X6NcOt");
+game0.addPlayer(player0);
+Integer integer0 = new Integer(1);
+hashMap0.put(card0, integer0);
+game0.embargo = hashMap0;
+List<Card> list0 = game0.listBoard();
+game0.cards = list0;
+List<Card> list1 = game0.listEmbargo();
+assertNotSame(list1, list0);
+assertTrue(list1.equals((Object)list0));
+
+HashMap<Player, Integer> hashMap1 = game0.play();
+assertFalse(hashMap1.isEmpty());
+
+
+[MASTER] 12:05:30.552 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class org.evosuite.runtime.TooManyResourcesException: Loop has been executed more times than the allowed 10000
+[MASTER] 12:05:30.554 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: LinkedList<Card> linkedList0 = new LinkedList<Card>();
+Game game0 = new Game(linkedList0);
+HashMap<Card, Integer> hashMap0 = game0.board;
+Card.Name card_Name0 = Card.Name.PROVINCE;
+Card.Type card_Type0 = Card.Type.ACTION;
+Card card0 = new Card(card_Name0, card_Type0, (-176), (-1444), (-176), "");
+Integer integer0 = new Integer(1);
+hashMap0.put(card0, integer0);
+List<Card> list0 = game0.listBoard();
+game0.cards = list0;
+List<Card> list1 = game0.listEmbargo();
+assertFalse(list1.equals((Object)list0));
+assertNotSame(list1, list0);
+
+HashMap<Player, Integer> hashMap1 = game0.play();
+assertTrue(hashMap1.isEmpty());
+
+
+* Writing JUnit test case 'Game_ESTest' to /home/tris/Desktop/assignment2/CS362W17Section-001/projects/masseyt/.evosuite/tmp_2017_03_11_12_00_43/tests
+* Done!
+

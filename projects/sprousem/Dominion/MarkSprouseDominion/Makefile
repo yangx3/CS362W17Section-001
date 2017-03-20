@@ -15,15 +15,22 @@ sprousem_dom: $(ALL_FILES) #compile game into executable
 	chmod +x sprousem_dom.jar
 
 run: sprousem_dom #run game
-	java -jar sprousem_dom.jar
+	java -jar sprousem_dom.jar 2 10
+
+evo: mvn_comp
+	mvn -Dtest=RandomTestDominion test cobertura:cobertura site
 
 tests: all #run tests
 	mvn test
+pitest: 
+	mvn org.pitest:pitest-maven:mutationCoverage
 
 coverage: all #run tests with coverage
 	mvn cobertura:cobertura site
 
 clean: #clean dir
-	mvn clean
 	rm -f -rf dominion/
 	rm -f sprousem_dom.jar
+	mvn clean
+#	mvn evosuite:clean
+

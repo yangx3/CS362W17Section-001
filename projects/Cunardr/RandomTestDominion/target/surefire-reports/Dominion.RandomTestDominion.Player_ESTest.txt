@@ -1,0 +1,80 @@
+-------------------------------------------------------------------------------
+Test set: Dominion.RandomTestDominion.Player_ESTest
+-------------------------------------------------------------------------------
+Tests run: 34, Failures: 1, Errors: 4, Skipped: 0, Time elapsed: 0.216 sec <<< FAILURE!
+test11(Dominion.RandomTestDominion.Player_ESTest)  Time elapsed: 0.008 sec  <<< FAILURE!
+java.lang.AssertionError: Expecting exception: ArrayIndexOutOfBoundsException
+	at org.junit.Assert.fail(Assert.java:88)
+	at Dominion.RandomTestDominion.Player_ESTest.test11(Player_ESTest.java:234)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.FailOnTimeout$StatementThread.run(FailOnTimeout.java:74)
+
+test03(Dominion.RandomTestDominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException
+	at Dominion.RandomTestDominion.Player.playK(Player.java:465)
+	at Dominion.RandomTestDominion.Player_ESTest.test03(Player_ESTest.java:97)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.FailOnTimeout$StatementThread.run(FailOnTimeout.java:74)
+
+test01(Dominion.RandomTestDominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ArithmeticException: / by zero
+	at org.evosuite.runtime.Random.nextInt(Random.java:63)
+	at org.evosuite.runtime.mock.java.util.MockRandom.nextInt(MockRandom.java:55)
+	at Dominion.RandomTestDominion.Player.playK(Player.java:412)
+	at Dominion.RandomTestDominion.Player_ESTest.test01(Player_ESTest.java:68)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.FailOnTimeout$StatementThread.run(FailOnTimeout.java:74)
+
+test23(Dominion.RandomTestDominion.Player_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ArithmeticException: / by zero
+	at org.evosuite.runtime.Random.nextInt(Random.java:63)
+	at org.evosuite.runtime.mock.java.util.MockRandom.nextInt(MockRandom.java:55)
+	at Dominion.RandomTestDominion.Player.playK(Player.java:412)
+	at Dominion.RandomTestDominion.Player_ESTest.test23(Player_ESTest.java:427)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.FailOnTimeout$StatementThread.run(FailOnTimeout.java:74)
+
+test08(Dominion.RandomTestDominion.Player_ESTest)  Time elapsed: 0.003 sec  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:653)
+	at java.util.ArrayList.get(ArrayList.java:429)
+	at Dominion.RandomTestDominion.Player.playK(Player.java:262)
+	at Dominion.RandomTestDominion.Player_ESTest.test08(Player_ESTest.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.FailOnTimeout$StatementThread.run(FailOnTimeout.java:74)
+

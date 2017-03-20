@@ -10,7 +10,8 @@ import java.util.Collections;
 
 public class PlayDominion {
 
-	   public  static void main(String args[]){
+	   public  static void main(int numPlayers, int numKingdomCards){
+	   		//args [numplayers,numkingdomcards]
 		   
 		    List<Card> cards;
 		    GameState state;
@@ -22,18 +23,28 @@ public class PlayDominion {
 			state = new GameState(cards);
 //			 System.out.println("Initialization DominionBoard:\n " + state.toString()); 
 			
-		      Player player = new Player(state, "player-1");
-//		      player.printStateGame();
-		         player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
-		         player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+		     if (numPlayers > 4 || numPlayers < 2)
+			    {
+				   System.err.println("the number of players must be between 2 and 4 ");
+			      return ;
+			    }
 
-		      state.addPlayer(player);
-		       player = new Player(state, "player-2");
-		         player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
-		         player.hand.add(Card.getCard(cards,Card.CardName.Village));
-		      state.addPlayer(player);		      
+		      int i;
+			      for(i=0;i<numPlayers;i++){
+			      	String pname="player-"+Integer.toString(i+1);
+			      	Player player = new Player(state, pname);
+			        player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
+			        player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+			        state.addPlayer(player);
+
+			      }
+		  	   
+
+
+
 		      //Initialize the game!
-		      state.initializeGame();
+		  	  state.initializeGame(numKingdomCards);
+		     
 		      
 		      System.out.println("Initialization DominionBoard:\n " + state.toString());
 		      

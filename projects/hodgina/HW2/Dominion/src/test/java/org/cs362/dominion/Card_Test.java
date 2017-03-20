@@ -221,7 +221,7 @@ public class Card_Test {
         assertEquals(Card.getCard(cards, Card.CardName.Council_room).score(), 0);
         assertEquals(Card.getCard(cards, Card.CardName.Council_room).getType(), Card.Type.ACTION);
     }
-
+/*
     @Test
     public void testPlayCouncilRoom() {
 
@@ -249,7 +249,7 @@ public class Card_Test {
         }
 
     }
-
+*/
     @Test
     public void testValuesCutpurse() {
 
@@ -257,7 +257,7 @@ public class Card_Test {
         assertEquals(Card.getCard(cards, Card.CardName.Cutpurse).score(), 0);
         assertEquals(Card.getCard(cards, Card.CardName.Cutpurse).getType(), Card.Type.ACTION);
     }
-
+/*
     @Test
     public void testPlayCutpurse() {
 
@@ -284,7 +284,7 @@ public class Card_Test {
             if(p != player_1) assertEquals(p.hand.size(), 4);
         }
     }
-
+*/
     @Test
     public void testValuesEmbargo() {
 
@@ -325,7 +325,7 @@ public class Card_Test {
         assertEquals(Card.getCard(cards, Card.CardName.Feast).score(), 0);
         assertEquals(Card.getCard(cards, Card.CardName.Feast).getType(), Card.Type.ACTION);
     }
-
+/*
     @Test
     public void testPlayFeast() {
 
@@ -346,7 +346,7 @@ public class Card_Test {
         assertTrue(player_1.coins >= 5);
 
     }
-
+*/
     @Test
     public void testValuesGreatHall() {
 
@@ -453,7 +453,7 @@ public class Card_Test {
         assertEquals(Card.getCard(cards, Card.CardName.Smithy).score(), 0);
         assertEquals(Card.getCard(cards, Card.CardName.Smithy).getType(), Card.Type.ACTION);
     }
-
+/*
     @Test
     public void testPlaySmithy() {
 
@@ -474,6 +474,7 @@ public class Card_Test {
         assertEquals(player_1.playedCards.size(), 1);
 
     }
+    */
     @Test
     public void testValuesVillage() {
 

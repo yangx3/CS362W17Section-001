@@ -21,6 +21,11 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+	 <groupId>org.pitest</groupId>
+	 <artifactId>pitest-maven</artifactId>
+	 <version>LATEST</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -34,6 +39,16 @@
 		 <target>1.8</target>
 		 </configuration>
 	    </plugin>
+	    <plugin>
+		<groupId>org.pitest</groupId>
+		<artifactId>pitest-maven</artifactId>
+		<version>LATEST</version>
+		<configuration>
+		 <avoidCallsTo>
+		 <avoidCallsTo>java.io.PrintStream</avoidCallsTo>
+		 </avoidCallsTo>
+		</configuration>
+		</plugin>
 	  </plugins>
     </pluginManagement>
   </build>

@@ -19,7 +19,7 @@ public final class Randomness {
 	public static Random random = new Random();
 
 	public static void reset(){
-		random = new Random(System.currentTimeMillis());
+		random = new Random(10);
 	}
 
 	public static int totalCallsToRandom = 0;

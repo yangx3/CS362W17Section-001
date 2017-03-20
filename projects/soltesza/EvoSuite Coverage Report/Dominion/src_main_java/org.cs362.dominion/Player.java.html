@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">TestRandom (Feb 27, 2017 12:22:40 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+import java.util.Vector;
+
+public class Player {
+	public Deck deck;
+	private String name;
+	private DominionBoard board;
+	
+<span class="fc" id="L9">	private int actions = 1;</span>
+<span class="fc" id="L10">	private int buys = 1;</span>
+<span class="fc" id="L11">	private int coins = 0;</span>
+	
+<span class="fc" id="L13">	public Player(String name, DominionBoard board) {</span>
+<span class="fc" id="L14">		deck = new Deck();</span>
+<span class="fc" id="L15">		this.name = name;</span>
+<span class="fc" id="L16">		this.board = board;</span>
+		
+<span class="fc" id="L18">		deck.DrawCards(5);</span>
+<span class="fc" id="L19">	}</span>
+	
+<span class="fc" id="L21">	public String GetName() {return name;}</span>
+	
+<span class="fc" id="L23">	public int GetScore() {return deck.GetScore();}</span>
+	
+	public void TakeTurn(GameState state) {
+<span class="fc" id="L26">		Vector&lt;Card&gt; hand = deck.GetHand();</span>
+		
+		//play actions
+<span class="fc bfc" id="L29" title="All 2 branches covered.">		for(int i=0; i&lt;actions; i++) {</span>
+<span class="fc" id="L30">			Vector&lt;ActionCard&gt; actionCards = new Vector&lt;ActionCard&gt;();</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">			for(int j=0; j&lt;hand.size(); j++) {</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">				if(hand.elementAt(i) instanceof ActionCard) {</span>
+<span class="fc" id="L33">					actionCards.add((ActionCard)hand.elementAt(i));</span>
+				}
+			}
+			
+<span class="fc bfc" id="L37" title="All 2 branches covered.">			if(!actionCards.isEmpty()) {</span>
+<span class="fc" id="L38">				ActionCard card = actionCards.elementAt((int)(Math.random()*actionCards.size()));</span>
+<span class="fc" id="L39">				card.PlayAction(state);</span>
+<span class="fc" id="L40">				PrintAction(card);</span>
+			}
+		}
+		//play treasures
+<span class="fc" id="L44">		coins += deck.PlayTreasures();</span>
+		
+		//buy
+<span class="fc" id="L47">		Buy(buys, coins);</span>
+		
+		//cleanup
+<span class="fc" id="L50">		deck.DiscardHand();</span>
+<span class="fc" id="L51">		deck.DrawCards(5);</span>
+		
+<span class="fc" id="L53">		actions = 1;</span>
+<span class="fc" id="L54">		buys = 1;</span>
+<span class="fc" id="L55">		coins = 0;</span>
+<span class="fc" id="L56">	}</span>
+	
+	public void AddActions(int numActions) {
+<span class="fc" id="L59">		this.actions += numActions;</span>
+<span class="fc" id="L60">	}</span>
+	
+	public void AddBuys(int numBuys) {
+<span class="fc" id="L63">		this.buys += numBuys;</span>
+<span class="fc" id="L64">	}</span>
+	
+	public void AddCoins(int numCoins) {
+<span class="fc" id="L67">		this.coins += numCoins;</span>
+<span class="fc" id="L68">	}</span>
+	
+	public void Buy(int numBuys, int numCoins) {
+<span class="fc bfc" id="L71" title="All 2 branches covered.">		for(int i=0; i&lt;numBuys; i++) {</span>
+<span class="fc" id="L72">			Vector&lt;Card&gt; buyableCards = board.GetBuyable(numCoins);</span>
+			
+<span class="fc" id="L74">			int highestValue = 0;</span>
+<span class="fc" id="L75">			int lowerBound = buyableCards.size()-1;</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">			for(int j=buyableCards.size()-1; j&gt;0; j--) {</span>
+<span class="fc" id="L77">				int val = buyableCards.get(j).GetValue();</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">				if(val &gt; highestValue) {</span>
+<span class="fc" id="L79">					highestValue = val;</span>
+<span class="fc" id="L80">				}</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">				else if(val &lt; highestValue) {</span>
+<span class="fc" id="L82">					lowerBound = j;</span>
+				}
+			}
+			
+<span class="fc" id="L86">			int idx = (int)(Math.random() * (buyableCards.size()-lowerBound) + lowerBound);</span>
+			
+<span class="fc" id="L88">			Vector&lt;Card&gt; newCards = board.BuyCard(idx);</span>
+			
+<span class="fc bfc" id="L90" title="All 2 branches covered.">			for(int j=0; j&lt;newCards.size(); j++) {</span>
+<span class="fc" id="L91">				deck.AddCard(newCards.get(j)); </span>
+			}
+			
+<span class="fc" id="L94">			PrintBuy(newCards.get(0));</span>
+		}
+<span class="fc" id="L96">	}</span>
+	
+	public void GainCurse() {
+<span class="nc" id="L99">		Card curse = board.BuyCurse();</span>
+		
+<span class="nc bnc" id="L101" title="All 2 branches missed.">		if(curse != null) {</span>
+<span class="nc" id="L102">			deck.AddCard(curse);</span>
+		}
+<span class="nc" id="L104">	}</span>
+	
+	public Card TrashFromHand() {		
+<span class="fc" id="L107">		Vector&lt;Card&gt; hand = deck.GetHand();</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">		if(!hand.isEmpty()) {</span>
+<span class="fc" id="L109">			int idx = (int)(Math.random()*hand.size());</span>
+<span class="fc" id="L110">			Card card = hand.get(idx);</span>
+<span class="fc" id="L111">			deck.TrashCard(card);</span>
+<span class="fc" id="L112">			return card;</span>
+		}
+		else {
+<span class="nc" id="L115">			return null;</span>
+		}
+	}
+	
+	private void PrintBuy(Card card) {
+<span class="fc" id="L120">		System.out.println(name + &quot; bought a &quot; + card.GetName() + &quot; for &quot; + card.GetValue() + &quot; coins.&quot;);</span>
+<span class="fc" id="L121">	}</span>
+	
+	private void PrintAction(ActionCard action) {
+<span class="fc" id="L124">		System.out.println(name + &quot; played &quot; + action.name);</span>
+<span class="fc" id="L125">	}</span>
+	
+	public void EmbargoPile() {
+<span class="fc" id="L128">		Vector&lt;Card&gt; buyable = board.GetBuyable(Integer.MAX_VALUE);</span>
+		
+<span class="fc" id="L130">		int idx = (int)(Math.random()*buyable.size());</span>
+<span class="fc" id="L131">		board.EmbargoPile(idx);</span>
+<span class="fc" id="L132">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>TestRandom (Feb 27, 2017 12:22:40 AM)</div></body></html>

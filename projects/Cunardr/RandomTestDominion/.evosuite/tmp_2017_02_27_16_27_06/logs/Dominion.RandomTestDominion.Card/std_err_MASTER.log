@@ -1,0 +1,3 @@
+[MASTER] 16:34:46.240 [main] ERROR ExternalProcessHandler - Class Dominion.RandomTestDominion.Card. Clients have not finished yet, although a timeout occurred.
+ClientNode: WRITING_TESTS
+

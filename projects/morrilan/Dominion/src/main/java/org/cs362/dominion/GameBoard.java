@@ -7,7 +7,7 @@ public class GameBoard extends JPanel
 {
 	private int sizeX, sizeY, numPlayers, n;
 	private JButton soloStartBtn, phaseBtn;
-	private JLabel supplyLabel, phaseLabel;
+	//private JLabel supplyLabel, phaseLabel;
 	private JTextArea phaseText;
 	private Player[] player;
 	// Major Error 5, Both Players may be pointing to the same leftover cards
@@ -17,7 +17,7 @@ public class GameBoard extends JPanel
 	private Card[] deck;
 	//protected DrawPile[] drawPile;
 	//private DiscardPile[] discardPile;
-	private SupplyPile gameSupply;
+	public SupplyPile gameSupply;
 	public double SCALE_X, SCALE_Y;
 	private PhaseListener phaseListener;
 	//private CardActions actions;
@@ -82,8 +82,8 @@ public class GameBoard extends JPanel
 		deck[15] = new KingdomCard("Council_Room", 5, "images/Council_Room.jpg", "+4 Cards, +1 Buy,  Each other player draws a card.");
 		deck[16] = new KingdomCard("Smithy", 4, "images/Smithy.jpg", "+3 Cards"); 
 
-		startCards = new Card[2][10];
-		for (int j = 0; j < 2; j++) // Max number of possible players, possible temperary fix
+		startCards = new Card[4][10];
+		for (int j = 0; j < 4; j++) // Max number of possible players, possible temperary fix
 		{
 			for(int i = 0; i < 7; i++)
 			{
@@ -96,7 +96,6 @@ public class GameBoard extends JPanel
 				startCards[j][i + 7] = deck[4];
 			}
 		}
-
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 		
@@ -152,7 +151,6 @@ public class GameBoard extends JPanel
 		//  Better organization and to implement click events.
 		gameSupply = new SupplyPile(deck, 2);
 		add(gameSupply, BorderLayout.CENTER);
-
 		revalidate();
 	}
 
@@ -234,6 +232,7 @@ public class GameBoard extends JPanel
 			int playerCoins = player[n].getCoins();
 			if (playerCoins >= cost)
 			{
+				gameSupply.buy();
 				player[n].addCard(selected);
 				player[n].setCoins(cost * (-1));
 				player[n].removeBuyCount();
@@ -249,47 +248,6 @@ public class GameBoard extends JPanel
 	public void cleanupPhase()
 	{
 		player[n].cleanup();
-	}
-	public void setPlayerSelected()
-	{
-
-	}
-	public void setSupplySelected()
-	{
-
-	}
-	// Does everything the SoloButton does
-	public void Setup()
-	{
-		numPlayers = 2;
-		player = new Player[numPlayers];
-		soloStartBtn.setVisible(false);
-		for(int i = 0; i < numPlayers; i++)
-		{
-			
-
-			playerSetup(i);
-			//player[i] = new Player(drawPile[i], discardPile[i]);
-			
-			
-		}
-		supplySetup();
-		//playerTurn(player[0]);
-		sop("" + getSize());
-		SCALE_X = getWidth()/1920.0;
-		SCALE_Y = getHeight()/1001.0;
-		sop("Width Scale: " + SCALE_X + ", Height Scale: " + SCALE_Y); 
-		// After everything is setup, this puts everything in motion :)
-		GameStart();
-	}
-	// Same purpose, testing. Everything the nextPhase button does
-	public void nextPhase()
-	{
-		turn();
-		repaint();
-		revalidate();
-		//repaint();
-		sop("Revalidated");
 	}
 
 	// *******************************
@@ -348,23 +306,9 @@ public class GameBoard extends JPanel
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			//wait();
-		// if (n == 0)
-		// {
-		// 	add(player[n], BorderLayout.SOUTH);
-		// 	sop("Hello");
-		// }
-		// else
-		// {
-		// 	add(player[n], BorderLayout.NORTH);
-		// }
 			turn();
 			repaint();
-			revalidate();
-			//repaint();
 			sop("Revalidated");
-
-
 		}
 	}
 	// *******************************
@@ -372,9 +316,7 @@ public class GameBoard extends JPanel
 	// *******************************
 	// Uses unique identifier to nicely organize the actions
 
-	// ("Merchant", 3, "images/Merchant.jpg", "+1 Card, +1 Action,  The first time you play a Silver this turn: +1 Treasure"); 
-	// ("Witch", 5, "images/Witch.jpg", "+2 Cards,  Each other player gains a Curse."); 
-	// ("Smithy", 4, "images/Smithy.jpg", "+3 Cards"); 
+
 
 	public void KingdomCardActions(String name) 
 	{
@@ -451,4 +393,52 @@ public class GameBoard extends JPanel
 			default :	System.out.println("ACTION DOES NOT EXIST");
 		}
 	}
+	// I used listeners so I got a crap ton of set and get methods for testing purposes
+	// most of the code is outside the listeners so it shouldn't be too big a problem
+	// methods will duplicate the actions of the listener methods and set numbers that
+	//  would otherwise be impossible.
+
+	// Mock GameStartListener
+	public void Setup(int nP)
+	{
+		// Initializes the selected players and sets up the game.
+	
+		numPlayers = nP;				
+		player = new Player[numPlayers];
+		//drawPile = new DrawPile[numPlayers];
+		//discardPile = new DiscardPile[numPlayers];
+		soloStartBtn.setVisible(false);
+
+		for(int i = 0; i < numPlayers; i++)
+		{
+			playerSetup(i);
+			//player[i] = new Player(drawPile[i], discardPile[i]);
+		}
+		supplySetup();
+		//playerTurn(player[0]);
+		sop("" + getSize());
+		SCALE_X = getWidth()/1920.0;
+		SCALE_Y = getHeight()/1001.0;
+		sop("Width Scale: " + SCALE_X + ", Height Scale: " + SCALE_Y); 
+		// After everything is setup, this puts everything in motion :)
+		GameStart();
+	}
+	// Mock phaseListener
+	// Is called at least 3 times for each turn. Once for each phase
+	public void nextPhase()
+	{
+		turn();
+		repaint();
+		//sop("Revalidated");
+	}
+	// Allows AI to make choices on the player.
+	public Player player(int pN)
+	{
+		return player[pN];
+	}
+	public SupplyPile supply()
+	{
+		return gameSupply;
+	}
+	
 }

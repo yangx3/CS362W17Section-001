@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>ActionCard.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">TestRandom (Feb 27, 2017 12:22:40 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">ActionCard.java</span></div><h1>ActionCard.java</h1><pre class="source lang-java linenums"><span class="pc" id="L1">package org.cs362.dominion;</span>
+
+import java.util.Vector;
+
+public class ActionCard extends Card {
+<span class="fc" id="L6">	public enum ActionType {</span>
+<span class="fc" id="L7">		ADVENTURER,</span>
+<span class="fc" id="L8">		AMBASSADOR,</span>
+<span class="fc" id="L9">		BARON,</span>
+<span class="fc" id="L10">		COUNCIL_ROOM,</span>
+<span class="fc" id="L11">		CUTPURSE,</span>
+<span class="fc" id="L12">		EMBARGO,</span>
+<span class="fc" id="L13">		FEAST,</span>
+<span class="fc" id="L14">		GREAT_HALL,</span>
+<span class="fc" id="L15">		MINE,</span>
+<span class="fc" id="L16">		REMODEL,</span>
+<span class="fc" id="L17">		SMITHY,</span>
+<span class="fc" id="L18">		VILLAGE</span>
+	}
+	
+	private ActionType type;
+	
+<span class="fc" id="L23">	public ActionCard(ActionType type) {</span>
+<span class="fc" id="L24">		this.type = type;</span>
+		
+<span class="fc bfc" id="L26" title="All 12 branches covered.">		switch(type) {</span>
+			case ADVENTURER:
+<span class="fc" id="L28">				super.name = &quot;Adventurer&quot;;</span>
+<span class="fc" id="L29">				super.cost = 6;</span>
+<span class="fc" id="L30">				break;</span>
+			case AMBASSADOR:
+<span class="fc" id="L32">				super.name = &quot;Ambassador&quot;;</span>
+<span class="fc" id="L33">				super.cost = 3;</span>
+<span class="fc" id="L34">				break;</span>
+			case BARON:
+<span class="fc" id="L36">				super.name = &quot;Baron&quot;;</span>
+<span class="fc" id="L37">				super.cost = 4;</span>
+<span class="fc" id="L38">				break;</span>
+			case COUNCIL_ROOM:
+<span class="fc" id="L40">				super.name = &quot;Council Room&quot;;</span>
+<span class="fc" id="L41">				super.cost = 5;</span>
+<span class="fc" id="L42">				break;</span>
+			case CUTPURSE	:
+<span class="fc" id="L44">				super.name = &quot;Cutpurse&quot;;</span>
+<span class="fc" id="L45">				super.cost = 4;</span>
+<span class="fc" id="L46">				break;</span>
+			case EMBARGO:
+<span class="fc" id="L48">				super.name = &quot;Embargo&quot;;</span>
+<span class="fc" id="L49">				super.cost = 2;</span>
+<span class="fc" id="L50">				break;</span>
+			case FEAST:
+<span class="fc" id="L52">				super.name = &quot;Feast&quot;;</span>
+<span class="fc" id="L53">				super.cost = 4;</span>
+<span class="fc" id="L54">				break;</span>
+			case GREAT_HALL:
+<span class="fc" id="L56">				super.name = &quot;Great Hall&quot;;</span>
+<span class="fc" id="L57">				super.cost = 3;</span>
+<span class="fc" id="L58">				break;</span>
+			case MINE:
+<span class="fc" id="L60">				super.name = &quot;Mine&quot;;</span>
+<span class="fc" id="L61">				super.cost = 5;</span>
+<span class="fc" id="L62">				break;</span>
+			case SMITHY:
+<span class="fc" id="L64">				super.name = &quot;Smithy&quot;;</span>
+<span class="fc" id="L65">				super.cost = 4;</span>
+<span class="fc" id="L66">				break;</span>
+			case REMODEL:
+<span class="fc" id="L68">				super.name = &quot;Remodel&quot;;</span>
+<span class="fc" id="L69">				super.cost = 4;</span>
+<span class="fc" id="L70">				break;</span>
+			default:
+<span class="fc" id="L72">				super.name = &quot;Village&quot;;</span>
+<span class="fc" id="L73">				super.cost = 3;</span>
+				break;
+		}
+<span class="fc" id="L76">	}</span>
+	
+	@Override
+	public ActionCard clone() {
+<span class="nc" id="L80">		final ActionCard clone = (ActionCard)super.clone();</span>
+<span class="nc" id="L81">		return clone;</span>
+	}
+	
+	public void PlayAction(GameState state) {
+<span class="pc bpc" id="L85" title="4 of 12 branches missed.">		switch(type) {</span>
+			case ADVENTURER:
+<span class="nc" id="L87">				int cardCount = state.currentPlayer.deck.GetCardCount();</span>
+<span class="nc" id="L88">				int numTreasures = 0;</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">				for(int i=0; i&lt;cardCount; i++) {</span>
+<span class="nc" id="L90">					Vector&lt;Card&gt; newCard = state.currentPlayer.deck.DrawCards(1);</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">					if(!(newCard.firstElement() instanceof TreasureCard)) {</span>
+<span class="nc" id="L92">						state.currentPlayer.deck.DiscardFromHand(newCard.firstElement());</span>
+<span class="nc" id="L93">					}</span>
+					else {
+<span class="nc" id="L95">						numTreasures++;</span>
+					}
+<span class="nc bnc" id="L97" title="All 2 branches missed.">					if(numTreasures &lt;= 2) { //Error 1: should be numTreasures &gt;= 2</span>
+<span class="nc" id="L98">						break;</span>
+					}
+				}
+				
+<span class="nc" id="L102">				break;</span>
+			case AMBASSADOR:
+			
+<span class="fc" id="L105">				break;</span>
+			case BARON:
+<span class="fc" id="L107">				state.currentPlayer.AddBuys(1);</span>
+				
+				
+<span class="fc" id="L110">				break;</span>
+			case CUTPURSE:
+<span class="fc" id="L112">				state.currentPlayer.AddCoins(2);</span>
+<span class="fc" id="L113">				int numPlayers = state.otherPlayers.size();</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">				for(int i=0; i&lt;numPlayers; i++) {</span>
+<span class="fc" id="L115">					Player p = state.otherPlayers.get(i);</span>
+<span class="fc" id="L116">					Vector&lt;Card&gt; hand = p.deck.GetHand();</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">					for(int j=0; j&lt;hand.size(); j++) {</span>
+<span class="fc" id="L118">						Card card = hand.get(j);</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">						if(card.GetName() == &quot;Copper&quot;) {</span>
+<span class="fc" id="L120">							p.deck.DiscardFromHand(card);</span>
+<span class="fc" id="L121">							break;</span>
+						}
+					}
+				}
+<span class="fc" id="L125">				break;</span>
+			case EMBARGO:                            
+<span class="fc" id="L127">				state.currentPlayer.AddCoins(2);</span>
+<span class="fc" id="L128">				state.currentPlayer.EmbargoPile();</span>
+<span class="fc" id="L129">				state.currentPlayer.deck.TrashCard(this);</span>
+<span class="fc" id="L130">				break;</span>
+			case COUNCIL_ROOM:
+<span class="nc" id="L132">				state.DrawCards(state.currentPlayer, 4);</span>
+<span class="nc" id="L133">				state.currentPlayer.AddBuys(1);</span>
+<span class="nc" id="L134">				int num = state.otherPlayers.size();</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">				for(int i=0; i&lt;num; i++) {</span>
+<span class="nc" id="L136">					state.DrawCards(state.otherPlayers.get(i), 1);</span>
+				}
+<span class="nc" id="L138">				break;</span>
+			case FEAST:
+<span class="nc" id="L140">				state.currentPlayer.Buy(1, 5);</span>
+<span class="nc" id="L141">				state.currentPlayer.deck.TrashCard(this);</span>
+<span class="nc" id="L142">				break;</span>
+			case GREAT_HALL:
+<span class="fc" id="L144">				state.DrawCards(state.currentPlayer, 1);</span>
+<span class="fc" id="L145">				state.currentPlayer.AddActions(1);</span>
+<span class="fc" id="L146">				break;</span>
+			case MINE:
+<span class="nc" id="L148">				Card card = state.currentPlayer.TrashFromHand(); </span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">				if(card != null) {</span>
+<span class="nc" id="L150">					state.currentPlayer.Buy(1, card.GetValue()+3);</span>
+				}
+<span class="nc" id="L152">				break;</span>
+			case SMITHY:
+<span class="fc" id="L154">				state.DrawCards(state.currentPlayer, 3);</span>
+<span class="fc" id="L155">				break;</span>
+			case REMODEL:
+<span class="fc" id="L157">				Card card1 = state.currentPlayer.TrashFromHand(); </span>
+<span class="pc bpc" id="L158" title="1 of 2 branches missed.">				if(card1 != null) {</span>
+<span class="fc" id="L159">					state.currentPlayer.Buy(1, card1.GetValue()+2);</span>
+				}
+<span class="fc" id="L161">				break;</span>
+			default:
+<span class="fc" id="L163">				state.DrawCards(state.currentPlayer, 1);</span>
+<span class="fc" id="L164">				state.currentPlayer.AddActions(2);</span>
+				break;
+		}
+<span class="fc" id="L167">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>TestRandom (Feb 27, 2017 12:22:40 AM)</div></body></html>

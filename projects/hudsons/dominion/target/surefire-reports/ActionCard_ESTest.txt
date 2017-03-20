@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: ActionCard_ESTest
+-------------------------------------------------------------------------------
+Tests run: 50, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.162 sec <<< FAILURE!
+test02(ActionCard_ESTest)  Time elapsed: 0.003 sec  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException
+

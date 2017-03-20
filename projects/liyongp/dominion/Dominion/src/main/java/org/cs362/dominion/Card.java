@@ -1,3 +1,5 @@
+
+
 import java.util.*;
 
 
@@ -129,9 +131,9 @@ public final class Card implements Comparable<Card>, Cloneable{
 	    	  int draws = 2;
 	    	  while(draws != 0){
 	    		  Card draw = player.drawCard();
-	    		  if(draw.realType != Type.TREASURE){
+	    		  if(draw.getType() != Type.TREASURE){
 	    			  player.hand.remove(draw);
-	    			  player.deck.add(draw);
+	    			  player.discard.add(draw);
 	    		  }
 	    		  else{
 	    			  draws--;
@@ -144,17 +146,19 @@ public final class Card implements Comparable<Card>, Cloneable{
 			if (player.hand.isEmpty()) {
 				return;
 			}
-				Card chose = player.hand.get(0);
+			Card chose = player.hand.get(0);
+			player.hand.remove(chose);
+			int supply = 1;
+			if(getCard(player.hand, chose.cardName) != null){
 				player.hand.remove(chose);
-				int supply = 1;
-				if(getCard(player.hand, chose.cardName) != null){
-					player.hand.remove(chose);
-					supply = 2;
-				}
+				supply = 2;
+			}
+			if(chose != null)
 				state.gameBoard.put(chose, state.gameBoard.get(chose)+supply);
-				for(Player p: state.players){
-					p.gain(chose);
-				}
+			for(Player p : state.players){
+			if(p != player)
+				p.gain(chose);
+			}
 				 
 			
 			return;

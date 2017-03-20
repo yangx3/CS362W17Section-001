@@ -123,6 +123,8 @@ public class TestGame {
         // gained Baron, discarded Baron, gained Estate
         assertEquals(6, game.numHandCards());
         assertEquals(0, game.getCoins());
+        assertEquals(4, game.fullDeckCount(0, Card.Estate));
+        assertEquals(24 - 3*2 - 1, game.supplyCount(Card.Estate));
 
         game.takeForTesting(0, Card.Estate);
         pos = game.takeForTesting(0, Card.Baron);
@@ -130,6 +132,8 @@ public class TestGame {
         // gained Baron, gained Estate, discarded Baron, discarded Estate
         assertEquals(6, game.numHandCards());
         assertEquals(4, game.getCoins());
+        assertEquals(4, game.fullDeckCount(0, Card.Estate));
+        assertEquals(24 - 3*2 - 2, game.supplyCount(Card.Estate));
     }
 
     @Test
@@ -141,6 +145,7 @@ public class TestGame {
         assertEquals(9, game.numHandCards()); // +4 cards
         assertEquals(2, game.getBuys()); // +1 buy
         // and each other player draws a card
+        assertEquals(6, game.getPlayerHandCount(1));
     }
 
     @Test
@@ -235,7 +240,7 @@ public class TestGame {
         assertEquals(6, game.numHandCards()); // +1 cards
         assertEquals(1, game.getActions()); // +1 actions
         assertEquals(2, game.getBuys()); // +1 buys
-        assertEquals(2, game.getCoins()); // +1 coins BUG
+        assertEquals(1, game.getCoins()); // +1 coins
     }
 
     @Test
@@ -248,6 +253,7 @@ public class TestGame {
         assertEquals(6, game.numHandCards());
         assertEquals(copper, game.handCount(0, Card.Copper));
         assertEquals(1, game.handCount(0, Card.Silver));
+        assertEquals(40-1, game.supplyCount(Card.Silver));
         game.endTurn();
 
         coinPos = game.takeForTesting(1, Card.Silver);
@@ -259,9 +265,15 @@ public class TestGame {
         game.endTurn();
 
         // What if coinPos > pos?
+        /*
         pos = game.takeForTesting(0, Card.Mine);
         coinPos = game.takeForTesting(0, Card.Silver);
-        game.playAction(pos, coinPos, Card.Gold);
+        try {
+            game.playAction(pos, coinPos, Card.Gold);
+        } catch (GameError e) {
+            fail("caught GameError");
+        }
+        */
     }
 
     @Test
@@ -320,5 +332,21 @@ public class TestGame {
         assertEquals(7, game.fullDeckCount(1, Card.Copper));
         assertEquals(3, game.fullDeckCount(1, Card.Estate));
         assertEquals(0, game.fullDeckCount(1, Card.Province));
+    }
+
+    @Test
+    public void testBuyCard() {
+        Game game = newGame();
+        game.takeForTesting(0, Card.Copper);
+        game.takeForTesting(0, Card.Copper);
+        int estate = game.supplyCount(Card.Estate);
+        game.playTreasure(5); // Copper
+        game.playTreasure(5); // Copper
+        assertEquals(2, game.getCoins());
+        assertEquals(1, game.getBuys());
+        game.buyCard(Card.Estate);
+        assertEquals(0, game.getCoins());
+        assertEquals(0, game.getBuys());
+        assertEquals(estate-1, game.supplyCount(Card.Estate));
     }
 }

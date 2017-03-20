@@ -46,18 +46,31 @@ public class SupplyPileTest {
 		SupplyPile pile = new SupplyPile(deck, 2);
 		
 		assertEquals("Should be null nothing is selected", null, pile.getSelected());
-			
-		assertEquals("The First 7 should always be the same", deck[0], pile.buy(0));
-		assertEquals("The First 7 should always be the same", deck[1], pile.buy(1));
-		assertEquals("The First 7 should always be the same", deck[2], pile.buy(2));
-		assertEquals("The First 7 should always be the same", deck[3], pile.buy(3));
-		assertEquals("The First 7 should always be the same", deck[4], pile.buy(4));
-		assertEquals("The First 7 should always be the same", deck[5], pile.buy(5));
-		assertEquals("The First 7 should always be the same", deck[6], pile.buy(6));
+		for (int i = 0; i < 7; i++)
+		{
+			pile.setSelected(i);
+			assertEquals("The First 7 should always be the same", deck[i], pile.buy());
+		}
+//		
+//		assertEquals("The First 7 should always be the same", deck[1], pile.buy());
+//		assertEquals("The First 7 should always be the same", deck[2], pile.buy());
+//		assertEquals("The First 7 should always be the same", deck[3], pile.buy());
+//		assertEquals("The First 7 should always be the same", deck[4], pile.buy());
+//		assertEquals("The First 7 should always be the same", deck[5], pile.buy());
+//		assertEquals("The First 7 should always be the same", deck[6], pile.buy());
 		
-		pile.setSelected(0);
-		
-		assertEquals("GetSslected. should be Copper", deck[0], pile.getSelected());
+		//pile.setSelected(0);
+//		for (int i = 0; i < 3; i++)
+//		{
+//			assertEquals("Must be empty", false, pile.getEnd());
+//			for (int j = 0; j < 10; j++)
+//			{
+//				pile.buy(i + 4);
+//			}
+//			
+//		}
+		//assertEquals("Must be empty", true, pile.getEnd());
+		//assertEquals("GetSslected. should be Copper", deck[0], pile.getSelected());
 		
 		//assertEquals("Buy() no Card selected and must return null", null, pile.buy(1));
 	}

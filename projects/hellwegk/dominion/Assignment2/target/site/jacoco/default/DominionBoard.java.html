@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DominionBoard.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dominion</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">DominionBoard.java</span></div><h1>DominionBoard.java</h1><pre class="source lang-java linenums">import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class DominionBoard {
+
+<span class="fc" id="L7">	private HashMap&lt;Card, Integer&gt; supply = new HashMap&lt;Card, Integer&gt;();</span>
+<span class="fc" id="L8">	private List&lt;Card&gt; trash = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L9">	public List&lt;Player&gt; players = new ArrayList&lt;Player&gt;();</span>
+	
+	
+	
+	public DominionBoard(int number, int seed)
+<span class="fc" id="L14">	{</span>
+<span class="fc" id="L15">		Randomness.reset(seed);</span>
+<span class="fc" id="L16">		List&lt;Card&gt; kingdom = new ArrayList&lt;Card&gt;();</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">		if (number &lt;= 1)</span>
+		{
+<span class="fc" id="L19">			number = 2;</span>
+		}
+<span class="fc" id="L21">		kingdom = kingdomCards(seed);</span>
+<span class="fc" id="L22">		setUpGame(kingdom, number);</span>
+<span class="fc" id="L23">		players = new ArrayList&lt;Player&gt;();</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">		for (int i = 0; i &lt; number; i++)</span>
+		{
+<span class="fc" id="L26">			players.add(new Player(&quot;Player&quot; + (i + 1), i, this));</span>
+		}
+<span class="fc" id="L28">	}</span>
+	
+	public int play()
+	{
+<span class="fc" id="L32">		int turn = 0;</span>
+		List&lt;Integer&gt; actionCardIndices;
+<span class="fc" id="L34">		System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L35">		System.out.println(&quot;STARTING NEW GAME!&quot;);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">		while(!gameOver())</span>
+		{
+<span class="fc" id="L38">			System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L39">			players.get(turn).newTurn();</span>
+			
+			//ACTION
+<span class="fc bfc" id="L42" title="All 4 branches covered.">			while(players.get(turn).actionInHand() &amp;&amp; players.get(turn).actionsLeft())</span>
+			{
+<span class="fc" id="L44">				actionCardIndices = players.get(turn).actionCardIndices();</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">				if (actionCardIndices.size() &gt; 0)</span>
+				{
+<span class="fc" id="L47">					int index = Randomness.nextRandomInt(actionCardIndices.size());</span>
+<span class="fc" id="L48">					players.get(turn).playCard(actionCardIndices.get(index), this);</span>
+<span class="fc" id="L49">				}</span>
+			}
+			
+			//BUY
+<span class="fc" id="L53">			players.get(turn).treasureInHand();</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">			while(players.get(turn).currentBuys())</span>
+			{
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">				if(getHighestValueCards(players.get(turn).getCoins()).size() &gt; 0)</span>
+				{
+<span class="fc" id="L58">					players.get(turn).buyCard(players.get(turn).buyRandomCard(this), this);</span>
+				}
+			}
+			
+			//CLEAN UP
+<span class="fc" id="L63">			players.get(turn).discardCardsEndTurn();</span>
+			
+			
+			
+			//NEXT PLAYER
+<span class="fc" id="L68">			turn++;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">			if(turn &gt;= players.size())</span>
+			{
+<span class="fc" id="L71">				turn = 0;</span>
+			}
+		}
+		
+		//END GAME
+<span class="fc" id="L76">		finalScores();</span>
+<span class="fc" id="L77">		return 1;</span>
+	}
+	
+	public List&lt;Player&gt; getPlayers()
+	{
+<span class="fc" id="L82">		return players;</span>
+	}
+	
+	//function that adds a card to the trash pile
+	public void trashCard(Card c)
+	{
+<span class="fc" id="L88">		trash.add(c);</span>
+<span class="fc" id="L89">	}</span>
+	
+	public void takeCard(Card c) 
+	{
+<span class="fc" id="L93">		supply.put(c, supply.get(c) - 1);</span>
+<span class="fc" id="L94">	}</span>
+	
+	public void returnCard(Card c)
+	{
+<span class="fc" id="L98">		supply.put(c,  supply.get(c) + 1);</span>
+<span class="fc" id="L99">	}</span>
+	
+	
+	//returns a list of all the possible kingdom cards that can be played with
+	public List&lt;Card&gt; allKC()
+	{
+<span class="fc" id="L105">		List&lt;Card&gt; kingdom = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L106">		kingdom.add(Card.adventurer);</span>
+<span class="fc" id="L107">		kingdom.add(Card.ambassador);</span>
+<span class="fc" id="L108">		kingdom.add(Card.baron);</span>
+<span class="fc" id="L109">		kingdom.add(Card.council_room);</span>
+<span class="fc" id="L110">		kingdom.add(Card.cutpurse);</span>
+<span class="fc" id="L111">		kingdom.add(Card.embargo);</span>
+<span class="fc" id="L112">		kingdom.add(Card.feast);</span>
+<span class="fc" id="L113">		kingdom.add(Card.gardens);</span>
+<span class="fc" id="L114">		kingdom.add(Card.great_hall);</span>
+<span class="fc" id="L115">		kingdom.add(Card.mine);</span>
+<span class="fc" id="L116">		kingdom.add(Card.smithy);</span>
+<span class="fc" id="L117">		kingdom.add(Card.village);</span>
+<span class="fc" id="L118">		kingdom.add(Card.seahag);</span>
+
+<span class="fc" id="L120">		return kingdom;</span>
+	}
+	
+	public List&lt;Card&gt; kingdomCards(int seed)
+	{
+<span class="fc" id="L125">		Randomness.reset(seed);</span>
+<span class="fc" id="L126">		List&lt;Card&gt; kingdom = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L127">		List&lt;Card&gt; allKingdom = allKC();</span>
+		Card card;
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		while(kingdom.size() &lt; 10)</span>
+		{
+<span class="fc" id="L131">			card = Randomness.randomMember(allKingdom);</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">					if (!kingdom.contains(card))</span>
+					{
+<span class="fc" id="L134">						kingdom.add(card);</span>
+					}
+		}
+<span class="fc" id="L137">		return kingdom;</span>
+	}
+	
+	public List&lt;Card&gt; kingdomCards(Card k1, Card k2, Card k3, Card k4, Card k5, Card k6, Card k7, Card k8, Card k9, Card k10)
+	{
+<span class="fc" id="L142">		List&lt;Card&gt; k = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L143">		k.add(k1);</span>
+<span class="fc" id="L144">		k.add(k2);</span>
+<span class="fc" id="L145">		k.add(k3);</span>
+<span class="fc" id="L146">		k.add(k4);</span>
+<span class="fc" id="L147">		k.add(k5);</span>
+<span class="fc" id="L148">		k.add(k6);</span>
+<span class="fc" id="L149">		k.add(k7);</span>
+<span class="fc" id="L150">		k.add(k8);</span>
+<span class="fc" id="L151">		k.add(k9);</span>
+<span class="fc" id="L152">		k.add(k10);</span>
+<span class="fc" id="L153">		return k;</span>
+	}
+	
+	
+	
+	public void setUpGame(List&lt;Card&gt; kingdomCards, int players)
+	{
+		//Setting up treasure cards
+<span class="fc" id="L161">		supply.put(Card.copper, 60);</span>
+<span class="fc" id="L162">		supply.put(Card.silver, 40);</span>
+<span class="fc" id="L163">		supply.put(Card.gold, 30);</span>
+
+		//Setting up victory cards
+		
+<span class="fc bfc" id="L167" title="All 2 branches covered.">		if (players== 2)</span>
+		{
+<span class="fc" id="L169">			supply.put(Card.estate, 14);</span>
+<span class="fc" id="L170">			supply.put(Card.duchy, 8);</span>
+<span class="fc" id="L171">			supply.put(Card.province, 8);</span>
+<span class="fc" id="L172">			supply.put(Card.curse, 10);</span>
+		}
+<span class="fc bfc" id="L174" title="All 2 branches covered.">		else if (players == 3)</span>
+		{
+<span class="fc" id="L176">			supply.put(Card.estate, 21);</span>
+<span class="fc" id="L177">			supply.put(Card.duchy, 12);</span>
+<span class="fc" id="L178">			supply.put(Card.province, 12);</span>
+<span class="fc" id="L179">			supply.put(Card.curse, 20);</span>
+		}
+		
+<span class="fc bfc" id="L182" title="All 2 branches covered.">		else if (players == 4)</span>
+		{
+<span class="fc" id="L184">			supply.put(Card.estate, 24);</span>
+<span class="fc" id="L185">			supply.put(Card.duchy, 12);</span>
+<span class="fc" id="L186">			supply.put(Card.province, 12);</span>
+<span class="fc" id="L187">			supply.put(Card.curse, 30);</span>
+		}
+		
+		//Setting up kingdom cards
+<span class="fc bfc" id="L191" title="All 2 branches covered.">		for (Card c: kingdomCards)</span>
+		{
+<span class="fc bfc" id="L193" title="All 2 branches covered.">			if (c.getTypes().contains(&quot;victory&quot;))</span>
+			{
+<span class="fc bfc" id="L195" title="All 2 branches covered.">				if (players == 2)</span>
+				{
+<span class="fc" id="L197">					supply.put(c,  8);</span>
+				}
+<span class="pc bpc" id="L199" title="1 of 4 branches missed.">				else if (players == 3 || players == 4)</span>
+				{
+<span class="fc" id="L201">					supply.put(c, 12);</span>
+				}
+			}
+			else 
+			{
+<span class="fc" id="L206">				supply.put(c,  10);</span>
+			}
+<span class="fc" id="L208">		}</span>
+<span class="fc" id="L209">	}</span>
+	
+	public List&lt;Card&gt; getHighestValueCards(int coins)
+	{
+<span class="fc" id="L213">		List&lt;Card&gt; cardsYouCanBuy = new ArrayList&lt;Card&gt;();</span>
+		
+<span class="fc bfc" id="L215" title="All 2 branches covered.">		for (Card c: supply.keySet())</span>
+		{
+<span class="fc bfc" id="L217" title="All 2 branches covered.">			if (supply.get(c) &gt; 0)</span>
+			{
+<span class="fc bfc" id="L219" title="All 2 branches covered.">				if (c.getCost() &lt;= coins)</span>
+				{
+<span class="fc" id="L221">					cardsYouCanBuy.add(c);</span>
+				}
+			}
+<span class="fc" id="L224">		}</span>
+		
+<span class="fc" id="L226">		List&lt;Card&gt; highestValueCards = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L227">		int maxCost = 0;</span>
+		
+<span class="fc bfc" id="L229" title="All 2 branches covered.">		for(Card c: cardsYouCanBuy)</span>
+		{
+<span class="fc bfc" id="L231" title="All 2 branches covered.">			if(c.getCost() &gt; maxCost)</span>
+			{
+<span class="fc" id="L233">				maxCost = c.getCost();</span>
+			}
+<span class="fc" id="L235">		}</span>
+		
+<span class="fc bfc" id="L237" title="All 2 branches covered.">		for(Card c: cardsYouCanBuy)</span>
+		{
+<span class="fc bfc" id="L239" title="All 2 branches covered.">			if (c.getCost() == maxCost)</span>
+			{
+<span class="fc" id="L241">				highestValueCards.add(c);</span>
+			}
+<span class="fc" id="L243">		}</span>
+		
+<span class="fc" id="L245">		return highestValueCards;</span>
+	}
+	
+	public List&lt;Card&gt; getNonEmptySupplyPiles()
+	{
+<span class="fc" id="L250">		List&lt;Card&gt; nonEmpty = new ArrayList&lt;Card&gt;();</span>
+		
+<span class="fc bfc" id="L252" title="All 2 branches covered.">		for(Card c : supply.keySet())</span>
+		{
+<span class="fc bfc" id="L254" title="All 2 branches covered.">			if (supply.get(c) &gt; 0)</span>
+			{
+<span class="fc" id="L256">				nonEmpty.add(c);</span>
+			}
+<span class="fc" id="L258">		}</span>
+		
+<span class="fc" id="L260">		return nonEmpty;</span>
+	}
+	
+	//tells if a supply pile has available cards or not
+	public  boolean availableCards(Card c)
+	{
+<span class="fc bfc" id="L266" title="All 2 branches covered.">		return supply.get(c) &gt; 0;</span>
+	}
+	
+	//makes players with a copper discard that copper
+	public  void cutpurseHelper(int player)
+	{
+<span class="fc bfc" id="L272" title="All 2 branches covered.">		for(int i=0; i &lt; players.size(); i++)</span>
+		{
+<span class="fc bfc" id="L274" title="All 2 branches covered.">			if (i!=player)</span>
+			{
+<span class="fc bfc" id="L276" title="All 2 branches covered.">				if(players.get(i).hasCard(Card.copper))</span>
+				{
+<span class="fc" id="L278">					System.out.println(players.get(i).getName() + &quot; discarded copper. &quot;);</span>
+<span class="fc" id="L279">					players.get(i).discard(Card.copper);</span>
+				}
+				else
+				{
+<span class="fc" id="L283">					System.out.println(players.get(i).getName() + &quot; had no coppers to discard. &quot;);</span>
+				}
+			}
+		}
+<span class="fc" id="L287">	}</span>
+	
+	
+	//for the council room action card, all other players draw a card
+	public void councilRoomHelper(int player)
+	{
+<span class="fc bfc" id="L293" title="All 2 branches covered.">		for (int i = 0; i &lt; players.size(); i++)</span>
+		{
+<span class="fc bfc" id="L295" title="All 2 branches covered.">			if (i != player)</span>
+			{
+<span class="fc" id="L297">				players.get(i).drawCardFromDeck();</span>
+			}
+		}
+<span class="fc" id="L300">	}</span>
+	
+	public void seaHagHelper(int player)
+	{
+<span class="fc bfc" id="L304" title="All 2 branches covered.">		for(int i = 0; i &lt; players.size(); i++)</span>
+		{
+<span class="fc bfc" id="L306" title="All 2 branches covered.">			if (i != player)</span>
+			{
+<span class="fc" id="L308">				Card card = players.get(i).drawCardFromDeck();</span>
+<span class="fc" id="L309">				players.get(i).discard(card);</span>
+<span class="fc" id="L310">				players.get(i).gainCardToTopOfDeck(Card.curse, this);</span>
+			}
+		}
+<span class="fc" id="L313">	}</span>
+	
+	public void ambassadorHelper(int player, Card c)
+	{
+<span class="fc bfc" id="L317" title="All 2 branches covered.">		for (int i = 0; i &lt; players.size(); i++)</span>
+		{
+<span class="fc bfc" id="L319" title="All 2 branches covered.">			if (i != player)</span>
+			{
+<span class="fc bfc" id="L321" title="All 2 branches covered.">				if (availableCards(c))</span>
+				{
+<span class="fc" id="L323">					players.get(i).gainCard(c, this);</span>
+				}
+			}
+		}
+<span class="fc" id="L327">	}</span>
+
+	//Game ends if 3 piles are empty or province pile is empty
+	public boolean gameOver()
+	{
+<span class="fc" id="L332">		boolean gameover = false;</span>
+<span class="fc bfc" id="L333" title="All 2 branches covered.">		if (supply.get(Card.province)==0)</span>
+		{
+<span class="fc" id="L335">			System.out.println(&quot;GAME OVER! Province card pile is empty. &quot;);</span>
+<span class="fc" id="L336">			gameover = true;</span>
+		}
+		else 
+		{
+<span class="fc" id="L340">			int empty = 0;</span>
+<span class="fc bfc" id="L341" title="All 2 branches covered.">			for (Integer i :supply.values())</span>
+			{
+<span class="fc bfc" id="L343" title="All 2 branches covered.">				if(i == 0)</span>
+				{
+<span class="fc" id="L345">					empty = empty + 1;</span>
+				}
+<span class="fc" id="L347">			}</span>
+<span class="fc bfc" id="L348" title="All 2 branches covered.">			if(empty &gt;=3)</span>
+			{
+<span class="fc" id="L350"> 				System.out.println(&quot;GAME OVER! 3 supply piles are empty. &quot;);</span>
+<span class="fc" id="L351">				gameover = true;</span>
+			}
+		}
+<span class="fc" id="L354">		return gameover;</span>
+	}
+	
+	
+	//Prints final scores of each player
+	public void finalScores()
+	{
+		int victory;
+<span class="fc bfc" id="L362" title="All 2 branches covered.">		for (Player p: players)</span>
+		{
+<span class="fc" id="L364">			victory = p.getTotalVictoryPoints();</span>
+<span class="fc" id="L365">			System.out.println(p.getName() + &quot;: &quot; + victory);</span>
+<span class="fc" id="L366">		}</span>
+<span class="fc" id="L367">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

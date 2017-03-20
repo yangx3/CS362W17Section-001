@@ -1,3 +1,8 @@
+Directory Structure:
+-Dominion: contains the dominion code
+-html_report: contains the html report
+-unit_tests: contains the unit tests
+
 1. Navigate to Dominion folder
 2. mvn compile
 3. mvn test

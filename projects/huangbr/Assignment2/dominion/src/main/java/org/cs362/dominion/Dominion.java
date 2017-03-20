@@ -12,7 +12,8 @@ public class Dominion
 	public Dominion(int randomSeed)
 	{
 		seed = randomSeed;
-		playerCount = 4;
+		Random rand = new Random();
+		playerCount = rand.nextInt((4-2) + 1) + 2;
 		players = new Player[playerCount];
 		for(int i=0; i < playerCount; i++)
 		{

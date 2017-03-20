@@ -2,6 +2,7 @@ package org.cs362.dominion;
 
 import java.util.Vector;
 import java.util.Collections;
+import java.util.Random;
 
 public class DominionBoard {
 	private KingdomSlot provinceRef;
@@ -29,10 +30,15 @@ public class DominionBoard {
 		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.VILLAGE), 10));
 		buyableCards.addElement(new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.GARDENS), 10));
 		
+		Random generator = new Random(10);
+	    while(buyableCards.size() >= 10) { //Error 4: should be > not >=
+			buyableCards.remove(generator.nextInt(buyableCards.size()-1)+1);
+		}
+	    /*
 		while(buyableCards.size() >= 10) { //Error 4: should be > not >=
 			buyableCards.remove((int)(Math.random()*buyableCards.size()));
 		}
-		
+		*/
 		buyableCards.addElement(new KingdomSlot(new TreasureCard(TreasureCard.TreasureType.GOLD), 30));
 		buyableCards.addElement(new KingdomSlot(new TreasureCard(TreasureCard.TreasureType.SILVER), 40));
 		buyableCards.addElement(new KingdomSlot(new TreasureCard(TreasureCard.TreasureType.COPPER), 46));

@@ -11,15 +11,16 @@ public class Player {
 	private ArrayList<Card> deck;	//The Deck of the player
 	private ArrayList<Card> discard;//The discard pile
 	private ArrayList<Card> played;	//The current cards that have been played this turn
+	private Random rand;
 	
 	
-	public Player()
+	public Player(Random rand)
 	{
 		hand = new ArrayList<Card>();
 		deck = new ArrayList<Card>();
 		discard = new ArrayList<Card>();
 		played = new ArrayList<Card>();
-		
+		this.rand = rand;
 	}
 
 	public void turnConclusion()//Gets hands ready for subsequent turns
@@ -53,7 +54,6 @@ public class Player {
 	
 	public void shuffle()//shuffles the discard pile into the deck
 	{
-		Random rand = new Random(System.currentTimeMillis());
 		//Combine cards and deck
 		for (int l = 0; l < deck.size(); l++) {
 			

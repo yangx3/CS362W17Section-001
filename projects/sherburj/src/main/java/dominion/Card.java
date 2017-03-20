@@ -2,10 +2,11 @@ package dominion;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.Random;
 
 
 public final class Card implements Comparable<Card>, Cloneable{
+	Random randomGenerator = new Random();
 
     static List<Card> filter(List<Card> hand, CardName cardName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -31,11 +32,11 @@ public final class Card implements Comparable<Card>, Cloneable{
 	 * @param int score the score of the card, when the game is finished
 	 * @param treasureValue  the treasure value of the treasure cards (copper, silver, and gold cards)
 	 */
-	private final Type realType;
-	private final CardName cardName;
-	private final int cost, score, treasureValue;
+	public final Type realType;
+	public final CardName cardName;
+	public final int cost, score, treasureValue;
 
-	private Card(CardName cardName, Type type, int cost, int score, int treasureValue) {
+	public Card(CardName cardName, Type type, int cost, int score, int treasureValue) {
 		this.cost = cost;
 		this.score = score;
 		this.treasureValue = treasureValue;
@@ -84,7 +85,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		/** The Treasure cards  */
 		Card o = new Card(CardName.Gold, Type.TREASURE, 6, 0, 3);
 		ret.add(o);
-		o = new Card(CardName.Silver, Type.TREASURE, 3, 0, 2);
+		o = new Card(CardName.Silver, Type.TREASURE, 8, 0, 2);
 		ret.add(o);
 		o = new Card(CardName.Copper, Type.TREASURE, 1, 0, 1);
 		ret.add(o);
@@ -154,15 +155,15 @@ public final class Card implements Comparable<Card>, Cloneable{
                     player.gain(Card.getCard(state.cards, Card.CardName.Silver));
                     Card Ihatejava2 = new Card(CardName.Advtest,Type.VICTORY,0,0,0);
                     for (Player players : state.players){
-                        if(player.player_username != name)
-                             player.discardType(Ihatejava2);
+                        if(players.player_username != name)
+                             players.discardType(Ihatejava2);
                     }
 		return;
                         
                  case Cellar:
                     player.numActions = player.numActions + 1;
                     int y = player.hand.size();
-                    int randomCellar = (int)  Randomness.random.nextInt(y-1);
+					 int randomCellar = randomGenerator.nextInt(y-1);
                         while(randomCellar>0){
                             Card c = player.hand.get(0);
                             player.discard(c);
@@ -171,13 +172,14 @@ public final class Card implements Comparable<Card>, Cloneable{
 		return;
                         
                 case Chancellor:
-                    int randomChancel = (int)  Randomness.random.nextInt(4);
+					int randomChancel = randomGenerator.nextInt(4);
                     player.coins = player.coins + 2;
                     if(randomChancel == 0){
                         while(!player.hand.isEmpty()){
                             Card c = player.hand.get(0);
                             player.discard(c);
                         }
+                        assert(player.hand.isEmpty());
                     }
                 return;
                         
@@ -192,10 +194,11 @@ public final class Card implements Comparable<Card>, Cloneable{
                     player.drawCard();
                     player.drawCard();
                     player.drawCard();
+					player.drawCard();
                     player.numBuys = player.numBuys +1;
                     String name2 = player.player_username;
                     for (Player players : state.players){
-                        if(player.player_username != name2)
+                        if(players.player_username != name2)
                             players.drawCard();
                     }
 		return;
@@ -222,12 +225,15 @@ public final class Card implements Comparable<Card>, Cloneable{
                 case Militia:
                      player.coins = player.coins+2;
                      String name3 = player.player_username;
-                     for (Player players : state.players){
-                        while(player.hand.size() > 3){
-                            if(player.player_username != name3){
+					//System.out.println(name3);
+					for (Player players : state.players){
+                        while(players.hand.size() > 3){
+                            if(players.player_username != name3){
+                             //System.out.println(players.player_username);
                              Card x = players.hand.get(0);
-                             player.discard(x);
+                             players.discard(x);
                             }
+                            else break;
                         }
                      }
 		return;
@@ -239,7 +245,7 @@ public final class Card implements Comparable<Card>, Cloneable{
                         
                 case Market:
                      player.drawCard();
-                     player.numActions = player.numActions + 1;
+                     player.numActions = player.numActions + 3;
                      player.numBuys = player.numBuys+1;
                      player.coins = player.coins+1;
 		return;     

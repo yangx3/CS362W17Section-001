@@ -9,9 +9,33 @@
 	<name>DOMINION</name>
 	<url>http://maven.apache.org</url>
 	<properties>
+		<evosuiteVersion>1.0.1</evosuiteVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	<pluginRepositories>
+	  <pluginRepository>
+	    <id>EvoSuite</id>
+	    <name>EvoSuite Repository</name>
+	    <url>http://www.evosuite.org/m2</url>
+	  </pluginRepository>
+	</pluginRepositories>
+		
+	<repositories>
+	   <repository>
+	     <id>EvoSuite</id>
+	     <name>EvoSuite Repository</name>
+	     <url>http://www.evosuite.org/m2</url>
+	   </repository>
+	</repositories>
 	<dependencies>
+		<dependency>
+		  <groupId>org.evosuite</groupId>
+		  <artifactId>evosuite-standalone-runtime</artifactId>
+		  <version>${evosuiteVersion}</version>
+		  <scope>test</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -19,7 +43,10 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	
 	<build>
+	<pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -34,6 +61,34 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+		      <groupId>org.evosuite.plugins</groupId>
+		      <artifactId>evosuite-maven-plugin</artifactId>
+		      <version>${evosuiteVersion}</version>
+		      <executions>
+			  <execution>
+		         <goals> <goal> prepare </goal> </goals>
+		         <phase> process-test-classes </phase>
+		      </execution></executions>
+		  </plugin>
+		  <plugin>
+			   <groupId>org.apache.maven.plugins</groupId>
+			   <artifactId>maven-surefire-plugin</artifactId>
+			   <version>2.17</version>
+			   <configuration>
+			   	<forkMode>never</forkMode>
+			     <properties>
+			       <property>	
+			          <name>listener</name>
+			          <value>org.evosuite.runtime.InitializingListener</value>
+			      </property>
+			     </properties>
+			     <testFailureIgnore>true</testFailureIgnore>
+			  </configuration>
+			</plugin>
 		</plugins>
+	</pluginManagement>
+	
 	</build>
+	
 </project>

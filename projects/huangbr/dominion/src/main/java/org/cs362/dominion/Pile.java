@@ -24,7 +24,7 @@ public class Pile
 		cards = new ArrayList<Card>();
 		for(int i=0; i < num; i++)
 		{
-			addCard(card);
+			addCard(card);	
 		}
 		size = num;
 	}
@@ -38,6 +38,9 @@ public class Pile
 		}
 		size = num;
 		name = cardName;
+		value = 0;
+		points = 0;
+		embargos = 0;
 	}
 
 	public void addCard(Card card)
@@ -63,9 +66,20 @@ public class Pile
 		return drawnCard;
 	}
 
+	public String peekCard()
+	{
+		Card topCard = cards.get(0);
+		return topCard.name;
+	}
+
 	public int getSize()
 	{
 		return size;
+	}
+
+	public void setSize(int x)
+	{
+		size = x;
 	}
 
 	public int getValue()

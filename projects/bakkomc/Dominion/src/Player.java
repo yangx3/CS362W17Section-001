@@ -1,5 +1,5 @@
 
-import java.util.*;
+
 
 public class Player
 {
@@ -56,11 +56,11 @@ public class Player
 	{
 		if (hand.cards.size() < 1)
 		{
-			System.out.println("Hand is empty");
+			System.out.println("***Hand is empty***");
 		}
 		else if ( handPosition < 0 || handPosition >= hand.cards.size())
 		{
-			System.out.println("No card at that position");
+			System.out.println("***No card at that position***");
 		}
 		else
 		{
@@ -84,7 +84,6 @@ public class Player
 
 	public void discardPlayPile()
 	{
-		Card moveCard;
 		while(playPile.cards.size() > 0)
 		{
 			discard.addCard(playPile.takeTopCard());
@@ -290,6 +289,13 @@ public class Player
 	{
 		System.out.println("\nPlayPile:");
 		for( Card e : playPile.cards )
-			System.out.println( e.toString() + ",   ");
+			System.out.print( e.toString() + ",   ");
+	}
+
+	public void gameOver() 
+	{	
+		this.discardPlayPile();
+		this.discardHand();
+		this.replenishDeck();
 	}
 }

@@ -196,74 +196,76 @@ public class ambassador extends card{
 		}
 
 		//Give the other players a copy of the selected card
-		int other_turn;
-		if(turn == 0){
-			other_turn = 1;
-		}
-		else{
-			other_turn = 0;
-		}
-
-		player_array[other_turn].player_discard.add_card(discard_card);
-		if(discard_card.name == "estate" && dominion.estate.num_cards != 0){
-			dominion.estate.num_cards -= 1;
-		}
-		else if(discard_card.name == "duchy" && dominion.duchy.num_cards != 0){
-			dominion.duchy.num_cards -= 1;
-		}
-		else if(discard_card.name == "province" && dominion.province.num_cards != 0){
-			dominion.province.num_cards -= 1;
-		}
-		else if(discard_card.name == "curse" && dominion.curse.num_cards != 0){
-			dominion.curse.num_cards -= 1;
-		}
-		else if(discard_card.name == "copper" && dominion.copper.num_cards != 0){
-			dominion.copper.num_cards -= 1;
-		}
-		else if(discard_card.name == "silver" && dominion.silver.num_cards != 0){
-			dominion.silver.num_cards -= 1;
-		}
-		else if(discard_card.name == "gold" && dominion.gold.num_cards != 0){
-			dominion.gold.num_cards -= 1;
-		}
-		else if(discard_card.name == "embargo" && dominion.embargo.num_cards != 0){
-			dominion.embargo.num_cards -= 1;
-		}
-		else if(discard_card.name == "ambassador" && dominion.ambassador.num_cards != 0){
-			dominion.ambassador.num_cards -= 1;
-		}
-		else if(discard_card.name == "great_hall" && dominion.great_hall.num_cards != 0){
-			dominion.great_hall.num_cards -= 1;
-		}
-		else if(discard_card.name == "village" && dominion.village.num_cards != 0){
-			dominion.village.num_cards -= 1;
-		}
-		else if(discard_card.name == "baron" && dominion.baron.num_cards != 0){
-			dominion.baron.num_cards -= 1;
-		}
-		else if(discard_card.name == "cutpurse" && dominion.cutpurse.num_cards != 0){
-			dominion.cutpurse.num_cards -= 1;
-		}
-		else if(discard_card.name == "feast" && dominion.feast.num_cards != 0){
-			dominion.feast.num_cards -= 1;
-		}
-		else if(discard_card.name == "gardens" && dominion.gardens.num_cards != 0){
-			dominion.gardens.num_cards -= 1;
-		}
-		else if(discard_card.name == "salvager" && dominion.salvager.num_cards != 0){
-			dominion.salvager.num_cards -= 1;
-		}
-		else if(discard_card.name == "smithy" && dominion.smithy.num_cards != 0){
-			dominion.smithy.num_cards -= 1;
-		}
-		else if(discard_card.name == "council_room" && dominion.council_room.num_cards != 0){
-			dominion.council_room.num_cards -= 1;
-		}
-		else if(discard_card.name == "mine" && dominion.mine.num_cards != 0){
-			dominion.mine.num_cards -= 1;
-		}
-		else if(discard_card.name == "adventurer" && dominion.adventurer.num_cards != 0){
-			dominion.adventurer.num_cards -= 1;
+		int other_turn = -1;
+		for(int i = 0; i < dominion.num_players; i++){
+			if(turn == dominion.num_players-1){
+				other_turn = 0;
+			}
+			else{
+				other_turn++;
+			}
+	
+			player_array[other_turn].player_discard.add_card(discard_card);
+			if(discard_card.name == "estate" && dominion.estate.num_cards != 0){
+				dominion.estate.num_cards -= 1;
+			}
+			else if(discard_card.name == "duchy" && dominion.duchy.num_cards != 0){
+				dominion.duchy.num_cards -= 1;
+			}
+			else if(discard_card.name == "province" && dominion.province.num_cards != 0){
+				dominion.province.num_cards -= 1;
+			}
+			else if(discard_card.name == "curse" && dominion.curse.num_cards != 0){
+				dominion.curse.num_cards -= 1;
+			}
+			else if(discard_card.name == "copper" && dominion.copper.num_cards != 0){
+				dominion.copper.num_cards -= 1;
+			}
+			else if(discard_card.name == "silver" && dominion.silver.num_cards != 0){
+				dominion.silver.num_cards -= 1;
+			}
+			else if(discard_card.name == "gold" && dominion.gold.num_cards != 0){
+				dominion.gold.num_cards -= 1;
+			}
+			else if(discard_card.name == "embargo" && dominion.embargo.num_cards != 0){
+				dominion.embargo.num_cards -= 1;
+			}
+			else if(discard_card.name == "ambassador" && dominion.ambassador.num_cards != 0){
+				dominion.ambassador.num_cards -= 1;
+			}
+			else if(discard_card.name == "great_hall" && dominion.great_hall.num_cards != 0){
+				dominion.great_hall.num_cards -= 1;
+			}
+			else if(discard_card.name == "village" && dominion.village.num_cards != 0){
+				dominion.village.num_cards -= 1;
+			}
+			else if(discard_card.name == "baron" && dominion.baron.num_cards != 0){
+				dominion.baron.num_cards -= 1;
+				}
+			else if(discard_card.name == "cutpurse" && dominion.cutpurse.num_cards != 0){
+				dominion.cutpurse.num_cards -= 1;
+			}
+			else if(discard_card.name == "feast" && dominion.feast.num_cards != 0){
+				dominion.feast.num_cards -= 1;
+			}
+			else if(discard_card.name == "gardens" && dominion.gardens.num_cards != 0){
+				dominion.gardens.num_cards -= 1;
+			}
+			else if(discard_card.name == "salvager" && dominion.salvager.num_cards != 0){
+				dominion.salvager.num_cards -= 1;
+			}
+			else if(discard_card.name == "smithy" && dominion.smithy.num_cards != 0){
+					dominion.smithy.num_cards -= 1;
+			}
+			else if(discard_card.name == "council_room" && dominion.council_room.num_cards != 0){
+				dominion.council_room.num_cards -= 1;
+			}
+			else if(discard_card.name == "mine" && dominion.mine.num_cards != 0){
+				dominion.mine.num_cards -= 1;
+			}
+			else if(discard_card.name == "adventurer" && dominion.adventurer.num_cards != 0){
+				dominion.adventurer.num_cards -= 1;
+			}
 		}
 	}
 

@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PlayDominion</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">dominion</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PlayDominion (dominion)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PlayDominion</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (2/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.9%
+  </span>
+  <span class="absValue">
+    (20/ 22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package dominion;
+<i>2</i>&nbsp;//Main-Class: dominion.PlayDominion;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import java.util.ArrayList;
+<i>5</i>&nbsp;import java.util.HashMap;
+<i>6</i>&nbsp;import java.util.LinkedList;
+<i>7</i>&nbsp;import java.util.List;
+<i>8</i>&nbsp;import java.util.Random;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import java.util.Collections;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;
+<b class="nc"><i>13</i>&nbsp;public class PlayDominion {</b>
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;	   public  static void main(String args[]){
+<b class="fc"><i>16</i>&nbsp;		   Random randomGenerator = new Random();</b>
+<i>17</i>&nbsp;		    List&lt;Card&gt; cards;
+<i>18</i>&nbsp;		    GameState state;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;			
+<i>21</i>&nbsp;			//the cards  are achieved by each element/constant in the enum class 
+<b class="fc"><i>22</i>&nbsp;			cards = new ArrayList&lt;&gt;(Card.createCards());</b>
+<b class="fc"><i>23</i>&nbsp;			state = new GameState(cards);</b>
+<b class="fc"><i>24</i>&nbsp;		      int random = randomGenerator.nextInt(3);</b>
+<i>25</i>&nbsp;
+<b class="fc"><i>26</i>&nbsp;		  		Player player = new Player(state, &quot;player-1&quot;);</b>
+<b class="fc"><i>27</i>&nbsp;		   		state.addPlayer(player);</b>
+<b class="fc"><i>28</i>&nbsp;		 		player = new Player(state, &quot;player-2&quot;);</b>
+<b class="fc"><i>29</i>&nbsp;		  		state.addPlayer(player);</b>
+<b class="fc"><i>30</i>&nbsp;		        while(random != 0){</b>
+<b class="fc"><i>31</i>&nbsp;					player = new Player(state, &quot;player-&quot;+ (random+2));</b>
+<b class="fc"><i>32</i>&nbsp;					state.addPlayer(player);</b>
+<b class="fc"><i>33</i>&nbsp;					random = random-1;</b>
+<i>34</i>&nbsp;			 	 }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;//		      player.printStateGame();
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;		      //Initialize the game!
+<b class="fc"><i>39</i>&nbsp;		      state.initializeGame();</b>
+<i>40</i>&nbsp;		      
+<b class="fc"><i>41</i>&nbsp;		      System.out.println(&quot;Initialization DominionBoard:\n &quot; + state.toString());</b>
+<i>42</i>&nbsp;		      
+<b class="fc"><i>43</i>&nbsp;		      HashMap&lt;Player, Integer&gt; winners=state.play();</b>
+<b class="fc"><i>44</i>&nbsp;		      System.out.println (&quot;Finished game.\n&quot;);</b>
+<i>45</i>&nbsp;		    
+<b class="fc"><i>46</i>&nbsp;                      winners.keySet().forEach((p) -&gt; {</b>
+<b class="fc"><i>47</i>&nbsp;                          System.out.println (&quot;Player name: &quot;+p.player_username + &quot; , Score: &quot;+ winners.get(p) );</b>
+<b class="fc"><i>48</i>&nbsp;               }); //	      player.printStateGame();</b>
+<i>49</i>&nbsp;		      
+<i>50</i>&nbsp;		      
+<b class="fc"><i>51</i>&nbsp;			System.exit(0);  </b>
+<i>52</i>&nbsp;
+<b class="nc"><i>53</i>&nbsp;	   }</b>
+<i>54</i>&nbsp;	
+<i>55</i>&nbsp;	
+<i>56</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-27 21:39</div>
+</div>
+</body>
+</html>

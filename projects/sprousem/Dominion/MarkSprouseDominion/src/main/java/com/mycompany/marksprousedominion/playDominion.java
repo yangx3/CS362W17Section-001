@@ -1,63 +1,63 @@
 package com.mycompany.marksprousedominion;
 
+import java.util.ArrayList;
 import java.util.Random;
 //import java.util.Scanner;
 
 public class playDominion 
 {
 
-	boardState board;
-	Player player1, player2;
-	
-	public playDominion()
+	private boardState board;
+	private ArrayList<Player> players;
+    private Player current;
+	private int currentPlayer;
+	private Random rand;
+        
+	public playDominion(int numPlayers, Random rand)
 	{
+
+		this.rand = rand;
+
 		//Game Setup
-		
-		board = new boardState();
+		players = new ArrayList<>();
+		board = new boardState(rand);
 		
 		//Create each player
-		
-		player1 = new Player();
-		player2 = new Player();
+		for(int i = 0; i < numPlayers;i++)
+                {
+                    players.add(new Player(rand));
+                }
 		
 		//Create the starting decks for each player
 		for(int i = 0; i < 7; i++)
 		{
-			player1.addCard(0, new treasureCard(0, 1, "Copper"));
-			player2.addCard(0, new treasureCard(0, 1, "Copper"));
+                    for(int j = 0; j < numPlayers;j++)
+                    {
+                        players.get(j).addCard(0, new treasureCard(0, 1, "Copper"));
+                    }
 		}
 		
 		for(int i = 0; i < 3; i++)
 		{
-			player1.addCard(0, new victoryCard(2, 1, "Estate"));
-			player2.addCard(0, new victoryCard(2, 1, "Estate"));
+                    for(int j = 0; j < numPlayers;j++)
+                    {
+                        players.get(j).addCard(0, new victoryCard(2, 1, "Estate"));
+                    }
 		}
 		
-		player1.shuffle();
-		player1.turnConclusion();
-		player2.shuffle();
-		player2.turnConclusion();
+                for(int j = 0; j < numPlayers;j++)
+                {
+                    players.get(j).shuffle();
+                    players.get(j).turnConclusion();
+                }
 		
+                current = players.remove(0);
+                currentPlayer = 0;
 		//End of Game Setup
-
-		/*
-		System.out.println("\nGame Complete\nPlayer1: " + player1.getVictoryPoints() + "\nPlayer 2: " + player2.getVictoryPoints());
-		System.out.println("Deck of player1:");
-		player1.shuffle();
-		for (int i = 0; i < player1.getSize(0); i++) {
-			System.out.println(player1.getCard(0, i).getName());
-		}
-		
-		System.out.println("Deck of player2:");
-		player2.shuffle();
-		for (int i = 0; i < player2.getSize(0); i++) {
-			System.out.println(player2.getCard(0, i).getName());
-		}
-		*/
 			
 	}
 
-	public void executeMove(Player current, Player opponent, boardState board, turnState state)
+	public void executeMove(Player current, ArrayList<Player> opponents, boardState board, turnState state)
 	{
 		int handIndex;
 		Card temp;
@@ -75,32 +75,33 @@ public class playDominion
 		state = playCard(temp, state, board);//bug here with feast
 	}
 
-	public void executeBuy(Player current, Player opponent, boardState board, turnState state)
+	public void executeBuy(Player current, ArrayList<Player> opponents, boardState board, turnState state)
 	{
 		int cardIndex;
 
-		cardIndex = chooseNum(0, board.getOptions() - 1);
+		System.out.println("Options: " + board.getOptions());
+		cardIndex = chooseNum(0, board.getOptions());
 
 		current.addCard(1, board.cardBought(cardIndex));
 		state.setBuys(state.getBuys() - 1);
 
 	}
 
-	public void executeTurn(Player current, Player opponent, boardState board)
+	public void executeTurn(Player current, ArrayList<Player> opponents, boardState board)
 	{
-		turnState state = new turnState(current, opponent, board);
+		turnState state = new turnState(current, opponents, board);
 
 		//Action phase
 		while(state.getActions() != 0 && current.getSize(2) != 0)
 		{
-			executeMove(current,opponent, board, state);
+			executeMove(current,opponents, board, state);
 		}
 		//Buy phase
 		
 		//Get input for what card to play
 		while(state.getBuys() != 0)
 		{
-			executeBuy(current,opponent, board, state);
+			executeBuy(current,opponents, board, state);
 		}
 		
 		current.turnConclusion();
@@ -109,8 +110,6 @@ public class playDominion
 	
 	private int chooseNum(int lower, int upper)
 	{
-		Random rand = new Random(System.currentTimeMillis());
-		
 		//return input;
 		
 		return rand.nextInt(upper-lower) + lower;
@@ -142,16 +141,18 @@ public class playDominion
 	
 	public boolean gameDone(boardState board)
 	{
-		//if provinces are gone
-		if(board.getSupply().get(0).get(0).getName() != "Province")
-		{
-			System.out.println("Game done because no provinces");
-			return true;
-		}
+
+
 		//if 3 supply are out
 		if(board.getOptions() < 14)
 		{
 			System.out.println("Game done because of lack of options");
+			return true;
+		}
+		//if provinces are gone
+		if(!"Province".equals(board.getSupply().get(0).get(0).getName()))
+		{
+			System.out.println("Game done because no provinces");
 			return true;
 		}
 		
@@ -222,26 +223,35 @@ public class playDominion
 	private turnState council_room(turnState state)
 	{
 		Player currentPlayer = state.getCurrent();
-		Player otherPlayer = state.getOpponent();
+		ArrayList<Player> otherPlayer = state.getOpponents();
 		
 		state.setBuys(state.getBuys() + 1);
 		
 		for (int i = 0; i < 4; i++) {
 			currentPlayer.draw();
 		}
-		otherPlayer.draw();
-		return state;
+		
+                for (int i = 0;i<otherPlayer.size();i++)
+                {
+                    otherPlayer.get(i).draw();
+                }
+                
+		
+                return state;
 	}
 	
 	private turnState witch(turnState state)
 	{
 		Player currentPlayer = state.getCurrent();
-		Player otherPlayer = state.getOpponent();
+		ArrayList<Player> otherPlayer = state.getOpponents();
 		
 		for (int i = 0; i < 2; i++) {
 			currentPlayer.draw();
 		}
-		otherPlayer.addCard(1, new victoryCard(0, -1, "Curse"));
+                for (int i = 0;i<otherPlayer.size();i++)
+                {
+                    otherPlayer.get(i).addCard(1, new victoryCard(0, -1, "Curse"));
+                }
 		return state;
 	}
 	
@@ -265,6 +275,8 @@ public class playDominion
 			System.out.println("Cost 1: " + temp1);
 			do//Get the card
 			{
+				if(board.getOptions() == 0)
+					return state;
 				temp2 = chooseNum(0, board.getOptions());
 				card = board.cardBought(temp2);
 				temp2 = card.getCost();
@@ -290,7 +302,6 @@ public class playDominion
 	
 	private turnState mine(turnState state)
 	{
-		Random rand = new Random(System.currentTimeMillis());
 		//Trash a treasure and get the next tier
 		Card card = null;
 		for(int i = 0; i < state.getCurrent().getSize(2);i++)
@@ -434,12 +445,28 @@ public class playDominion
 		return board;
 	}
 
-	public Player getPlayer1() {
-		return player1;
+	public Player getCurrent() {
+		return current;
 	}
 
-	public Player getPlayer2() {
-		return player2;
+	public ArrayList<Player> getPlayers() {
+		return players;
 	}
+//-------------------------------------------------
+        //Might want to change to the standard arrayqueue
+        public void nextPlayer() //Moves current player to the next player
+        {
+            Player temp;
+
+            players.add(currentPlayer, current);
+            currentPlayer ++;
+
+            if(currentPlayer == players.size())
+            {
+                currentPlayer = 0;
+            }
+
+            current = players.remove(currentPlayer);
+        }
 
 }

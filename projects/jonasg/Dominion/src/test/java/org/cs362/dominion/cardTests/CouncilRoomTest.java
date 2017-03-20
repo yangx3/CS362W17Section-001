@@ -57,7 +57,7 @@ public class CouncilRoomTest {
 	System.out.println("numActions = " + p1.numActions +
 		", expected = " + (p1t.numActions - 1));
 	assertEquals(p1.hand.size() + p1.playedCards.size(), p1t.hand.size() + 4);
-	assertEquals(p1.deck.size(), p2t.deck.size() - 4);
+	assertEquals(p1.deck.size(), p1t.deck.size() - 4);
 	assertEquals(p1.numBuys, p1t.numBuys + 1);
 	assertEquals(p1.numActions, p1t.numActions - 1);
 

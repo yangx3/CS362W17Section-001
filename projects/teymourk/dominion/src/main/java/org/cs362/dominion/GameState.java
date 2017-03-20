@@ -33,6 +33,7 @@ public class GameState implements Cloneable{
 			      return ;
 			    }
 			 //initialize supply for only two players
+
 		   		int selectedKindom=0;
 		   		int Kingdom_Cards_Selected=12;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
 				   								// we should change 3 to the  exact of the number of 
@@ -46,13 +47,24 @@ public class GameState implements Cloneable{
 			         selectedKindom++;
 			      }
 
-		   		//set number of Curse cards the default number of players is 2
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
-		      
-		      //set number of Victory cards
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+		   if(players.size() == 2) {
+
+			   //set number of Victory cards
+			   gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
+			   gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
+			   gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+
+		   } else if(players.size() > 2) {
+
+			   //set number of Victory cards
+			   gameBoard.put(Card.getCard(cards, Card.CardName.Province), 12);
+			   gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 12);
+			   gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 12);
+		   }
+
+		   int i = players.size()-1;
+		   gameBoard.put(Card.getCard(cards, Card.CardName.Curse), (10*i));
+
 		    //set number of Treasure cards
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
@@ -60,19 +72,19 @@ public class GameState implements Cloneable{
 
 
 		      for (Player player : players) {
-			         for (int i = 0; i < 7; i++)
+			         for (i = 0; i < 7; i++)
 			            player.gain(Card.getCard(cards, Card.CardName.Cooper));
-			         for (int i = 0; i < 3; i++)
+			         for (i = 0; i < 3; i++)
 			            player.gain(Card.getCard(cards,Card.CardName.Estate));
-			         
+
 			         player.numActions = 1;
 			         player.coins = 0;
 			         player.numBuys = 1;
 				      //Shuffle your starting 10 cards (7 Coppers & 3 Estates) and place them face-down as your Deck. Draw the top
 				      //5 cards as your starting hand
-				      for (int i = 0; i < 5; i++) {
-				    	  player.drawCard();
-				      }
+				      for (i = 0; i < 5; i++) {
+					  player.drawCard();
+				  }
 			  }
 	   }
 	   

@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------
+Test set: ORG.CS362.DOMINION.Randomness_ESTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0 sec <<< FAILURE! - in ORG.CS362.DOMINION.Randomness_ESTest
+test8(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Randomness_ESTest.test8(Randomness_ESTest.java:138)
+
+test9(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.Randomness_ESTest.test9(Randomness_ESTest.java:144)
+
+test6(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.Randomness_ESTest.test6(Randomness_ESTest.java:110)
+
+test7(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.Randomness_ESTest.test7(Randomness_ESTest.java:125)
+
+test4(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.Randomness_ESTest.test4(Randomness_ESTest.java:87)
+
+test5(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.Randomness_ESTest.test5(Randomness_ESTest.java:101)
+
+test2(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.Randomness_ESTest.test2(Randomness_ESTest.java:51)
+
+test3(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.Randomness_ESTest.test3(Randomness_ESTest.java:69)
+
+test0(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.Randomness_ESTest.test0(Randomness_ESTest.java:27)
+
+test1(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.Randomness_ESTest.test1(Randomness_ESTest.java:45)
+

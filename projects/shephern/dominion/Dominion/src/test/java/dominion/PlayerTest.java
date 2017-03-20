@@ -12,11 +12,11 @@ public class PlayerTest {
 	private GameState state;
 	private Player player1;
 	private Player player2;
-	
+	private List<Card> cards;
 	@Before
 	public void initPlayer(){
 		Randomness.reset(10);
-		List<Card> cards = new ArrayList<Card>(Card.createCards());
+		cards = new ArrayList<Card>(Card.createCards());
 		state = new GameState(cards);
 		player1 = new Player(state, "p1");
 		state.addPlayer(player1);
@@ -33,6 +33,7 @@ public class PlayerTest {
 		player1.initializePlayerTurn();
 		assertEquals(player1.coins, 0);
 		assertEquals(player1.hand.size(), 5);
+		assertEquals(player1.discard.size(), 0);
 		assertEquals(player1.numActions, 1);
 		assertEquals(player1.numBuys, 1);
 	}
@@ -48,6 +49,14 @@ public class PlayerTest {
 		assertEquals(player1.deck.size(), size - 1);
 		assertEquals(player1.discard.size(), 0);
 		
+		//Tests sort, silly silly sort
+		player1.hand.add(Card.getCard(cards, Card.CardName.Embargo));
+		player1.hand.add(Card.getCard(cards, Card.CardName.Adventurer));
+		player1.drawCard();
+		System.out.println(player1.toString());
+		assertTrue(player1.hand.get(2) == Card.getCard(cards, Card.CardName.Adventurer));
+		assertTrue(player1.hand.get(3) == Card.getCard(cards, Card.CardName.Embargo));
+		
 		player1.deck.clear();
 		player1.discard.clear();
 		player1.hand.clear();
@@ -57,6 +66,7 @@ public class PlayerTest {
 		assertEquals(player1.hand.size(), 0);
 		assertEquals(player1.deck.size(), 0);
 		assertEquals(player1.discard.size(), 0);
+		
 	}
 	
 	@Test
@@ -156,6 +166,12 @@ public class PlayerTest {
 		assertEquals(player1.coins, 4-bought.getCost());
 		assertTrue(player1.discard.contains(bought));
 		assertEquals(player1.numBuys, 0);
+		
+		player1.numBuys = 1;
+		player1.coins = 1;
+		player1.buyCard(state, -1);
+		
+		assertEquals(player1.numBuys, 1);
 		
 	}
 	

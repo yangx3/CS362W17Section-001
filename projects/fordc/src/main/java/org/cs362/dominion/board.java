@@ -1,6 +1,8 @@
 package org.cs362.dominion;
 
 public class board{
+	int num_players = 0;
+
 	//kingdom cards
 	pile adventurer;
 	pile ambassador;

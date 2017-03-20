@@ -1,5 +1,10 @@
 (Sprouse, Mark Mark) Winter 2017
 
+Directory Structure:
+
+src/main/.../ contains source code
+src/test/.../ contains all tests {evosuite tests, randomtest, manualtests}
+target/site/cobertura/index.html coverage report of tests
 
 How to Compile:
 
@@ -15,7 +20,7 @@ Compile the code and run it:
 
 Compile and run the tests:
 
->make test
+>make tests
 
 Compile and run the tests along with coverage:
 

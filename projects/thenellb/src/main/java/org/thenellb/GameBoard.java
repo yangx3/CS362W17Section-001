@@ -4,6 +4,8 @@ import java.util.*;
 
 import static javafx.application.Platform.exit;
 
+
+/* Modified game mode that will work explicitly between bots with no humans */
 public class GameBoard {
     public CardShop myCardShop;
     public List<Player> myPlayers;
@@ -12,33 +14,37 @@ public class GameBoard {
 
 
     public GameBoard(){
+
+        //automatic game of dominion between bots
         Scanner scan = new Scanner(System.in);
         userChoice=0;
         myCardShop = new CardShop();
-        System.out.println("How many players:  ");
-        userChoice= scan.nextInt();
+        myPlayers = new ArrayList<Player>();
+        userChoice= Random.getRandomInt(2,5);
         numberPlayers=userChoice;
+        System.out.println("User choice:  "+userChoice+"\n");
         for (int j=0; j<userChoice; j++){
             myPlayers.add(new Player(myCardShop));
         }
-        do {
-            System.out.println("Would you like to do a round of turns? Hitting no will end the game.   1 - YES || ANY other key - NO     ");
-            userChoice=scan.nextInt();
-            if (userChoice == 1){
-                for (int i=0; i<numberPlayers; i++){
-                    myPlayers.get(i).playerTurn();
-                } //for each player
-            } // play a round of turns
-        } while(userChoice == 1); //until otherwise stated
+        for (int i=0; i<100; i++){
+
+            System.out.println("Playing another round of turns between bots\n");
+
+                for (int j=0; j<numberPlayers; j++){
+                    myPlayers.get(j).playerTurn();
+                } // for each player
+        }  // play a round of turns
+      // tallies score at end of turns
         int max=0;
         int index=0;
         for (int k=0; k<numberPlayers; k++){
+            System.out.println("Player " +  k + " has " + myPlayers.get(k).playerDeck.tallyVictoryPoints()+ " Points.\n");
             if (myPlayers.get(k).playerDeck.tallyVictoryPoints()> max) {
                 max = myPlayers.get(k).playerDeck.tallyVictoryPoints();
                 index=k;
             }
         }
-        System.out.println("\n\n\n\n\nWinner at index:  "+index+"!!!!!!!!!!!!!!\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\nWinner at index:  "+index+"!!!!!!!!!!!!!!\n\n\n\n");
         exit();
     }
 

@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: ORG.CS362.DOMINION.GameState_ESTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.002 sec <<< FAILURE! - in ORG.CS362.DOMINION.GameState_ESTest
+test06(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.GameState.initializeGame(GameState.java:47)
+	at ORG.CS362.DOMINION.GameState_ESTest.test06(GameState_ESTest.java:175)
+
+test09(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.Player.buyCard(Player.java:169)
+	at ORG.CS362.DOMINION.GameState_ESTest.test09(GameState_ESTest.java:236)
+
+test05(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.GameState.initializeGame(GameState.java:47)
+	at ORG.CS362.DOMINION.GameState_ESTest.test05(GameState_ESTest.java:156)
+

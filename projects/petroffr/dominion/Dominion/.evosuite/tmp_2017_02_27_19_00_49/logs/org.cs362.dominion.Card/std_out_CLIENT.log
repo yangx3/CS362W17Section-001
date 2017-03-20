@@ -1,0 +1,93 @@
+* Starting client
+* Connecting to master process on port 8032
+* Analyzing classpath: 
+  - /nfs/stak/students/p/petroffr/CS362/assignment2/dominion/Dominion/target/test-classes
+  - /nfs/stak/students/p/petroffr/CS362/assignment2/dominion/Dominion/target/classes
+  - /nfs/stak/students/p/petroffr/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/ow2/asm/asm/5.0.1/asm-5.0.1.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/ow2/asm/asm-tree/5.0.1/asm-tree-5.0.1.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/ow2/asm/asm-commons/5.0.1/asm-commons-5.0.1.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/ow2/asm/asm-util/5.0.1/asm-util-5.0.1.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/ow2/asm/asm-analysis/5.0.1/asm-analysis-5.0.1.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar
+  - /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.121-0.b13.el7_3.x86_64/jre/../lib/tools.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar
+  - /nfs/stak/students/p/petroffr/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar
+* Finished analyzing classpath
+* Generating tests for class org.cs362.dominion.Card
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+* Total number of test goals: 
+  - Line 133
+  - Branch 51
+  - Exception 0
+  - MutationFactory 90
+  - Output 45
+  - Method 17
+  - MethodNoException 17
+  - CBranchFitnessFactory 51
+* Using seed 1488250986573
+* Starting evolution
+* Search finished after 87s and 394 generations, 110868 statements, best individual has fitness: 31.0
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 97%
+* Total number of goals: 133
+* Number of covered goals: 129
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 94%
+* Total number of goals: 51
+* Number of covered goals: 48
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 4
+* Number of covered goals: 4
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 97%
+* Total number of goals: 90
+* Number of covered goals: 87
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 64%
+* Total number of goals: 45
+* Number of covered goals: 29
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 17
+* Number of covered goals: 17
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 100%
+* Total number of goals: 17
+* Number of covered goals: 17
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 94%
+* Total number of goals: 51
+* Number of covered goals: 48
+* Generated 39 tests with total length 194
+* Resulting test suite's coverage: 93% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 58%
+* Compiling and checking tests
+* Writing JUnit test case 'Card_ESTest' to /nfs/stak/students/p/petroffr/CS362/assignment2/dominion/Dominion/.evosuite/tmp_2017_02_27_19_00_49/tests
+* Done!
+

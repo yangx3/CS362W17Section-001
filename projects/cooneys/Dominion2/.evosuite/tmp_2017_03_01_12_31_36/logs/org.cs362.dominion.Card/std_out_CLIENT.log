@@ -1,0 +1,89 @@
+* Starting client
+* Connecting to master process on port 17313
+* Analyzing classpath: 
+  - /Users/corynnapark/Documents/workspace/domdom/DOMINION/target/test-classes
+  - /Users/corynnapark/Documents/workspace/domdom/DOMINION/target/classes
+  - /Users/corynnapark/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /Users/corynnapark/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class org.cs362.dominion.Card
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 17:34:26.265 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /Users/corynnapark/Documents/workspace/domdom/DOMINION/.evosuite/evosuite-seeds/org.cs362.dominion.Card.seed
+* Total number of test goals: 
+  - Line 212
+  - Branch 130
+  - Exception 0
+  - MutationFactory 191
+  - Output 53
+  - Method 15
+  - MethodNoException 15
+  - CBranchFitnessFactory 130
+* Using seed 1488159259960
+* Starting evolution
+* Search finished after 98s and 131 generations, 76864 statements, best individual has fitness: 258.6531531526875
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 66%
+* Total number of goals: 212
+* Number of covered goals: 139
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 62%
+* Total number of goals: 130
+* Number of covered goals: 81
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 5
+* Number of covered goals: 5
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 81%
+* Total number of goals: 191
+* Number of covered goals: 154
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 72%
+* Total number of goals: 53
+* Number of covered goals: 38
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 15
+* Number of covered goals: 15
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 100%
+* Total number of goals: 15
+* Number of covered goals: 15
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 62%
+* Total number of goals: 130
+* Number of covered goals: 81
+* Generated 48 tests with total length 252
+* Resulting test suite's coverage: 80% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 38%
+* Compiling and checking tests
+[MASTER] 17:36:34.377 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: null
+[MASTER] 17:36:34.379 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: Card.Type card_Type0 = Card.Type.VICTORY;
+List<Card> list0 = Card.createCards();
+List<Card> list1 = Card.filter(list0, card_Type0);
+assertTrue(list1.isEmpty());
+
+
+[MASTER] 17:36:34.764 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: expected:<0> but was:<1>
+[MASTER] 17:36:34.765 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: List<Card> list0 = Card.createCards();
+Card.CardName card_CardName0 = Card.CardName.Feast;
+int int0 = Card.countCardName(list0, card_CardName0);
+assertEquals(0, int0);
+
+
+* Writing JUnit test case 'Card_ESTest' to /Users/corynnapark/Documents/workspace/domdom/DOMINION/.evosuite/tmp_2017_02_26_17_31_39/tests
+* Done!
+

@@ -1,5 +1,6 @@
 org/cs362/dominion/GameState.class
 org/cs362/dominion/Player.class
+org/cs362/dominion/RandomTestDominion.class
 org/cs362/dominion/mainCard.class
 org/cs362/dominion/Card$CardName.class
 org/cs362/dominion/Randomness.class

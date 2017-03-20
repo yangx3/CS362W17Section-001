@@ -156,7 +156,7 @@ public class Player {
 			}
 		}
 	}
-	private boolean tryBuy(CardName cn) {
+	protected boolean tryBuy(CardName cn) {
 		//Returns boolean if the player ends up buying the card.
 		if(canBuy(cn)){
 			buyThatCard(cn);	

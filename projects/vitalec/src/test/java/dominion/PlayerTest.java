@@ -16,8 +16,9 @@ public class PlayerTest {
     private GameState gameState;
     private Player player;
 
+
     @BeforeEach
-    public void initializeGameState() {
+    public void initializePlayer() {
         List<Card> kingdomCards = new ArrayList<>();
 
         // Add Kingdom Cards from selected Deck
@@ -34,12 +35,9 @@ public class PlayerTest {
         kingdomCards.add(Card.getCard(allCards, Card.CardName.WORKSHOP));
 
         this.gameState = new GameState(kingdomCards);
-    }
 
-    @BeforeEach
-    public void initializePlayer() {
         // Create Player
-        player = new Player(gameState, "Player 1");
+        player = new Player(this.gameState, "Player 1");
 
         // Set up player deck and hand...
 
@@ -69,7 +67,10 @@ public class PlayerTest {
 
     @Test
     public void testPlayerCanDrawCard() {
-        assertTrue(player.drawCard() != null);
+        int startingHandSize = player.hand.size();
+        player.drawCard();
+
+        assertTrue(startingHandSize < player.hand.size());
     }
 
     @Test

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>DominionBoard.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">TestRandom (Feb 27, 2017 12:22:40 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">DominionBoard.java</span></div><h1>DominionBoard.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import java.util.Vector;
+import java.util.Collections;
+
+public class DominionBoard {
+	private KingdomSlot provinceRef;
+	private KingdomSlot curseRef;
+	
+	private Vector&lt;KingdomSlot&gt; buyableCards;
+	private Vector&lt;KingdomSlot&gt; expendedCards;
+	
+<span class="fc" id="L13">	public DominionBoard() {		</span>
+<span class="fc" id="L14">		buyableCards = new Vector&lt;KingdomSlot&gt;();</span>
+<span class="fc" id="L15">		expendedCards = new Vector&lt;KingdomSlot&gt;();</span>
+		
+		//list of all possible kingdom cards
+<span class="fc" id="L18">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.ADVENTURER), 10));</span>
+<span class="fc" id="L19">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.AMBASSADOR), 10));</span>
+<span class="fc" id="L20">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.BARON), 10));</span>
+<span class="fc" id="L21">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.COUNCIL_ROOM), 10));</span>
+<span class="fc" id="L22">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.CUTPURSE), 10));</span>
+<span class="fc" id="L23">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.EMBARGO), 10));</span>
+<span class="fc" id="L24">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.FEAST), 10));</span>
+<span class="fc" id="L25">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.GREAT_HALL), 10));</span>
+<span class="fc" id="L26">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.MINE), 10));</span>
+<span class="fc" id="L27">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.REMODEL), 10));</span>
+<span class="fc" id="L28">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.SMITHY), 10));</span>
+<span class="fc" id="L29">		buyableCards.addElement(new KingdomSlot(new ActionCard(ActionCard.ActionType.VILLAGE), 10));</span>
+<span class="fc" id="L30">		buyableCards.addElement(new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.GARDENS), 10));</span>
+		
+<span class="fc bfc" id="L32" title="All 2 branches covered.">		while(buyableCards.size() &gt;= 10) { //Error 4: should be &gt; not &gt;=</span>
+<span class="fc" id="L33">			buyableCards.remove((int)(Math.random()*buyableCards.size()));</span>
+		}
+		
+<span class="fc" id="L36">		buyableCards.addElement(new KingdomSlot(new TreasureCard(TreasureCard.TreasureType.GOLD), 30));</span>
+<span class="fc" id="L37">		buyableCards.addElement(new KingdomSlot(new TreasureCard(TreasureCard.TreasureType.SILVER), 40));</span>
+<span class="fc" id="L38">		buyableCards.addElement(new KingdomSlot(new TreasureCard(TreasureCard.TreasureType.COPPER), 46));</span>
+<span class="fc" id="L39">		buyableCards.addElement(new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.DUCHY), 8));</span>
+<span class="fc" id="L40">		buyableCards.addElement(new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.ESTATE), 8));</span>
+<span class="fc" id="L41">		curseRef = new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.CURSE), 10);</span>
+<span class="fc" id="L42">		buyableCards.addElement(curseRef);</span>
+<span class="fc" id="L43">		provinceRef = new KingdomSlot(new VictoryCard(VictoryCard.VictoryType.PROVINCE), 8);</span>
+<span class="fc" id="L44">		buyableCards.addElement(provinceRef);</span>
+		
+<span class="fc" id="L46">		Collections.sort(buyableCards);</span>
+<span class="fc" id="L47">	}</span>
+	
+	public Vector&lt;Card&gt; GetBuyable(int money) {
+<span class="fc" id="L50">		Vector&lt;Card&gt; buyable = new Vector&lt;Card&gt;();</span>
+		
+<span class="fc bfc" id="L52" title="All 2 branches covered.">		for(int i=0; i&lt;buyableCards.size();  i++) {</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">			if(buyableCards.elementAt(i).GetValue() &lt;= money) { //if the player can buy the card</span>
+				//add card to buyable vector
+<span class="fc" id="L55">				buyable.add(buyableCards.elementAt(i).GetCard());</span>
+			}
+			else {
+				break;
+			}
+		}
+
+<span class="fc" id="L62">		return buyable;</span>
+	}
+	
+	public Vector&lt;Card&gt; BuyCard(int idx) {
+<span class="fc" id="L66">		KingdomSlot slot = buyableCards.elementAt(idx);</span>
+		
+<span class="fc" id="L68">		Vector&lt;Card&gt; cards = new Vector&lt;Card&gt;();</span>
+<span class="fc" id="L69">		cards.add(slot.DrawCard());</span>
+		
+<span class="fc bfc" id="L71" title="All 2 branches covered.">		for(int i=0; i&lt;slot.GetEmbargoes(); i++) {</span>
+<span class="fc" id="L72">			Card curse = BuyCurse();</span>
+			//if(curse != null) { //Error 3: not checking the return value before adding it to the list
+<span class="fc" id="L74">				cards.addElement(curse);</span>
+			//}
+		}
+		
+<span class="fc bfc" id="L78" title="All 2 branches covered.">		if(slot.IsEmpty()) {</span>
+<span class="fc" id="L79">			expendedCards.addElement(buyableCards.remove(idx));</span>
+		}
+		
+<span class="fc" id="L82">		return cards;</span>
+	}
+	
+	public Card BuyCurse() {
+<span class="fc bfc" id="L86" title="All 2 branches covered.">		if(expendedCards.contains(curseRef)) {</span>
+<span class="fc" id="L87">			return null;</span>
+		}
+		else {
+<span class="fc" id="L90">			Card card = curseRef.DrawCard();</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">			if(curseRef.IsEmpty()) {</span>
+<span class="fc" id="L92">				expendedCards.add(curseRef);</span>
+<span class="fc" id="L93">				buyableCards.remove(curseRef);</span>
+			}
+<span class="fc" id="L95">			return card;</span>
+		}
+	}
+	
+	public void EmbargoPile(int idx) {
+<span class="fc" id="L100">		buyableCards.elementAt(idx).AddEmbargo();</span>
+<span class="fc" id="L101">	}</span>
+	
+	public void PrintBoard() {
+<span class="nc" id="L104">		System.out.println(&quot;Buyable Cards: &quot;);</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">		for(int i=0; i&lt;buyableCards.size(); i++) {</span>
+<span class="nc" id="L106">			System.out.println(buyableCards.elementAt(i).GetCard().GetName());</span>
+		}
+<span class="nc" id="L108">		System.out.println(System.lineSeparator() + &quot;Expended Cards:&quot;);</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">		for(int i=0; i&lt;expendedCards.size(); i++) {</span>
+<span class="nc" id="L110">			System.out.println(expendedCards.elementAt(i).GetCard().GetName());</span>
+		}
+<span class="nc" id="L112">	}</span>
+	
+	public boolean GameOver() {
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">		if(expendedCards.contains(provinceRef)) { //if provinces are included in the vector of expended cards</span>
+<span class="nc" id="L116">			System.out.println(&quot;All provinces expended. Game over.&quot;);</span>
+<span class="nc" id="L117">			return true;</span>
+		}
+<span class="fc bfc" id="L119" title="All 2 branches covered.">		else if(expendedCards.size() &gt;= 3) { //if there are more than three piles of expended cards</span>
+<span class="fc" id="L120">			System.out.println(&quot;Three piles expended. Game over.&quot;);</span>
+<span class="fc" id="L121">			return true;</span>
+		}
+		
+		
+<span class="fc" id="L125">		return false;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>TestRandom (Feb 27, 2017 12:22:40 AM)</div></body></html>

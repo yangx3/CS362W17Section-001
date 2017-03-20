@@ -33,6 +33,18 @@ public class Player
 			}
 		}
 	}
+
+	public Player(int debugBuy, int debugAction, int debugMoney)
+	{
+		playerID = 999;
+		deck = new Pile();
+		hand = new Pile();
+		discard = new Pile();
+
+		buy = debugBuy;
+		actions = debugAction;
+		money = debugMoney;
+	}
 	
 	//Player draws a card from their deck.
 	public Card drawCard()

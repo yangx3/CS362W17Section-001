@@ -11,6 +11,8 @@ import java.util.List;
 
 
 
+import java.util.Random;
+
 import cs362.dominion.Card.CardName;
 import cs362.dominion.Card.Type;
 
@@ -212,6 +214,147 @@ public class Player {
 				else {
 					coins--;
 				} 
+			}
+			else if (coins == 2) {
+				System.out.println("Gold: " + coins);
+				System.out.println("Buying Coper");
+				if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Cooper))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Cooper))== 0))) {
+					buy(Card.getCard(gameState.cards, CardName.Cooper));
+					numBuys --;
+					coins -= Card.getCard(gameState.cards, CardName.Cooper).getTreasureValue();
+				}
+				else {
+					coins--;
+				} 
+			}
+			else if (coins <= 1) {
+				break;
+			}
+		}
+		 
+	}
+	public void buyRandCard() {
+		Random rand = new Random();
+		while(numBuys >= 1) {	
+			if (coins >= 8) {
+				System.out.println("Gold: " + coins);
+				System.out.println("Buying province");
+				buy(Card.getCard(gameState.cards, CardName.Province));
+				numBuys--;
+				coins -= Card.getCard(gameState.cards, CardName.Province).getTreasureValue();
+			}
+			else if (coins >= 6) {
+				System.out.println("Gold: " + coins);
+				System.out.println("Buying Gold");
+				if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Gold))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Gold)))== 0)) {
+					buy(Card.getCard(gameState.cards, CardName.Gold));
+					numBuys--;
+					coins -= Card.getCard(gameState.cards, CardName.Gold).getTreasureValue();
+				}
+				else {
+					coins--;
+				} 
+			}
+			else if (coins == 5) {
+				int n = rand.nextInt(2) + 1;
+				System.out.println("Gold: " + coins);
+				if(n==1) {
+					System.out.println("Buying Duchy");
+					if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Duchy))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Duchy)))== 0)) {
+						buy(Card.getCard(gameState.cards, CardName.Duchy));
+						numBuys --;
+						coins -= Card.getCard(gameState.cards, CardName.Duchy).getTreasureValue();
+					}
+					else {
+						coins--;
+					} 
+				}
+				else {
+					System.out.println("Buying Council room");
+					if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Council_room))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Council_room)))== 0)) {
+						buy(Card.getCard(gameState.cards, CardName.Council_room));
+						numBuys --;
+						coins -= Card.getCard(gameState.cards, CardName.Council_room).getTreasureValue();
+					}
+					else {
+						coins--;
+					} 
+				}
+			}
+			else if (coins == 4) {
+				int n = rand.nextInt(4) + 1;
+				System.out.println("Gold: " + coins);
+				if(n == 1){	
+					System.out.println("Buying Baron");
+					if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Baron))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Baron))== 0))) {
+						buy(Card.getCard(gameState.cards, CardName.Baron));
+						numBuys --;
+						coins -= Card.getCard(gameState.cards, CardName.Baron).getTreasureValue();
+					}
+					else {
+						coins--;
+					} 
+				}
+				else if(n == 2){	
+					System.out.println("Buying Smithy");
+					if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Smithy))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Smithy))== 0))) {
+						buy(Card.getCard(gameState.cards, CardName.Smithy));
+						numBuys --;
+						coins -= Card.getCard(gameState.cards, CardName.Smithy).getTreasureValue();
+					}
+					else {
+						coins--;
+					} 
+				}
+				else if(n == 3){	
+					System.out.println("Buying Gardens");
+					if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Gardens))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Gardens))== 0))) {
+						buy(Card.getCard(gameState.cards, CardName.Gardens));
+						numBuys --;
+						coins -= Card.getCard(gameState.cards, CardName.Gardens).getTreasureValue();
+					}
+					else {
+						coins--;
+					} 
+				}
+				else {
+					System.out.println("Buying Feast");
+					if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Feast))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Feast))== 0))) {
+						buy(Card.getCard(gameState.cards, CardName.Feast));
+						numBuys --;
+						coins -= Card.getCard(gameState.cards, CardName.Feast).getTreasureValue();
+					}
+					else {
+						coins--;
+					}
+				}
+			}
+			else if (coins == 3) {
+				int n = rand.nextInt(3) + 1;
+				System.out.println("Gold: " + coins);
+				
+				if(n == 1){
+					System.out.println("Buying Steward");
+					if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Steward))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Steward))== 0))) {
+						buy(Card.getCard(gameState.cards, CardName.Steward));
+						numBuys --;
+						coins -= Card.getCard(gameState.cards, CardName.Steward).getTreasureValue();
+					}
+					else {
+						coins--;
+					} 
+				}	
+				else if(n == 2){
+					System.out.println("Buying Great_Hall");
+					if(!((gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Great_Hall))==null)||(gameState.gameBoard.get(Card.getCard(gameState.cards, Card.CardName.Great_Hall))== 0))) {
+						buy(Card.getCard(gameState.cards, CardName.Great_Hall));
+						numBuys --;
+						coins -= Card.getCard(gameState.cards, CardName.Great_Hall).getTreasureValue();
+					}
+					else {
+						coins--;
+					} 
+				}	
 			}
 			else if (coins == 2) {
 				System.out.println("Gold: " + coins);

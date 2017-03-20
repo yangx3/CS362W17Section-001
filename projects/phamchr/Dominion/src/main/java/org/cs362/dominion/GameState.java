@@ -171,7 +171,7 @@ public class GameState implements Cloneable{
 
 		StringBuilder sb = new StringBuilder();
 		if (gameBoard.isEmpty())
-			sb.append("The board game is embty you need to intialize the game!!!!");
+			sb.append("The board game is empty you need to intialize the game!!!!");
 		else {
 			for (Player player : players)
 				sb.append(" --- " + player.toString() + "\n");

@@ -65,7 +65,7 @@ public final class Card implements Comparable<Card>, Cloneable {
 	o = new Card(CardName.Province,Type.VICTORY,8,6,0);
 	ret.add(o);
 	//induced bug: duchy gives 2 vp instead of 3
-	o = new Card(CardName.Duchy,Type.VICTORY,5,2,0);
+	o = new Card(CardName.Duchy,Type.VICTORY,5,3,0);
 	ret.add(o);
 	o = new Card(CardName.Estate,Type.VICTORY,2,1,0);
 	ret.add(o);
@@ -154,10 +154,12 @@ public final class Card implements Comparable<Card>, Cloneable {
 		System.out.println("Player put back " + realPutBack +
 			" " + returnCard.cardName);
 		//each other player gains a copy
-		for(Player person : state.players)
-		    if(person != player)
+		for(Player person : state.players) {
+		    if(person != player) {
 			if(state.reduceSupply(returnCard))
 			    person.gain(returnCard);
+		    }
+		}
 		return;
 
 	    case Baron:
@@ -273,18 +275,14 @@ public final class Card implements Comparable<Card>, Cloneable {
 			}
 			//induced bug: player may play mine but not upgrade
 			//their treasure (in the case they have copper/silver)
-			/*
 			treasure = getCard(player.hand, CardName.Copper);
 			if((treasure != null) && (minedTreasure == 0)) {
 			    System.out.println("Player upgrades copper to silver");
 			    player.hand.remove(treasure);
 			    player.hand.add(getCard(state.cards, CardName.Silver));
 			}
-			*/
-
 		    }
 		}
-		//and put it into your hand
 		return;
 
 	    case Minion:

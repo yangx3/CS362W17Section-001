@@ -1,5 +1,5 @@
 //
-import java.io.*;
+//import java.io.*;
 abstract class Card
 {
 	public String cardName, cardImg;

@@ -34,6 +34,17 @@ public class EndGameTest {
 	      //   player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
 	      //   player.hand.add(Card.getCard(cards,Card.CardName.Village));
 	      state.addPlayer(player);		      
+	      
+	      player = new Player(state, "player-3");
+//	      player.printStateGame();
+	      //   player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
+	      //   player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+
+	      state.addPlayer(player);
+	       player = new Player(state, "player-4");
+	      //   player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+	      //   player.hand.add(Card.getCard(cards,Card.CardName.Village));
+	      state.addPlayer(player);	
 	      //Initialize the game!
 	      state.initializeGame();
 	      

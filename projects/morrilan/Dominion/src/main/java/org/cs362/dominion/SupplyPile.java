@@ -1,4 +1,4 @@
-// Last updated 2/08/2017
+// Last updated 1/25/2017
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,13 +8,13 @@ import javax.imageio.*;
 import java.awt.image.*;
 
 
-public class SupplyPile extends JPanel
+public class SupplyPile extends JPanel 
 {
 	private Random gen;
 	private Card[] Supply;
-	private int numPlayers;
+	private int numPlayers, endGame;
 	private int[] cardsRemaining;
-	private int SUPPLY_X, SUPPLY_Y = 1;
+	//private int SUPPLY_X, SUPPLY_Y = 1;
 	private double IMGSCALE = .5;
 	private int cardSize_x;
 	private int cardSize_y;
@@ -96,32 +96,61 @@ public class SupplyPile extends JPanel
 	}
 	// Checks if Supply has requested Card, if so then return Card,
 	//	if not then return null
-	public Card buy(int cardPos)
+	public Card buy()
 	{
-		if (cardsRemaining[cardPos] > 0)
+		if (cardsRemaining[selectCard] > 0)
 		{
-			cardsRemaining[cardPos]--;
-			return Supply[cardPos];
+			cardsRemaining[selectCard]--;
+			printRemaining();
+			
 		}
-		else
+		if (cardsRemaining[selectCard] == 0)
 		{
-			//remove card from JLabel
+			endGame = 0;
+			for(int i = 0; i < 16; i ++)
+			{
+				if (cardsRemaining[i] == 0)
+				{
+					endGame++;
+				}
+			}
+			System.out.println("**********************");
+			System.out.println("**********************");
+			System.out.println(endGame + "PILES GONE!");
+			System.out.println("**********************");
+			System.out.println("**********************");
 		}
-		return null;
+		return Supply[selectCard];
 	}
-
+	// 2 Major Errors
 	public Card getSelected()
 	{
-		if (selectCard >= 0)
+		if (selectCard == -1)
+		{
+			return null;
+		}
+		if (cardsRemaining[selectCard] > 0)
 		{
 			return Supply[selectCard];
 		}
 		return null;
 	}
+	public void setSelected(int select)
+	{
+		selectCard = select;
+	}
 	public void unselect()
 	{
 		selectCard = -1;
 		selectX = -200;
+	}
+	public boolean getEnd()
+	{
+		if (endGame >= 3)
+		{
+			return true;
+		}
+		return false;
 	}
 	// Fisher-Yates Shuffle Algorithm, O(n) runtime
 	// Most efficient non-biased Shuffling Algorithm
@@ -143,7 +172,6 @@ public class SupplyPile extends JPanel
 			temp = arr[j];
 			arr[j] = arr[i];
 			arr[i] = temp;
-			
 		}
 		return arr;
 	}
@@ -187,15 +215,11 @@ public class SupplyPile extends JPanel
 	{
 		for (int i = 0; i < 17; i++)
 		{
-			System.out.println("" + cardsRemaining[i]);
+			System.out.println("Remaining: " + cardsRemaining[i]);
 		}
 		
 	}
-	// Not recommended to run on interfaces so... I will use this a mockclick method
-	public void setSelected(int index)
-	{
-		selectCard = index;
-	}
+	// Untestable through jUnit
 	public void addListeners()
 	{
 		selectListener = new MouseListener()
@@ -325,12 +349,14 @@ public class SupplyPile extends JPanel
 		};
 	}
 
+	public void selectCard(int sC)
+	{
+		selectCard = sC;
+	}
+
 	public void paintComponent(Graphics page)
 	{
 		super.paintComponent(page);
-		//page.drawCircle(100, 100);
 		page.fillRect(selectX, selectY-10, cardSize_x, cardSize_y + 20);
-		//Rectangle r = new Rectangle(xPos,yPos,width,height);
-		//paint();
 	}	
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import dominion.Card.Type;
 
@@ -13,6 +14,7 @@ public class Player {
     LinkedList<Card> deck = new LinkedList<>();
     List<Card> discard = new ArrayList<>();
     List<Card> trash = new ArrayList<>();
+    List<Card> cardsInPlay = new ArrayList<>();
 
     String player_username;
 
@@ -28,7 +30,7 @@ public class Player {
         this.gameState = gameState;
     }
 
-    final Card drawCard() {
+    final void drawCard() {
         if (deck.isEmpty()) {// Deck is empty
             // Step 1 Shuffle the discard pile back into a deck
             System.out.println("reshuffle the deck of the player "
@@ -40,12 +42,15 @@ public class Player {
             }
         }
 
+        if(deck.isEmpty()) {
+            return;
+        }
+
         Card toDraw = deck.poll();
         hand.add(toDraw);// Add card to hand and hand count automatically will
         // be incremented since we use List
         System.out.println("draw " + toDraw);
         Collections.sort(hand);
-        return toDraw;
     }
 
     final void initializePlayerTurn() {
@@ -55,7 +60,7 @@ public class Player {
 
         // Draw the top 5 cards as your starting hand
         for (int i = 0; i < 5; i++) {
-            drawCard();
+            this.drawCard();
         }
     }
 
@@ -67,32 +72,83 @@ public class Player {
     }
 
     public void gainCardFromSupply(Card card) {
-        int currentCards = this.gameState.supply.get(card);
-        this.discard.add(card);
-        this.gameState.supply.put(card, currentCards - 1);
+        if(this.gameState.supply.containsKey(card)) {
+            int currentCards = this.gameState.supply.get(card);
+            this.discard.add(card);
+            this.gameState.supply.put(card, currentCards - 1);
+        }
     }
 
     //Discard hand
     public void discard(Card card) {
-        hand.remove(card);
-        discard.add(card);
+        discard.add(hand.remove(hand.indexOf(card)));
         System.out.println("Player:  "+player_username+" discards "+card);
     }
 
+    public void buyCard() {
+        int availCoins = getAvailableCoins();
+        System.out.println("Available Coins: " + availCoins);
+
+        List<Card> affordableCards = gameState.supply.entrySet().stream()
+                .filter(map -> map.getKey().getCost() <= availCoins && map.getKey().getCardName() != Card.CardName.CURSE)
+                .map(map -> map.getKey())
+                .collect(Collectors.toList());
+
+        System.out.println(affordableCards.toString());
+
+        Card selectedCard = Randomness.randomMember(affordableCards);
+        System.out.println(player_username + " buying: " + selectedCard.getCardName());
+
+        List<Card> treasureCards = Card.filter(hand, Type.TREASURE);
+
+        while(coins < selectedCard.getCost() && !treasureCards.isEmpty()) {
+            Card treasureCard = treasureCards.get(0);
+            coins += treasureCard.getTreasureValue();
+            discard(treasureCard);
+
+            treasureCards = Card.filter(hand, Type.TREASURE);
+        }
+
+        gainCardFromSupply(selectedCard);
+    }
+
+    private int getAvailableCoins() {
+        int availCoins = coins;
+
+        for (Card card : Card.filter(hand, Type.TREASURE)) {
+            availCoins += card.getTreasureValue();
+        }
+
+        System.out.println("Available coins: " + availCoins);
+
+        return availCoins;
+    }
+
     public void playKingdomCard() {
+        System.out.println("numActions: " + numActions);
         while (numActions > 0) {
+            System.out.println("DOING A THING");
             List<Card> actionCards = Card.filter(hand, Type.ACTION);
+
+            System.out.println(actionCards.size());
 
             if (actionCards.size() == 0)
                 return;
 
-            Card c = (Card) actionCards.get(0);
+            Card c = actionCards.get(0);
             if (c == null)
                 return;
             System.out.println("Player.actionPhase Card:" + c.toString());
             numActions -= 1;
 
-            c.play(this, gameState, null, null);
+            c.play(this, gameState);
+        }
+    }
+
+    public void trashFromHand(Card card) {
+        if(this.hand.contains(card)) {
+            this.hand.remove(card);
+            this.trash.add(card);
         }
     }
 
@@ -113,23 +169,16 @@ public class Player {
         return score;
     }
 
-    public void playTreasureCard() {
-        System.out.println(" --- --------------------------- --- ");
-        System.out.println("TO-DO playTreasureCard ");
-        System.out.println(" --- --------------------------- --- ");
-    }
-
-    public void buyCard(Card card) {
-        if(this.gameState.supply.containsKey(card) && this.coins >= card.getCost()) {
-            this.discard.add(card);
-            this.gameState.supply.remove(card);
+    final void endTurn() {
+        System.out.println("END PHASE - DISCARD HAND");
+        for(int i = 0; i < hand.size(); i++) {
+            discard(hand.get(i));
         }
     }
 
-    final void endTurn() {
-        System.out.println(" --- --------------------------- --- ");
-        System.out.println("TO-DO endTurn ");
-        System.out.println(" --- --------------------------- --- ");
+    public void showHand() {
+        System.out.println(this.player_username + " revealing hand!");
+        this.hand.forEach(card -> System.out.println(card.getCardName()));
     }
 
 

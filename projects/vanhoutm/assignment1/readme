@@ -1,0 +1,12 @@
+How to compile:
+javac *.java
+
+How to run:
+grab Dominion.jar (may not be in folder, might be in parent due to inability to move it from github site)
+java -jar Dominion.jar
+
+How to compile with code coverage tool:
+Use Netbeans and the JaCoCoverage plugin. Sorry. 
+
+
+Dominion_files folder is for Dominion.html 

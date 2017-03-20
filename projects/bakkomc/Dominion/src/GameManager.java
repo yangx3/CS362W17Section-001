@@ -16,8 +16,6 @@
 
 
 
-import java.util.*;
-
 public class GameManager
 {
 	public Player[] players;
@@ -39,7 +37,23 @@ public class GameManager
 									"Council Room","Cutpurse","Embargo",
 									"Feast","Gardens","Great Hall",
 									"Mine","Smithy","Village","Sea Hag"};
+	
+	public static boolean isInteger(String s) {
+	    return isInteger(s,10);
+	}
 
+	public static boolean isInteger(String s, int radix) {
+	    if(s.isEmpty()) return false;
+	    for(int i = 0; i < s.length(); i++) {
+	        if(i == 0 && s.charAt(i) == '-') {
+	            if(s.length() == 1) return false;
+	            else continue;
+	        }
+	        if(Character.digit(s.charAt(i),radix) < 0) return false;
+	    }
+	    return true;
+	}
+	
 	public GameManager(int numberOfPlayers, String[] nameArray, String[] kingdomsUsing)
 	{
 		kingdomNames = kingdomsUsing;
@@ -133,9 +147,14 @@ public class GameManager
 		}
 	}
 
-	public String playCard(int pos)
+	public void playCard(String[] inputs)
 	{
-		String effectResult = "Done";
+		if (!isInteger(inputs[0])){
+			System.out.println("Played card not recognized");
+			return;
+		}
+		int pos = Integer.parseInt(inputs[0]);
+		
 		Card playedCard = players[currentPlayer].playCard(pos);
 		if (playedCard != null)
 		{
@@ -151,11 +170,10 @@ public class GameManager
 					players[currentPlayer].money += 3;
 					break;
 				default:
-					effectResult = actionCardHandler(playedCard);
+					actionCardHandler(playedCard, inputs);
 			}
 
 		}
-		return effectResult;
 	}
 	
 	public Card lookAtCardInHandAt(int pos, int player)
@@ -237,18 +255,9 @@ public class GameManager
 		this.findResourceStack(stackName).CurseModifier += 1;
 	}
 
-	// IMPORTANT Each action will modify the player(s) and it will return a string result
-	// This string will either be "Done"
-	// Otherwise it will return the string of action card
-	// This string needs to be handled at runtime
-	// This is not something the game manager can control, but it does offer functionality to handle the events
-
-	// The purpose of this is because the game manager is dependent on state but cannot make runtime decisions
-	// Decisions that need to be made at runtime, must be handled outside of the GameManager
-	public String actionCardHandler(Card actionCard)
+	// IMPORTANT Each action will modify the player(s)
+	public void actionCardHandler(Card actionCard, String[] inputs)
 	{
-		String effectResult = "Done";
-		players[currentPlayer].actions -= 1;
 		String action = actionCard.toString();
 		switch (action){
 			case "Adventurer":
@@ -275,12 +284,58 @@ public class GameManager
 				}
 				
 				break;
+			// Weird case need extra effect
 			case "Ambassador":
-				effectResult = "Ambassador";
+				if (inputs.length == 3)
+				{
+					// Get the two cards
+					int pos1 = Integer.parseInt(inputs[1]) - 1;
+					int pos2 = Integer.parseInt(inputs[2]) - 1;
+					if (pos1 < 0 ){ pos1 = 0; }
+					if (pos2 < 0 ){ pos2 = 0; }
+					Card a = players[currentPlayer].hand.lookAtCardAt(pos1);
+					Card b = players[currentPlayer].hand.lookAtCardAt(pos2);
+					if (a.toString()==b.toString()){
+						players[currentPlayer].hand.takeCardAt(pos1);
+						players[currentPlayer].hand.takeCardAt(pos2);
+						this.findResourceStack(a.toString()).addCard(a);
+						this.findResourceStack(a.toString()).addCard(b);
+					}
+					for(int i=0; i<numOfPlayers; i++){
+						if(i!=currentPlayer)
+							players[i].discard.addCard(a);
+					}
+				}
+				else if(inputs.length == 2){
+					int pos = Integer.parseInt(inputs[1]) - 1;
+					if (pos < 0){ pos = 0; }
+					Card a = players[currentPlayer].hand.takeCardAt(pos);
+					this.findResourceStack(a.toString()).addCard(a);
+					for(int i=0; i<numOfPlayers; i++){
+						if(i!=currentPlayer)
+							players[i].discard.addCard(a);
+					}
+				}
 				break;
+			// Weird case need extra effect
 			case "Baron":
 				players[currentPlayer].buys += 1;
-				effectResult = "Baron";
+				if (inputs.length == 2){
+					int pos = Integer.parseInt(inputs[1]) - 1;
+					if (pos < 0){ pos = 0; }
+					if (players[currentPlayer].hand.lookAtCardAt(pos).toString() == "Estate"){
+						players[currentPlayer].discardFromHand(pos);
+						players[currentPlayer].money += 4;
+					}
+					else{
+						Card in = new VictoryCard(2, VictoryCard.VictoryName.Estate);
+						players[currentPlayer].discard.addCard(in);
+					}
+				}
+				else{
+					Card in = new VictoryCard(2, VictoryCard.VictoryName.Estate);
+					players[currentPlayer].discard.addCard(in);
+				}
 				break;
 			case "Council Room":
 				// Gain 4 cards and one buy
@@ -321,10 +376,38 @@ public class GameManager
 					}
 				}
 				break;
+			// Weird card need extra effect
 			case "Embargo":
+				if (inputs.length == 2){
+				switch(inputs[1]){
+					case "Copper":
+						this.addEmbargoToken("Copper");
+						break;
+					case "Silver":
+						this.addEmbargoToken("Silver");
+						break;
+					case "Gold":
+						this.addEmbargoToken("Gold");
+						break;
+					case "Estate":
+						this.addEmbargoToken("Estate");
+						break;
+					case "Duchy":
+						this.addEmbargoToken("Duchy");
+						break;
+					case "Province":
+						this.addEmbargoToken("Province");
+						break;
+					case "None":
+						break;
+					default:
+						System.out.println("Unrecognized Input");
+					}
+				}
+				
 				players[currentPlayer].money += 2;
 				players[currentPlayer].trashPile.addCard(players[currentPlayer].playPile.takeTopCard());
-				effectResult = "Embargo";
+				
 				break;
 			case "Feast":
 				// Take the card you just played (feast) trash it and add 5 to your money
@@ -335,8 +418,50 @@ public class GameManager
 				players[currentPlayer].drawCard();
 				players[currentPlayer].actions += 1;
 				break;
+			// Weird card need extra effect
 			case "Mine":
-				effectResult = "Mine";
+				if (inputs.length == 3){
+					int pos = Integer.parseInt(inputs[1]) - 1;
+					if (pos < 0){ pos = 0; }
+					switch(players[currentPlayer].hand.lookAtCardAt(pos).toString()){
+					case "copper":
+						if (inputs[2] =="silver"){
+							players[currentPlayer].hand.addCard(new CoinCard(3,CoinCard.CoinValue.Silver));
+							players[currentPlayer].trash(pos);
+						}
+						else{
+							players[currentPlayer].hand.addCard(new CoinCard(0,CoinCard.CoinValue.Copper));
+							players[currentPlayer].trash(pos);
+						}
+						break;
+					case "silver":
+						if (inputs[2] =="silver"){
+							players[currentPlayer].hand.addCard(new CoinCard(6,CoinCard.CoinValue.Gold));
+							players[currentPlayer].trash(pos);
+						}
+						else if (inputs[2] =="silver"){
+							players[currentPlayer].hand.addCard(new CoinCard(3,CoinCard.CoinValue.Silver));
+							players[currentPlayer].trash(pos);
+						}
+						else{
+							players[currentPlayer].hand.addCard(new CoinCard(0,CoinCard.CoinValue.Copper));
+							players[currentPlayer].trash(pos);
+						}
+					case "gold":
+						if (inputs[2] =="silver"){
+							players[currentPlayer].hand.addCard(new CoinCard(6,CoinCard.CoinValue.Gold));
+							players[currentPlayer].trash(pos);
+						}
+						else if (inputs[2] =="silver"){
+							players[currentPlayer].hand.addCard(new CoinCard(3,CoinCard.CoinValue.Silver));
+							players[currentPlayer].trash(pos);
+						}
+						else{
+							players[currentPlayer].hand.addCard(new CoinCard(0,CoinCard.CoinValue.Copper));
+							players[currentPlayer].trash(pos);
+						}
+					}
+				}
 				break;
 			case "Smithy":
 				for(int i=0; i<3; i++)
@@ -361,7 +486,6 @@ public class GameManager
 		}
 		if (players[currentPlayer].actions < 1)
 			players[currentPlayer].actionPhase = false;
-		return effectResult;
 	}
 
 	public void endActions()
@@ -428,9 +552,9 @@ public class GameManager
 		case "Curse"	: return cursePile;
 		// Search kingdom cards
 		default: 
-			for(int i=0; i<10; i++)
+			for(int i=0; i<kingdoms.length; i++)
 			{
-				if (input.equals(kingdoms[i].lookAtTopCard().toString()))
+				if (input.equals(kingdoms[i].toString()))
 				{
 					ret = kingdoms[i];
 				}
@@ -446,14 +570,22 @@ public class GameManager
 		{
 			Card var = players[currentPlayer].hand.lookAtCardAt(i);
 			Card tr = new CoinCard(0, CoinCard.CoinValue.Copper);
-			if (var.type.equals(tr.type))
-				playCard(i);
+			if (var.type.equals(tr.type)){
+				String[] in = new String[1];
+				in[0] = Integer.toString(i);
+				playCard(in);
+			}
 			else
 				i++;
 			
 		}
 	}
 
+	public String currentPlayerName()
+	{
+		return players[currentPlayer].playerName;
+	}
+	
 	public void endPlayerTurn()
 	{
 		players[currentPlayer].endTurn();
@@ -495,22 +627,35 @@ public class GameManager
 		return ret;	
 	}
 	
+	public void wrapUpGame()
+	{
+		for (int i=0; i<numOfPlayers; i++){
+			players[i].gameOver();
+		}
+	}
+	
 	public String winner()
 	{
 		int vicCount = 0;
 		int winIndex = 0;
 		for (int i=0; i<numOfPlayers; i++)
 		{
-			int vic = players[currentPlayer].victoryCount();
+			int vic = players[i].victoryCount();
 			if (vic > vicCount){
-				winIndex = 1;
-				vic = vicCount;
+				winIndex = i;
+				vicCount = vic;
 			}
 		}
-		String result = (players[currentPlayer].playerName + "is the winner with " + vicCount + " Victory points!");
+		String result = (players[winIndex].playerName + " is the winner with " + vicCount + " Victory points!");
 		return result;
 	}
 
+	public void printPlayerVictoryPoints()
+	{
+		for (int i=0; i<numOfPlayers; i++)
+			System.out.println(players[i].playerName + " has " + Integer.toString(players[i].victoryCount()) + " points");
+	}
+	
 	public void printPile(ResourceStack stack)
 	{
 		stack.printStack();
@@ -534,6 +679,12 @@ public class GameManager
 	public void printCurrentPlayerFull()
 	{
 		players[currentPlayer].printPlayerFull();
+	}
+	
+	public void printAllPlayersFull()
+	{
+		for(int i=0; i<numOfPlayers; i++)
+			players[i].printPlayerFull();
 	}
 
 	public void printCurrentPlayer()

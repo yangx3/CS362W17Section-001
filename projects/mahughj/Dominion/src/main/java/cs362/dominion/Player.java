@@ -220,6 +220,8 @@ public class Player implements Cloneable{
 	   public void playTtreasureCard() {
     		for (Card c : hand){
     			coins += c.getTreasureValue();
+    			System.out.println(c.getCardName().toString());
+    			System.out.println(coins);
     		}
 	   }
 	   public void buyCard() {   
@@ -245,25 +247,29 @@ public class Player implements Cloneable{
    					System.out.print(numBuys);
    					System.out.println("Hoping for no loop!");
      				Card card = gameState.randomCard(coins);
-     				System.out.println(card.toString() + " was chosen");
-     				discard.add(card);
-     			    System.out.println("Player: "+this.player_username+" bought "+card);
-       			    gameState.decrementCard(card);
-       			    numBuys -= 1;
-       			    coins -= card.getCost();
-       			    System.out.println("Embargo Check");
-       			    if (gameState.isPileEmp("Curse")){
-       			     System.out.println("There are curses");
-       			     Card curse = Card.getCard(gameState.cards, Card.CardName.Curse);
-       			     int numTok = gameState.embargoCheck(card);
-       			     System.out.println("Giving " + numTok + " curses");
-       			     for (int i = 0; i < numTok; i++){
-       			    	 	  System.out.println("________---------__________");
-        			    	  discard.add(curse);
-        			    	  gameState.decrementCard(curse);
-        			    }	
-       			    }
-     			   
+     				if (card != null) {
+     					System.out.println(card.toString() + " was chosen");
+     					discard.add(card);
+     					System.out.println("Player: "+this.player_username+" bought "+card);
+     					gameState.decrementCard(card);
+     					numBuys -= 1;
+     					coins -= card.getCost();
+     					System.out.println("Embargo Check");
+     					if (gameState.isPileEmp("Curse")){
+     						System.out.println("There are curses");
+     						Card curse = Card.getCard(gameState.cards, Card.CardName.Curse);
+     						int numTok = gameState.embargoCheck(card);
+     						System.out.println("Giving " + numTok + " curses");
+     						for (int i = 0; i < numTok; i++){
+       			    	 	  	System.out.println("________---------__________");
+       			    	 	  	discard.add(curse);
+       			    	 	  	gameState.decrementCard(curse);
+     						}	
+     					}
+     				} else {
+     					System.out.println("No card was bought.");
+     					break;
+     				}
      			}
    			} while(numBuys > 0 && coins > 1);
    			//I chose to not buy anything if you have no coins (or 1, which is essentially the same thing). While technically legal, and a strategy in a gain

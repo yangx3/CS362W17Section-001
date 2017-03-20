@@ -52,15 +52,19 @@ public class Deck {
 
     }
     public void shuffle() {
+        if (discard.size() == 0)
+            return;
         cardDeck.clear();   //removes all held elements in card deck
         Collections.shuffle(discard);
         for (int i=0; i<discardSize; i++) { //copies card from shuffled discard pile to empty deck
-            System.out.println("Index inside loop:  "+ i+"\n");
-            System.out.println("Size of discard:  "+ discard.size()+"\n");
+
             addCardToDeck(discard.get(i));
 
+
         }
+
         discard.clear();                    //clears discard pile
+
         deckIndex=0;
     }
     public Card drawCard(){

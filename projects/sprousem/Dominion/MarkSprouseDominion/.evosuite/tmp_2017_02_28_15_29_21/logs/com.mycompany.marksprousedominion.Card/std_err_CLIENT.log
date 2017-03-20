@@ -1,0 +1,31 @@
+[MASTER] 15:38:15.500 [Thread-2] ERROR System - Error while initializing System: null
+[MASTER] 15:38:24.550 [pool-2-thread-1] ERROR TestSuiteGenerator - Problem for com.mycompany.marksprousedominion.Card. Full stack:
+java.lang.NullPointerException: null
+	at org.evosuite.runtime.System.restoreProperties(System.java:95) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.System.resetRuntime(System.java:302) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.Runtime.resetRuntime(Runtime.java:80) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.Properties.getTargetClass(Properties.java:2335) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.Properties.getTargetClass(Properties.java:2304) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.initializeTargetMethods(TestClusterGenerator.java:363) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:135) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+[MASTER] 15:38:24.583 [pool-2-thread-1] ERROR ClientNodeImpl - Error when generating tests for: com.mycompany.marksprousedominion.Card with seed 1488325095116. Configuration id : default
+java.lang.NullPointerException: null
+	at org.evosuite.runtime.System.restoreProperties(System.java:95) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.sandbox.MSecurityManager.goingToEndTestCase(MSecurityManager.java:367) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.sandbox.Sandbox.doneWithExecutingSUTCode(Sandbox.java:141) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:123) ~[evosuite-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) ~[evosuite-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]

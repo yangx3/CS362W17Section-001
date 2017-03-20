@@ -1,0 +1,5 @@
+I used EvoSuite to generate the test cases.
+To compile the test type mvn compile(compiled file are in the file).
+To run the test, you need to download hole dominion file, and type mvn test on the command line.
+To see the coverage go to dominion\target\site\cobertura, and click on index.html file.
+To generate the coverage type mvn cobertura:cobertura.

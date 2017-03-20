@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>GameState.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">TestRandom (Feb 27, 2017 12:20:47 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">GameState.java</span></div><h1>GameState.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import java.util.LinkedList;
+
+public class GameState {
+	public Player currentPlayer;
+	public LinkedList&lt;Player&gt; otherPlayers; 
+	
+<span class="fc" id="L9">	public GameState(DominionBoard board, int playerCount) {</span>
+<span class="fc" id="L10">		otherPlayers = new LinkedList&lt;Player&gt;();</span>
+		
+<span class="fc bfc" id="L12" title="All 2 branches covered.">		for(int i=0; i&lt;playerCount; i++) {</span>
+<span class="fc" id="L13">			Player newPlayer = new Player(&quot;Player &quot; + (i+1), board);</span>
+<span class="fc" id="L14">			otherPlayers.add(newPlayer);</span>
+		}
+		
+<span class="fc" id="L17">		currentPlayer = otherPlayers.removeFirst();</span>
+<span class="fc" id="L18">	}</span>
+	
+	public void TakeTurn() {
+<span class="fc" id="L21">		currentPlayer.TakeTurn(this);</span>
+		
+<span class="fc" id="L23">		Player p1 = currentPlayer;</span>
+<span class="fc" id="L24">		currentPlayer = otherPlayers.removeFirst();</span>
+<span class="fc" id="L25">		otherPlayers.add(p1);</span>
+<span class="fc" id="L26">	}</span>
+	
+	public void DrawCards(Player player, int numCards) {
+<span class="fc" id="L29">		player.deck.DrawCards(numCards);</span>
+<span class="fc" id="L30">	}</span>
+	
+	public void PrintScore() {
+<span class="fc" id="L33">		System.out.println(&quot;Score:&quot;);</span>
+		
+<span class="fc" id="L35">		System.out.println(currentPlayer.GetName() + &quot;: &quot; + currentPlayer.GetScore());</span>
+		
+<span class="fc" id="L37">		int size = otherPlayers.size();</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">		for(int i=0; i&lt;size; i++) {</span>
+<span class="fc" id="L39">			Player p = otherPlayers.removeFirst();</span>
+<span class="fc" id="L40">			System.out.println(p.GetName() + &quot;: &quot; + p.GetScore());</span>
+<span class="fc" id="L41">			otherPlayers.add(p);</span>
+		}
+<span class="fc" id="L43">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>TestRandom (Feb 27, 2017 12:20:47 AM)</div></body></html>

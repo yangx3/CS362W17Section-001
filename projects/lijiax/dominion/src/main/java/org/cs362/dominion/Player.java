@@ -275,13 +275,13 @@ public class Player implements Cloneable{
 		   }
 	   }
 	   
-	   
+	/*   
 	   public void printStateGame(){
 		   System.out.println(" --- " + this.player_username + " --- ");
 		   System.out.println(" --- --------------------------- --- ");
      	   System.out.println(this.gameState.toString()); 
      	   System.out.println(" --- --------------------------- --- ");
-	   }
+	   }*/
 	   @Override
 		public String toString() {
 	   	StringBuilder sb = new StringBuilder();
@@ -309,5 +309,5 @@ public class Player implements Cloneable{
 			clonePlayer.discard = new ArrayList<Card>(discard); 
 			clonePlayer.playedCards = new ArrayList<Card>(playedCards);
 			return clonePlayer;
-	    } 	   
+	    } 	 
 }

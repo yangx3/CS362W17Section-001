@@ -2,6 +2,7 @@ package goertzel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static java.util.Collections.shuffle;
 
@@ -9,8 +10,10 @@ import static java.util.Collections.shuffle;
 class GameState {
 
     List<Player> players = new ArrayList<Player>();
-    private List<Player> winners;
+    public List<Player> winners;
     private int turnCount;
+
+    public int seed = -1;
 
     List<Supply_Stack> victory_supply;
     List<Supply_Stack> treasure_supply;
@@ -24,9 +27,26 @@ class GameState {
         kingdom_supply = new ArrayList<Supply_Stack>();
         generateSupplyStacks();
 
-        for (String name : names) {
+        for (String name : names)
             players.add(new Player(name));
-        }
+
+        for (Player p : players)
+            p.linkBoard(this);
+
+        turnCount = 0;
+    }
+
+    GameState(String[] names, int seed) {
+        this.seed = seed;
+
+        victory_supply = new ArrayList<Supply_Stack>();
+        treasure_supply = new ArrayList<Supply_Stack>();
+        kingdom_supply = new ArrayList<Supply_Stack>();
+        generateSupplyStacks();
+
+        for (String name : names)
+            players.add(new Player(name));
+
         for (Player p : players)
             p.linkBoard(this);
 
@@ -78,8 +98,8 @@ class GameState {
 
     public void playOneTurn() {
         if (turnCount == 0) turnCount = 1;
-        System.out.println("\n============================================================");
-        Player toPlay = players.get((turnCount-1)%2);
+        System.out.println("\n============================================================\n");
+        Player toPlay = players.get((turnCount-1)%players.size());
         System.out.println("TURN " + turnCount + " : " + toPlay.getPlayerName());
         toPlay.playTurn();
         turnCount++;
@@ -100,7 +120,7 @@ class GameState {
         return emptyPiles >= 3;
     }
 
-    private List<Player> determineWinners() {
+    public List<Player> determineWinners() {
         int maxVP = 0;
         for (Player p : players)
             if (p.calcVP() > maxVP)
@@ -130,6 +150,7 @@ class GameState {
         victory_supply.add(new Supply_Stack(Card.CardName.ESTATE, 14));
         victory_supply.add(new Supply_Stack(Card.CardName.CURSE, 10));
 
+
         treasure_supply.add(new Supply_Stack(Card.CardName.GOLD, 30));
         treasure_supply.add(new Supply_Stack(Card.CardName.SILVER, 40));
         treasure_supply.add(new Supply_Stack(Card.CardName.COPPER, 60));
@@ -142,7 +163,9 @@ class GameState {
             }
         }
 
-        shuffle(kingdomCards);
+        if (seed == -1) shuffle(kingdomCards);
+        else shuffle(kingdomCards, new Random(seed));
+
         List<Card.CardName> toRemove = new ArrayList<Card.CardName>();
         for (int i = kingdomCards.size()-1; i > kingdomCards.size()-3; i--)
             toRemove.add(kingdomCards.get(i));
@@ -151,15 +174,6 @@ class GameState {
         for (Card.CardName name : kingdomCards) {
             kingdom_supply.add(new Supply_Stack(name, 10));
         }
-//
-//        List<Supply_Stack> supplyPiles = new ArrayList<>();
-//        supplyPiles.addAll(victory_supply);
-//        supplyPiles.addAll(treasure_supply);
-//        supplyPiles.addAll(kingdom_supply);
-//
-//        for (Supply_Stack s : supplyPiles) {
-//
-//        }
 
     }
 
@@ -187,10 +201,6 @@ class GameState {
     }
 
     List<Player> getWinners(){
-//HERE BE A BUG
-        winners.add(new Player("Sneaky1"));
-        winners.add(new Player("Sneaky2"));
-        
         return winners;
     }
 }

@@ -1,0 +1,172 @@
+* Starting client
+* Connecting to master process on port 12463
+* Analyzing classpath: 
+  - /Users/samuelhudson/Desktop/dominion/target/test-classes
+  - /Users/samuelhudson/Desktop/dominion/target/classes
+  - /Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class ActionCard
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 21:54:12.625 [pool-2-thread-1] WARN  TestSuiteSerialization - Problems when reading a serialized test from /Users/samuelhudson/Desktop/dominion/.evosuite/evosuite-seeds/ActionCard.seed : Unknown constructor in class Board
+* Total number of test goals: 
+  - Line 145
+  - Branch 68
+  - Exception 0
+  - MutationFactory 654
+  - Output 39
+  - Method 14
+  - MethodNoException 14
+  - CBranchFitnessFactory 68
+* Using seed 1488261250888
+* Starting evolution
+* Search finished after 112s and 633 generations, 250827 statements, best individual has fitness: 55.70666666666667
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 89%
+* Total number of goals: 145
+* Number of covered goals: 129
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 100%
+* Total number of goals: 68
+* Number of covered goals: 68
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 79%
+* Total number of goals: 24
+* Number of covered goals: 19
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 90%
+* Total number of goals: 654
+* Number of covered goals: 588
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 36%
+* Total number of goals: 39
+* Number of covered goals: 14
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 14
+* Number of covered goals: 14
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 93%
+* Total number of goals: 14
+* Number of covered goals: 13
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 100%
+* Total number of goals: 68
+* Number of covered goals: 68
+* Generated 49 tests with total length 268
+* Resulting test suite's coverage: 89% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 39%
+* Compiling and checking tests
+[MASTER] 21:56:32.275 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: expected:<0> but was:<1>
+[MASTER] 21:56:32.275 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("bureaucrat", (String) null, 52, 52);
+Player player0 = new Player((String) null);
+ArrayList<Card> arrayList0 = player0.deck;
+Board board0 = new Board(arrayList0);
+int int0 = actionCard0.play(player0, player0, board0);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:32.374 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+[MASTER] 21:56:32.374 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("feast", "feast", 0, 0);
+Player player0 = new Player("mA%i\"L=aJ,Ff");
+ArrayList<Card> arrayList0 = player0.hand;
+Board board0 = new Board(arrayList0);
+int int0 = actionCard0.play(player0, player0, board0);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:32.417 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.NullPointerException: null
+[MASTER] 21:56:32.417 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("festival", "festival", (-2308), (-2308));
+Player player0 = new Player("festival");
+int int0 = actionCard0.play(player0, player0, (Board) null);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:32.469 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: expected:<0> but was:<2>
+[MASTER] 21:56:32.469 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("laboratory", "", 2106, 0);
+Player player0 = new Player("FnbJT;0sV=");
+ArrayList<Card> arrayList0 = player0.deck;
+Board board0 = new Board(arrayList0);
+int int0 = actionCard0.play(player0, player0, board0);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:32.513 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: expected:<0> but was:<4>
+[MASTER] 21:56:32.513 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("market", "market", 8, 8);
+Player player0 = new Player("market");
+ArrayList<Card> arrayList0 = player0.hand;
+Board board0 = new Board(arrayList0);
+int int0 = actionCard0.play(player0, player0, board0);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:32.557 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.NullPointerException: null
+[MASTER] 21:56:32.557 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("village", "victory", 16, 450);
+Player player0 = new Player("'s in_play pile:");
+ArrayList<Card> arrayList0 = player0.deck;
+Board board0 = new Board(arrayList0);
+int int0 = actionCard0.play((Player) null, (Player) null, board0);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:33.421 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: expected:<0> but was:<2>
+[MASTER] 21:56:33.421 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("adventurer", "adventurer", (-2116), (-2116));
+Player player0 = new Player("adventurer");
+ArrayList<Card> arrayList0 = player0.hand;
+Board board0 = new Board(arrayList0);
+int int0 = actionCard0.play(player0, player0, board0);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:33.455 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.ArithmeticException: null
+[MASTER] 21:56:33.455 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("cellar", "cellar", 0, 0);
+Player player0 = new Player("cellar");
+ArrayList<Card> arrayList0 = player0.discard;
+Board board0 = new Board(arrayList0);
+int int0 = actionCard0.play(player0, player0, board0);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:33.492 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: expected:<0> but was:<3>
+[MASTER] 21:56:33.492 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("council_room", "council_room", 779, 779);
+Player player0 = new Player("council_room");
+ArrayList<Card> arrayList0 = player0.discard;
+Board board0 = new Board(arrayList0);
+int int0 = actionCard0.play(player0, player0, board0);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:33.527 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: expected:<0> but was:<1>
+[MASTER] 21:56:33.527 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: ActionCard actionCard0 = new ActionCard("smithy", "smithy", 98, 98);
+Player player0 = new Player("smithy");
+ArrayList<Card> arrayList0 = player0.in_play;
+Board board0 = new Board(arrayList0);
+int int0 = actionCard0.play(player0, player0, board0);
+assertEquals(0, int0);
+
+
+[MASTER] 21:56:33.570 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: expected:<0> but was:<1>
+[MASTER] 21:56:33.571 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: Player player0 = new Player("chapel");
+ArrayList<Card> arrayList0 = player0.deck;
+Board board0 = new Board(arrayList0);
+ActionCard actionCard0 = new ActionCard("chapel", " you currently have no treasure cards in your deck.", 86, (-2675));
+int int0 = actionCard0.play(player0, player0, board0);
+assertEquals(0, int0);
+
+
+* Writing JUnit test case 'ActionCard_ESTest' to /Users/samuelhudson/Desktop/dominion/.evosuite/tmp_2017_02_27_21_51_26/tests
+* Done!
+

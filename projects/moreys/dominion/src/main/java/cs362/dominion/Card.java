@@ -205,7 +205,10 @@ public final class Card implements Comparable<Card>{
 			int trashed = 0;
 			int r = Randomness.random.nextInt(2) + 1;
 			int counter = 0;
-			for(Card c : player.hand) {
+			/*for(Card c : player.hand) {
+				if (c == null) {
+					return;
+				}
 				if (c.getCardName() == CardName.Curse) {
 					player.hand.remove(c);
 					trashed ++;
@@ -245,7 +248,7 @@ public final class Card implements Comparable<Card>{
 					}
 				}	
 				
-			}
+			}*/
 			if (r == 1) {
 				player.drawCard();
 				player.drawCard();

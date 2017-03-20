@@ -4,7 +4,6 @@ package goertzel;
 import java.util.*;
 
 import static java.util.Collections.shuffle;
-import static java.util.Collections.*;
 
 
 public class Player {
@@ -57,6 +56,7 @@ public class Player {
         //System.out.println("\tInitialize Hand");
 //HERE BE A BUG
         actions = 2;
+
         gold = 0;
         buys = 1;
         drawCards(5);
@@ -114,7 +114,15 @@ public class Player {
         while ((buys > 0) && (gold > 0) && (loopPrevention < 30)){
 
             if (gold <= 1){
-                Random rand = new Random();
+                Random rand;
+                if (boardReference != null) {
+                    if (boardReference.seed == -1) rand = new Random();
+                    else rand = new Random(boardReference.seed);
+                }
+                else {
+                    rand = new Random();
+                }
+
                 int n = rand.nextInt(3);
 //                System.out.println("#" + n);
                 if (n > 1) return;
@@ -132,7 +140,14 @@ public class Player {
             temp = getRandomSupply();
             if ((temp.getCost() <= gold) && (!temp.isEmpty())) options.add(temp.getName());
 
-            shuffle(options);
+            if (boardReference != null) {
+                if (boardReference.seed == -1) shuffle(options);
+                else shuffle(options, new Random(boardReference.seed));
+            }
+            else {
+                shuffle(options);
+            }
+
             buy(options.get(0));
             loopPrevention++;
         }
@@ -162,7 +177,6 @@ public class Player {
     }
 
     private void cleanupPhase(){
-        //System.out.println("\tCleanup Phase");
         inCleanupPhase = true;
         discardPile.addAll(hand);
         hand.clear();
@@ -192,7 +206,14 @@ public class Player {
             System.out.println("\t" + playerName + " reshuffled their deck");
         deck.addAll(discardPile);
         discardPile.clear();
-        shuffle(deck);
+
+        if (boardReference != null) {
+            if (boardReference.seed == -1) shuffle(deck);
+            else shuffle(deck, new Random(boardReference.seed));
+        }
+        else {
+            shuffle(deck);
+        }
     }
 
     boolean gain(Card.CardName pile, int limit){
@@ -233,7 +254,15 @@ public class Player {
         while (allSupply.size() > 3){
             allSupply.remove(allSupply.remove(allSupply.size()-1));
         }
-        shuffle(allSupply);
+
+        if (boardReference != null) {
+            if (boardReference.seed == -1) shuffle(allSupply);
+            else shuffle(allSupply, new Random(boardReference.seed));
+        }
+        else {
+            shuffle(allSupply);
+        }
+
         gain(allSupply.get(0).getName(), limit);
     }
 
@@ -266,6 +295,10 @@ public class Player {
             gold -= target.getCost();
             buys--;
             System.out.println("\t\t" + playerName + " bought " + name);
+
+//HERE BE A BUG
+            discard(new Card(name));
+
         }
         else
             System.out.println("\t\t" + playerName + " could not buy " + name);
@@ -291,7 +324,7 @@ public class Player {
     void trashCard(Card c){
         System.out.println("\t\t" + playerName + " trashed " + c.name);
 //HERE BE A BUG
-        // putInHand(new Card(c.name));
+//         putInHand(new Card(c.name));
         hand.remove(c);
         deck.remove(c);
         discardPile.remove(c);
@@ -304,10 +337,24 @@ public class Player {
         allSupply.addAll(boardReference.kingdom_supply);
         allSupply.addAll(boardReference.kingdom_supply);
 
-        shuffle(allSupply);
-        shuffle(allSupply);
-        while ((allSupply.get(0).getName() == Card.CardName.CURSE) || (allSupply.get(0).isEmpty()))
+
+        if (boardReference != null) {
+            if (boardReference.seed == -1) shuffle(allSupply);
+            else shuffle(allSupply, new Random(boardReference.seed));
+        }
+        else {
             shuffle(allSupply);
+        }
+
+        while ((allSupply.get(0).getName() == Card.CardName.CURSE) || (allSupply.get(0).isEmpty())) {
+            if (boardReference != null) {
+                if (boardReference.seed == -1) shuffle(allSupply);
+                else shuffle(allSupply, new Random(boardReference.seed));
+            }
+            else{
+                shuffle(allSupply);
+            }
+        }
         return allSupply.get(0);
     }
 
@@ -316,7 +363,13 @@ public class Player {
     }
 
     Card randCardFromHand(){
-        shuffle(hand);
+        if (boardReference != null) {
+            if (boardReference.seed == -1) shuffle(hand);
+            else shuffle(hand, new Random(boardReference.seed));
+        }
+        else {
+            shuffle(hand);
+        }
         return hand.get(0);
     }
 
@@ -353,7 +406,14 @@ public class Player {
         if (treasures.size() == 0)
             return null;
 
-        shuffle(treasures);
+        if (boardReference != null) {
+            if (boardReference.seed == -1) shuffle(treasures);
+            else shuffle(treasures, new Random(boardReference.seed));
+        }
+        else {
+            shuffle(treasures);
+        }
+
         Card temp = treasures.get(0);
         trashCard(temp);
         return temp;

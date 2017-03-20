@@ -7,8 +7,10 @@ import java.util.LinkedList;
 import java.util.List;
 //import dominion.Card.CardName;
 import dominion.Card.Type;
+import java.util.Random;
 
 public class Player implements Cloneable{
+	Random randomGenerator = new Random();
 	List<Card> hand = new ArrayList<Card>();// int hand[MAX_PLAYERS][MAX_HAND];
 	LinkedList<Card> deck = new LinkedList<Card>();// int
 								// deck[MAX_PLAYERS][MAX_DECK];
@@ -36,7 +38,7 @@ public class Player implements Cloneable{
 			// Step 1 Shuffle the discard pile back into a deck
 			System.out.println("reshuffle the deck of "+ player_username);
 			while (discard.size() > 0) {
-				int ndx = (int) Randomness.nextRandomInt(discard.size());
+				int ndx = randomGenerator.nextInt(discard.size());
 				// Move discard to deck
 				deck.add(discard.remove(ndx));
 			}
@@ -81,7 +83,7 @@ public class Player implements Cloneable{
 //		   state->numnumActions = 1;
 //		   state->numnumBuys = 1;
 		      numActions = 1;
-		      coins = 0;
+		      coins = 1;
 		      numBuys = 1;
 		      //Shuffle your starting 10 cards (7 Coppers & 3 Estates) and place them face-down as your Deck. Draw the top
 		      //5 cards as your starting hand
@@ -117,7 +119,7 @@ public class Player implements Cloneable{
 		   }
             
 	   public void playKingdomCard() {
-		      while (numActions > 0) {
+		      while (numActions > 0 && numActions < 5) {
 		         List<Card> actionCards = Card.filter(hand, Type.ACTION);
 		   
 		         if (actionCards.isEmpty()){
@@ -206,7 +208,7 @@ public class Player implements Cloneable{
                             coins = coins -1;
                         }
 			else if (coins == 2){
-                            int random = (int)  Randomness.random.nextInt(4);
+							int random = randomGenerator.nextInt(4);
                             //System.out.println("random3: " + random);
                             if(random ==0)gain(Card.getCard(state.cards, Card.CardName.Cellar));
                             if(random ==1)gain(Card.getCard(state.cards, Card.CardName.Chapel));
@@ -215,38 +217,38 @@ public class Player implements Cloneable{
                             coins = coins -2;
                         }
                         else if (coins == 3) {//randomly choose 3 cost cards?
-                            int random = (int)  Randomness.random.nextInt(5);
+							int random = randomGenerator.nextInt(5);
                                 //System.out.println("random4: " + random);
-				if(random ==0)gain(Card.getCard(state.cards, Card.CardName.Village));
-				if(random ==1)gain(Card.getCard(state.cards, Card.CardName.Woodcutter));
+								if(random ==0)gain(Card.getCard(state.cards, Card.CardName.Village));
+								if(random ==1)gain(Card.getCard(state.cards, Card.CardName.Woodcutter));
                                 if(random ==2)gain(Card.getCard(state.cards, Card.CardName.Chancellor));
                                 if(random ==3)gain(Card.getCard(state.cards, Card.CardName.Silver));
                                 if(random ==4)gain(Card.getCard(state.cards, Card.CardName.Silver));
                                 coins = coins -3;
 			} 
                         else if (coins == 4) {//randomly choose one of these
-				int random = (int)  Randomness.random.nextInt(5);
+							int random = randomGenerator.nextInt(5);
                                 //System.out.println("random4: " + random);
                                 if(random ==0)gain(Card.getCard(state.cards, Card.CardName.Smithy));
-				if(random ==1)gain(Card.getCard(state.cards, Card.CardName.Bureaucrat));
-				if(random ==2)gain(Card.getCard(state.cards, Card.CardName.Gardens));
-				if(random ==3)gain(Card.getCard(state.cards, Card.CardName.Feast));
-				if(random ==4)gain(Card.getCard(state.cards, Card.CardName.Militia));
+								if(random ==1)gain(Card.getCard(state.cards, Card.CardName.Bureaucrat));
+								if(random ==2)gain(Card.getCard(state.cards, Card.CardName.Gardens));
+								if(random ==3)gain(Card.getCard(state.cards, Card.CardName.Feast));
+								if(random ==4)gain(Card.getCard(state.cards, Card.CardName.Militia));
                                 coins = coins -4;
 			} 
                         else if (coins == 5) {//randomly choose one of these
-                            int random = (int)  Randomness.random.nextInt(6);
+							int random = randomGenerator.nextInt(6);
                                 //System.out.println("random5: " + random);
-				if(random ==0)gain(Card.getCard(state.cards, Card.CardName.Council_Room));
+								if(random ==0)gain(Card.getCard(state.cards, Card.CardName.Council_Room));
                                 if(random ==1)gain(Card.getCard(state.cards, Card.CardName.Festival));
                                 if(random ==2)gain(Card.getCard(state.cards, Card.CardName.Laboratory));
-				if(random ==3)gain(Card.getCard(state.cards, Card.CardName.Market));
+								if(random ==3)gain(Card.getCard(state.cards, Card.CardName.Market));
                                 if(random ==4)gain(Card.getCard(state.cards, Card.CardName.Duchy));
                                 if(random ==5)gain(Card.getCard(state.cards, Card.CardName.Duchy));
                                 coins = coins -5;
 			} 
                         else if (coins == 6){
-                            int random = (int)  Randomness.random.nextInt(2);
+							int random = randomGenerator.nextInt(2);
                             if(random ==0)gain(Card.getCard(state.cards, Card.CardName.Adventurer));
                             if(random ==1)gain(Card.getCard(state.cards, Card.CardName.Gold));
                             coins = coins-6;
@@ -305,7 +307,7 @@ public class Player implements Cloneable{
 
 		}
 	   
-	    protected Player clone() throws CloneNotSupportedException {
+	    public Player clone() throws CloneNotSupportedException {
 	    	Player clonePlayer=(Player) super.clone();
 	    	clonePlayer.hand = new ArrayList<Card>(hand);// int hand[MAX_PLAYERS][MAX_HAND];
 			clonePlayer.deck = new LinkedList<Card>(deck);// int

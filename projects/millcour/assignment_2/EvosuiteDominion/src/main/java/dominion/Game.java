@@ -1,0 +1,554 @@
+package dominion;
+
+import java.util.*;
+
+public class Game{
+	private ArrayList<Deck> board;
+	private ArrayList<Player> players;
+	private ArrayList<Integer> embargoToken;
+	private int numPlayers;
+
+	Game(){
+		board = new ArrayList<Deck>();
+		players = new ArrayList<Player>();
+		embargoToken = new ArrayList<Integer>();
+	}
+
+	public ArrayList<Player> getPlayers(){
+		return players;
+	}
+
+	public ArrayList<Deck> getBoard(){
+		return board;
+	}
+	
+	public void fillDeck(Deck deck, Card card, int num){
+		for(int i=0; i<num; i++){
+			deck.getPile().add(card);
+		}
+	}
+
+	public void createPlayers(int numPlayers){
+		for(int i=0; i<numPlayers; i++){
+			players.add(new Player());
+		}
+	}
+
+	public void initializeTokens(){
+		for(int i=0; i<20; i++){
+			embargoToken.add(0);
+		}
+	}
+	
+	public void setNumPlayers(int x){
+		if(x > 4){
+			numPlayers = 4;
+			System.out.println("Max number of players: 4");
+		}else{
+			numPlayers = x;
+		}
+	}
+	
+	public int getNumPlayers(){
+		return numPlayers;
+	}
+
+	public void createBoard(){
+		//Set up the decks that hold the victory cards
+		board.add(new Deck(Card.CardName.Duchy));
+		board.add(new Deck(Card.CardName.Estate));
+		board.add(new Deck(Card.CardName.Province));
+		board.add(new Deck(Card.CardName.Curse));
+		board.add(new Deck(Card.CardName.Gardens));
+		//Set up the decks that hold the treasure cards
+		board.add(new Deck(Card.CardName.Gold));
+		board.add(new Deck(Card.CardName.Silver));
+		board.add(new Deck(Card.CardName.Copper));
+		//Set up the decks that hold the kingdom cards
+		board.add(new Deck(Card.CardName.Adventurer));
+		board.add(new Deck(Card.CardName.Ambassador));
+		board.add(new Deck(Card.CardName.Baron));
+		board.add(new Deck(Card.CardName.CouncilRoom));
+		board.add(new Deck(Card.CardName.Cutpurse));
+		board.add(new Deck(Card.CardName.Embargo));
+		board.add(new Deck(Card.CardName.Feast));
+		board.add(new Deck(Card.CardName.GreatHall));
+		board.add(new Deck(Card.CardName.Mine));
+		board.add(new Deck(Card.CardName.Smithy));
+		board.add(new Deck(Card.CardName.Village));
+		board.add(new Deck(Card.CardName.Tribute));
+	}
+
+	public void fillVictoryCards(){
+		Card duchyCard = new Card(Card.CardName.Duchy, Card.Type.VICTORY, 5, 3, 0); 
+		fillDeck(board.get(0), duchyCard, 12);
+		Card estateCard = new Card(Card.CardName.Estate, Card.Type.VICTORY, 2, 1, 0);
+		fillDeck(board.get(1), estateCard, 24);
+		Card provinceCard = new Card(Card.CardName.Province, Card.Type.VICTORY, 8, 6, 0);
+		fillDeck(board.get(2), provinceCard, 12);
+		Card curseCard = new Card(Card.CardName.Curse, Card.Type.VICTORY, 0, -1, 0);
+		fillDeck(board.get(3), curseCard, 10);
+		Card gardensCard = new Card(Card.CardName.Gardens, Card.Type.VICTORY, 4, 0, 0);
+		fillDeck(board.get(4), gardensCard, 10);
+	}
+
+	public void fillTreasureCards(){
+		Card goldCard = new Card(Card.CardName.Gold, Card.Type.TREASURE, 6, 0, 3);
+		fillDeck(board.get(5), goldCard, 30);
+		Card silverCard = new Card(Card.CardName.Silver, Card.Type.TREASURE, 3, 0, 2);
+		fillDeck(board.get(6), silverCard, 40);
+		Card copperCard = new Card(Card.CardName.Copper, Card.Type.TREASURE, 0, 0, 1);
+		fillDeck(board.get(7), copperCard, 60);
+	}
+
+	public void fillActionCards(){
+		Card adventurerCard = new Card(Card.CardName.Adventurer, Card.Type.ACTION, 6, 0, 0);
+		fillDeck(board.get(8), adventurerCard, 10);
+	       	Card ambassadorCard = new Card(Card.CardName.Ambassador, Card.Type.ACTION, 3, 0, 0);
+		fillDeck(board.get(9), ambassadorCard, 10);
+		Card baronCard = new Card(Card.CardName.Baron, Card.Type.ACTION, 4, 0, 0);
+		fillDeck(board.get(10), baronCard, 10);
+		Card councilRoomCard = new Card(Card.CardName.CouncilRoom, Card.Type.ACTION, 5, 0, 0);
+		fillDeck(board.get(11), councilRoomCard, 10);
+		Card cutpurseCard = new Card(Card.CardName.Cutpurse, Card.Type.ACTION, 4, 0, 0);
+		fillDeck(board.get(12), cutpurseCard, 10);
+		Card embargoCard = new Card(Card.CardName.Embargo, Card.Type.ACTION, 2, 0, 0);
+		fillDeck(board.get(13), embargoCard, 10);
+		Card feastCard = new Card(Card.CardName.Feast, Card.Type.ACTION, 4, 0, 0);
+		fillDeck(board.get(14), feastCard, 10);
+		Card greatHallCard = new Card(Card.CardName.GreatHall, Card.Type.ACTION, 3, 1, 0);
+	       	fillDeck(board.get(15), greatHallCard, 10);
+		Card mineCard = new Card(Card.CardName.Mine, Card.Type.ACTION, 5, 0, 0);
+		fillDeck(board.get(16), mineCard, 10);
+		Card smithyCard = new Card(Card.CardName.Smithy, Card.Type.ACTION, 4, 0, 0);
+		fillDeck(board.get(17), smithyCard, 10);
+		Card villageCard = new Card(Card.CardName.Village, Card.Type.ACTION, 3, 0, 0);
+		fillDeck(board.get(18), villageCard, 10);
+		Card tributeCard = new Card(Card.CardName.Tribute, Card.Type.ACTION, 5, 0, 0);
+		fillDeck(board.get(19), tributeCard, 10);
+	}
+
+	public void dealHands(){
+		for(int j=0; j<numPlayers; j++){
+			for(int i=0; i<7; i++){
+				Card toFill = board.get(7).drawCard();
+				players.get(j).getDraw().getPile().add(toFill);
+			}
+			for(int i=0; i<3; i++){
+				Card toFill = board.get(1).drawCard();
+				players.get(j).getDraw().getPile().add(toFill);
+			}
+		}
+	}
+		
+	public void setGame(int num){
+		System.out.println("IN SET GAME");
+		createBoard();
+		setNumPlayers(num);
+		createPlayers(numPlayers);
+		fillVictoryCards();
+		fillTreasureCards();
+		fillActionCards();
+		initializeTokens();
+		dealHands();		
+	}
+
+	public boolean checkForEnd(){
+		int numEmpty = 0;
+		if(board.get(2).getPile().size() == 0){
+			return false;
+		}else{
+			for(int i=board.size()-1; i>=0; i--){
+				if(board.get(i).getPile().size() == 0){
+					numEmpty++;
+				}if(numEmpty == 3){
+					return false;
+				}		
+			}
+		}
+		return true;
+		//check to see if the ending conditions of the game have been reached
+	}
+
+	
+	public void adventurerAction(int x){
+		int numTreasures = 0;
+		int index;
+		while(numTreasures < 2){
+			index = players.get(x).getDraw().getPile().size() - 1;
+			if(players.get(x).getDraw().getPile().size() == 0){
+				players.get(x).getDiscard().shuffleDeck();
+				players.get(x).discardToDraw();
+				index = players.get(x).getDraw().getPile().size()-1;
+			}
+			System.out.println("Revealing: " + players.get(x).getDraw().getPile().get(index).getCardName());
+			if(players.get(x).getDraw().getPile().get(index).getType() == Card.Type.TREASURE){
+				players.get(x).getHand().getPile().add(players.get(x).getDraw().drawCard());
+				numTreasures++;
+			}else{
+				players.get(x).getDiscard().getPile().add(players.get(x).getDraw().drawCard());
+			}
+		}
+	}
+
+	public void ambassadorAction(int x){
+		Card.CardName toSearch;
+		Random rand = new Random();
+		int numDiscarded = 0;
+		int toReplace = 0;
+		int toReveal = rand.nextInt(players.get(x).getHand().getPile().size());
+		toSearch = players.get(x).getHand().getPile().get(toReveal).getCardName();
+		System.out.println("Revealing: " + toSearch);
+		for(int i=board.size()-1; i>=0; i--){
+			if(toSearch == board.get(i).getName()){
+				toReplace = i;
+				break;
+			}
+		}
+		for(int i=players.get(x).getHand().getPile().size()-1; i>=0; i--){
+			if(players.get(x).getHand().getPile().get(i).getCardName() == toSearch){
+				//players.get(x).getDiscard().getPile().add(players.get(x).getHand().getPile().remove(i));
+				board.get(toReplace).getPile().add(players.get(x).getHand().getPile().remove(i));
+				numDiscarded++;
+			}
+			if(numDiscarded == 2)
+				break;
+		}
+	}
+
+
+	public void baronAction(int x){
+		players.get(x).setNumBuys(players.get(x).getNumBuys()+1);
+		for(int i=players.get(x).getHand().getPile().size()-1; i>=0; i--){
+			if(players.get(x).getHand().getPile().get(i).getCardName() == Card.CardName.Estate){
+				players.get(x).getDiscard().getPile().add(players.get(x).getHand().getPile().remove(i));
+				players.get(x).setCoins(players.get(x).getCoins()+4);
+				return;
+			}	
+		}
+		if(board.get(1).getPile().size() != 0)
+			players.get(x).getHand().getPile().add(board.get(1).drawCard());
+	}
+
+	public void councilRoomAction(int x){
+		if(players.get(x).getDraw().getPile().size() < 4){
+			players.get(x).getDiscard().shuffleDeck();
+			players.get(x).discardToDraw();
+		}
+		for(int i=0; i<4; i++){
+			players.get(x).getHand().getPile().add(players.get(x).getDraw().drawCard());
+		}
+		players.get(x).setNumBuys(players.get(x).getNumBuys()+1);
+		for(int i=0; i<players.size(); i++){
+			if(i != x){
+				if(players.get(i).getDraw().getPile().size() == 0){
+					players.get(i).getDiscard().shuffleDeck();
+					players.get(i).discardToDraw();
+			}
+			players.get(i).getHand().getPile().add(players.get(i).getDraw().drawCard());
+			}
+		}
+	}
+
+	public void cutpurseAction(int x){
+		//broken cutpurse
+		players.get(x).setCoins(players.get(x).getCoins()+1);
+		/*int other;
+		if(x==0)
+			other = 1;
+		else
+			other =0;*/
+		for(int j=0; j<players.size(); j++){
+			if(j != x){
+				for(int i=players.get(j).getHand().getPile().size()-1; i>=0; i--){
+					if(players.get(j).getHand().getPile().get(i).getCardName() == Card.CardName.Copper){
+						players.get(j).getDiscard().getPile().add(players.get(j).getHand().getPile().remove(i));
+						return;
+					}
+				}
+				System.out.println("Revealing Hand With no Copper:");
+				players.get(j).printHand();
+			}
+		}
+	}
+
+	public void embargoAction(int x){
+		Random rand = new Random();
+		int token = 0;
+		while(token == 3){
+			token = rand.nextInt(board.size());
+		}
+		players.get(x).setCoins(players.get(x).getCoins()+2);
+		embargoToken.add(token, embargoToken.get(token)+1);
+		for(int i=players.get(x).getDiscard().getPile().size()-1; i>=0; i--){
+			if(players.get(x).getDiscard().getPile().get(i).getCardName() == Card.CardName.Embargo){
+				players.get(x).getDiscard().getPile().remove(i);
+				break;
+			}
+		}
+	}
+
+	public void feastAction(int x){
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		Random rand = new Random();
+		for(int i=0; i<players.get(x).getDiscard().getPile().size(); i++){
+			if(players.get(x).getDiscard().getPile().get(i).getCardName() == Card.CardName.Feast){
+				players.get(x).getDiscard().getPile().remove(i);
+				break;
+			}
+		}
+		for(int i=0; i<board.size(); i++){
+			if(board.get(i).getPile().size() != 0){
+				if(board.get(i).getPile().get(0).getCost() <= 5){
+					temp.add(i);
+				}
+			}
+		}
+		if(temp.size() > 0){
+			int choice = rand.nextInt(temp.size());
+			players.get(x).getDiscard().getPile().add(board.get(temp.get(choice)).drawCard());
+		}
+	}
+
+	public void greatHallAction(int x){
+		players.get(x).setNumActions(players.get(x).getNumActions()+1);
+		if(players.get(x).getDraw().getPile().size() == 0){
+			players.get(x).getDiscard().shuffleDeck();
+			players.get(x).discardToDraw();
+
+		}
+		players.get(x).getHand().getPile().add(players.get(x).getDraw().drawCard());
+	}
+
+	public void mineAction(int x){
+		Random rand = new Random();
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		for(int i=0; i<players.get(x).getHand().getPile().size(); i++){
+			if((players.get(x).getHand().getPile().get(i).getCardName() == Card.CardName.Copper) ||
+			(players.get(x).getHand().getPile().get(i).getCardName() == Card.CardName.Silver)){
+				temp.add(i);
+			}
+		}
+		if(temp.size() > 0){
+			int choice = rand.nextInt(temp.size());
+			if(players.get(x).getHand().getPile().get(temp.get(choice)).getCardName() == Card.CardName.Copper){
+				if(board.get(6).getPile().size() > 0){
+					for(int i=0; i<players.get(x).getHand().getPile().size(); i++){
+						if(players.get(x).getHand().getPile().get(i).getCardName() == Card.CardName.Copper){
+							players.get(x).getHand().getPile().remove(i);
+							break;
+						}
+					}
+					players.get(x).getDiscard().getPile().add(board.get(6).drawCard());
+				}
+			}else{
+				if(board.get(5).getPile().size() > 0){
+					for(int i=0; i<players.get(x).getHand().getPile().size(); i++){
+						if(players.get(x).getHand().getPile().get(i).getCardName() == Card.CardName.Silver){
+							players.get(x).getHand().getPile().remove(i);
+							break;
+						}
+					}
+					players.get(x).getHand().getPile().remove(temp.get(choice));
+					players.get(x).getDiscard().getPile().add(board.get(5).drawCard());
+				}
+			}
+		}
+	}
+
+	public void smithyAction(int x){
+		//broken smithy
+		for(int i=0; i<2; i++){
+			if(players.get(x).getDraw().getPile().size() == 0){
+				players.get(x).getDiscard().shuffleDeck();
+				players.get(x).discardToDraw();
+			}
+			players.get(x).getHand().getPile().add(players.get(x).getDraw().drawCard());
+		}
+	}
+
+	public void villageAction(int x){
+		if(players.get(x).getDraw().getPile().size() == 0){
+			players.get(x).getDiscard().shuffleDeck();
+			players.get(x).discardToDraw();
+		}
+		//broken village
+		players.get(x).getDraw().getPile().add(players.get(x).getDraw().drawCard());
+		players.get(x).setNumActions(players.get(x).getNumActions()+1);
+	}
+
+	public void tributeAction(int x){
+		int other;
+		Card toDiscard;
+		for(int i=0; i<players.size(); i++){
+			if(i != x){
+				if(players.get(i).getDraw().getPile().size() == 0){
+					players.get(i).getDiscard().shuffleDeck();
+					players.get(i).discardToDraw();
+				}
+				toDiscard = players.get(i).getDraw().drawCard();
+				System.out.println("Revealing: " + toDiscard.getCardName());
+				players.get(i).getDiscard().getPile().add(toDiscard);
+			}
+		}
+	}
+
+	public void runAction(Card.CardName name, int x){
+		if(x >= players.size() || x < 0){
+			System.out.println("Card out of range");
+		}else{
+			if(name == Card.CardName.Adventurer){
+				adventurerAction(x);
+			}else if(name == Card.CardName.Ambassador){
+				ambassadorAction(x);
+			}else if(name == Card.CardName.Baron){
+				baronAction(x);
+			}else if(name == Card.CardName.CouncilRoom){
+				councilRoomAction(x);
+			}else if(name == Card.CardName.Cutpurse){
+				cutpurseAction(x);
+			}else if(name == Card.CardName.Embargo){
+				embargoAction(x);
+			}else if(name == Card.CardName.Feast){
+				feastAction(x);
+			}else if(name == Card.CardName.GreatHall){
+				greatHallAction(x);
+			}else if(name == Card.CardName.Mine){
+				mineAction(x);
+			}else if(name == Card.CardName.Smithy){
+				smithyAction(x);
+			}else if(name == Card.CardName.Village){
+				villageAction(x);
+			}else if(name == Card.CardName.Tribute){
+				tributeAction(x);
+			}	
+		}
+	}
+
+	public void invokeAction(int x){
+		Random rand = new Random();
+		Card.CardName name;
+		int action = 0;
+		int toRemove = 0;
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		for(int i=players.get(x).getHand().getPile().size()-1; i>=0; i--){
+			if(players.get(x).getHand().getPile().get(i).getType() == Card.Type.ACTION){
+				temp.add(i);
+			}
+		}
+		if(temp.size() > 0){
+			action = rand.nextInt(temp.size());
+			toRemove = temp.get(action);
+			System.out.println("Playing: " + players.get(x).getHand().getPile().get(temp.get(action)).getCardName());
+			name = players.get(x).getHand().getPile().get(temp.get(action)).getCardName();
+			players.get(x).getDiscard().getPile().add(players.get(x).getHand().getPile().remove(toRemove));
+			runAction(name, x);
+		}
+	}
+
+	public void invokeBuy(int x){
+		Random rand = new Random();
+		int buy = 0;
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		System.out.println("Player " + (x+1) + " COINS: " + players.get(x).getCoins());
+		for(int i=board.size()-1; i>=0; i--){
+			if(board.get(i).getPile().size() > 0){
+				if(players.get(x).getCoins() >= board.get(i).getPile().get(0).getCost()){
+					if((i != 3) && (board.get(i).getPile().size() != 0))
+						temp.add(i);
+				}
+			}
+		}
+		if(temp.size() > 0){
+			buy = rand.nextInt(temp.size());
+			System.out.println("Buying: " + board.get(temp.get(buy)).getPile().get(0).getCardName());
+			players.get(x).setCoins(players.get(x).getCoins() - board.get(temp.get(buy)).getPile().get(0).getCost());
+			players.get(x).getHand().getPile().add(board.get(temp.get(buy)).drawCard());
+
+			if(embargoToken.get(temp.get(buy)) != 0){
+				for(int i=0; i<embargoToken.get(temp.get(buy)); i++){
+					if(board.get(3).getPile().size() > 0){
+						players.get(x).getHand().getPile().add(board.get(3).drawCard());
+					}
+				}
+			}
+		}
+	}
+
+	public void takeTurn(int x){
+		players.get(x).printHand();
+		while(players.get(x).getNumActions() > 0){
+			invokeAction(x);
+			players.get(x).setNumActions(players.get(x).getNumActions()-1);
+		}
+		System.out.println("STARTING BUY---");
+		players.get(x).printHand();
+		players.get(x).totalCoins();
+		while(players.get(x).getNumBuys() > 0){
+			invokeBuy(x);
+			players.get(x).setNumBuys(players.get(x).getNumBuys()-1);
+		}
+	}
+
+	public void playGame(){
+		System.out.println("NUMBER OF PLAYERS: " + numPlayers);
+		Random rand = new Random();
+		int whoseTurn = 0;
+		int n;
+		int again = 0;
+		Card card = new Card(Card.CardName.Adventurer, Card.Type.ACTION, 0, 0, 0);
+		while(checkForEnd()){
+			for(int i=0; i<numPlayers; i++){
+				players.get(i).resetPlayer();
+			}
+			for(int i=0; i<players.size(); i++){
+				System.out.println("------------------Player " + (i+1) + "--------------------");
+					takeTurn(i);
+					if((players.get(i).getDraw().getPile().size()) < 5){
+						players.get(i).getDiscard().shuffleDeck();
+						players.get(i).discardToDraw();
+					}
+				if(checkForEnd() == false)
+					break;
+			}
+		}
+	}
+	
+	public void whoWon(){
+		int points = 0;
+		int winner = 0;
+		int winnerPoints = 0;
+		for(int i=0; i<players.size(); i++){
+			players.get(i).discardToDraw();
+		}
+		for(int j=0; j<players.size(); j++){
+			for(int i=0; i<players.get(j).getDraw().getPile().size(); i++){
+				points++;
+			}
+			players.get(j).setVictory(points);
+			points = 0;
+		}
+		System.out.println("---------GAME OVER---------");
+		for(int i=0; i<players.size(); i++){
+			System.out.println("Player " + (i+1) + " Points: " + players.get(i).getVictory());
+			if(players.get(i).getVictory() > winnerPoints){
+				winner = i;
+				winnerPoints = players.get(i).getVictory();
+			}
+		}
+		System.out.println("Player " + (winner+1) + " Wins!");
+	}
+	
+	public void runGame(int num){
+		setGame(num);
+		playGame();
+		whoWon();
+	}
+
+	public static void main(String [] args){
+		Random rand = new Random();
+		int num = rand.nextInt()%3+2;
+		Game game = new Game();
+		game.runGame(num);
+	}
+};

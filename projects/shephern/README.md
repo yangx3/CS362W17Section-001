@@ -11,3 +11,5 @@ java -jar ./target/RandomTestDominion.jar
 
 For coverage, will include Evosuite Generated:
 mvn cobertura:cobertura
+
+HTML will be in target/site/cobertura as index.html

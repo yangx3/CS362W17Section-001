@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="cs362.dominion.PlayerTest" time="0.004" errors="0" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cs362.dominion.PlayerTest" time="0.004" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib"/>
@@ -22,10 +22,10 @@
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
     <property name="java.io.tmpdir" value="/var/folders/k0/tqt805x90lv3bhw8thf_ngvc0000gr/T/"/>
-    <property name="line.separator" value="
-"/>
+    <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Mac OS X"/>
+    <property name="net.sourceforge.cobertura.datafile" value="/Users/georgecrary/Documents/workspace/crarygDominionCS362/DOMINION/target/cobertura/cobertura.ser"/>
     <property name="classworlds.conf" value="/usr/local/Cellar/maven/3.3.9/libexec/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/georgecrary/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher cobertura:cobertura"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -58,17 +58,18 @@
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="project.build.outputDirectory" value="/Users/georgecrary/Documents/workspace/crarygDominionCS362/DOMINION/target/generated-classes/cobertura"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="cs362.dominion.PlayerTest" name="testEndTurn" time="0.001"/>
-  <testcase classname="cs362.dominion.PlayerTest" name="testRevealHand" time="0.003"/>
-  <testcase classname="cs362.dominion.PlayerTest" name="testPrintStateGame" time="0"/>
-  <testcase classname="cs362.dominion.PlayerTest" name="testGardensGetsScored" time="0"/>
-  <testcase classname="cs362.dominion.PlayerTest" name="testGainMute" time="0"/>
-  <testcase classname="cs362.dominion.PlayerTest" name="testBuyCard" time="0"/>
-  <testcase classname="cs362.dominion.PlayerTest" name="testPlayKingdomCardNoHand" time="0"/>
-  <testcase classname="cs362.dominion.PlayerTest" name="testPlayTreasures" time="0"/>
-  <testcase classname="cs362.dominion.PlayerTest" name="testPlayKingdomCardBranchesTest" time="0"/>
+  <testcase name="testEndTurn" classname="cs362.dominion.PlayerTest" time="0.004"/>
+  <testcase name="testRevealHand" classname="cs362.dominion.PlayerTest" time="0"/>
+  <testcase name="testPrintStateGame" classname="cs362.dominion.PlayerTest" time="0"/>
+  <testcase name="testGardensGetsScored" classname="cs362.dominion.PlayerTest" time="0"/>
+  <testcase name="testGainMute" classname="cs362.dominion.PlayerTest" time="0"/>
+  <testcase name="testBuyCard" classname="cs362.dominion.PlayerTest" time="0"/>
+  <testcase name="testPlayKingdomCardNoHand" classname="cs362.dominion.PlayerTest" time="0"/>
+  <testcase name="testPlayTreasures" classname="cs362.dominion.PlayerTest" time="0"/>
+  <testcase name="testPlayKingdomCardBranchesTest" classname="cs362.dominion.PlayerTest" time="0"/>
 </testsuite>

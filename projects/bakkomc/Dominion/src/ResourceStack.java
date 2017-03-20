@@ -24,6 +24,11 @@ public class ResourceStack extends CardStack
 		else
 			System.out.print(" Pile:\t\t" + Integer.toString(cards.size()) + " Cards left");
 	}
-
+	
+	@Override
+	public String toString()
+	{
+		return stackType.toString();
+	}
 
 }

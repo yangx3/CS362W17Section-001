@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>RandomTesterDominion.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">AllTests (3) (Feb 27, 2017 2:44:41 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominions</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">main.java.org.cs362.dominion</a> &gt; <span class="el_source">RandomTesterDominion.java</span></div><h1>RandomTesterDominion.java</h1><pre class="source lang-java linenums">package main.java.org.cs362.dominion;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+
+<span class="fc" id="L8">public class RandomTesterDominion {</span>
+	 public  static void main(String args[]){
+		   
+		    List&lt;Card&gt; cards;
+		    GameState state;
+<span class="fc" id="L13">			Randomness.reset(10);</span>
+<span class="fc" id="L14">			Random rand = new Random();</span>
+<span class="fc" id="L15">			int nPlayer = rand.nextInt(3); // 0 = 2 players, 1 = 3 players and 2 = 4 players</span>
+			
+<span class="fc" id="L17">			cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L18">			state = new GameState(cards);</span>
+			
+<span class="fc" id="L20">		      Player player = new Player(state, &quot;player-1&quot;);</span>
+<span class="fc" id="L21">		      state.addPlayer(player);</span>
+<span class="fc" id="L22">		      player = new Player(state, &quot;player-2&quot;);</span>
+<span class="fc" id="L23">		      state.addPlayer(player);</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">		      if(nPlayer == 1){</span>
+<span class="fc" id="L25">		    	  player = new Player(state, &quot;player-3&quot;);</span>
+<span class="fc" id="L26">			      state.addPlayer(player);</span>
+<span class="fc" id="L27">		      }</span>
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">		      else if(nPlayer == 2){</span>
+<span class="fc" id="L29">		    	  player = new Player(state, &quot;player-3&quot;);</span>
+<span class="fc" id="L30">			      state.addPlayer(player);</span>
+<span class="fc" id="L31">			      player = new Player(state, &quot;player-4&quot;);</span>
+<span class="fc" id="L32">			      state.addPlayer(player);</span>
+		      }
+		      
+		      //Initialize the game!
+<span class="fc" id="L36">		      state.initializeGame();</span>
+		      
+<span class="fc" id="L38">		      System.out.println(&quot;Initialization DominionBoard:\n &quot; + state.toString());</span>
+		      
+<span class="fc" id="L40">		      HashMap&lt;Player, Integer&gt; winners=state.play();</span>
+<span class="fc" id="L41">		      System.out.println (&quot;Finished game.\n&quot;);</span>
+		    
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		      for(Player p: winners.keySet()){</span>
+<span class="fc" id="L44">		    	  System.out.println (&quot;Player name: &quot;+ p.player_username + &quot; , Score: &quot;+ p.scoreFor() );</span>
+		      }
+		      
+//		      player.printStateGame();
+		      
+		      
+<span class="nc" id="L50">			System.exit(0);  </span>
+
+<span class="nc" id="L52">	   }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>AllTests (3) (Feb 27, 2017 2:44:41 PM)</div></body></html>

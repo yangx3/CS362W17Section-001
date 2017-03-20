@@ -73,14 +73,17 @@ public class TestCoins
 			int i = 0;
 			System.out.println(player.player_username + " is playing");
 			Card c = Card.getCard(state.cards,Card.CardName.Copper);
+			assertEquals( c.getTreasureValue(), 1 );
 			c.play(player, state);
 			// Verify that playing each treasure gives the right coin
 			// Hand size does not change yet because discard happens after the play function returns
 			assertEquals( player.coins, startstate.players.get(i).coins+1 );
 			c = Card.getCard(state.cards,Card.CardName.Silver);
+			assertEquals( c.getTreasureValue(), 2 );
 			c.play(player, state);
 			assertEquals( player.coins, startstate.players.get(i).coins+3 );
 			c = Card.getCard(state.cards,Card.CardName.Gold);
+			assertEquals( c.getTreasureValue(), 3 );
 			c.play(player, state);
 			assertEquals( player.coins, startstate.players.get(i).coins+6 );
 			i = 1;

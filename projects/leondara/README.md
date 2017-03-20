@@ -1,3 +1,8 @@
+EvoSuite Tests in Assignment2/Dominion/src/test/...
+EvoSuite Test Classes in Assignment2/Dominion/target/test-classes
+
+The Dominion folder is just for assignment 1.  All relevant code for Assignment 2 is in the Assignment2 folder
+
 Run instructions (While in Dominion directory with pom.xml)
 
 

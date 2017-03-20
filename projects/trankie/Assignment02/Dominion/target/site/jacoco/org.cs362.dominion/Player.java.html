@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Dominion</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import java.util.*;
+import java.util.Random;
+
+public class Player {
+<span class="fc" id="L7">	long seed = System.nanoTime();</span>
+<span class="fc" id="L8">	List&lt;Card&gt; hand = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L9">	LinkedList&lt;Card&gt; deck = new LinkedList&lt;Card&gt;();</span>
+<span class="fc" id="L10">	List&lt;Card&gt; discard = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L11">	List&lt;Card&gt; playedCards = new ArrayList&lt;Card&gt;();</span>
+	
+	String player_name;
+	int Actions;
+	int Buys;
+	int Coins;
+
+<span class="fc" id="L18">	public Player(String name, int a, int b, int c){</span>
+<span class="fc" id="L19">		this.player_name = name;</span>
+<span class="fc" id="L20">		this.Actions = a;</span>
+<span class="fc" id="L21">		this.Buys = b;</span>
+<span class="fc" id="L22">		this.Coins = c;</span>
+<span class="fc" id="L23">	}</span>
+	public int getActions(){
+<span class="fc" id="L25">		return this.Actions;</span>
+	}
+	public int getBuys(){
+<span class="fc" id="L28">		return this.Buys;</span>
+	}
+	public int getCoins(){
+<span class="fc" id="L31">		return this.Coins;</span>
+	}
+	public void setActions(int num){
+<span class="fc" id="L34">		this.Actions = this.Actions + num;</span>
+<span class="fc" id="L35">	}</span>
+	public void setBuys(int num){
+<span class="fc" id="L37">		this.Buys = this.Buys + num;</span>
+<span class="fc" id="L38">	}</span>
+	public void setCoins(int num){
+<span class="fc" id="L40">		this.Coins = this.Coins + num;</span>
+<span class="fc" id="L41">	}</span>
+	public void buildDeck(){
+<span class="fc" id="L43">		this.deck = new LinkedList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L44">	}</span>
+	// Testing
+	/*
+	public void printDeck(){
+		System.out.print(&quot;\nGoing to print the Deck now&quot;);
+		for (Card card:this.deck)
+			System.out.print(card.toString());
+	}*/
+	// Testing
+	public void printHand(){
+<span class="fc" id="L54">		int i = 1;</span>
+<span class="fc" id="L55">		System.out.print(&quot;\nHand: &quot;);</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">		for (Card card:this.hand){</span>
+<span class="fc" id="L57">			System.out.print(card.toString(i));</span>
+<span class="fc" id="L58">			i++;</span>
+<span class="fc" id="L59">		}</span>
+<span class="fc" id="L60">	}</span>
+	public void drawCard(){
+<span class="fc bfc" id="L62" title="All 4 branches covered.">		if(this.deck.isEmpty() &amp;&amp; this.discard.isEmpty()){</span>
+<span class="fc" id="L63">			System.out.print(&quot;\nYou have no more cards to draw from your deck!&quot;);</span>
+<span class="fc" id="L64">			return;</span>
+		}
+<span class="fc bfc" id="L66" title="All 2 branches covered.">		else if(this.deck.isEmpty()){</span>
+<span class="fc" id="L67">			Collections.shuffle(this.discard, new Random(this.seed));</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">			for (Card card:this.discard){</span>
+<span class="fc" id="L69">				this.deck.add(card);</span>
+<span class="fc" id="L70">			}</span>
+<span class="fc" id="L71">			this.discard.clear();</span>
+		}
+<span class="fc" id="L73">		Card drawn = this.deck.removeFirst();</span>
+<span class="fc" id="L74">		this.hand.add(drawn);</span>
+<span class="fc" id="L75">	}</span>
+	public void printInfo(){
+<span class="fc" id="L77">		System.out.print(&quot;\n Actions: &quot; + this.Actions);</span>
+<span class="fc" id="L78">		System.out.print(&quot;\n Buys: &quot; + this.Buys);</span>
+		//System.out.print(&quot;\n Coins: &quot; + this.Coins);
+<span class="fc" id="L80">	}</span>
+	public int checkTypeAction(int num){
+		int answer;
+<span class="fc" id="L83">		Card temp = this.hand.get(num-1);</span>
+<span class="fc" id="L84">		answer = temp.checkTypeAction();</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">		if(answer == 1){</span>
+<span class="fc" id="L86">			System.out.print(&quot;\nYou played &quot; + temp.getCardName());</span>
+		}
+<span class="fc" id="L88">		return answer;</span>
+	}
+	public int checkTreasure(){
+<span class="fc" id="L91">		int total = 0;</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">		for (Card card:this.hand){</span>
+<span class="fc" id="L93">			total = total + card.calcTreasure();</span>
+<span class="fc" id="L94">		}</span>
+<span class="fc" id="L95">		return total;</span>
+	}
+	public void removeHand(){
+<span class="fc bfc" id="L98" title="All 2 branches covered.">		for(Card card:this.hand){</span>
+<span class="fc" id="L99">			this.discard.add(card);</span>
+<span class="fc" id="L100">		}</span>
+<span class="fc" id="L101">		this.hand.clear();</span>
+<span class="fc" id="L102">	}</span>
+	public void resetStats(){
+<span class="fc" id="L104">		this.Actions = 1;</span>
+<span class="fc" id="L105">		this.Buys = 1;</span>
+<span class="fc" id="L106">		this.Coins = 0;</span>
+<span class="fc" id="L107">	}</span>
+	public void activateCard(Card c, DominionBoard board, List&lt;Player&gt; numPlayers, int players){
+<span class="pc bpc" id="L109" title="2 of 4 branches missed.">		if(!(players&gt;=2 &amp;&amp; players&lt;=4)){</span>
+<span class="nc" id="L110">			System.out.print(&quot;\nNumber must be between 2-4\n&quot;);</span>
+<span class="nc" id="L111">			return;</span>
+		}
+<span class="fc" id="L113">		Random rand = new Random();</span>
+<span class="fc" id="L114">		Card temp = c;</span>
+		Card act;
+<span class="fc" id="L116">		int counter=0, tempNum, i = 1, tempNum2;</span>
+<span class="fc" id="L117">		this.hand.remove(temp);</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">		if(temp.getCardName() == Card.CardName.Laboratory){</span>
+<span class="pc bpc" id="L119" title="3 of 4 branches missed.">			if(this.deck.isEmpty() &amp;&amp; this.discard.isEmpty()){</span>
+<span class="nc" id="L120">				System.out.print(&quot;\nYou have no more cards to draw from your deck!&quot;);</span>
+<span class="nc" id="L121">				this.setActions(1);</span>
+<span class="nc" id="L122">				return;</span>
+			}
+<span class="fc bfc" id="L124" title="All 2 branches covered.">			for(int j = 0; j &lt; 2; j++)</span>
+<span class="fc" id="L125">				this.drawCard();</span>
+<span class="fc" id="L126">			this.setActions(1);</span>
+<span class="fc" id="L127">			this.discard.add(temp);</span>
+		}
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		else if(temp.getCardName() == Card.CardName.Adventurer){</span>
+<span class="fc" id="L130">			this.discard.add(temp);</span>
+			//Check if deck &amp; discard is empty
+			while(true){
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">				if(this.deck.isEmpty()){</span>
+<span class="nc" id="L134">					Collections.shuffle(this.discard, new Random(this.seed));</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">					for (Card card:this.discard){</span>
+<span class="nc" id="L136">						this.deck.add(card);</span>
+<span class="nc" id="L137">					}</span>
+<span class="nc" id="L138">					this.discard.clear();</span>
+				}
+<span class="fc" id="L140">				act = this.deck.getFirst();</span>
+<span class="fc" id="L141">				System.out.print(&quot;\nYou have drawn the &quot; + act.getCardName() + &quot; card&quot;);</span>
+<span class="pc bpc" id="L142" title="1 of 2 branches missed.">				if(act.getType() == Card.Type.TREASURE){</span>
+<span class="fc" id="L143">					System.out.print(&quot;\nAdding &quot;+ act.getCardName()+&quot; to hand&quot;);</span>
+<span class="fc" id="L144">					act = this.deck.removeFirst();</span>
+<span class="fc" id="L145">					this.hand.add(act);</span>
+<span class="fc" id="L146">					counter++;</span>
+				}
+				else{
+<span class="nc" id="L149">					System.out.print(&quot;\nDiscarded &quot;+ act.getCardName());</span>
+<span class="nc" id="L150">					this.discard.add(act);</span>
+<span class="nc" id="L151">					this.deck.removeFirst();</span>
+				}
+<span class="fc bfc" id="L153" title="All 2 branches covered.">				if(counter == 2)</span>
+<span class="fc" id="L154">					break;</span>
+			}
+		}
+<span class="fc bfc" id="L157" title="All 2 branches covered.">		else if(temp.getCardName() == Card.CardName.Bureaucrat){</span>
+<span class="fc" id="L158">			tempNum = board.buyingCard(6);</span>
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">			if(tempNum == 0)</span>
+<span class="nc" id="L160">				System.out.print(&quot;\nNo more silver to add to deck&quot;);</span>
+			else{
+<span class="fc" id="L162">				System.out.print(&quot;\nAdding silver to top of deck&quot;);</span>
+<span class="fc" id="L163">				act = board.buyCards.get(5);</span>
+<span class="fc" id="L164">				this.deck.addFirst(act);</span>
+			}
+<span class="fc bfc" id="L166" title="All 2 branches covered.">			for(int k = 0; k &lt; players; k++) {</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">				for (Card card : numPlayers.get(k).hand) {</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">					if (card.checkTypeVictory() == 1) {</span>
+<span class="fc" id="L169">						System.out.print(&quot;\nRemoved &quot; + card.getCardName() + &quot; from other player's hand&quot;);</span>
+<span class="fc" id="L170">						numPlayers.get(k).discard.add(card);</span>
+<span class="fc" id="L171">						numPlayers.get(k).hand.remove(counter);</span>
+<span class="fc" id="L172">						break;</span>
+					} else
+<span class="fc" id="L174">						counter++;</span>
+<span class="fc" id="L175">				}</span>
+<span class="fc" id="L176">				counter = 0;</span>
+			}
+<span class="fc bfc" id="L178" title="All 2 branches covered.">			for(int j = 0; j &lt; players; j++) {</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">				for (Card card : numPlayers.get(j).hand) {</span>
+<span class="fc" id="L180">					System.out.print(card.toString(i));</span>
+<span class="fc" id="L181">					i++;</span>
+<span class="fc" id="L182">				}</span>
+			}
+<span class="fc" id="L184">			System.out.print(&quot;\nNo victory cards in other's hand, showing hand&quot;);</span>
+
+		}
+<span class="fc bfc" id="L187" title="All 2 branches covered.">		else if(temp.getCardName() == Card.CardName.Cellar){</span>
+<span class="fc" id="L188">			tempNum = rand.nextInt(this.hand.size());</span>
+<span class="fc" id="L189">			System.out.println(&quot;\nDiscarding &quot; + tempNum + &quot; cards&quot;);</span>
+<span class="fc" id="L190">			this.printHand();</span>
+<span class="fc" id="L191">			tempNum++;</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">			for(int j = 0; j &lt; tempNum; j++){</span>
+<span class="fc" id="L193">				tempNum2 = rand.nextInt(this.hand.size());</span>
+<span class="fc" id="L194">				act = this.hand.get(tempNum2);</span>
+<span class="fc" id="L195">				System.out.println(&quot;\nDiscarding: &quot;+ act.getCardName());</span>
+<span class="fc" id="L196">				this.discard.add(act);</span>
+<span class="fc" id="L197">				this.hand.remove(tempNum2);</span>
+<span class="fc" id="L198">				this.printHand();</span>
+			}
+<span class="fc" id="L200">			System.out.print(&quot;\nDrawing &quot;+ tempNum + &quot; new cards&quot;);</span>
+<span class="fc bfc" id="L201" title="All 2 branches covered.">			for(int j = 0; j &lt; tempNum; j++){</span>
+<span class="fc" id="L202">				this.drawCard();</span>
+			}
+<span class="fc" id="L204">			this.discard.add(temp);</span>
+<span class="fc" id="L205">			this.setActions(1);</span>
+		}
+<span class="fc bfc" id="L207" title="All 2 branches covered.">		else if(temp.getCardName() == Card.CardName.Chancellor){</span>
+<span class="fc" id="L208">			this.setCoins(2);</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">			for(Card card:this.deck){</span>
+<span class="fc" id="L210">				this.discard.add(card);</span>
+<span class="fc" id="L211">			}</span>
+<span class="fc" id="L212">			this.deck.clear();</span>
+<span class="fc" id="L213">			this.discard.add(temp);</span>
+<span class="fc" id="L214">			System.out.print(&quot;\nAdded 2 Coins and discarded entire deck to discard pile&quot;);</span>
+		}
+<span class="fc bfc" id="L216" title="All 2 branches covered.">		else if(temp.getCardName() == Card.CardName.Chapel){</span>
+<span class="fc" id="L217">			tempNum2 = rand.nextInt(5);</span>
+<span class="fc bfc" id="L218" title="All 2 branches covered.">			for(int j = 0; j &lt; tempNum2; j++){</span>
+<span class="fc" id="L219">				this.printHand();</span>
+<span class="fc" id="L220">				tempNum = rand.nextInt(this.hand.size());</span>
+<span class="fc bfc" id="L221" title="All 2 branches covered.">				if(tempNum == 0){</span>
+<span class="fc" id="L222">					this.discard.add(temp);</span>
+<span class="fc" id="L223">					return;</span>
+				}
+<span class="fc" id="L225">				act = this.hand.remove(tempNum);</span>
+<span class="fc" id="L226">				System.out.println(&quot;Trashing &quot;+ act.getCardName());</span>
+				}
+<span class="fc" id="L228">			this.discard.add(temp);</span>
+		}
+<span class="fc bfc" id="L230" title="All 2 branches covered.">		else if(temp.getCardName() == Card.CardName.Council_Room){</span>
+<span class="fc" id="L231">			System.out.print(&quot;\n+1 Buy, +4 Cards, other players draw&quot;);</span>
+<span class="fc" id="L232">			this.setBuys(1);</span>
+<span class="fc bfc" id="L233" title="All 2 branches covered.">			for(int j = 0; j &lt; 4; j++){</span>
+<span class="fc" id="L234">				this.drawCard();</span>
+			}
+<span class="fc bfc" id="L236" title="All 2 branches covered.">			for(int k = 0; k &lt; players; k++) {</span>
+<span class="fc bfc" id="L237" title="All 2 branches covered.">				if(this.player_name == numPlayers.get(k).player_name)</span>
+<span class="fc" id="L238">					continue;</span>
+<span class="pc bpc" id="L239" title="1 of 2 branches missed.">				if(numPlayers.get(k).deck.isEmpty()) {</span>
+<span class="nc" id="L240">					Collections.shuffle(numPlayers.get(k).discard, new Random(numPlayers.get(k).seed));</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">					for (Card card : numPlayers.get(k).discard) {</span>
+<span class="nc" id="L242">						numPlayers.get(k).deck.add(card);</span>
+<span class="nc" id="L243">					}</span>
+<span class="nc" id="L244">					numPlayers.get(k).discard.clear();</span>
+				}
+<span class="fc" id="L246">				act = numPlayers.get(k).deck.removeFirst();</span>
+<span class="fc" id="L247">				numPlayers.get(k).hand.add(act);</span>
+<span class="fc" id="L248">				this.discard.add(temp);</span>
+			}
+		}
+<span class="fc bfc" id="L251" title="All 2 branches covered.">		else if(temp.getCardName() == Card.CardName.Feast){</span>
+<span class="fc" id="L252">			this.setCoins(5);</span>
+			while(true) {
+<span class="fc" id="L254">				tempNum = rand.nextInt(19);</span>
+<span class="pc bpc" id="L255" title="1 of 2 branches missed.">				if (board.buyingCard(tempNum + 1) == 0)</span>
+<span class="nc" id="L256">					continue;</span>
+<span class="fc bfc" id="L257" title="All 2 branches covered.">				if (board.buyCards.get(tempNum).getCost() &gt; this.getCoins())</span>
+<span class="fc" id="L258">					continue;</span>
+<span class="fc" id="L259">				temp = board.buyCards.get(tempNum);</span>
+<span class="fc" id="L260">				System.out.print(&quot;\nYou just bought &quot; + temp.getCardName() + &quot;!&quot;);</span>
+<span class="fc" id="L261">				this.discard.add(temp);</span>
+<span class="fc" id="L262">				this.setCoins((-1) * temp.getCost());</span>
+<span class="fc" id="L263">				break;</span>
+			}
+<span class="fc" id="L265">			this.setCoins((-1)*this.getCoins());</span>
+		}
+<span class="fc bfc" id="L267" title="All 2 branches covered.">		else if(temp.getCardName() == Card.CardName.Library){</span>
+<span class="fc" id="L268">			tempNum = this.hand.size();</span>
+			while(true){
+<span class="fc" id="L270">				this.drawCard();</span>
+<span class="fc" id="L271">				act = this.hand.get(tempNum);</span>
+<span class="fc bfc" id="L272" title="All 2 branches covered.">				if(act.getType() == Card.Type.ACTION){</span>
+<span class="fc" id="L273">					this.discard.add(act);</span>
+<span class="fc" id="L274">					this.hand.remove(tempNum);</span>
+				}
+				else
+<span class="fc" id="L277">					tempNum++;</span>
+<span class="fc bfc" id="L278" title="All 2 branches covered.">				if(tempNum == 7)</span>
+<span class="fc" id="L279">					break;</span>
+			}
+<span class="fc" id="L281">			this.discard.add(temp);</span>
+		}
+<span class="fc bfc" id="L283" title="All 2 branches covered.">		else if(temp.getCardName() == Card.CardName.Smithy){</span>
+<span class="fc" id="L284">			System.out.println(&quot;\nDrawing 3 cards!&quot;);</span>
+<span class="fc bfc" id="L285" title="All 2 branches covered.">			for(int j = 0; j &lt; 3; j++)</span>
+<span class="fc" id="L286">				this.drawCard();</span>
+<span class="fc" id="L287">			this.discard.add(temp);</span>
+		}
+<span class="pc bpc" id="L289" title="1 of 2 branches missed.">		else if(temp.getCardName() == Card.CardName.Market){</span>
+<span class="fc" id="L290">			System.out.println(&quot;\n+1 Card, +1 Action, +1 Buy, +1 Coin&quot;);</span>
+<span class="fc" id="L291">			this.drawCard();</span>
+<span class="fc" id="L292">			this.setActions(1);</span>
+<span class="fc" id="L293">			this.setBuys(1);</span>
+<span class="fc" id="L294">			this.setCoins(1);</span>
+<span class="fc" id="L295">			this.discard.add(temp);</span>
+		}
+<span class="nc bnc" id="L297" title="All 2 branches missed.">		else if(temp.getCardName() == Card.CardName.Village){</span>
+<span class="nc" id="L298">			System.out.println(&quot;\n+2 Actions, +1 Card&quot;);</span>
+<span class="nc" id="L299">			this.setActions(2);</span>
+<span class="nc" id="L300">			this.drawCard();</span>
+		}
+<span class="fc" id="L302">	}</span>
+	public int checkVictory(){
+<span class="fc" id="L304">		int total = 0;</span>
+<span class="fc bfc" id="L305" title="All 2 branches covered.">		for(Card card:this.deck){</span>
+<span class="fc" id="L306">			total = total + card.calcVictory();</span>
+<span class="fc" id="L307">		}</span>
+<span class="fc" id="L308">		return total;</span>
+	}
+	public void cleanUp(){
+<span class="fc bfc" id="L311" title="All 2 branches covered.">		for (Card card:this.hand){</span>
+<span class="fc" id="L312">			this.deck.add(card);</span>
+<span class="fc" id="L313">		}</span>
+<span class="fc bfc" id="L314" title="All 2 branches covered.">		for (Card card:this.discard){</span>
+<span class="fc" id="L315">			this.deck.add(card);</span>
+<span class="fc" id="L316">		}</span>
+<span class="fc" id="L317">		this.discard.clear();</span>
+<span class="fc" id="L318">		this.hand.clear();</span>
+<span class="fc" id="L319">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

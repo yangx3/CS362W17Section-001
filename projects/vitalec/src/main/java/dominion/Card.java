@@ -3,6 +3,7 @@ package dominion;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public final class Card implements Comparable<Card>{
@@ -180,139 +181,237 @@ public final class Card implements Comparable<Card>{
 	    return matchingCards;
     }
 	
-	public void play(Player player, GameState state, List<Card> cards, Integer numActions) {
+	public void play(Player player, GameState state) {
+	    // Move card to in-play area to prevent discarding self
+        player.cardsInPlay.add(player.hand.remove(player.hand.indexOf(this)));
 		
 		switch(this.cardName) {
             case CELLAR:
                 player.numActions++;
-                cards.forEach(card -> {
-                    player.hand.remove(card);
+                int numberToDiscard = Randomness.nextRandomInt(player.hand.size());
+                for(int i = 0; i < numberToDiscard; i++) {
+                    player.discard(Randomness.randomMember(player.hand));
+                }
+
+                for(int j = 0; j < numberToDiscard; j++) {
                     player.drawCard();
-                });
-                return;
+                }
+                break;
 
             case CHAPEL:
-                cards.forEach(card -> player.hand.remove(card));
-                return;
+                int numberToTrash = Randomness.nextRandomInt(player.hand.size());
+                for(int i = 0; i < numberToTrash; i++) {
+                    player.trashFromHand(Randomness.randomMember(player.hand));
+                }
+                break;
 
             // TODO: Implement Moat Card
             case MOAT:
-                return;
+                break;
 
-			// TODO: Implement Harbinger Card
             case HARBINGER:
                 player.drawCard();
                 player.numActions++;
-                return;
+
+                if(!player.discard.isEmpty()) {
+                    Card card = Randomness.randomMember(player.discard);
+                    player.deck.add(card);
+                    player.discard.remove(card);
+                }
+                break;
 
             // TODO: Implement Merchant Card
             case MERCHANT:
                 player.drawCard();
                 player.numActions++;
                 // TODO: "The first time you play a Silver this turn, +1 coin"
-                return;
+                break;
 
             // TODO: Implement Vassal Card
             case VASSAL:
-                player.coins += 2;
-                Card card = player.deck.pop();
-                if(card.getType() == Type.ACTION) {
-                    // TODO: "You *may* play it"
-                }
-                player.discard(card);
-                return;
+//                player.coins += 2;
+//                Card card = player.deck.pop();
+//                player.discard.add(card);
+//                if(card.getType() == Type.ACTION) {
+//                    int play = Randomness.nextRandomInt(1);
+//                    if(play == 1) {
+//                        card.play(player, state);
+//                    }
+//                }
+                break;
 
             case VILLAGE:
                 player.drawCard();
                 player.numActions += 2;
-                return;
+                break;
 
             case WORKSHOP:
-                if(cards.size() == 1 && cards.get(0).cost <= 4) {
-                    player.hand.add(cards.get(0));
-                }
-                return;
+                List<Card> cards = state.supply.entrySet().stream()
+                        .filter(map -> map.getKey().getCost() <= 4)
+                        .map(map -> map.getKey())
+                        .collect(Collectors.toList());
 
-            // TODO: Implement Bureaucrat Card
+                player.gainCardFromSupply(Randomness.randomMember(cards));
+                break;
+
             case BUREAUCRAT:
-                return;
+                player.gainCardFromSupply(Card.getCard(state.availCards, CardName.SILVER));
 
-            // TODO: Implement Gardens Card
+                System.out.println("Bureaucrat played - Other players reveal hands.");
+                state.players.forEach(plyr -> {
+                    if(!player.player_username.equals(plyr.player_username)) {
+                        plyr.showHand();
+                    }
+                });
+                break;
+
             case GARDENS:
-                return;
+                // Gardens is a victory card and does not do anything until end of game.
+                break;
 
-            // TODO: Implement Militia Card
             case MILITIA:
-                return;
+                player.coins += 2;
 
-            // TODO: Implement Moneylender Card
+                System.out.println("Militia played - other players discard down to 3 cards.");
+                state.players.forEach(plyr -> {
+                    if(!player.player_username.equals(plyr.player_username)) {
+                        while(plyr.hand.size() > 3) {
+                            plyr.discard(Randomness.randomMember(plyr.hand));
+                        }
+                    }
+                });
+                break;
+
             case MONEYLENDER:
-                return;
+                Card copper = Card.getCard(state.availCards, CardName.COPPER);
+                if(player.hand.contains(copper)) {
+                    player.hand.remove(copper);
+                    player.trash.add(copper);
+                    player.coins += 3;
+                }
+                break;
 
-            // TODO: Implement Poacher Card
             case POACHER:
-                return;
+                player.drawCard();
+                player.numActions++;
+                player.coins++;
 
-            // TODO: Implement Remodel Card
+                state.supply.forEach((crd, amount) -> {
+                    if(amount == 0 && !player.hand.isEmpty()) {
+                        Card randomCard = Randomness.randomMember(player.hand);
+                        player.discard(randomCard);
+                    }
+                });
+                break;
+
             case REMODEL:
-                return;
+                if(!player.hand.isEmpty()) {
+                    Card randomCard = Randomness.randomMember(player.hand);
+                    player.trashFromHand(randomCard);
+                }
+                break;
 
             case SMITHY:
                 player.drawCard();
                 player.drawCard();
                 player.drawCard();
-                return;
+                break;
 
             // TODO: Implement Throne Room Card
             case THRONE_ROOM:
-                return;
+                break;
 
             // TODO: Implement Bandit Card
             case BANDIT:
-                return;
+//                player.gainCardFromSupply(Card.getCard(state.availCards, Card.CardName.GOLD));
+//
+//                state.players.forEach(plyr -> {
+//                    if(!player.player_username.equals(plyr.player_username)) {
+//                        boolean trashed = false;
+//                        Card crd = plyr.deck.poll();
+//                        if(crd.getType() == Type.TREASURE && crd.cardName != CardName.COPPER) {
+//                            plyr.trash.add(crd);
+//                            trashed = true;
+//                        } else {
+//                            plyr.discard.add(crd);
+//                        }
+//
+//                        crd = plyr.deck.pop();
+//                        if(!trashed && crd.getType() == Type.TREASURE && crd.cardName != CardName.COPPER) {
+//                            plyr.trash.add(crd);
+//                        } else {
+//                            plyr.discard.add(crd);
+//                        }
+//                    }
+//                });
+                break;
 
-            // TODO: Implement Council Room Card
             case COUNCIL_ROOM:
-                return;
+                for(int i = 0; i < 3; i++) {
+                    player.drawCard();
+                }
 
-            // TODO: Implement Festival Card
+                state.players.forEach(plyr -> plyr.drawCard());
+                break;
+
             case FESTIVAL:
-                return;
+                player.numActions += 2;
+                player.numBuys++;
+                player.coins += 2;
+                break;
 
-            // TODO: Implement Laboratory Card
             case LABORATORY:
-                return;
+                player.drawCard();
+                player.drawCard();
+                player.numActions++;
+                break;
 
             // TODO: Implement Library Card
             case LIBRARY:
-                return;
+                while(player.hand.size() < 7) {
+                    player.drawCard();
+                }
+                break;
 
             case MARKET:
                 player.drawCard();
                 player.numActions++;
                 player.numBuys++;
                 player.coins++;
-                return;
+                break;
 
             // TODO: Implement Mine Card
             case MINE:
-                return;
+                break;
 
             // TODO: Implement Sentry Card
             case SENTRY:
-                return;
+                break;
 
             // TODO: Implement Witch Card
             case WITCH:
-                return;
+                player.drawCard();
+                player.drawCard();
+
+                state.players.forEach(plyr -> {
+                    if(!player.player_username.equals(plyr.player_username)) {
+                        plyr.gainCardFromSupply(Card.getCard(state.availCards, CardName.CURSE));
+                    }
+                });
+                break;
 
             // TODO: Implement Artisan Card
             case ARTISAN:
-                return;
+                break;
 
 			default:
-				return;
+				break;
 		}
+
+		// Move card from in-play area back to hand prior to discard
+		player.hand.add(player.cardsInPlay.remove(player.cardsInPlay.indexOf(this)));
+
+		player.discard(this);
 	}
 
 	public static Card getCard(List<Card> cards,CardName cardName) {

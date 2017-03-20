@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: ORG.CS362.DOMINION.Randomness_ESTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.001 sec <<< FAILURE! - in ORG.CS362.DOMINION.Randomness_ESTest
+test01(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at java.util.Random.nextInt(Random.java:388)
+	at ORG.CS362.DOMINION.Randomness.nextRandomInt(Randomness.java:34)
+	at ORG.CS362.DOMINION.Randomness_ESTest.test01(Randomness_ESTest.java:35)
+
+test02(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.Randomness.nextRandomInt(Randomness.java:34)
+	at ORG.CS362.DOMINION.Randomness_ESTest.test02(Randomness_ESTest.java:42)
+
+test09(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.Randomness.nextRandomInt(Randomness.java:34)
+	at ORG.CS362.DOMINION.Randomness.randomMember(Randomness.java:39)
+	at ORG.CS362.DOMINION.Randomness_ESTest.test09(Randomness_ESTest.java:139)
+
+test08(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.Randomness.nextRandomInt(Randomness.java:34)
+	at ORG.CS362.DOMINION.Randomness_ESTest.test08(Randomness_ESTest.java:120)
+
+test06(ORG.CS362.DOMINION.Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at java.util.Random.nextInt(Random.java:388)
+	at ORG.CS362.DOMINION.Randomness.nextRandomInt(Randomness.java:34)
+	at ORG.CS362.DOMINION.Randomness_ESTest.test06(Randomness_ESTest.java:103)
+

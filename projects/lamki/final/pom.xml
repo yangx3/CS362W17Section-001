@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>dominion.Dominion</groupId>
+	<artifactId>dominion</artifactId>
+	<version>'The Only Good Mutation is a Dead Mutation' Edition</version>
+	<packaging>jar</packaging>
+	<name>dominion</name>
+
+	<properties>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	    <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
+	    <evosuiteVersion>1.0.3</evosuiteVersion>
+	</properties>
+
+	<dependencies>
+	    <dependency>
+	        <groupId>junit</groupId>
+	        <artifactId>junit</artifactId>
+	        <version>4.11</version>
+	        <type>jar</type>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.evosuite</groupId>
+	        <artifactId>evosuite-standalone-runtime</artifactId>
+	        <version>1.0.3</version>
+	        <scope>test</scope>
+	    </dependency>
+	</dependencies>
+
+	<repositories>
+	    <repository>
+	        <id>EvoSuite</id>
+	        <name>EvoSuite Repository</name>
+	        <url>http://www.evosuite.org/m2</url>
+	    </repository>
+	</repositories>
+
+	<pluginRepositories>
+	    <pluginRepository>
+	        <id>EvoSuite</id>
+	        <name>EvoSuite Repository</name>
+	        <url>http://www.evosuite.org/m2</url>
+	    </pluginRepository>
+	</pluginRepositories>
+
+	<build>
+	    <plugins>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-compiler-plugin</artifactId>
+	            <version>3.1</version>
+	            <configuration>
+	                <source>1.8</source>
+	                <target>1.8</target>
+	                <archive>
+	                    <manifest>
+	                        <mainClass>dominion.PlayDominion</mainClass>
+	                    </manifest>
+	                </archive>
+	            </configuration>
+	        </plugin>
+
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-surefire-plugin</artifactId>
+	            <version>2.17</version>
+	            <configuration>
+	                <properties>
+	                    <property>
+	                        <name>listener</name>
+	                        <value>org.evosuite.runtime.InitializingListener</value>
+	                    </property>
+	                </properties>
+	            </configuration>
+	        </plugin>
+
+	        <plugin>
+	            <groupId>org.evosuite.plugins</groupId>
+	            <artifactId>evosuite-maven-plugin</artifactId>
+	            <version>1.0.3</version>
+	            <executions><execution>
+	                <goals> <goal> prepare </goal> </goals>
+	                <phase> process-test-classes </phase>
+	            </execution></executions>
+	        </plugin>
+
+	        <plugin>
+	            <groupId>org.pitest</groupId>
+	            <artifactId>pitest-maven</artifactId>
+	            <version>1.1.11</version>
+				<configuration>
+			    	<targetClasses>
+					    <param>dominion.*</param>
+					</targetClasses>
+					<targetTests>
+						<param>dominion.*</param>
+					</targetTests>						
+					<verbose>false</verbose>
+					<timestampedReports>false</timestampedReports>
+					<mutators>
+						<mutator>CONSTRUCTOR_CALLS</mutator>
+						<mutator>INCREMENTS</mutator>
+						<mutator>RETURN_VALS</mutator>
+						<mutator>MATH</mutator>
+						<mutator>NEGATE_CONDITIONALS</mutator>
+						<mutator>CONDITIONALS_BOUNDARY</mutator>
+						<mutator>REMOVE_CONDITIONALS</mutator>
+						<mutator>INVERT_NEGS</mutator>
+						<mutator>CONDITIONALS_BOUNDARY</mutator>
+						<mutator>REMOVE_CONDITIONALS_EQ_IF</mutator>
+						<mutator>REMOVE_CONDITIONALS_EQ_ELSE</mutator>
+						<mutator>REMOVE_CONDITIONALS_ORD_IF</mutator>
+						<mutator>REMOVE_CONDITIONALS_ORD_ELSE</mutator>
+					</mutators>
+				</configuration>
+	        </plugin>
+	        
+	    </plugins>
+	</build>
+</project>

@@ -1,0 +1,72 @@
+* Starting client
+* Connecting to master process on port 12355
+* Analyzing classpath: 
+  - /Users/samuelhudson/Desktop/dominion/target/test-classes
+  - /Users/samuelhudson/Desktop/dominion/target/classes
+  - /Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class Play_dominion
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+* Total number of test goals: 
+  - Line 53
+  - Branch 10
+  - Exception 0
+  - MutationFactory 67
+  - Output 0
+  - Method 3
+  - MethodNoException 3
+  - CBranchFitnessFactory 10
+* Using seed 1488261617812
+* Starting evolution
+* Search finished after 44s and 537 generations, 48724 statements, best individual has fitness: 82.66606593577659
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 79%
+* Total number of goals: 53
+* Number of covered goals: 42
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 40%
+* Total number of goals: 10
+* Number of covered goals: 4
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 40%
+* Total number of goals: 5
+* Number of covered goals: 2
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 24%
+* Total number of goals: 67
+* Number of covered goals: 16
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 100% (no goals)
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 33%
+* Total number of goals: 3
+* Number of covered goals: 1
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 40%
+* Total number of goals: 10
+* Number of covered goals: 4
+* Generated 3 tests with total length 3
+* Resulting test suite's coverage: 44% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 0%
+* Compiling and checking tests
+* Writing JUnit test case 'Play_dominion_ESTest' to /Users/samuelhudson/Desktop/dominion/.evosuite/tmp_2017_02_27_21_51_26/tests
+* Done!
+

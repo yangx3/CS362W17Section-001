@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Player_ESTest" time="0.286" tests="34" errors="34" skipped="0" failures="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin"/>
+    <property name="java.vm.version" value="25.121-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion"/>
+    <property name="java.runtime.version" value="1.8.0_121-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Aaron\AppData\Local\Temp\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="net.sourceforge.cobertura.datafile" value="C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion\target\cobertura\cobertura.ser"/>
+    <property name="classworlds.conf" value="C:\Program Files\Apache Software Foundation\apache-maven-3.3.9\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_121\bin;C:\Program Files\Apache Software Foundation\apache-maven-3.3.9\bin;;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\Aaron\AppData\Local\Microsoft\WindowsApps;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Aaron"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="Aaron"/>
+    <property name="java.class.path" value="C:\Program Files\Apache Software Foundation\apache-maven-3.3.9\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_121\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher cobertura:cobertura"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_121"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_121\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp437"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files\Apache Software Foundation\apache-maven-3.3.9"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="project.build.outputDirectory" value="C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion\target\generated-classes\cobertura"/>
+    <property name="sun.stdout.encoding" value="cp437"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase name="test04" classname="Player_ESTest" time="0.022">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Player_ESTest.test04(Player_ESTest.java:496)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Player_ESTest
+[INFO] Instrumenting class 'Player_ESTest'.
+[INFO] Seeing class for first time: Player_ESTest_scaffolding
+[INFO] Instrumenting class 'Player_ESTest_scaffolding'.
+[INFO] Keeping class: Player_ESTest_scaffolding
+[INFO] Keeping class: Player_ESTest
+[DEBUG] Adding privileged thread: "Reference Handler"
+[DEBUG] Adding privileged thread: "Finalizer"
+[DEBUG] Adding privileged thread: "Signal Dispatcher"
+[DEBUG] Adding privileged thread: "Attach Listener"
+[DEBUG] Adding privileged thread: "Java2D Disposer"
+[DEBUG] Adding privileged thread: "AWT-Windows"
+[DEBUG] Adding privileged thread: "main"
+[INFO] Seeing class for first time: Player
+[INFO] Instrumenting class 'Player'.
+[INFO] Adding mock interface to class Player
+[INFO] Found static initializer in class Player
+[INFO] No hashCode defined for: Player, superclass = java.lang.Object
+[DEBUG] Going to instrument: Player
+[INFO] Found static initializer in class Player
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Player
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: GameState
+[INFO] Instrumenting class 'GameState'.
+[INFO] Adding mock interface to class GameState
+[INFO] Found static initializer in class GameState
+[INFO] No hashCode defined for: GameState, superclass = java.lang.Object
+[DEBUG] Going to instrument: GameState
+[INFO] Found static initializer in class GameState
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file GameState
+[INFO] Seeing class for first time: Card$1
+[INFO] Instrumenting class 'Card$1'.
+[INFO] Adding mock interface to class Card$1
+[INFO] No hashCode defined for: Card$1, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card$1
+[INFO] Keeping class: Card$1
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card
+[INFO] Instrumenting class 'Card'.
+[INFO] Adding mock interface to class Card
+[INFO] Found static initializer in class Card
+[INFO] No hashCode defined for: Card, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card
+[INFO] Found static initializer in class Card
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card
+[INFO] Seeing class for first time: Card
+[INFO] Instrumenting class 'Card'.
+[INFO] Adding mock interface to class Card
+[INFO] Found static initializer in class Card
+[INFO] No hashCode defined for: Card, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card
+[INFO] Found static initializer in class Card
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card
+[INFO] Instrumenting class 'Card'.
+[INFO] Adding mock interface to class Card
+[INFO] Found static initializer in class Card
+[INFO] No hashCode defined for: Card, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card
+[INFO] Found static initializer in class Card
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card
+]]></system-out>
+  </testcase>
+  <testcase name="test26" classname="Player_ESTest" time="0.019">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test26(Player_ESTest.java:2755)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test05" classname="Player_ESTest" time="0.012">
+    <error message="GameState" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: GameState
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Player_ESTest.test05(Player_ESTest.java:546)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: GameState
+[INFO] Instrumenting class 'GameState'.
+[INFO] Adding mock interface to class GameState
+[INFO] Found static initializer in class GameState
+[INFO] No hashCode defined for: GameState, superclass = java.lang.Object
+[DEBUG] Going to instrument: GameState
+[INFO] Found static initializer in class GameState
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file GameState
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test27" classname="Player_ESTest" time="0.006">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test27(Player_ESTest.java:2953)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test02" classname="Player_ESTest" time="0.009">
+    <error message="GameState" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: GameState
+	at Player_ESTest.test02(Player_ESTest.java:248)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test24" classname="Player_ESTest" time="0.017">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Player_ESTest.test24(Player_ESTest.java:2475)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Player
+[INFO] Instrumenting class 'Player'.
+[INFO] Adding mock interface to class Player
+[INFO] Found static initializer in class Player
+[INFO] No hashCode defined for: Player, superclass = java.lang.Object
+[DEBUG] Going to instrument: Player
+[INFO] Found static initializer in class Player
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Player
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test03" classname="Player_ESTest" time="0.005">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test03(Player_ESTest.java:360)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test25" classname="Player_ESTest" time="0.008">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test25(Player_ESTest.java:2520)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test00" classname="Player_ESTest" time="0.006">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test00(Player_ESTest.java:123)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test22" classname="Player_ESTest" time="0.009">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test22(Player_ESTest.java:2278)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test01" classname="Player_ESTest" time="0.007">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test01(Player_ESTest.java:202)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test23" classname="Player_ESTest" time="0.009">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test23(Player_ESTest.java:2384)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test20" classname="Player_ESTest" time="0.009">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test20(Player_ESTest.java:1957)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test21" classname="Player_ESTest" time="0.007">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test21(Player_ESTest.java:2082)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test08" classname="Player_ESTest" time="0.004">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test08(Player_ESTest.java:759)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test09" classname="Player_ESTest" time="0.006">
+    <error message="GameState" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: GameState
+	at Player_ESTest.test09(Player_ESTest.java:832)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test06" classname="Player_ESTest" time="0.008">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test06(Player_ESTest.java:633)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test28" classname="Player_ESTest" time="0.005">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test28(Player_ESTest.java:3101)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test07" classname="Player_ESTest" time="0.01">
+    <error message="GameState" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: GameState
+	at Player_ESTest.test07(Player_ESTest.java:707)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test29" classname="Player_ESTest" time="0.006">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test29(Player_ESTest.java:3194)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test30" classname="Player_ESTest" time="0.01">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test30(Player_ESTest.java:3297)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test15" classname="Player_ESTest" time="0.005">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test15(Player_ESTest.java:1265)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test16" classname="Player_ESTest" time="0.009">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test16(Player_ESTest.java:1340)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test13" classname="Player_ESTest" time="0.006">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test13(Player_ESTest.java:1157)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test14" classname="Player_ESTest" time="0.007">
+    <error message="GameState" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: GameState
+	at Player_ESTest.test14(Player_ESTest.java:1212)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test11" classname="Player_ESTest" time="0.008">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test11(Player_ESTest.java:1034)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test33" classname="Player_ESTest" time="0.007">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test33(Player_ESTest.java:3551)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test12" classname="Player_ESTest" time="0.009">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test12(Player_ESTest.java:1081)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test31" classname="Player_ESTest" time="0.005">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test31(Player_ESTest.java:3412)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test10" classname="Player_ESTest" time="0.01">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test10(Player_ESTest.java:941)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test32" classname="Player_ESTest" time="0.006">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test32(Player_ESTest.java:3464)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test19" classname="Player_ESTest" time="0.008">
+    <error message="Player" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test19(Player_ESTest.java:1811)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test17" classname="Player_ESTest" time="0.006">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test17(Player_ESTest.java:1482)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+  <testcase name="test18" classname="Player_ESTest" time="0.006">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test18(Player_ESTest.java:1673)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+]]></system-out>
+  </testcase>
+</testsuite>

@@ -170,8 +170,18 @@ public class CardTest {
 	
 	@Test
 	public void testAmbassador(){
+		System.out.println("---Test Ambassador---");
+		
+		player1.hand.clear();
+		HashMap<Card,Integer> check = state.gameBoard;  //No card added check
+		player1.hand.add(Card.getCard(state.cards, Card.CardName.Ambassador));
+		player1.playKingdomCard(state);
+		assertTrue(check == state.gameBoard);
+		
+		player1.numActions = 1;
 		player1.hand.clear();
 		Card tmp = Card.getCard(state.cards, Card.CardName.Curse);
+		player1.hand.add(tmp);
 		player1.hand.add(tmp);
 		player1.hand.add(Card.getCard(state.cards, Card.CardName.Ambassador));
 		
@@ -179,7 +189,21 @@ public class CardTest {
 		
 		assertFalse(player1.hand.contains(tmp));
 		assertTrue(player2.discard.contains(tmp));
-		assertTrue(state.gameBoard.get(tmp) == 10); //Curse was placed and removed
+		assertTrue(state.gameBoard.get(tmp) == 11); //Curse was placed and removed
+		
+		player1.hand.clear();
+		player2.discard.clear();
+		
+		player1.hand.add(tmp);
+		player1.hand.add(Card.getCard(state.cards, Card.CardName.Ambassador));
+		state.gameBoard.replace(tmp, 0);
+		check = state.gameBoard;
+		player1.playKingdomCard(state);
+		
+		assertTrue(player1.hand.contains(tmp));  // Player still has card
+		assertFalse(player2.discard.contains(tmp)); //Other player didn't gain anything
+		assertTrue(state.gameBoard.get(tmp) == 0); //Curse should remain 0
+		assertTrue(state.gameBoard == check);
 	}
 	
 	@Test
@@ -191,6 +215,7 @@ public class CardTest {
 		player1.hand.add(Card.getCard(state.cards, Card.CardName.Estate));
 		
 		player1.playKingdomCard(state);
+		assertEquals(player1.numBuys, 2);
 		assertEquals(player1.coins, coinBefore + 4);
 		assertFalse(player1.hand.contains(Card.getCard(state.cards, Card.CardName.Estate)));
 		assertEquals(player1.numActions, 0);
@@ -207,10 +232,30 @@ public class CardTest {
 		player2.playKingdomCard(state);
 		
 		assertTrue(player2.discard.contains(Card.getCard(state.cards, Card.CardName.Estate)));
+		assertEquals(player2.numBuys, 2);
 		assertEquals(coinBefore, player2.coins);
 		assertEquals(player2.numActions, 0);
 		assertEquals(player2.hand.size(), 1);
 		assertEquals(player2.playedCards.size(), 1);
+		
+		player1.hand.clear();
+		player1.numActions = 1;
+		player1.numBuys = 1;
+		player1.playedCards.clear();
+		//Player has no estate but cannot gain one
+		player1.hand.add(Card.getCard(state.cards, Card.CardName.Baron));
+		
+		state.gameBoard.replace(Card.getCard(state.cards, Card.CardName.Estate), 0); //With no more cards to take
+		coinBefore = player1.coins;
+		player1.discard.clear();
+		player1.playKingdomCard(state);
+		
+		assertFalse(player1.discard.contains(Card.getCard(state.cards, Card.CardName.Estate))); //They didn't gain an estate
+		assertEquals(player1.numBuys, 2);
+		assertEquals(coinBefore, player1.coins);
+		assertEquals(player1.numActions, 0);
+		assertEquals(player1.hand.size(), 0);
+		assertEquals(player1.playedCards.size(), 1);
 	}
 	
 	@Test
@@ -300,8 +345,8 @@ public class CardTest {
 		
 		player1.hand.add(Card.getCard(state.cards, Card.CardName.Feast));
 		player1.playKingdomCard(state);
-		
-		assertTrue(player1.discard.get(0).getCost() <= 5);
+		//With a random seed, they draw council room cost 5
+		assertTrue(player1.discard.get(0).getCost() == 5);
 		assertEquals(player1.numBuys, 1);
 		assertEquals(player1.numActions, 0);
 		assertEquals(player1.coins, 0);
@@ -451,6 +496,15 @@ public class CardTest {
 		assertEquals(player2.deck.size(), deckOther);
 		assertTrue(player2.deck.get(0) == Card.getCard(state.cards, Card.CardName.Curse));
 		assertEquals(player2.discard.size(), discOther + 1);
+		
+		player1.numActions = 1;
+		player1.hand.add(Card.getCard(state.cards, Card.CardName.SeaHag));
+		state.gameBoard.replace(Card.getCard(state.cards, Card.CardName.Curse), 0); //No more curses
+		player1.playKingdomCard(state);
+		
+		assertTrue(state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Curse)) == 0); //None taken
+		
+		
 	}
 	
 	@Test

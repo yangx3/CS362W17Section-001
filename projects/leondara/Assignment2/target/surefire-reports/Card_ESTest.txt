@@ -1,0 +1,119 @@
+-------------------------------------------------------------------------------
+Test set: Card_ESTest
+-------------------------------------------------------------------------------
+Tests run: 25, Failures: 0, Errors: 25, Skipped: 0, Time elapsed: 0.669 sec <<< FAILURE! - in Card_ESTest
+test18(Card_ESTest)  Time elapsed: 0.073 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Card_ESTest.test18(Card_ESTest.java:3166)
+
+test17(Card_ESTest)  Time elapsed: 0.01 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test17(Card_ESTest.java:2948)
+
+test19(Card_ESTest)  Time elapsed: 0.011 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test19(Card_ESTest.java:3377)
+
+test14(Card_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Card_ESTest.test14(Card_ESTest.java:2491)
+
+test13(Card_ESTest)  Time elapsed: 0.007 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test13(Card_ESTest.java:2474)
+
+test16(Card_ESTest)  Time elapsed: 0.013 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test16(Card_ESTest.java:2735)
+
+test15(Card_ESTest)  Time elapsed: 0.012 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card$Type
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Card_ESTest.test15(Card_ESTest.java:2516)
+
+test10(Card_ESTest)  Time elapsed: 0.011 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test10(Card_ESTest.java:2111)
+
+test12(Card_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test12(Card_ESTest.java:2304)
+
+test11(Card_ESTest)  Time elapsed: 0.011 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card$Type
+	at Card_ESTest.test11(Card_ESTest.java:2137)
+
+test07(Card_ESTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test07(Card_ESTest.java:1564)
+
+test06(Card_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test06(Card_ESTest.java:1334)
+
+test09(Card_ESTest)  Time elapsed: 0.007 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test09(Card_ESTest.java:1909)
+
+test08(Card_ESTest)  Time elapsed: 0.01 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test08(Card_ESTest.java:1730)
+
+test03(Card_ESTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test03(Card_ESTest.java:766)
+
+test02(Card_ESTest)  Time elapsed: 0.011 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test02(Card_ESTest.java:596)
+
+test24(Card_ESTest)  Time elapsed: 0.011 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test24(Card_ESTest.java:4367)
+
+test05(Card_ESTest)  Time elapsed: 0.007 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test05(Card_ESTest.java:1132)
+
+test04(Card_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test04(Card_ESTest.java:959)
+
+test21(Card_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test21(Card_ESTest.java:3776)
+
+test20(Card_ESTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test20(Card_ESTest.java:3572)
+
+test01(Card_ESTest)  Time elapsed: 0.011 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test01(Card_ESTest.java:427)
+
+test23(Card_ESTest)  Time elapsed: 0.01 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test23(Card_ESTest.java:4170)
+
+test00(Card_ESTest)  Time elapsed: 0.007 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test00(Card_ESTest.java:218)
+
+test22(Card_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test22(Card_ESTest.java:3975)
+

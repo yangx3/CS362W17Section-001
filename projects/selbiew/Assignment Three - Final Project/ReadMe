@@ -1,0 +1,41 @@
+
+  The Non-Evo folder contains the files needed to recreate my Maven Project folder that does not use the 
+  EvoSuite tests. Inside the Non-Evo folder is the pom.xml needed for a Maven Project that does not use EvoSuite.
+  In the src folder inside the Non-Evo folder are two more folders, test/java/dominion and main/java/dominion. The test/java/dominion folder contains all of
+  the unit tests, including RandomTestDominion.java, while the main/java/dominion folder contains all of the Dominion source
+  code that they work with. 
+  
+  The EvoSuite folder simply contains all of the files necessary for the Maven project that uses EvoSuite using the exact same structure
+  but with different files.
+  
+  
+  In order to mutate the EvoSuite generated tests:
+    Create a Maven Project for Dominion using the instructions from 9th Powerpoint (on Java Unit Testing Tools).
+    
+    Replace the pom.xml in your project with the pom.xml from the Evosuite folder, you may need to change 
+    some of the pom.xml to have the correct name/groupId/ArtifactID etc for your project.
+    
+    Copy all of the files from the src/main/java/dominion folder inside the EvoSuite folder into the default package
+    of the Dominion project.
+    
+    Copy all of the files from the src/test/java/dominion folder inside the Evosuite folder into the test\java folder
+    of the Dominion project.
+    
+    You should now be able to use Command Prompt to navigate to the Project folder (the one with the pom.xml inside it)
+    and type "mvn compile" and then "mvn test", or "mvn org.pitest:pitest-maven:mutationCoverage" .
+    
+  In order to mutate the manually written tests:
+    Create a Maven Project for Dominion using the instructions from 9th Powerpoint (on Java Unit Testing Tools).
+    
+    Replace the pom.xml in your project with the pom.xml from the Non-Evo folder, you may need to change 
+    some of the pom.xml to have the correct name/groupId/ArtifactID etc for your project.
+    
+    Copy all of the files from the src/main/java/dominion folder inside the EvoSuite folder into the default package
+    of the Dominion project.
+    
+    Copy all of the files from the src/test/java/dominion folder inside the Evosuite folder into the test\java folder
+    of the Dominion project.
+    
+    You should now be able to use Command Prompt to navigate to the Project folder (the one with the pom.xml inside it)
+    and type "mvn compile" and then "mvn test", or "mvn org.pitest:pitest-maven:mutationCoverage" .
+

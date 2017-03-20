@@ -12,6 +12,10 @@ Run in this order from the DOMINION/ folder.
 
 Note: It will blast through the game. Pipe the output to a file if you want to inspect it.
 
+# Generating Extended EvoSuite TESTS
+Note: This will take like 5 minutes.
+mvn -DmemoryInMB=2000 -Dcores=2 evosuite:generate evosuite:export  test
+
 # TO RUN THE TESTS
 - "mvn test"
 

@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="50" failures="0" name="ActionCard_ESTest" time="0.24" errors="1" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib"/>
+    <property name="java.vm.version" value="25.51-b03"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/samuelhudson/Desktop/dominion"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/samuelhudson/Desktop/dominion"/>
+    <property name="java.runtime.version" value="1.8.0_51-b16"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/usr/local/Cellar/maven/3.3.3/libexec/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/samuelhudson/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.11.6"/>
+    <property name="user.home" value="/Users/samuelhudson"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="samuelhudson"/>
+    <property name="java.class.path" value="/usr/local/Cellar/maven/3.3.3/libexec/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_51"/>
+    <property name="java.ext.dirs" value="/Users/samuelhudson/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/local/Cellar/maven/3.3.3/libexec"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="ActionCard_ESTest" name="test04" time="0.117"/>
+  <testcase classname="ActionCard_ESTest" name="test48" time="0.005"/>
+  <testcase classname="ActionCard_ESTest" name="test05" time="0.004"/>
+  <testcase classname="ActionCard_ESTest" name="test49" time="0.016"/>
+  <testcase classname="ActionCard_ESTest" name="test02" time="0.003">
+    <error type="java.lang.ArrayIndexOutOfBoundsException">java.lang.ArrayIndexOutOfBoundsException
+</error>
+    <system-out>
+Playing chapel card.
+
+
+Playing laboratory card.
+
+kg3N&amp;sm has selected action card: feast.
+
+Playing feast card.
+
+kg3N&amp;sm&apos;s in_play pile:
+Position: 0 Card: victory duchy
+Position: 1 Card: victory province
+Position: 2 Card: victory gardens
+Position: 3 Card: victory estate
+Position: 4 Card: victory duchy
+Position: 5 Card: victory province
+Position: 6 Card: victory gardens
+Position: 7 Card: victory estate
+Position: 8 Card: victory duchy
+Position: 9 Card: victory province
+Position: 10 Card: victory gardens
+Position: 11 Card: victory estate
+Position: 12 Card: victory duchy
+Position: 13 Card: victory province
+Position: 14 Card: victory gardens
+Position: 15 Card: victory estate
+Position: 16 Card: victory duchy
+Position: 17 Card: victory province
+Position: 18 Card: victory gardens
+Position: 19 Card: victory estate
+Position: 20 Card: victory duchy
+Position: 21 Card: victory province
+Position: 22 Card: victory gardens
+Position: 23 Card: victory estate
+Position: 24 Card: victory duchy
+Position: 25 Card: victory province
+Position: 26 Card: victory gardens
+Position: 27 Card: victory estate
+Position: 28 Card: victory duchy
+Position: 29 Card: victory province
+Position: 30 Card: victory gardens
+Position: 31 Card: curse curse
+Position: 32 Card: action adventurer
+Position: 33 Card: action bureaucrat
+Position: 34 Card: action cellar
+Position: 35 Card: action chancellor
+Position: 36 Card: action chapel
+Position: 37 Card: action council_room
+Position: 38 Card: action festival
+Position: 39 Card: action laboratory
+Position: 40 Card: action smithy
+Position: 41 Card: action market
+Position: 42 Card: action village
+Position: 43 Card: curse curse
+Position: 44 Card: action adventurer
+Position: 45 Card: action bureaucrat
+Position: 46 Card: action cellar
+Position: 47 Card: action chancellor
+Position: 48 Card: action chapel
+Position: 49 Card: action council_room
+Position: 50 Card: action feast
+Position: 51 Card: action festival
+Position: 52 Card: action laboratory
+Position: 53 Card: action smithy
+Position: 54 Card: action market
+Position: 55 Card: action village
+Position: 56 Card: curse curse
+Position: 57 Card: action adventurer
+Position: 58 Card: action bureaucrat
+Position: 59 Card: action cellar
+Position: 60 Card: action chancellor
+Position: 61 Card: action chapel
+Position: 62 Card: action council_room
+Position: 63 Card: action feast
+Position: 64 Card: action festival
+Position: 65 Card: action laboratory
+Position: 66 Card: action smithy
+Position: 67 Card: action market
+Position: 68 Card: action village
+Position: 69 Card: curse curse
+Position: 70 Card: action adventurer
+Position: 71 Card: action bureaucrat
+Position: 72 Card: action cellar
+Position: 73 Card: action chancellor
+Position: 74 Card: action chapel
+Position: 75 Card: action council_room
+Position: 76 Card: action feast
+Position: 77 Card: action festival
+Position: 78 Card: action laboratory
+Position: 79 Card: action smithy
+Position: 80 Card: action market
+Position: 81 Card: action village
+Position: 82 Card: curse curse
+Position: 83 Card: action adventurer
+Position: 84 Card: action bureaucrat
+Position: 85 Card: action cellar
+Position: 86 Card: action chancellor
+Position: 87 Card: action chapel
+Position: 88 Card: action council_room
+Position: 89 Card: action feast
+Position: 90 Card: action festival
+Position: 91 Card: action laboratory
+Position: 92 Card: action smithy
+Position: 93 Card: action market
+Position: 94 Card: action village
+Position: 95 Card: curse curse
+Position: 96 Card: action adventurer
+Position: 97 Card: action bureaucrat
+Position: 98 Card: action cellar
+Position: 99 Card: action chancellor
+Position: 100 Card: action chapel
+Position: 101 Card: action council_room
+Position: 102 Card: action feast
+Position: 103 Card: action festival
+Position: 104 Card: action laboratory
+Position: 105 Card: action smithy
+Position: 106 Card: action market
+Position: 107 Card: action village
+Position: 108 Card: curse curse
+Position: 109 Card: action adventurer
+Position: 110 Card: action bureaucrat
+Position: 111 Card: action cellar
+Position: 112 Card: action chancellor
+Position: 113 Card: action chapel
+Position: 114 Card: action council_room
+Position: 115 Card: action feast
+Position: 116 Card: action festival
+Position: 117 Card: action laboratory
+Position: 118 Card: action smithy
+Position: 119 Card: action market
+Position: 120 Card: action village
+Position: 121 Card: curse curse
+Position: 122 Card: action adventurer
+Position: 123 Card: action bureaucrat
+Position: 124 Card: action cellar
+Position: 125 Card: action chancellor
+Position: 126 Card: action chapel
+Position: 127 Card: action council_room
+Position: 128 Card: action feast
+Position: 129 Card: action festival
+Position: 130 Card: action laboratory
+Position: 131 Card: action smithy
+Position: 132 Card: action market
+Position: 133 Card: action village
+Position: 134 Card: curse curse
+Position: 135 Card: action adventurer
+Position: 136 Card: action bureaucrat
+Position: 137 Card: action cellar
+Position: 138 Card: action chancellor
+Position: 139 Card: action chapel
+Position: 140 Card: action council_room
+Position: 141 Card: action feast
+Position: 142 Card: action festival
+Position: 143 Card: action laboratory
+Position: 144 Card: action smithy
+Position: 145 Card: action market
+Position: 146 Card: action village
+Position: 147 Card: curse curse
+Position: 148 Card: action adventurer
+Position: 149 Card: action bureaucrat
+Position: 150 Card: action cellar
+Position: 151 Card: action chancellor
+Position: 152 Card: action chapel
+Position: 153 Card: action council_room
+Position: 154 Card: action feast
+Position: 155 Card: action festival
+Position: 156 Card: action laboratory
+Position: 157 Card: action smithy
+Position: 158 Card: action market
+Position: 159 Card: action village
+Position: 160 Card: treasure copper
+Position: 161 Card: treasure copper
+Position: 162 Card: treasure copper
+Position: 163 Card: treasure copper
+Position: 164 Card: treasure copper
+Position: 165 Card: treasure copper
+Position: 166 Card: treasure copper
+Position: 167 Card: treasure copper
+Position: 168 Card: treasure copper
+Position: 169 Card: treasure copper
+Position: 170 Card: treasure copper
+Position: 171 Card: treasure copper
+Position: 172 Card: treasure copper
+Position: 173 Card: treasure copper
+Position: 174 Card: treasure copper
+Position: 175 Card: treasure copper
+Position: 176 Card: treasure copper
+Position: 177 Card: treasure copper
+Position: 178 Card: treasure copper
+Position: 179 Card: treasure copper
+Position: 180 Card: treasure copper
+Position: 181 Card: treasure copper
+Position: 182 Card: treasure copper
+Position: 183 Card: treasure copper
+Position: 184 Card: treasure copper
+Position: 185 Card: treasure copper
+Position: 186 Card: treasure copper
+Position: 187 Card: treasure copper
+Position: 188 Card: treasure copper
+Position: 189 Card: treasure copper
+Position: 190 Card: treasure copper
+Position: 191 Card: treasure copper
+Position: 192 Card: treasure copper
+Position: 193 Card: treasure copper
+Position: 194 Card: treasure copper
+Position: 195 Card: treasure copper
+Position: 196 Card: treasure copper
+Position: 197 Card: treasure copper
+Position: 198 Card: treasure copper
+Position: 199 Card: treasure copper
+Position: 200 Card: treasure copper
+Position: 201 Card: treasure copper
+Position: 202 Card: treasure copper
+Position: 203 Card: treasure copper
+Position: 204 Card: treasure copper
+Position: 205 Card: treasure copper
+Position: 206 Card: treasure silver
+Position: 207 Card: treasure silver
+Position: 208 Card: treasure silver
+Position: 209 Card: treasure silver
+Position: 210 Card: treasure silver
+Position: 211 Card: treasure silver
+Position: 212 Card: treasure silver
+Position: 213 Card: treasure silver
+Position: 214 Card: treasure silver
+Position: 215 Card: treasure silver
+Position: 216 Card: treasure silver
+Position: 217 Card: treasure silver
+Position: 218 Card: treasure silver
+Position: 219 Card: treasure silver
+Position: 220 Card: treasure silver
+Position: 221 Card: treasure silver
+Position: 222 Card: treasure silver
+Position: 223 Card: treasure silver
+Position: 224 Card: treasure silver
+Position: 225 Card: treasure silver
+Position: 226 Card: treasure silver
+Position: 227 Card: treasure silver
+Position: 228 Card: treasure silver
+Position: 229 Card: treasure silver
+Position: 230 Card: treasure silver
+Position: 231 Card: treasure silver
+Position: 232 Card: treasure silver
+Position: 233 Card: treasure silver
+Position: 234 Card: treasure silver
+Position: 235 Card: treasure silver
+Position: 236 Card: treasure silver
+Position: 237 Card: treasure silver
+Position: 238 Card: treasure silver
+Position: 239 Card: treasure silver
+Position: 240 Card: treasure silver
+Position: 241 Card: treasure silver
+Position: 242 Card: treasure silver
+Position: 243 Card: treasure silver
+Position: 244 Card: treasure silver
+Position: 245 Card: treasure silver
+Position: 246 Card: treasure gold
+Position: 247 Card: treasure gold
+Position: 248 Card: treasure gold
+Position: 249 Card: treasure gold
+Position: 250 Card: treasure gold
+Position: 251 Card: treasure gold
+Position: 252 Card: treasure gold
+Position: 253 Card: treasure gold
+Position: 254 Card: treasure gold
+Position: 255 Card: treasure gold
+Position: 256 Card: treasure gold
+Position: 257 Card: treasure gold
+Position: 258 Card: treasure gold
+Position: 259 Card: treasure gold
+Position: 260 Card: treasure gold
+Position: 261 Card: treasure gold
+Position: 262 Card: treasure gold
+Position: 263 Card: treasure gold
+Position: 264 Card: treasure gold
+Position: 265 Card: treasure gold
+Position: 266 Card: treasure gold
+Position: 267 Card: treasure gold
+Position: 268 Card: treasure gold
+Position: 269 Card: treasure gold
+Position: 270 Card: treasure gold
+Position: 271 Card: treasure gold
+Position: 272 Card: treasure gold
+Position: 273 Card: treasure gold
+Position: 274 Card: treasure gold
+Position: 275 Card: treasure gold
+Position: 276 Card: victory estate
+Position: 277 Card: victory estate
+Position: 278 Card: action feast
+[50, 63, 76, 89, 102, 115, 128, 141, 154, 278]
+kg3N&amp;sm is drawing from the board card: 
+ type:  victory
+ name:  duchy
+ cost:  5
+ value: 3
+ from position:0
+
+Playing laboratory card.
+
+kg3N&amp;sm has selected action card: festival.
+
+Playing festival card.
+
+kg3N&amp;sm has selected action card: laboratory.
+
+Playing laboratory card.
+
+kg3N&amp;sm has selected action card: smithy.
+
+Playing smithy card.
+
+kg3N&amp;sm has selected action card: market.
+
+Playing market card.
+
+kg3N&amp;sm has selected action card: village.
+
+Playing village card.
+
+kg3N&amp;sm has selected action card: adventurer.
+
+Playing adventurer card.
+
+kg3N&amp;sm has selected action card: bureaucrat.
+
+Playing bureaucrat card.
+
+kg3N&amp;sm is drawing from the board card: 
+ type:  treasure
+ name:  silver
+ cost:  3
+ value: 2
+ from position:197
+kg3N&amp;sm is choosing to spend total treasure value of: 7.
+kg3N&amp;sm is drawing from the board card: 
+ type:  treasure
+ name:  silver
+ cost:  3
+ value: 2
+ from position:0
+kg3N&amp;sm is choosing to spend total treasure value of: 11.
+kg3N&amp;sm is drawing from the board card: 
+ type:  victory
+ name:  duchy
+ cost:  5
+ value: 3
+ from position:0
+kg3N&amp;sm is drawing from the board card: 
+ type:  treasure
+ name:  copper
+ cost:  0
+ value: 1
+ from position:1
+kg3N&amp;sm is drawing from the board card: 
+ type:  treasure
+ name:  copper
+ cost:  0
+ value: 1
+ from position:2
+
+Playing laboratory card.
+
+kg3N&amp;sm has selected action card: cellar.
+
+Playing cellar card.
+
+kg3N&amp;sm has selected action card: smithy.
+
+Playing smithy card.
+
+</system-out>
+  </testcase>
+  <testcase classname="ActionCard_ESTest" name="test46" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test03" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test47" time="0"/>
+  <testcase classname="ActionCard_ESTest" name="test00" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test44" time="0"/>
+  <testcase classname="ActionCard_ESTest" name="test01" time="0.019"/>
+  <testcase classname="ActionCard_ESTest" name="test45" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test42" time="0.01"/>
+  <testcase classname="ActionCard_ESTest" name="test43" time="0"/>
+  <testcase classname="ActionCard_ESTest" name="test08" time="0.003"/>
+  <testcase classname="ActionCard_ESTest" name="test09" time="0.003"/>
+  <testcase classname="ActionCard_ESTest" name="test06" time="0.004"/>
+  <testcase classname="ActionCard_ESTest" name="test07" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test40" time="0"/>
+  <testcase classname="ActionCard_ESTest" name="test41" time="0"/>
+  <testcase classname="ActionCard_ESTest" name="test15" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test16" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test13" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test14" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test11" time="0.003"/>
+  <testcase classname="ActionCard_ESTest" name="test12" time="0.003"/>
+  <testcase classname="ActionCard_ESTest" name="test10" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test19" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test17" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test18" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test26" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test27" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test24" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test25" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test22" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test23" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test20" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test21" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test28" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test29" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test37" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test38" time="0.004"/>
+  <testcase classname="ActionCard_ESTest" name="test35" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test36" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test33" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test34" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test31" time="0.002"/>
+  <testcase classname="ActionCard_ESTest" name="test32" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test39" time="0.001"/>
+  <testcase classname="ActionCard_ESTest" name="test30" time="0.001"/>
+</testsuite>

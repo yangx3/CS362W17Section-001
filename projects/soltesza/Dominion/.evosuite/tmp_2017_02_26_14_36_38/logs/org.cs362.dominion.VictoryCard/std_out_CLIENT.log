@@ -1,0 +1,74 @@
+* Starting client
+* Connecting to master process on port 9472
+* Analyzing classpath: 
+  - G:\My Documents\GitHub\CS362W17Section-001\projects\soltesza\Dominion\target\test-classes
+  - G:\My Documents\GitHub\CS362W17Section-001\projects\soltesza\Dominion\target\classes
+  - C:\Users\Andrew\.m2\repository\junit\junit\4.11\junit-4.11.jar
+  - C:\Users\Andrew\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class org.cs362.dominion.VictoryCard
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+* Total number of test goals: 
+  - Line 25
+  - Branch 21
+  - Exception 0
+  - MutationFactory 40
+  - Output 9
+  - Method 3
+  - MethodNoException 3
+  - CBranchFitnessFactory 21
+* Using seed 1488149092529
+* Starting evolution
+* Search finished after 62s and 949 generations, 209681 statements, best individual has fitness: 2.5
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 100%
+* Total number of goals: 25
+* Number of covered goals: 25
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 100%
+* Total number of goals: 21
+* Number of covered goals: 21
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 1
+* Number of covered goals: 1
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 98%
+* Total number of goals: 40
+* Number of covered goals: 39
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 78%
+* Total number of goals: 9
+* Number of covered goals: 7
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 100%
+* Total number of goals: 21
+* Number of covered goals: 21
+* Generated 8 tests with total length 25
+* Resulting test suite's coverage: 97% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 98%
+* Compiling and checking tests
+* Writing JUnit test case 'VictoryCard_ESTest' to G:\My Documents\GitHub\CS362W17Section-001\projects\soltesza\Dominion\.evosuite\tmp_2017_02_26_14_36_38\tests
+* Done!
+

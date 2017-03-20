@@ -1,4 +1,6 @@
-I have already did:  mvn package
-                     mvn compile
-Which means that that the program has been compiled, the .class files are store in target/classes
-Go into the Directory and : Java PlayDominion
+In Eclipse:  Use the files in evosuite-tests/main/java/org/cs362/dominion
+             Run AllTest.java (coverage as - if you want to look at coverage)
+         
+In Maven:    mvn evosuite:help -Ddetail=true -Dgoal=generate
+             mvn evosuite:generate
+             mvn evosuite:info

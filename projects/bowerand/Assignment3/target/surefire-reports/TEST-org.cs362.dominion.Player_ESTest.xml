@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="33" failures="0" name="org.cs362.dominion.Player_ESTest" time="0.19" errors="1" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Progra~1\Java\jdk1.8.0_121\jre\bin"/>
+    <property name="java.vm.version" value="25.121-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Andrew\Documents\NetBeansProjects\CS362-Assignment1"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\Andrew\Documents\NetBeansProjects\CS362-Assignment1"/>
+    <property name="java.runtime.version" value="1.8.0_121-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Progra~1\Java\jdk1.8.0_121\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Andrew\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\apache-maven-3.3.9\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Progra~1\Java\jdk1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Users\Andrew\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\Brackets\command;C:\apache-maven-3.3.9\bin;C:\Program Files\MATLAB\R2016b\runtime\win64;C:\Program Files\MATLAB\R2016b\bin;C:\Users\Andrew\AppData\Local\Microsoft\WindowsApps;C:\ProgramFiles\Java\jdk1.8.0_121\bin;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Andrew"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="Andrew"/>
+    <property name="java.class.path" value="C:\apache-maven-3.3.9\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Progra~1\Java\jdk1.8.0_121\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_121"/>
+    <property name="java.ext.dirs" value="C:\Progra~1\Java\jdk1.8.0_121\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Progra~1\Java\jdk1.8.0_121\jre\lib\resources.jar;C:\Progra~1\Java\jdk1.8.0_121\jre\lib\rt.jar;C:\Progra~1\Java\jdk1.8.0_121\jre\lib\sunrsasign.jar;C:\Progra~1\Java\jdk1.8.0_121\jre\lib\jsse.jar;C:\Progra~1\Java\jdk1.8.0_121\jre\lib\jce.jar;C:\Progra~1\Java\jdk1.8.0_121\jre\lib\charsets.jar;C:\Progra~1\Java\jdk1.8.0_121\jre\lib\jfr.jar;C:\Progra~1\Java\jdk1.8.0_121\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp437"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\apache-maven-3.3.9\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.stdout.encoding" value="cp437"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test09" time="0.007">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.cs362.dominion.Player.checkCardType(Player.java:52)
+	at org.cs362.dominion.Card.play(Card.java:144)
+	at org.cs362.dominion.Player.playKingdomCard(Player.java:137)
+	at org.cs362.dominion.Player_ESTest.test09(Player_ESTest.java:159)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:298)
+	at org.junit.internal.runners.statements.FailOnTimeout$CallableStatement.call(FailOnTimeout.java:292)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.lang.Thread.run(Thread.java:745)
+</error>
+    <system-out>Player ended turn, discarding hand...
+
+Drawing new hand...
+
+reshuffle the deck of the player Player ended turn, discarding hand...
+ to draw FIVE cards
+draw  
+	Copper
+draw  
+	Baron
+draw  
+	Province
+draw  
+	Curse
+draw  
+	Gold
+End of turn.
+
+draw  
+	Estate
+draw  
+	Silver
+draw  
+	Council_Room
+draw  
+	Mine
+draw  
+	Feast
+Player ended turn, discarding hand...
+
+Player:  Player ended turn, discarding hand...
+ discards  
+	Gold
+Player:  Player ended turn, discarding hand...
+ discards  
+	Silver
+Player:  Player ended turn, discarding hand...
+ discards  
+	Copper
+Player:  Player ended turn, discarding hand...
+ discards  
+	Province
+Player:  Player ended turn, discarding hand...
+ discards  
+	Estate
+Player:  Player ended turn, discarding hand...
+ discards  
+	Curse
+Player:  Player ended turn, discarding hand...
+ discards  
+	Baron
+Player:  Player ended turn, discarding hand...
+ discards  
+	Council_Room
+Player:  Player ended turn, discarding hand...
+ discards  
+	Feast
+Player:  Player ended turn, discarding hand...
+ discards  
+	Mine
+Drawing new hand...
+
+draw  
+	Salvager
+draw  
+	Duchy
+draw  
+	Gardens
+draw  
+	Adventurer
+draw  
+	Ambassador
+End of turn.
+
+Player.actionPhase Card: 
+	Adventurer
+Player:  Player ended turn, discarding hand...
+ discards  
+	Smithy
+Player:  Player ended turn, discarding hand...
+ discards  
+	Village
+Player:  Player ended turn, discarding hand...
+ discards  
+	Cutpurse
+Player:  Player ended turn, discarding hand...
+ discards  
+	Embargo
+Player:  Player ended turn, discarding hand...
+ discards  
+	Great_Hall
+</system-out>
+  </testcase>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test08" time="0"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test07" time="0"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test29" time="0"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test06" time="0"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test28" time="0"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test05" time="0.011"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test27" time="0.001"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test04" time="0.005"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test26" time="0.003"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test03" time="0.005"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test25" time="0.004"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test02" time="0.014"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test24" time="0"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test01" time="0.002"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test23" time="0.004"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test00" time="0.006"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test22" time="0.004"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test21" time="0.011"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test20" time="0.007"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test19" time="0"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test18" time="0.001"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test17" time="0.017"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test16" time="0"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test15" time="0.006"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test14" time="0.01"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test13" time="0.031"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test12" time="0.001"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test11" time="0.001"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test10" time="0.014"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test32" time="0"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test31" time="0.003"/>
+  <testcase classname="org.cs362.dominion.Player_ESTest" name="test30" time="0.022"/>
+</testsuite>

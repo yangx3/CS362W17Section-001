@@ -34,7 +34,32 @@ public class GameStateTest {
 		assertEquals(state.players.size(), 1);
 		assertTrue(state.players.get(0).player_username == "Testing1");
 	}
-
+	
+	@Test
+	public void testPlayerLimits(){
+		System.out.println("---Test PlayerLimits---");
+		Player p = new Player(state, "Jimbo");
+		state.addPlayer(p);
+		state.initializeGame();
+		assertTrue(state.gameBoard.isEmpty());
+		
+		p = new Player(state, "Carl");
+		state.addPlayer(p);
+		p = new Player(state, "Sheen");
+		state.addPlayer(p);
+		p = new Player(state, "Judy");
+		state.addPlayer(p);
+		p = new Player(state, "Hugh");
+		state.addPlayer(p);
+		state.initializeGame();
+		assertTrue(state.gameBoard.isEmpty());
+		
+		state.players.remove(p);
+		state.initializeGame();
+		assertFalse(state.gameBoard.isEmpty());
+		
+	}
+	
 	@Test
 	public void testInitGame(){
 		System.out.println("---Test initGame---");
@@ -66,6 +91,17 @@ public class GameStateTest {
 		assertEquals(state.gameBoard.size(), cards.size());
 		assertTrue(state.gameBoard.get(cards.get(0)) == 30);
 		assertEquals(state.tokensPlaced.size(), cards.size());
+		
+		GameState other = new GameState(cards);
+		p = new Player(state, "Testing1");
+		other.addPlayer(p);
+		p = new Player(state, "Testing2");
+		other.addPlayer(p);
+		
+		other.initializeGame(10);
+		assertTrue(other.cards.size() == 10+7);
+		assertTrue(other.gameBoard.size() == 10+7);
+		
 	}
 	
 	@Test
@@ -125,10 +161,12 @@ public class GameStateTest {
 		
 		Card tmp = Card.getCard(cards,Card.CardName.Adventurer);
 		Card tmp1 = Card.getCard(cards,Card.CardName.Baron);
+		System.out.println("---Test addCard---");
 
 		assertTrue(state.gameBoard.get(tmp) == 10);
 		assertTrue(state.gameBoard.get(tmp1) == 10);
-		
+		System.out.println("---Test addCard---");
+	
 		Card check = state.addCard(tmp);
 		assertTrue(state.gameBoard.get(tmp) == 11);
 		assertTrue(state.gameBoard.get(tmp1) == 10); //Others are unchanged
@@ -150,13 +188,17 @@ public class GameStateTest {
 		}
 		assertEquals(state.players.get(0).scoreFor(), 3);
 		assertEquals(state.players.get(1).scoreFor(), 3);
-		
 		HashMap<Player, Integer> results = state.play(2);
 		
 		for(Card c: cards){
 			cardTotalAfter = cardTotalAfter + state.gameBoard.get(c);
 		}		
 		assertTrue(cardTotal > cardTotalAfter);  //Cards have been bought
+		assertFalse(state.isGameOver());
+		
+		results = state.play(0);
+		assertTrue(state.isGameOver());
+		
 	}
 	
 	@Test
@@ -211,6 +253,11 @@ public class GameStateTest {
 		state.initializeGame(13);
 		
 		s = state.toString();
-		assertTrue(s.contains("gameBoard"));		
+		assertTrue(s.contains("gameBoard"));	
+		assertTrue(s.contains("Testing1"));
+		assertTrue(s.contains("Testing2"));
+		for(Card c : state.cards){
+			assertTrue(s.contains("Curse"));
+		}
 	}
 }

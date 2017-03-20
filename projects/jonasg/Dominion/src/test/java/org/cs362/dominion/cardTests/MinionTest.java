@@ -48,7 +48,7 @@ public class MinionTest {
 	p1.playKingdomCard();
 
 	System.out.println(" ***** Player-1 Status *****");
-	if(p1.coins != p2t.coins) { //player gains 2 coins
+	if(p1.coins != p1t.coins) { //player gains 2 coins
 	    System.out.println("hand count = " + (p1.hand.size() + p1.playedCards.size()) +
 		    ", expected = " + p1t.hand.size());
 	    System.out.println("deck count = " + p1.deck.size() +

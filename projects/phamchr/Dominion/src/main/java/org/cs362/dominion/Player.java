@@ -17,13 +17,13 @@ public class Player implements Cloneable{
 	int numActions;
 	int numBuys;
 	int coins;
-	final GameState gameState;
-	private Random generator = new Random();
+	final GameState gameState;	
 
 	
 	public Player(GameState gameState,String player_username) {
 		this.player_username = player_username;
 		this.gameState=gameState;
+		Randomness.reset(10);
 	}
 
 
@@ -124,7 +124,7 @@ public class Player implements Cloneable{
 		   System.out.println(" --- --------------------------- --- ");
 		   System.out.println(" Buying Card(s) ");
 		   System.out.println(" --- --------------------------- --- ");
-		   int rand = generator.nextInt(10);
+		   int rand = Randomness.nextRandomInt(10);
 		   //I want to make it so that you buy the most expensive thing first, and then go down. RNG to buy whatever.
 		   while(numBuys > 0){
 			   if(coins >= 8){
@@ -142,7 +142,7 @@ public class Player implements Cloneable{
 					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Gold), gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Gold))-1);
 				   }
 			   } else if (coins >= 5){
-				   rand = generator.nextInt(4);
+				   rand = Randomness.nextRandomInt(4);
 				   if(gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Duchy)) != 0 && rand == 0){
 					   gain(Card.getCard(gameState.cards,CardName.Duchy));
 					   coins -= 5;
@@ -165,7 +165,7 @@ public class Player implements Cloneable{
 					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Gardens), gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Gardens))-1);
 				   }
 			   } else if (coins >= 4) {
-				   rand = generator.nextInt(4);
+				   rand = Randomness.nextRandomInt(4);
 				   if(gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Smithy)) != null && gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Smithy)) != 0 && rand == 0){
 					   gain(Card.getCard(gameState.cards,CardName.Smithy));
 					   coins -= 4;
@@ -188,7 +188,7 @@ public class Player implements Cloneable{
 					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Cutpurse), gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Cutpurse))-1);
 				   }
 			   }else if (coins >= 3){
-				   rand = generator.nextInt(4);
+				   rand = Randomness.nextRandomInt(4);
 				   if(gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Silver)) != null && gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Silver)) != 0 && rand == 0){
 					   gain(Card.getCard(gameState.cards,CardName.Silver));
 					   coins -= 3;
@@ -211,7 +211,7 @@ public class Player implements Cloneable{
 					   gameState.gameBoard.put(Card.getCard(gameState.cards, Card.CardName.Great_Hall), gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Great_Hall))-1);
 				   }
 			   }else if (coins >= 2){
-				   rand = generator.nextInt(2);
+				   rand = Randomness.nextRandomInt(2);
 				   if(gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Embargo)) != null && gameState.gameBoard.get(Card.getCard(gameState.cards,Card.CardName.Embargo)) != 0 && rand == 0){
 					   gain(Card.getCard(gameState.cards,CardName.Embargo));
 					   coins -= 2;
@@ -270,9 +270,9 @@ public class Player implements Cloneable{
        	 sb.append("Hand: " + this.hand);
        	 sb.append("Discard: " + this.discard);
        	 sb.append("Deck: " + this.deck);
-       	 sb.append("Played Cards: " + this.playedCards);
-       	 sb.append("numActions: " + this.numActions);
-       	 sb.append("coinss: " + this.coins);
+       	 sb.append("Played Cards: " + this.playedCards+"\n");
+       	 sb.append("numActions: " + this.numActions+"\t");
+       	 sb.append("coins: " + this.coins+"\t");
        	 sb.append("numBuys: " + this.numBuys);
        	 sb.append("\n");     
 

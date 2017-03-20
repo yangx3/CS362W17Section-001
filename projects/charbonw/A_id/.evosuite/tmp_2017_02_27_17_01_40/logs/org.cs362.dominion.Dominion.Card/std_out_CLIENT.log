@@ -1,0 +1,80 @@
+* Starting client
+* Connecting to master process on port 9107
+* Analyzing classpath: 
+  - C:\Users\Cole\workspace\Project 3\A_id\target\classes
+  - C:\Users\Cole\.m2\repository\junit\junit\4.12\junit-4.12.jar
+  - C:\Users\Cole\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class org.cs362.dominion.Dominion.Card
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+* Total number of test goals: 
+  - Line 183
+  - Branch 114
+  - Exception 0
+  - MutationFactory 936
+  - Output 20
+  - Method 13
+  - MethodNoException 13
+  - CBranchFitnessFactory 114
+* Using seed 1488243959028
+* Starting evolution
+[MASTER] 17:06:58.806 [pool-2-thread-1] WARN  TimeController - Operation 'update from archive' took too long: 6379ms
+* Search finished after 55s and 19 generations, 8886 statements, best individual has fitness: 675.6458333333333
+* Writing sequences to pool
+[MASTER] 17:06:59.509 [pool-2-thread-1] WARN  TimeController - Phase SEARCH lasted too long, 8 seconds more than allowed.
+* Minimizing test suite
+[MASTER] 17:07:14.342 [pool-2-thread-1] WARN  TestSuiteMinimizer - Minimization timeout. Roll back to original test suite
+[MASTER] 17:07:14.342 [pool-2-thread-1] WARN  TimeController - Phase MINIMIZATION lasted too long, 1 seconds more than allowed.
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 83%
+* Total number of goals: 183
+* Number of covered goals: 152
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 73%
+* Total number of goals: 114
+* Number of covered goals: 83
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 15
+* Number of covered goals: 15
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 87%
+* Total number of goals: 936
+* Number of covered goals: 813
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 65%
+* Total number of goals: 20
+* Number of covered goals: 13
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 13
+* Number of covered goals: 13
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 92%
+* Total number of goals: 13
+* Number of covered goals: 12
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 71%
+* Total number of goals: 114
+* Number of covered goals: 81
+* Generated 49 tests with total length 402
+* Resulting test suite's coverage: 83% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 4%
+* Compiling and checking tests
+[MASTER] 17:07:20.701 [pool-2-thread-1] WARN  TimeController - Current phase JUNIT_CHECK could run up to 6s, but only 1s are left
+[MASTER] 17:07:20.702 [pool-2-thread-1] WARN  TimeController - Current phase WRITING_TESTS could run up to 6s, but only 1s are left
+* Writing JUnit test case 'Card_ESTest' to C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\tests
+[MASTER] 17:07:33.893 [pool-2-thread-1] WARN  TimeController - Phase WRITING_TESTS lasted too long, 7 seconds more than allowed.
+* Done!
+

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>CardTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">RandomTestDominion (Feb 27, 2017 8:24:17 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion.Dominion</a> &gt; <span class="el_source">CardTest.java</span></div><h1>CardTest.java</h1><pre class="source lang-java linenums">package org.cs362.dominion.Dominion;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+<span class="nc" id="L9">public class CardTest {</span>
+	private GameState g;
+	private Player p0;
+	private Player p1;
+	
+	@Before
+	public void beforeCardTest() {
+		// 2 players, 0 bots, suppress output
+		// players are created inside constructor
+<span class="nc" id="L18">		g = new GameState(2, 0, false);</span>
+<span class="nc" id="L19">		p0 = g.players.get(0);</span>
+<span class="nc" id="L20">		p1 = g.players.get(1);</span>
+<span class="nc" id="L21">		g.clean();</span>
+<span class="nc" id="L22">		p0.clean();</span>
+<span class="nc" id="L23">		p1.clean();</span>
+<span class="nc" id="L24">	}</span>
+	
+	@Test
+	public void testPlayTreasure() {
+<span class="nc" id="L28">		p0.addHand(Card.COPPER);</span>
+<span class="nc" id="L29">		Card.COPPER.play(p0);</span>
+<span class="nc" id="L30">		assertEquals(p0.getMoney(), 1);</span>
+<span class="nc" id="L31">		assertEquals(p0.getFieldSize(), 1);</span>
+<span class="nc" id="L32">	}</span>
+
+	@Test
+	// Reveal cards from your deck until you reveal 2 Treasure cards.
+	// Put those treasure cards into your hand and discard the other revealed cards.
+	public void testADVENTURER() {
+<span class="nc" id="L38">		p0.addDeck(Card.COPPER);</span>
+<span class="nc" id="L39">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L40">		p0.addDeck(Card.COPPER);</span>
+<span class="nc" id="L41">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L42">		Card.ADVENTURER.effect(p0);</span>
+<span class="nc" id="L43">		assertEquals(p0.getHandSize(), 2);</span>
+<span class="nc" id="L44">		assertEquals(p0.getDiscardSize(), 2);</span>
+<span class="nc" id="L45">	}</span>
+
+	@Test
+	// Reveal a card from your hand.
+	// Return up to two copies of it from your hand to the Supply.
+	// Then each other player gains a copy of it.
+	public void testAMBASSADOR() {
+<span class="nc" id="L52">		boolean handEmpty = true;</span>
+<span class="nc" id="L53">		int copies = 0;</span>
+<span class="nc" id="L54">		helpAMBASSADOR(handEmpty, copies);</span>
+<span class="nc" id="L55">		handEmpty = false;</span>
+<span class="nc" id="L56">		helpAMBASSADOR(handEmpty, copies);</span>
+<span class="nc" id="L57">		copies = 2;</span>
+<span class="nc" id="L58">		helpAMBASSADOR(handEmpty, copies);</span>
+<span class="nc" id="L59">	}</span>
+	
+	public void helpAMBASSADOR(boolean handEmpty, int copies) {
+<span class="nc" id="L62">		p0.clean();</span>
+<span class="nc" id="L63">		p1.clean();</span>
+<span class="nc" id="L64">		g.clean();</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">		if (!handEmpty) {</span>
+<span class="nc" id="L66">			p0.addHand(Card.CURSE);</span>
+<span class="nc" id="L67">			p0.addHand(Card.CURSE);</span>
+		}
+<span class="nc" id="L69">		g.addSupply(Card.CURSE);</span>
+<span class="nc" id="L70">		Card.AMBASSADOR.effect(p0, copies);</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">		if (!handEmpty) {</span>
+<span class="nc" id="L72">			assertEquals(p0.getHandSize(), 2 - copies);</span>
+<span class="nc" id="L73">			assertEquals(g.getAmount(3), copies);</span>
+<span class="nc" id="L74">			assertEquals(p1.getDeckSize(), 1);</span>
+<span class="nc" id="L75">		}</span>
+		else {
+<span class="nc" id="L77">			assertEquals(p1.getDeckSize(), 0);</span>
+		}
+<span class="nc" id="L79">	}</span>
+	
+	@Test
+	// +1 Buy
+	// You may discard an Estate card.
+	// If you do, +$4.
+	// Otherwise, gain an Estate card.
+	public void testBARON() {
+<span class="nc" id="L87">		boolean estate = true, discard = true;</span>
+<span class="nc" id="L88">		helpBARON(estate, discard);</span>
+<span class="nc" id="L89">		discard = false;</span>
+<span class="nc" id="L90">		helpBARON(estate, discard);</span>
+<span class="nc" id="L91">	}</span>
+	
+	public void helpBARON(boolean estate, boolean discard) {
+<span class="nc" id="L94">		p0.clean();</span>
+<span class="nc" id="L95">		assertEquals(p0.getBuys(), 1);</span>
+<span class="nc" id="L96">		int choice = 0;</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		if (estate)</span>
+<span class="nc" id="L98">			p0.addHand(Card.ESTATE);</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">		if (discard)</span>
+<span class="nc" id="L100">			choice = 1;</span>
+<span class="nc" id="L101">		Card.BARON.effect(p0, choice);</span>
+<span class="nc" id="L102">		assertEquals(p0.getBuys(), 2);</span>
+<span class="nc bnc" id="L103" title="All 4 branches missed.">		if (discard &amp;&amp; estate) {</span>
+<span class="nc" id="L104">			assertEquals(p0.getDiscardSize(), 1);</span>
+<span class="nc" id="L105">			assertEquals(p0.getMoney(), 4);</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">		} else if (estate) {</span>
+<span class="nc" id="L107">			assertEquals(p0.getHandSize(), 1);</span>
+<span class="nc" id="L108">			assertEquals(p0.getMoney(), 0);</span>
+		}
+<span class="nc" id="L110">	}</span>
+	
+	@Test
+	// +4 Cards; +1 Buy
+	// Each other player draws a card.
+	public void testCOUNCILROOM() {
+<span class="nc" id="L116">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L117">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L118">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L119">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L120">		p1.addDeck(Card.CURSE);</span>
+<span class="nc" id="L121">		Card.COUNCILROOM.effect(p0);</span>
+<span class="nc" id="L122">		assertEquals(p0.getHandSize(), 4);</span>
+<span class="nc" id="L123">		assertEquals(p0.getBuys(), 2);</span>
+<span class="nc" id="L124">		assertEquals(p1.getHandSize(), 1);</span>
+<span class="nc" id="L125">	}</span>
+	
+	@Test
+	// +$2
+	// Each other player discards a Copper card (or reveals a hand with no Copper).
+	public void testCUTPURSE() {
+<span class="nc" id="L131">		boolean hasCopper = true;</span>
+<span class="nc" id="L132">		helpCUTPURSE(hasCopper);</span>
+<span class="nc" id="L133">		hasCopper = false;</span>
+<span class="nc" id="L134">		helpCUTPURSE(hasCopper);</span>
+<span class="nc" id="L135">	}</span>
+	
+	public void helpCUTPURSE(boolean hasCopper) {
+<span class="nc" id="L138">		p0.clean();</span>
+<span class="nc" id="L139">		p1.clean();</span>
+<span class="nc" id="L140">		ByteArrayOutputStream out = new ByteArrayOutputStream();</span>
+<span class="nc" id="L141">		System.setOut(new PrintStream(out));</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">		if (hasCopper) {</span>
+<span class="nc" id="L143">			p1.addHand(Card.COPPER);</span>
+<span class="nc" id="L144">		} else {</span>
+<span class="nc" id="L145">			p1.addHand(Card.CURSE);</span>
+<span class="nc" id="L146">			g.loud = true;</span>
+		}
+<span class="nc" id="L148">		Card.CUTPURSE.effect(p0);</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">		if (hasCopper)</span>
+<span class="nc" id="L150">			assertEquals(p1.getDiscardSize(), 1);</span>
+		else
+<span class="nc" id="L152">			assertTrue(out.toString().contains(&quot;reveals&quot;));</span>
+<span class="nc" id="L153">		System.setOut(System.out);</span>
+<span class="nc" id="L154">	}</span>
+	
+	@Test
+	// +$2
+	// Trash this card.
+	// Put an Embargo token on top of a Supply pile.
+	// When a player buys a card, he gains a curse card per Embargo token on that pile.
+	public void testEMBARGO() {
+<span class="nc" id="L162">		int index = 1;</span>
+<span class="nc" id="L163">		helpEMBARGO(index);</span>
+<span class="nc" id="L164">		index = 3;</span>
+<span class="nc" id="L165">		helpEMBARGO(index);</span>
+<span class="nc" id="L166">	}</span>
+	
+	public void helpEMBARGO(int index) {
+<span class="nc" id="L169">		p0.clean();</span>
+<span class="nc" id="L170">		p0.addHand(Card.EMBARGO);</span>
+<span class="nc" id="L171">		g.addSupply(index);</span>
+<span class="nc" id="L172">		g.addSupply(Card.CURSE);</span>
+<span class="nc" id="L173">		Card.EMBARGO.effect(p0, index);</span>
+<span class="nc" id="L174">		assertEquals(p0.getMoney(), 2);</span>
+<span class="nc" id="L175">		assertEquals(p0.getHandSize(), 0);</span>
+<span class="nc" id="L176">		assertTrue(g.getEmbargo(index));</span>
+//		assertEquals(p1.getDeckSize(), 2);					// not enough time to test buyPhase
+<span class="nc" id="L178">	}</span>
+
+	@Test
+	// Trash this card.
+	// Gain a card costing up to $5.
+	public void testFEAST() {
+<span class="nc" id="L184">		p0.addHand(Card.FEAST);</span>
+<span class="nc" id="L185">		g.addSupply(Card.SILVER);</span>
+<span class="nc" id="L186">		Card.FEAST.effect(p0, 5);</span>
+<span class="nc" id="L187">		assertEquals(g.getTrashSize(), 1);</span>
+<span class="nc" id="L188">		p0.draw();</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">		assertTrue(p0.getHand(0).cost &lt; 5);</span>
+<span class="nc" id="L190">	}</span>
+
+	@Test
+	// Worth 1 victory point for every 10 cards in your deck (rounded down).
+	public void testGARDENS() {
+<span class="nc bnc" id="L195" title="All 2 branches missed.">		for (int i = 0; i &lt; 19; i++)</span>
+<span class="nc" id="L196">			p0.addDeck(Card.COPPER);</span>
+<span class="nc" id="L197">		assertEquals(Card.GARDENS.getVictory(p0), 1);</span>
+<span class="nc" id="L198">	}</span>
+	
+	@Test
+	// 1 Victory Point
+	// +1 Card; +1 Action
+	public void testGREATHALL() {
+<span class="nc" id="L204">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L205">		Card.GREATHALL.effect(p0);</span>
+<span class="nc" id="L206">		assertEquals(p0.getHandSize(), 1);</span>
+<span class="nc" id="L207">		assertEquals(p0.getActions(), 2);</span>
+<span class="nc" id="L208">		assertEquals(Card.GREATHALL.getVictory(p0), 1);</span>
+<span class="nc" id="L209">	}</span>
+	
+	@Test
+	// Trash a Treasure card from your hand.
+	// Gain a Treasure card costing up to $3 more; put it into your hand.
+	public void testMINE() {
+<span class="nc" id="L215">		p0.addHand(Card.COPPER);</span>
+<span class="nc" id="L216">		g.addSupply(Card.SILVER);</span>
+<span class="nc" id="L217">		Card.MINE.effect(p0, 2);</span>
+<span class="nc" id="L218">		assertEquals(p0.getHandSize(), 1);</span>
+<span class="nc" id="L219">		assertTrue(p0.handContains(Card.SILVER));</span>
+<span class="nc" id="L220">	}</span>
+	
+	@Test
+	// Trash this and another copy of Treasure Map from your hand.
+	// If you do, gain 4 Gold cards, putting them on top of your deck.
+	public void testTREASUREMAP() {
+<span class="nc" id="L226">		boolean hasMap = true;</span>
+<span class="nc" id="L227">		helpTREASUREMAP(hasMap);</span>
+<span class="nc" id="L228">		hasMap = false;</span>
+<span class="nc" id="L229">		helpTREASUREMAP(hasMap);</span>
+<span class="nc" id="L230">	}</span>
+	
+	public void helpTREASUREMAP(boolean hasMap) {
+<span class="nc" id="L233">		p0.clean();</span>
+<span class="nc" id="L234">		p0.addHand(Card.TREASUREMAP);</span>
+<span class="nc" id="L235">		g.addSupply(Card.GOLD);</span>
+<span class="nc" id="L236">		g.addSupply(Card.GOLD);</span>
+<span class="nc" id="L237">		g.addSupply(Card.GOLD);</span>
+<span class="nc" id="L238">		g.addSupply(Card.GOLD);</span>
+<span class="nc bnc" id="L239" title="All 2 branches missed.">		if (hasMap)</span>
+<span class="nc" id="L240">			p0.addHand(Card.TREASUREMAP);</span>
+<span class="nc" id="L241">		Card.TREASUREMAP.effect(p0);</span>
+<span class="nc bnc" id="L242" title="All 2 branches missed.">		if (hasMap) {</span>
+<span class="nc" id="L243">			assertEquals(p0.getDeckSize(), 4);</span>
+<span class="nc" id="L244">			p0.draw();</span>
+<span class="nc" id="L245">			assertTrue(p0.getHand(0).equals(Card.GOLD));</span>
+<span class="nc" id="L246">		} else {</span>
+<span class="nc" id="L247">			assertEquals(p0.getDeckSize(), 0);</span>
+		}
+<span class="nc" id="L249">	}</span>
+	
+	@Test
+	// +3 Cards
+	public void testSMITHY() {
+<span class="nc" id="L254">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L255">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L256">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L257">		Card.SMITHY.effect(p0);</span>
+<span class="nc" id="L258">		assertEquals(p0.getHandSize(), 3);</span>
+<span class="nc" id="L259">	}</span>
+	
+	@Test
+	// +1 Card; +2 Actions
+	public void testVILLAGE() {
+<span class="nc" id="L264">		p0.addDeck(Card.CURSE);</span>
+<span class="nc" id="L265">		Card.VILLAGE.effect(p0);</span>
+<span class="nc" id="L266">		assertEquals(p0.getHandSize(), 1);</span>
+<span class="nc" id="L267">		assertEquals(p0.getActions(), 3);</span>
+<span class="nc" id="L268">	}</span>
+	
+	@Test
+	public void testEquals() {
+<span class="nc" id="L272">		Card c0 = Card.CURSE;</span>
+<span class="nc" id="L273">		Card c1 = Card.CURSE;</span>
+<span class="nc" id="L274">		assertTrue(c0.equals(c1));</span>
+<span class="nc" id="L275">	}</span>
+
+	@Test
+	// this doesn't do anything
+	public void testEffect() {
+<span class="nc" id="L280">		Card.CURSE.effect(p0);</span>
+<span class="nc" id="L281">	}</span>
+
+	@Test
+	public void testGetVictory() {
+<span class="nc" id="L285">		assertEquals(Card.CURSE.getVictory(p0), -1);</span>
+<span class="nc" id="L286">		assertEquals(Card.COPPER.getVictory(p0), 0);</span>
+<span class="nc" id="L287">	}</span>
+
+	@Test
+	public void testGetType() {
+<span class="nc" id="L291">		assertEquals(Card.COPPER.getType(), 'T');</span>
+<span class="nc" id="L292">		assertEquals(Card.GARDENS.getType(), 'V');</span>
+<span class="nc" id="L293">		assertEquals(Card.SMITHY.getType(), 'A');</span>
+<span class="nc" id="L294">	}</span>
+
+	@Test
+	public void testGetDesc() {
+<span class="nc" id="L298">		Card.CURSE.getDesc(p0);</span>
+<span class="nc" id="L299">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>RandomTestDominion (Feb 27, 2017 8:24:17 PM)</div></body></html>

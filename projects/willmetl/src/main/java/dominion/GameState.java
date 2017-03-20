@@ -7,30 +7,30 @@ package dominion;
 import java.util.*;
 
 public class GameState{
-  private final int defaultDeckSize = 100;
-  private final int pileSize = 8;     // How many cards per pile
+  public int defaultDeckSize = 100;
+  public int pileSize = 8;     // How many cards per pile
   // Initial currency cards in the bank
-  private final int bankCopper = 60;
-  private final int bankSilver = 40;
-  private final int bankGold = 30;
+  public int bankCopper = 60;
+  public int bankSilver = 40;
+  public int bankGold = 30;
   // Initial victory point cards in the bank
-  private final int bankEstates = 24;
-  private final int bankDuchies = 12;
-  private final int bankProvinces = 12;
+  public int bankEstates = 24;
+  public int bankDuchies = 12;
+  public int bankProvinces = 12;
   // Initial kingdom cards in the bank
-  private final int bankKingdomCards = 10;
-  private final int bankCurses = 10;  // scales with players, 10, 20, 30, etc
+  public int bankKingdomCards = 10;
+  public int bankCurses = 10;  // scales with players, 10, 20, 30, etc
 
-  private ArrayList<Card> embargoTokens;
-  private ArrayList<Card> supply;
+  public ArrayList<Card> embargoTokens;
+  public ArrayList<Card> supply;
   public Player[] players;
   public int numPlayers = 0;
   public int playerTurn = 0;
-  private final int maxPlayers = 4;
+  public int maxPlayers = 4;
 
   public GameState(){
     // shared cards that players can buy
-    this.supply = new ArrayList<Card>(200);
+    this.supply = new ArrayList<Card>();
     this.players = new Player[maxPlayers];
     // Fill the shared deck with the starting cards
     for(int i=0; i<bankCopper; i++)       supply.add(Card.COPPER);
@@ -58,10 +58,7 @@ public class GameState{
   }
 
   public boolean addPlayer(String name){
-    return addPlayer(name, false);
-  }
-  public boolean addPlayer(String name, boolean isBot){
-    return addPlayer(new Player(name, this, isBot));
+    return addPlayer(new Player(name, this));
   }
   public boolean addPlayer(Player p){
     if(numPlayers < maxPlayers){
@@ -92,11 +89,14 @@ public class GameState{
     return null;
   }
 
-  public void nextTurn(){
+  public boolean nextTurn(){
     players[playerTurn].newTurn();
     playerTurn = (playerTurn+1)%numPlayers;
-    if(checkEndConditions())
+    if(checkEndConditions()){
       endGame();
+      return false;
+    }
+    return true;
   }
 
   public int listCards(){

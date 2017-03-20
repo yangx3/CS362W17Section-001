@@ -17,7 +17,7 @@ public class Estate extends Card {
         plusTreasuryValue = 0;    // number of +Coins the card gives
         plusActionValue = 0;      // number of +Actions the card gives
         plusCardValue = 0;        // number of +Cards drawn
-        cost = 0;                 // how many coins it costs to buy
+        cost = 2;                 // how many coins it costs to buy
         cardType = "VICTORY";
 
     }

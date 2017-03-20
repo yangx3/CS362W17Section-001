@@ -1,0 +1,45 @@
+-------------------------------------------------------------------------------
+Test set: Randomness_ESTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 9, Skipped: 0, Time elapsed: 0.003 sec <<< FAILURE! - in Randomness_ESTest
+test2(Randomness_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Randomness
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Randomness_ESTest.test2(Randomness_ESTest.java:187)
+
+test3(Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Randomness
+	at Randomness_ESTest.test3(Randomness_ESTest.java:226)
+
+test4(Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Randomness
+	at Randomness_ESTest.test4(Randomness_ESTest.java:267)
+
+test5(Randomness_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Randomness
+	at Randomness_ESTest.test5(Randomness_ESTest.java:307)
+
+test6(Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Randomness
+	at Randomness_ESTest.test6(Randomness_ESTest.java:337)
+
+test7(Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Randomness
+	at Randomness_ESTest.test7(Randomness_ESTest.java:366)
+
+test8(Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Randomness
+	at Randomness_ESTest.test8(Randomness_ESTest.java:392)
+
+test0(Randomness_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Randomness
+	at Randomness_ESTest.test0(Randomness_ESTest.java:102)
+
+test1(Randomness_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Randomness
+	at Randomness_ESTest.test1(Randomness_ESTest.java:155)
+

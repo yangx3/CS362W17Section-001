@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import java.util.Random;
 import java.util.TreeMap;
 
 import cs362.dominion.Card.CardName;
@@ -108,6 +109,32 @@ public class GameState {
 				player.playTtreasureCard();
 				//player buy cards
 				player.buyCard();
+				//player ends turn
+				player.endTurn();
+			}
+			/*if(turn==40)
+				System.out.println("Turns: " + turn);
+				toString();
+				break;*/
+		}
+		return this.getWinners();
+	}
+	public HashMap<Player, Integer>  playRandom() {
+
+		int turn =0;	
+		while (!isGameOver()) {
+			if(isGameOver()) {
+				break;
+			}
+			turn++;
+			for (Player player : players) {
+				System.out.println("Player: "+ player.player_username + " is playing");
+				//player p plays action card
+				player.playKingdomCard();
+				//player plays treasure card
+				player.playTtreasureCard();
+				//player buy cards
+				player.buyRandCard();
 				//player ends turn
 				player.endTurn();
 			}

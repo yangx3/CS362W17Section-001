@@ -72,13 +72,13 @@ public final class Card implements Comparable<Card>{
 		/** The Kingdom cards , it should more than 10 cards*/ 			
 		o = new Card(CardName.Adventurer,Type.ACTION,6,0,0);
 		ret.add(o);
-				
-		o = new Card(CardName.Ambassador,Type.ACTION,3,0,0);
-		ret.add(o);		
 		
+		o = new Card(CardName.Ambassador,Type.ACTION,3,0,0);
+		ret.add(o);	
+
 		o = new Card(CardName.Baron,Type.ACTION,4,0,0);
 		ret.add(o);
-				
+		
 		o = new Card(CardName.CouncilRoom,Type.ACTION,5,0,0);
 		ret.add(o);
 				
@@ -139,7 +139,28 @@ public void play(Player player, GameState state) {
 		
 		case Ambassador:
 			//Cost $3, Reveal a card from your hand, and return up to 2 copies of it to the supply. Then each other player gains a copy
+			Card currCard = player.hand.get(0);
+			int numCardsReturned = 0;
+			for(int i = 0; i < player.hand.size(); i++){
+				Card c = player.hand.get(i);
+				
+				if(c == currCard){
+					if(numCardsReturned >= 2){
+						break;
+					}
+					//player.hand.remove(c);
+					
+					state.cards.add(currCard);
+					numCardsReturned++;
+				}
+			}
+			for (Player other_players : state.players) {
+				if (other_players != player){
+					other_players.gain(currCard);
+				}
+			}
 			
+			/*
 			if(player.hand.size() > 0) {
 				Card c = player.hand.get(1);
 				player.hand.remove(c);
@@ -150,13 +171,13 @@ public void play(Player player, GameState state) {
 					}
 				}
 			}
-			
+			*/
 			
 			return;
 			
 		case Baron:
 			//Cost $4. +1 Buy. You may discard an estate card. If you do, +$4. Otherwise gain an estate card.
-			
+			player.numBuys++;
 			if(getCard(player.hand, CardName.Estate) != null) {
 				player.discard(getCard(player.hand, CardName.Estate));
 				player.coins +=4;
@@ -207,6 +228,7 @@ public void play(Player player, GameState state) {
 
 			player.coins +=5;
 			player.numBuys++;
+			
 		case Gardens:
 			//Costs: $4. Worth 1 victory point for every 10 cards in your deck (rounded down)
 			//Done in player.scoreFor() at end of game

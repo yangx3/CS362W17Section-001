@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javafx.application.Platform.exit;
+
 public class Player {
     public Deck playerDeck;
     public List<Card> playerHand;
@@ -27,6 +29,7 @@ public class Player {
         numDraws = 0;
         numCoins = 0;
 
+
     }
     public void playerTurn() {
         for (int i = 0; i<5; i++){  // draws 5 cards to start turn
@@ -41,32 +44,38 @@ public class Player {
         action();       // Action phase
         buy();          // Buy phase
         cleanUp();
+        System.out.println("Turn successful!\n");
+        //exit();
     }
     public void action(){
-        Scanner scan = new Scanner(System.in);
+
         int userChoice=0;
-       boolean flag = false;
+
         System.out.println("_____________________________________________________\n");
         System.out.println("____________________ACTION PHASE_____________________\n");
         System.out.println("_____________________________________________________\n");
         for (int i=0; i< numActions; i++) {
+            boolean flag1 = false;
+
             System.out.println("Please choose a card to play:  ");
             for (int j=0; j<cardsInHand; j++) {
                 if (playerHand.get(j).get_cardType() == "ACTION") {
                     System.out.println("\n\nCard number " + j + ":  \n");
                     playerHand.get(j).printCard();
+                }
+                if (j == cardsInHand-1 && flag1 == false) {
+                    System.out.println("No action cards in hand\n\n");
+                    return;
+            }
                 }  // Prints card if it is an action card
-            } // Iterates through hand
-            while (!flag){
+             // Iterates through hand
+            while (!flag1){
                 System.out.println("\n\nCard to play:  ");
-                userChoice = scan.nextInt();
+                userChoice=Random.getRandomInt(0,cardsInHand);
                 if (userChoice >=0 && userChoice < cardsInHand)
                     if (playerHand.get(userChoice).get_cardType()=="ACTION")
-                        flag = true;
-                    else
-                        System.out.println("\nThat card isn't an action card. Please try again!");
-                else
-                    System.out.println("\nSomething is wrong with your input. Please try again!");
+                        flag1 = true;
+
             } // Until flag is marked true
             play(userChoice);
 
@@ -203,40 +212,60 @@ public class Player {
 
     }
     public void buy() {
-        Scanner scan = new Scanner(System.in);
-        int userChoice=0;
-        boolean flag = false;
-        String cardToBuy="";
+
+
+        int cardToBuy=0;
+
 
         System.out.println("_____________________________________________________\n");
         System.out.println("_____________________BUY PHASE_______________________\n");
         System.out.println("_____________________________________________________\n");
         System.out.println("Playing your treasury cards!\n");
-        for (int i=0; i<cardsInHand; i++){
-            if (playerHand.get(i).get_cardType() == "TREASURE")
+        System.out.println("Cards in hand:  "+this.cardsInHand+"\n");
+
+        for (int i = 0; i < cardsInHand; i++) {
+
+           // System.out.println("Card type  at index "+i+":  "+playerHand.get(i).get_cardType()+"\n");
+            if (playerHand.get(i).get_cardType() == "TREASURE") {
                 play(i);
+                i--;    // decrement since cardsInHand will be smaller after being played
+            }
         } // Play all treasure cards in hard
-        while (!flag){
-            System.out.println("You have " + numCoins + " Coins. \n");
-            System.out.println("Would you like to buy a card?  1 - Yes || Any other key for NO:   ");
-                    userChoice = scan.nextInt();
-            if (userChoice == 1 ) {
-                System.out.println("\nWhat is the name of the card you like to buy?\n Card name:   ");
-                cardToBuy = scan.next();
+
+        for (int i = 0; i < numBuys; i++){
+            boolean flag = false;
+
+            while (!flag) {
+                if (numCoins < 2) // nothing costs less than two coins, ret out of function
+                    return;
+                cardToBuy = Random.getRandomInt(0,16);
+                System.out.println("You have " + numCoins + " Coins. \n");
+
+
                 for (int j = 0; j < 17; j++) {
 
 
-                    if (cardToBuy == myCardShop.myCardPicker.finalList.get(j).get_cardName()) {//.finalList.get_cardName() && numCoins > card.get_cardCost)
-                        playerDeck.addCardToDiscard(myCardShop.myCardPicker.finalList.get(j));
-                        numCoins -= myCardShop.myCardPicker.finalList.get(j).get_cost();
+                    if (cardToBuy == j ) {
+                        if (numCoins >=  myCardShop.myCardPicker.finalList.get(j).get_cost()) {
+                            playerDeck.addCardToDiscard(myCardShop.myCardPicker.finalList.get(j));
+                            myCardShop.myCardPicker.finalList.get(j);//.set(j,j-1);
+                            numCoins -= myCardShop.myCardPicker.finalList.get(j).get_cost();
+                        }
+
+                        else{
+                           // System.out.println("Sorry, you can't afford that card or it doesn't exist.");
+                           // System.out.println("Card you were trying to buy:  "+myCardShop.myCardPicker.finalList.get(j).get_cardName()+"    Cost:    "+myCardShop.myCardPicker.finalList.get(j).get_cost()+"\n");
+                           // System.out.println("Value of i:  "+i+"\n");
+                            i--;
+                            flag=true;
+                        }
                     }
-                    else
-                        System.out.println("Sorry, you can't afford that card or it doesn't exist.");
                 }
+
+           // else
+              //  flag = true;
             }
-            else
-                flag = true;
-            }
+        }
 
         }
         public void cleanUp(){
@@ -244,6 +273,11 @@ public class Player {
                 playerDeck.addCardToDiscard(playerHand.get(i));
             }
             playerHand.clear();
+            cardsInHand = 0;
+            numActions = 1;
+            numBuys = 1;
+            numDraws = 0;
+            numCoins = 0;
         }
     }
 

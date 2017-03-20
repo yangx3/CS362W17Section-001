@@ -1,0 +1,100 @@
+* Starting client
+* Connecting to master process on port 13125
+* Analyzing classpath: 
+  - C:/Users/MarkSprouse/Documents/NetBeansProjects/NewDom/out/production/NewDom
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\deploy.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\access-bridge-64.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\cldrdata.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\dnsns.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jaccess.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jfxrt.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\localedata.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\nashorn.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunec.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunjce_provider.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunmscapi.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunpkcs11.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\zipfs.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\javaws.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfxswt.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\management-agent.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\plugin.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar
+  - C:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar
+  - C:\Users\MarkSprouse\Documents\NetBeansProjects\NewDom\out\production\NewDom
+* Finished analyzing classpath
+* Generating tests for class com.mycompany.marksprousedominion.playDominion
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+* Total number of test goals: 
+  - Line 191
+  - Branch 109
+  - Exception 0
+  - MutationFactory 571
+  - Output 26
+  - Method 10
+  - MethodNoException 10
+  - CBranchFitnessFactory 109
+* Using seed 1488324570504
+* Starting evolution
+[MASTER] 15:34:07.870 [pool-2-thread-1] WARN  TimeController - Operation 'update from archive' took too long: 5091ms
+* Search finished after 263s and 33 generations, 12275 statements, best individual has fitness: 171.56803011523616
+* Writing sequences to pool
+* Minimizing test suite
+[MASTER] 15:34:57.200 [pool-2-thread-1] WARN  TestSuiteMinimizer - Minimization timeout. Roll back to original test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 86%
+* Total number of goals: 191
+* Number of covered goals: 165
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 87%
+* Total number of goals: 109
+* Number of covered goals: 95
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 8
+* Number of covered goals: 8
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 83%
+* Total number of goals: 571
+* Number of covered goals: 476
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 31%
+* Total number of goals: 26
+* Number of covered goals: 8
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 10
+* Number of covered goals: 10
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 80%
+* Total number of goals: 10
+* Number of covered goals: 8
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 87%
+* Total number of goals: 109
+* Number of covered goals: 95
+* Generated 36 tests with total length 388
+* Resulting test suite's coverage: 79% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 10%
+* Compiling and checking tests
+* Permissions denied during test execution: 
+  - java.lang.RuntimePermission: 
+         writeFileDescriptor: 8
+* Writing JUnit test case 'playDominion_ESTest' to C:\Users\MarkSprouse\Documents\NetBeansProjects\NewDom\.evosuite\tmp_2017_02_28_15_29_21\tests
+* Done!
+

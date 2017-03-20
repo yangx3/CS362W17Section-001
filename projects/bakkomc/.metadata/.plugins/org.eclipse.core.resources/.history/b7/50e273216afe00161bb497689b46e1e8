@@ -1,0 +1,115 @@
+
+
+import java.util.*;
+
+public class GameRunner
+{
+	int numberOfPlayers;
+	String[] names;
+	String[] kingdoms;
+	GameManager mgr;
+	Scanner scan = new Scanner(System.in);
+	
+	public static boolean isInteger(String s) {
+	    return isInteger(s,10);
+	}
+
+	public static boolean isInteger(String s, int radix) {
+	    if(s.isEmpty()) return false;
+	    for(int i = 0; i < s.length(); i++) {
+	        if(i == 0 && s.charAt(i) == '-') {
+	            if(s.length() == 1) return false;
+	            else continue;
+	        }
+	        if(Character.digit(s.charAt(i),radix) < 0) return false;
+	    }
+	    return true;
+	}
+	
+	public GameRunner()
+	{
+		numberOfPlayers = 2;
+		String[] names1 = { "John", "Molly"};
+		String[] kingdoms1 = { "Adventurer","Ambassador","Baron",
+				"Cutpurse","Embargo",
+				"Feast","Gardens","Great Hall",
+				"Mine","Sea Hag" };
+		this.names = names1;
+		this.kingdoms = kingdoms1;
+		this.mgr = new GameManager(numberOfPlayers, names, kingdoms);
+	}
+	public GameRunner(String[] NAMES, String[] KINGDOMS, int NUMBEROFPLAYERS)
+	{
+		this.names = NAMES;
+		this.kingdoms = KINGDOMS;
+		this.numberOfPlayers = NUMBEROFPLAYERS;
+		this.mgr = new GameManager(numberOfPlayers, names, kingdoms);
+	}
+	
+	public void printSate()
+	{
+		mgr.printBoard();
+		mgr.printPlayerStandard();
+	}
+	
+	public void runGameMove(String input)
+	{
+		// Handle all inputs
+		switch (input){
+			case "End Actions": mgr.endActions();
+				break;
+			case "End Turn": mgr.endPlayerTurn();
+				break;
+			case "Autoplay Treasures": mgr.AutoplayTreasures();
+				break;
+			default: 
+				String[] inputs = input.split(" ");
+				for (int i=0; i<inputs.length; i++)
+					System.out.println(inputs[i]);
+				if (inputs[0].equals("buy") ){
+					mgr.buy(mgr.findResourceStack(inputs[1]));
+				}
+				else{
+					// Handle the playing of all cards
+					mgr.playCard(inputs);
+				}
+		}
+	}
+
+	public void printWinner()
+	{
+		mgr.printPlayerVictoryPoints();
+		System.out.println(mgr.winner());
+	}
+	
+	public boolean isGameOver()
+	{
+		return mgr.isGameOver();
+	}
+	
+	public void wrapUpGame()
+	{
+		mgr.wrapUpGame();
+	}
+	
+	public static void printTurn(Player myPlayer)
+	{
+		System.out.println("\nNewTurn\nDeck:");
+		for( Card e : myPlayer.deck.cards ){
+			System.out.println(e.toString());
+		}
+		System.out.println("\nHand:");
+		for( Card e : myPlayer.hand.cards ){
+			System.out.println(e.toString());
+		}
+		System.out.println("\nDiscard:");
+		for( Card e : myPlayer.discard.cards ){
+			System.out.println(e.toString());
+		}
+		System.out.println("\nPlayPile:");
+		for( Card e : myPlayer.playPile.cards ){
+			System.out.println(e.toString());
+		}
+	}
+
+}

@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+Test set: PlayDominion_ESTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.006 sec <<< FAILURE! - in PlayDominion_ESTest
+test1(PlayDominion_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: PlayDominion
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at PlayDominion_ESTest.test1(PlayDominion_ESTest.java:61)
+
+test0(PlayDominion_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: PlayDominion
+	at PlayDominion_ESTest.test0(PlayDominion_ESTest.java:39)
+

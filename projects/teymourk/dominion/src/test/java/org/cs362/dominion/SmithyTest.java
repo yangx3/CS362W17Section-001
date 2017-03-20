@@ -1,11 +1,13 @@
 package org.cs362.dominion;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 
 public class SmithyTest {
@@ -13,52 +15,70 @@ public class SmithyTest {
 	//   public  static void main(String args[]) throws CloneNotSupportedException{
 	  @Test
 	  public void test0()  throws Throwable  {	   
-		    List<Card> cards;
-		    GameState state,testState;
-			Randomness.reset(10);	   
 
-		    int newCards = 3;  
-//		 // initialize a game state and player cards
-			cards = new ArrayList<Card>(Card.createCards());
-			 state = new GameState(cards);  
-//			
-		      	Player player = new Player(state, "player-1");
-		  		player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+		  List<Card> cards;
+		  GameState state,testState;
+		  Randomness.reset(10);
 
-		  		state.addPlayer(player);
-		       	player = new Player(state, "player-2");
-		  		state.addPlayer(player);
-		         
-		      //Initialize the game!
-		      state.initializeGame();
-		      
-		      System.out.println("hand count = " + state.players.get(0).hand.size());
-		      System.out.println("hand deck = " + state.players.get(0).deck.size());
-		      System.out.println("hand coins = " + state.players.get(0).coins);
-		      System.out.println("hand numActions = " + state.players.get(0).numActions);
-		      System.out.println("hand numBuys = " + state.players.get(0).numBuys);
-	      
-		      System.out.println("hand hand = " + state.players.get(0).hand.size());
-		      System.out.println("hand deck = " + state.players.get(0).deck.size());
-		      //copy or clone the game state to a test case
-		      testState=(GameState) state.clone();
+		  int newCards = 3;
 
-  		     //	play the game 
-		     HashMap<Player, Integer> winners=state.play();
-		      
-		      System.out.println("  *****    Player-1 Status ***** " );
-		      System.out.println("hand count = " + state.players.get(0).hand.size() + ", expected = "+ ( testState.players.get(0).hand.size() + newCards ) );
-		      System.out.println("deck count = " + state.players.get(0).deck.size() + ", expected = "+ ( testState.players.get(0).deck.size() - newCards ) );
-		      System.out.println("numActions = " + state.players.get(0).numActions + ", expected = "+ ( testState.players.get(0).numActions - 1 ) );
-		      
-		      System.out.println("  *****    Player-2 Status *****" );
-		      System.out.println("hand count = " + state.players.get(1).hand.size() + ", expected = "+ ( testState.players.get(1).hand.size()  ) );
-		      System.out.println("deck count = " + state.players.get(1).deck.size() + ", expected = "+ ( testState.players.get(1).deck.size()  ) );
-		      System.out.println("numActions = " + state.players.get(1).numActions + ", expected = "+ ( testState.players.get(1).numActions  ) );
-		      assertEquals(state.players.get(0).hand.size(),( testState.players.get(0).hand.size() + newCards ));
-		      assertEquals(state.players.get(0).deck.size(),( testState.players.get(0).deck.size() - newCards ));
-	      
-		      assertEquals(state.players.get(1).hand.size(),( testState.players.get(1).hand.size()));
-		      assertEquals(state.players.get(1).deck.size(),( testState.players.get(1).deck.size() ));
+		  cards = new ArrayList<Card>(Card.createCards());
+		  state = new GameState(cards);
+
+		  Random r = new Random();
+		  int playersNum = r.nextInt( 4 - 2) + 4;
+
+		  cards = new ArrayList<Card>(Card.createCards());
+		  state = new GameState(cards);
+
+		  Player player = new Player(state, "player-1");
+		  player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+		  state.addPlayer(player);
+
+		  player = new Player(state, "player-2");
+		  state.addPlayer(player);
+
+		  if (playersNum == 3) {
+
+			  player = new Player(state, "player-3");
+			  state.addPlayer(player);
+
+		  } else if (playersNum == 4) {
+
+			  player = new Player(state, "player-3");
+			  state.addPlayer(player);
+
+			  player = new Player(state, "player-4");
+			  state.addPlayer(player);
+		  }
+
+		  System.out.println("Number Of Players is " + state.players.size());
+
+		  	state.initializeGame();
+
+		  	System.out.println("\n--------Player 1 Status--------");
+		  	System.out.println("|                              			 ");
+		  	System.out.println("|hand Count:" + state.players.get(0).hand.size());
+		  	System.out.println("|" + state.players.get(0).hand);
+		  	System.out.println("|Deck Count = " + state.players.get(0).deck.size());
+		  	System.out.println("|" + state.players.get(0).deck);
+		  	System.out.println(" -----------------------------------------");
+
+		  	testState=(GameState) state.clone();
+
+		  	HashMap<Player, Integer> winners=state.play();
+
+		  	System.out.println("\n--------Player 1 Updated Status--------");
+		  	System.out.println("|                              			 ");
+		  	System.out.println("|hand Count:" + state.players.get(0).hand.size() + ", expected = "+ ( testState.players.get(0).hand.size() + newCards ) );
+		  	System.out.println("|" + state.players.get(0).hand);
+		  	System.out.println("|Deck Count = " + state.players.get(0).deck.size() + ", expected = "+ ( testState.players.get(0).deck.size() - newCards ) );
+		  	System.out.println("|" + state.players.get(0).deck);
+		  	System.out.println(" -----------------------------------------");
+
+		  	assertEquals(state.players.get(0).hand.size(),( testState.players.get(0).hand.size() + newCards ));
+		  	assertEquals(state.players.get(0).deck.size(),( testState.players.get(0).deck.size() - newCards ));
+
+		  	System.out.println("\nTEST SUCCESSFULLY COMPLETED\n");
 	   }
 }

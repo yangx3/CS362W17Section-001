@@ -50,7 +50,7 @@ public class GameState {
 	   drawing starting hands for all players.  Check that 10 cards selected
 	   are in fact (different) kingdom cards, and that numPlayers is valid.*/
 	   
-	   public void initializeGame(){		
+	   public void initializeGame(int k){		
 
 
 			      //initialize supply 
@@ -58,12 +58,12 @@ public class GameState {
 			   //check number of players
 			   if (players.size() > 4 || players.size() < 2)
 			    {
-				   System.err.println("the number of players mus be between 2 and 4 ");
+				   System.err.println("the number of players must be between 2 and 4 ");
 			      return ;
 			    }
 			 //initialize supply for only two players
 				  int selectedKindom=0;
-				   int Kingdom_Cards_Selected=13;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
+				   int Kingdom_Cards_Selected=k;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
 				   								// we should change 3 to the  exact of the number of 
 				   								//kingdom cards. look at the requirements of the assignment-1
 		      while (selectedKindom < Kingdom_Cards_Selected) {

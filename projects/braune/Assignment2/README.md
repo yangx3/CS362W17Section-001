@@ -1,0 +1,6 @@
+#compile with "mvn compile"
+#build with "mvn package"
+#generate Evosuite tests with "mvn evosuite:generate"
+#export Evosuite tests with "cp evosuite-tests/org/cs362/dominion/* src/test/java/org/cs362/dominion/"
+#run tests with "mvn test"
+#get code coverage with "mvn cobertura:cobertura"

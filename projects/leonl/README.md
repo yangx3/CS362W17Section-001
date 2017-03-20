@@ -1,6 +1,8 @@
 CS 362 - WINTER TERM - 2017
 LOUIS LEON
 
+Assignment2 is in the Assignment2 folder along with its Readme file
+
 In order to compile and run the code and test it: 
 1. create a Maven project 
 2. copy the files in the src folder on GitHub into the relevant src/main folder of the Maven project 

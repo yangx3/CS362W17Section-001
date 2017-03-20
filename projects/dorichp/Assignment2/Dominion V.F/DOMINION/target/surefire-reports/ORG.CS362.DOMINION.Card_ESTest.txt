@@ -1,0 +1,37 @@
+-------------------------------------------------------------------------------
+Test set: ORG.CS362.DOMINION.Card_ESTest
+-------------------------------------------------------------------------------
+Tests run: 42, Failures: 2, Errors: 4, Skipped: 0, Time elapsed: 0.468 sec <<< FAILURE! - in ORG.CS362.DOMINION.Card_ESTest
+test19(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.017 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<14>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at ORG.CS362.DOMINION.Card_ESTest.test19(Card_ESTest.java:245)
+
+test11(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.009 sec  <<< FAILURE!
+java.lang.AssertionError: Expecting exception: NullPointerException
+	at org.junit.Assert.fail(Assert.java:88)
+	at ORG.CS362.DOMINION.Card_ESTest.test11(Card_ESTest.java:145)
+
+test29(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.Card.play(Card.java:172)
+	at ORG.CS362.DOMINION.Card_ESTest.test29(Card_ESTest.java:355)
+
+test00(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.002 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.Card.play(Card.java:154)
+	at ORG.CS362.DOMINION.Card_ESTest.test00(Card_ESTest.java:36)
+
+test26(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.002 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.Card.play(Card.java:195)
+	at ORG.CS362.DOMINION.Card_ESTest.test26(Card_ESTest.java:319)
+
+test24(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at ORG.CS362.DOMINION.Card.play(Card.java:211)
+	at ORG.CS362.DOMINION.Card_ESTest.test24(Card_ESTest.java:295)
+

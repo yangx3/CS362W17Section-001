@@ -1,3 +1,5 @@
+
+
 import java.util.*;
 
 
@@ -116,7 +118,7 @@ public class GameState implements Cloneable{
 		        	    player.endTurn();
 		        	    player.initializePlayerTurn();
 		         }
-		         if(turn==10)
+		         if(turn==5)
 		        	 break;
 		      }
 		      return this.getWinners();

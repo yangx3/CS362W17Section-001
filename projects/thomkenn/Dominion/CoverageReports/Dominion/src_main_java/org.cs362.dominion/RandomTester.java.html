@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>RandomTester.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">testplay (Feb 27, 2017 10:31:01 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">RandomTester.java</span></div><h1>RandomTester.java</h1><pre class="source lang-java linenums">import org.cs362.dominion.*;
+import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Test;
+import java.util.Random;
+
+<span class="fc" id="L8">public class RandomTester {</span>
+	@Test
+	public void test() throws Throwable {
+<span class="fc" id="L11">		Randomness.reset(System.currentTimeMillis());</span>
+		GameState state;
+		List&lt;Card&gt; cards;
+<span class="fc" id="L14">		cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L15">		state = new GameState(cards);</span>
+<span class="fc" id="L16">		Player testPlayer = new Player(state, &quot;test-player-1&quot;);</span>
+		
+<span class="fc" id="L18">		int random = (int)  Randomness.random.nextInt(8);</span>
+		
+<span class="pc bpc" id="L20" title="8 of 9 branches missed.">		switch (random) {</span>
+		
+<span class="nc" id="L22">		case 1: testPlayer.hand.add(Card.getCard(cards,Card.CardName.Adventurer));</span>
+<span class="nc" id="L23">				break;</span>
+<span class="nc" id="L24">		case 2: testPlayer.hand.add(Card.getCard(cards,Card.CardName.Ambassador));</span>
+<span class="nc" id="L25">				break;</span>
+<span class="nc" id="L26">		case 3: testPlayer.hand.add(Card.getCard(cards,Card.CardName.Baron));</span>
+<span class="nc" id="L27">			    break;</span>
+<span class="nc" id="L28">		case 4: testPlayer.hand.add(Card.getCard(cards,Card.CardName.Council_Room));</span>
+<span class="nc" id="L29">				break;</span>
+<span class="nc" id="L30">		case 5: testPlayer.hand.add(Card.getCard(cards,Card.CardName.Feast));</span>
+<span class="nc" id="L31">				break;</span>
+<span class="fc" id="L32">		case 6: testPlayer.hand.add(Card.getCard(cards,Card.CardName.Gardens));</span>
+<span class="fc" id="L33">				break;</span>
+<span class="nc" id="L34">		case 7: testPlayer.hand.add(Card.getCard(cards,Card.CardName.Great_Hall));</span>
+<span class="nc" id="L35">				break;</span>
+<span class="nc" id="L36">		case 8: testPlayer.hand.add(Card.getCard(cards,Card.CardName.Mine));</span>
+		default: 
+<span class="nc" id="L38">			System.out.println(random);</span>
+		}
+<span class="fc" id="L40">		state.addPlayer(testPlayer);</span>
+
+<span class="fc" id="L42">		System.out.println(&quot;Test 2 initialized&quot;);</span>
+<span class="fc" id="L43">		assertEquals( state.players.get(0).hand.size(), 1);</span>
+<span class="fc" id="L44">		System.out.println(&quot;Test 2 complete&quot;);</span>
+
+<span class="fc" id="L46">	}</span>
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>testplay (Feb 27, 2017 10:31:01 PM)</div></body></html>

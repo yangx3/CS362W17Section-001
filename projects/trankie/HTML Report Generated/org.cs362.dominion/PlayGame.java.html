@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlayGame.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Dominion</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">PlayGame.java</span></div><h1>PlayGame.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+import java.util.*;
+import java.util.Random;
+import java.util.List;
+
+<span class="fc" id="L6">public class PlayGame {</span>
+
+	public static void main(String[] args, int arg1) {
+<span class="fc" id="L9">		Scanner input = new Scanner(System.in);</span>
+<span class="fc" id="L10">		int turn = 0, players, cardnum, loopCtrl = 0, randomInt;</span>
+<span class="fc" id="L11">		long seed = System.nanoTime();</span>
+<span class="fc" id="L12">		Random rand = new Random();</span>
+		Card temp;
+<span class="fc" id="L14">		System.out.print(&quot;Welcome to Dominion!\nThis will be a 2-player game.&quot;);</span>
+
+<span class="fc" id="L16">		DominionBoard board = new DominionBoard();</span>
+<span class="fc" id="L17">		board.initialize();</span>
+<span class="fc" id="L18">		players = arg1;</span>
+<span class="fc bfc" id="L19" title="All 4 branches covered.">		if(!(players&gt;=2 &amp;&amp; players&lt;=4)){</span>
+<span class="fc" id="L20">			System.out.print(&quot;\nNumber must be between 2-4\n&quot;);</span>
+<span class="nc" id="L21">			System.exit(1);</span>
+		}
+<span class="fc" id="L23">		List&lt;Player&gt; numPlayers = new ArrayList&lt;Player&gt;();</span>
+<span class="fc" id="L24">		Player player = new Player(&quot;PLAYER1&quot;, 1, 1, 0);</span>
+<span class="fc" id="L25">		Player player2 = new Player(&quot;PLAYER2&quot;, 1, 1, 0);</span>
+<span class="fc" id="L26">		Player player3 = new Player(&quot;PLAYER3&quot;, 1, 1, 0);</span>
+<span class="fc" id="L27">		Player player4 = new Player(&quot;PLAYER4&quot;, 1, 1, 0);</span>
+<span class="fc" id="L28">		player.buildDeck();</span>
+<span class="fc" id="L29">		player2.buildDeck();</span>
+<span class="fc" id="L30">		player3.buildDeck();</span>
+<span class="fc" id="L31">		player4.buildDeck();</span>
+
+<span class="fc" id="L33">		numPlayers.add(player);</span>
+<span class="fc" id="L34">		numPlayers.add(player2);</span>
+<span class="fc" id="L35">		numPlayers.add(player3);</span>
+<span class="fc" id="L36">		numPlayers.add(player4);</span>
+		/*
+		for(int i = 0; i &lt; 5; i++) {
+			player.drawCard();
+			player2.drawCard();
+		}
+		*/
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		for (int i = 0; i &lt; players; i++) {</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">			for (int j = 0; j &lt; 5; j++) {</span>
+<span class="fc" id="L45">				numPlayers.get(i).drawCard();</span>
+			}
+		}
+			/*
+			if (player.deck.isEmpty()) {
+				Collections.shuffle(player.discard, new Random(seed));
+				for (Card card : player.discard) {
+					player.deck.add(card);
+				}
+				player.discard.clear();
+			}
+			if (player2.deck.isEmpty()) {
+				Collections.shuffle(player2.discard, new Random(seed));
+				for (Card card : player2.discard) {
+					player2.deck.add(card);
+				}
+				player2.discard.clear();
+			}*/
+		while (true) {
+			//while (turn == 0) {
+<span class="fc" id="L65">			System.out.print(&quot;\n&quot; + numPlayers.get(loopCtrl).player_name + &quot;! It is Your TURN:&quot;);</span>
+<span class="fc" id="L66">			numPlayers.get(loopCtrl).printHand();</span>
+<span class="fc" id="L67">			numPlayers.get(loopCtrl).printInfo();</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">			while (numPlayers.get(loopCtrl).getActions() &gt; 0) {</span>
+<span class="fc" id="L69">				List&lt;Card&gt; actCard = Card.filter(numPlayers.get(loopCtrl).hand, Card.Type.ACTION);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">				if (actCard.size() == 0)</span>
+<span class="fc" id="L71">					break;</span>
+<span class="fc" id="L72">				Card c = (Card) actCard.get(0);</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">				if (c == null)</span>
+<span class="nc" id="L74">					break;</span>
+<span class="fc" id="L75">				numPlayers.get(loopCtrl).activateCard(c, board, numPlayers, players);</span>
+<span class="fc" id="L76">				numPlayers.get(loopCtrl).setActions(-1);</span>
+<span class="fc" id="L77">			}</span>
+<span class="fc" id="L78">			numPlayers.get(loopCtrl).setCoins(numPlayers.get(loopCtrl).checkTreasure());</span>
+<span class="fc" id="L79">			numPlayers.get(loopCtrl).printHand();</span>
+<span class="fc" id="L80">			System.out.print(&quot;\nYou have &quot; + numPlayers.get(loopCtrl).getCoins() + &quot; coins to use!&quot;);</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">			while (numPlayers.get(loopCtrl).getBuys() &gt; 0) {/*</span>
+					if(player.getCoins() &gt;= 8){
+						board.buyingCard(1);
+						temp = board.buyCards.get(0);
+						System.out.println(&quot;\nYou just bought &quot; + temp.getCardName()+ &quot;!&quot;);
+						player.discard.add(temp);
+						player.setCoins((-1)*temp.getCost());
+						player.setBuys(-1);
+					}*/
+<span class="fc" id="L90">				randomInt = rand.nextInt(19);</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">				if (board.buyingCard(randomInt + 1) == 0)</span>
+<span class="fc" id="L92">					continue;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">				if (board.buyCards.get(randomInt).getCost() &gt; numPlayers.get(loopCtrl).getCoins())</span>
+<span class="fc" id="L94">					continue;</span>
+<span class="fc" id="L95">				temp = board.buyCards.get(randomInt);</span>
+<span class="fc" id="L96">				System.out.print(&quot;\nYou just bought &quot; + temp.getCardName() + &quot;!&quot;);</span>
+<span class="fc" id="L97">				numPlayers.get(loopCtrl).discard.add(temp);</span>
+<span class="fc" id="L98">				numPlayers.get(loopCtrl).setCoins((-1) * temp.getCost());</span>
+<span class="fc" id="L99">				numPlayers.get(loopCtrl).setBuys(-1);</span>
+			}
+<span class="fc" id="L101">			System.out.print(&quot;\nYour turn is over, going to new player's turn&quot;);</span>
+<span class="fc" id="L102">			numPlayers.get(loopCtrl).removeHand();</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">			for (int i = 0; i &lt; 5; i++) {</span>
+<span class="fc" id="L104">				numPlayers.get(loopCtrl).drawCard();</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">				if (numPlayers.get(loopCtrl).deck.isEmpty()) {</span>
+<span class="fc" id="L106">					Collections.shuffle(numPlayers.get(loopCtrl).discard, new Random(seed));</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">					for (Card card : numPlayers.get(loopCtrl).discard) {</span>
+<span class="fc" id="L108">						numPlayers.get(loopCtrl).deck.add(card);</span>
+<span class="fc" id="L109">					}</span>
+<span class="fc" id="L110">					numPlayers.get(loopCtrl).discard.clear();</span>
+				}
+			}
+<span class="fc" id="L113">			numPlayers.get(loopCtrl).resetStats();</span>
+<span class="fc" id="L114">			turn = 1;</span>
+			//}
+<span class="fc bfc" id="L116" title="All 4 branches covered.">			if (board.num_Province == 0 || board.checkEnd() == 1) {</span>
+<span class="fc" id="L117">				PlayGame.CheckWin(numPlayers, players);</span>
+<span class="fc" id="L118">				break;</span>
+			}
+<span class="fc bfc" id="L120" title="All 2 branches covered.">			if (loopCtrl &lt; players-1)</span>
+<span class="fc" id="L121">				loopCtrl++;</span>
+			else
+<span class="fc" id="L123">				loopCtrl = 0;</span>
+			/*
+			while(turn == 1) {
+				System.out.print(&quot;\n&quot; + player2.player_name + &quot;! It is Your TURN:&quot;);
+				player2.printHand();
+				player2.printInfo();
+				while (player2.getActions() &gt; 0) {
+					List&lt;Card&gt; actCard = Card.filter(player2.hand, Card.Type.ACTION);
+					if (actCard.size() == 0)
+						break;
+					Card c = (Card) actCard.get(0);
+					if (c == null)
+						break;
+					player2.activateCard(c, board, player2);
+					player2.setActions(-1);
+				}
+				player2.setCoins(player2.checkTreasure());
+				player2.printHand();
+				System.out.print(&quot;\nYou have &quot; + player2.getCoins() + &quot; coins to use!&quot;);
+				while (player2.getBuys() &gt; 0) {
+					if(player2.getCoins() &gt;= 8){
+						board.buyingCard(1);
+						temp = board.buyCards.get(0);
+						System.out.println(&quot;\nYou just bought &quot; + temp.getCardName()+ &quot;!&quot;);
+						player2.discard.add(temp);
+						player2.setCoins((-1)*temp.getCost());
+						player2.setBuys(-1);
+					}
+					randomInt = rand.nextInt(19);
+					if (board.buyingCard(randomInt) == 0)
+						continue;
+					if (board.buyCards.get(randomInt).getCost() &gt; player2.getCoins())
+						continue;
+					temp = board.buyCards.get(randomInt);
+					System.out.print(&quot;\nYou just bought &quot; + temp.getCardName() + &quot;!&quot;);
+					player2.discard.add(temp);
+					player2.setCoins((-1) * temp.getCost());
+					player2.setBuys(-1);
+				}
+				System.out.print(&quot;\nYour turn is over, going to new player's turn&quot;);
+				player2.removeHand();
+				for (int i = 0; i &lt; 5; i++) {
+					player2.drawCard();
+					if (player2.deck.isEmpty()) {
+						Collections.shuffle(player2.discard, new Random(seed));
+						for (Card card : player2.discard) {
+							player2.deck.add(card);
+						}
+						player2.discard.clear();
+					}
+				}
+				player2.resetStats();
+				turn = 0;
+			}
+			if (board.num_Province == 0 || board.checkEnd() == 1) {
+				PlayGame.CheckWin(player, player2);
+				break;
+			}
+			}*/
+				/*
+				System.out.print(&quot;\nWhat would you like to do:\n1. Action\n2. Buy\n3. End Turn\n&quot;);
+				decision = input.nextInt();
+
+				if(decision == 1 &amp;&amp; player.getActions() != 0){
+					while(loopCtrl == 0){
+						System.out.print(&quot;\nWhich action card would you like to use (Enter 0 to end this menu):\n &quot;);
+						cardnum = input.nextInt();
+				//If players does not want to play action card
+						if(cardnum == 0){
+							player.setActions(((-1)*player.getActions()));
+							break;
+						}
+						System.out.print(&quot;You chose card number: &quot; + cardnum);
+						check = player.checkTypeAction(cardnum);
+						if(check == 1){
+					//Make Action happen
+							player.activateCard(cardnum, board, player2.hand, player2.discard);
+							loopCtrl = 1;
+							player.setActions(-1);
+						}
+						else
+							System.out.print(&quot;\nThe card you picked was not an ACTION card!&quot;);
+					}
+					loopCtrl = 0;
+				}
+				else if(decision == 2 &amp;&amp; player.getBuys() != 0){
+				//Check to see if there are any treasure card in hand and how many
+					player.setCoins(player.checkTreasure());
+					while(player.getBuys() != 0){
+						System.out.print(&quot;\nYou have &quot; + player.getCoins() +&quot; coins to use!\nHere is the list of cards:&quot;);
+						board.printBoard();
+						System.out.print(&quot;\nWhat do you want to buy (Enter 0 to end this menu): &quot;);
+						cardnum = input.nextInt();
+							if(cardnum == 0){
+								player.setBuys(((-1)*player.getBuys()));
+								break;
+							}
+						temp = board.buyCards.get(cardnum-1);
+						if(player.getCoins() &lt; temp.getCost()){
+							System.out.print(&quot;\nInsufficent funds!&quot;);
+						}
+						else if(board.buyingCard(cardnum) == 0){
+							System.out.print(&quot;\nThere are no more of those cards left&quot;);
+						}
+						else{
+							System.out.print(&quot;\nYou just bought &quot; + temp.getCardName()+&quot;!&quot;);
+							player.discard.add(temp);
+							player.setCoins(((-1)*temp.getCost()));
+							player.setBuys(-1);
+						}
+					}
+				}
+
+			}//End of Player1 loop
+
+				while (turn == 1) {
+					System.out.print(&quot;\n&quot; + player2.player_name + &quot;! It is Your TURN:&quot;);
+					player2.printHand();
+					player2.printInfo();
+					System.out.print(&quot;\nWhat would you like to do:\n1. Action\n2. Buy\n3. End Turn\n&quot;);
+					decision = input.nextInt();
+					if (decision == 1 &amp;&amp; player2.getActions() != 0) {
+						while (loopCtrl == 0) {
+							System.out.print(&quot;\nWhich action card would you like to use (Enter 0 to end this menu):\n &quot;);
+							cardnum = input.nextInt();
+							//If player2s does not want to play action card
+							if (cardnum == 0) {
+								player2.setActions(((-1) * player2.getActions()));
+								break;
+							}
+							System.out.print(&quot;You chose card number: &quot; + cardnum);
+							check = player2.checkTypeAction(cardnum);
+							if (check == 1) {
+								//Make Action happen
+								player2.activateCard(cardnum, board, player.hand, player.discard);
+								loopCtrl = 1;
+								player2.setActions(-1);
+							} else
+								System.out.print(&quot;\nThe card you picked was not an ACTION card!&quot;);
+						}
+						loopCtrl = 0;
+					} else if (decision == 2 &amp;&amp; player2.getBuys() != 0) {
+						//Check to see if there are any treasure card in hand and how many
+						player2.setCoins(player2.checkTreasure());
+						while (player2.getBuys() != 0) {
+							System.out.print(&quot;\nYou have &quot; + player2.getCoins() + &quot; coins to use!\nHere is the list of cards:&quot;);
+							board.printBoard();
+							System.out.print(&quot;\nWhat do you want to buy (Enter 0 to end this menu): &quot;);
+							cardnum = input.nextInt();
+							if (cardnum == 0) {
+								player2.setBuys(((-1) * player2.getBuys()));
+								break;
+							}
+							temp = board.buyCards.get(cardnum - 1);
+							if (player2.getCoins() &lt; temp.getCost()) {
+								System.out.print(&quot;\nInsufficent funds!&quot;);
+							} else if (board.buyingCard(cardnum) == 0) {
+								System.out.print(&quot;\nThere are no more of those cards left&quot;);
+							} else {
+								System.out.print(&quot;\nYou just bought &quot; + temp.getCardName() + &quot;!&quot;);
+								player2.discard.add(temp);
+								player2.setCoins(((-1) * temp.getCost()));
+								player2.setBuys(-1);
+							}
+						}
+					} else if (decision == 3 || (player2.getActions() + player2.getBuys()) == 0) {
+						System.out.print(&quot;\nYour turn is over, going to new player's turn&quot;);
+						player2.removeHand();
+						for (int i = 0; i &lt; 5; i++) {
+							player2.drawCard();
+							if (player2.deck.isEmpty()) {
+								Collections.shuffle(player2.discard, new Random(seed));
+								for (Card card : player2.discard) {
+									player2.deck.add(card);
+								}
+								player2.discard.clear();
+							}
+						}
+						player2.resetStats();
+						turn = 0;
+					}
+				}//End of player2 loop
+				if (board.num_Province == 0 || board.checkEnd() == 1) {
+					int victory1, victory2, numGarden = 0, numGarden2 = 0, deckSize = player.deck.size(), deckSize2 = player2.deck.size(), gVic;
+					player.cleanUp();
+					player2.cleanUp();
+					System.out.print(&quot;\nThe game is over, checking players amount of Victory Cards!&quot;);
+					victory1 = player.checkVictory();
+					victory2 = player2.checkVictory();
+					for (Card cards : player.deck) {
+						if (cards.getCardName() == Card.CardName.Garden)
+							numGarden++;
+					}
+					gVic = (deckSize / 10) * numGarden;
+					victory1 = victory1 + gVic;
+					for (Card cards : player2.deck) {
+						if (cards.getCardName() == Card.CardName.Garden)
+							numGarden2++;
+					}
+					gVic = (deckSize2 / 10) * numGarden2;
+					victory2 = victory2 + gVic;
+
+					System.out.print(&quot;\n&quot; + player.player_name + &quot; Victory Score: &quot; + victory1 + &quot;\n&quot; + player2.player_name + &quot; Victory Score: &quot; + victory2);
+					if (victory1 &gt; victory2)
+						System.out.print(&quot;\n&quot; + player.player_name + &quot; WINS!&quot;);
+					else if (victory1 &lt; victory2)
+						System.out.print(&quot;\n&quot; + player2.player_name + &quot; WINS!&quot;);
+					else
+						System.out.print(&quot;\nThe game ends in a DRAW&quot;);
+					input.close();
+					System.exit(0);
+				}*/
+		}//End of entire while loop
+<span class="fc" id="L336">	}</span>
+		public static void CheckWin(List&lt;Player&gt; numPlayer, int players){
+<span class="fc" id="L338">			int victory1, victory2, victory3, victory4, numGarden = 0, deckSize = numPlayer.get(0).deck.size(),</span>
+<span class="fc" id="L339">					deckSize2 = numPlayer.get(1).deck.size(), deckSize3 = numPlayer.get(2).deck.size(),</span>
+<span class="fc" id="L340">					deckSize4 = numPlayer.get(3).deck.size(), gVic;</span>
+<span class="fc" id="L341">			System.out.print(&quot;\nThe game is over, checking players amount of Victory Cards!&quot;);</span>
+<span class="fc bfc" id="L342" title="All 2 branches covered.">			for(int i = 0; i &lt; players; i++) {</span>
+<span class="fc" id="L343">				numPlayer.get(i).cleanUp();</span>
+			}
+<span class="fc" id="L345">				victory1 = numPlayer.get(0).checkVictory();</span>
+<span class="fc" id="L346">				victory2 = numPlayer.get(1).checkVictory();</span>
+<span class="fc" id="L347">				victory3 = numPlayer.get(2).checkVictory();</span>
+<span class="fc" id="L348">				victory4 = numPlayer.get(3).checkVictory();</span>
+
+<span class="fc bfc" id="L350" title="All 2 branches covered.">			for (Card cards : numPlayer.get(0).deck) {</span>
+<span class="fc bfc" id="L351" title="All 2 branches covered.">				if (cards.getCardName() == Card.CardName.Garden)</span>
+<span class="fc" id="L352">					numGarden++;</span>
+<span class="fc" id="L353">			}</span>
+<span class="fc" id="L354">			gVic = (deckSize / 10) * numGarden;</span>
+<span class="fc" id="L355">			victory1 = victory1 + gVic;</span>
+
+<span class="fc bfc" id="L357" title="All 2 branches covered.">			for (Card cards : numPlayer.get(1).deck) {</span>
+<span class="fc bfc" id="L358" title="All 2 branches covered.">				if (cards.getCardName() == Card.CardName.Garden)</span>
+<span class="fc" id="L359">					numGarden++;</span>
+<span class="fc" id="L360">			}</span>
+<span class="fc" id="L361">			gVic = (deckSize2 / 10) * numGarden;</span>
+<span class="fc" id="L362">			victory2 = victory2 + gVic;</span>
+
+<span class="fc bfc" id="L364" title="All 2 branches covered.">			for (Card cards : numPlayer.get(2).deck) {</span>
+<span class="fc bfc" id="L365" title="All 2 branches covered.">				if (cards.getCardName() == Card.CardName.Garden)</span>
+<span class="fc" id="L366">					numGarden++;</span>
+<span class="fc" id="L367">			}</span>
+<span class="fc" id="L368">			gVic = (deckSize3 / 10) * numGarden;</span>
+<span class="fc" id="L369">			victory3 = victory3 + gVic;</span>
+
+<span class="fc bfc" id="L371" title="All 2 branches covered.">			for (Card cards : numPlayer.get(3).deck) {</span>
+<span class="pc bpc" id="L372" title="1 of 2 branches missed.">				if (cards.getCardName() == Card.CardName.Garden)</span>
+<span class="nc" id="L373">					numGarden++;</span>
+<span class="fc" id="L374">			}</span>
+<span class="fc" id="L375">			gVic = (deckSize4 / 10) * numGarden;</span>
+<span class="fc" id="L376">			victory4 = victory4 + gVic;</span>
+
+<span class="fc bfc" id="L378" title="All 2 branches covered.">			if(players == 2) {</span>
+<span class="pc bpc" id="L379" title="1 of 2 branches missed.">				if (victory1 &gt; victory2)</span>
+<span class="nc" id="L380">					System.out.print(&quot;\n&quot; + numPlayer.get(0).player_name + &quot; WINS!&quot;);</span>
+<span class="fc bfc" id="L381" title="All 2 branches covered.">				else if (victory1 &lt; victory2)</span>
+<span class="fc" id="L382">					System.out.print(&quot;\n&quot; + numPlayer.get(1).player_name + &quot; WINS!&quot;);</span>
+				else
+<span class="fc" id="L384">					System.out.print(&quot;\nThe game ends in a DRAW&quot;);</span>
+			}
+<span class="fc bfc" id="L386" title="All 2 branches covered.">			else if(players == 3){</span>
+<span class="pc bpc" id="L387" title="1 of 4 branches missed.">				if((victory1 &gt; victory2) &amp;&amp; (victory1 &gt; victory3))</span>
+<span class="nc" id="L388">					System.out.print(&quot;\n&quot; + numPlayer.get(0).player_name + &quot; WINS!&quot;);</span>
+<span class="pc bpc" id="L389" title="1 of 4 branches missed.">				else if((victory2 &gt; victory1) &amp;&amp; (victory2 &gt; victory3))</span>
+<span class="nc" id="L390">					System.out.print(&quot;\n&quot; + numPlayer.get(1).player_name + &quot; WINS!&quot;);</span>
+<span class="pc bpc" id="L391" title="1 of 4 branches missed.">				else if((victory3 &gt; victory1) &amp;&amp; (victory3 &gt; victory2))</span>
+<span class="fc" id="L392">					System.out.print(&quot;\n&quot; + numPlayer.get(2).player_name + &quot; WINS!&quot;);</span>
+				else
+<span class="fc" id="L394">					System.out.print(&quot;\nThe game ends in a DRAW&quot;);</span>
+			}
+<span class="fc bfc" id="L396" title="All 2 branches covered.">			else if(players == 4){</span>
+<span class="pc bpc" id="L397" title="2 of 6 branches missed.">				if(((victory1 &gt; victory2) &amp;&amp; (victory1 &gt; victory3)) &amp;&amp; (victory1 &gt; victory4))</span>
+<span class="fc" id="L398">					System.out.print(&quot;\n&quot; + numPlayer.get(0).player_name + &quot; WINS!&quot;);</span>
+<span class="pc bpc" id="L399" title="4 of 6 branches missed.">				else if(((victory2 &gt; victory1) &amp;&amp; (victory2 &gt; victory3)) &amp;&amp; (victory2 &gt; victory4))</span>
+<span class="nc" id="L400">					System.out.print(&quot;\n&quot; + numPlayer.get(1).player_name + &quot; WINS!&quot;);</span>
+<span class="pc bpc" id="L401" title="3 of 6 branches missed.">				else if(((victory3 &gt; victory2) &amp;&amp; (victory3 &gt; victory1)) &amp;&amp; (victory3 &gt; victory4))</span>
+<span class="fc" id="L402">					System.out.print(&quot;\n&quot; + numPlayer.get(2).player_name + &quot; WINS!&quot;);</span>
+<span class="nc bnc" id="L403" title="All 6 branches missed.">				else if(((victory4 &gt; victory2) &amp;&amp; (victory4 &gt; victory3)) &amp;&amp; (victory4 &gt; victory1))</span>
+<span class="nc" id="L404">					System.out.print(&quot;\n&quot; + numPlayer.get(3).player_name + &quot; WINS!&quot;);</span>
+				else
+<span class="nc" id="L406">					System.out.print(&quot;\nThe game ends in a DRAW&quot;);</span>
+			}
+			else
+<span class="fc" id="L409">				System.out.print(&quot;\n&quot; + numPlayer.get(0).player_name + &quot; WINS!&quot;);</span>
+<span class="fc" id="L410">		}</span>
+		}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

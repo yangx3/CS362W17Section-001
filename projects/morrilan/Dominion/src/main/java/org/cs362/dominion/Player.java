@@ -19,6 +19,7 @@ public class Player extends JPanel
 	private JLabel[] handLabel;
 	private int selectX, selectY, selectWidth, selectHeight;
 	private Random gen;
+	private boolean ai;
 
 	//Sets up Player Cards
 	public Player(Card[] dr)
@@ -29,7 +30,7 @@ public class Player extends JPanel
 		int countEstate = 0;
 		gen = new Random();
 
-		// verifies the startCards
+		//verifies the startCards
 		for (int i = 0; i < dr.length; i++)
 		{
 			if ("Estate" == dr[i].getName())
@@ -40,7 +41,7 @@ public class Player extends JPanel
 			{
 				countCopper++;
 			}
-			//sop("Draw Piles: " + dr[i].getName());
+			sop("Draw Piles: " + dr[i].getName());
 			
 		}
 		sop(" Copper: " + countCopper + "\n Estate: " + countEstate);
@@ -64,28 +65,6 @@ public class Player extends JPanel
 	// ***************
 	// Turn Mechanics!
 	// ***************
-
-	// Rewrite as separate turns.
-	// Probably going to writeinto GameBoard instead.
-	// Will still keep track of number of actionCount and buyCount
-	// public void turn()
-	// {
-	// 	// Player Action Turn
-	// 	while (actionCount > 0)
-	// 	{
-	// 		actionCount--;
-	// 	}
-	// 	// Player Buy Turn
-	// 	while (buyCount > 0)
-	// 	{
-	// 		buyCount--;
-	// 	}
-	// 	// Player Cleanup Phase
-	// 	hand.cleanup();
-	// 	drawCard(5);
-	// 	actionCount = 1;
-	// 	buyCount = 1;
-	// }
 
 	public int getActionCount()
 	{
@@ -135,7 +114,6 @@ public class Player extends JPanel
 	{
 		hand.setCoins(change);
 	}
-
 
 	// ***************************
 	// Card Mechanics and Methods!
@@ -188,9 +166,10 @@ public class Player extends JPanel
 		if (card != null)
 		{
 			discardPile.discard(card);
-			sop("Discarding " + card.getName());
+			//sop("Discarding " + card.getName());
 		}
 	}
+	// Player discard Method
 	public Card discard()
 	{
 		Card tempCard = hand.getSelected(selectCard);
@@ -198,6 +177,18 @@ public class Player extends JPanel
 		{
 			// sends the removed card to the discardPile
 			discardPile.discard(hand.removeSelectedCard(selectCard));
+		}
+		// may be null
+		return tempCard;
+	}
+	// AI discard Method
+	public Card discard(int selected)
+	{
+		Card tempCard = hand.getHandIndex(selected);
+		if (tempCard != null)
+		{
+			// sends the removed card to the discardPile
+			discardPile.discard(hand.removeHandIndex(selected));
 		}
 		// may be null
 		return tempCard;
@@ -260,6 +251,8 @@ public class Player extends JPanel
 		//selectWidth = 
 	}
 	// Holds all the listeners in one place.
+
+
 	public void addListeners()
 	{
 		selectListener = new MouseListener()
@@ -336,6 +329,50 @@ public class Player extends JPanel
 		};
 	}
 
+	//********************
+	// AI System Methods
+	//********************
+	// NOTE: ALL THESE MAKE AI POSSIBLE WITHOUT LISTENERS
+	//playerHand[index]
+	// A card from 0 to 4. Made for testing the hand system.
+	public void selectCard(int sC)
+	{
+		selectCard = sC;
+	}
+	// Gets the card in the specified index, like above but functions for all cards
+	public Card selectHandIndex(int sHC)
+	{
+		return hand.getHandIndex(sHC);
+	}
+	// checks for card existing, if it does then it removes it from the hand and returns it.
+	// Specifically for the ai system.
+	public Card removeHandCard(Card card)
+	{
+		Card tempCard = null;
+		int handIndex = hand.getCardIndex(card);
+		if (handIndex != -1)
+		{
+			tempCard = discard(handIndex);
+		}
+		if (tempCard == null)
+		{
+			// the card doesn't exist in the hand
+			return null;
+		}
+		// it was successful
+		return card;
+	}
+	public Hand getHand()
+	{
+		return hand;
+	}
+	// Checks if card exists, if not then it returns null. 
+	// if it does, it will return the card, 
+	// CAREFUL! Doesn't remove the card from the hand!!!
+	// public Card getHandCard(Card card);
+	// {
+
+	// }
 	// Makes Life Easier
 	public static void sop(String words)
 	{
@@ -345,10 +382,6 @@ public class Player extends JPanel
 	public void paintComponent(Graphics page)
 	{
 		super.paintComponent(page);
-		//page.drawCircle(100, 100);
 		page.fillRect(selectX, selectY-10, 150, 350);
-		//Rectangle r = new Rectangle(xPos,yPos,width,height);
-		//paint();
 	}	
-
 }

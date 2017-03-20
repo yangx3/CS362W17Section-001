@@ -1,21 +1,23 @@
 package com.mycompany.marksprousedominion;
 
+import java.util.ArrayList;
+
 public class turnState {
 
 	private int actions;
 	private int buys;
 	private int treasure;
 	private Player current;
-	private Player opponent;
+	private ArrayList<Player> opponents;
 	//private boardState board;
 	
-	public turnState(Player current, Player opponent, boardState board) 
+	public turnState(Player current, ArrayList<Player> opponents, boardState board) 
 	{
 		actions = 1;
 		buys = 1;
 		treasure = 0;
 		this.current = current;
-		this.opponent = opponent;
+		this.opponents = opponents;
 		//this.board = board;
 	}
 	
@@ -53,8 +55,8 @@ public class turnState {
 		return current;
 	}
 
-	public Player getOpponent() {
-		return opponent;
+	public ArrayList<Player> getOpponents() {
+		return opponents;
 	}
 
 

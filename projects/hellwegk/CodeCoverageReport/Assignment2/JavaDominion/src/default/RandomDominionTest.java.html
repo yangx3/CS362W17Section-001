@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>RandomDominionTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">RegressionTest (Feb 27, 2017 6:54:08 PM)</a> &gt; <a href="../../index.html" class="el_group">JavaDominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">RandomDominionTest.java</span></div><h1>RandomDominionTest.java</h1><pre class="source lang-java linenums">import java.util.ArrayList;
+import java.util.List;
+import org.junit.Test;
+
+<span class="nc" id="L5">public class RandomDominionTest {</span>
+
+	@Test
+	public void DominionRandomTest(){
+		//Play 8 complete games of dominion
+<span class="nc bnc" id="L10" title="All 2 branches missed.">		for (int i = 0; i &lt; 8; i++)</span>
+		{
+<span class="nc" id="L12">			int seed = 10 + i; //Increase the seed by 1 each game</span>
+<span class="nc" id="L13">			Randomness.reset(seed);</span>
+<span class="nc" id="L14">			List&lt;Integer&gt; numPlayers = new ArrayList&lt;Integer&gt;();</span>
+<span class="nc" id="L15">			numPlayers.add(2);</span>
+<span class="nc" id="L16">			numPlayers.add(3);</span>
+<span class="nc" id="L17">			numPlayers.add(4);</span>
+<span class="nc" id="L18">			int numPlayersForGame = Randomness.randomMember(numPlayers); // Chooses 2, 3, or 4 player game</span>
+			
+<span class="nc" id="L20">			DominionBoard game = new DominionBoard(numPlayersForGame, seed); // Sets up a new game</span>
+			
+			int totalCardsBefore;
+			int totalCardsAfter;
+			
+<span class="nc" id="L25">			int turn = 0;</span>
+			List&lt;Integer&gt; actionCardIndices;
+<span class="nc" id="L27">			System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L28">			System.out.println(&quot;STARTING NEW GAME!&quot;);</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">			while(!game.gameOver())</span>
+			{
+<span class="nc" id="L31">				System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L32">				game.players.get(turn).newTurn();</span>
+				
+				//ACTION
+<span class="nc bnc" id="L35" title="All 4 branches missed.">				while(game.players.get(turn).actionInHand() &amp;&amp; game.players.get(turn).actionsLeft())</span>
+				{
+<span class="nc" id="L37">					actionCardIndices = game.players.get(turn).actionCardIndices();</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">					if (actionCardIndices.size() &gt; 0)</span>
+					{
+<span class="nc" id="L40">						int index = Randomness.nextRandomInt(actionCardIndices.size());</span>
+<span class="nc" id="L41">						game.players.get(turn).playCard(actionCardIndices.get(index), game);</span>
+<span class="nc" id="L42">						assertTrue(true, game);</span>
+					}
+				}
+				
+				//BUY
+<span class="nc" id="L47">				totalCardsBefore = game.players.get(turn).getDeck().size() + game.players.get(turn).getDiscard().size() + </span>
+<span class="nc" id="L48">						game.players.get(turn).getCardsPlayed().size() + game.players.get(turn).getHand().size();</span>
+<span class="nc" id="L49">				game.players.get(turn).treasureInHand();</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">				while(game.players.get(turn).currentBuys())</span>
+				{
+<span class="nc bnc" id="L52" title="All 2 branches missed.">					if(game.getHighestValueCards(game.players.get(turn).getCoins()).size() &gt; 0)</span>
+					{
+<span class="nc" id="L54">						game.players.get(turn).buyCard(game.players.get(turn).buyRandomCard(game), game);</span>
+					}
+				}
+<span class="nc" id="L57">				totalCardsAfter = game.players.get(turn).getDeck().size() + game.players.get(turn).getDiscard().size() + </span>
+<span class="nc" id="L58">						game.players.get(turn).getCardsPlayed().size() + game.players.get(turn).getHand().size();</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">				assertTrue(totalCardsAfter &gt;= totalCardsBefore + 1, game); //Checks to make sure at least one card is bought, so overall number of cards should be greater</span>
+				//CLEAN UP
+<span class="nc" id="L61">				game.players.get(turn).discardCardsEndTurn();</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">				assertTrue(game.players.get(turn).getHand().size() == 0, game); //Checks to make sure hand size is 0 after cleanup phase</span>
+
+				
+				//NEXT PLAYER
+<span class="nc" id="L66">				turn++;</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">				if(turn &gt;= game.players.size())</span>
+				{
+<span class="nc" id="L69">					turn = 0;</span>
+				}
+			}
+			
+			//END GAME
+<span class="nc" id="L74">			game.finalScores();</span>
+			
+		}
+<span class="nc" id="L77">	}</span>
+	
+	
+	public void assertTrue(boolean b, DominionBoard board)
+	{
+<span class="nc bnc" id="L82" title="All 2 branches missed.">		if (b)</span>
+		{
+<span class="nc" id="L84">			System.out.println(&quot;TEST SUCCESSFUL!!!&quot;);</span>
+<span class="nc" id="L85">			printGameState(board);</span>
+<span class="nc" id="L86">		}</span>
+		else 
+		{
+<span class="nc" id="L89">			System.out.println(&quot;TEST FAILED...&quot;);</span>
+<span class="nc" id="L90">			printGameState(board);</span>
+			
+		}
+<span class="nc" id="L93">	}</span>
+	
+	public void printGameState(DominionBoard board)
+	{
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		for(Player player : board.getPlayers())</span>
+		{
+<span class="nc" id="L99">			System.out.println(&quot;Player: &quot; + player.getName());</span>
+<span class="nc" id="L100">			System.out.println(&quot;Coins: &quot; + player.getCoins());</span>
+<span class="nc" id="L101">			System.out.println(&quot;Actions: &quot; + player.getActions());</span>
+<span class="nc" id="L102">			System.out.println(&quot;Buys: &quot; + player.getBuys());</span>
+<span class="nc" id="L103">			System.out.println(&quot;Hand size: &quot; + player.getHand().size());</span>
+<span class="nc" id="L104">			System.out.println(&quot;Deck size: &quot; + player.getDeck().size());</span>
+<span class="nc" id="L105">			System.out.println(&quot;Discard pile size: &quot; + player.getDiscard());</span>
+<span class="nc" id="L106">			System.out.println(&quot;Number of cards player: &quot; + player.getCardsPlayed());</span>
+		}
+<span class="nc" id="L108">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>RegressionTest (Feb 27, 2017 6:54:08 PM)</div></body></html>

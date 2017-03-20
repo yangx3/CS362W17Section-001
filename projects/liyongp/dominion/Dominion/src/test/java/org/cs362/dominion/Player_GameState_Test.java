@@ -1,3 +1,5 @@
+package org.cs362.dominion;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -6,6 +8,13 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import main.java.org.cs362.dominion.Card;
+import main.java.org.cs362.dominion.GameState;
+import main.java.org.cs362.dominion.Player;
+import main.java.org.cs362.dominion.Card.CardName;
+
+
 
 public class Player_GameState_Test {
 	private List<Card> cards;
@@ -40,6 +49,9 @@ public class Player_GameState_Test {
 	
 	@Test
 	public void testall() throws Throwable {
+		assertEquals(state.gameBoard.size(), 17);
+		assertTrue(state.players.size() >= 2);
+		assertTrue(state.players.size() <= 4);
 		assertEquals(player1.hand.size(), 5); //IF the top 7 asserts are true, state initialize correctly
 		assertEquals(player1.discard.size(), 0);
 		assertEquals(player1.playedCards.size(), 0);

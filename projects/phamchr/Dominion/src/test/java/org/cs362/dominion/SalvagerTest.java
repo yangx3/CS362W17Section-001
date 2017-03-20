@@ -63,8 +63,8 @@ public class SalvagerTest {
 		      System.out.println("numActions = " + state.players.get(0).numActions + ", expected = "+ ( testState.players.get(0).numActions));
 		      
 		    
-		      assertEquals(state.players.get(0).hand.size(),( testState.players.get(0).hand.size()-1))      ;
-		      assertEquals(state.players.get(0).deck.size(),( testState.players.get(0).deck.size()))      ;
+		      assertEquals(state.players.get(0).hand.size(),( testState.players.get(0).hand.size()-1));
+		      assertEquals(state.players.get(0).deck.size(),( testState.players.get(0).deck.size()));
 	      
 		      assertEquals(state.players.get(0).coins, Card.getCard(cards, Card.CardName.Gold).getCost());
 		      

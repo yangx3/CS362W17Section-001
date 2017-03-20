@@ -21,6 +21,9 @@ randomtest:
 myrandom:
 	mvn -Dtest=RandomTestDominion test
 
+mutations:
+	mvn org.pitest:pitest-maven:mutationCoverage
+
 testall:
 	mvn test
 

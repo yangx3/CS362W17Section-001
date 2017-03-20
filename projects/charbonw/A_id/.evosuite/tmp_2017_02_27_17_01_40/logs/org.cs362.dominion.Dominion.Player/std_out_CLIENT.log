@@ -1,0 +1,31 @@
+* Starting client
+* Connecting to master process on port 19621
+* Analyzing classpath: 
+  - C:\Users\Cole\workspace\Project 3\A_id\target\classes
+  - C:\Users\Cole\.m2\repository\junit\junit\4.12\junit-4.12.jar
+  - C:\Users\Cole\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class org.cs362.dominion.Dominion.Player
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+* Total number of test goals: 
+  - Line 224
+  - Branch 135
+  - Exception 0
+  - MutationFactory 483
+  - Output 52
+  - Method 40
+  - MethodNoException 40
+  - CBranchFitnessFactory 135
+* Using seed 1488243704403
+* Starting evolution
+[MASTER] 17:03:31.209 [pool-2-thread-1] WARN  TimeController - Operation 'update from archive' took too long: 5401ms
+* Search finished after 101s and 38 generations, 22825 statements, best individual has fitness: 785.5312499980796

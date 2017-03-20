@@ -202,7 +202,8 @@ public final class Card implements Comparable<Card>, Cloneable{
 		case Cutpurse:
 			player.coins += 2;
 			for(Player players : state.players){
-				players.discard(getCard(players.hand, CardName.Copper));
+				if(getCard(players.hand, CardName.Copper) != null)
+					players.discard(getCard(players.hand, CardName.Copper));
 			}
 			return;
 			

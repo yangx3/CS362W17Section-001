@@ -59,12 +59,14 @@ public class TestCards {
         player1.playTtreasureCard();
 
         assertEquals(player1.coins, 3);
+
+        System.out.println("\nTEST SUCCESSFULLY COMPLETED\n");
     }
 
     @Test
     public void silver() {
 
-        System.out.print("Playing Siver");
+        System.out.print("Playing Silver");
 
         Card silver = Card.getCard(cards, Card.CardName.Silver);
         player1.hand.clear();
@@ -84,6 +86,8 @@ public class TestCards {
         player1.playTtreasureCard();
 
         assertEquals(player1.coins, 2);
+
+        System.out.println("\nTEST SUCCESSFULLY COMPLETED\n");
     }
 
     @Test
@@ -110,6 +114,7 @@ public class TestCards {
 
         assertEquals(player1.coins, 1);
 
+        System.out.println("\nTEST SUCCESSFULLY COMPLETED\n");
     }
 }
 

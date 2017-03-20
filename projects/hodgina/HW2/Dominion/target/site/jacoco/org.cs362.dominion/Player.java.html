@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Dominion</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+import org.cs362.dominion.Card.Type;
+
+
+public class Player implements Cloneable{
+<span class="fc" id="L13">	List&lt;Card&gt; hand = new ArrayList&lt;Card&gt;();// int hand[MAX_PLAYERS][MAX_HAND];</span>
+<span class="fc" id="L14">	LinkedList&lt;Card&gt; deck = new LinkedList&lt;Card&gt;();// int</span>
+													// deck[MAX_PLAYERS][MAX_DECK];
+<span class="fc" id="L16">	List&lt;Card&gt; discard = new ArrayList&lt;Card&gt;(); // int</span>
+												// discard[MAX_PLAYERS][MAX_DECK];
+<span class="fc" id="L18">	List&lt;Card&gt; playedCards = new ArrayList&lt;Card&gt;();</span>
+
+<span class="fc" id="L20">	private Random rand_gen = new Random();</span>
+
+	String player_username;
+
+	int numActions;
+	int numBuys;
+	int coins;
+
+	final GameState gameState;
+
+
+<span class="fc" id="L31">	public Player(GameState gameState,String player_username) {</span>
+<span class="fc" id="L32">		this.player_username = player_username;</span>
+<span class="fc" id="L33">		this.gameState=gameState;</span>
+<span class="fc" id="L34">	}</span>
+
+
+
+	final Card drawCard() {
+<span class="fc bfc" id="L39" title="All 4 branches covered.">	    if(discard.isEmpty() &amp;&amp; deck.isEmpty()) {</span>
+<span class="fc" id="L40">            return null;</span>
+        }
+<span class="fc bfc" id="L42" title="All 2 branches covered.">            if (deck.isEmpty()) {// Deck is empty</span>
+                // Step 1 Shuffle the discard pile back into a deck
+<span class="fc" id="L44">                System.out.println(&quot;reshuffle the deck of the player &quot;</span>
+                        + player_username + &quot; to draw FIVE cards&quot;);
+<span class="fc bfc" id="L46" title="All 2 branches covered.">                while (discard.size() &gt; 0) {</span>
+<span class="fc" id="L47">                    int ndx = (int) Randomness.nextRandomInt(discard.size());</span>
+                    // Move discard to deck
+<span class="fc" id="L49">                    deck.add(discard.remove(ndx));</span>
+<span class="fc" id="L50">                }</span>
+            }
+
+<span class="fc" id="L53">            Card toDraw = deck.removeFirst();//poll();</span>
+<span class="fc" id="L54">            hand.add(toDraw);// Add card to hand and hand count automatically will</span>
+            // be incremented since we use List
+<span class="fc" id="L56">            System.out.println(&quot;draw &quot; + toDraw);</span>
+<span class="fc" id="L57">            Collections.sort(hand);</span>
+<span class="fc" id="L58">            return toDraw;</span>
+	}
+
+	   final void initializePlayerTurn() {
+<span class="fc" id="L62">		      numActions = 1;</span>
+<span class="fc" id="L63">		      coins = 0;</span>
+<span class="fc" id="L64">		      numBuys = 1;</span>
+		      //Shuffle your starting 10 cards (7 Coppers &amp; 3 Estates) and place them face-down as your Deck. Draw the top
+		      //5 cards as your starting hand
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		      for (int i = 0; i &lt; 5; i++) {</span>
+<span class="fc" id="L68">		    	  drawCard();</span>
+		      }
+<span class="fc" id="L70">		   }</span>
+
+	 //card goes in discard,
+	   final boolean gain(Card card) {
+<span class="fc" id="L74">		      discard.add(card);</span>
+<span class="fc" id="L75">		      System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="fc" id="L76">		      System.out.println(this.player_username + &quot; gains &quot;+card);</span>
+<span class="fc" id="L77">              System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="fc" id="L78">		      return true;</span>
+		   }
+		 //Discard hand
+	   public void discard(Card card) {
+<span class="fc" id="L82">		     hand.remove(card);</span>
+<span class="fc" id="L83">		      discard.add(card);</span>
+<span class="fc" id="L84">		      System.out.println(&quot;Player:  &quot; + player_username + &quot; discards &quot;+card);</span>
+<span class="fc" id="L85">		   }</span>
+	   public void playKingdomCard() {
+<span class="fc" id="L87">           System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="fc" id="L88">           System.out.println(&quot;        Playing Kingdom Cards      &quot;);</span>
+<span class="fc" id="L89">           System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">		      while (numActions &gt; 0) {</span>
+<span class="fc" id="L91">		         List&lt;Card&gt; actionCards = Card.filter(hand, Type.ACTION);</span>
+
+<span class="fc bfc" id="L93" title="All 2 branches covered.">		         if (actionCards.size() == 0)</span>
+<span class="fc" id="L94">		            return;</span>
+
+<span class="fc" id="L96">		         Card c = (Card)actionCards.get(0);</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">		         if (c == null)</span>
+<span class="nc" id="L98">			           return;</span>
+<span class="fc" id="L99">		         System.out.println(player_username + &quot; is playing: &quot; + c.toString());</span>
+
+<span class="fc" id="L101">			      playedCards.add(c);</span>
+<span class="fc" id="L102">			      hand.remove(c);</span>
+<span class="fc" id="L103">			      numActions -= 1;</span>
+
+<span class="fc" id="L105">			      c.play(this, gameState);</span>
+<span class="fc" id="L106">		      }</span>
+<span class="fc" id="L107">		   }</span>
+	   final int scoreFor() {
+<span class="fc" id="L109">           int numGardens = 0;</span>
+<span class="fc" id="L110">           int numCards = 0;</span>
+<span class="fc" id="L111">           int score = 0;</span>
+           //score from hand
+<span class="fc bfc" id="L113" title="All 2 branches covered.">           for (Card c : hand)</span>
+<span class="fc" id="L114">               score += c.score();</span>
+<span class="fc" id="L115">           numCards++;</span>
+           //score from discard
+<span class="fc bfc" id="L117" title="All 2 branches covered.">           for (Card c : discard){</span>
+<span class="pc bpc" id="L118" title="1 of 2 branches missed.">               if(Card.getCard(discard, Card.CardName.Gardends) != null) {</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">                   if(c == Card.getCard(discard ,Card.CardName.Gardends)) numGardens++;</span>
+               }
+<span class="fc" id="L121">               score += c.score();</span>
+<span class="fc" id="L122">               numCards++;</span>
+<span class="fc" id="L123">           }</span>
+           //score from deck
+<span class="fc bfc" id="L125" title="All 2 branches covered.">           for (Card c : deck){</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">               if(Card.getCard(deck, Card.CardName.Gardends) != null){</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">                   if(c == Card.getCard(discard ,Card.CardName.Gardends)) numGardens++;</span>
+               }
+<span class="fc" id="L129">               score += c.score();</span>
+<span class="fc" id="L130">               numCards++;</span>
+<span class="fc" id="L131">           }</span>
+           //System.out.println(&quot;numGardens: &quot; + numGardens);
+<span class="fc bfc" id="L133" title="All 2 branches covered.">           if(numGardens &gt; 0){</span>
+<span class="fc" id="L134">               score += numGardens*(numCards/10);</span>
+           }
+
+<span class="fc" id="L137">           return score;</span>
+       }
+
+	   public void playTreasureCard() {
+<span class="fc" id="L141">           System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="fc" id="L142">           System.out.println(&quot;        Playing TreasureCards      &quot;);</span>
+<span class="fc" id="L143">           System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="fc" id="L144">		  List&lt;Card&gt; T_Cards = Card.filter(hand, Card.Type.TREASURE);</span>
+<span class="fc bfc" id="L145" title="All 2 branches covered.">		  if(T_Cards.size() == 0) {</span>
+<span class="fc" id="L146">              return;</span>
+          }
+<span class="fc" id="L148">		  System.out.println(&quot;Treasure Cards Played: &quot;);</span>
+
+<span class="fc bfc" id="L150" title="All 2 branches covered.">		  for(Card current_card : T_Cards){ //goes through and adds up all the treasure and puts them in the played cards pile</span>
+<span class="fc" id="L151">		  	coins += current_card.getTreasureValue();</span>
+<span class="fc" id="L152">		  	System.out.println(current_card.toString());</span>
+<span class="fc" id="L153">		  	playedCards.add(current_card);</span>
+<span class="fc" id="L154">		  	hand.remove(current_card);</span>
+		  	//System.out.println(&quot;Current Number of Coins is: &quot; + coins);
+<span class="fc" id="L156">		  }</span>
+<span class="fc" id="L157">		  System.out.println(player_username + &quot; has &quot; + coins + &quot; to use in Buy Round.&quot;);</span>
+<span class="fc" id="L158">	   }</span>
+	   public void buyCard(GameState current_state) {
+
+
+
+<span class="fc" id="L163">           System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="fc" id="L164">           System.out.println(&quot;            Buying Cards           &quot;);</span>
+<span class="fc" id="L165">           System.out.println(&quot;-----------------------------------&quot;);</span>
+
+
+<span class="fc bfc" id="L168" title="All 4 branches covered.">        while(coins &gt; 0 &amp;&amp; numBuys &gt; 0){</span>
+
+<span class="fc" id="L170">            List&lt;Card&gt; buyable = new ArrayList&lt;Card&gt;(); //list of cards that the player will be able to choose from to buy cards</span>
+
+<span class="fc bfc" id="L172" title="All 2 branches covered.">            for(Card cards : current_state.cards){ //find all cards that you can buy that are not copper, curse or provinces and puts them into a buyable list</span>
+<span class="fc bfc" id="L173" title="All 6 branches covered.">            	if((cards.getCardName() != Card.CardName.Curse) &amp;&amp; (cards.getCardName() != Card.CardName.Province) &amp;&amp; (cards.getCardName() != Card.CardName.Copper)) {</span>
+<span class="pc bpc" id="L174" title="1 of 6 branches missed.">					if (cards.getCost() &lt;= coins &amp;&amp; (current_state.gameBoard.containsKey(Card.getCard(current_state.cards, cards.getCardName())) &amp;&amp; current_state.gameBoard.get(Card.getCard(current_state.cards, cards.getCardName())) &gt; 0)) {</span>
+<span class="fc" id="L175">						buyable.add(cards);</span>
+					}
+				}
+<span class="fc" id="L178">			}</span>
+
+<span class="pc bpc" id="L180" title="1 of 4 branches missed.">			while(numBuys &gt; 0 &amp;&amp; coins &gt; 0 ){ //while coins is greater than 0 and number buys is greater than 0 keep buying cards</span>
+<span class="pc bpc" id="L181" title="2 of 4 branches missed.">            	if(coins == 0 || coins == 1){ //if you have no coins or you only have 1 coin just buy a copper</span>
+
+<span class="nc" id="L183">					gain(Card.getCard(current_state.cards, Card.CardName.Copper));</span>
+<span class="nc" id="L184">					current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Copper), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Copper)) - 1);</span>
+<span class="nc" id="L185">					coins = coins - 8;</span>
+<span class="pc bpc" id="L186" title="1 of 2 branches missed.">				}else if(coins == 2) { //if you have 2 coins buy either an embargo or an estate</span>
+            		//I got help with this section from David Baugh
+<span class="nc" id="L188">					int rand = rand_gen.nextInt(2);</span>
+<span class="nc bnc" id="L189" title="All 6 branches missed.">					if (rand == 0 &amp;&amp; current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Embargo)) &amp;&amp; current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Embargo)) &gt; 0) {</span>
+<span class="nc" id="L190">						gain(Card.getCard(current_state.cards, Card.CardName.Embargo));</span>
+<span class="nc" id="L191">						current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Embargo), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Embargo)) - 1);</span>
+<span class="nc" id="L192">						coins = coins - 2;</span>
+<span class="nc bnc" id="L193" title="All 6 branches missed.">					} else if (rand == 1 &amp;&amp; current_state.gameBoard.containsKey(Card.getCard(current_state.cards, Card.CardName.Estate)) &amp;&amp; current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Estate)) &gt; 0) {</span>
+<span class="nc" id="L194">						gain(Card.getCard(current_state.cards, Card.CardName.Estate));</span>
+<span class="nc" id="L195">						current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Estate), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Estate)) - 1);</span>
+<span class="nc" id="L196">						coins = coins - 2;</span>
+					}
+
+<span class="pc bfc" id="L199" title="All 2 branches covered.">				}else if(coins &gt;= 8){ //if you have more thatn 8 coins buy a province</span>
+<span class="fc" id="L200">					gain(Card.getCard(current_state.cards, Card.CardName.Province));</span>
+<span class="nc" id="L201">					current_state.gameBoard.put(Card.getCard(current_state.cards, Card.CardName.Province), current_state.gameBoard.get(Card.getCard(current_state.cards, Card.CardName.Province)) - 1);</span>
+<span class="nc" id="L202">					coins = coins - 8;</span>
+				}else { //else find a card to buy and buy it
+<span class="fc" id="L204">					int rand = rand_gen.nextInt(coins);</span>
+<span class="fc" id="L205">						gain(buyable.get(rand));</span>
+<span class="fc" id="L206">						current_state.gameBoard.put(Card.getCard(current_state.cards, buyable.get(rand).getCardName()), current_state.gameBoard.get(Card.getCard(current_state.cards, buyable.get(rand).getCardName())));</span>
+<span class="fc" id="L207">						coins = coins - buyable.get(rand).getCost();</span>
+				}
+<span class="fc" id="L209">				numBuys--; //subtract from number of buys</span>
+			}
+
+<span class="fc" id="L212">			}</span>
+
+
+
+<span class="fc" id="L216">        }</span>
+	   final void endTurn() {
+<span class="fc" id="L218">           System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="fc" id="L219">           System.out.println(&quot;              End Turn             &quot;);</span>
+<span class="fc" id="L220">           System.out.println(&quot;-----------------------------------&quot;);</span>
+
+
+           //reset all coins, actions and buys back to the start values
+<span class="fc" id="L224">           coins = 0;</span>
+<span class="fc" id="L225">            numActions = 1;</span>
+<span class="fc" id="L226">            numBuys = 1;</span>
+            //discards all played cards
+<span class="fc bfc" id="L228" title="All 2 branches covered.">            for(Card current_card : playedCards){</span>
+<span class="fc" id="L229">                discard.add(current_card);</span>
+<span class="fc" id="L230">            }</span>
+            //discards everything in the hand
+<span class="fc bfc" id="L232" title="All 2 branches covered.">           for(Card current_card : hand){</span>
+<span class="fc" id="L233">               discard.add(current_card);</span>
+<span class="fc" id="L234">           }</span>
+<span class="fc" id="L235">           hand.clear(); //clears the hand list</span>
+<span class="fc" id="L236">           playedCards.clear(); //clears the played cards list</span>
+<span class="fc" id="L237">	   }</span>
+
+
+
+
+	   public void printStateGame(){
+<span class="fc" id="L243">		   System.out.println(&quot; --- &quot; + this.player_username + &quot; --- &quot;);</span>
+<span class="fc" id="L244">		   System.out.println(&quot; --- --------------------------- --- &quot;);</span>
+<span class="fc" id="L245">     		System.out.println(this.gameState.toString());</span>
+<span class="fc" id="L246">     		System.out.println(&quot; --- --------------------------- --- &quot;);</span>
+<span class="fc" id="L247">	   }</span>
+	   @Override
+		public String toString() {
+<span class="fc" id="L250">		     StringBuilder sb = new StringBuilder();</span>
+
+<span class="fc" id="L252">       	 sb.append(&quot; --- &quot; + this.player_username + &quot; --- &quot;);</span>
+<span class="fc" id="L253">       	 sb.append(&quot; --- --------------------------- --- &quot;);</span>
+
+<span class="fc" id="L255">       	 sb.append(&quot;Hand: &quot; + this.hand);</span>
+<span class="fc" id="L256">       	 sb.append(&quot;Discard: &quot; + this.discard);</span>
+<span class="fc" id="L257">       	 sb.append(&quot;Deck: &quot; + this.deck);</span>
+<span class="fc" id="L258">       	 sb.append(&quot;Played Cards: &quot; + this.playedCards);</span>
+<span class="fc" id="L259">       	 sb.append(&quot;numActions: &quot; + this.numActions);</span>
+<span class="fc" id="L260">       	 sb.append(&quot;coinss: &quot; + this.coins);</span>
+<span class="fc" id="L261">       	 sb.append(&quot;numBuys: &quot; + this.numBuys);</span>
+<span class="fc" id="L262">       	 sb.append(&quot;\n&quot;);</span>
+
+<span class="fc" id="L264">		     return sb.toString();</span>
+
+		}
+
+	    protected Player clone() throws CloneNotSupportedException {
+<span class="fc" id="L269">	    	Player clonePlayer=(Player) super.clone();</span>
+<span class="fc" id="L270">	    	clonePlayer.hand = new ArrayList&lt;Card&gt;(hand);// int hand[MAX_PLAYERS][MAX_HAND];</span>
+<span class="fc" id="L271">			clonePlayer.deck = new LinkedList&lt;Card&gt;(deck);// int</span>
+															// deck[MAX_PLAYERS][MAX_DECK];
+<span class="fc" id="L273">			clonePlayer.discard = new ArrayList&lt;Card&gt;(discard); // int</span>
+														// discard[MAX_PLAYERS][MAX_DECK];
+<span class="fc" id="L275">			clonePlayer.playedCards = new ArrayList&lt;Card&gt;(playedCards);</span>
+<span class="fc" id="L276">			return clonePlayer;</span>
+	    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

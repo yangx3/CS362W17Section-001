@@ -1,1 +1,8 @@
+dominion/Card.class
+dominion/Player.class
+dominion/Card$Type.class
+dominion/Card$CardName.class
+dominion/Randomness.class
+dominion/GameState.class
 dominion/Card$1.class
+dominion/PlayDominion.class

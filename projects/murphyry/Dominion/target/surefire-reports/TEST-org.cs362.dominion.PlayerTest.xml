@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="org.cs362.dominion.PlayerTest" time="0.022" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="org.cs362.dominion.PlayerTest" time="0.115" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin"/>
@@ -65,13 +65,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.cs362.dominion.PlayerTest" name="GainTest" time="0.004"/>
-  <testcase classname="org.cs362.dominion.PlayerTest" name="initializePlayerTurn" time="0.002"/>
-  <testcase classname="org.cs362.dominion.PlayerTest" name="drawCard" time="0.002"/>
+  <testcase classname="org.cs362.dominion.PlayerTest" name="GainTest" time="0.002"/>
+  <testcase classname="org.cs362.dominion.PlayerTest" name="initializePlayerTurn" time="0.004"/>
+  <testcase classname="org.cs362.dominion.PlayerTest" name="drawCard" time="0.042"/>
   <testcase classname="org.cs362.dominion.PlayerTest" name="playKingdomCardTest" time="0.001"/>
-  <testcase classname="org.cs362.dominion.PlayerTest" name="discardTest" time="0.002"/>
-  <testcase classname="org.cs362.dominion.PlayerTest" name="playTreasureCardTest" time="0.006"/>
-  <testcase classname="org.cs362.dominion.PlayerTest" name="EndTurnTest" time="0.002"/>
-  <testcase classname="org.cs362.dominion.PlayerTest" name="BuyCardTest" time="0.001"/>
-  <testcase classname="org.cs362.dominion.PlayerTest" name="scoreForTest" time="0.002"/>
+  <testcase classname="org.cs362.dominion.PlayerTest" name="discardTest" time="0.019"/>
+  <testcase classname="org.cs362.dominion.PlayerTest" name="playTreasureCardTest" time="0.024"/>
+  <testcase classname="org.cs362.dominion.PlayerTest" name="EndTurnTest" time="0.013"/>
+  <testcase classname="org.cs362.dominion.PlayerTest" name="BuyCardTest" time="0.009"/>
+  <testcase classname="org.cs362.dominion.PlayerTest" name="scoreForTest" time="0.001"/>
 </testsuite>

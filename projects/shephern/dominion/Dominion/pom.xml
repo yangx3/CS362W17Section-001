@@ -14,22 +14,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>EvoSuite</id>
-			<name>EvoSuite Repository</name>
-			<url>http://www.evosuite.org/m2</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>EvoSuite</id>
-			<name>EvoSuite Repository</name>
-			<url>http://www.evosuite.org/m2</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<dependencies>
 		<dependency>
     		<groupId>org.slf4j</groupId>
@@ -43,14 +27,39 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.evosuite</groupId>
-			<artifactId>evosuite-standalone-runtime</artifactId>
-			<version>1.0.3</version>
-			<scope>test</scope>
+  			<groupId>org.evosuite</groupId>
+  			<artifactId>evosuite-standalone-runtime</artifactId>
+  			<version>1.0.3</version>
+  			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<repositories>
+   		<repository>
+    		<id>EvoSuite</id>
+     		<name>EvoSuite Repository</name>
+     		<url>http://www.evosuite.org/m2</url>
+   		</repository>
+	</repositories>
+	
+	<pluginRepositories>
+  		<pluginRepository>
+    		<id>EvoSuite</id>
+    		<name>EvoSuite Repository</name>
+    		<url>http://www.evosuite.org/m2</url>
+  		</pluginRepository>
+	</pluginRepositories>
+	
 	<build>
 		<plugins>
+			<plugin>
+      			<groupId>org.evosuite.plugins</groupId>
+			    <artifactId>evosuite-maven-plugin</artifactId>
+      			<version>1.0.3</version>
+      			<executions><execution>
+         			<goals> <goal> prepare </goal> </goals>
+         			<phase> process-test-classes </phase>
+      			</execution></executions>
+  			</plugin>
 			<plugin>
         		<artifactId>maven-assembly-plugin</artifactId>
         		<executions>
@@ -94,45 +103,35 @@
           			</execution>
         		</executions>
     		</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
-<!-- 				<version>3.0.2</version> -->
-<!-- 				<configuration> -->
-<!-- 					<archive> -->
-<!-- 						<manifest> -->
-<!-- 							<addClasspath>true</addClasspath> -->
-<!-- 							<classpathPrefix>lib/</classpathPrefix> -->
-<!-- 							<mainClass>dominion.PlayDominion</mainClass> -->
-<!-- 						</manifest> -->
-<!-- 					</archive> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
-			<plugin>
-				<groupId>org.evosuite.plugins</groupId>
-				<artifactId>evosuite-maven-plugin</artifactId>
-				<version>1.0.3</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal> prepare </goal>
-						</goals>
-						<phase> process-test-classes </phase>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
    				<groupId>org.apache.maven.plugins</groupId>
    				<artifactId>maven-surefire-plugin</artifactId>
    				<version>2.17</version>
    				<configuration>
-     				<properties>
+   					<properties>
        					<property>
           					<name>listener</name>
           					<value>org.evosuite.runtime.InitializingListener</value>
-      					</property>
+			      		</property>
      				</properties>
+       				<reuseForks>true</reuseForks>
+					<forkCount>1</forkCount>
+					<runOrder>random</runOrder>
   				</configuration>
+			</plugin>
+			<plugin>
+    			<groupId>org.pitest</groupId>
+    			<artifactId>pitest-maven</artifactId>
+    			<version>1.1.11</version>
+     			<configuration>
+     				<verbose>true</verbose>
+<!--         			<targetClasses> -->
+<!--             			<param>org.cs362.dominion*</param> -->
+<!--         			</targetClasses> -->
+<!--         			<targetTests> -->
+<!--             			<param>org.cs362.dominion.target.test-classes.dominion</param> -->
+<!--         			</targetTests> -->
+     			</configuration>
 			</plugin>
 		</plugins>
 	</build>

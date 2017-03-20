@@ -1,0 +1,1923 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Card_ESTest" time="0.312" tests="25" errors="25" skipped="0" failures="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin"/>
+    <property name="java.vm.version" value="25.121-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion"/>
+    <property name="java.runtime.version" value="1.8.0_121-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Aaron\AppData\Local\Temp\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="net.sourceforge.cobertura.datafile" value="C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion\target\cobertura\cobertura.ser"/>
+    <property name="classworlds.conf" value="C:\Program Files\Apache Software Foundation\apache-maven-3.3.9\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_121\bin;C:\Program Files\Apache Software Foundation\apache-maven-3.3.9\bin;;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\Aaron\AppData\Local\Microsoft\WindowsApps;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Aaron"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="Aaron"/>
+    <property name="java.class.path" value="C:\Program Files\Apache Software Foundation\apache-maven-3.3.9\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_121\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher cobertura:cobertura"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_121"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_121\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp437"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files\Apache Software Foundation\apache-maven-3.3.9"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="project.build.outputDirectory" value="C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion\target\generated-classes\cobertura"/>
+    <property name="sun.stdout.encoding" value="cp437"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase name="test18" classname="Card_ESTest" time="0.073">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Card_ESTest.test18(Card_ESTest.java:3166)
+</error>
+    <system-out><![CDATA[Executing org.evosuite.runtime.InitializingListener
+[INFO] dynamically loading javaagent
+[INFO] Using JavaAgent in C:\Users\Aaron\.m2\repository\org\evosuite\evosuite-standalone-runtime\1.0.3\evosuite-standalone-runtime-1.0.3.jar
+[INFO] Tools.jar already on system classloader
+[INFO] Classpath: C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion\target\test-classes;C:\Users\Aaron\Documents\School\Winter2017\SE2\dominion\Dominion\target\generated-classes\cobertura;C:\Users\Aaron\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\Aaron\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Aaron\.m2\repository\org\evosuite\evosuite-standalone-runtime\1.0.3\evosuite-standalone-runtime-1.0.3.jar;C:\Users\Aaron\.m2\repository\net\sourceforge\cobertura\cobertura\2.1.1\cobertura-2.1.1.jar;C:\Users\Aaron\.m2\repository\org\ow2\asm\asm\5.0.1\asm-5.0.1.jar;C:\Users\Aaron\.m2\repository\org\ow2\asm\asm-tree\5.0.1\asm-tree-5.0.1.jar;C:\Users\Aaron\.m2\repository\org\ow2\asm\asm-commons\5.0.1\asm-commons-5.0.1.jar;C:\Users\Aaron\.m2\repository\org\ow2\asm\asm-util\5.0.1\asm-util-5.0.1.jar;C:\Users\Aaron\.m2\repository\org\ow2\asm\asm-analysis\5.0.1\asm-analysis-5.0.1.jar;C:\Users\Aaron\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar;C:\Users\Aaron\.m2\repository\jaxen\jaxen\1.1.4\jaxen-1.1.4.jar;C:\Users\Aaron\.m2\repository\org\apache\ant\ant\1.8.3\ant-1.8.3.jar;C:\Users\Aaron\.m2\repository\org\apache\ant\ant-launcher\1.8.3\ant-launcher-1.8.3.jar;C:\Users\Aaron\.m2\repository\org\apache\ant\ant-junit\1.8.3\ant-junit-1.8.3.jar;C:\Users\Aaron\.m2\repository\org\mortbay\jetty\servlet-api-2.5\6.1.14\servlet-api-2.5-6.1.14.jar;C:\Users\Aaron\.m2\repository\org\mortbay\jetty\jetty\6.1.14\jetty-6.1.14.jar;C:\Users\Aaron\.m2\repository\org\mortbay\jetty\jetty-util\6.1.14\jetty-util-6.1.14.jar;C:\Program Files\Java\jdk1.8.0_121\jre\..\lib\tools.jar;C:\Users\Aaron\.m2\repository\org\slf4j\slf4j-api\1.7.5\slf4j-api-1.7.5.jar;C:\Users\Aaron\.m2\repository\ch\qos\logback\logback-classic\1.0.13\logback-classic-1.0.13.jar;C:\Users\Aaron\.m2\repository\ch\qos\logback\logback-core\1.0.13\logback-core-1.0.13.jar;C:\Users\Aaron\.m2\repository\org\apache\commons\commons-lang3\3.3.2\commons-lang3-3.3.2.jar;C:\Users\Aaron\.m2\repository\org\codehaus\mojo\findbugs-maven-plugin\3.0.4\findbugs-maven-plugin-3.0.4.jar;C:\Users\Aaron\.m2\repository\com\google\code\findbugs\findbugs\3.0.1\findbugs-3.0.1.jar;C:\Users\Aaron\.m2\repository\net\jcip\jcip-annotations\1.0\jcip-annotations-1.0.jar;C:\Users\Aaron\.m2\repository\com\google\code\findbugs\jsr305\2.0.1\jsr305-2.0.1.jar;C:\Users\Aaron\.m2\repository\com\google\code\findbugs\bcel-findbugs\6.0\bcel-findbugs-6.0.jar;C:\Users\Aaron\.m2\repository\com\google\code\findbugs\jFormatString\2.0.1\jFormatString-2.0.1.jar;C:\Users\Aaron\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\Users\Aaron\.m2\repository\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar;C:\Users\Aaron\.m2\repository\org\ow2\asm\asm-debug-all\5.0.2\asm-debug-all-5.0.2.jar;C:\Users\Aaron\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\Aaron\.m2\repository\com\apple\AppleJavaExtensions\1.4\AppleJavaExtensions-1.4.jar;C:\Users\Aaron\.m2\repository\org\codehaus\groovy\groovy\2.4.7\groovy-2.4.7.jar;C:\Users\Aaron\.m2\repository\org\codehaus\groovy\groovy-ant\2.4.7\groovy-ant-2.4.7.jar;C:\Users\Aaron\.m2\repository\org\apache\ant\ant-antlr\1.9.4\ant-antlr-1.9.4.jar;C:\Users\Aaron\.m2\repository\org\codehaus\groovy\groovy-groovydoc\2.4.7\groovy-groovydoc-2.4.7.jar;C:\Users\Aaron\.m2\repository\org\codehaus\groovy\groovy-templates\2.4.7\groovy-templates-2.4.7.jar;C:\Users\Aaron\.m2\repository\org\codehaus\groovy\groovy-xml\2.4.7\groovy-xml-2.4.7.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\reporting\maven-reporting-impl\2.1\maven-reporting-impl-2.1.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-project\2.0.10\maven-project-2.0.10.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-settings\2.0.10\maven-settings-2.0.10.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-profile\2.0.10\maven-profile-2.0.10.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-plugin-registry\2.0.10\maven-plugin-registry-2.0.10.jar;C:\Users\Aaron\.m2\repository\org\codehaus\plexus\plexus-interpolation\1.1\plexus-interpolation-1.1.jar;C:\Users\Aaron\.m2\repository\commons-validator\commons-validator\1.2.0\commons-validator-1.2.0.jar;C:\Users\Aaron\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar;C:\Users\Aaron\.m2\repository\commons-digester\commons-digester\1.6\commons-digester-1.6.jar;C:\Users\Aaron\.m2\repository\commons-logging\commons-logging\1.0.4\commons-logging-1.0.4.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\reporting\maven-reporting-api\3.0\maven-reporting-api-3.0.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-plugin-api\2.0\maven-plugin-api-2.0.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-plugin-descriptor\2.2.1\maven-plugin-descriptor-2.2.1.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-artifact\2.2.1\maven-artifact-2.2.1.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\doxia\doxia-core\1.4\doxia-core-1.4.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\doxia\doxia-logging-api\1.4\doxia-logging-api-1.4.jar;C:\Users\Aaron\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar;C:\Users\Aaron\.m2\repository\xerces\xercesImpl\2.9.1\xercesImpl-2.9.1.jar;C:\Users\Aaron\.m2\repository\org\apache\httpcomponents\httpclient\4.0.2\httpclient-4.0.2.jar;C:\Users\Aaron\.m2\repository\commons-codec\commons-codec\1.3\commons-codec-1.3.jar;C:\Users\Aaron\.m2\repository\org\apache\httpcomponents\httpcore\4.0.1\httpcore-4.0.1.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\doxia\doxia-sink-api\1.4\doxia-sink-api-1.4.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\doxia\doxia-decoration-model\1.4\doxia-decoration-model-1.4.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\doxia\doxia-site-renderer\1.4\doxia-site-renderer-1.4.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\doxia\doxia-module-xhtml\1.4\doxia-module-xhtml-1.4.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\doxia\doxia-module-fml\1.4\doxia-module-fml-1.4.jar;C:\Users\Aaron\.m2\repository\org\codehaus\plexus\plexus-i18n\1.0-beta-7\plexus-i18n-1.0-beta-7.jar;C:\Users\Aaron\.m2\repository\org\codehaus\plexus\plexus-velocity\1.1.7\plexus-velocity-1.1.7.jar;C:\Users\Aaron\.m2\repository\org\apache\velocity\velocity\1.5\velocity-1.5.jar;C:\Users\Aaron\.m2\repository\org\apache\velocity\velocity-tools\2.0\velocity-tools-2.0.jar;C:\Users\Aaron\.m2\repository\commons-chain\commons-chain\1.1\commons-chain-1.1.jar;C:\Users\Aaron\.m2\repository\sslext\sslext\1.2-0\sslext-1.2-0.jar;C:\Users\Aaron\.m2\repository\org\apache\struts\struts-core\1.3.8\struts-core-1.3.8.jar;C:\Users\Aaron\.m2\repository\antlr\antlr\2.7.2\antlr-2.7.2.jar;C:\Users\Aaron\.m2\repository\org\apache\struts\struts-taglib\1.3.8\struts-taglib-1.3.8.jar;C:\Users\Aaron\.m2\repository\org\apache\struts\struts-tiles\1.3.8\struts-tiles-1.3.8.jar;C:\Users\Aaron\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\shared\maven-doxia-tools\1.2.1\maven-doxia-tools-1.2.1.jar;C:\Users\Aaron\.m2\repository\commons-io\commons-io\1.4\commons-io-1.4.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-artifact-manager\2.0.6\maven-artifact-manager-2.0.6.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-repository-metadata\2.0.6\maven-repository-metadata-2.0.6.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\wagon\wagon-provider-api\1.0-beta-2\wagon-provider-api-1.0-beta-2.jar;C:\Users\Aaron\.m2\repository\org\apache\maven\maven-model\2.0.6\maven-model-2.0.6.jar;C:\Users\Aaron\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-9\plexus-container-default-1.0-alpha-9.jar;C:\Users\Aaron\.m2\repository\classworlds\classworlds\1.1-alpha-2\classworlds-1.1-alpha-2.jar;C:\Users\Aaron\.m2\repository\org\codehaus\plexus\plexus-resources\1.0-alpha-7\plexus-resources-1.0-alpha-7.jar;C:\Users\Aaron\.m2\repository\org\codehaus\plexus\plexus-utils\1.5.6\plexus-utils-1.5.6.jar;C:\Users\Aaron\.m2\repository\org\sonatype\plexus\plexus-build-api\0.0.7\plexus-build-api-0.0.7.jar;
+[INFO] Going to attach agent to process 12060
+[INFO] Executing agentmain of JavaAgent
+[DEBUG] Going to instrument: Player
+[INFO] Adding mock interface to class Player
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFile for java.io.File
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileInputStream for java.io.FileInputStream
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileOutputStream for java.io.FileOutputStream
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockRandomAccessFile for java.io.RandomAccessFile
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileReader for java.io.FileReader
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileWriter for java.io.FileWriter
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockPrintStream for java.io.PrintStream
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockPrintWriter for java.io.PrintWriter
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.logging.MockFileHandler for java.util.logging.FileHandler
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.MockJFileChooser for javax.swing.JFileChooser
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.filechooser.MockFileSystemView for javax.swing.filechooser.FileSystemView
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.logging.MockLogRecord for java.util.logging.LogRecord
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.MockDefaultListSelectionModel for javax.swing.DefaultListSelectionModel
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockDate for java.util.Date
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockRandom for java.util.Random
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockGregorianCalendar for java.util.GregorianCalendar
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockCalendar for java.util.Calendar
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method clone
+[DEBUG] Skipping method format
+[DEBUG] Skipping method format
+[DEBUG] Skipping method format
+[DEBUG] Skipping method parse
+[DEBUG] Skipping method parse
+[DEBUG] Skipping method getTimeZone
+[DEBUG] Skipping method setTimeZone
+[DEBUG] Skipping method setLenient
+[DEBUG] Skipping method isLenient
+[DEBUG] Skipping method getCalendar
+[DEBUG] Skipping method getNumberFormat
+[DEBUG] Skipping method setCalendar
+[DEBUG] Skipping method setNumberFormat
+[DEBUG] Skipping method parseObject
+[DEBUG] Skipping method format
+[DEBUG] Skipping method parseObject
+[DEBUG] Skipping method formatToCharacterIterator
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.text.MockSimpleDateFormat for java.text.SimpleDateFormat
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.MockSpinnerDateModel for javax.swing.SpinnerDateModel
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.time.MockClock for java.time.Clock
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method atStartOfDay
+[DEBUG] Skipping method atStartOfDay
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method atOffset
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method atZone
+[DEBUG] Skipping method atZone
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method toInstant
+[DEBUG] Skipping method toEpochSecond
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method toNanoOfDay
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method atDate
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toSecondOfDay
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method atOffset
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method atYear
+[DEBUG] Skipping method isValidYear
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method with
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method getOffset
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDateTime
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method atZoneSameInstant
+[DEBUG] Skipping method atZoneSimilarLocal
+[DEBUG] Skipping method toOffsetTime
+[DEBUG] Skipping method withOffsetSameInstant
+[DEBUG] Skipping method withOffsetSameLocal
+[DEBUG] Skipping method toInstant
+[DEBUG] Skipping method toEpochSecond
+[DEBUG] Skipping method toZonedDateTime
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method getOffset
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method atDate
+[DEBUG] Skipping method withOffsetSameInstant
+[DEBUG] Skipping method withOffsetSameLocal
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method getValue
+[DEBUG] Skipping method length
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method atDay
+[DEBUG] Skipping method atMonth
+[DEBUG] Skipping method atMonth
+[DEBUG] Skipping method atMonthDay
+[DEBUG] Skipping method isValidMonthDay
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method isLeap
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method atDay
+[DEBUG] Skipping method atEndOfMonth
+[DEBUG] Skipping method isValidDay
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method getOffset
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDateTime
+[DEBUG] Skipping method toLocalDateTime
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method toOffsetDateTime
+[DEBUG] Skipping method withEarlierOffsetAtOverlap
+[DEBUG] Skipping method withEarlierOffsetAtOverlap
+[DEBUG] Skipping method withFixedOffsetZone
+[DEBUG] Skipping method withLaterOffsetAtOverlap
+[DEBUG] Skipping method withLaterOffsetAtOverlap
+[DEBUG] Skipping method withZoneSameInstant
+[DEBUG] Skipping method withZoneSameInstant
+[DEBUG] Skipping method withZoneSameLocal
+[DEBUG] Skipping method withZoneSameLocal
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getZone
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method toInstant
+[DEBUG] Skipping method toEpochSecond
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method withVariant
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method get
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method period
+[DEBUG] Skipping method period
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method get
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method get
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockTimer for java.util.Timer
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockThread for java.lang.Thread
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockIOException for java.io.IOException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockArithmeticException for java.lang.ArithmeticException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockArrayIndexOutOfBoundsException for java.lang.ArrayIndexOutOfBoundsException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockError for java.lang.Error
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockException for java.lang.Exception
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockIllegalAccessException for java.lang.IllegalAccessException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockIllegalArgumentException for java.lang.IllegalArgumentException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockIllegalStateException for java.lang.IllegalStateException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockNullPointerException for java.lang.NullPointerException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockRuntimeException for java.lang.RuntimeException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockThrowable for java.lang.Throwable
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockDatagramSocket for java.net.DatagramSocket
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockInetSocketAddress for java.net.InetSocketAddress
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockServerSocket for java.net.ServerSocket
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockSocket for java.net.Socket
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockSocketImpl for java.net.SocketImpl
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockURLStreamHandler for java.net.URLStreamHandler
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[INFO] Found static initializer in class Player
+[INFO] No hashCode defined for: Player, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card
+[INFO] Adding mock interface to class Card
+[INFO] Found static initializer in class Card
+[INFO] No hashCode defined for: Card, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: GameState
+[INFO] Adding mock interface to class GameState
+[INFO] Found static initializer in class GameState
+[INFO] No hashCode defined for: GameState, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card$1
+[INFO] Adding mock interface to class Card$1
+[INFO] No hashCode defined for: Card$1, superclass = java.lang.Object
+[DEBUG] Going to instrument: Randomness
+[INFO] Adding mock interface to class Randomness
+[INFO] Found static initializer in class Randomness
+[INFO] No hashCode defined for: Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: PlayDominion
+[INFO] Adding mock interface to class PlayDominion
+[INFO] Found static initializer in class PlayDominion
+[INFO] No hashCode defined for: PlayDominion, superclass = java.lang.Object
+[INFO] Seeing class for first time: Card_ESTest
+[INFO] Instrumenting class 'Card_ESTest'.
+[INFO] Seeing class for first time: Card_ESTest_scaffolding
+[INFO] Instrumenting class 'Card_ESTest_scaffolding'.
+[INFO] Keeping class: Card_ESTest_scaffolding
+[INFO] Keeping class: Card_ESTest
+[DEBUG] Adding privileged thread: "Reference Handler"
+[DEBUG] Adding privileged thread: "Finalizer"
+[DEBUG] Adding privileged thread: "Signal Dispatcher"
+[DEBUG] Adding privileged thread: "Attach Listener"
+[DEBUG] Adding privileged thread: "Java2D Disposer"
+[DEBUG] Adding privileged thread: "AWT-Shutdown"
+[DEBUG] Adding privileged thread: "AWT-Windows"
+[DEBUG] Adding privileged thread: "main"
+[INFO] Seeing class for first time: Player
+[INFO] Instrumenting class 'Player'.
+[INFO] Adding mock interface to class Player
+[INFO] Found static initializer in class Player
+[INFO] No hashCode defined for: Player, superclass = java.lang.Object
+[DEBUG] Going to instrument: Player
+[INFO] Found static initializer in class Player
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Player
+[ERROR] Could not initialize Player: Duplicate method name&signature in class file Player
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[ERROR] Could not initialize Card$CardName: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[ERROR] Could not initialize Card$Type: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: GameState
+[INFO] Instrumenting class 'GameState'.
+[INFO] Adding mock interface to class GameState
+[INFO] Found static initializer in class GameState
+[INFO] No hashCode defined for: GameState, superclass = java.lang.Object
+[DEBUG] Going to instrument: GameState
+[INFO] Found static initializer in class GameState
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file GameState
+[ERROR] Could not initialize GameState: Duplicate method name&signature in class file GameState
+[INFO] Seeing class for first time: Card$1
+[INFO] Instrumenting class 'Card$1'.
+[INFO] Adding mock interface to class Card$1
+[INFO] No hashCode defined for: Card$1, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card$1
+[INFO] Keeping class: Card$1
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[ERROR] Could not initialize Card$1: Card$CardName
+[INFO] Seeing class for first time: Card
+[INFO] Instrumenting class 'Card'.
+[INFO] Adding mock interface to class Card
+[INFO] Found static initializer in class Card
+[INFO] No hashCode defined for: Card, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card
+[INFO] Found static initializer in class Card
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card
+[ERROR] Could not initialize Card: Duplicate method name&signature in class file Card
+[INFO] Seeing class for first time: Card
+[INFO] Instrumenting class 'Card'.
+[INFO] Adding mock interface to class Card
+[INFO] Found static initializer in class Card
+[INFO] No hashCode defined for: Card, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card
+[INFO] Found static initializer in class Card
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[WARN] class java.lang.ClassNotFoundException thrown while loading method  __STATIC_RESET() for class Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[WARN] class java.lang.ClassNotFoundException thrown while loading method  __STATIC_RESET() for class Card$Type
+[INFO] Seeing class for first time: Card
+[INFO] Instrumenting class 'Card'.
+[INFO] Adding mock interface to class Card
+[INFO] Found static initializer in class Card
+[INFO] No hashCode defined for: Card, superclass = java.lang.Object
+[DEBUG] Going to instrument: Card
+[INFO] Found static initializer in class Card
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card
+[WARN] class java.lang.NoClassDefFoundError thrown while loading method  __STATIC_RESET() for class Card$1
+]]></system-out>
+  </testcase>
+  <testcase name="test17" classname="Card_ESTest" time="0.01">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test17(Card_ESTest.java:2948)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test19" classname="Card_ESTest" time="0.011">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test19(Card_ESTest.java:3377)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test14" classname="Card_ESTest" time="0.015">
+    <error message="Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Card_ESTest.test14(Card_ESTest.java:2491)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test13" classname="Card_ESTest" time="0.007">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test13(Card_ESTest.java:2474)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test16" classname="Card_ESTest" time="0.013">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test16(Card_ESTest.java:2735)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test15" classname="Card_ESTest" time="0.012">
+    <error message="Card$Type" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card$Type
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Card_ESTest.test15(Card_ESTest.java:2516)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test10" classname="Card_ESTest" time="0.011">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test10(Card_ESTest.java:2111)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test12" classname="Card_ESTest" time="0.009">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test12(Card_ESTest.java:2304)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test11" classname="Card_ESTest" time="0.011">
+    <error message="Card$Type" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card$Type
+	at Card_ESTest.test11(Card_ESTest.java:2137)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test07" classname="Card_ESTest" time="0.008">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test07(Card_ESTest.java:1564)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test06" classname="Card_ESTest" time="0.009">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test06(Card_ESTest.java:1334)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test09" classname="Card_ESTest" time="0.007">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test09(Card_ESTest.java:1909)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test08" classname="Card_ESTest" time="0.01">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test08(Card_ESTest.java:1730)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test03" classname="Card_ESTest" time="0.008">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test03(Card_ESTest.java:766)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test02" classname="Card_ESTest" time="0.011">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test02(Card_ESTest.java:596)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test24" classname="Card_ESTest" time="0.011">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test24(Card_ESTest.java:4367)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test05" classname="Card_ESTest" time="0.007">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test05(Card_ESTest.java:1132)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test04" classname="Card_ESTest" time="0.015">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test04(Card_ESTest.java:959)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test21" classname="Card_ESTest" time="0.009">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test21(Card_ESTest.java:3776)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test20" classname="Card_ESTest" time="0.008">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test20(Card_ESTest.java:3572)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test01" classname="Card_ESTest" time="0.011">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test01(Card_ESTest.java:427)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test23" classname="Card_ESTest" time="0.01">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test23(Card_ESTest.java:4170)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test00" classname="Card_ESTest" time="0.007">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test00(Card_ESTest.java:218)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+  <testcase name="test22" classname="Card_ESTest" time="0.009">
+    <error message="Card" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Card
+	at Card_ESTest.test22(Card_ESTest.java:3975)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: Card$CardName
+[INFO] Instrumenting class 'Card$CardName'.
+[INFO] Adding mock interface to class Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$CardName
+[INFO] Found static initializer in class Card$CardName
+[INFO] No hashCode defined for: Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$CardName
+[INFO] Seeing class for first time: Card$Type
+[INFO] Instrumenting class 'Card$Type'.
+[INFO] Adding mock interface to class Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: Card$Type
+[INFO] Found static initializer in class Card$Type
+[INFO] No hashCode defined for: Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file Card$Type
+]]></system-out>
+  </testcase>
+</testsuite>

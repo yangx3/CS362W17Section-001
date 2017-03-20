@@ -2,7 +2,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
+//import java.util.Random;
 import java.io.*;
 import javax.imageio.*;
 import java.awt.image.*;
@@ -75,15 +75,34 @@ public class Hand
 	}
 
 	// Marked for possible removal
-	// Untestable
 	public Card getSelected(int index)
 	{
 		return playerHand[index + (scrollSelect * 5)];
 	}
-	// public void setSelected(int index)
-	// {
-		
-	// }
+
+	// Recieves any card, mostly for testing
+	public Card getHandIndex(int index)
+	{
+		if (index < playerHand.length && index >= 0)
+		{
+			return playerHand[index];
+		}
+		return null;
+	}
+	// Removes any card, for AI system
+	// Does not change the images, jUnit doesn't launch the program interface.
+	// returns the card, if trashed then don't call discard.
+	public Card removeHandIndex(int index)
+	{
+		Card temp = null;
+		if (index < playerHand.length && index >= 0)
+		{
+			temp = playerHand[index];
+			playerHand[index] = null;
+		}
+		return temp;
+	}
+
 	// Removes card for discard or trash
 	public Card removeSelectedCard(int index)
 	{
@@ -99,6 +118,7 @@ public class Hand
 	public Card removeCard(int index)
 	{
 		Card temp = playerHand[index];
+		index = Math.abs(index);
 		if (playerHand[index] != null)
 		{
 			playerHand[index] = null;
@@ -115,6 +135,17 @@ public class Hand
 	{
 		return playerHand.length;
 	}
+	public int getCardIndex(Card card)
+	{
+		for(int i = 0; i < playerHand.length; i++)
+		{
+			if (playerHand[i] == card)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
 	public boolean contains(Card card)
 	{
 		for(int i = 0; i < playerHand.length; i++)
@@ -126,6 +157,17 @@ public class Hand
 		}
 		return false;
 	} 
+	public Card getRandomAction()
+	{
+		for (int i = 0; i < playerHand.length; i++)
+		{
+			if (playerHand[i] instanceof KingdomCard)
+			{
+				return playerHand[i];
+			}
+		}
+		return null;
+	}
 	// reinitalizes all used variables
 	public Card[] cleanup()
 	{
@@ -170,7 +212,6 @@ public class Hand
 			playerHand[i] = temp[i];
 		}
 	}
-
 
 	// Only exicutes once, may be cleaned up before final verson as the Playerhand is null at this point
 	public void draw()
@@ -241,7 +282,6 @@ public class Hand
 				else
 				{
 					tempImg = ImageIO.read(new File("images/Empty.jpg"));	
-					System.out.println("playerHand position " + (i + scrollSelect * 5) + " is empty!");
 				}
 			} 
 			catch (IOException e) 
@@ -266,7 +306,6 @@ public class Hand
 			System.out.println(e);
 		}
 	}
-
 
 	public static Image getScaledImage(Image image, int width, int height)
 	{
@@ -299,48 +338,7 @@ public class Hand
 		return IMGSCALE;
 	}
 
-	// Events!
-	// public void addListeners()
-	// {
-	// 	selectListener = new MouseListener()
-	// 	{
-	// 		@Override
-	// 		public void mouseReleased(MouseEvent e) 
-	// 		{
-	// 			System.out.println("Released!");
-	// 		}
 
-	// 		@Override
-	// 		public void mousePressed(MouseEvent e) 
-	// 		{
-	// 			System.out.println("Pressed!");
-	// 		}
-
-	// 		@Override
-	// 		public void mouseExited(MouseEvent e) 
-	// 		{
-	// 			System.out.println("Exited!");
-	// 		}
-
-	// 		@Override
-	// 		public void mouseEntered(MouseEvent e) 
-	// 		{
-	// 			System.out.println("Entered!");
-	// 		}
-
-	// 		@Override
-	// 		public void mouseClicked(MouseEvent e) 
-	// 		{
-	// 			playerHand[0] = null;
-	// 			handImage[0] = new ImageIcon("Images/Empty.jpg");
-	// 			Object source = e.getSource();
-				
-	// 			System.out.println("Clicked" + e.getSource());
-
-	// 		}
-
-	// 	};
-	//}
 	public class SelectListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)

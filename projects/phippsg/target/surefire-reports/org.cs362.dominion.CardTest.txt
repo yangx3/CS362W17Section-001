@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.CardTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.087 sec <<< FAILURE! - in org.cs362.dominion.CardTest
+test(org.cs362.dominion.CardTest)  Time elapsed: 0.015 sec  <<< FAILURE!
+java.lang.AssertionError: Not yet implemented
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.cs362.dominion.CardTest.test(CardTest.java:11)
+

@@ -1,0 +1,5 @@
+Copy the files into a folder, maven should recognize it as a valid project.
+To get a pitest coverage report, run, in this order:
+mvn compile
+mvn test
+mvn org.pitest:pitest-maven:mutationCoverage

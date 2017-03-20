@@ -1,0 +1,13 @@
+[MASTER] 03:14:20.686 [pool-2-thread-1] ERROR TestSuiteGenerator - Problem for dom3.Randomness. Full stack:
+java.lang.RuntimeException: Failed to load dom3.Randomness
+	at org.evosuite.setup.TestClusterGenerator.initializeTargetMethods(TestClusterGenerator.java:369) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:135) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]

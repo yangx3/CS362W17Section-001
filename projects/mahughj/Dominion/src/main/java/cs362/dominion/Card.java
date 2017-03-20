@@ -113,7 +113,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);	
 		o = new Card(CardName.Feast,Type.ACTION,4,0,0);
 		ret.add(o);			
-		o = new Card(CardName.Great_Hall,Type.ACTION_VICTORY,3,0,1);
+		o = new Card(CardName.Great_Hall,Type.ACTION_VICTORY,3,0,0);
 		ret.add(o);
 		o = new Card(CardName.Mine,Type.ACTION,5,0,0);
 		ret.add(o);	

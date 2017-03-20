@@ -1,0 +1,2971 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ORG.CS362.DOMINION.Card_ESTest" time="0.266" tests="39" errors="39" skipped="0" failures="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin"/>
+    <property name="java.vm.version" value="25.121-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Peter Dorich\Desktop\Dominion V.F\DOMINION"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\Peter Dorich\Desktop\Dominion V.F\DOMINION"/>
+    <property name="java.runtime.version" value="1.8.0_121-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\PETERD~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\Users\Peter Dorich\Downloads\apache-maven-3.3.9-bin\apache-maven-3.3.9\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\lenovo\easyplussdk\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_121\bin;C:\Program Files\Java\jre1.8.0_121\bin;C:\Program Files\Git\cmd;C:\Users\Peter Dorich\Downloads\apache-maven-3.3.9-bin\apache-maven-3.3.9\bin;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Peter Dorich"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="Peter Dorich"/>
+    <property name="java.class.path" value="C:\Users\Peter Dorich\Downloads\apache-maven-3.3.9-bin\apache-maven-3.3.9\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_121\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_121"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_121\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp437"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Users\Peter Dorich\Downloads\apache-maven-3.3.9-bin\apache-maven-3.3.9\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.stdout.encoding" value="cp437"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase name="test30" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$Type" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test30(Card_ESTest.java:385)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card_ESTest
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card_ESTest'.
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card_ESTest_scaffolding
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card_ESTest_scaffolding'.
+[INFO] Keeping class: ORG.CS362.DOMINION.Card_ESTest_scaffolding
+[INFO] Keeping class: ORG.CS362.DOMINION.Card_ESTest
+[DEBUG] Adding privileged thread: "Reference Handler"
+[DEBUG] Adding privileged thread: "Finalizer"
+[DEBUG] Adding privileged thread: "Signal Dispatcher"
+[DEBUG] Adding privileged thread: "Attach Listener"
+[DEBUG] Adding privileged thread: "Java2D Disposer"
+[DEBUG] Adding privileged thread: "AWT-Shutdown"
+[DEBUG] Adding privileged thread: "AWT-Windows"
+[DEBUG] Adding privileged thread: "main"
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFile for java.io.File
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileInputStream for java.io.FileInputStream
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileOutputStream for java.io.FileOutputStream
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockRandomAccessFile for java.io.RandomAccessFile
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileReader for java.io.FileReader
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockFileWriter for java.io.FileWriter
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockPrintStream for java.io.PrintStream
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockPrintWriter for java.io.PrintWriter
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.logging.MockFileHandler for java.util.logging.FileHandler
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.MockJFileChooser for javax.swing.JFileChooser
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.filechooser.MockFileSystemView for javax.swing.filechooser.FileSystemView
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.logging.MockLogRecord for java.util.logging.LogRecord
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.MockDefaultListSelectionModel for javax.swing.DefaultListSelectionModel
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockDate for java.util.Date
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockRandom for java.util.Random
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockGregorianCalendar for java.util.GregorianCalendar
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockCalendar for java.util.Calendar
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method clone
+[DEBUG] Skipping method format
+[DEBUG] Skipping method format
+[DEBUG] Skipping method format
+[DEBUG] Skipping method parse
+[DEBUG] Skipping method parse
+[DEBUG] Skipping method getTimeZone
+[DEBUG] Skipping method setTimeZone
+[DEBUG] Skipping method isLenient
+[DEBUG] Skipping method getCalendar
+[DEBUG] Skipping method getNumberFormat
+[DEBUG] Skipping method parseObject
+[DEBUG] Skipping method setCalendar
+[DEBUG] Skipping method setLenient
+[DEBUG] Skipping method setNumberFormat
+[DEBUG] Skipping method format
+[DEBUG] Skipping method formatToCharacterIterator
+[DEBUG] Skipping method parseObject
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.text.MockSimpleDateFormat for java.text.SimpleDateFormat
+[DEBUG] Static Mock: org.evosuite.runtime.mock.javax.swing.MockSpinnerDateModel for javax.swing.SpinnerDateModel
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.time.MockClock for java.time.Clock
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method atStartOfDay
+[DEBUG] Skipping method atStartOfDay
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method atZone
+[DEBUG] Skipping method atZone
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method atOffset
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method toInstant
+[DEBUG] Skipping method toEpochSecond
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toSecondOfDay
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method toNanoOfDay
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method atDate
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method atOffset
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method atYear
+[DEBUG] Skipping method isValidYear
+[DEBUG] Skipping method with
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method getOffset
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method toInstant
+[DEBUG] Skipping method toEpochSecond
+[DEBUG] Skipping method toZonedDateTime
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDateTime
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method atZoneSameInstant
+[DEBUG] Skipping method atZoneSimilarLocal
+[DEBUG] Skipping method toOffsetTime
+[DEBUG] Skipping method withOffsetSameInstant
+[DEBUG] Skipping method withOffsetSameLocal
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method getOffset
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method atDate
+[DEBUG] Skipping method withOffsetSameInstant
+[DEBUG] Skipping method withOffsetSameLocal
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method getValue
+[DEBUG] Skipping method length
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method atDay
+[DEBUG] Skipping method atMonth
+[DEBUG] Skipping method atMonth
+[DEBUG] Skipping method atMonthDay
+[DEBUG] Skipping method isValidMonthDay
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method isLeap
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method atDay
+[DEBUG] Skipping method atEndOfMonth
+[DEBUG] Skipping method isValidDay
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method getOffset
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method toOffsetDateTime
+[DEBUG] Skipping method withEarlierOffsetAtOverlap
+[DEBUG] Skipping method withEarlierOffsetAtOverlap
+[DEBUG] Skipping method withFixedOffsetZone
+[DEBUG] Skipping method withLaterOffsetAtOverlap
+[DEBUG] Skipping method withLaterOffsetAtOverlap
+[DEBUG] Skipping method withZoneSameInstant
+[DEBUG] Skipping method withZoneSameInstant
+[DEBUG] Skipping method withZoneSameLocal
+[DEBUG] Skipping method withZoneSameLocal
+[DEBUG] Skipping method getMonth
+[DEBUG] Skipping method getYear
+[DEBUG] Skipping method getDayOfMonth
+[DEBUG] Skipping method getDayOfWeek
+[DEBUG] Skipping method getDayOfYear
+[DEBUG] Skipping method getZone
+[DEBUG] Skipping method getMonthValue
+[DEBUG] Skipping method plusSeconds
+[DEBUG] Skipping method toLocalTime
+[DEBUG] Skipping method minusDays
+[DEBUG] Skipping method minusMonths
+[DEBUG] Skipping method minusWeeks
+[DEBUG] Skipping method minusYears
+[DEBUG] Skipping method plusDays
+[DEBUG] Skipping method plusMonths
+[DEBUG] Skipping method plusWeeks
+[DEBUG] Skipping method plusYears
+[DEBUG] Skipping method withDayOfMonth
+[DEBUG] Skipping method withDayOfYear
+[DEBUG] Skipping method withMonth
+[DEBUG] Skipping method withYear
+[DEBUG] Skipping method getHour
+[DEBUG] Skipping method getMinute
+[DEBUG] Skipping method getSecond
+[DEBUG] Skipping method minusHours
+[DEBUG] Skipping method minusMinutes
+[DEBUG] Skipping method plusHours
+[DEBUG] Skipping method plusMinutes
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDate
+[DEBUG] Skipping method toLocalDateTime
+[DEBUG] Skipping method toLocalDateTime
+[DEBUG] Skipping method withHour
+[DEBUG] Skipping method withMinute
+[DEBUG] Skipping method withNano
+[DEBUG] Skipping method withSecond
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method minusSeconds
+[DEBUG] Skipping method plusNanos
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method getNano
+[DEBUG] Skipping method truncatedTo
+[DEBUG] Skipping method minusNanos
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method toInstant
+[DEBUG] Skipping method toEpochSecond
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method withVariant
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method get
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method period
+[DEBUG] Skipping method period
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method get
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method get
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method getId
+[DEBUG] Skipping method range
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method date
+[DEBUG] Skipping method getCalendarType
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method zonedDateTime
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateEpochDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method dateYearDay
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method resolveDate
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method eras
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method eraOf
+[DEBUG] Skipping method prolepticYear
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method dateNow
+[DEBUG] Skipping method localDateTime
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method getDisplayName
+[DEBUG] Skipping method period
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method toString
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method getLong
+[DEBUG] Skipping method range
+[DEBUG] Skipping method toEpochDay
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method getEra
+[DEBUG] Skipping method lengthOfMonth
+[DEBUG] Skipping method atTime
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method getChronology
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method with
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method plus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method minus
+[DEBUG] Skipping method until
+[DEBUG] Skipping method until
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method format
+[DEBUG] Skipping method query
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isSupported
+[DEBUG] Skipping method isEqual
+[DEBUG] Skipping method isLeapYear
+[DEBUG] Skipping method lengthOfYear
+[DEBUG] Skipping method isAfter
+[DEBUG] Skipping method isBefore
+[DEBUG] Skipping method adjustInto
+[DEBUG] Skipping method get
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.util.MockTimer for java.util.Timer
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockThread for java.lang.Thread
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.io.MockIOException for java.io.IOException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockArithmeticException for java.lang.ArithmeticException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockArrayIndexOutOfBoundsException for java.lang.ArrayIndexOutOfBoundsException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockError for java.lang.Error
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockException for java.lang.Exception
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockIllegalAccessException for java.lang.IllegalAccessException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockIllegalArgumentException for java.lang.IllegalArgumentException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockIllegalStateException for java.lang.IllegalStateException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockNullPointerException for java.lang.NullPointerException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockRuntimeException for java.lang.RuntimeException
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.lang.MockThrowable for java.lang.Throwable
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockDatagramSocket for java.net.DatagramSocket
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockInetSocketAddress for java.net.InetSocketAddress
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockServerSocket for java.net.ServerSocket
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockSocket for java.net.Socket
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockSocketImpl for java.net.SocketImpl
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[DEBUG] Static Mock: org.evosuite.runtime.mock.java.net.MockURLStreamHandler for java.net.URLStreamHandler
+[DEBUG] Skipping method equals
+[DEBUG] Skipping method hashCode
+[DEBUG] Skipping method compareTo
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method wait
+[DEBUG] Skipping method getClass
+[DEBUG] Skipping method notify
+[DEBUG] Skipping method notifyAll
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+[ERROR] Could not initialize ORG.CS362.DOMINION.Randomness: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card, superclass = java.lang.Object
+[INFO] Creating brand-new static initializer in class ORG/CS362/DOMINION/Card
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card
+[INFO] Keeping class: ORG.CS362.DOMINION.Card
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[ERROR] Could not initialize ORG.CS362.DOMINION.Card: ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Player
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Player'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Player
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Player, superclass = java.lang.Object
+[INFO] Creating brand-new static initializer in class ORG/CS362/DOMINION/Player
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Player
+[INFO] Keeping class: ORG.CS362.DOMINION.Player
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.GameState
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.GameState'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/GameState
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/GameState, superclass = java.lang.Object
+[INFO] Creating brand-new static initializer in class ORG/CS362/DOMINION/GameState
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.GameState
+[INFO] Keeping class: ORG.CS362.DOMINION.GameState
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[ERROR] Could not initialize ORG.CS362.DOMINION.Card$CardName: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[ERROR] Could not initialize ORG.CS362.DOMINION.Card$Type: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[WARN] class java.lang.ClassNotFoundException thrown while loading method  __STATIC_RESET() for class ORG.CS362.DOMINION.Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[WARN] class java.lang.NoClassDefFoundError thrown while loading method  __STATIC_RESET() for class ORG.CS362.DOMINION.Card
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[WARN] class java.lang.ClassNotFoundException thrown while loading method  __STATIC_RESET() for class ORG.CS362.DOMINION.Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+[WARN] class java.lang.ClassNotFoundException thrown while loading method  __STATIC_RESET() for class ORG.CS362.DOMINION.Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test19" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test19(Card_ESTest.java:249)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test18" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test18(Card_ESTest.java:238)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test17" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test17(Card_ESTest.java:220)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test12" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test12(Card_ESTest.java:151)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test34" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test34(Card_ESTest.java:434)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test11" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test11(Card_ESTest.java:143)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test33" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test33(Card_ESTest.java:421)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test10" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test10(Card_ESTest.java:134)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test32" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test32(Card_ESTest.java:411)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test31" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test31(Card_ESTest.java:398)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test16" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$Type" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at ORG.CS362.DOMINION.Card_ESTest.test16(Card_ESTest.java:204)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test38" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test38(Card_ESTest.java:480)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test15" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test15(Card_ESTest.java:188)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test37" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test37(Card_ESTest.java:470)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test14" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test14(Card_ESTest.java:175)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test36" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test36(Card_ESTest.java:462)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test13" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test13(Card_ESTest.java:162)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test35" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test35(Card_ESTest.java:448)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test09" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test09(Card_ESTest.java:124)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test08" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test08(Card_ESTest.java:114)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test07" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test07(Card_ESTest.java:104)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test29" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test29(Card_ESTest.java:372)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test06" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.015">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test06(Card_ESTest.java:97)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test28" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test28(Card_ESTest.java:360)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test01" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.015">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test01(Card_ESTest.java:45)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test23" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test23(Card_ESTest.java:294)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test00" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test00(Card_ESTest.java:31)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test22" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.015">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test22(Card_ESTest.java:283)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test21" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test21(Card_ESTest.java:269)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test20" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test20(Card_ESTest.java:261)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test05" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.015">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test05(Card_ESTest.java:87)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test27" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test27(Card_ESTest.java:347)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test04" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.015">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test04(Card_ESTest.java:78)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test26" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test26(Card_ESTest.java:334)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test03" classname="ORG.CS362.DOMINION.Card_ESTest" time="0">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test03(Card_ESTest.java:65)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test25" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$Type" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at ORG.CS362.DOMINION.Card_ESTest.test25(Card_ESTest.java:321)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test02" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.015">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test02(Card_ESTest.java:56)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+  <testcase name="test24" classname="ORG.CS362.DOMINION.Card_ESTest" time="0.016">
+    <error message="ORG/CS362/DOMINION/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test24(Card_ESTest.java:308)
+</error>
+    <system-out><![CDATA[[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$CardName
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$CardName'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$CardName
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$CardName
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$CardName, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$CardName
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Card$Type
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Card$Type'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Card$Type
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Card$Type
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Card$Type, superclass = java.lang.Enum
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Card$Type
+[INFO] Seeing class for first time: ORG.CS362.DOMINION.Randomness
+[INFO] Instrumenting class 'ORG.CS362.DOMINION.Randomness'.
+[INFO] Adding mock interface to class ORG/CS362/DOMINION/Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] No hashCode defined for: ORG/CS362/DOMINION/Randomness, superclass = java.lang.Object
+[DEBUG] Going to instrument: ORG.CS362.DOMINION.Randomness
+[INFO] Found static initializer in class ORG/CS362/DOMINION/Randomness
+[INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file ORG/CS362/DOMINION/Randomness
+]]></system-out>
+  </testcase>
+</testsuite>

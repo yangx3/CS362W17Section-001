@@ -44,6 +44,7 @@ public class TestTurn
 			int i = 0;
 			// Test that player hand was drawn correctly
 			assertEquals( player.hand.size(), 5 );
+			assertTrue( player.phase == 0 );
 			// Run action phase
 			player.playKingdomCard();
 			// Player should use the Smithy card
@@ -54,17 +55,20 @@ public class TestTurn
 			// Smithy should go to discard pile
 			assertEquals( player.discard.size(), startstate.players.get(i).discard.size()+1 );
 			assertEquals( player.discard.get(0).getCardName(), Card.CardName.Smithy );
+			assertTrue( player.phase == 1 );
 			// Run treasure phase
 			player.playTreasureCard();
 			// Player will have at least the 4 coin from starting hand
 			assertFalse( player.coins < 4 );
 			// Note the current discard pile size
 			int discardsize = player.discard.size();
+			assertTrue( player.phase == 2 );
 			// Run buy phase
 			player.buyCard();
 			// Player has one buy and at least 4 coin
 			// So player should buy exactly one card and send it to discard pile
 			assertEquals( player.discard.size(), discardsize+1 );
+			assertTrue( player.phase == 3 );
 			// Run cleanup
 			player.endTurn();
 			// Hand should be redrawn to 5

@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="dominion.PlayerTest" time="0.135" errors="0" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dominion.PlayerTest" time="0.018" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib"/>
     <property name="java.vm.version" value="25.121-b13"/>
     <property name="gopherProxySet" value="false"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/aryaasgari/Documents/Code/Classes/CS362/CS362W17Section-001/projects/asgaria/dominion"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/aryaasgari/Documents/Code/Classes/workspace/Dominion/Dominion"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,19 +16,20 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/aryaasgari/Documents/Code/Classes/CS362/CS362W17Section-001/projects/asgaria/dominion"/>
+    <property name="user.dir" value="/Users/aryaasgari/Documents/Code/Classes/workspace/Dominion/Dominion"/>
     <property name="java.runtime.version" value="1.8.0_121-b13"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="basedir" value="/Users/aryaasgari/Documents/Code/Classes/workspace/Dominion/Dominion"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
     <property name="java.io.tmpdir" value="/var/folders/z4/knj4v_9n1670lzm76rkgl8fm0000gn/T/"/>
-    <property name="line.separator" value="
-"/>
+    <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Mac OS X"/>
     <property name="classworlds.conf" value="/usr/local/Cellar/maven/3.3.9/libexec/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/aryaasgari/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="surefire.test.class.path" value="/Users/aryaasgari/Documents/Code/Classes/workspace/Dominion/Dominion/target/test-classes:/Users/aryaasgari/Documents/Code/Classes/workspace/Dominion/Dominion/target/classes:/Users/aryaasgari/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.1/evosuite-standalone-runtime-1.0.1.jar:/Users/aryaasgari/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/aryaasgari/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -54,6 +55,7 @@
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="maven.home" value="/usr/local/Cellar/maven/3.3.9/libexec"/>
+    <property name="localRepository" value="/Users/aryaasgari/.m2/repository"/>
     <property name="file.separator" value="/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -62,8 +64,8 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="dominion.PlayerTest" name="testPlayTreasureCardsBranchesTest" time="0.004"/>
-  <testcase classname="dominion.PlayerTest" name="testWholeGame" time="0.11"/>
-  <testcase classname="dominion.PlayerTest" name="testPlayKingdomCardsBranchesTest" time="0.02"/>
-  <testcase classname="dominion.PlayerTest" name="testBuyCardsBranchesTest" time="0.001"/>
+  <testcase name="testPlayTreasureCardsBranchesTest" classname="dominion.PlayerTest" time="0"/>
+  <testcase name="testWholeGame" classname="dominion.PlayerTest" time="0.017"/>
+  <testcase name="testPlayKingdomCardsBranchesTest" classname="dominion.PlayerTest" time="0"/>
+  <testcase name="testBuyCardsBranchesTest" classname="dominion.PlayerTest" time="0.001"/>
 </testsuite>

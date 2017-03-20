@@ -33,22 +33,22 @@ public class council_room extends card{
 		player_array[turn].buy += buy;
 
 		//Give each other player a card
-		int other_turn;
-		if(turn == 0){
-			other_turn = 1;
-		}
-		else{
-			other_turn = 0;
-		}
-		if(player_array[other_turn].player_deck.num_cards == 0){
-			for(int j = 0; j < player_array[other_turn].player_discard.num_cards; j++){
-			player_array[other_turn].player_deck.add_card(player_array[other_turn].player_discard.draw_card());
+		int other_turn = -1;
+		for(int i = 0; i < dominion.num_players; i++){
+			if(turn == dominion.num_players - 1){
+				other_turn = 0;
 			}
+			else{
+				other_turn++;
+			}
+			if(player_array[other_turn].player_deck.num_cards == 0){
+				for(int j = 0; j < player_array[other_turn].player_discard.num_cards; j++){
+				player_array[other_turn].player_deck.add_card(player_array[other_turn].player_discard.draw_card());
+				}
+			}
+			//Give the player a card
+			player_array[other_turn].player_hand.add_card(player_array[other_turn].player_deck.draw_card());
 		}
-		//Give the player a card
-		player_array[other_turn].player_hand.add_card(player_array[other_turn].player_deck.draw_card());
-
-		
 	}
 
 	public void description(){

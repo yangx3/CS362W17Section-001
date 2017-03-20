@@ -141,7 +141,7 @@ public class Player implements Cloneable {
 		state.reduceSupply(buyCard);
 		System.out.println("Player buys " + buyCard);
 		gain(buyCard);
-		numBuys --;
+		numBuys--;
 		coins -= buyCard.getCost();
 		for(int i = 0; i < state.boardEmbargos.get(buyCard); i++) {
 		    Card curse = Card.getCard(state.cards, Card.CardName.Curse);
@@ -170,7 +170,7 @@ public class Player implements Cloneable {
 
 	numActions = 1;
 	//induced bug, does not reset coins
-	//coins = 0;
+	coins = 0;
 	numBuys = 1;
 	System.out.println(" --- " + this.player_username + " done");
     }

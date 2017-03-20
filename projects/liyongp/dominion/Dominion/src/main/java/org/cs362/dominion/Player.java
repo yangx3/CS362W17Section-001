@@ -1,3 +1,5 @@
+
+
 import java.util.*;
 
 public class Player implements Cloneable{
@@ -49,10 +51,10 @@ public class Player implements Cloneable{
 		hand.add(toDraw);// Add card to hand and hand count automatically will
 							// be incremented since we use List
 		System.out.println("draw " + toDraw);
-		if(hand.isEmpty() == false){
+		/*if(hand.isEmpty() == false){
 			
 			Collections.sort(hand);
-		}
+		}*/
 		return toDraw;
 	}
 	
@@ -110,30 +112,24 @@ public class Player implements Cloneable{
 		   int pTotalCards = 0;
 		   //score and cards from hand
 		   for (Card c : hand){
-			   if(Card.getCard(hand, Card.CardName.Gardens) != null) {
-				   if(c == Card.getCard(hand ,Card.CardName.Gardens)) 
-					   numGardenCard++;
-				   }
+			   if(c == Card.getCard(hand ,Card.CardName.Gardens)) 
+				   numGardenCard++;
 			   score += c.score();
 			   pTotalCards++;
 		   }
 		 
 		      //score and cards from discard
 		   for (Card c : discard){
-			   if(Card.getCard(discard, Card.CardName.Gardens) != null) {
-				   if(c == Card.getCard(discard ,Card.CardName.Gardens)) 
-					   numGardenCard++;
-			   }
+			   if(c == Card.getCard(discard ,Card.CardName.Gardens)) 
+				   numGardenCard++;
 		       pTotalCards++;
 		       score += c.score();
 		   }
 		      
 		      //score and cards from deck
 		   for (Card c : deck){
-			   if(Card.getCard(deck, Card.CardName.Gardens) != null) {
-				   if(c == Card.getCard(deck ,Card.CardName.Gardens)) 
-					   numGardenCard++;
-				   }
+			   if(c == Card.getCard(deck ,Card.CardName.Gardens)) 
+				   numGardenCard++;
 			   
 			   pTotalCards++;
 			   score += c.score();
@@ -141,15 +137,13 @@ public class Player implements Cloneable{
 		      
 		      //cards from playedCards
 		   for (Card c : playedCards){
-			   if(Card.getCard(playedCards, Card.CardName.Gardens) != null) {
-				   if(c == Card.getCard(playedCards ,Card.CardName.Gardens)) 
-					   numGardenCard++;
-				   }
+			   if(c == Card.getCard(playedCards ,Card.CardName.Gardens)) 
+				   numGardenCard++;
 			   pTotalCards++;
 			   score += c.score(); // for Great Hall - action card
 		   }
 
-		   if(numGardenCard > 0)
+		   if(numGardenCard != 0)
 			   score = score + numGardenCard*(pTotalCards/10);
 		      
 		    
@@ -177,21 +171,29 @@ public class Player implements Cloneable{
 			   else{
 				   int x = random.nextInt(17);
 				   Card c = state.cards.get(x);
-				   if((c.getCardName() == Card.CardName.Copper && coins >=6) || (c.getCardName() == Card.CardName.Copper && coins >=6)){
+				   if(coins >= c.getCost()){
+					   gain(c);
+					   coins = coins - c.getCost();
+					   numBuys--;
+				   }
+				   /*if((c.getCardName() == Card.CardName.Copper && coins >=6) || (c.getCardName() == Card.CardName.Copper && coins >=6)){
 					   gain(Card.getCard(state.cards, Card.CardName.Gold));
 					   System.out.println(player_username +" brought Gold\n");
+					   coins = coins - c.getCost();
 					   numBuys--;
 				   }
 				   else if(c.getCardName() == Card.CardName.Copper && coins >= 3){
 					   gain(Card.getCard(state.cards, Card.CardName.Silver));
 					   System.out.println(player_username +" brought Silver\n");
+					   coins = coins - c.getCost();
 					   numBuys--;
 				   }
 				   else if(coins >= c.getCost()){
 					   gain(c);
 					   System.out.println(player_username +" brought " +c.getCardName() + "\n");
+					   coins = coins - c.getCost();
 					   numBuys--;
-				   }
+				   }*/
 				   else
 					   continue;
 			   }

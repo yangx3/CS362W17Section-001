@@ -68,9 +68,11 @@ public class TestBaron
 		// state.players.get(1);	// player2
 
 		// Each player plays a Baron
+		int startingcoin = 0;
 		for (Player player : state.players)
 		{
 			int i = 0;
+			startingcoin = player.coins;
 			System.out.println(player.player_username + " is playing");
 			Card c = Card.getCard(state.cards,Card.CardName.Baron);
 			c.play(player, state);
@@ -84,6 +86,10 @@ public class TestBaron
 				assertEquals( player.coins, startstate.players.get(i).coins+4 );
 				// Make sure that is what was discarded
 				assertEquals( player.discard.get(0).getCardName(), Card.CardName.Estate );
+			}
+			if (player.hand.size() == startstate.players.get(i).hand.size())
+			{
+				assertEquals( player.coins, startingcoin );
 			}
 			i = 1;
 		}

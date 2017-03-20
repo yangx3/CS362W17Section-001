@@ -17,6 +17,9 @@ Command to run randoop test suite:
 Command to run my random tester:
  mvn -Dtest=RandomTestDominion test
 
+Command to run mutation tests:
+ mvn org.pitest:pitest-maven:mutationCoverage
+
 Command to run all tests:
  mvn test
 
@@ -39,6 +42,9 @@ Command to run randoop test suite:
 
 Command to run my random tester:
  make myrandom
+
+Command to run mutation tests:
+ make mutations
 
 Command to run all tests:
  make testall

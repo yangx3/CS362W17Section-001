@@ -8,5 +8,7 @@ build:
 	mvn package
 coverage: clean
 	mvn cobertura:cobertura
-run:
-	 java -cp target/Dominion-1.0-SNAPSHOT.jar goertzel.Main
+run2bot:
+	java -cp target/Dominion-1.0-SNAPSHOT.jar goertzel.Main
+runRandTester:
+	mvn test -Dtest=RandomTestDominion

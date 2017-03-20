@@ -1,0 +1,4 @@
+[MASTER] 16:39:34.410 [pool-2-thread-1] ERROR JUnitAnalyzer - 1 test cases failed
+[MASTER] 16:39:36.346 [pool-2-thread-1] ERROR JUnitAnalyzer - 1 test cases failed
+[MASTER] 16:39:36.530 [pool-2-thread-1] ERROR JUnitAnalyzer - 1 test cases failed
+[MASTER] 16:39:38.072 [pool-2-thread-1] ERROR JUnitAnalyzer - Ran out of time while checking tests

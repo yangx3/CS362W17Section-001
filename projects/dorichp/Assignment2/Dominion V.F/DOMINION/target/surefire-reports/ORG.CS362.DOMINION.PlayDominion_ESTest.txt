@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: ORG.CS362.DOMINION.PlayDominion_ESTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.433 sec <<< FAILURE! - in ORG.CS362.DOMINION.PlayDominion_ESTest
+test0(ORG.CS362.DOMINION.PlayDominion_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+org.evosuite.runtime.System$SystemExitException: null
+	at org.evosuite.runtime.System.exit(System.java:187)
+	at ORG.CS362.DOMINION.PlayDominion.main(PlayDominion.java:83)
+	at ORG.CS362.DOMINION.PlayDominion_ESTest.test0(PlayDominion_ESTest.java:27)
+
+test1(ORG.CS362.DOMINION.PlayDominion_ESTest)  Time elapsed: 0.007 sec  <<< ERROR!
+org.evosuite.runtime.System$SystemExitException: null
+	at org.evosuite.runtime.System.exit(System.java:187)
+	at ORG.CS362.DOMINION.PlayDominion.main(PlayDominion.java:83)
+	at ORG.CS362.DOMINION.PlayDominion_ESTest.test1(PlayDominion_ESTest.java:43)
+

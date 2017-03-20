@@ -21,23 +21,28 @@ public class cutpurse extends card{
 		player_array[turn].gold += 2;
 
 		//Check if the other players have a copper, if so discard it.
-		int other_turn;
-		if(turn == 0){
-			other_turn = 1;
-		}
-		else{
-			other_turn = 0;
-		}
-
-		for(int i = 0; i < player_array[other_turn].player_hand.num_cards; i++){
-			if(player_array[other_turn].player_hand.player_hand[i].name == "copper"){
-				player_array[other_turn].player_discard.add_card(player_array[other_turn].player_hand.remove_card(i));
-				System.out.format("Player %d has discarded a copper!\n\n", other_turn+1);
-				return;
+		int other_turn = -1;
+		for(int i = 0; i < dominion.num_players; i++){
+			if(turn == dominion.num_players - 1){
+				other_turn = 0;
+			}
+			else{
+				other_turn++;
+			}
+	
+			for(int j = 0; j < player_array[other_turn].player_hand.num_cards; j++){
+				if(player_array[other_turn].player_hand.player_hand[j].name == "copper"){
+					player_array[other_turn].player_discard.add_card(player_array[other_turn].player_hand.remove_card(j));
+					System.out.format("Player %d has discarded a copper!\n\n", other_turn+1);
+					break;
+				}
+				else{
+					System.out.format("Player %d does not have any coppers.\n", other_turn+1);
+					player_array[other_turn].player_hand.show_hand();
+					break;
+				}
 			}
 		}
-		System.out.format("Player %d does not have any coppers.\n", other_turn+1);
-		player_array[other_turn].player_hand.show_hand();
 	}
 
 	public void description(){

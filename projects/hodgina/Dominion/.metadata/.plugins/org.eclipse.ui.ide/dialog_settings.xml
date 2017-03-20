@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-		<item value="C:\Users\Austin Hodgin\Homework\CS362\HW1\CS362W17Section-001\projects\hodgina\Dominion"/>
-	</list>
 	<section name="ExternalProjectImportWizard">
 		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value="C:\Users\Austin Hodgin\Homework\CS362\HW1\CS362W17Section-001\projects\hodgina\Dominion"/>
+			<item value="C:\Users\Austin Hodgin\Homework\CS362\HW1\CS362W17Section-001\projects\hodgina\HW2\Dominion"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>

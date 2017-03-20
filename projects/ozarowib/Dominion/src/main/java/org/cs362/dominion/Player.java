@@ -19,6 +19,7 @@ public class Player implements Cloneable
 	int coins;
 	int numGardens = 0;
 	final GameState gameState;
+	int phase;
 
 	public Player(GameState gameState,String player_username)
 	{
@@ -116,6 +117,7 @@ public class Player implements Cloneable
 
 	public void playKingdomCard()
 	{
+		phase++;
 		System.out.println(" --- Action Phase:");
 		int alreadysaid = 0;
 		if (Card.filter(hand, Card.Type.ACTION).size()==0)
@@ -151,6 +153,7 @@ public class Player implements Cloneable
 
 	public void playTreasureCard()
 	{
+		phase++;
 		System.out.println(" --- Treasure Phase:");
 		if (Card.filter(hand, Card.Type.TREASURE).size()==0)
 		{
@@ -177,6 +180,7 @@ public class Player implements Cloneable
 
 	public void buyCard()
 	{
+		phase++;
 		System.out.println(" --- Buy Phase:");
 		System.out.println(player_username + " has " + numBuys + " to buy");
 		while (numBuys > 0)	// For each buy player has this turn

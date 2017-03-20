@@ -1,12 +1,11 @@
 package goertzel;
 
 
-
-
-import goertzel.Player;
-
 import static goertzel.Card.CardType.*;
 import static goertzel.Card.CardName.*;
+
+
+
 
 public class Card {
     public enum CardType {
@@ -186,9 +185,10 @@ public class Card {
 
             case SMITHY:
                 // +3 Cards
-                // player.drawCards(3);
+//                 player.drawCards(3);
 //HERE BE A BUG
                 player.drawCards(1);
+
                 player.discard(this);
                 break;
             case SALVAGER:

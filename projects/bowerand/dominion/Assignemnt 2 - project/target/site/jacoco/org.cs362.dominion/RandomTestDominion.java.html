@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>RandomTestDominion.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CS362-Assignment1</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">RandomTestDominion.java</span></div><h1>RandomTestDominion.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+
+import java.util.Collections;
+
+
+<span class="nc" id="L12">public class RandomTestDominion {</span>
+
+	   public  static void main(String args[]){
+<span class="nc" id="L15">		Random randomGenerator = new Random();   </span>
+                List&lt;Card&gt; cards;
+                GameState state;
+<span class="nc" id="L18">                randomGenerator.setSeed(10);</span>
+                //Randomness.reset(10);	   
+
+
+                //the cards  are achieved by each element/constant in the enum class 
+<span class="nc" id="L23">                cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="nc" id="L24">                state = new GameState(cards);</span>
+                //System.out.println(&quot;Initialization DominionBoard:\n &quot; + state.toString()); 
+                
+                //Randomly select between 2 to 4 players
+<span class="nc" id="L28">                int random = randomGenerator.nextInt(3) + 2; </span>
+<span class="nc" id="L29">                int count = 0;</span>
+                Player player;
+<span class="nc bnc" id="L31" title="All 2 branches missed.">                while (count &lt; random) {</span>
+<span class="nc" id="L32">                    player = new Player(state, &quot;player-&quot;+(count+1));</span>
+<span class="nc" id="L33">                    state.addPlayer(player);</span>
+<span class="nc" id="L34">                    count++;</span>
+                }
+                
+                //Initialize the game!
+<span class="nc" id="L38">                state.initializeGame();</span>
+
+<span class="nc" id="L40">                System.out.println(&quot;Initialization DominionBoard:\n &quot; + state.toString());</span>
+
+<span class="nc" id="L42">                HashMap&lt;Player, Integer&gt; winners=state.play();</span>
+<span class="nc" id="L43">                System.out.println (&quot;Finished game.\n&quot;);</span>
+
+<span class="nc bnc" id="L45" title="All 2 branches missed.">                for(Player p: winners.keySet()){</span>
+<span class="nc" id="L46">                    System.out.println (&quot;Player name: &quot;+winners.get(p) + &quot; , Score: &quot;+ winners.get(p) );</span>
+<span class="nc" id="L47">                }		      </span>
+                //	      player.printStateGame();
+
+
+<span class="nc" id="L51">                System.exit(0);  </span>
+
+<span class="nc" id="L53">	   }</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

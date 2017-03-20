@@ -13,7 +13,7 @@ public class Player {
 	private int nbAction;
 	private int nbAchat;
 	private Board gameBoard;
-	private int id;
+	public int id;
 	// private Scanner sc = new Scanner(System.in);
 	private Random rand = new Random();
 
@@ -106,11 +106,11 @@ public class Player {
 				counter = 0;
 				while (this.nbAction > 0) {
 					for (i = 0; i < this.hand.size(); i++) {
-						if (this.hand.get(i).getType() == "action") {
+						if (this.hand.get(i).getType().equals("action")) {
 							carteMemoire = this.hand.get(i);
 							play(this.hand.get(i));
 							for (y = 0; y < this.hand.size(); y++) {
-								if (this.hand.get(y) == carteMemoire) {
+								if (this.hand.get(y).equals(carteMemoire)) {
 									this.hand.remove(y);
 								}
 							}

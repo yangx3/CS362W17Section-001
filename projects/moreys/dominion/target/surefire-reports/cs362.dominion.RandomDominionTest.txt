@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: cs362.dominion.RandomDominionTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.319 sec <<< FAILURE! - in cs362.dominion.RandomDominionTest
+cs362.dominion.RandomDominionTest  Time elapsed: 0.319 sec  <<< ERROR!
+org.evosuite.runtime.TooManyResourcesException: Loop has been executed more times than the allowed 10000
+	at org.evosuite.runtime.LoopCounter.checkLoop(LoopCounter.java:115)
+	at cs362.dominion.GameState.initializeGame(GameState.java:47)
+	at cs362.dominion.RandomDominionTest.setUpBeforeClass(RandomDominionTest.java:31)
+

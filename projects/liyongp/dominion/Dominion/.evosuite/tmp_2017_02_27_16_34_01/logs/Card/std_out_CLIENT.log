@@ -1,0 +1,83 @@
+* Starting client
+* Connecting to master process on port 18629
+* Analyzing classpath: 
+  - C:\Users\liyon\Desktop\cs\cs362\CS362W17Section-001\projects\liyongp\dominion\Dominion\target\test-classes
+  - C:\Users\liyon\Desktop\cs\cs362\CS362W17Section-001\projects\liyongp\dominion\Dominion\target\classes
+  - C:\Users\liyon\.m2\repository\junit\junit\4.12\junit-4.12.jar
+  - C:\Users\liyon\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class Card
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 16:34:11.147 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: C:\Users\liyon\Desktop\cs\cs362\CS362W17Section-001\projects\liyongp\dominion\Dominion\.evosuite\evosuite-seeds\Card.seed
+* Total number of test goals: 
+  - Line 161
+  - Branch 77
+  - Exception 0
+  - MutationFactory 137
+  - Output 49
+  - Method 13
+  - MethodNoException 13
+  - CBranchFitnessFactory 77
+* Using seed 1488242046283
+* Starting evolution
+* Search finished after 125s and 223 generations, 103608 statements, best individual has fitness: 83.61238095238095
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 85%
+* Total number of goals: 161
+* Number of covered goals: 137
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 83%
+* Total number of goals: 77
+* Number of covered goals: 64
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 4
+* Number of covered goals: 4
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 90%
+* Total number of goals: 137
+* Number of covered goals: 123
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 63%
+* Total number of goals: 49
+* Number of covered goals: 31
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 13
+* Number of covered goals: 13
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 100%
+* Total number of goals: 13
+* Number of covered goals: 13
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 83%
+* Total number of goals: 77
+* Number of covered goals: 64
+* Generated 41 tests with total length 210
+* Resulting test suite's coverage: 88% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 65%
+* Compiling and checking tests
+[MASTER] 16:36:41.733 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: expected:<0> but was:<4>
+[MASTER] 16:36:41.734 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: List<Card> list0 = Card.createCards();
+TreeSet<Card> treeSet0 = new TreeSet<Card>((Collection<? extends Card>) list0);
+Card.Type card_Type0 = Card.Type.VICTORY;
+List<Card> list1 = Card.filter(treeSet0, card_Type0);
+assertEquals(0, list1.size());
+
+
+* Writing JUnit test case 'Card_ESTest' to C:\Users\liyon\Desktop\cs\cs362\CS362W17Section-001\projects\liyongp\dominion\Dominion\.evosuite\tmp_2017_02_27_16_34_01\tests
+* Done!
+

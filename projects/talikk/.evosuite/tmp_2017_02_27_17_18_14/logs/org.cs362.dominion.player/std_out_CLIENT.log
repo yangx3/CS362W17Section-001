@@ -1,0 +1,107 @@
+* Starting client
+* Connecting to master process on port 6605
+* Analyzing classpath: 
+  - /home/talikk/Documents/SchoolLOL/CS362/MVN/Dominion/CS362W17Section-001/projects/talikk/target/test-classes
+  - /home/talikk/Documents/SchoolLOL/CS362/MVN/Dominion/CS362W17Section-001/projects/talikk/target/classes
+  - /home/talikk/.m2/repository/junit/junit/4.11/junit-4.11.jar
+  - /home/talikk/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+  - /home/talikk/.m2/repository/net/sourceforge/cobertura/cobertura/2.1.1/cobertura-2.1.1.jar
+  - /home/talikk/.m2/repository/org/ow2/asm/asm/5.0.1/asm-5.0.1.jar
+  - /home/talikk/.m2/repository/org/ow2/asm/asm-tree/5.0.1/asm-tree-5.0.1.jar
+  - /home/talikk/.m2/repository/org/ow2/asm/asm-commons/5.0.1/asm-commons-5.0.1.jar
+  - /home/talikk/.m2/repository/org/ow2/asm/asm-util/5.0.1/asm-util-5.0.1.jar
+  - /home/talikk/.m2/repository/org/ow2/asm/asm-analysis/5.0.1/asm-analysis-5.0.1.jar
+  - /home/talikk/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar
+  - /home/talikk/.m2/repository/jaxen/jaxen/1.1.4/jaxen-1.1.4.jar
+  - /home/talikk/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar
+  - /home/talikk/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar
+  - /home/talikk/.m2/repository/org/apache/ant/ant-junit/1.8.3/ant-junit-1.8.3.jar
+  - /home/talikk/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar
+  - /home/talikk/.m2/repository/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar
+  - /home/talikk/.m2/repository/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar
+  - /usr/lib/jvm/java-8-openjdk-amd64/jre/../lib/tools.jar
+  - /home/talikk/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar
+  - /home/talikk/.m2/repository/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar
+  - /home/talikk/.m2/repository/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar
+  - /home/talikk/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar
+* Finished analyzing classpath
+* Generating tests for class org.cs362.dominion.player
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+* Total number of test goals: 
+  - Line 51
+  - Branch 23
+  - Exception 0
+  - MutationFactory 112
+  - Output 33
+  - Method 15
+  - MethodNoException 15
+  - CBranchFitnessFactory 23
+* Using seed 1488244963083
+* Starting evolution
+* Search finished after 66s and 9 generations, 9184 statements, best individual has fitness: 12.2
+* Writing sequences to pool
+* Minimizing test suite
+[MASTER] 17:24:02.436 [pool-2-thread-1] WARN  TestSuiteMinimizer - Minimization timeout. Roll back to original test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 100%
+* Total number of goals: 51
+* Number of covered goals: 51
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 100%
+* Total number of goals: 23
+* Number of covered goals: 23
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 4
+* Number of covered goals: 4
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 96%
+* Total number of goals: 112
+* Number of covered goals: 108
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 70%
+* Total number of goals: 33
+* Number of covered goals: 23
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 15
+* Number of covered goals: 15
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 100%
+* Total number of goals: 15
+* Number of covered goals: 15
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 100%
+* Total number of goals: 23
+* Number of covered goals: 23
+* Generated 17 tests with total length 164
+* Resulting test suite's coverage: 96% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 26%
+* Compiling and checking tests
+[MASTER] 17:24:18.621 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.624 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.627 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.629 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.633 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.635 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.638 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.639 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.642 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.643 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.646 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.649 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 17:24:18.651 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+* Writing JUnit test case 'player_ESTest' to /home/talikk/Documents/SchoolLOL/CS362/MVN/Dominion/CS362W17Section-001/projects/talikk/.evosuite/tmp_2017_02_27_17_18_14/tests
+* Done!
+

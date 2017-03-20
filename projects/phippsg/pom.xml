@@ -1,56 +1,112 @@
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<groupId>org.cs362.dominion</groupId>
+<artifactId>Dominion</artifactId>
+<version>1.0-SNAPSHOT</version>
+<packaging>jar</packaging>
 
-	<build>
-        <plugins>
-                <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                                <source>1.7</source>
-                                <target>1.7</target>
-                        </configuration>
-                </plugin>
-        </plugins>
-	</build>
+<name>Dominion</name>
+<url>https://github.com/aburasali/CS362W17Section-001/tree/master/projects/phippsg/dominion</url>
+<properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<targetFolder>src/test/evosuite</targetFolder>
+</properties>
 
 
-  <groupId>org.cs362.dominion</groupId>
-  <artifactId>Dominion</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
 
-  <name>Dominion</name>
-  <url>http://maven.apache.org</url>
+<pluginRepositories>
+  <pluginRepository>
+    <id>EvoSuite</id>
+    <name>EvoSuite Repository</name>
+    <url>http://www.evosuite.org/m2</url>
+  </pluginRepository>
+</pluginRepositories>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
-  <dependencies>
+<repositories>
+   <repository>
+     <id>EvoSuite</id>
+     <name>EvoSuite Repository</name>
+     <url>http://www.evosuite.org/m2</url>
+   </repository>
+</repositories>
 
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+<dependencies>
 
-    <dependency>
-      <groupId>net.sourceforge.cobertura</groupId>
-      <artifactId>cobertura</artifactId>
-      <version>2.1.1</version>
-    </dependency>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.12</version>
+		<scope>test</scope>
+	</dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/findbugs-maven-plugin -->
+	<dependency>
+		<groupId>net.sourceforge.cobertura</groupId>
+		<artifactId>cobertura</artifactId>
+		<version>2.1.1</version>
+	</dependency>
 
-    <dependency>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>findbugs-maven-plugin</artifactId>
-      <version>3.0.4</version>
-    </dependency>
+	<dependency>
+		<groupId>org.evosuite</groupId>
+		<artifactId>evosuite-standalone-runtime</artifactId>
+		<version>1.0.3</version>
+		<scope>test</scope>
+	</dependency>
 
-  </dependencies>
+	<dependency>
+		<groupId>org.pitest</groupId>
+		<artifactId>pitest-maven</artifactId>
+		<version>0.32</version>
+	</dependency>
+
+	<!--<dependency>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>findbugs-maven-plugin</artifactId>
+		<version>3.0.4</version>
+	</dependency>-->
+
+</dependencies>
+
+
+
+<build>
+	<plugins>
+
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-surefire-plugin</artifactId>
+		<version>2.19.1</version>
+			<configuration>
+				<source>1.7</source>
+				<target>1.7</target>
+				<properties>
+					<!--<property>
+						<name>junit</name>
+						<value>false</value>
+					</property>-->
+					<property>
+						<name>listener</name>
+						<value>org.evosuite.runtime.InitializingListener</value>
+					</property>
+				</properties>
+				<threadCount>1</threadCount>
+			</configuration>
+	</plugin>
+
+	<plugin>
+		<groupId>org.evosuite.plugins</groupId>
+		<artifactId>evosuite-maven-plugin</artifactId>
+		<version>1.0.4</version>
+        </plugin>
+
+	<plugin>
+		<groupId>org.pitest</groupId>
+		<artifactId>pitest-maven</artifactId>
+		<version>0.32</version>
+	 </plugin>
+
+	</plugins>
+</build>
+
 </project>

@@ -1,0 +1,107 @@
+* Starting client
+* Connecting to master process on port 6799
+* Analyzing classpath: 
+  - C:\Users\liyon\Desktop\cs\cs362\CS362W17Section-001\projects\liyongp\dominion\Dominion\target\test-classes
+  - C:\Users\liyon\Desktop\cs\cs362\CS362W17Section-001\projects\liyongp\dominion\Dominion\target\classes
+  - C:\Users\liyon\.m2\repository\junit\junit\4.12\junit-4.12.jar
+  - C:\Users\liyon\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class Player
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 16:36:53.146 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: C:\Users\liyon\Desktop\cs\cs362\CS362W17Section-001\projects\liyongp\dominion\Dominion\.evosuite\evosuite-seeds\Player.seed
+* Total number of test goals: 
+  - Line 147
+  - Branch 72
+  - Exception 0
+  - MutationFactory 332
+  - Output 20
+  - Method 13
+  - MethodNoException 13
+  - CBranchFitnessFactory 72
+* Using seed 1488242208481
+* Starting evolution
+* Search finished after 120s and 417 generations, 161996 statements, best individual has fitness: 142.33809523809524
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 89%
+* Total number of goals: 147
+* Number of covered goals: 131
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 72%
+* Total number of goals: 72
+* Number of covered goals: 52
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 13
+* Number of covered goals: 13
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 82%
+* Total number of goals: 332
+* Number of covered goals: 272
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 70%
+* Total number of goals: 20
+* Number of covered goals: 14
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 13
+* Number of covered goals: 13
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 100%
+* Total number of goals: 13
+* Number of covered goals: 13
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 72%
+* Total number of goals: 72
+* Number of covered goals: 52
+* Generated 34 tests with total length 175
+* Resulting test suite's coverage: 87% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 38%
+* Compiling and checking tests
+[MASTER] 16:39:34.414 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class org.evosuite.runtime.TooManyResourcesException: Loop has been executed more times than the allowed 10000
+[MASTER] 16:39:34.415 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: List<Card> list0 = Card.createCards();
+GameState gameState0 = new GameState(list0);
+Player player0 = new Player(gameState0, ".a%/AiX_~x");
+Card.CardName card_CardName0 = Card.CardName.Estate;
+Card card0 = Card.getCard(gameState0.cards, card_CardName0);
+player0.gain(card0);
+player0.numActions = 1185;
+player0.gain(card0);
+player0.hand = gameState0.cards;
+player0.playKingdomCard();
+
+[MASTER] 16:39:36.347 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: Expecting exception: NullPointerException
+[MASTER] 16:39:36.347 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: List<Card> list0 = Card.createCards();
+GameState gameState0 = new GameState(list0);
+Player player0 = new Player(gameState0, ".a%/AiX_~x");
+Card.CardName card_CardName0 = Card.CardName.Curse;
+Card card0 = Card.getCard(gameState0.cards, card_CardName0);
+player0.gain(card0);
+player0.scoreFor();
+
+[MASTER] 16:39:36.531 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.AssertionError: Expecting exception: NullPointerException
+[MASTER] 16:39:36.531 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test: List<Card> list0 = Card.createCards();
+GameState gameState0 = new GameState(list0);
+Player player0 = new Player(gameState0, ".a%/AiX_~x");
+Card.CardName card_CardName0 = Card.CardName.Curse;
+Card card0 = Card.getCard(gameState0.cards, card_CardName0);
+player0.gain(card0);
+player0.gain(card0);
+player0.drawCard();
+player0.scoreFor();
+
+* Writing JUnit test case 'Player_ESTest' to C:\Users\liyon\Desktop\cs\cs362\CS362W17Section-001\projects\liyongp\dominion\Dominion\.evosuite\tmp_2017_02_27_16_34_01\tests
+* Done!
+

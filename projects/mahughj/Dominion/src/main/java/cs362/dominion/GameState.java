@@ -73,7 +73,8 @@ public class GameState implements Cloneable{
 			      //initialize supply 
 
 			   //check number of players
-			   if (players.size() > 4 || players.size() < 2) //Not needed for this implementation, but when I make my own variant yes
+		   	   int numP = players.size();
+			   if (numP > 4 || numP < 2) 
 			    {
 				   System.err.println("the number of players must be between 2 and 4 ");
 			      return ;
@@ -88,7 +89,13 @@ public class GameState implements Cloneable{
 			         Card tmp = cards.get(random);
 			         if(tmp.getType()!=Card.Type.ACTION && tmp.getType()!=Card.Type.ACTION_ATTACK && tmp.getType()!=Card.Type.ACTION_VICTORY && tmp.getCardName().toString() != "Gardens" ) continue;
 			         if(gameBoard.containsKey(tmp)) continue;
-			         gameBoard.put(tmp, 10);
+			         if (tmp.getCardName().toString() == "Gardens" && numP == 2) {
+			        	 gameBoard.put(tmp, 8);
+			         } else if (tmp.getCardName().toString() == "Gardens") {
+			        	 gameBoard.put(tmp,  12);
+			         } else {
+			        	 gameBoard.put(tmp, 10);
+			         }
 			         embargoBoard.put(tmp, 0);
 			         selectedKindom++;
 			      }
@@ -96,9 +103,20 @@ public class GameState implements Cloneable{
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
 		      
 		      //set number of Victory cards
+		      if (numP == 2) {
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 14); //Added six, since intial gaining of estates should still leave 8
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 14);
+		      }
+		      else if (numP == 4) {
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 12);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 12);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 28);//Added six, since intial gaining of estates should still leave 8
+		      } else if (numP == 3) {
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 12);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 12);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 24);//Added six, since intial gaining of estates should still leave 8
+		      }
 		    //set number of Treasure cards
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
@@ -352,6 +370,9 @@ public class GameState implements Cloneable{
 		    	  turn++;
 		         for (Player player : players) {
 		        	    System.out.println("Turn " + turn + "!");
+		        	    if (turn == 21) {
+		        	    	System.out.println("FOR DA BREAK!");
+		        	    }
 		        	 	System.out.println("Player: "+ player.player_username + " is playing");
 		        	 	player.startTurn();
 		        	 //	System.out.println("Turn Started");
@@ -492,9 +513,15 @@ public class GameState implements Cloneable{
 					System.out.println(this.cards.toString());
 				}*/
 				if (gameBoard.containsKey(cards.get(ran))){
+					Card tmpc = cards.get(ran);
+					String s = tmpc.getCardName().toString();
+					//System.out.println(gameBoard.get(Card.getCard(cards, "Curse")).toString() + " "  + gameBoard.get(Card.getCard(cards, "Copper")).toString());
 					if (cards.get(ran).getCost() <= cost && (gameBoard.get(cards.get(ran)) > 0)) {
 						return cards.get(ran);
-					} else {
+					} else if ((cost < 2) && (gameBoard.get(Card.getCard(cards, "Curse")) <= 0) && (gameBoard.get((Card.getCard(cards, "Copper"))) <= 0)) { //ERRORS TODO FIX PLZIRENO
+						return null;
+					}
+					else {
 						ran = Randomness.nextRandomInt(k);
 					}
 				} else {

@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+dominion,default,DominionBoard,0,857,3,85,0,169,3,60,0,19
+dominion,default,Player,12,940,5,84,3,199,5,76,0,31
+dominion,default,Player.new Object() {...},12,77,0,0,0,1,0,1,0,1
+dominion,default,Randomness,31,32,4,2,8,8,5,4,2,4
+dominion,default,PlayGame,16,0,0,0,5,0,2,0,2,0
+dominion,default,Card,5,357,0,0,0,35,1,10,1,10

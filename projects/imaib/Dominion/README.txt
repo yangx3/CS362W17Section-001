@@ -2,7 +2,6 @@ Compiling mvn:
  
 mvn compile
 mvn package
-mvn test
 
 Running a Program:
 java -cp target/Dominion-1.0-SNAPSHOT.jar org.cs362.dominion.PlayDominion
@@ -10,6 +9,17 @@ java -cp target/Dominion-1.0-SNAPSHOT.jar org.cs362.dominion.PlayDominion
 Run test suite:
 mvn -Dtest=AllTests test
 
-Code coverage:
+Run RandomTestDominion:
+mvn -Dtest=RandomTestDominion test
 
-Had a very difficult time figuring out how to run mvn through the terminal so I ran it through Eclipse's IED using EclEmma which is how I was able to produce the html file. 
+Run Randooptest suite:
+mvn -Dtest=ErrorTest,RegressionTest test
+
+Run all tests:
+mvn test
+
+Code coverage:
+mvn cobertura: cobertura
+
+Code coverage Mutations(PITEST:
+mvn org.pitest:pitest-maven:mutationCoverage 

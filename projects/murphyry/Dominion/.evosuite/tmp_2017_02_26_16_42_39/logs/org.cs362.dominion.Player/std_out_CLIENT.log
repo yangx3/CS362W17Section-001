@@ -1,0 +1,75 @@
+* Starting client
+* Connecting to master process on port 4786
+* Analyzing classpath: 
+  - C:\Users\Ok-Cha\Documents\OSU2017\Winter Term\CS 362 (SW Eng II)\dominion\Dominion\target\test-classes
+  - C:\Users\Ok-Cha\Documents\OSU2017\Winter Term\CS 362 (SW Eng II)\dominion\Dominion\target\classes
+  - C:\Users\Ok-Cha\.m2\repository\junit\junit\4.11\junit-4.11.jar
+  - C:\Users\Ok-Cha\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class org.cs362.dominion.Player
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 16:42:54.578 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: C:\Users\Ok-Cha\Documents\OSU2017\Winter Term\CS 362 (SW Eng II)\dominion\Dominion\.evosuite\evosuite-seeds\org.cs362.dominion.Player.seed
+* Total number of test goals: 
+  - Line 205
+  - Branch 167
+  - Exception 0
+  - MutationFactory 346
+  - Output 37
+  - Method 16
+  - MethodNoException 16
+  - CBranchFitnessFactory 167
+* Using seed 1488156168292
+* Starting evolution
+* Search finished after 164s and 199 generations, 102564 statements, best individual has fitness: 541.7302564102564
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 63%
+* Total number of goals: 205
+* Number of covered goals: 130
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 34%
+* Total number of goals: 167
+* Number of covered goals: 57
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 92%
+* Total number of goals: 12
+* Number of covered goals: 11
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 86%
+* Total number of goals: 346
+* Number of covered goals: 297
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 78%
+* Total number of goals: 37
+* Number of covered goals: 29
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 16
+* Number of covered goals: 16
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 100%
+* Total number of goals: 16
+* Number of covered goals: 16
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 34%
+* Total number of goals: 167
+* Number of covered goals: 57
+* Generated 41 tests with total length 215
+* Resulting test suite's coverage: 75% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 48%
+* Compiling and checking tests
+* Writing JUnit test case 'Player_ESTest' to C:\Users\Ok-Cha\Documents\OSU2017\Winter Term\CS 362 (SW Eng II)\dominion\Dominion\.evosuite\tmp_2017_02_26_16_42_39\tests
+* Done!
+

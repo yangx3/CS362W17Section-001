@@ -13,9 +13,9 @@ public class dominion{
 		board dominion = new board();
 
 		//Create array of players and have them draw 5 cards
-		int num_players = 2;
-		player player_array[] = new player[num_players];
-		for(int i = 0; i < num_players; i++){
+		dominion.num_players = ThreadLocalRandom.current().nextInt(2, 5);
+		player player_array[] = new player[dominion.num_players];
+		for(int i = 0; i < dominion.num_players; i++){
 			player_array[i] = new player();
 			player_array[i].player_deck.shuffle();
 			for(int j = 0; j < 5; j++){
@@ -248,11 +248,11 @@ public class dominion{
 			}
 
 			//Switch the players turn
-			if(turn == 0){
-				turn = 1;
+			if(turn == dominion.num_players - 1){
+				turn = 0;
 			}
 			else{
-				turn = 0;
+				turn++;
 			}
 		}
 		//END PHASE
@@ -260,66 +260,44 @@ public class dominion{
 		//For each player, add up the number of victory points.
 		//The player with the most victory points wins!
 
-		int victory_1 = 0;
-		int victory_2 = 0;
-		int gardens_const_1 = 0;
-		int gardens_const_2 = 0;
-		//Player 1
 		//Put all of the cards in the deck
-		while(0 < player_array[0].player_hand.num_cards){
-			player_array[0].player_deck.add_card(player_array[0].player_hand.remove_card(0));
-		}
-		while(0 < player_array[0].player_discard.num_cards){
-			player_array[0].player_deck.add_card(player_array[0].player_discard.draw_card());
-		}
-		//Initialize the gardens constant (value is floored)
-		gardens_const_1 = player_array[0].player_deck.num_cards/10;
-
-		//Count the victory points
-		for(int i = 0; i < player_array[0].player_deck.num_cards; i++){
-			if(player_array[0].player_deck.player_deck[i].type == "victory"
-					|| player_array[0].player_deck.player_deck[i].type == "action victory"){
-				victory_1 += player_array[0].player_deck.player_deck[i].victory_points;
-					}
-			if(player_array[0].player_deck.player_deck[i].name == "gardens"){
-				victory_1 += gardens_const_1;
+		for(int i = 0; i < dominion.num_players; i++){
+			while(0 < player_array[i].player_hand.num_cards){
+				player_array[i].player_deck.add_card(player_array[i].player_hand.remove_card(0));
+			}
+			while(0 < player_array[i].player_discard.num_cards){
+				player_array[i].player_deck.add_card(player_array[i].player_discard.draw_card());
 			}
 		}
 
-		//Player 2
-		//Put all of the cards in the deck
-		while(0 < player_array[1].player_hand.num_cards){
-			player_array[1].player_deck.add_card(player_array[1].player_hand.remove_card(0));
-		}
-		while(0 < player_array[1].player_discard.num_cards){
-			player_array[1].player_deck.add_card(player_array[1].player_discard.draw_card());
-		}
-		//Initialize the gardens constant (value is floored)
-		gardens_const_1 = player_array[1].player_deck.num_cards/10;
-
-		//Count the victory points
-		for(int i = 0; i < player_array[1].player_deck.num_cards; i++){
-			if(player_array[1].player_deck.player_deck[i].type == "victory"
-					|| player_array[1].player_deck.player_deck[i].type == "action victory"){
-				victory_2 += player_array[1].player_deck.player_deck[i].victory_points;
-					}
-			if(player_array[1].player_deck.player_deck[i].name == "gardens"){
-				victory_2 += gardens_const_1;
+		//Count up the victory points
+		for(int i = 0; i < dominion.num_players; i++){
+			for(int j = 0; j < player_array[i].player_deck.num_cards; j++){
+				if(player_array[i].player_deck.player_deck[j].type == "victory"
+						|| player_array[i].player_deck.player_deck[j].type == "action victory"){
+					player_array[i].victory_points += player_array[i].player_deck.player_deck[j].victory_points;
+				}
+				if(player_array[i].player_deck.player_deck[j].name == "gardens"){
+					player_array[i].victory_points += player_array[i].player_deck.num_cards/10;
+				}
 			}
 		}
 
-
-		System.out.format("Player 1 has %d victory points.\n", victory_1);
-		System.out.format("Player 2 has %d victory points.\n", victory_2);
-		if(victory_1 > victory_2){
-			System.out.println("Player 1 has won!");
-		}
-		else if(victory_1 < victory_2){
-			System.out.println("player 2 has won!");
-		}
-		else{
-			System.out.println("It is a tie....");
+		for(int i = 0; i < dominion.num_players; i++){
+			System.out.format("Player %d has %d victory points.\n", i+1, player_array[i].victory_points);
 		}
 
+		int winning_score = player_array[0].victory_points;
+		for(int i = 0; i < dominion.num_players-1; i++){
+			if(winning_score < player_array[i+1].victory_points){
+				winning_score = player_array[i+1].victory_points;
+			}
+		}
+
+		for(int i = 0; i < dominion.num_players; i++){
+			if(player_array[i].victory_points == winning_score){
+				System.out.format("Player %d has won!\n", i+1);
+			}
+		}
 	}
 }

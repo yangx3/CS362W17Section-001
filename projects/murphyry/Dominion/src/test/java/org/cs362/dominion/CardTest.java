@@ -168,20 +168,32 @@ public class CardTest {
 		assertEquals(Card.getCard(cards, Card.CardName.Baron).getCardName(), Card.CardName.Baron);
 		
 		//Add card to hand and check hand size.
+				assertEquals(p1.hand.size(), 0);
+				assertEquals(p1.coins, 0);
+				assertEquals(p1.numBuys, 1);
 				p1.hand.add(Card.getCard(cards, Card.CardName.Baron));
 				assertEquals(p1.hand.size(), 1);
+				assertEquals(p1.coins, 0);
+				assertEquals(p1.numBuys, 1);
+				
+				p1.playKingdomCard();
+				assertEquals(p1.coins, 0);
+				assertEquals(p1.numBuys, 2);
+				assertEquals(p1.discard.size(), 11); //10 from init. + baron
 				
 				//Baron functionality
+				p1.hand.add(Card.getCard(cards, Card.CardName.Baron));
 				p1.hand.add(Card.getCard(cards, Card.CardName.Estate));
 				assertEquals(p1.hand.size(), 2);
 
 				p1.numActions = 1;
 				p1.playKingdomCard();
-				assertEquals(p1.playedCards.size(), 1);
+				assertEquals(p1.playedCards.size(), 2);
+				assertEquals(p1.numBuys, 3);
 				p1.playedCards.clear();
 				assertEquals(p1.playedCards.size(), 0);
 				assertEquals(p1.hand.size(), 0); //Make sure Estate card was discarded
-				assertEquals(p1.getCoins(), 4);  //Make sure Baron gives you da money
+				assertEquals(p1.coins, 4);  //Make sure Baron gives you da money
 				
 
 	}
@@ -379,7 +391,7 @@ public class CardTest {
 				assertEquals(p1.hand.size(), 3); //Make sure 3 cards drawn
 
 	}
-	
+	@Test
 	public void VillageTest() {
 		assertEquals(Card.getCard(cards, Card.CardName.Village).getType(), Card.Type.ACTION);
 		assertEquals(Card.getCard(cards, Card.CardName.Village).getCost(), 3);
@@ -401,6 +413,8 @@ public class CardTest {
 				assertEquals(p1.numActions, 2);
 
 	}
+	
+	
 	
 	 @After
 	    public void EraseStuffPlayer() {

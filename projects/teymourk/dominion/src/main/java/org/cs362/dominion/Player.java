@@ -1,9 +1,8 @@
 package org.cs362.dominion;
 
-import java.util.*;
-
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import org.cs362.dominion.Card.Type;
+
+import java.util.*;
 
 public class Player implements Cloneable{
 

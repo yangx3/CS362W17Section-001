@@ -43,12 +43,6 @@ public class AmbassadorTest {
 	System.out.println("numActions = " + p1.numActions);
 	System.out.println("numBuys = " + p1.numBuys);
 
-	//for later reference
-
-	//sanity checking that it copied right
-	for(Card card : state.gameBoard.keySet())
-	    assertEquals(state.gameBoard.get(card), testState.gameBoard.get(card));
-
 	// play the game
 	p1.playKingdomCard();
 

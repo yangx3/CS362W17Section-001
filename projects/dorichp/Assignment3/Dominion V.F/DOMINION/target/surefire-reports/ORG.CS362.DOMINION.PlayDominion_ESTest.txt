@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: ORG.CS362.DOMINION.PlayDominion_ESTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.015 sec <<< FAILURE! - in ORG.CS362.DOMINION.PlayDominion_ESTest
+test0(ORG.CS362.DOMINION.PlayDominion_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.PlayDominion.main(PlayDominion.java:18)
+	at ORG.CS362.DOMINION.PlayDominion_ESTest.test0(PlayDominion_ESTest.java:27)
+
+test1(ORG.CS362.DOMINION.PlayDominion_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.PlayDominion.main(PlayDominion.java:18)
+	at ORG.CS362.DOMINION.PlayDominion_ESTest.test1(PlayDominion_ESTest.java:43)
+

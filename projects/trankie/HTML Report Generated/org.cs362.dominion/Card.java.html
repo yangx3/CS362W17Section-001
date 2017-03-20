@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Dominion</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+import java.util.ArrayList;
+
+public class Card{
+<span class="pc" id="L10">	public static enum Type{</span>
+<span class="fc" id="L11">		ACTION, TREASURE, VICTORY;</span>
+	}
+<span class="fc" id="L13">	public static enum CardName{</span>
+<span class="fc" id="L14">		Gold, Silver, Cooper, Province, Duchy, Estate, Curse, Adventurer, Bureaucrat, Cellar, Chancellor, Chapel, Council_Room, Feast, Garden, Laboratory, Library, Market, Smithy, Village;</span>
+	}
+	private Type CardType;
+	private CardName cardName;
+	private int cost, score, treasureValue;
+	
+<span class="fc" id="L20">	private Card(CardName cardName, Type type, int cost, int score, int treasureValue){</span>
+<span class="fc" id="L21">		this.cost = cost;</span>
+<span class="fc" id="L22">		this.score = score;</span>
+<span class="fc" id="L23">		this.treasureValue = treasureValue;</span>
+<span class="fc" id="L24">		this.CardType = type;</span>
+<span class="fc" id="L25">		this.cardName = cardName;</span>
+<span class="fc" id="L26">	}</span>
+	public Type getType(){
+<span class="fc" id="L28">		return CardType;</span>
+	}
+	public CardName getCardName(){
+<span class="fc" id="L31">		return cardName;</span>
+	}
+	public int getCost(){
+<span class="fc" id="L34">		return cost;</span>
+	}
+	public int getTreasureValue(){
+<span class="fc" id="L37">		return treasureValue;</span>
+	}
+	public int getScore(){
+<span class="fc" id="L40">		return score;</span>
+	}
+	public static List&lt;Card&gt; addAllCards(){
+<span class="fc" id="L43">		List&lt;Card&gt; temp = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L44">		Card o = new Card(CardName.Province, Type.VICTORY, 8, 6, 0);</span>
+<span class="fc" id="L45">		temp.add(o);</span>
+<span class="fc" id="L46">		o = new Card(CardName.Duchy, Type.VICTORY, 5, 3, 0);</span>
+<span class="fc" id="L47">		temp.add(o);</span>
+<span class="fc" id="L48">		o = new Card(CardName.Estate, Type.VICTORY, 2, 1, 0);</span>
+<span class="fc" id="L49">		temp.add(o);</span>
+<span class="fc" id="L50">		o = new Card(CardName.Curse, Type.VICTORY, 0, -1, 0);</span>
+<span class="fc" id="L51">		temp.add(o);</span>
+<span class="fc" id="L52">		o = new Card(CardName.Gold, Type.TREASURE, 6, 0, 3);</span>
+<span class="fc" id="L53">		temp.add(o);</span>
+<span class="fc" id="L54">		o = new Card(CardName.Silver, Type.TREASURE, 3, 0, 2);</span>
+<span class="fc" id="L55">		temp.add(o);</span>
+<span class="fc" id="L56">		o = new Card(CardName.Cooper, Type.TREASURE, 0, 0, 1);</span>
+<span class="fc" id="L57">		temp.add(o);</span>
+<span class="fc" id="L58">		o = new Card(CardName.Adventurer, Type.ACTION, 6, 0, 0);</span>
+<span class="fc" id="L59">		temp.add(o);</span>
+<span class="fc" id="L60">		o = new Card(CardName.Bureaucrat, Type.ACTION, 4, 0, 0);</span>
+<span class="fc" id="L61">		temp.add(o);</span>
+<span class="fc" id="L62">		o = new Card(CardName.Cellar, Type.ACTION, 2, 0, 0);</span>
+<span class="fc" id="L63">		temp.add(o);</span>
+<span class="fc" id="L64">		o = new Card(CardName.Chancellor, Type.ACTION, 3, 0, 0);</span>
+<span class="fc" id="L65">		temp.add(o);</span>
+<span class="fc" id="L66">		o = new Card(CardName.Chapel, Type.ACTION, 2, 0, 0);</span>
+<span class="fc" id="L67">		temp.add(o);</span>
+<span class="fc" id="L68">		o = new Card(CardName.Council_Room, Type.ACTION, 5, 0, 0);</span>
+<span class="fc" id="L69">		temp.add(o);</span>
+<span class="fc" id="L70">		o = new Card(CardName.Feast, Type.ACTION, 4, 0, 0);</span>
+<span class="fc" id="L71">		temp.add(o);</span>
+<span class="fc" id="L72">		o = new Card(CardName.Garden, Type.VICTORY, 4, 0, 0);</span>
+<span class="fc" id="L73">		temp.add(o);</span>
+<span class="fc" id="L74">		o = new Card(CardName.Laboratory, Type.ACTION, 5, 0, 0);</span>
+<span class="fc" id="L75">		temp.add(o);</span>
+<span class="fc" id="L76">		o = new Card(CardName.Library, Type.ACTION, 5, 0, 0);</span>
+<span class="fc" id="L77">		temp.add(o);</span>
+<span class="fc" id="L78">		o = new Card(CardName.Market, Type.ACTION, 5, 0, 0);</span>
+<span class="fc" id="L79">		temp.add(o);</span>
+<span class="fc" id="L80">		o = new Card(CardName.Smithy, Type.ACTION, 4, 0, 0);</span>
+<span class="fc" id="L81">		temp.add(o);</span>
+<span class="fc" id="L82">		o = new Card(CardName.Village, Type.ACTION, 3, 0, 0);</span>
+<span class="fc" id="L83">		temp.add(o);</span>
+<span class="fc" id="L84">		return temp;</span>
+	}
+	
+	public static List&lt;Card&gt; createCards(){
+<span class="fc" id="L88">		List&lt;Card&gt; ret = new LinkedList&lt;Card&gt;();</span>
+		Card o;
+<span class="fc" id="L90">		Random rand = new Random();</span>
+<span class="fc" id="L91">		int randomInt, victoryCounter=0, mainCounter = 0, treasureCounter = 0;</span>
+		
+		while(true){
+<span class="fc" id="L94">			randomInt = rand.nextInt(10);</span>
+<span class="fc bfc" id="L95" title="All 4 branches covered.">			if(randomInt % 2 == 0 &amp;&amp; victoryCounter != 3){</span>
+<span class="fc" id="L96">				o = new Card(CardName.Estate, Type.VICTORY, 2, 1 , 0);</span>
+<span class="fc" id="L97">				ret.add(o);</span>
+<span class="fc" id="L98">				victoryCounter++;</span>
+<span class="fc" id="L99">				mainCounter++;</span>
+			}
+<span class="fc bfc" id="L101" title="All 2 branches covered.">			else if(treasureCounter != 7){</span>
+<span class="fc" id="L102">				o = new Card(CardName.Cooper, Type.TREASURE, 0, 0, 1);</span>
+<span class="fc" id="L103">				ret.add(o);</span>
+<span class="fc" id="L104">				treasureCounter++;</span>
+<span class="fc" id="L105">				mainCounter++;</span>
+			}
+<span class="fc bfc" id="L107" title="All 2 branches covered.">			if(mainCounter == 10)</span>
+<span class="fc" id="L108">				break;</span>
+		}
+<span class="fc" id="L110">		return ret;</span>
+	}
+	public String toString(int i){
+<span class="fc" id="L113">		StringBuilder sb = new StringBuilder();</span>
+		
+<span class="fc" id="L115">		sb.append(&quot; \n&quot;+ i+&quot;.\t&quot; + this.getCardName());</span>
+<span class="fc" id="L116">		sb.append(&quot;-&quot; + this.getType() + &quot; &quot;);</span>
+<span class="fc" id="L117">		sb.append(&quot;\tCost: &quot; + this.cost + &quot; &quot;);</span>
+<span class="fc" id="L118">		sb.append(&quot;\tScore: &quot; + this.score + &quot; &quot;);</span>
+<span class="fc" id="L119">		sb.append(&quot;\tTreasure Value: &quot; + this.treasureValue);</span>
+		
+<span class="fc" id="L121">		return sb.toString();</span>
+	}
+	public String toStringShort(int i){
+<span class="fc" id="L124">		StringBuilder sb = new StringBuilder();</span>
+<span class="fc" id="L125">		sb.append(&quot;\n&quot;+i+&quot;. &quot;+this.getCardName()+&quot;| Cost: &quot;+this.getCost()+&quot;| Treasure Val: &quot;+this.getScore()+&quot;| Type: &quot;+this.getType());</span>
+<span class="fc" id="L126">		return sb.toString();</span>
+	}
+	public int checkTypeAction(){
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">		if(this.CardType == Type.ACTION)</span>
+<span class="fc" id="L130">			return 1;</span>
+		else
+<span class="nc" id="L132">			return 0;</span>
+	}
+	public int checkTypeVictory(){
+<span class="fc bfc" id="L135" title="All 2 branches covered.">		if(this.CardType == Type.VICTORY)</span>
+<span class="fc" id="L136">			return 1;</span>
+		else
+<span class="fc" id="L138">			return 0;</span>
+	}
+	public int calcTreasure(){
+<span class="fc bfc" id="L141" title="All 2 branches covered.">		if(this.CardType == Type.TREASURE)</span>
+<span class="fc" id="L142">			return this.getTreasureValue();</span>
+		else
+<span class="fc" id="L144">			return 0;</span>
+	}
+	public int calcVictory(){
+<span class="fc bfc" id="L147" title="All 2 branches covered.">		if(this.CardType == Type.VICTORY)</span>
+<span class="fc" id="L148">			return this.getScore();</span>
+		else
+<span class="fc" id="L150">			return 0;</span>
+	}
+	public static List&lt;Card&gt; filter(Iterable&lt;Card&gt; cards, Type target) {
+<span class="fc" id="L153">		List&lt;Card&gt; out = new ArrayList&lt;Card&gt;();</span>
+<span class="fc bfc" id="L154" title="All 2 branches covered.">		for (Card c : cards)</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">			if (c.getType() == target)</span>
+<span class="fc" id="L156">				out.add(c);</span>
+<span class="fc" id="L157">		return out;</span>
+	}
+	public static List&lt;Card&gt; cmp(List&lt;Card&gt; all, int num){
+<span class="fc" id="L160">		List&lt;Card&gt; out = new ArrayList&lt;Card&gt;();</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">		for(Card c: all)</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">			if(c.getCost() &lt;= num)</span>
+<span class="fc" id="L163">				out.add(c);</span>
+<span class="fc" id="L164">		return out;</span>
+	}
+	public static Card getCard(List&lt;Card&gt; cards, CardName n){
+<span class="fc bfc" id="L167" title="All 2 branches covered.">		for(Card c:cards){</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">			if(c.getCardName() ==  n)</span>
+<span class="fc" id="L169">				return c;</span>
+<span class="fc" id="L170">		}</span>
+<span class="fc" id="L171">		return null;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

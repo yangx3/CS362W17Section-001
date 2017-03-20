@@ -1,0 +1,155 @@
+-------------------------------------------------------------------------------
+Test set: Player_ESTest
+-------------------------------------------------------------------------------
+Tests run: 34, Failures: 0, Errors: 34, Skipped: 0, Time elapsed: 0.296 sec <<< FAILURE! - in Player_ESTest
+test04(Player_ESTest)  Time elapsed: 0.022 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Player_ESTest.test04(Player_ESTest.java:496)
+
+test26(Player_ESTest)  Time elapsed: 0.019 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test26(Player_ESTest.java:2755)
+
+test05(Player_ESTest)  Time elapsed: 0.012 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Player_ESTest.test05(Player_ESTest.java:546)
+
+test27(Player_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test27(Player_ESTest.java:2953)
+
+test02(Player_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at Player_ESTest.test02(Player_ESTest.java:248)
+
+test24(Player_ESTest)  Time elapsed: 0.017 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at Player_ESTest.test24(Player_ESTest.java:2475)
+
+test03(Player_ESTest)  Time elapsed: 0.005 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test03(Player_ESTest.java:360)
+
+test25(Player_ESTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test25(Player_ESTest.java:2520)
+
+test00(Player_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test00(Player_ESTest.java:123)
+
+test22(Player_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test22(Player_ESTest.java:2278)
+
+test01(Player_ESTest)  Time elapsed: 0.007 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test01(Player_ESTest.java:202)
+
+test23(Player_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test23(Player_ESTest.java:2384)
+
+test20(Player_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test20(Player_ESTest.java:1957)
+
+test21(Player_ESTest)  Time elapsed: 0.007 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test21(Player_ESTest.java:2082)
+
+test08(Player_ESTest)  Time elapsed: 0.004 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test08(Player_ESTest.java:759)
+
+test09(Player_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at Player_ESTest.test09(Player_ESTest.java:832)
+
+test06(Player_ESTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test06(Player_ESTest.java:633)
+
+test28(Player_ESTest)  Time elapsed: 0.005 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test28(Player_ESTest.java:3101)
+
+test07(Player_ESTest)  Time elapsed: 0.01 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at Player_ESTest.test07(Player_ESTest.java:707)
+
+test29(Player_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test29(Player_ESTest.java:3194)
+
+test30(Player_ESTest)  Time elapsed: 0.01 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test30(Player_ESTest.java:3297)
+
+test15(Player_ESTest)  Time elapsed: 0.005 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test15(Player_ESTest.java:1265)
+
+test16(Player_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test16(Player_ESTest.java:1340)
+
+test13(Player_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test13(Player_ESTest.java:1157)
+
+test14(Player_ESTest)  Time elapsed: 0.007 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: GameState
+	at Player_ESTest.test14(Player_ESTest.java:1212)
+
+test11(Player_ESTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test11(Player_ESTest.java:1034)
+
+test33(Player_ESTest)  Time elapsed: 0.007 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test33(Player_ESTest.java:3551)
+
+test12(Player_ESTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test12(Player_ESTest.java:1081)
+
+test31(Player_ESTest)  Time elapsed: 0.005 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test31(Player_ESTest.java:3412)
+
+test10(Player_ESTest)  Time elapsed: 0.01 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test10(Player_ESTest.java:941)
+
+test32(Player_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test32(Player_ESTest.java:3464)
+
+test19(Player_ESTest)  Time elapsed: 0.008 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Player
+	at Player_ESTest.test19(Player_ESTest.java:1811)
+
+test17(Player_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test17(Player_ESTest.java:1482)
+
+test18(Player_ESTest)  Time elapsed: 0.006 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Card
+	at Player_ESTest.test18(Player_ESTest.java:1673)
+

@@ -1,0 +1,68 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import java.util.Random;
+
+public class GameRunnerTest {
+
+	// Random game test
+	@Test
+	public void testRandomGame() {
+		Random gen = new Random();
+		int numPlayers = gen.nextInt(3) + 2;
+		
+		String[] kingdomNames = {"Adventurer","Ambassador","Baron",
+				"Council Room","Cutpurse","Embargo",
+				"Feast","Gardens","Great Hall",
+				"Mine","Smithy","Village","Sea Hag"};
+		String[] kingdomsUsed = new String[10];
+		int[] notUse = new int[3];
+		notUse[0] = gen.nextInt(13);
+		notUse[1] = gen.nextInt(13);
+		while(notUse[0] == notUse[1]){
+			notUse[1] = gen.nextInt(13);
+		}
+		notUse[2] = gen.nextInt(13);
+		while(notUse[0] == notUse[2] || notUse[1] == notUse[2]){
+			notUse[2] = gen.nextInt(13);
+		}
+		
+		int kingdomCount = 0;
+		for (int i=0; i<13; i++){
+			if (i!=notUse[0] && i!=notUse[1] && i!=notUse[2]){
+				kingdomsUsed[kingdomCount] = kingdomNames[i];
+				kingdomCount++;
+			}
+		}
+		assertEquals(kingdomsUsed.length,10);
+		
+		String[] playerNames = {"Grant", "Susan", "Daren", "Alison"};
+		
+		GameRunner game = new GameRunner(playerNames, kingdomsUsed, numPlayers);
+		
+		// Commands
+		String apt = "Autoplay Treasures";
+		String endT = "End Turn";
+		String endB = "End Actions";
+		String buy = "buy ";
+		
+		// Run all buys random tests
+		while(!game.isGameOver())
+		{
+			game.runGameMove(apt);
+			game.printSate();
+			// Try to buy a province
+			game.runGameMove(buy + "Province");
+			// Try to buy gold or silver
+			game.runGameMove(buy + "Gold");
+			game.runGameMove(buy + "Silver");
+			game.runGameMove(buy + "Copper");
+		}
+		
+		game.wrapUpGame();
+		game.printWinner();
+		
+	}
+
+}

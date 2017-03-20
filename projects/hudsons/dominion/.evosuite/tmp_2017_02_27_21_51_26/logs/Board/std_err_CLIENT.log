@@ -1,0 +1,1045 @@
+[MASTER] 21:58:42.174 [pool-2-thread-1] ERROR JUnitAnalyzer - 1 test cases failed
+[MASTER] 21:58:44.074 [pool-2-thread-1] ERROR JUnitAnalyzer - Compilation failed on compilation units: [RegularFileObject[/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_40_1488261523416/Board_40_tmp__ESTest.java], RegularFileObject[/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_40_1488261523416/Board_40_tmp__ESTest_scaffolding.java]]
+[MASTER] 21:58:44.074 [pool-2-thread-1] ERROR JUnitAnalyzer - Classpath: /Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar:/Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-master/1.0.3/evosuite-master-1.0.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3-tests.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-client/1.0.3/evosuite-client-1.0.3-tests.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-runtime/1.0.3/evosuite-runtime-1.0.3.jar:/Users/samuelhudson/.m2/repository/javax/ejb/javax.ejb-api/3.2/javax.ejb-api-3.2.jar:/Users/samuelhudson/.m2/repository/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar:/Users/samuelhudson/.m2/repository/javax/faces/javax.faces-api/2.2/javax.faces-api-2.2.jar:/Users/samuelhudson/.m2/repository/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar:/Users/samuelhudson/.m2/repository/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-orm/4.1.6.RELEASE/spring-orm-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-beans/4.1.6.RELEASE/spring-beans-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-core/4.1.6.RELEASE/spring-core-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-jdbc/4.1.6.RELEASE/spring-jdbc-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-tx/4.1.6.RELEASE/spring-tx-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-context/4.1.6.RELEASE/spring-context-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-aop/4.1.6.RELEASE/spring-aop-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-expression/4.1.6.RELEASE/spring-expression-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar:/Users/samuelhudson/.m2/repository/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar:/Users/samuelhudson/.m2/repository/org/ow2/asm/asm-all/5.0.4/asm-all-5.0.4.jar:/Users/samuelhudson/.m2/repository/javax/xml/bind/jaxb-api/2.2.12/jaxb-api-2.2.12.jar:/Users/samuelhudson/.m2/repository/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar:/Users/samuelhudson/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar:/Users/samuelhudson/.m2/repository/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar:/Users/samuelhudson/.m2/repository/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar:/Users/samuelhudson/.m2/repository/com/googlecode/gentyref/gentyref/1.2.0/gentyref-1.2.0.jar:/Users/samuelhudson/.m2/repository/net/sf/jgrapht/jgrapht/0.8.3/jgrapht-0.8.3.jar:/Users/samuelhudson/.m2/repository/com/panayotis/JavaPlot/0.4.0/JavaPlot-0.4.0.jar:/Users/samuelhudson/.m2/repository/com/thoughtworks/xstream/xstream/1.4.8/xstream-1.4.8.jar:/Users/samuelhudson/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar:/Users/samuelhudson/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar:/Users/samuelhudson/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:/Users/samuelhudson/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/Users/samuelhudson/.m2/repository/commons-cli/commons-cli/1.3.1/commons-cli-1.3.1.jar:/Users/samuelhudson/.m2/repository/org/kohsuke/graphviz-api/1.1/graphviz-api-1.1.jar:/Users/samuelhudson/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar:/Users/samuelhudson/.m2/repository/org/apache/commons/commons-exec/1.2/commons-exec-1.2.jar:/Users/samuelhudson/.m2/repository/org/jboss/spec/javax/servlet/jboss-servlet-api_3.1_spec/1.0.0.Final/jboss-servlet-api_3.1_spec-1.0.0.Final.jar:/Users/samuelhudson/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/Users/samuelhudson/.m2/repository/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar:/Users/samuelhudson/.m2/repository/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar:/Users/samuelhudson/.m2/repository/javax/interceptor/javax.interceptor-api/1.2/javax.interceptor-api-1.2.jar:/Users/samuelhudson/.m2/repository/org/hibernate/hibernate-entitymanager/5.0.5.Final/hibernate-entitymanager-5.0.5.Final.jar:/Users/samuelhudson/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar:/Users/samuelhudson/.m2/repository/org/hibernate/hibernate-core/5.0.5.Final/hibernate-core-5.0.5.Final.jar:/Users/samuelhudson/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/Users/samuelhudson/.m2/repository/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.jar:/Users/samuelhudson/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar:/Users/samuelhudson/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar:/Users/samuelhudson/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar:/Users/samuelhudson/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar:/Users/samuelhudson/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar:/Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar
+[MASTER] 21:58:44.074 [pool-2-thread-1] ERROR JUnitAnalyzer - evosuiteCP: /Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-master/1.0.3/evosuite-master-1.0.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3-tests.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-client/1.0.3/evosuite-client-1.0.3-tests.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-runtime/1.0.3/evosuite-runtime-1.0.3.jar:/Users/samuelhudson/.m2/repository/javax/ejb/javax.ejb-api/3.2/javax.ejb-api-3.2.jar:/Users/samuelhudson/.m2/repository/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar:/Users/samuelhudson/.m2/repository/javax/faces/javax.faces-api/2.2/javax.faces-api-2.2.jar:/Users/samuelhudson/.m2/repository/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar:/Users/samuelhudson/.m2/repository/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-orm/4.1.6.RELEASE/spring-orm-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-beans/4.1.6.RELEASE/spring-beans-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-core/4.1.6.RELEASE/spring-core-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-jdbc/4.1.6.RELEASE/spring-jdbc-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-tx/4.1.6.RELEASE/spring-tx-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-context/4.1.6.RELEASE/spring-context-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-aop/4.1.6.RELEASE/spring-aop-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-expression/4.1.6.RELEASE/spring-expression-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar:/Users/samuelhudson/.m2/repository/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar:/Users/samuelhudson/.m2/repository/org/ow2/asm/asm-all/5.0.4/asm-all-5.0.4.jar:/Users/samuelhudson/.m2/repository/javax/xml/bind/jaxb-api/2.2.12/jaxb-api-2.2.12.jar:/Users/samuelhudson/.m2/repository/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar:/Users/samuelhudson/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar:/Users/samuelhudson/.m2/repository/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar:/Users/samuelhudson/.m2/repository/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar:/Users/samuelhudson/.m2/repository/com/googlecode/gentyref/gentyref/1.2.0/gentyref-1.2.0.jar:/Users/samuelhudson/.m2/repository/net/sf/jgrapht/jgrapht/0.8.3/jgrapht-0.8.3.jar:/Users/samuelhudson/.m2/repository/com/panayotis/JavaPlot/0.4.0/JavaPlot-0.4.0.jar:/Users/samuelhudson/.m2/repository/com/thoughtworks/xstream/xstream/1.4.8/xstream-1.4.8.jar:/Users/samuelhudson/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar:/Users/samuelhudson/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar:/Users/samuelhudson/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:/Users/samuelhudson/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/Users/samuelhudson/.m2/repository/commons-cli/commons-cli/1.3.1/commons-cli-1.3.1.jar:/Users/samuelhudson/.m2/repository/org/kohsuke/graphviz-api/1.1/graphviz-api-1.1.jar:/Users/samuelhudson/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar:/Users/samuelhudson/.m2/repository/org/apache/commons/commons-exec/1.2/commons-exec-1.2.jar:/Users/samuelhudson/.m2/repository/org/jboss/spec/javax/servlet/jboss-servlet-api_3.1_spec/1.0.0.Final/jboss-servlet-api_3.1_spec-1.0.0.Final.jar:/Users/samuelhudson/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/Users/samuelhudson/.m2/repository/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar:/Users/samuelhudson/.m2/repository/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar:/Users/samuelhudson/.m2/repository/javax/interceptor/javax.interceptor-api/1.2/javax.interceptor-api-1.2.jar:/Users/samuelhudson/.m2/repository/org/hibernate/hibernate-entitymanager/5.0.5.Final/hibernate-entitymanager-5.0.5.Final.jar:/Users/samuelhudson/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar:/Users/samuelhudson/.m2/repository/org/hibernate/hibernate-core/5.0.5.Final/hibernate-core-5.0.5.Final.jar:/Users/samuelhudson/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/Users/samuelhudson/.m2/repository/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.jar:/Users/samuelhudson/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar:/Users/samuelhudson/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar:/Users/samuelhudson/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar:/Users/samuelhudson/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar:/Users/samuelhudson/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar:/Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar
+[MASTER] 21:58:44.077 [pool-2-thread-1] ERROR JUnitAnalyzer - Diagnostic: method test07() is already defined in class Board_40_tmp__ESTest: 135
+[MASTER] 21:58:44.078 [pool-2-thread-1] ERROR JUnitAnalyzer - RegularFileObject[/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_40_1488261523416/Board_40_tmp__ESTest.java]
+1: /*
+2:  * This file was automatically generated by EvoSuite
+3:  * Tue Feb 28 05:58:44 GMT 2017
+4:  */
+5: 
+6: 
+7: import org.junit.Test;
+8: import static org.junit.Assert.*;
+9: import static org.evosuite.runtime.EvoAssertions.*;
+10: import java.util.ArrayList;
+11: import java.util.Collection;
+12: import java.util.LinkedList;
+13: import java.util.function.UnaryOperator;
+14: import org.evosuite.runtime.EvoRunner;
+15: import org.evosuite.runtime.EvoRunnerParameters;
+16: import org.junit.runner.RunWith;
+17: 
+18: @RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true) 
+19: public class Board_40_tmp__ESTest extends Board_40_tmp__ESTest_scaffolding {
+20: 
+21:   @Test(timeout = 4000)
+22:   public void test00()  throws Throwable  {
+23:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+24:       Board board0 = new Board(arrayList0);
+25:       ArrayList<Card> arrayList1 = board0.in_trash;
+26:       Board board1 = new Board(arrayList0);
+27:       ArrayList<Card> arrayList2 = board1.in_trash;
+28:       Card card0 = new Card();
+29:       arrayList2.add(card0);
+30:       board0.on_board_by_value((-1650));
+31:       board1.print_board();
+32:       ArrayList<Card> arrayList3 = board0.in_trash;
+33:       Card card1 = new Card();
+34:       card1.name = "Bgn71RHV~mR5B_SJ~";
+35:       arrayList0.add(card1);
+36:       board1.on_board("");
+37:       board1.in_trash = arrayList0;
+38:       board1.on_board_by_value((-1));
+39:       Board board2 = new Board(arrayList3);
+40:       board2.on_board = arrayList2;
+41:       board2.time_to_end();
+42:       board1.shuffle_board();
+43:       assertNotSame(board1, board2);
+44:   }
+45: 
+46:   @Test(timeout = 4000)
+47:   public void test01()  throws Throwable  {
+48:       Card card0 = new Card();
+49:   }
+50: 
+51:   @Test(timeout = 4000)
+52:   public void test02()  throws Throwable  {
+53:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+54:       Board board0 = new Board(arrayList0);
+55:       LinkedList<Card> linkedList0 = new LinkedList<Card>();
+56:       arrayList0.retainAll(linkedList0);
+57:       int int0 = board0.on_board("silver");
+58:       //  // Unstable assertion: assertEquals((-1), int0);
+59:       
+60:       int int1 = board0.get_count_by_type("");
+61:       int int2 = board0.on_board_by_value(80);
+62:       //  // Unstable assertion: assertTrue(int2 == int1);
+63:       //  // Unstable assertion: assertEquals(0, int2);
+64:   }
+65: 
+66:   @Test(timeout = 4000)
+67:   public void test03()  throws Throwable  {
+68:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+69:       Board board0 = new Board(arrayList0);
+70:       board0.print_board();
+71:       board0.in_trash = arrayList0;
+72:       ArrayList<Card> arrayList1 = board0.on_board;
+73:       Card card0 = new Card();
+74:       arrayList0.add(card0);
+75:       board0.print_board();
+76:       board0.print_in_trash();
+77:       board0.print_in_trash();
+78:       // Undeclared exception!
+79:       try { 
+80:         board0.in_trash.replaceAll((UnaryOperator<Card>) null);
+81:         fail("Expecting exception: NullPointerException");
+82:       
+83:       } catch(NullPointerException e) {
+84:          //
+85:          // no message in exception (getMessage() returned null)
+86:          //
+87:          assertThrownBy("java.util.Objects", e);
+88:       }
+89:   }
+90: 
+91:   @Test(timeout = 4000)
+92:   public void test04()  throws Throwable  {
+93:       LinkedList<Card> linkedList0 = new LinkedList<Card>();
+94:       assertEquals(0, linkedList0.size());
+95:   }
+96: 
+97:   @Test(timeout = 4000)
+98:   public void test07()  throws Throwable  {
+99:       
+100:   }
+101: 
+102:   @Test(timeout = 4000)
+103:   public void test06()  throws Throwable  {
+104:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+105:       Board board0 = new Board(arrayList0);
+106:       String string0 = "c@KVu*CAhEGp";
+107:       board0.on_board("c@KVu*CAhEGp");
+108:       String string1 = "";
+109:       arrayList0.iterator();
+110:       board0.on_board = arrayList0;
+111:       board0.get_count_by_type("");
+112:       Board board1 = new Board(arrayList0);
+113:       board1.in_trash = board0.on_board;
+114:       board0.get_count_by_name("c@KVu*CAhEGp");
+115:       board0.on_board = arrayList0;
+116:       board1.on_board("");
+117:       board0.shuffle_board();
+118:       board1.time_to_end();
+119:       String string2 = "u8/WreAw(`E6<|kEW|O";
+120:       board1.in_trash = arrayList0;
+121:       // Undeclared exception!
+122:       try { 
+123:         board0.in_trash.replaceAll((UnaryOperator<Card>) null);
+124:         fail("Expecting exception: NullPointerException");
+125:       
+126:       } catch(NullPointerException e) {
+127:          //
+128:          // no message in exception (getMessage() returned null)
+129:          //
+130:          assertThrownBy("java.util.Objects", e);
+131:       }
+132:   }
+133: 
+134:   @Test(timeout = 4000)
+135:   public void test07()  throws Throwable  {
+136:       
+137:   }
+138: 
+139:   @Test(timeout = 4000)
+140:   public void test08()  throws Throwable  {
+141:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+142:       Board board0 = new Board(arrayList0);
+143:       board0.time_to_end();
+144:       Board board1 = new Board(arrayList0);
+145:       ArrayList<Card> arrayList1 = board1.on_board;
+146:       ArrayList<Card> arrayList2 = new ArrayList<Card>();
+147:       Card card0 = new Card();
+148:       arrayList1.add(card0);
+149:       Board board2 = new Board(arrayList2);
+150:       board1.print_board();
+151:       arrayList0.listIterator(0);
+152:       board0.in_trash = arrayList1;
+153:       arrayList0.add(card0);
+154:       board0.get_count_by_name("X}");
+155:       board0.on_board_by_value(0);
+156:       arrayList2.addAll(0, (Collection<? extends Card>) arrayList0);
+157:       board2.print_board();
+158:       Board board3 = new Board(arrayList1);
+159:       ArrayList<Card> arrayList3 = board1.on_board;
+160:       board0.on_board_by_value(0);
+161:       board3.get_count_by_name("X}");
+162:       ArrayList<Card> arrayList4 = board1.in_trash;
+163:       board0.on_board(" Card: ");
+164:       ArrayList<Card> arrayList5 = board1.on_board;
+165:       assertSame(arrayList5, arrayList1);
+166:   }
+167: 
+168:   @Test(timeout = 4000)
+169:   public void test09()  throws Throwable  {
+170:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+171:       Board board0 = new Board(arrayList0);
+172:       board0.in_trash = arrayList0;
+173:       arrayList0.add((Card) null);
+174:       ArrayList<Card> arrayList1 = board0.in_trash;
+175:       board0.get_count_by_name("silver");
+176:   }
+177: 
+178:   @Test(timeout = 4000)
+179:   public void test10()  throws Throwable  {
+180:       Board board0 = null;
+181:       try {
+182:         board0 = new Board((ArrayList<Card>) null);
+183:         fail("Expecting exception: NullPointerException");
+184:       
+185:       } catch(NullPointerException e) {
+186:          //
+187:          // no message in exception (getMessage() returned null)
+188:          //
+189:          assertThrownBy("Board", e);
+190:       }
+191:   }
+192: 
+193:   @Test(timeout = 4000)
+194:   public void test11()  throws Throwable  {
+195:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+196:       Card card0 = new Card();
+197:       card0.value = 0;
+198:       arrayList0.add(card0);
+199:       Board board0 = new Board(arrayList0);
+200:       board0.shuffle_board();
+201:       board0.on_board = arrayList0;
+202:       board0.shuffle_board();
+203:       board0.on_board((String) null);
+204:   }
+205: 
+206:   @Test(timeout = 4000)
+207:   public void test12()  throws Throwable  {
+208:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+209:       Board board0 = new Board(arrayList0);
+210:       board0.print_board();
+211:       board0.on_board = arrayList0;
+212:       board0.on_board.add((Card) null);
+213:       arrayList0.add((Card) null);
+214:       // Undeclared exception!
+215:       try { 
+216:         board0.on_board_by_value(2512);
+217:         fail("Expecting exception: NullPointerException");
+218:       
+219:       } catch(NullPointerException e) {
+220:          //
+221:          // no message in exception (getMessage() returned null)
+222:          //
+223:          assertThrownBy("Board", e);
+224:       }
+225:   }
+226: 
+227:   @Test(timeout = 4000)
+228:   public void test13()  throws Throwable  {
+229:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+230:       Card card0 = new Card();
+231:       card0.cost = 2;
+232:       card0.name = "@i:)k0<DxM:&7;N";
+233:       arrayList0.add(card0);
+234:       arrayList0.add(card0);
+235:       Board board0 = new Board(arrayList0);
+236:       board0.print_in_trash();
+237:       board0.get_count_by_type((String) null);
+238:       arrayList0.add(card0);
+239:       board0.print_board();
+240:       board0.on_board("");
+241:       board0.print_in_trash();
+242:       ArrayList<Card> arrayList1 = board0.on_board;
+243:       board0.print_in_trash();
+244:       ArrayList<Card> arrayList2 = board0.in_trash;
+245:       board0.print_board();
+246:   }
+247: 
+248:   @Test(timeout = 4000)
+249:   public void test14()  throws Throwable  {
+250:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+251:       Board board0 = new Board(arrayList0);
+252:       board0.print_board();
+253:       board0.in_trash = arrayList0;
+254:       arrayList0.add((Card) null);
+255:       board0.in_trash.add((Card) null);
+256:       board0.print_board();
+257:       arrayList0.add((Card) null);
+258:       board0.print_board();
+259:       board0.on_board = arrayList0;
+260:       // Undeclared exception!
+261:       try { 
+262:         board0.on_board(".;%");
+263:         fail("Expecting exception: NullPointerException");
+264:       
+265:       } catch(NullPointerException e) {
+266:          //
+267:          // no message in exception (getMessage() returned null)
+268:          //
+269:          assertThrownBy("Board", e);
+270:       }
+271:   }
+272: 
+273:   @Test(timeout = 4000)
+274:   public void test15()  throws Throwable  {
+275:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+276:       Board board0 = new Board(arrayList0);
+277:       board0.print_in_trash();
+278:       Board board1 = new Board(arrayList0);
+279:       board1.in_trash = arrayList0;
+280:       board1.on_board = arrayList0;
+281:       board1.on_board("yD|H>%`+6y)_");
+282:       arrayList0.add((Card) null);
+283:       board1.shuffle_board();
+284:       board0.on_board = arrayList0;
+285:       board1.shuffle_board();
+286:       // Undeclared exception!
+287:       try { 
+288:         board1.print_board();
+289:         fail("Expecting exception: NullPointerException");
+290:       
+291:       } catch(NullPointerException e) {
+292:          //
+293:          // no message in exception (getMessage() returned null)
+294:          //
+295:          assertThrownBy("Board", e);
+296:       }
+297:   }
+298: 
+299:   @Test(timeout = 4000)
+300:   public void test16()  throws Throwable  {
+301:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+302:       Board board0 = new Board(arrayList0);
+303:       Card card0 = new Card();
+304:       arrayList0.add(card0);
+305:       board0.on_board = arrayList0;
+306:       board0.on_board.add(card0);
+307:       board0.print_board();
+308:       board0.in_trash = arrayList0;
+309:       board0.in_trash.clone();
+310:       board0.print_in_trash();
+311:       board0.on_board = arrayList0;
+312:       arrayList0.add((Card) null);
+313:       // Undeclared exception!
+314:       try { 
+315:         board0.get_count_by_type(" Not Treasure: ");
+316:         fail("Expecting exception: NullPointerException");
+317:       
+318:       } catch(NullPointerException e) {
+319:          //
+320:          // no message in exception (getMessage() returned null)
+321:          //
+322:          assertThrownBy("Board", e);
+323:       }
+324:   }
+325: 
+326:   @Test(timeout = 4000)
+327:   public void test17()  throws Throwable  {
+328:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+329:       Board board0 = new Board(arrayList0);
+330:       board0.in_trash = arrayList0;
+331:       board0.in_trash.add((Card) null);
+332:       board0.get_count_by_type((String) null);
+333:       // Undeclared exception!
+334:       try { 
+335:         board0.print_in_trash();
+336:         fail("Expecting exception: NullPointerException");
+337:       
+338:       } catch(NullPointerException e) {
+339:          //
+340:          // no message in exception (getMessage() returned null)
+341:          //
+342:          assertThrownBy("Board", e);
+343:       }
+344:   }
+345: 
+346:   @Test(timeout = 4000)
+347:   public void test18()  throws Throwable  {
+348:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+349:       Card card0 = new Card();
+350:       arrayList0.add(card0);
+351:       Board board0 = new Board(arrayList0);
+352:       ArrayList<Card> arrayList1 = board0.in_trash;
+353:       board0.on_board = null;
+354:       ArrayList<Card> arrayList2 = board0.in_trash;
+355:       // Undeclared exception!
+356:       try { 
+357:         board0.shuffle_board();
+358:         fail("Expecting exception: NullPointerException");
+359:       
+360:       } catch(NullPointerException e) {
+361:          //
+362:          // no message in exception (getMessage() returned null)
+363:          //
+364:       }
+365:   }
+366: 
+367:   @Test(timeout = 4000)
+368:   public void test19()  throws Throwable  {
+369:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+370:       Board board0 = new Board(arrayList0);
+371:       Card card0 = new Card();
+372:       card0.type = "";
+373:       card0.cost = 769;
+374:       arrayList0.add(card0);
+375:       board0.time_to_end();
+376:       arrayList0.add((Card) null);
+377:       board0.on_board = arrayList0;
+378:       ArrayList<Card> arrayList1 = board0.in_trash;
+379:       arrayList0.add((Card) null);
+380:       // Undeclared exception!
+381:       try { 
+382:         board0.time_to_end();
+383:         fail("Expecting exception: NullPointerException");
+384:       
+385:       } catch(NullPointerException e) {
+386:          //
+387:          // no message in exception (getMessage() returned null)
+388:          //
+389:          assertThrownBy("Board", e);
+390:       }
+391:   }
+392: }
+RegularFileObject[/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_40_1488261523416/Board_40_tmp__ESTest.java]
+1: /**
+2:  * Scaffolding file used to store all the setups needed to run 
+3:  * tests automatically generated by EvoSuite
+4:  * Tue Feb 28 05:58:44 GMT 2017
+5:  */
+6: 
+7: 
+8: import org.evosuite.runtime.annotation.EvoSuiteClassExclude;
+9: import org.junit.BeforeClass;
+10: import org.junit.Before;
+11: import org.junit.After;
+12: import org.junit.AfterClass;
+13: import org.evosuite.runtime.sandbox.Sandbox;
+14: import org.evosuite.runtime.sandbox.Sandbox.SandboxMode;
+15: 
+16: @EvoSuiteClassExclude
+17: public class Board_40_tmp__ESTest_scaffolding {
+18: 
+19:   private static final java.util.Properties defaultProperties = (java.util.Properties) java.lang.System.getProperties().clone(); 
+20: 
+21:   private org.evosuite.runtime.thread.ThreadStopper threadStopper =  new org.evosuite.runtime.thread.ThreadStopper (org.evosuite.runtime.thread.KillSwitchHandler.getInstance(), 3000);
+22: 
+23:   @BeforeClass 
+24:   public static void initEvoSuiteFramework() { 
+25:     org.evosuite.runtime.RuntimeSettings.className = "Board"; 
+26:     org.evosuite.runtime.GuiSupport.initialize(); 
+27:     org.evosuite.runtime.RuntimeSettings.maxNumberOfThreads = 100; 
+28:     org.evosuite.runtime.RuntimeSettings.maxNumberOfIterationsPerLoop = 10000; 
+29:     org.evosuite.runtime.RuntimeSettings.mockSystemIn = true; 
+30:     org.evosuite.runtime.RuntimeSettings.sandboxMode = org.evosuite.runtime.sandbox.Sandbox.SandboxMode.RECOMMENDED; 
+31:     org.evosuite.runtime.sandbox.Sandbox.initializeSecurityManagerForSUT(); 
+32:     org.evosuite.runtime.classhandling.JDKClassResetter.init(); 
+33:     initializeClasses();
+34:     org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
+35:   } 
+36: 
+37:   @AfterClass 
+38:   public static void clearEvoSuiteFramework(){ 
+39:     Sandbox.resetDefaultSecurityManager(); 
+40:     java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
+41:   } 
+42: 
+43:   @Before 
+44:   public void initTestCase(){ 
+45:     threadStopper.storeCurrentThreads();
+46:     threadStopper.startRecordingTime();
+47:     org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().initHandler(); 
+48:     org.evosuite.runtime.sandbox.Sandbox.goingToExecuteSUTCode(); 
+49:     setSystemProperties(); 
+50:     org.evosuite.runtime.GuiSupport.setHeadless(); 
+51:     org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
+52:     org.evosuite.runtime.agent.InstrumentingAgent.activate(); 
+53:   } 
+54: 
+55:   @After 
+56:   public void doneWithTestCase(){ 
+57:     threadStopper.killAndJoinClientThreads();
+58:     org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().safeExecuteAddedHooks(); 
+59:     org.evosuite.runtime.classhandling.JDKClassResetter.reset(); 
+60:     resetClasses(); 
+61:     org.evosuite.runtime.sandbox.Sandbox.doneWithExecutingSUTCode(); 
+62:     org.evosuite.runtime.agent.InstrumentingAgent.deactivate(); 
+63:     org.evosuite.runtime.GuiSupport.restoreHeadlessMode(); 
+64:   } 
+65: 
+66:   public void setSystemProperties() {
+67:  
+68:     java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
+69:     java.lang.System.setProperty("java.vm.vendor", "Oracle Corporation"); 
+70:     java.lang.System.setProperty("java.specification.version", "1.8"); 
+71:             java.lang.System.setProperty("java.home", "/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre"); 
+72:         java.lang.System.setProperty("java.awt.headless", "true"); 
+73:     java.lang.System.setProperty("user.home", "/Users/samuelhudson"); 
+74:                                         java.lang.System.setProperty("user.dir", "/Users/samuelhudson/Desktop/dominion"); 
+75:     java.lang.System.setProperty("java.io.tmpdir", "/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/"); 
+76:     java.lang.System.setProperty("awt.toolkit", "sun.lwawt.macosx.LWCToolkit"); 
+77:     java.lang.System.setProperty("file.encoding", "UTF-8"); 
+78:     java.lang.System.setProperty("file.separator", "/"); 
+79:         java.lang.System.setProperty("java.awt.graphicsenv", "sun.awt.CGraphicsEnvironment"); 
+80:     java.lang.System.setProperty("java.awt.printerjob", "sun.lwawt.macosx.CPrinterJob"); 
+81:     java.lang.System.setProperty("java.class.path", "/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_pathingJar3107853751922404554.jar"); 
+82:     java.lang.System.setProperty("java.class.version", "52.0"); 
+83:         java.lang.System.setProperty("java.endorsed.dirs", "/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/endorsed"); 
+84:     java.lang.System.setProperty("java.ext.dirs", "/Users/samuelhudson/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"); 
+85:     java.lang.System.setProperty("java.library.path", "lib"); 
+86:     java.lang.System.setProperty("java.runtime.name", "Java(TM) SE Runtime Environment"); 
+87:     java.lang.System.setProperty("java.runtime.version", "1.8.0_51-b16"); 
+88:     java.lang.System.setProperty("java.specification.name", "Java Platform API Specification"); 
+89:     java.lang.System.setProperty("java.specification.vendor", "Oracle Corporation"); 
+90:         java.lang.System.setProperty("java.vendor", "Oracle Corporation"); 
+91:     java.lang.System.setProperty("java.vendor.url", "http://java.oracle.com/"); 
+92:     java.lang.System.setProperty("java.version", "1.8.0_51"); 
+93:     java.lang.System.setProperty("java.vm.info", "mixed mode"); 
+94:     java.lang.System.setProperty("java.vm.name", "Java HotSpot(TM) 64-Bit Server VM"); 
+95:     java.lang.System.setProperty("java.vm.specification.name", "Java Virtual Machine Specification"); 
+96:     java.lang.System.setProperty("java.vm.specification.vendor", "Oracle Corporation"); 
+97:     java.lang.System.setProperty("java.vm.specification.version", "1.8"); 
+98:     java.lang.System.setProperty("java.vm.version", "25.51-b03"); 
+99:     java.lang.System.setProperty("line.separator", "\n"); 
+100:     java.lang.System.setProperty("os.arch", "x86_64"); 
+101:     java.lang.System.setProperty("os.name", "Mac OS X"); 
+102:     java.lang.System.setProperty("os.version", "10.11.6"); 
+103:     java.lang.System.setProperty("path.separator", ":"); 
+104:     java.lang.System.setProperty("user.country", "US"); 
+105:     java.lang.System.setProperty("user.language", "en"); 
+106:     java.lang.System.setProperty("user.name", "samuelhudson"); 
+107:     java.lang.System.setProperty("user.timezone", "America/Los_Angeles"); 
+108:   }
+109: 
+110:   private static void initializeClasses() {
+111:     org.evosuite.runtime.classhandling.ClassStateSupport.initializeClasses(Board_40_tmp__ESTest_scaffolding.class.getClassLoader() ,
+112:       "Board",
+113:       "VictoryCard",
+114:       "CurseCard",
+115:       "ActionCard",
+116:       "TreasureCard",
+117:       "Card"
+118:     );
+119:   } 
+120: 
+121:   private static void resetClasses() {
+122:   }
+123: }
+
+[MASTER] 21:58:44.736 [pool-2-thread-1] ERROR JUnitAnalyzer - Compilation failed on compilation units: [RegularFileObject[/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_41_1488261524079/Board_41_tmp__ESTest.java], RegularFileObject[/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_41_1488261524079/Board_41_tmp__ESTest_scaffolding.java]]
+[MASTER] 21:58:44.736 [pool-2-thread-1] ERROR JUnitAnalyzer - Classpath: /Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar:/Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-master/1.0.3/evosuite-master-1.0.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3-tests.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-client/1.0.3/evosuite-client-1.0.3-tests.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-runtime/1.0.3/evosuite-runtime-1.0.3.jar:/Users/samuelhudson/.m2/repository/javax/ejb/javax.ejb-api/3.2/javax.ejb-api-3.2.jar:/Users/samuelhudson/.m2/repository/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar:/Users/samuelhudson/.m2/repository/javax/faces/javax.faces-api/2.2/javax.faces-api-2.2.jar:/Users/samuelhudson/.m2/repository/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar:/Users/samuelhudson/.m2/repository/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-orm/4.1.6.RELEASE/spring-orm-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-beans/4.1.6.RELEASE/spring-beans-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-core/4.1.6.RELEASE/spring-core-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-jdbc/4.1.6.RELEASE/spring-jdbc-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-tx/4.1.6.RELEASE/spring-tx-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-context/4.1.6.RELEASE/spring-context-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-aop/4.1.6.RELEASE/spring-aop-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-expression/4.1.6.RELEASE/spring-expression-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar:/Users/samuelhudson/.m2/repository/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar:/Users/samuelhudson/.m2/repository/org/ow2/asm/asm-all/5.0.4/asm-all-5.0.4.jar:/Users/samuelhudson/.m2/repository/javax/xml/bind/jaxb-api/2.2.12/jaxb-api-2.2.12.jar:/Users/samuelhudson/.m2/repository/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar:/Users/samuelhudson/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar:/Users/samuelhudson/.m2/repository/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar:/Users/samuelhudson/.m2/repository/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar:/Users/samuelhudson/.m2/repository/com/googlecode/gentyref/gentyref/1.2.0/gentyref-1.2.0.jar:/Users/samuelhudson/.m2/repository/net/sf/jgrapht/jgrapht/0.8.3/jgrapht-0.8.3.jar:/Users/samuelhudson/.m2/repository/com/panayotis/JavaPlot/0.4.0/JavaPlot-0.4.0.jar:/Users/samuelhudson/.m2/repository/com/thoughtworks/xstream/xstream/1.4.8/xstream-1.4.8.jar:/Users/samuelhudson/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar:/Users/samuelhudson/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar:/Users/samuelhudson/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:/Users/samuelhudson/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/Users/samuelhudson/.m2/repository/commons-cli/commons-cli/1.3.1/commons-cli-1.3.1.jar:/Users/samuelhudson/.m2/repository/org/kohsuke/graphviz-api/1.1/graphviz-api-1.1.jar:/Users/samuelhudson/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar:/Users/samuelhudson/.m2/repository/org/apache/commons/commons-exec/1.2/commons-exec-1.2.jar:/Users/samuelhudson/.m2/repository/org/jboss/spec/javax/servlet/jboss-servlet-api_3.1_spec/1.0.0.Final/jboss-servlet-api_3.1_spec-1.0.0.Final.jar:/Users/samuelhudson/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/Users/samuelhudson/.m2/repository/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar:/Users/samuelhudson/.m2/repository/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar:/Users/samuelhudson/.m2/repository/javax/interceptor/javax.interceptor-api/1.2/javax.interceptor-api-1.2.jar:/Users/samuelhudson/.m2/repository/org/hibernate/hibernate-entitymanager/5.0.5.Final/hibernate-entitymanager-5.0.5.Final.jar:/Users/samuelhudson/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar:/Users/samuelhudson/.m2/repository/org/hibernate/hibernate-core/5.0.5.Final/hibernate-core-5.0.5.Final.jar:/Users/samuelhudson/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/Users/samuelhudson/.m2/repository/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.jar:/Users/samuelhudson/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar:/Users/samuelhudson/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar:/Users/samuelhudson/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar:/Users/samuelhudson/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar:/Users/samuelhudson/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar:/Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar
+[MASTER] 21:58:44.736 [pool-2-thread-1] ERROR JUnitAnalyzer - evosuiteCP: /Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-master/1.0.3/evosuite-master-1.0.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3-tests.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-client/1.0.3/evosuite-client-1.0.3-tests.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-runtime/1.0.3/evosuite-runtime-1.0.3.jar:/Users/samuelhudson/.m2/repository/javax/ejb/javax.ejb-api/3.2/javax.ejb-api-3.2.jar:/Users/samuelhudson/.m2/repository/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar:/Users/samuelhudson/.m2/repository/javax/faces/javax.faces-api/2.2/javax.faces-api-2.2.jar:/Users/samuelhudson/.m2/repository/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar:/Users/samuelhudson/.m2/repository/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-orm/4.1.6.RELEASE/spring-orm-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-beans/4.1.6.RELEASE/spring-beans-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-core/4.1.6.RELEASE/spring-core-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-jdbc/4.1.6.RELEASE/spring-jdbc-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-tx/4.1.6.RELEASE/spring-tx-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-context/4.1.6.RELEASE/spring-context-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-aop/4.1.6.RELEASE/spring-aop-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/samuelhudson/.m2/repository/org/springframework/spring-expression/4.1.6.RELEASE/spring-expression-4.1.6.RELEASE.jar:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar:/Users/samuelhudson/.m2/repository/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar:/Users/samuelhudson/.m2/repository/org/ow2/asm/asm-all/5.0.4/asm-all-5.0.4.jar:/Users/samuelhudson/.m2/repository/javax/xml/bind/jaxb-api/2.2.12/jaxb-api-2.2.12.jar:/Users/samuelhudson/.m2/repository/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar:/Users/samuelhudson/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar:/Users/samuelhudson/.m2/repository/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar:/Users/samuelhudson/.m2/repository/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar:/Users/samuelhudson/.m2/repository/com/googlecode/gentyref/gentyref/1.2.0/gentyref-1.2.0.jar:/Users/samuelhudson/.m2/repository/net/sf/jgrapht/jgrapht/0.8.3/jgrapht-0.8.3.jar:/Users/samuelhudson/.m2/repository/com/panayotis/JavaPlot/0.4.0/JavaPlot-0.4.0.jar:/Users/samuelhudson/.m2/repository/com/thoughtworks/xstream/xstream/1.4.8/xstream-1.4.8.jar:/Users/samuelhudson/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar:/Users/samuelhudson/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar:/Users/samuelhudson/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar:/Users/samuelhudson/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/Users/samuelhudson/.m2/repository/commons-cli/commons-cli/1.3.1/commons-cli-1.3.1.jar:/Users/samuelhudson/.m2/repository/org/kohsuke/graphviz-api/1.1/graphviz-api-1.1.jar:/Users/samuelhudson/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar:/Users/samuelhudson/.m2/repository/org/apache/commons/commons-exec/1.2/commons-exec-1.2.jar:/Users/samuelhudson/.m2/repository/org/jboss/spec/javax/servlet/jboss-servlet-api_3.1_spec/1.0.0.Final/jboss-servlet-api_3.1_spec-1.0.0.Final.jar:/Users/samuelhudson/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/Users/samuelhudson/.m2/repository/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar:/Users/samuelhudson/.m2/repository/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar:/Users/samuelhudson/.m2/repository/javax/interceptor/javax.interceptor-api/1.2/javax.interceptor-api-1.2.jar:/Users/samuelhudson/.m2/repository/org/hibernate/hibernate-entitymanager/5.0.5.Final/hibernate-entitymanager-5.0.5.Final.jar:/Users/samuelhudson/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar:/Users/samuelhudson/.m2/repository/org/hibernate/hibernate-core/5.0.5.Final/hibernate-core-5.0.5.Final.jar:/Users/samuelhudson/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/Users/samuelhudson/.m2/repository/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.jar:/Users/samuelhudson/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar:/Users/samuelhudson/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar:/Users/samuelhudson/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar:/Users/samuelhudson/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar:/Users/samuelhudson/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar:/Users/samuelhudson/Desktop/dominion/target/test-classes:/Users/samuelhudson/Desktop/dominion/target/classes:/Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/samuelhudson/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.3/evosuite-standalone-runtime-1.0.3.jar
+[MASTER] 21:58:44.737 [pool-2-thread-1] ERROR JUnitAnalyzer - Diagnostic: method test14() is already defined in class Board_41_tmp__ESTest: 313
+[MASTER] 21:58:44.738 [pool-2-thread-1] ERROR JUnitAnalyzer - RegularFileObject[/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_41_1488261524079/Board_41_tmp__ESTest.java]
+1: /*
+2:  * This file was automatically generated by EvoSuite
+3:  * Tue Feb 28 05:58:44 GMT 2017
+4:  */
+5: 
+6: 
+7: import org.junit.Test;
+8: import static org.junit.Assert.*;
+9: import static org.evosuite.runtime.EvoAssertions.*;
+10: import java.util.ArrayList;
+11: import java.util.Collection;
+12: import java.util.LinkedList;
+13: import java.util.function.UnaryOperator;
+14: import org.evosuite.runtime.EvoRunner;
+15: import org.evosuite.runtime.EvoRunnerParameters;
+16: import org.junit.runner.RunWith;
+17: 
+18: @RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true) 
+19: public class Board_41_tmp__ESTest extends Board_41_tmp__ESTest_scaffolding {
+20: 
+21:   @Test(timeout = 4000)
+22:   public void test00()  throws Throwable  {
+23:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+24:       Board board0 = new Board(arrayList0);
+25:       Card card0 = new Card();
+26:       card0.type = "";
+27:       card0.cost = 769;
+28:       arrayList0.add(card0);
+29:       board0.time_to_end();
+30:       arrayList0.add((Card) null);
+31:       board0.on_board = arrayList0;
+32:       ArrayList<Card> arrayList1 = board0.in_trash;
+33:       arrayList0.add((Card) null);
+34:       // Undeclared exception!
+35:       try { 
+36:         board0.time_to_end();
+37:         fail("Expecting exception: NullPointerException");
+38:       
+39:       } catch(NullPointerException e) {
+40:          //
+41:          // no message in exception (getMessage() returned null)
+42:          //
+43:          assertThrownBy("Board", e);
+44:       }
+45:   }
+46: 
+47:   @Test(timeout = 4000)
+48:   public void test01()  throws Throwable  {
+49:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+50:       Card card0 = new Card();
+51:       arrayList0.add(card0);
+52:       Board board0 = new Board(arrayList0);
+53:       ArrayList<Card> arrayList1 = board0.in_trash;
+54:       board0.on_board = null;
+55:       ArrayList<Card> arrayList2 = board0.in_trash;
+56:       // Undeclared exception!
+57:       try { 
+58:         board0.shuffle_board();
+59:         fail("Expecting exception: NullPointerException");
+60:       
+61:       } catch(NullPointerException e) {
+62:          //
+63:          // no message in exception (getMessage() returned null)
+64:          //
+65:       }
+66:   }
+67: 
+68:   @Test(timeout = 4000)
+69:   public void test02()  throws Throwable  {
+70:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+71:       Board board0 = new Board(arrayList0);
+72:       board0.in_trash = arrayList0;
+73:       board0.in_trash.add((Card) null);
+74:       board0.get_count_by_type((String) null);
+75:       // Undeclared exception!
+76:       try { 
+77:         board0.print_in_trash();
+78:         fail("Expecting exception: NullPointerException");
+79:       
+80:       } catch(NullPointerException e) {
+81:          //
+82:          // no message in exception (getMessage() returned null)
+83:          //
+84:          assertThrownBy("Board", e);
+85:       }
+86:   }
+87: 
+88:   @Test(timeout = 4000)
+89:   public void test03()  throws Throwable  {
+90:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+91:       Board board0 = new Board(arrayList0);
+92:       Card card0 = new Card();
+93:       arrayList0.add(card0);
+94:       board0.on_board = arrayList0;
+95:       board0.on_board.add(card0);
+96:       board0.print_board();
+97:       board0.in_trash = arrayList0;
+98:       board0.in_trash.clone();
+99:       board0.print_in_trash();
+100:       board0.on_board = arrayList0;
+101:       arrayList0.add((Card) null);
+102:       // Undeclared exception!
+103:       try { 
+104:         board0.get_count_by_type(" Not Treasure: ");
+105:         fail("Expecting exception: NullPointerException");
+106:       
+107:       } catch(NullPointerException e) {
+108:          //
+109:          // no message in exception (getMessage() returned null)
+110:          //
+111:          assertThrownBy("Board", e);
+112:       }
+113:   }
+114: 
+115:   @Test(timeout = 4000)
+116:   public void test04()  throws Throwable  {
+117:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+118:       Board board0 = new Board(arrayList0);
+119:       board0.print_in_trash();
+120:       Board board1 = new Board(arrayList0);
+121:       board1.in_trash = arrayList0;
+122:       board1.on_board = arrayList0;
+123:       board1.on_board("yD|H>%`+6y)_");
+124:       arrayList0.add((Card) null);
+125:       board1.shuffle_board();
+126:       board0.on_board = arrayList0;
+127:       board1.shuffle_board();
+128:       // Undeclared exception!
+129:       try { 
+130:         board1.print_board();
+131:         fail("Expecting exception: NullPointerException");
+132:       
+133:       } catch(NullPointerException e) {
+134:          //
+135:          // no message in exception (getMessage() returned null)
+136:          //
+137:          assertThrownBy("Board", e);
+138:       }
+139:   }
+140: 
+141:   @Test(timeout = 4000)
+142:   public void test05()  throws Throwable  {
+143:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+144:       Board board0 = new Board(arrayList0);
+145:       board0.print_board();
+146:       board0.in_trash = arrayList0;
+147:       arrayList0.add((Card) null);
+148:       board0.in_trash.add((Card) null);
+149:       board0.print_board();
+150:       arrayList0.add((Card) null);
+151:       board0.print_board();
+152:       board0.on_board = arrayList0;
+153:       // Undeclared exception!
+154:       try { 
+155:         board0.on_board(".;%");
+156:         fail("Expecting exception: NullPointerException");
+157:       
+158:       } catch(NullPointerException e) {
+159:          //
+160:          // no message in exception (getMessage() returned null)
+161:          //
+162:          assertThrownBy("Board", e);
+163:       }
+164:   }
+165: 
+166:   @Test(timeout = 4000)
+167:   public void test06()  throws Throwable  {
+168:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+169:       Card card0 = new Card();
+170:       card0.cost = 2;
+171:       card0.name = "@i:)k0<DxM:&7;N";
+172:       arrayList0.add(card0);
+173:       arrayList0.add(card0);
+174:       Board board0 = new Board(arrayList0);
+175:       board0.print_in_trash();
+176:       board0.get_count_by_type((String) null);
+177:       arrayList0.add(card0);
+178:       board0.print_board();
+179:       board0.on_board("");
+180:       board0.print_in_trash();
+181:       ArrayList<Card> arrayList1 = board0.on_board;
+182:       board0.print_in_trash();
+183:       ArrayList<Card> arrayList2 = board0.in_trash;
+184:       board0.print_board();
+185:   }
+186: 
+187:   @Test(timeout = 4000)
+188:   public void test07()  throws Throwable  {
+189:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+190:       Board board0 = new Board(arrayList0);
+191:       board0.print_board();
+192:       board0.on_board = arrayList0;
+193:       board0.on_board.add((Card) null);
+194:       arrayList0.add((Card) null);
+195:       // Undeclared exception!
+196:       try { 
+197:         board0.on_board_by_value(2512);
+198:         fail("Expecting exception: NullPointerException");
+199:       
+200:       } catch(NullPointerException e) {
+201:          //
+202:          // no message in exception (getMessage() returned null)
+203:          //
+204:          assertThrownBy("Board", e);
+205:       }
+206:   }
+207: 
+208:   @Test(timeout = 4000)
+209:   public void test08()  throws Throwable  {
+210:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+211:       Card card0 = new Card();
+212:       card0.value = 0;
+213:       arrayList0.add(card0);
+214:       Board board0 = new Board(arrayList0);
+215:       board0.shuffle_board();
+216:       board0.on_board = arrayList0;
+217:       board0.shuffle_board();
+218:       board0.on_board((String) null);
+219:   }
+220: 
+221:   @Test(timeout = 4000)
+222:   public void test09()  throws Throwable  {
+223:       Board board0 = null;
+224:       try {
+225:         board0 = new Board((ArrayList<Card>) null);
+226:         fail("Expecting exception: NullPointerException");
+227:       
+228:       } catch(NullPointerException e) {
+229:          //
+230:          // no message in exception (getMessage() returned null)
+231:          //
+232:          assertThrownBy("Board", e);
+233:       }
+234:   }
+235: 
+236:   @Test(timeout = 4000)
+237:   public void test10()  throws Throwable  {
+238:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+239:       Board board0 = new Board(arrayList0);
+240:       board0.in_trash = arrayList0;
+241:       arrayList0.add((Card) null);
+242:       ArrayList<Card> arrayList1 = board0.in_trash;
+243:       board0.get_count_by_name("silver");
+244:   }
+245: 
+246:   @Test(timeout = 4000)
+247:   public void test11()  throws Throwable  {
+248:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+249:       Board board0 = new Board(arrayList0);
+250:       board0.time_to_end();
+251:       Board board1 = new Board(arrayList0);
+252:       ArrayList<Card> arrayList1 = board1.on_board;
+253:       ArrayList<Card> arrayList2 = new ArrayList<Card>();
+254:       Card card0 = new Card();
+255:       arrayList1.add(card0);
+256:       Board board2 = new Board(arrayList2);
+257:       board1.print_board();
+258:       arrayList0.listIterator(0);
+259:       board0.in_trash = arrayList1;
+260:       arrayList0.add(card0);
+261:       board0.get_count_by_name("X}");
+262:       board0.on_board_by_value(0);
+263:       arrayList2.addAll(0, (Collection<? extends Card>) arrayList0);
+264:       board2.print_board();
+265:       Board board3 = new Board(arrayList1);
+266:       ArrayList<Card> arrayList3 = board1.on_board;
+267:       board0.on_board_by_value(0);
+268:       board3.get_count_by_name("X}");
+269:       ArrayList<Card> arrayList4 = board1.in_trash;
+270:       board0.on_board(" Card: ");
+271:       ArrayList<Card> arrayList5 = board1.on_board;
+272:       assertSame(arrayList5, arrayList1);
+273:   }
+274: 
+275:   @Test(timeout = 4000)
+276:   public void test14()  throws Throwable  {
+277:       
+278:   }
+279: 
+280:   @Test(timeout = 4000)
+281:   public void test13()  throws Throwable  {
+282:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+283:       Board board0 = new Board(arrayList0);
+284:       String string0 = "c@KVu*CAhEGp";
+285:       board0.on_board("c@KVu*CAhEGp");
+286:       String string1 = "";
+287:       arrayList0.iterator();
+288:       board0.on_board = arrayList0;
+289:       board0.get_count_by_type("");
+290:       Board board1 = new Board(arrayList0);
+291:       board1.in_trash = board0.on_board;
+292:       board0.get_count_by_name("c@KVu*CAhEGp");
+293:       board0.on_board = arrayList0;
+294:       board1.on_board("");
+295:       board0.shuffle_board();
+296:       board1.time_to_end();
+297:       String string2 = "u8/WreAw(`E6<|kEW|O";
+298:       board1.in_trash = arrayList0;
+299:       // Undeclared exception!
+300:       try { 
+301:         board0.in_trash.replaceAll((UnaryOperator<Card>) null);
+302:         fail("Expecting exception: NullPointerException");
+303:       
+304:       } catch(NullPointerException e) {
+305:          //
+306:          // no message in exception (getMessage() returned null)
+307:          //
+308:          assertThrownBy("java.util.Objects", e);
+309:       }
+310:   }
+311: 
+312:   @Test(timeout = 4000)
+313:   public void test14()  throws Throwable  {
+314:       
+315:   }
+316: 
+317:   @Test(timeout = 4000)
+318:   public void test15()  throws Throwable  {
+319:       LinkedList<Card> linkedList0 = new LinkedList<Card>();
+320:       assertEquals(0, linkedList0.size());
+321:   }
+322: 
+323:   @Test(timeout = 4000)
+324:   public void test16()  throws Throwable  {
+325:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+326:       Board board0 = new Board(arrayList0);
+327:       board0.print_board();
+328:       board0.in_trash = arrayList0;
+329:       ArrayList<Card> arrayList1 = board0.on_board;
+330:       Card card0 = new Card();
+331:       arrayList0.add(card0);
+332:       board0.print_board();
+333:       board0.print_in_trash();
+334:       board0.print_in_trash();
+335:       // Undeclared exception!
+336:       try { 
+337:         board0.in_trash.replaceAll((UnaryOperator<Card>) null);
+338:         fail("Expecting exception: NullPointerException");
+339:       
+340:       } catch(NullPointerException e) {
+341:          //
+342:          // no message in exception (getMessage() returned null)
+343:          //
+344:          assertThrownBy("java.util.Objects", e);
+345:       }
+346:   }
+347: 
+348:   @Test(timeout = 4000)
+349:   public void test17()  throws Throwable  {
+350:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+351:       Board board0 = new Board(arrayList0);
+352:       LinkedList<Card> linkedList0 = new LinkedList<Card>();
+353:       arrayList0.retainAll(linkedList0);
+354:       int int0 = board0.on_board("silver");
+355:       //  // Unstable assertion: assertEquals((-1), int0);
+356:       
+357:       int int1 = board0.get_count_by_type("");
+358:       int int2 = board0.on_board_by_value(80);
+359:       //  // Unstable assertion: assertTrue(int2 == int1);
+360:       //  // Unstable assertion: assertEquals(0, int2);
+361:   }
+362: 
+363:   @Test(timeout = 4000)
+364:   public void test18()  throws Throwable  {
+365:       Card card0 = new Card();
+366:   }
+367: 
+368:   @Test(timeout = 4000)
+369:   public void test19()  throws Throwable  {
+370:       ArrayList<Card> arrayList0 = new ArrayList<Card>();
+371:       Board board0 = new Board(arrayList0);
+372:       ArrayList<Card> arrayList1 = board0.in_trash;
+373:       Board board1 = new Board(arrayList0);
+374:       ArrayList<Card> arrayList2 = board1.in_trash;
+375:       Card card0 = new Card();
+376:       arrayList2.add(card0);
+377:       board0.on_board_by_value((-1650));
+378:       board1.print_board();
+379:       ArrayList<Card> arrayList3 = board0.in_trash;
+380:       Card card1 = new Card();
+381:       card1.name = "Bgn71RHV~mR5B_SJ~";
+382:       arrayList0.add(card1);
+383:       board1.on_board("");
+384:       board1.in_trash = arrayList0;
+385:       board1.on_board_by_value((-1));
+386:       Board board2 = new Board(arrayList3);
+387:       board2.on_board = arrayList2;
+388:       board2.time_to_end();
+389:       board1.shuffle_board();
+390:       assertNotSame(board1, board2);
+391:   }
+392: }
+RegularFileObject[/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_41_1488261524079/Board_41_tmp__ESTest.java]
+1: /**
+2:  * Scaffolding file used to store all the setups needed to run 
+3:  * tests automatically generated by EvoSuite
+4:  * Tue Feb 28 05:58:44 GMT 2017
+5:  */
+6: 
+7: 
+8: import org.evosuite.runtime.annotation.EvoSuiteClassExclude;
+9: import org.junit.BeforeClass;
+10: import org.junit.Before;
+11: import org.junit.After;
+12: import org.junit.AfterClass;
+13: import org.evosuite.runtime.sandbox.Sandbox;
+14: import org.evosuite.runtime.sandbox.Sandbox.SandboxMode;
+15: 
+16: @EvoSuiteClassExclude
+17: public class Board_41_tmp__ESTest_scaffolding {
+18: 
+19:   private static final java.util.Properties defaultProperties = (java.util.Properties) java.lang.System.getProperties().clone(); 
+20: 
+21:   private org.evosuite.runtime.thread.ThreadStopper threadStopper =  new org.evosuite.runtime.thread.ThreadStopper (org.evosuite.runtime.thread.KillSwitchHandler.getInstance(), 3000);
+22: 
+23:   @BeforeClass 
+24:   public static void initEvoSuiteFramework() { 
+25:     org.evosuite.runtime.RuntimeSettings.className = "Board"; 
+26:     org.evosuite.runtime.GuiSupport.initialize(); 
+27:     org.evosuite.runtime.RuntimeSettings.maxNumberOfThreads = 100; 
+28:     org.evosuite.runtime.RuntimeSettings.maxNumberOfIterationsPerLoop = 10000; 
+29:     org.evosuite.runtime.RuntimeSettings.mockSystemIn = true; 
+30:     org.evosuite.runtime.RuntimeSettings.sandboxMode = org.evosuite.runtime.sandbox.Sandbox.SandboxMode.RECOMMENDED; 
+31:     org.evosuite.runtime.sandbox.Sandbox.initializeSecurityManagerForSUT(); 
+32:     org.evosuite.runtime.classhandling.JDKClassResetter.init(); 
+33:     initializeClasses();
+34:     org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
+35:   } 
+36: 
+37:   @AfterClass 
+38:   public static void clearEvoSuiteFramework(){ 
+39:     Sandbox.resetDefaultSecurityManager(); 
+40:     java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
+41:   } 
+42: 
+43:   @Before 
+44:   public void initTestCase(){ 
+45:     threadStopper.storeCurrentThreads();
+46:     threadStopper.startRecordingTime();
+47:     org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().initHandler(); 
+48:     org.evosuite.runtime.sandbox.Sandbox.goingToExecuteSUTCode(); 
+49:     setSystemProperties(); 
+50:     org.evosuite.runtime.GuiSupport.setHeadless(); 
+51:     org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
+52:     org.evosuite.runtime.agent.InstrumentingAgent.activate(); 
+53:   } 
+54: 
+55:   @After 
+56:   public void doneWithTestCase(){ 
+57:     threadStopper.killAndJoinClientThreads();
+58:     org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().safeExecuteAddedHooks(); 
+59:     org.evosuite.runtime.classhandling.JDKClassResetter.reset(); 
+60:     resetClasses(); 
+61:     org.evosuite.runtime.sandbox.Sandbox.doneWithExecutingSUTCode(); 
+62:     org.evosuite.runtime.agent.InstrumentingAgent.deactivate(); 
+63:     org.evosuite.runtime.GuiSupport.restoreHeadlessMode(); 
+64:   } 
+65: 
+66:   public void setSystemProperties() {
+67:  
+68:     java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
+69:     java.lang.System.setProperty("java.vm.vendor", "Oracle Corporation"); 
+70:     java.lang.System.setProperty("java.specification.version", "1.8"); 
+71:             java.lang.System.setProperty("java.home", "/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre"); 
+72:         java.lang.System.setProperty("java.awt.headless", "true"); 
+73:     java.lang.System.setProperty("user.home", "/Users/samuelhudson"); 
+74:                                         java.lang.System.setProperty("user.dir", "/Users/samuelhudson/Desktop/dominion"); 
+75:     java.lang.System.setProperty("java.io.tmpdir", "/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/"); 
+76:     java.lang.System.setProperty("awt.toolkit", "sun.lwawt.macosx.LWCToolkit"); 
+77:     java.lang.System.setProperty("file.encoding", "UTF-8"); 
+78:     java.lang.System.setProperty("file.separator", "/"); 
+79:         java.lang.System.setProperty("java.awt.graphicsenv", "sun.awt.CGraphicsEnvironment"); 
+80:     java.lang.System.setProperty("java.awt.printerjob", "sun.lwawt.macosx.CPrinterJob"); 
+81:     java.lang.System.setProperty("java.class.path", "/var/folders/cg/3k2fd1xd5dv6nl8_j0h6t44m0000gn/T/EvoSuite_pathingJar3107853751922404554.jar"); 
+82:     java.lang.System.setProperty("java.class.version", "52.0"); 
+83:         java.lang.System.setProperty("java.endorsed.dirs", "/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/endorsed"); 
+84:     java.lang.System.setProperty("java.ext.dirs", "/Users/samuelhudson/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"); 
+85:     java.lang.System.setProperty("java.library.path", "lib"); 
+86:     java.lang.System.setProperty("java.runtime.name", "Java(TM) SE Runtime Environment"); 
+87:     java.lang.System.setProperty("java.runtime.version", "1.8.0_51-b16"); 
+88:     java.lang.System.setProperty("java.specification.name", "Java Platform API Specification"); 
+89:     java.lang.System.setProperty("java.specification.vendor", "Oracle Corporation"); 
+90:         java.lang.System.setProperty("java.vendor", "Oracle Corporation"); 
+91:     java.lang.System.setProperty("java.vendor.url", "http://java.oracle.com/"); 
+92:     java.lang.System.setProperty("java.version", "1.8.0_51"); 
+93:     java.lang.System.setProperty("java.vm.info", "mixed mode"); 
+94:     java.lang.System.setProperty("java.vm.name", "Java HotSpot(TM) 64-Bit Server VM"); 
+95:     java.lang.System.setProperty("java.vm.specification.name", "Java Virtual Machine Specification"); 
+96:     java.lang.System.setProperty("java.vm.specification.vendor", "Oracle Corporation"); 
+97:     java.lang.System.setProperty("java.vm.specification.version", "1.8"); 
+98:     java.lang.System.setProperty("java.vm.version", "25.51-b03"); 
+99:     java.lang.System.setProperty("line.separator", "\n"); 
+100:     java.lang.System.setProperty("os.arch", "x86_64"); 
+101:     java.lang.System.setProperty("os.name", "Mac OS X"); 
+102:     java.lang.System.setProperty("os.version", "10.11.6"); 
+103:     java.lang.System.setProperty("path.separator", ":"); 
+104:     java.lang.System.setProperty("user.country", "US"); 
+105:     java.lang.System.setProperty("user.language", "en"); 
+106:     java.lang.System.setProperty("user.name", "samuelhudson"); 
+107:     java.lang.System.setProperty("user.timezone", "America/Los_Angeles"); 
+108:   }
+109: 
+110:   private static void initializeClasses() {
+111:     org.evosuite.runtime.classhandling.ClassStateSupport.initializeClasses(Board_41_tmp__ESTest_scaffolding.class.getClassLoader() ,
+112:       "Board",
+113:       "VictoryCard",
+114:       "CurseCard",
+115:       "ActionCard",
+116:       "TreasureCard",
+117:       "Card"
+118:     );
+119:   } 
+120: 
+121:   private static void resetClasses() {
+122:   }
+123: }
+

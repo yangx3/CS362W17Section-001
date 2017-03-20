@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project>
+    <totalNumberOfTestableClasses>4</totalNumberOfTestableClasses>
+    <cut>
+        <fullNameOfTargetClass>org.cs362.dominion.Dominion.Card</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.cs362.dominion.Dominion.Card_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>82</timeBudgetInSeconds>
+            <memoryInMB>800</memoryInMB>
+            <std_err_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.Card\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.Card\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.Card\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.Card\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\tests\org\cs362\dominion\Dominion\Card_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>40</numberOfTests>
+                <totalNumberOfStatements>280</totalNumberOfStatements>
+                <totalEffortInSeconds>81</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.65</coverageValue>
+                    <coverageBitString>0000000000001111111011111111111111111111111111111111011111000000000001100000000000111000001000011111111111111111111100011111100000000001111110111111101110001111111011111111111111111111110</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.53</coverageValue>
+                    <coverageBitString>01000101011010011101111010011011011101010100010000111110111001000111110101000000010000000100100000111111111111111110</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.63</coverageValue>
+                    <coverageBitString>10111111110101111111111111111111111111111101111111111111111111011111111111111111111011111111111111101111111111111111111111111111111111111110011111111111111111111111111111111111111111111111110000000000000000000000001111111111111111111111111111111111111111011100000000000000000000000000000000000000000000000000000000000000000011111111111011111111111111111111111111111111111111111111101111111111111111111110111111111111000000000000000000000000000000000000001111111111111111111111000000111111111111111111111111111111111111111111111111111111111111111111111111101011111111001111111010111111111111001100111001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111100000000000000001101111001000000000000000000000000000000000000000000000001111111111111111111111101111111111111111111011111111111111111111111111111111111111111111111111111111111111111111110111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>0.65</coverageValue>
+                    <coverageBitString>01011111110011110010</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>1111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.92</coverageValue>
+                    <coverageBitString>1111111111101</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.53</coverageValue>
+                    <coverageBitString>00110100100100011110110110111011101110101000010000111110111010000111101101000000100000001000100000111111111111111101</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+        <generation>
+            <id>1</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>83</timeBudgetInSeconds>
+            <memoryInMB>800</memoryInMB>
+            <std_err_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.Card\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.Card\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.Card\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.Card\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\tests\org\cs362\dominion\Dominion\Card_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>49</numberOfTests>
+                <totalNumberOfStatements>402</totalNumberOfStatements>
+                <totalEffortInSeconds>93</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.83</coverageValue>
+                    <coverageBitString>000000000000111111101111111111111111111111111111111101111111111111111111111111111111000100001111111111111111111111011111111111110011111111011111111011000111111110111111111111111111110</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.73</coverageValue>
+                    <coverageBitString>010001010110100111011110100101110111111111101111101111101110010001111101111111111111111110100000111111111111111110</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.87</coverageValue>
+                    <coverageBitString>101111111110011111111111111111111111111111111111111111111111111111111111111111111111111111111111111110111111111111111111111111111111111111111011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111101111111011111001111100000000000000000000000000001111111111111111110111111111111111011111111111111111111111111111111111111111110111111111111111111111011111111111100000000000000000000000000000000000000111111111111111111111111000000111111111111111111111111111111111111111111111111111111111111111111111111110101111111100111111101011111111111111111111110111111111111111111111111111111111111110111111111111111111111111111111111101111111011111111111111111111110111111111111110111111111111111111111111110111111111111011111111111110000000000000000000001111111111111111111111101111111111111111111011111111111111111111111111111111111111111111111111111111111111111111110111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>0.65</coverageValue>
+                    <coverageBitString>01011111110011110010</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>1111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.92</coverageValue>
+                    <coverageBitString>1111111111101</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.71</coverageValue>
+                    <coverageBitString>001101001001000111101101101101111011111111101111101111011101100010110111110111011111111101010000111111111111111101</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+    </cut>
+    <cut>
+        <fullNameOfTargetClass>org.cs362.dominion.Dominion.GameState</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.cs362.dominion.Dominion.GameState_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>151</timeBudgetInSeconds>
+            <memoryInMB>800</memoryInMB>
+            <std_err_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.GameState\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.GameState\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.GameState\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.GameState\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\tests\org\cs362\dominion\Dominion\GameState_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>32</numberOfTests>
+                <totalNumberOfStatements>351</totalNumberOfStatements>
+                <totalEffortInSeconds>121</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.99</coverageValue>
+                    <coverageBitString>1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111100111111111111111111111111111111111111111111111111111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.97</coverageValue>
+                    <coverageBitString>11111111111111111111111111111111111111111111111111011111111111111111111111111111111110110111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.99</coverageValue>
+                    <coverageBitString>11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110111111111101111111111111111110100111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>0.8</coverageValue>
+                    <coverageBitString>01111111110100111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>0.76</coverageValue>
+                    <coverageBitString>111111111111111100000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.76</coverageValue>
+                    <coverageBitString>111111111111111100000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.9</coverageValue>
+                    <coverageBitString>10101110011110001111111111111011111111111111111111111111111111111111111111111111111110111011111111111111</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+        <generation>
+            <id>1</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>150</timeBudgetInSeconds>
+            <memoryInMB>800</memoryInMB>
+            <std_err_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.GameState\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.GameState\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.GameState\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.GameState\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\tests\org\cs362\dominion\Dominion\GameState_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>38</numberOfTests>
+                <totalNumberOfStatements>334</totalNumberOfStatements>
+                <totalEffortInSeconds>128</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.99</coverageValue>
+                    <coverageBitString>11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111001111111111111111111111111111111111111111111111111111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.97</coverageValue>
+                    <coverageBitString>111111111111111111111111111111111111111111111111110111111111111111111111111111111110110111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>11111111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.98</coverageValue>
+                    <coverageBitString>11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111101111111111101111111111111111101001111111111111111111111011111111111111111111111111111111111111111110111111111111111111111111111111111111111111111111111111111111111111111111111111101111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>0.8</coverageValue>
+                    <coverageBitString>01111111110100111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>0.73</coverageValue>
+                    <coverageBitString>1111111111111111000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.73</coverageValue>
+                    <coverageBitString>1111111111111111000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.9</coverageValue>
+                    <coverageBitString>101011100111100011111111111111111111111111111101111111111111111111111111111111111101110111111111111111</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+    </cut>
+    <cut>
+        <fullNameOfTargetClass>org.cs362.dominion.Dominion.PlayDominion</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.cs362.dominion.Dominion.PlayDominion_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>68</timeBudgetInSeconds>
+            <memoryInMB>800</memoryInMB>
+            <std_err_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.PlayDominion\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.PlayDominion\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.PlayDominion\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.PlayDominion\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\tests\org\cs362\dominion\Dominion\PlayDominion_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>6</numberOfTests>
+                <totalNumberOfStatements>11</totalNumberOfStatements>
+                <totalEffortInSeconds>47</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.75</coverageValue>
+                    <coverageBitString>1110111110101110</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.67</coverageValue>
+                    <coverageBitString>110111010</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.83</coverageValue>
+                    <coverageBitString>111111111111111111101111011110010000111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString></coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.33</coverageValue>
+                    <coverageBitString>100</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.67</coverageValue>
+                    <coverageBitString>110111001</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+        <generation>
+            <id>1</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>68</timeBudgetInSeconds>
+            <memoryInMB>800</memoryInMB>
+            <std_err_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.PlayDominion\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.PlayDominion\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.PlayDominion\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.PlayDominion\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\tests\org\cs362\dominion\Dominion\PlayDominion_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>11</numberOfTests>
+                <totalNumberOfStatements>63</totalNumberOfStatements>
+                <totalEffortInSeconds>56</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.83</coverageValue>
+                    <coverageBitString>111100111111111110</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.89</coverageValue>
+                    <coverageBitString>101111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>1111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.94</coverageValue>
+                    <coverageBitString>11111111111110111111101111111111011111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString></coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.33</coverageValue>
+                    <coverageBitString>100</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.89</coverageValue>
+                    <coverageBitString>101111111</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+    </cut>
+    <cut>
+        <fullNameOfTargetClass>org.cs362.dominion.Dominion.Player</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.cs362.dominion.Dominion.Player_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>177</timeBudgetInSeconds>
+            <memoryInMB>800</memoryInMB>
+            <std_err_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.Player\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.Player\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.Player\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\logs\org.cs362.dominion.Dominion.Player\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_26_20_18_29\tests\org\cs362\dominion\Dominion\Player_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>61</numberOfTests>
+                <totalNumberOfStatements>616</totalNumberOfStatements>
+                <totalEffortInSeconds>152</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.85</coverageValue>
+                    <coverageBitString>1111111111111111111111111111111110000000011111111111111111111111111111111111110001111101101111111111111111111111111111111111111111111111111111111111111111111111111111111111101111111100000000000000000001111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.78</coverageValue>
+                    <coverageBitString>1111111111111111111111111111111111010000111111111110000111101011111111111111111111111111111111111111111100000000000000000011111111101111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>1111111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.74</coverageValue>
+                    <coverageBitString>11111111111111111110111111111111111111111111111100000000000000000000001111101111111101111111110110111111111111101111111110111111011111111111111111110111111111111110111011101111111111111111111111111111111111111111111111111111111111111111111101111111111111111111111111111111111111111111110111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111101111111111111111111111111111111111111110000011110111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>0.87</coverageValue>
+                    <coverageBitString>1011111111111101110110110111001111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>1111111111111111111111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>1111111111111111111111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.77</coverageValue>
+                    <coverageBitString>1111111111111111111111111111111111010000111111111101000111010111111111111111111111111111111111111101111100000000000000000011111111011111</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+        <generation>
+            <id>1</id>
+            <failed>true</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>177</timeBudgetInSeconds>
+            <memoryInMB>800</memoryInMB>
+            <std_err_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.Player\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.Player\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.Player\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>C:\Users\Cole\workspace\Project 3\A_id\.evosuite\tmp_2017_02_27_17_01_40\logs\org.cs362.dominion.Dominion.Player\std_out_MASTER.log</std_out_MASTER>
+        </generation>
+    </cut>
+</Project>

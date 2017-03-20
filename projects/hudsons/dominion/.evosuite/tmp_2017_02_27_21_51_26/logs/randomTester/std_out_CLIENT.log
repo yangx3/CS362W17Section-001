@@ -1,0 +1,80 @@
+* Starting client
+* Connecting to master process on port 15728
+* Analyzing classpath: 
+  - /Users/samuelhudson/Desktop/dominion/target/test-classes
+  - /Users/samuelhudson/Desktop/dominion/target/classes
+  - /Users/samuelhudson/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /Users/samuelhudson/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class randomTester
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 21:58:48.506 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /Users/samuelhudson/Desktop/dominion/.evosuite/evosuite-seeds/randomTester.seed
+* Total number of test goals: 
+  - Line 67
+  - Branch 23
+  - Exception 0
+  - MutationFactory 219
+  - Output 9
+  - Method 4
+  - MethodNoException 4
+  - CBranchFitnessFactory 23
+* Using seed 1488261526982
+* Starting evolution
+* Search finished after 60s and 4 generations, 4886 statements, best individual has fitness: 42.54116675664967
+* Writing sequences to pool
+* Minimizing test suite
+[MASTER] 21:59:59.065 [pool-2-thread-1] WARN  TestSuiteMinimizer - Minimization timeout. Roll back to original test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 90%
+* Total number of goals: 67
+* Number of covered goals: 60
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 78%
+* Total number of goals: 23
+* Number of covered goals: 18
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 2
+* Number of covered goals: 2
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 91%
+* Total number of goals: 219
+* Number of covered goals: 200
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 56%
+* Total number of goals: 9
+* Number of covered goals: 5
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 4
+* Number of covered goals: 4
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 75%
+* Total number of goals: 4
+* Number of covered goals: 3
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 78%
+* Total number of goals: 23
+* Number of covered goals: 18
+* Generated 7 tests with total length 101
+* Resulting test suite's coverage: 80% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 5%
+* Compiling and checking tests
+[MASTER] 22:00:14.314 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 22:00:14.318 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 22:00:14.536 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+[MASTER] 22:00:14.760 [pool-2-thread-1] WARN  TestSuiteWriter - Using cached result
+* Writing JUnit test case 'randomTester_ESTest' to /Users/samuelhudson/Desktop/dominion/.evosuite/tmp_2017_02_27_21_51_26/tests
+* Done!
+

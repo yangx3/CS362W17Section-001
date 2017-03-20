@@ -1,0 +1,93 @@
+-------------------------------------------------------------------------------
+Test set: ORG.CS362.DOMINION.GameState_ESTest
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 0, Errors: 15, Skipped: 0, Time elapsed: 0.047 sec <<< FAILURE! - in ORG.CS362.DOMINION.GameState_ESTest
+test07(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.GameState_ESTest.test07(GameState_ESTest.java:188)
+
+test06(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.GameState.isGameOver(GameState.java:111)
+	at ORG.CS362.DOMINION.GameState.play(GameState.java:89)
+	at ORG.CS362.DOMINION.GameState_ESTest.test06(GameState_ESTest.java:160)
+
+test09(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.GameState_ESTest.test09(GameState_ESTest.java:230)
+
+test08(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.GameState_ESTest.test08(GameState_ESTest.java:206)
+
+test03(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.GameState_ESTest.test03(GameState_ESTest.java:108)
+
+test14(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at ORG.CS362.DOMINION.GameState_ESTest.test14(GameState_ESTest.java:340)
+
+test02(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at ORG.CS362.DOMINION.GameState_ESTest.test02(GameState_ESTest.java:87)
+
+test13(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.GameState_ESTest.test13(GameState_ESTest.java:331)
+
+test05(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Randomness
+	at ORG.CS362.DOMINION.GameState_ESTest.test05(GameState_ESTest.java:142)
+
+test15(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.GameState_ESTest.test15(GameState_ESTest.java:353)
+
+test10(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.GameState_ESTest.test10(GameState_ESTest.java:259)
+
+test01(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.GameState_ESTest.test01(GameState_ESTest.java:65)
+
+test12(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at ORG.CS362.DOMINION.GameState_ESTest.test12(GameState_ESTest.java:309)
+
+test00(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.GameState.isGameOver(GameState.java:111)
+	at ORG.CS362.DOMINION.GameState.play(GameState.java:89)
+	at ORG.CS362.DOMINION.GameState_ESTest.test00(GameState_ESTest.java:36)
+
+test11(ORG.CS362.DOMINION.GameState_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at ORG.CS362.DOMINION.GameState_ESTest.test11(GameState_ESTest.java:288)
+

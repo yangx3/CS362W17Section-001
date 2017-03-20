@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class CurseCardTest {
-
 	@Test
 	public void test() {
 		Card curseCard = new CurseCard("Curse", 0, "Images/Curse.jpg");

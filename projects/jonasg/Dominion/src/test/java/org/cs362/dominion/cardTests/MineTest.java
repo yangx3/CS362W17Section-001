@@ -28,7 +28,7 @@ public class MineTest {
 	state.initializeGame();
 
 	//copy or clone the game state to a test case
-	GameState testState = (GameState) state.clone();
+	GameState testState = (GameState)state.clone();
 
 	//to shorten naming conventions
 	Player p1 = state.players.get(0);
@@ -48,22 +48,26 @@ public class MineTest {
 
 	for(int i = 0; i < 20; i++) {
 	    p1.hand.clear();
+	    p1.numActions = 1;
 	    p1.hand.add(copperTest);
+	    p1.hand.add(Card.getCard(cards, Card.CardName.Mine));
+	    System.out.println(p1.hand);
 	    // play the game
 	    p1.playKingdomCard();
-
+	    System.out.println(p1.hand);
 	    Card silver = Card.getCard(p1.hand, Card.CardName.Silver);
-
 	    assertEquals(silverTest, silver);
 	}
 	for(int i = 0; i < 20; i++) {
 	    p1.hand.clear();
+	    p1.numActions = 1;
 	    p1.hand.add(silverTest);
+	    p1.hand.add(Card.getCard(cards, Card.CardName.Mine));
+	    System.out.println(p1.hand);
 	    // play the game
 	    p1.playKingdomCard();
-
+	    System.out.println(p1.hand);
 	    Card gold = Card.getCard(p1.hand, Card.CardName.Gold);
-
 	    assertEquals(goldTest, gold);
 	}
 

@@ -20,12 +20,12 @@ class Supply_Stack {
         pile = new Stack<Card>();
 
 //HERE BE A BUG
-        for (int i = 0; i < count-5; i++) {
+        for (int i = 0; i < count+2; i++) {
             pile.push(new Card(name));
         }
-        // for (int i = 0; i < count; i++) {
-        //     pile.push(new Card(name));
-        // }
+//         for (int i = 0; i < count; i++) {
+//             pile.push(new Card(name));
+//         }
     }
 
     Card take(){

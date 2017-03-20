@@ -64,6 +64,7 @@ public class GameState implements Cloneable{
 			         gameBoard.put(tmp, 10);
 			         selectedKindom++;
 			      }
+		      if(players.size()==2){
 		        //set number of Curse cards the default number of players is 2			   
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
 		      
@@ -71,12 +72,22 @@ public class GameState implements Cloneable{
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+		    
+		      }
+		      else{
+		    	  //set number of Curse cards the  number of players is 3 or 4			   
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 20);
+			      
+			      //set number of Victory cards
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 12);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 12);
+			      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 12);
+			      }
 		    //set number of Treasure cards
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
-		   
-
+		      
 		      for (Player player : players) {
 		      	System.out.println(player.player_username + " cards draw: ");
 			         for (int i = 0; i < 7; i++)
@@ -183,11 +194,11 @@ public class GameState implements Cloneable{
 		   
 	   }
 
-	   public GameState clone() throws CloneNotSupportedException {
+	    public GameState clone() throws CloneNotSupportedException {
 		   List<Player> clonePlayers = new ArrayList<Player>();
 		   List<Card> cloneCards = new ArrayList<Card>();
 		   HashMap<Card, Integer> cloneGmeBoard = new HashMap<Card, Integer>();	
-		   
+		  
 		    for (Player player : players) 
 		    	clonePlayers.add((Player) player.clone());
 		    for (Card card : cards) 

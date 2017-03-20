@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">RandomTestDominion (Feb 27, 2017 8:24:17 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion.Dominion</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums"><span class="pc" id="L1">package org.cs362.dominion.Dominion;</span>
+
+<span class="fc" id="L3">public enum Card {</span>
+<span class="fc" id="L4">	// ID(&quot;Name&quot;, Cost, Value, Victory Points)</span>
+<span class="fc" id="L5">	COPPER(&quot;Copper&quot;, 0, 1, 0, &quot;+$1&quot;),</span>
+<span class="fc" id="L6">	SILVER(&quot;Silver&quot;, 3, 2, 0, &quot;+$2&quot;),</span>
+<span class="fc" id="L7">	GOLD(&quot;Gold&quot;, 6, 3, 0, &quot;+$3&quot;),</span>
+<span class="fc" id="L8">	CURSE(&quot;Curse&quot;, 0, 0, -1, &quot;-1 Victory Point&quot;),</span>
+<span class="fc" id="L9">	ESTATE(&quot;Estate&quot;, 2, 0, 1, &quot;1 Victory Point&quot;),</span>
+<span class="fc" id="L10">	DUCHY(&quot;Duchy&quot;, 5, 0, 3, &quot;3 Victory Points&quot;),</span>
+<span class="fc" id="L11">	PROVINCE(&quot;Province&quot;, 8, 0, 6, &quot;6 Victory Points&quot;),</span>
+<span class="fc" id="L12">	ADVENTURER(&quot;Adventurer&quot;, 6, 0, 0, &quot;Reveal cards from your deck until you reveal 2 Treasure cards.\n&quot; +</span>
+<span class="fc" id="L13">	&quot;Put those treasure cards into your hand and discard the other revealed cards.&quot;) {</span>
+		// Reveal cards from your deck until you reveal 2 Treasure cards.
+		// Put those treasure cards into your hand and discard the other revealed cards.
+		public boolean effect(Player p, int Test) {
+<span class="nc" id="L17">			int cnt = 0;</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">			while (cnt &lt; 2) {</span>
+<span class="nc" id="L19">				Card c = p.draw();</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">				if (c == null)</span>
+<span class="nc" id="L21">					break;</span>
+<span class="nc" id="L22">				p.reveal(c);</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">				if (c.type != Type.TREASURE)</span>
+<span class="nc" id="L24">					p.discard(c);</span>
+				else
+<span class="nc" id="L26">					cnt++;</span>
+			}
+<span class="nc" id="L28">			return true;</span>
+		}
+	},
+<span class="fc" id="L31">	AMBASSADOR(&quot;Ambassador&quot;, 3, 0, 0, &quot;Reveal a card from your hand.\n&quot; + </span>
+	&quot;Return up to two copies of it from your hand to the Supply.\n&quot; + 
+<span class="fc" id="L33">	&quot;Then each other player gains a copy of it.&quot;) {</span>
+		// Reveal a card from your hand.
+		// Return up to two copies of it from your hand to the Supply.
+		// Then each other player gains a copy of it.
+		public boolean effect(Player p, int Test) {
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">			if (p.getHandSize() == 0)</span>
+<span class="nc" id="L39">				return true;</span>
+<span class="fc" id="L40">			Card c = p.chooseCard();</span>
+<span class="fc" id="L41">			p.reveal(c);</span>
+<span class="fc" id="L42">			p.print(&quot;How many copies would you like to return? (0-2)\n&quot;);</span>
+<span class="fc" id="L43">			int choice = p.prompt(0, 2, Test);</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">			if (choice &gt; 0)</span>
+<span class="fc" id="L45">				p.returnSupply(c);</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">			if (choice &gt; 1)</span>
+<span class="nc" id="L47">				p.returnSupply(c);</span>
+<span class="fc" id="L48">			GameState g = p.gameState;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">			for (Player p0 : g.players) {</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">				if (p0 == p)</span>
+<span class="fc" id="L51">					continue;</span>
+<span class="fc" id="L52">				p0.gain(c);</span>
+			}
+<span class="fc" id="L54">			return true;</span>
+		}
+	},
+<span class="fc" id="L57">	BARON(&quot;Baron&quot;, 4, 0, 0, &quot;+1 Buy\nYou may discard an Estate card.\n&quot; + </span>
+<span class="fc" id="L58">	&quot;If you do, +$4.\nOtherwise, gain an Estate card.&quot;) {</span>
+		// +1 Buy
+		// You may discard an Estate card.
+		// If you do, +$4.
+		// Otherwise, gain an Estate card.
+		public boolean effect(Player p, int Test) {
+			int choice;
+<span class="fc" id="L65">			p.addBuys(1);</span>
+<span class="fc" id="L66">			Card c = ESTATE;</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">			if (!p.handContains(c))</span>
+<span class="fc" id="L68">				return true;</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">			if (!p.gameState.loud)</span>
+<span class="fc" id="L70">				choice = p.prompt(0, 1, Test);</span>
+			else
+<span class="nc" id="L72">				choice = p.prompt(0, 1);</span>
+<span class="fc" id="L73">			p.print(&quot;Discard an Estate? (y/n)\n&quot;);</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">			if (choice != 0) {</span>
+<span class="nc" id="L75">				p.discard(c);</span>
+<span class="nc" id="L76">				p.addMoney(4, true);</span>
+<span class="nc" id="L77">			} else {</span>
+<span class="fc" id="L78">				p.gain(c);</span>
+			}
+<span class="fc" id="L80">			return true;</span>
+		}
+	},
+<span class="fc" id="L83">	COUNCILROOM(&quot;Council Room&quot;, 5, 0, 0, &quot;+4 Cards; +1 Buy\nEach other player draws a card.&quot;) {</span>
+		// +4 Cards; +1 Buy
+		// Each other player draws a card.
+		public boolean effect(Player p, int Test) {
+<span class="fc bfc" id="L87" title="All 2 branches covered.">			for (int i = 0; i &lt; 4; i++)</span>
+<span class="fc" id="L88">				p.draw();</span>
+<span class="fc" id="L89">			p.addBuys(1);</span>
+<span class="fc" id="L90">			GameState g = p.gameState;</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">			for (Player p0 : g.players) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">				if (p0 == p)</span>
+<span class="fc" id="L93">					continue;</span>
+<span class="fc" id="L94">				p0.draw();</span>
+			}
+<span class="fc" id="L96">			return true;</span>
+		}
+	},
+<span class="fc" id="L99">	CUTPURSE(&quot;Cutpurse&quot;, 4, 0, 0, &quot;+$2\nEach other player discards a Copper card &quot; + </span>
+<span class="fc" id="L100">	&quot;(or reveals a hand with no Copper).&quot;) {</span>
+		// +$2
+		// Each other player discards a Copper card (or reveals a hand with no Copper).
+		public boolean effect(Player p, int Test) {
+<span class="fc" id="L104">			p.addMoney(2, true);</span>
+<span class="fc" id="L105">			GameState g = p.gameState;</span>
+<span class="fc" id="L106">			Card c = COPPER;</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">			for (Player p0 : g.players) {</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">				if (p0 == p)</span>
+<span class="fc" id="L109">					continue;</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">				if (p0.handContains(c)) {</span>
+<span class="fc" id="L111">						p0.discard(c);</span>
+<span class="fc" id="L112">				} else {</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">					for (int i = 0; i &lt; p0.getHandSize(); i++) {</span>
+<span class="fc" id="L114">						Card c0 = p0.getHand(i);</span>
+<span class="fc" id="L115">						p0.reveal(c0);</span>
+					}
+				}
+			}
+<span class="fc" id="L119">			return true;</span>
+		}
+	},
+<span class="fc" id="L122">	EMBARGO(&quot;Embargo&quot;, 2, 0, 0, &quot;+$2\nTrash this card.\nPut an Embargo token on top of a Supply pile.\n&quot; +</span>
+<span class="fc" id="L123">	&quot;When a player buys a card, he gains a curse card per Embargo token on that pile.&quot;) {</span>
+		// +$2
+		// Trash this card.
+		// Put an Embargo token on top of a Supply pile.
+		// When a player buys a card, he gains a curse card per Embargo token on that pile.
+		public boolean effect(Player p, int Test) {
+			int choice;
+<span class="fc" id="L130">			p.addMoney(2, true);</span>
+<span class="fc" id="L131">			GameState g = p.gameState;</span>
+<span class="fc" id="L132">			p.print(&quot;Select a Supply pile to embargo (1-&quot; + g.supply.size() + &quot;)&quot;);</span>
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">			if (!p.gameState.loud)</span>
+<span class="fc" id="L134">				choice = p.prompt(1, g.supply.size() - 1, Test);</span>
+			else
+<span class="nc" id="L136">				choice = p.prompt(1,  g.supply.size() - 1);</span>
+<span class="fc" id="L137">			g.setEmbargo(choice);</span>
+<span class="fc" id="L138">			p.trash(this);</span>
+<span class="fc" id="L139">			return false;</span>
+		}
+	},
+<span class="fc" id="L142">	FEAST(&quot;Feast&quot;, 4, 0, 0, &quot;Trash this card.\nGain a card costing up to $5.&quot;) {</span>
+		// Trash this card.
+		// Gain a card costing up to $5.
+		public boolean effect(Player p, int Test) {
+<span class="fc" id="L146">			GameState g = p.gameState;</span>
+			Card c;
+<span class="fc" id="L148">			p.print(&quot;Gain a card from the Supply costing less than $5 (1-&quot; + g.supply.size() + &quot;)\n&quot;);</span>
+			int choice;
+			do {
+<span class="pc bpc" id="L151" title="1 of 2 branches missed.">				if (!p.gameState.loud)</span>
+<span class="fc" id="L152">					choice = p.prompt(1, g.supply.size() - 1, Test);</span>
+				else
+<span class="nc" id="L154">					choice = p.prompt(1,  g.supply.size() - 1);</span>
+<span class="fc" id="L155">				c = g.getFaceCard(choice);</span>
+<span class="fc bfc" id="L156" title="All 4 branches covered.">			} while (c.cost &gt;= 5 || g.getAmount(choice) == 0);</span>
+<span class="fc" id="L157">			p.gain(choice);</span>
+<span class="fc" id="L158">			p.trash(this);</span>
+<span class="fc" id="L159">			return false;</span>
+		}
+	},
+<span class="fc" id="L162">	GARDENS(&quot;Gardens&quot;, 4, 0, 0, &quot;Worth 1 Victory Point for every 10 cards in your deck (rounded down).&quot;) {</span>
+		// Worth 1 victory point for every 10 cards in your deck (rounded down).
+		public int getVictory(Player p) {
+<span class="fc" id="L165">			return (p.getDeckSize() + p.getHandSize()) / 10;</span>
+		}
+		
+		public char getType() {
+<span class="fc" id="L169">			return 'V';</span>
+		}
+	},
+<span class="fc" id="L172">	GREATHALL(&quot;Great Hall&quot;, 3, 0, 0, &quot;1 Victory Point\n+1 Card; +1 Action&quot;) {</span>
+		// 1 Victory Point
+		// +1 Card; +1 Action
+		public boolean effect(Player p, int Test) {
+<span class="fc" id="L176">			p.draw();</span>
+<span class="fc" id="L177">			p.addActions(1);</span>
+<span class="fc" id="L178">			return true;</span>
+		}
+		public int getVictory(Player p) {
+<span class="fc" id="L181">			return 1;</span>
+		}
+	},
+<span class="fc" id="L184">	MINE(&quot;Mine&quot;, 5, 0, 0, &quot;Trash a Treasure card from your hand.\n&quot; + </span>
+<span class="fc" id="L185">	&quot;Gain a Treasure card costing up to $3 more; put it into your hand.&quot;) {</span>
+		// Trash a Treasure card from your hand.
+		// Gain a Treasure card costing up to $3 more; put it into your hand.
+		public boolean effect(Player p, int Test) {
+//			boolean trashed = false;
+<span class="fc" id="L190">			int cardVal = 0, choice;</span>
+<span class="fc bfc" id="L191" title="All 2 branches covered.">			for (int i = 0; i &lt; p.getHandSize(); i++) {</span>
+<span class="fc" id="L192">				Card c = p.getHand(i);</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">				if (c.type == Type.TREASURE) {</span>
+<span class="fc" id="L194">					p.print(&quot;Trash &quot; + c.name + &quot;? (y/n)&quot;);</span>
+<span class="pc bpc" id="L195" title="1 of 2 branches missed.">					if (!p.gameState.loud)</span>
+<span class="fc" id="L196">						choice = p.prompt(0, 1, Test);</span>
+					else
+<span class="nc" id="L198">						choice = p.prompt(0, 1);</span>
+<span class="pc bpc" id="L199" title="1 of 2 branches missed.">					if (choice != 0) {</span>
+<span class="nc" id="L200">						cardVal = c.cost;</span>
+<span class="nc" id="L201">						p.trash(c);</span>
+//						trashed = true;
+<span class="nc" id="L203">						break;</span>
+					}
+				}
+			}
+//			if (!trashed)
+//				return true;
+<span class="fc" id="L209">			GameState g = p.gameState;</span>
+<span class="fc" id="L210">			p.print(&quot;Choose a Treasure card costing up to $&quot; + (cardVal + 3) + &quot;\n&quot;);</span>
+<span class="fc" id="L211">			p.print(&quot;[1] Copper  $0\n[2] Silver  $3\n[3] Gold    $6\n&quot;);</span>
+			Card c;
+			do {
+<span class="pc bpc" id="L214" title="1 of 2 branches missed.">				if (!p.gameState.loud)</span>
+<span class="fc" id="L215">					choice = p.prompt(1, 3, Test);</span>
+				else
+<span class="nc" id="L217">					choice = p.prompt(1, 3);</span>
+<span class="fc" id="L218">				c = g.getFaceCard(choice + 3);</span>
+<span class="fc bfc" id="L219" title="All 4 branches covered.">			} while (c.cost &gt; cardVal + 3 || g.getAmount(choice + 3) == 0);</span>
+<span class="fc" id="L220">			p.gain(c);</span>
+<span class="fc" id="L221">			p.draw();</span>
+<span class="fc" id="L222">			return true;</span>
+		}
+	},
+<span class="fc" id="L225">	TREASUREMAP(&quot;Treasure Map&quot;, 4, 0, 0, &quot;Trash this and another copy of Treasure Map from your hand.\n&quot; + </span>
+<span class="fc" id="L226">	&quot;If you do, gain 4 Gold cards, putting them on top of your deck.&quot;) {</span>
+		// Trash this and another copy of Treasure Map from your hand.
+		// If you do, gain 4 Gold cards, putting them on top of your deck.
+		public boolean effect(Player p, int Test) {
+<span class="fc" id="L230">			boolean copy = false;</span>
+			Card c;
+<span class="fc" id="L232">			p.trash(this);</span>
+<span class="fc bfc" id="L233" title="All 2 branches covered.">			for (int i = 0; i &lt; p.getHandSize(); i++) {</span>
+<span class="fc" id="L234">				c = p.getHand(i);</span>
+<span class="fc bfc" id="L235" title="All 2 branches covered.">				if (c.equals(Card.TREASUREMAP)) {</span>
+<span class="fc" id="L236">					p.trash(c);</span>
+<span class="fc" id="L237">					copy = true;</span>
+<span class="fc" id="L238">					break;</span>
+				}
+			}
+<span class="fc bfc" id="L241" title="All 2 branches covered.">			if (copy) {</span>
+<span class="fc" id="L242">				p.gain(Card.GOLD);</span>
+<span class="fc" id="L243">				p.gain(Card.GOLD);</span>
+<span class="fc" id="L244">				p.gain(Card.GOLD);</span>
+<span class="fc" id="L245">				p.gain(Card.GOLD);</span>
+			}
+<span class="fc" id="L247">			return false;</span>
+		}
+	},
+<span class="fc" id="L250">	SMITHY(&quot;Smithy&quot;, 4, 0, 0, &quot;+3 Cards&quot;) {</span>
+		// +3 Cards
+		public boolean effect(Player p, int Test) {
+<span class="fc" id="L253">			p.draw();</span>
+<span class="fc" id="L254">			p.draw();</span>
+<span class="fc" id="L255">			p.draw();</span>
+<span class="fc" id="L256">			return true;</span>
+		}
+	},
+<span class="fc" id="L259">	VILLAGE(&quot;Village&quot;, 3, 0, 0, &quot;+1 Card; +2 Actions&quot;) {</span>
+		// +1 Card; +2 Actions
+		public boolean effect(Player p, int Test) {
+<span class="fc" id="L262">			p.draw();</span>
+<span class="fc" id="L263">			p.addActions(2);</span>
+<span class="fc" id="L264">			return true;</span>
+		}
+	};
+	
+	public final String name;
+	public final int cost;
+	public final int value;
+	public final Type type;
+	private final int victory;
+	private final String desc;
+
+<span class="fc" id="L275">	private Card(String name, int cost, int value, int victory, String desc) {</span>
+<span class="fc" id="L276">		this.name = name;</span>
+<span class="fc" id="L277">		this.cost = cost;</span>
+<span class="fc" id="L278">		this.value = value;</span>
+<span class="fc" id="L279">		this.victory = victory;</span>
+<span class="fc" id="L280">		this.desc = desc;</span>
+<span class="fc bfc" id="L281" title="All 2 branches covered.">		if (value &gt; 0)</span>
+<span class="fc" id="L282">			this.type = Type.TREASURE;</span>
+<span class="fc bfc" id="L283" title="All 2 branches covered.">		else if (victory != 0)</span>
+<span class="fc" id="L284">			this.type = Type.VICTORY;</span>
+		else
+<span class="fc" id="L286">			this.type = Type.ACTION;</span>
+<span class="fc" id="L287">	}</span>
+	
+	public void play(Player p) {
+<span class="fc" id="L290">		play(p, -1);</span>
+<span class="fc" id="L291">	}</span>
+	
+	public void play(Player p, int Test) {
+<span class="fc" id="L294">		p.print(p.name + &quot; plays &quot; + aOrAn() + this.name + &quot;\n&quot;);</span>
+<span class="fc" id="L295">		p.addMoney(value);</span>
+<span class="fc bfc" id="L296" title="All 2 branches covered.">		if (effect(p, Test))								// if card trashed, don't add to field</span>
+<span class="fc" id="L297">			p.playField(this);</span>
+<span class="fc bfc" id="L298" title="All 2 branches covered.">		if (value == 0)</span>
+<span class="fc" id="L299">			p.print(&quot;\n&quot;);</span>
+<span class="fc" id="L300">	}</span>
+
+	// overidden inside enum
+	public boolean effect(Player p) {
+<span class="nc" id="L304">		return effect(p, 0);</span>
+	}
+	
+	public boolean effect(Player p, int Test) {
+<span class="fc" id="L308">		return true;</span>
+	}
+
+	// true: precede name with 'an'; false: 'a'
+	public String aOrAn() {
+<span class="fc" id="L313">		String Vowels = &quot;AEIOU&quot;, pref;</span>
+		boolean a;
+<span class="fc bfc" id="L315" title="All 2 branches covered.">		a = (Vowels.indexOf(name.charAt(0)) &gt;= 0);</span>
+<span class="fc bfc" id="L316" title="All 2 branches covered.">		pref = a ? &quot;an &quot; : &quot;a &quot;;</span>
+<span class="fc" id="L317">		return pref;</span>
+	}
+
+	public int getVictory(Player p) {
+<span class="fc" id="L321">		return victory;</span>
+	}
+	
+	public char getType() {
+		char t;
+<span class="fc bfc" id="L326" title="All 2 branches covered.">		if (type == Type.ACTION)</span>
+<span class="fc" id="L327">			t = 'A';</span>
+<span class="fc bfc" id="L328" title="All 2 branches covered.">		else if (type == Type.TREASURE)</span>
+<span class="fc" id="L329">			t = 'T';</span>
+		else
+<span class="fc" id="L331">			t ='V';</span>
+<span class="fc" id="L332">		return t;</span>
+	}
+
+	public void getDesc(Player p) {
+<span class="nc" id="L336">		p.print(&quot;Card: &quot; + name + &quot;\n&quot; + desc + &quot;\n&quot;);</span>
+<span class="nc" id="L337">	}</span>
+
+	public boolean equals(Card c) {
+<span class="pc bpc" id="L340" title="1 of 2 branches missed.">		if (!(c instanceof Card)) {</span>
+<span class="nc" id="L341">			return false;</span>
+		}
+<span class="fc" id="L343">		return (name.equals(c.name));</span>
+	}
+	
+<span class="fc" id="L346">	public static enum Type {</span>
+<span class="fc" id="L347">		ACTION, TREASURE, VICTORY;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>RandomTestDominion (Feb 27, 2017 8:24:17 PM)</div></body></html>

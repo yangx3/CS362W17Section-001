@@ -40,7 +40,6 @@ public class GameStateTest {
 		player = new Player(gs, "player-2");
 		gs.addPlayer(player);		      
 		//Initialize the game!
-		
 	}
 
 	@After

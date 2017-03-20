@@ -3,8 +3,8 @@ package org.cs362.dominion;
 public class PlayDom {
 	public static void main(String args[]) {
 		DominionBoard board = new DominionBoard();
-		GameState state = new GameState(board);
-
+		GameState state = new GameState(board, 4);
+		
 		while(true) {
 			state.TakeTurn();
 			if(board.GameOver()) {
@@ -14,7 +14,6 @@ public class PlayDom {
 		
 		System.out.println("Finished game.");
 		state.PrintScore();
-		
 		
 		System.exit(0);
 	}

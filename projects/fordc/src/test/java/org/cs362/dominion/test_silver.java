@@ -5,10 +5,10 @@ import org.junit.Test;
 
 public class test_silver{
 	@Test
-	public void test_initiation(){
+	public void test_initiate(){
 		card dummy_silver = new silver();
-		assertEquals("The name is not correct!", "silver", dummy_silver.name);
-		assertEquals("cost is not correct!", 3, dummy_silver.cost);
-		assertEquals("gold is not correct!", 2, dummy_silver.gold);
+		assertEquals("Name is not equal!", "silver", dummy_silver.name);
+		assertEquals("Cost is not equal!", 2, dummy_silver.cost);
+		assertEquals("Gold is not equal!", 2, dummy_silver.gold);
 	}
 }

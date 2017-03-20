@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Maven Quick Start Archetype,dominion,mainCard,45,0,4,0,9,0,4,0,2,0
+Maven Quick Start Archetype,dominion,Randomness,32,31,3,3,8,8,4,5,2,4
+Maven Quick Start Archetype,dominion,PlayDominion,112,0,2,0,21,0,3,0,2,0
+Maven Quick Start Archetype,dominion,GameState,396,182,41,11,67,40,25,11,1,9
+Maven Quick Start Archetype,dominion,Card.new Object() {...},89,0,0,0,1,0,1,0,1,0
+Maven Quick Start Archetype,dominion,Card.Type,9,39,0,0,0,4,2,2,2,2
+Maven Quick Start Archetype,dominion,Card,1046,32,80,3,186,8,59,3,12,3
+Maven Quick Start Archetype,dominion,Card.CardName,9,209,0,0,0,21,2,2,2,2
+Maven Quick Start Archetype,dominion,Player,264,261,25,7,51,46,19,10,4,9
+Maven Quick Start Archetype,dominion,mainPlayer,72,0,2,0,15,0,3,0,2,0
+Maven Quick Start Archetype,dominion,mainRandomness,26,0,2,0,6,0,3,0,2,0

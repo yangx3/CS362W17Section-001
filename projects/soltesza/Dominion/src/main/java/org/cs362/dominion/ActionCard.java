@@ -110,12 +110,16 @@ public class ActionCard extends Card {
 				break;
 			case CUTPURSE:
 				state.currentPlayer.AddCoins(2);
-				Vector<Card> hand = state.otherPlayer.deck.GetHand();
-				for(int i=0; i<hand.size(); i++) {
-					Card card = hand.get(i);
-					if(card.GetName() == "Copper") {
-						state.otherPlayer.deck.DiscardFromHand(card);
-						break;
+				int numPlayers = state.otherPlayers.size();
+				for(int i=0; i<numPlayers; i++) {
+					Player p = state.otherPlayers.get(i);
+					Vector<Card> hand = p.deck.GetHand();
+					for(int j=0; j<hand.size(); j++) {
+						Card card = hand.get(j);
+						if(card.GetName() == "Copper") {
+							p.deck.DiscardFromHand(card);
+							break;
+						}
 					}
 				}
 				break;
@@ -127,7 +131,10 @@ public class ActionCard extends Card {
 			case COUNCIL_ROOM:
 				state.DrawCards(state.currentPlayer, 4);
 				state.currentPlayer.AddBuys(1);
-				state.DrawCards(state.otherPlayer, 1);
+				int num = state.otherPlayers.size();
+				for(int i=0; i<num; i++) {
+					state.DrawCards(state.otherPlayers.get(i), 1);
+				}
 				break;
 			case FEAST:
 				state.currentPlayer.Buy(1, 5);

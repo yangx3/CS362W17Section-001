@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>UnitTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">RegressionTest (Feb 27, 2017 6:54:08 PM)</a> &gt; <a href="../../index.html" class="el_group">JavaDominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">UnitTest.java</span></div><h1>UnitTest.java</h1><pre class="source lang-java linenums">import java.util.List;
+import java.util.ArrayList;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+<span class="nc" id="L7">public class UnitTest {</span>
+
+	@Test
+	public void playGameTest()
+	{
+<span class="nc" id="L12">		PlayGame.main(null);</span>
+<span class="nc" id="L13">	}</span>
+	
+	@Test
+	public void getVictoryTest()
+	{
+<span class="nc" id="L18">		assertEquals(Card.province.getVictory(), 6);</span>
+<span class="nc" id="L19">	}</span>
+	
+	@Test
+	public void getCostTest()
+	{
+<span class="nc" id="L24">		assertEquals(Card.duchy.getCost(), 5);</span>
+<span class="nc" id="L25">	}</span>
+	
+	@Test
+	public void getCoinsTest()
+	{
+<span class="nc" id="L30">		assertEquals(Card.gold.getCoins(), 3);</span>
+<span class="nc" id="L31">	}</span>
+	
+	@Test
+	public void getEmbargoTest()
+	{
+<span class="nc" id="L36">		assertEquals(Card.seahag.getEmbargo(), 0);</span>
+<span class="nc" id="L37">	}</span>
+	
+	@Test
+	public void getTypesTest()
+	{
+<span class="nc" id="L42">		List&lt;String&gt; typeList = new ArrayList&lt;String&gt;();</span>
+<span class="nc" id="L43">		typeList.add(&quot;action&quot;);</span>
+<span class="nc" id="L44">		typeList.add(&quot;victory&quot;);</span>
+<span class="nc" id="L45">		assertEquals(Card.great_hall.getTypes(), typeList);</span>
+<span class="nc" id="L46">	}</span>
+	
+	@Test
+	public void playTest()
+	{
+<span class="nc" id="L51">		List&lt;Card&gt; cards = DominionBoard.kingdomCards(Card.adventurer, Card.ambassador, Card.smithy, Card.baron, Card.council_room, Card.cutpurse, Card.embargo, Card.seahag, Card.gardens, Card.great_hall);</span>
+		DominionBoard board = new DominionBoard(cards, 2);
+		assertEquals(board.play(), 1);
+	}
+	
+	@Test
+	public void kingdomCardsTest()
+	{
+<span class="nc" id="L59">		List&lt;Card&gt; cards = DominionBoard.kingdomCards(Card.adventurer, Card.ambassador, Card.smithy, Card.baron, Card.council_room, Card.cutpurse, Card.embargo, Card.seahag, Card.gardens, Card.great_hall);</span>
+		assertTrue(cards.contains(Card.smithy) &amp;&amp; cards.size() == 10);
+	}
+	
+	@Test
+	public void DominionBoardTest ()
+	{
+<span class="nc" id="L66">		List&lt;Card&gt; cards = DominionBoard.kingdomCards(Card.adventurer, Card.ambassador, Card.smithy, Card.baron, Card.council_room, Card.cutpurse, Card.embargo, Card.seahag, Card.gardens, Card.great_hall);</span>
+		DominionBoard board = new DominionBoard(cards, 2);
+		assertEquals(board.getPlayers().size(), 2);
+	}
+	
+	@Test
+	public void actionCardsTest()
+	{
+<span class="nc" id="L74">		List&lt;Card&gt; cards = DominionBoard.kingdomCards(Card.adventurer, Card.ambassador, Card.smithy, Card.baron, Card.council_room, Card.cutpurse, Card.embargo, Card.seahag, Card.mine, Card.great_hall);</span>
+		DominionBoard board = new DominionBoard(cards, 2);
+		Player p = new Player(&quot;Player1&quot;, 0);
+		int hand;
+		int coins;
+		int actions;
+		
+		p.addActions(10);
+		assertEquals(p.actionsLeft(), true);
+		
+		//makes sure deck is empty or you end up with more cards in your hand.
+		p.gainCardToHand(Card.adventurer);
+		hand = p.getHand().size();
+		p.playCard(Randomness.randomMember(p.actionCardIndices()));
+		assertTrue(p.getDeck().size() == 0  || p.getHand().size() &gt; hand);
+		
+		//make sure you don't gain any cards and your hand is either the same size or smaller than before.
+		p.gainCardToHand(Card.ambassador);
+		p.gainCardToHand(Card.copper);
+		hand = p.getHand().size();
+		p.playCard(Randomness.randomMember(p.actionCardIndices()));
+		assertTrue(p.getHand().size() &lt;= hand);
+				
+		//makes sure you gain 4 coins if you have an estate and discard it
+		p.gainCardToHand(Card.baron);
+		p.gainCardToHand(Card.estate);
+		coins = p.getCoins();
+		p.playCard(Randomness.randomMember(p.actionCardIndices()));
+		assertTrue(p.getCoins() == coins + 4);
+		
+		//makes sure you draw 3 cards
+		p.gainCardToHand(Card.council_room);
+		hand = p.getHand().size();
+		p.playCard(Randomness.randomMember(p.actionCardIndices()));
+		assertTrue(p.getHand().size() == hand + 3);
+		
+		//makes sure you gain 2 coins
+		p.gainCardToHand(Card.cutpurse);
+		coins = p.getCoins();
+		p.playCard(Randomness.randomMember(p.actionCardIndices()));
+		assertTrue(p.getCoins() == coins + 2);
+		
+		//makes sure you gain 2 coins and have one less card than before
+		p.gainCardToHand(Card.embargo);
+		coins = p.getCoins();
+		hand = p.getHand().size();
+		p.playCard(Randomness.randomMember(p.actionCardIndices()));
+		assertTrue(p.getCoins() == coins + 2 &amp;&amp; p.getHand().size() &lt; hand);
+		
+		//make sure you gain 1 card and 1 action
+		p.gainCardToHand(Card.great_hall);
+		hand = p.getHand().size();
+		actions = p.getActions();
+		p.playCard(Randomness.randomMember(p.actionCardIndices()));
+		assertTrue(p.getHand().size() == hand &amp;&amp; p.getActions() == actions);
+
+		//makes sure you gain coins(or have same amount if you don't trash one)
+		p.gainCardToHand(Card.mine);
+		coins = p.getCoins();
+		p.playCard(Randomness.randomMember(p.actionCardIndices()));
+		assertTrue(p.getCoins() &gt;= coins);
+	}
+	
+	@Test
+	public void gameOverTest()
+	{
+<span class="nc" id="L140">		List&lt;Card&gt; cards = DominionBoard.kingdomCards(Card.adventurer, Card.ambassador, Card.smithy, Card.baron, Card.council_room, Card.cutpurse, Card.embargo, Card.seahag, Card.gardens, Card.great_hall);</span>
+		DominionBoard board = new DominionBoard(cards, 2);
+		for (int i = 0; i &lt; 8; i++)
+		{
+			DominionBoard.takeCard(Card.province);
+		}
+		assertTrue(board.gameOver() == true);
+		board = new DominionBoard(cards, 2);
+		assertTrue(board.gameOver() == false);
+		for(int i = 0; i &lt; 10; i++)
+		{
+			DominionBoard.takeCard(Card.smithy);
+			DominionBoard.takeCard(Card.ambassador);
+			DominionBoard.takeCard(Card.council_room);
+		}
+		assertTrue(board.gameOver() == true);
+	}
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>RegressionTest (Feb 27, 2017 6:54:08 PM)</div></body></html>

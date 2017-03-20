@@ -1,0 +1,94 @@
+\documentclass[letterpaper,10pt,onecolumn,draftclsnofoot]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{alltt}
+\usepackage{datetime}
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}  
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{csvsimple}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+
+\def\name{Gabriel Jonas}
+\title{Random Testing and Generated Tests}
+\def\class{CS362, Winter 2017}
+\author{\name}
+
+\begin{document}
+
+\clearpage
+\maketitle
+\thispagestyle{empty} % Removes titlepage number
+\vspace{-10ex}
+{\centering \class \par}
+
+\section{Introduction}
+The goal of this project was to create a better understanding of random testers. Using the previously built code of the Dominion board game in Java, the test suite implemented an additional testing generator program and a handmade random testing process. Included is an explanation of the coverage tool, the random tester, leftover bugs, and a summary of information.
+
+\section{Coverage Tool}
+The tool that was chosen for this assignment was Evosuite. The tool worked well for a random generator, but eventually did not help find any bugs in the Dominion code. The random generation tool covers a small fraction of the branches in tests with random choices (such as card), and while it covers most top-level API it does not go thoroughly through each input. The report of code coverage is given below:
+
+\csvautotabular{randomTester.csv}
+
+The time it takes to generate these tests is fairly small (with a given seed it takes 10 minutes to generate tests for 5 classes), and generates around 50\% coverage. While this is a good start for tests, it does not make an adequate testing suite.
+
+One of the difficulties of working with this tool is that it mainly relies on the API to generate tests. If something is consistently wrong with the code, then the tests generated will think that is part of the actual program and not catch the bug. The other portion that makes this difficult to work with is attempting to integrate this with maven (there were several errors at the beginning which required research to fix).
+
+As an overall impression the tool is a good starting spot, but for more accurate coverage it is better to create separate unit tests that specifically target portions of the code.
+
+\section{Random Tester}
+The random tester operates on a simple process, given in pseudocode below:
+
+\begin{itemize}
+\item Initialize game with 2-4 players
+\item While game is not over
+\begin{itemize}
+	\item For each player in the game
+	\begin{itemize}
+		\item For each card the player is able to play
+		\begin{itemize}
+			\item Update state tracking
+			\item Compare the correct output state with the actual state
+		\end{itemize}
+		\item Test player treasure phase
+		\item Update state tracking
+		\item Test player buy phase
+		\item Update state tracking
+		\item Test player end phase
+		\item Test game state
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+The code coverage increase with the random test is roughly 4\%, which can be attributed to being another random process with different branch coverage of individual cards on top of adding another layer of testing for correctness in a variable state instead of static (as is with unit tests). The code coverage difference is shown below.
+
+Code coverage without random tester:
+
+\csvautotabular{coverage.csv}
+
+Code coverage with random tester:
+
+\csvautotabular{randomTester.csv}
+
+The main efforts in creating this coverage tool was not attempting to find and fix bugs in the code, but attempting to find and fix bugs in the random test generator itself.
+
+Overall the tester is a good way to implement tests, as it allows for bugs to be caught in runtime.
+
+\section{Bugs}
+The process of bug fixing in my code is a simple process. Create the code, create a code to test what the output should specify, and if the test errors then look at where the code specifically erred. Using the output state of the code up until that point, I will implement "here" statements to see what specifically happens during the code execution, and eventually find the root cause of the bug. This method has worked on both debugging the code, and debugging the unit tests and random test generator.
+
+\section{Conclusion}
+In conclusion using random test generators, while expensive in time, are a good starting method of testing edge cases and having a baseline of tests. In order to increase test coverage, it is a better idea to still build individual unit tests to check more important sections of code that the random tester may not have touched.
+
+\end{document}

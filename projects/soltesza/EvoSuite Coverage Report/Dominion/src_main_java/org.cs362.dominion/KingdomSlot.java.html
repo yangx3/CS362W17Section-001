@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>KingdomSlot.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">TestRandom (Feb 27, 2017 12:22:40 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">KingdomSlot.java</span></div><h1>KingdomSlot.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+public class KingdomSlot implements Comparable&lt;KingdomSlot&gt;{
+	private Card card;
+	
+	private int count;
+<span class="fc" id="L7">	private int numEmbargoes = 0;</span>
+	
+<span class="fc" id="L9">	public KingdomSlot(Card card, int count) {</span>
+<span class="fc" id="L10">		this.card = card;</span>
+<span class="fc" id="L11">		this.count = count;</span>
+<span class="fc" id="L12">	}</span>
+	
+	public boolean IsEmpty() {
+<span class="fc bfc" id="L15" title="All 2 branches covered.">		if(count &gt; 0) {</span>
+<span class="fc" id="L16">			return false;</span>
+		}
+		else {
+<span class="fc" id="L19">			return true;</span>
+		}
+	}
+	
+<span class="fc" id="L23">	public Card GetCard() { return card; }</span>
+	
+<span class="fc" id="L25">	public int GetValue() { return card.GetValue(); }</span>
+	
+<span class="fc" id="L27">	public int GetEmbargoes() { return numEmbargoes; }</span>
+	
+	public Card DrawCard() {
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">		if(count &gt; 0) {</span>
+<span class="fc" id="L31">			count -= 1;</span>
+			//return new object of type card
+<span class="fc" id="L33">			return card; //Error 5: should return card.clone(), not card (deep copy vs shallow copy)</span>
+		}
+<span class="nc" id="L35">		return null;</span>
+	}
+	
+	public void AddEmbargo() {
+<span class="fc" id="L39">		numEmbargoes++;</span>
+<span class="fc" id="L40">	}</span>
+	
+	public int compareTo(KingdomSlot other) {
+<span class="fc" id="L43">		return card.GetValue() - other.GetValue();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>TestRandom (Feb 27, 2017 12:22:40 AM)</div></body></html>

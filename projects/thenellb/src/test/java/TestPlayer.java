@@ -15,6 +15,14 @@ public class TestPlayer {
     public void testPlayer(){
         CardShop myCardShop = new CardShop();
         Player myPlayer = new Player(myCardShop); //initializing since everything else needs user input
+        Player myPlayer2 = new Player(myCardShop);
+
+        myPlayer.playerTurn();
+        for (int j=0;j<5; j++)
+            myPlayer2.playerDeck.drawCard();
+
+        myPlayer2.buy();
+        myPlayer2.cleanUp();
 
 
 

@@ -1,26 +1,28 @@
 package org.cs362.dominion;
 
+import java.util.LinkedList;
+
 public class GameState {
 	public Player currentPlayer;
-	public Player otherPlayer; 
+	public LinkedList<Player> otherPlayers; 
 	
-	private Player player1;
-	private Player player2;
-	
-	public GameState(DominionBoard board) {
-		player1 = new Player("Player 1", board);
-		player2 = new Player("Player 2", board);
+	public GameState(DominionBoard board, int playerCount) {
+		otherPlayers = new LinkedList<Player>();
 		
-		currentPlayer = player1;
-		otherPlayer = player2;
+		for(int i=0; i<playerCount; i++) {
+			Player newPlayer = new Player("Player " + (i+1), board);
+			otherPlayers.add(newPlayer);
+		}
+		
+		currentPlayer = otherPlayers.removeFirst();
 	}
 	
 	public void TakeTurn() {
 		currentPlayer.TakeTurn(this);
 		
 		Player p1 = currentPlayer;
-		currentPlayer = otherPlayer;
-		otherPlayer = p1;
+		currentPlayer = otherPlayers.removeFirst();
+		otherPlayers.add(p1);
 	}
 	
 	public void DrawCards(Player player, int numCards) {
@@ -30,7 +32,13 @@ public class GameState {
 	public void PrintScore() {
 		System.out.println("Score:");
 		
-		System.out.println(player1.GetName() + ": " + player1.GetScore());
-		System.out.println(player2.GetName() + ": " + player2.GetScore());
+		System.out.println(currentPlayer.GetName() + ": " + currentPlayer.GetScore());
+		
+		int size = otherPlayers.size();
+		for(int i=0; i<size; i++) {
+			Player p = otherPlayers.removeFirst();
+			System.out.println(p.GetName() + ": " + p.GetScore());
+			otherPlayers.add(p);
+		}
 	}
 }

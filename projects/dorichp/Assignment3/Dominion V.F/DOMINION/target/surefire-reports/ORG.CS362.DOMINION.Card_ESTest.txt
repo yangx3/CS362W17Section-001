@@ -1,0 +1,210 @@
+-------------------------------------------------------------------------------
+Test set: ORG.CS362.DOMINION.Card_ESTest
+-------------------------------------------------------------------------------
+Tests run: 39, Failures: 0, Errors: 39, Skipped: 0, Time elapsed: 1.5 sec <<< FAILURE! - in ORG.CS362.DOMINION.Card_ESTest
+test30(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test30(Card_ESTest.java:385)
+
+test19(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test19(Card_ESTest.java:249)
+
+test18(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test18(Card_ESTest.java:238)
+
+test17(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test17(Card_ESTest.java:220)
+
+test12(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test12(Card_ESTest.java:151)
+
+test34(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test34(Card_ESTest.java:434)
+
+test11(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test11(Card_ESTest.java:143)
+
+test33(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test33(Card_ESTest.java:421)
+
+test10(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test10(Card_ESTest.java:134)
+
+test32(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test32(Card_ESTest.java:411)
+
+test31(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test31(Card_ESTest.java:398)
+
+test16(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at ORG.CS362.DOMINION.Card_ESTest.test16(Card_ESTest.java:204)
+
+test38(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test38(Card_ESTest.java:480)
+
+test15(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test15(Card_ESTest.java:188)
+
+test37(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test37(Card_ESTest.java:470)
+
+test14(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test14(Card_ESTest.java:175)
+
+test36(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test36(Card_ESTest.java:462)
+
+test13(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test13(Card_ESTest.java:162)
+
+test35(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test35(Card_ESTest.java:448)
+
+test09(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test09(Card_ESTest.java:124)
+
+test08(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test08(Card_ESTest.java:114)
+
+test07(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test07(Card_ESTest.java:104)
+
+test29(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test29(Card_ESTest.java:372)
+
+test06(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test06(Card_ESTest.java:97)
+
+test28(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test28(Card_ESTest.java:360)
+
+test01(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test01(Card_ESTest.java:45)
+
+test23(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test23(Card_ESTest.java:294)
+
+test00(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test00(Card_ESTest.java:31)
+
+test22(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test22(Card_ESTest.java:283)
+
+test21(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test21(Card_ESTest.java:269)
+
+test20(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test20(Card_ESTest.java:261)
+
+test05(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test05(Card_ESTest.java:87)
+
+test27(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test27(Card_ESTest.java:347)
+
+test04(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test04(Card_ESTest.java:78)
+
+test26(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test26(Card_ESTest.java:334)
+
+test03(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test03(Card_ESTest.java:65)
+
+test25(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$Type
+	at ORG.CS362.DOMINION.Card_ESTest.test25(Card_ESTest.java:321)
+
+test02(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.instrumentClass(EvoClassLoader.java:116)
+	at org.evosuite.runtime.instrumentation.EvoClassLoader.loadClass(EvoClassLoader.java:92)
+	at ORG.CS362.DOMINION.Card_ESTest.test02(Card_ESTest.java:56)
+
+test24(ORG.CS362.DOMINION.Card_ESTest)  Time elapsed: 0.016 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: ORG/CS362/DOMINION/Card$CardName
+	at ORG.CS362.DOMINION.Card_ESTest.test24(Card_ESTest.java:308)
+

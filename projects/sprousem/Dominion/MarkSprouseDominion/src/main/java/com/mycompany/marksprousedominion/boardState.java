@@ -7,9 +7,11 @@ public class boardState {
 
 	private ArrayList<ArrayList<Card>> supply; 
 	private ArrayList<ArrayList<Card>> kingdom;
+	private Random rand;
 	
-	public boardState() {
+	public boardState(Random rand) {
 
+		this.rand = rand;
 		supply = createSupply();
 		try {
 			kingdom = createKingdom();
@@ -53,7 +55,6 @@ public class boardState {
 	{
 		ArrayList<ArrayList<Card>> output = new ArrayList<ArrayList<Card>>();
 		ArrayList<Card> temp = new ArrayList<Card>();
-		Random rand = new Random(System.currentTimeMillis());
 		//Randomly choose which kingdom cards will be available to purchase and put those draw piles into the kingdom pile
 		
 		//Create the options in temp

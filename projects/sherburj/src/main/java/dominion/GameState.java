@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.Random;
+
 
 
 
@@ -33,6 +35,8 @@ import java.util.TreeMap;
 //	};
 
 public class GameState implements Cloneable{
+	   Random randomGenerator = new Random();
+
 	   public List<Player> players = new ArrayList<Player>(); ;
 	   public List<Card> cards ;
 	   public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();	
@@ -58,17 +62,17 @@ public class GameState implements Cloneable{
 			   //check number of players
 			   if (players.size() > 4 || players.size() < 2)
 			    {
-				   System.err.println("the number of players mus be between 2 and 4 ");
+				   System.err.println("the number of players mus be between 2 and 4");
 			      return ;
 			    }
 			 //initialize supply for only two players
 				  int selectedKindom=0;
-				  int Kingdom_Cards_Selected=15;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
+				  int Kingdom_Cards_Selected=10;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
 				   								// we should change 3 to the  exact of the number of 
 				   								//kingdom cards. look at the requirements of the assignment-1
 		      while (selectedKindom < Kingdom_Cards_Selected) {
-			         int random = (int)  Randomness.random.nextInt(cards.size());//
-			         Card tmp = cards.get(random);
+				     int random = randomGenerator.nextInt(cards.size());
+				 	 Card tmp = cards.get(random);
 			         if(tmp.getType()!=Card.Type.ACTION) continue;
 			         if(gameBoard.containsKey(tmp)) continue;
 			         gameBoard.put(tmp, 10);
@@ -87,7 +91,7 @@ public class GameState implements Cloneable{
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
 		   
 
-                      players.stream().map((player) -> {
+                      players.stream().map((Player player) -> {
                           for (int i = 0; i < 7; i++)
                               player.gain(Card.getCard(cards, Card.CardName.Copper));
                    return player;

@@ -27,10 +27,11 @@ public class GameState implements Cloneable
 	{
 		if (players.size() > 4 || players.size() < 2)
 		{
-			System.err.println("the number of players mus be between 2 and 4 ");
-			return ;
+			System.err.println("The number of players must be between 2 and 4");
+			return;
 		}
-		// Initialize supply for two players
+		// Initialize supply common for any number of players
+		// Select and initialize Kingdom piles
 		int selectedKindom = 0;
 		int Kingdom_Cards_Selected = 13;
 		while (selectedKindom < Kingdom_Cards_Selected)
@@ -42,16 +43,38 @@ public class GameState implements Cloneable
 			gameBoard.put(tmp, 10);
 			selectedKindom++;
 		}
-		// Set number of Curse cards
-		gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
-		// Set number of Victory cards
-		gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
-		gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
 		// Set number of Treasure cards
 		gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
 		gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
+		// Initialize supply for two players
+		if (players.size() == 2)
+		{
+			// Set number of Victory cards
+			gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);
+			// Set number of Curse cards
+			gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
+		}
+		// Initialize supply for three or four players
+		if (players.size() == 3 || players.size() == 4)
+		{
+			// Set number of Victory cards
+			gameBoard.put(Card.getCard(cards, Card.CardName.Province), 12);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 12);
+			gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 12);
+		}
+		if (players.size() == 3)
+		{
+			// Set number of Curse cards
+			gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 20);
+		}
+		if (players.size() == 4)
+		{
+			// Set number of Curse cards
+			gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 30);
+		}
 		// Make starting decks
 		for (Player player : players)
 		{

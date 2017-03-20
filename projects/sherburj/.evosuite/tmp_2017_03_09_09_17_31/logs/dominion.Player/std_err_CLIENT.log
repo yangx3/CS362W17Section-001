@@ -1,0 +1,2 @@
+[MASTER] 09:22:12.634 [pool-2-thread-1] ERROR JUnitAnalyzer - Cannot create tmp dir: C:\Users\Justin\AppData\Local\Temp\\EvoSuite_14_1489080132634
+[MASTER] 09:22:15.041 [pool-2-thread-1] ERROR JUnitAnalyzer - Ran out of time while checking tests
