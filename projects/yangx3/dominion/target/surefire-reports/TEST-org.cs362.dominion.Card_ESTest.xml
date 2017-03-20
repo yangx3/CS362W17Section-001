@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.cs362.dominion.Card_ESTest" time="0.365" tests="28" errors="28" skipped="0" failures="0">
+<testsuite name="org.cs362.dominion.Card_ESTest" time="0.207" tests="28" errors="28" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre\bin"/>
     <property name="java.vm.version" value="25.121-b13"/>
-    <property name="cores" value="2"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="maven.multiModuleProjectDirectory" value="C:\Users\10463\OneDrive\文档\GitHub\CS362W17Section-001\projects\yangx3\dominion"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
@@ -37,7 +36,6 @@
     <property name="user.home" value="C:\Users\10463"/>
     <property name="user.timezone" value="America/Los_Angeles"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
-    <property name="memoryInMB" value="2000"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="GBK"/>
     <property name="user.name" value="10463"/>
@@ -45,11 +43,11 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -DmemoryInMB=2000 -Dcores=2 evosuite:generate evosuite:export test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="zh"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
-    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="java.version" value="1.8.0_121"/>
     <property name="java.ext.dirs" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\ext;C:\windows\Sun\Java\lib\ext"/>
     <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\resources.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\rt.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\jsse.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\jce.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\charsets.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\lib\jfr.jar;C:\Program Files (x86)\Java\jdk1.8.0_121\jre\classes"/>
@@ -64,7 +62,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="test17" classname="org.cs362.dominion.Card_ESTest" time="0.025">
+  <testcase name="test17" classname="org.cs362.dominion.Card_ESTest" time="0.026">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -163,7 +161,6 @@
 [INFO] Found static initializer in class org/cs362/dominion/Card$CardName
 [INFO] No hashCode defined for: org/cs362/dominion/Card$CardName, superclass = java.lang.Enum
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$CardName
-[INFO] Found new thread
 [INFO] Seeing class for first time: org.cs362.dominion.Card$CardName
 [INFO] Instrumenting class 'org.cs362.dominion.Card$CardName'.
 [INFO] Adding mock interface to class org/cs362/dominion/Card$CardName
@@ -186,7 +183,7 @@
 [WARN] class java.lang.ClassNotFoundException thrown while loading method  __STATIC_RESET() for class org.cs362.dominion.Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test18" classname="org.cs362.dominion.Card_ESTest" time="0.016">
+  <testcase name="test18" classname="org.cs362.dominion.Card_ESTest" time="0.008">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -224,7 +221,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test19" classname="org.cs362.dominion.Card_ESTest" time="0.031">
+  <testcase name="test19" classname="org.cs362.dominion.Card_ESTest" time="0.008">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -262,7 +259,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test13" classname="org.cs362.dominion.Card_ESTest" time="0.003">
+  <testcase name="test13" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -280,7 +277,6 @@
 [INFO] Found static initializer in class org/cs362/dominion/Card$CardName
 [INFO] No hashCode defined for: org/cs362/dominion/Card$CardName, superclass = java.lang.Enum
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$CardName
-[INFO] Found new thread
 [INFO] Seeing class for first time: org.cs362.dominion.Card$CardName
 [INFO] Instrumenting class 'org.cs362.dominion.Card$CardName'.
 [INFO] Adding mock interface to class org/cs362/dominion/Card$CardName
@@ -339,7 +335,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test15" classname="org.cs362.dominion.Card_ESTest" time="0.01">
+  <testcase name="test15" classname="org.cs362.dominion.Card_ESTest" time="0.006">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -377,7 +373,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test16" classname="org.cs362.dominion.Card_ESTest" time="0.011">
+  <testcase name="test16" classname="org.cs362.dominion.Card_ESTest" time="0.009">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -453,7 +449,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test11" classname="org.cs362.dominion.Card_ESTest" time="0.007">
+  <testcase name="test11" classname="org.cs362.dominion.Card_ESTest" time="0.005">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -491,7 +487,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test12" classname="org.cs362.dominion.Card_ESTest" time="0.013">
+  <testcase name="test12" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -529,7 +525,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test06" classname="org.cs362.dominion.Card_ESTest" time="0.018">
+  <testcase name="test06" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -567,7 +563,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test07" classname="org.cs362.dominion.Card_ESTest" time="0.011">
+  <testcase name="test07" classname="org.cs362.dominion.Card_ESTest" time="0.008">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -585,7 +581,6 @@
 [INFO] Found static initializer in class org/cs362/dominion/Card$CardName
 [INFO] No hashCode defined for: org/cs362/dominion/Card$CardName, superclass = java.lang.Enum
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$CardName
-[INFO] Found new thread
 [INFO] Seeing class for first time: org.cs362.dominion.Card$CardName
 [INFO] Instrumenting class 'org.cs362.dominion.Card$CardName'.
 [INFO] Adding mock interface to class org/cs362/dominion/Card$CardName
@@ -606,7 +601,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test08" classname="org.cs362.dominion.Card_ESTest" time="0.005">
+  <testcase name="test08" classname="org.cs362.dominion.Card_ESTest" time="0.006">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -624,7 +619,6 @@
 [INFO] Found static initializer in class org/cs362/dominion/Card$CardName
 [INFO] No hashCode defined for: org/cs362/dominion/Card$CardName, superclass = java.lang.Enum
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$CardName
-[INFO] Found new thread
 [INFO] Seeing class for first time: org.cs362.dominion.Card$CardName
 [INFO] Instrumenting class 'org.cs362.dominion.Card$CardName'.
 [INFO] Adding mock interface to class org/cs362/dominion/Card$CardName
@@ -645,7 +639,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test09" classname="org.cs362.dominion.Card_ESTest" time="0.007">
+  <testcase name="test09" classname="org.cs362.dominion.Card_ESTest" time="0.006">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -683,7 +677,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test02" classname="org.cs362.dominion.Card_ESTest" time="0.01">
+  <testcase name="test02" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -721,7 +715,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test24" classname="org.cs362.dominion.Card_ESTest" time="0.018">
+  <testcase name="test24" classname="org.cs362.dominion.Card_ESTest" time="0.008">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -759,7 +753,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test03" classname="org.cs362.dominion.Card_ESTest" time="0.014">
+  <testcase name="test03" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -797,7 +791,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test25" classname="org.cs362.dominion.Card_ESTest" time="0.013">
+  <testcase name="test25" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -835,7 +829,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test04" classname="org.cs362.dominion.Card_ESTest" time="0.011">
+  <testcase name="test04" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -853,7 +847,6 @@
 [INFO] Found static initializer in class org/cs362/dominion/Card$CardName
 [INFO] No hashCode defined for: org/cs362/dominion/Card$CardName, superclass = java.lang.Enum
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$CardName
-[INFO] Found new thread
 [INFO] Seeing class for first time: org.cs362.dominion.Card$CardName
 [INFO] Instrumenting class 'org.cs362.dominion.Card$CardName'.
 [INFO] Adding mock interface to class org/cs362/dominion/Card$CardName
@@ -874,7 +867,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test26" classname="org.cs362.dominion.Card_ESTest" time="0.006">
+  <testcase name="test26" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -912,7 +905,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test05" classname="org.cs362.dominion.Card_ESTest" time="0.023">
+  <testcase name="test05" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -950,7 +943,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test27" classname="org.cs362.dominion.Card_ESTest" time="0.008">
+  <testcase name="test27" classname="org.cs362.dominion.Card_ESTest" time="0.006">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -988,7 +981,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test20" classname="org.cs362.dominion.Card_ESTest" time="0.029">
+  <testcase name="test20" classname="org.cs362.dominion.Card_ESTest" time="0.008">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -1026,7 +1019,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test21" classname="org.cs362.dominion.Card_ESTest" time="0.021">
+  <testcase name="test21" classname="org.cs362.dominion.Card_ESTest" time="0.005">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -1064,7 +1057,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test00" classname="org.cs362.dominion.Card_ESTest" time="0.008">
+  <testcase name="test00" classname="org.cs362.dominion.Card_ESTest" time="0.003">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -1140,7 +1133,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test01" classname="org.cs362.dominion.Card_ESTest" time="0.009">
+  <testcase name="test01" classname="org.cs362.dominion.Card_ESTest" time="0.007">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
@@ -1178,7 +1171,7 @@
 [INFO] Error while loading class: java.lang.ClassFormatError: Duplicate method name&signature in class file org/cs362/dominion/Card$Type
 ]]></system-out>
   </testcase>
-  <testcase name="test23" classname="org.cs362.dominion.Card_ESTest" time="0.019">
+  <testcase name="test23" classname="org.cs362.dominion.Card_ESTest" time="0.006">
     <error message="org/cs362/dominion/Card$CardName" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/cs362/dominion/Card$CardName
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)

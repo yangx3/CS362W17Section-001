@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.cs362.dominion.CardTest" time="0.012" tests="4" errors="0" skipped="0" failures="0">
+<testsuite name="org.cs362.dominion.CardTest" time="0.001" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre\bin"/>
     <property name="java.vm.version" value="25.121-b13"/>
-    <property name="cores" value="2"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="maven.multiModuleProjectDirectory" value="C:\Users\10463\OneDrive\文档\GitHub\CS362W17Section-001\projects\yangx3\dominion"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
@@ -37,7 +36,6 @@
     <property name="user.home" value="C:\Users\10463"/>
     <property name="user.timezone" value="America/Los_Angeles"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
-    <property name="memoryInMB" value="2000"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="GBK"/>
     <property name="user.name" value="10463"/>
@@ -45,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.8.0_121\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -DmemoryInMB=2000 -Dcores=2 evosuite:generate evosuite:export test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test org.pitest:pitest-maven:mutationCoverage"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="zh"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -64,8 +62,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="getTreasureValue" classname="org.cs362.dominion.CardTest" time="0.006"/>
-  <testcase name="getCost" classname="org.cs362.dominion.CardTest" time="0.001"/>
+  <testcase name="getTreasureValue" classname="org.cs362.dominion.CardTest" time="0.001"/>
+  <testcase name="getCost" classname="org.cs362.dominion.CardTest" time="0"/>
   <testcase name="getType" classname="org.cs362.dominion.CardTest" time="0"/>
-  <testcase name="getCardName" classname="org.cs362.dominion.CardTest" time="0.005"/>
+  <testcase name="getCardName" classname="org.cs362.dominion.CardTest" time="0"/>
 </testsuite>

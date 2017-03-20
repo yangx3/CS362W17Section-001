@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.cs362.dominion.mainRandomness_ESTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.041 sec <<< FAILURE! - in org.cs362.dominion.mainRandomness_ESTest
-test0(org.cs362.dominion.mainRandomness_ESTest)  Time elapsed: 0.02 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.015 sec <<< FAILURE! - in org.cs362.dominion.mainRandomness_ESTest
+test0(org.cs362.dominion.mainRandomness_ESTest)  Time elapsed: 0.003 sec  <<< ERROR!
 java.lang.NoClassDefFoundError: org/cs362/dominion/Randomness
 	at java.lang.ClassLoader.defineClass1(Native Method)
 	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
